@@ -1,11 +1,359 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dr. Abdulaziz Attaallah</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dr. Abdulaziz Attaallah</title>
+
+<style>
+:root{
+  --navy:#0B1F3A;
+  --gold:#B08A35;
+  --bg:#F8FAFC;
+  --text:#1E293B;
+  --muted:#64748B;
+  --card:rgba(255,255,255,.78);
+  --border:rgba(148,163,184,.25);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:
+    radial-gradient(circle at top left,rgba(176,138,53,.16),transparent 28%),
+    radial-gradient(circle at top right,rgba(11,31,58,.16),transparent 30%),
+    var(--bg);
+  color:var(--text);
+}
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  backdrop-filter:blur(18px);
+  background:rgba(255,255,255,.82);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:1180px;
+  margin:auto;
+  padding:15px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+.brand{font-weight:900;color:var(--navy)}
+.links a{
+  margin:0 9px;
+  color:var(--navy);
+  text-decoration:none;
+  font-weight:700;
+  font-size:14px;
+}
+.links a:hover{color:var(--gold)}
+section{
+  max-width:1180px;
+  margin:auto;
+  padding:75px 22px;
+}
+.hero{
+  min-height:92vh;
+  display:grid;
+  grid-template-columns:380px 1fr;
+  gap:55px;
+  align-items:center;
+}
+.photo-wrap{
+  background:linear-gradient(145deg,#fff,rgba(255,255,255,.45));
+  border:1px solid var(--border);
+  border-radius:34px;
+  padding:18px;
+  box-shadow:0 30px 80px rgba(11,31,58,.18);
+}
+.photo{
+  width:100%;
+  border-radius:26px;
+  display:block;
+}
+.kicker{
+  color:var(--gold);
+  font-weight:900;
+  letter-spacing:4px;
+  font-size:13px;
+  text-transform:uppercase;
+}
+h1{
+  color:var(--navy);
+  font-size:54px;
+  line-height:1.05;
+  margin:18px 0 8px;
+}
+.ar-name{
+  direction:rtl;
+  color:var(--gold);
+  font-size:31px;
+  font-weight:900;
+  margin-bottom:22px;
+}
+.subtitle{
+  font-size:22px;
+  color:var(--navy);
+  font-weight:800;
+  margin-bottom:12px;
+}
+.positioning{
+  font-size:18px;
+  line-height:1.8;
+  color:var(--muted);
+}
+.buttons{margin-top:28px}
+.btn{
+  display:inline-block;
+  margin:6px 8px 6px 0;
+  padding:12px 20px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:800;
+  background:var(--navy);
+  color:#fff;
+  box-shadow:0 12px 25px rgba(11,31,58,.18);
+}
+.btn.gold{background:var(--gold)}
+.btn.light{
+  background:#fff;
+  color:var(--navy);
+  border:1px solid var(--border);
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:28px;
+  padding:30px;
+  box-shadow:0 20px 55px rgba(15,23,42,.08);
+}
+h2{
+  color:var(--navy);
+  font-size:34px;
+  margin:0 0 22px;
+}
+h3{color:var(--navy);margin-top:0}
+p,li{
+  line-height:1.8;
+  font-size:16px;
+}
+.muted{color:var(--muted)}
+.ar{
+  direction:rtl;
+  text-align:right;
+  border-top:1px solid var(--border);
+  margin-top:24px;
+  padding-top:24px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+  gap:18px;
+}
+.mini{
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:22px;
+}
+.tag{
+  display:inline-block;
+  padding:9px 14px;
+  margin:6px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--border);
+  color:var(--navy);
+  font-weight:800;
+}
+.pub li{margin-bottom:14px}
+footer{
+  text-align:center;
+  padding:35px 20px;
+  color:var(--muted);
+}
+@media(max-width:850px){
+  .hero{grid-template-columns:1fr;text-align:center;padding-top:40px}
+  h1{font-size:38px}
+  .ar-name{font-size:25px}
+  .links{display:none}
+}
+</style>
 </head>
+
 <body>
-    <h1>Dr. Abdulaziz Attaallah</h1>
-    <p>My academic website is under construction.</p>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">Dr. Abdulaziz Attaallah</div>
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#research">Research</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section id="home" class="hero">
+  <div class="photo-wrap">
+    <img class="photo" src="profile.jpg" alt="Dr. Abdulaziz Attaallah">
+  </div>
+
+  <div>
+    <div class="kicker">Academic Executive Portfolio</div>
+    <h1>DR. ABDULAZIZ ATTAALLAH</h1>
+    <div class="ar-name">الدكتور عبدالعزيز عطاءالله</div>
+
+    <div class="subtitle">Associate Professor of Computer Science</div>
+    <div class="positioning">
+      Digital Transformation Leader<br>
+      Software Engineering Researcher<br>
+      Academic & Technology Strategist<br>
+      King Abdulaziz University, Jeddah, Saudi Arabia
+    </div>
+
+    <div class="buttons">
+      <a class="btn" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank">Google Scholar</a>
+      <a class="btn gold" href="https://orcid.org/0000-0001-5363-040X" target="_blank">ORCID</a>
+      <a class="btn light" href="https://www.researchgate.net/profile/Abdulaziz-Attaallah-2" target="_blank">ResearchGate</a>
+      <a class="btn light" href="mailto:aattallah@kau.edu.sa">Email</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="card">
+    <h2>Executive Profile</h2>
+    <p>
+      Dr. Abdulaziz Attaallah is an Associate Professor of Computer Science at King Abdulaziz University with a senior academic profile combining software engineering research, academic governance, digital transformation leadership, enterprise systems orientation, and technology strategy. His research expertise spans cybersecurity, artificial intelligence, blockchain applications, usable security, IoT/IoHT, healthcare informatics, big data security, and decision-support systems.
+    </p>
+    <p>
+      He has extensive experience in teaching, curriculum development, academic advising, research supervision, software architecture, secure systems, and leading university digital platforms.
+    </p>
+
+    <div class="ar">
+      <h2>نبذة تنفيذية</h2>
+      <p>
+        الدكتور عبدالعزيز عطاءالله أستاذ مشارك في علوم الحاسبات بجامعة الملك عبدالعزيز، ويتمتع بخبرة أكاديمية وقيادية تجمع بين البحث في هندسة البرمجيات، والحوكمة الأكاديمية، وقيادة التحول الرقمي، وتوجيه الأنظمة المؤسسية، واستراتيجية التقنية. تمتد خبراته البحثية إلى الأمن السيبراني، والذكاء الاصطناعي، وتطبيقات البلوك تشين، وأمن الاستخدام، وإنترنت الأشياء، والمعلوماتية الصحية، وأمن البيانات الضخمة، ونماذج دعم القرار.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <div class="card">
+    <h2>Academic Leadership & Appointments</h2>
+    <div class="grid">
+      <div class="mini"><h3>Associate Professor</h3><p>Computer Science Department, King Abdulaziz University<br>2024 – Present</p></div>
+      <div class="mini"><h3>Assistant Professor</h3><p>Faculty of Computing and Information Technology, KAU<br>2017 – 2024</p></div>
+      <div class="mini"><h3>General Supervisor</h3><p>Center of the University Knowledge Portal, KAU<br>2020 – 2021</p></div>
+      <div class="mini"><h3>Vice General Supervisor</h3><p>University Knowledge Portal Center<br>2019 – 2020</p></div>
+      <div class="mini"><h3>Department Council Secretary</h3><p>Computer Science Department<br>2018 – 2019</p></div>
+      <div class="mini"><h3>Academic Advisor</h3><p>Computer Science Department<br>2017 – Present</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="card">
+    <h2>Professional Expertise</h2>
+    <div class="grid">
+      <div class="mini"><h3>Digital Transformation</h3><p>Strategic planning, technology modernization, innovation management, and transformation leadership.</p></div>
+      <div class="mini"><h3>Enterprise & Solution Architecture</h3><p>Aligning technology initiatives with institutional objectives and designing end-to-end solutions.</p></div>
+      <div class="mini"><h3>Requirements Engineering</h3><p>Requirements elicitation, stakeholder engagement, business process analysis, and system modeling.</p></div>
+      <div class="mini"><h3>Software Architecture</h3><p>Software design, distributed systems, secure software systems, and enterprise application integration.</p></div>
+      <div class="mini"><h3>Technology Governance</h3><p>Project planning, risk management, platform governance, and execution oversight.</p></div>
+      <div class="mini"><h3>Academic Quality</h3><p>Curriculum development, outcome-based education, research supervision, and accreditation activities.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="research">
+  <div class="card">
+    <h2>Research Identity</h2>
+    <div>
+      <span class="tag">Software Engineering</span>
+      <span class="tag">Software Security</span>
+      <span class="tag">Artificial Intelligence</span>
+      <span class="tag">Cybersecurity</span>
+      <span class="tag">Blockchain Systems</span>
+      <span class="tag">Usable Security</span>
+      <span class="tag">Human-Computer Interaction</span>
+      <span class="tag">Healthcare Informatics</span>
+      <span class="tag">Big Data Security</span>
+      <span class="tag">Fuzzy Logic</span>
+      <span class="tag">Decision-Support Systems</span>
+      <span class="tag">Quantum Physics</span>
+      <span class="tag">Quantum Computing</span>
+      <span class="tag">Astronomy</span>
+    </div>
+  </div>
+</section>
+
+<section id="teaching">
+  <div class="card">
+    <h2>Teaching Portfolio</h2>
+    <div class="grid">
+      <div class="mini"><h3>Software Engineering</h3><p>CPCS-351 Software Engineering I<br>CPCS-353 Software Engineering Practices<br>CPCS-454 Object-Oriented Analysis and Design</p></div>
+      <div class="mini"><h3>Programming & AI</h3><p>CPCS-202 Programming I<br>CPCS-203 Programming II<br>CPCS-206 Introduction to Programming and Visual Basic<br>CPCS-336 Introduction to Artificial Intelligence</p></div>
+      <div class="mini"><h3>Projects & Research</h3><p>CPCS-498 Senior Project I<br>CPCS-499 Senior Project II<br>CPCS-699 Master’s Research</p></div>
+      <div class="mini"><h3>Professional Training</h3><p>CPCS-323 Summer Workplace Training</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="card">
+    <h2>Publications</h2>
+    <ol class="pub">
+      <li>Security Test Case Prioritization Through Ant Colony Optimization Algorithm. Computer Systems Science and Engineering, 2023.</li>
+      <li>Enhancing Healthcare Management During Covid-19: A Patient-Centric Architectural Framework Enabled by Hyperledger Fabric Blockchain. Information, 2023.</li>
+      <li>A Trailblazing Framework of Security Assessment for Traffic Data Management. Intelligent Automation & Soft Computing, 2023.</li>
+      <li>A Fuzzy TOPSIS-Based Approach for Comprehensive Evaluation of Bio-Medical Waste Management. Sustainability, 2023.</li>
+      <li>Fuzzy-Based Unified Decision-Making Technique to Evaluate Security Risks: A Healthcare Perspective. Mathematics, 2023.</li>
+      <li>A Security Testing Mechanism for Detecting Attacks in Distributed Software Applications Using Blockchain. PLOS ONE, 2023.</li>
+      <li>Analyzing the Big Data Security Through a Unified Decision-Making Approach. Intelligent Automation & Soft Computing, 2022.</li>
+      <li>Estimating Usable-Security Through Hesitant Fuzzy Linguistic Term Sets Based Technique. Computers, Materials & Continua, 2021.</li>
+      <li>Device Security Assessment of Internet of Healthcare Things. Intelligent Automation & Soft Computing, 2021.</li>
+      <li>Prediction of Covid-19 Pandemic Spread in Kingdom of Saudi Arabia. Computer Systems Science and Engineering, 2021.</li>
+      <li>Estimating the Impact of Covid-19 Pandemic on the Research Community in the Kingdom of Saudi Arabia. Computer Modeling in Engineering & Sciences, 2021.</li>
+      <li>Standalone Behaviour-Based Attack Detection Techniques for Distributed Software Systems via Blockchain. Applied Sciences, 2021.</li>
+      <li>A Fuzzy Multi-Objective Covering-Based Security Quantification Model for Mitigating Risk of Web Based Medical Image Processing System. IJACSA, 2020.</li>
+      <li>Attribute Based Honey Encryption Algorithm for Securing Big Data: Hadoop Distributed File System Perspective. PeerJ Computer Science, 2020.</li>
+      <li>Managing Security-Risks for Improving Security-Durability of Institutional Web-Applications: Design Perspective. Computers, Materials & Continua, 2020.</li>
+      <li>A Hybrid Fuzzy Rule-Based Multi-Criteria Framework for Security Assessment of Medical Device Software. International Journal of Intelligent Engineering and Systems, 2020.</li>
+    </ol>
+    <div class="buttons">
+      <a class="btn gold" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank">View Full Google Scholar Profile</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="card">
+    <h2>Contact</h2>
+    <div class="grid">
+      <div class="mini"><h3>Email</h3><p><a href="mailto:aattallah@kau.edu.sa">aattallah@kau.edu.sa</a></p></div>
+      <div class="mini"><h3>ORCID</h3><p><a href="https://orcid.org/0000-0001-5363-040X" target="_blank">0000-0001-5363-040X</a></p></div>
+      <div class="mini"><h3>Google Scholar</h3><p><a href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank">Scholar Profile</a></p></div>
+      <div class="mini"><h3>Institution</h3><p>King Abdulaziz University<br>Jeddah, Saudi Arabia</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Dr. Abdulaziz Attaallah. Academic Portfolio.
+</footer>
+
 </body>
 </html>
