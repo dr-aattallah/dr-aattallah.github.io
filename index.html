@@ -3,19 +3,26 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dr. Abdulaziz Attaallah</title>
+<meta name="description" content="Academic executive portfolio of Dr. Abdulaziz Attaallah, Associate Professor of Computer Science at King Abdulaziz University." />
+<title>Dr. Abdulaziz Attaallah | Academic Executive Portfolio</title>
 
 <style>
 :root{
   --navy:#0B1F3A;
-  --navy2:#12355F;
+  --navy-2:#12355F;
   --gold:#B08A35;
-  --gold2:#6F5522;
+  --gold-dark:#6F5522;
   --bg:#F8FAFC;
+  --surface:#FFFFFF;
   --text:#1E293B;
   --muted:#64748B;
-  --card:rgba(255,255,255,.78);
-  --border:rgba(148,163,184,.25);
+  --soft:#E2E8F0;
+  --card:rgba(255,255,255,.82);
+  --card-strong:rgba(255,255,255,.94);
+  --border:rgba(148,163,184,.28);
+  --gold-border:rgba(176,138,53,.24);
+  --shadow:0 24px 70px rgba(15,23,42,.09);
+  --shadow-soft:0 16px 38px rgba(15,23,42,.07);
 }
 
 @font-face{
@@ -30,19 +37,20 @@
 
 html{
   scroll-behavior:smooth;
+  scroll-padding-top:88px;
 }
 
 body{
   margin:0;
   font-family:"Masmak",sans-serif;
-  letter-spacing:.1px;
+  letter-spacing:0;
   text-rendering:optimizeLegibility;
   -webkit-font-smoothing:antialiased;
-  background:
-    radial-gradient(circle at top left,rgba(176,138,53,.18),transparent 28%),
-    radial-gradient(circle at top right,rgba(11,31,58,.17),transparent 30%),
-    linear-gradient(180deg,#F8FAFC 0%,#EEF2F7 100%);
   color:var(--text);
+  background:
+    linear-gradient(135deg,rgba(248,250,252,.96),rgba(226,232,240,.72)),
+    linear-gradient(180deg,rgba(176,138,53,.08),transparent 34%),
+    var(--bg);
 }
 
 body,
@@ -65,73 +73,118 @@ span{
 }
 
 a{
-  color:var(--navy);
+  color:inherit;
+}
+
+.skip-link{
+  position:absolute;
+  left:18px;
+  top:-60px;
+  z-index:9999;
+  background:var(--navy);
+  color:#fff;
+  padding:12px 16px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+}
+
+.skip-link:focus{
+  top:14px;
 }
 
 nav{
   position:sticky;
   top:0;
   z-index:1000;
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(20px) saturate(160%);
+  -webkit-backdrop-filter:blur(20px) saturate(160%);
   background:rgba(255,255,255,.84);
-  border-bottom:1px solid var(--border);
+  border-bottom:1px solid rgba(148,163,184,.22);
 }
 
 .nav-inner{
   max-width:1180px;
   margin:auto;
-  padding:15px 22px;
+  padding:14px 22px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:20px;
+  gap:22px;
 }
 
 .brand{
-  font-weight:900;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
   color:var(--navy);
-  white-space:nowrap;
+  font-weight:900;
+  line-height:1.15;
+}
+
+.brand small{
+  color:var(--gold-dark);
+  font-size:12px;
+  font-weight:800;
+}
+
+.links{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
 }
 
 .links a{
-  margin:0 8px;
   color:var(--navy);
   text-decoration:none;
   font-weight:800;
-  font-size:14px;
+  font-size:13px;
+  padding:9px 10px;
+  border-radius:999px;
+  transition:background .2s ease,color .2s ease,transform .2s ease;
 }
 
-.links a:hover{
-  color:var(--gold);
+.links a:hover,
+.links a:focus-visible{
+  color:var(--gold-dark);
+  background:rgba(176,138,53,.1);
+  outline:none;
 }
 
 section{
   max-width:1180px;
   margin:auto;
-  padding:74px 22px;
+  padding:54px 22px;
 }
 
 .hero{
-  min-height:92vh;
+  min-height:calc(100vh - 72px);
   display:grid;
-  grid-template-columns:390px 1fr;
+  grid-template-columns:minmax(280px,390px) 1fr;
   gap:58px;
   align-items:center;
+  padding-top:64px;
+  padding-bottom:64px;
+}
+
+.photo-panel{
+  position:relative;
 }
 
 .photo-wrap{
   position:relative;
+  max-width:390px;
   background:
-    linear-gradient(145deg,rgba(255,255,255,.85),rgba(255,255,255,.32));
-  border:1px solid rgba(255,255,255,.8);
-  border-radius:38px;
-  padding:17px;
+    linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,255,255,.42));
+  border:1px solid rgba(255,255,255,.82);
+  border-radius:36px;
+  padding:16px;
   box-shadow:
-    0 35px 90px rgba(11,31,58,.30),
-    0 12px 35px rgba(176,138,53,.18),
-    inset 0 1px 1px rgba(255,255,255,.95),
-    inset 0 -1px 1px rgba(11,31,58,.08);
+    0 36px 90px rgba(11,31,58,.24),
+    0 14px 34px rgba(176,138,53,.13),
+    inset 0 1px 1px rgba(255,255,255,.95);
   backdrop-filter:blur(22px) saturate(160%);
   -webkit-backdrop-filter:blur(22px) saturate(160%);
   overflow:hidden;
@@ -141,210 +194,288 @@ section{
   content:"";
   position:absolute;
   inset:0;
-  border-radius:38px;
+  border-radius:36px;
   background:
-    linear-gradient(120deg,rgba(255,255,255,.78),transparent 34%,rgba(255,255,255,.2) 64%,transparent);
+    linear-gradient(120deg,rgba(255,255,255,.78),transparent 34%,rgba(255,255,255,.18) 67%,transparent);
   pointer-events:none;
-  z-index:2;
-}
-
-.photo-wrap::after{
-  content:"";
-  position:absolute;
-  top:16px;
-  left:20px;
-  width:43%;
-  height:17%;
-  border-radius:999px;
-  background:linear-gradient(90deg,rgba(255,255,255,.65),rgba(255,255,255,0));
-  filter:blur(2px);
-  pointer-events:none;
-  z-index:3;
 }
 
 .photo{
   width:100%;
-  border-radius:28px;
+  border-radius:26px;
   display:block;
   position:relative;
   z-index:1;
-  box-shadow:
-    0 18px 45px rgba(0,0,0,.30),
-    inset 0 0 0 1px rgba(255,255,255,.4);
+  box-shadow:0 20px 46px rgba(0,0,0,.24);
+}
+
+.hero-card{
+  position:absolute;
+  right:-18px;
+  bottom:22px;
+  z-index:3;
+  max-width:245px;
+  padding:16px 18px;
+  border-radius:22px;
+  background:rgba(255,255,255,.88);
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:0 18px 38px rgba(15,23,42,.14);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+.hero-card strong{
+  display:block;
+  color:var(--navy);
+  font-size:15px;
+  line-height:1.35;
+}
+
+.hero-card span{
+  display:block;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.65;
+  margin-top:5px;
+}
+
+.hero-content{
+  max-width:720px;
 }
 
 .kicker{
-  color:var(--gold);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  color:var(--gold-dark);
   font-weight:900;
-  letter-spacing:4px;
   font-size:13px;
   text-transform:uppercase;
-  margin-bottom:8px;
+}
+
+.kicker::before{
+  content:"";
+  width:42px;
+  height:2px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--gold),rgba(176,138,53,.18));
 }
 
 h1{
   color:var(--navy);
-  font-size:54px;
-  line-height:1.04;
-  margin:18px 0 8px;
-  letter-spacing:-1.3px;
-  text-shadow:0 12px 35px rgba(11,31,58,.12);
+  font-size:clamp(40px,6vw,72px);
+  line-height:1;
+  margin:18px 0 10px;
+  letter-spacing:0;
+  text-shadow:0 14px 38px rgba(11,31,58,.11);
 }
 
 .ar-name{
   direction:rtl;
   text-align:left;
-  color:var(--gold2);
-  font-size:34px;
+  color:var(--gold-dark);
+  font-size:clamp(25px,3vw,36px);
   font-weight:900;
-  line-height:1.35;
-  margin:8px 0 10px;
-  letter-spacing:0;
-  text-shadow:0 14px 32px rgba(11,31,58,.14);
+  line-height:1.45;
+  margin:8px 0 12px;
+  text-shadow:0 8px 22px rgba(176,138,53,.16);
 }
 
 .name-line{
-  width:96px;
+  width:108px;
   height:4px;
   border-radius:999px;
   background:linear-gradient(90deg,var(--gold),rgba(176,138,53,.18));
   margin:0 0 24px;
-  box-shadow:0 8px 20px rgba(176,138,53,.28);
+  box-shadow:0 8px 20px rgba(176,138,53,.22);
 }
 
 .subtitle{
-  font-size:22px;
+  font-size:24px;
   color:var(--navy);
   font-weight:900;
-  margin-bottom:12px;
+  margin-bottom:14px;
 }
 
 .positioning{
-  font-size:18px;
-  line-height:1.85;
+  display:grid;
+  gap:8px;
+  max-width:610px;
   color:var(--muted);
+  font-size:18px;
+  line-height:1.75;
+}
+
+.positioning span{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.positioning span::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  background:var(--gold);
+  box-shadow:0 0 0 5px rgba(176,138,53,.1);
+  flex:0 0 auto;
+}
+
+.hero-metrics{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin-top:26px;
+  max-width:650px;
+}
+
+.metric{
+  padding:16px 18px;
+  border-radius:22px;
+  background:rgba(255,255,255,.66);
+  border:1px solid var(--border);
+  box-shadow:var(--shadow-soft);
+}
+
+.metric strong{
+  display:block;
+  color:var(--navy);
+  font-size:22px;
+  line-height:1.2;
+}
+
+.metric span{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
 }
 
 .buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
   margin-top:28px;
 }
 
 .btn{
-  display:inline-block;
-  margin:6px 8px 6px 0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
   padding:12px 20px;
   border-radius:999px;
   text-decoration:none;
   font-weight:900;
+  font-size:14px;
   background:var(--navy);
   color:#fff;
-  box-shadow:0 12px 25px rgba(11,31,58,.18);
-  transition:.2s ease;
+  box-shadow:0 13px 25px rgba(11,31,58,.18);
+  border:1px solid rgba(11,31,58,.08);
+  transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
 }
 
-.btn:hover{
+.btn:hover,
+.btn:focus-visible{
   transform:translateY(-2px);
-  box-shadow:0 16px 32px rgba(11,31,58,.23);
+  box-shadow:0 18px 34px rgba(11,31,58,.22);
+  outline:none;
 }
 
 .btn.gold{
   background:var(--gold);
+  border-color:rgba(176,138,53,.25);
 }
 
 .btn.light{
   background:#fff;
   color:var(--navy);
   border:1px solid var(--border);
+  box-shadow:0 12px 24px rgba(15,23,42,.07);
 }
 
 .card{
+  position:relative;
   background:var(--card);
   border:1px solid var(--border);
   border-radius:30px;
-  padding:32px;
-  box-shadow:0 22px 60px rgba(15,23,42,.09);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
+  padding:34px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(18px) saturate(150%);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  overflow:hidden;
+}
+
+.card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  top:0;
+  height:3px;
+  background:linear-gradient(90deg,var(--navy),var(--gold),rgba(176,138,53,.12));
+}
+
+.section-head{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:20px;
+  align-items:start;
+  margin-bottom:28px;
+}
+
+.eyebrow{
+  display:block;
+  color:var(--gold-dark);
+  font-size:13px;
+  font-weight:900;
+  text-transform:uppercase;
+  margin-bottom:8px;
 }
 
 h2{
   color:var(--navy);
-  font-size:34px;
-  margin:0 0 8px;
+  font-size:clamp(27px,3vw,38px);
+  line-height:1.15;
+  margin:0;
 }
 
 .section-ar-title{
   direction:rtl;
   text-align:right;
-  color:var(--gold2);
-  font-size:25px;
+  color:var(--gold-dark);
+  font-size:clamp(21px,2.4vw,29px);
   font-weight:900;
-  margin:0 0 26px;
+  line-height:1.45;
+  margin:3px 0 0;
+  min-width:220px;
 }
 
 h3{
   color:var(--navy);
-  margin-top:0;
+  margin:0 0 8px;
+  font-size:20px;
+  line-height:1.35;
 }
 
-p,li{
+p,
+li{
   line-height:1.85;
-  font-size:16px;
+  font-size:16.5px;
+}
+
+p{
+  margin:0 0 14px;
 }
 
 .muted{
   color:var(--muted);
 }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:18px;
-}
-
-.dual-card{
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.91),rgba(255,255,255,.62));
-  border:1px solid var(--border);
-  border-radius:24px;
-  padding:24px;
-  min-height:230px;
-  box-shadow:
-    0 18px 42px rgba(15,23,42,.06),
-    inset 0 1px 1px rgba(255,255,255,.85);
-}
-
-.dual-card h3{
-  margin:0 0 6px;
-  color:var(--navy);
-  font-size:19px;
-  line-height:1.35;
-}
-
-.dual-card .ar-card-title{
-  direction:rtl;
-  text-align:right;
-  color:var(--gold2);
-  font-size:22px;
-  font-weight:900;
-  margin:0 0 15px;
-  line-height:1.45;
-}
-
-.dual-card p{
-  margin:0 0 14px;
-  color:var(--muted);
-  line-height:1.75;
-}
-
-.dual-card .ar-card-text{
-  direction:rtl;
-  text-align:right;
+.lead{
+  font-size:17.5px;
   color:#334155;
-  font-size:17px;
-  line-height:2;
-  border-top:1px solid rgba(176,138,53,.22);
-  padding-top:14px;
+  max-width:930px;
 }
 
 .ar-soft{
@@ -353,76 +484,346 @@ p,li{
   margin-top:24px;
   padding:24px;
   border-radius:24px;
-  background:linear-gradient(145deg,rgba(176,138,53,.08),rgba(255,255,255,.74));
-  border:1px solid rgba(176,138,53,.18);
+  background:
+    linear-gradient(145deg,rgba(176,138,53,.09),rgba(255,255,255,.76));
+  border:1px solid var(--gold-border);
 }
 
 .ar-soft h3{
-  color:var(--gold2);
+  color:var(--gold-dark);
   margin-bottom:10px;
-  font-size:23px;
+  font-size:21px;
 }
 
 .ar-soft p{
-  font-size:17px;
-  line-height:2.05;
+  color:#334155;
+  font-size:16.5px;
+  line-height:2;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+  gap:18px;
+}
+
+.grid.compact{
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+}
+
+.mini,
+.dual-card{
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.94),rgba(255,255,255,.66));
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:24px;
+  box-shadow:
+    0 18px 42px rgba(15,23,42,.06),
+    inset 0 1px 1px rgba(255,255,255,.85);
+}
+
+.mini{
+  min-height:174px;
+}
+
+.mini h3{
+  font-size:19px;
+}
+
+.mini p{
+  color:var(--muted);
+  margin-bottom:0;
+  font-size:15.8px;
+}
+
+.date{
+  display:inline-flex;
+  margin-top:12px;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(176,138,53,.1);
+  color:var(--gold-dark);
+  font-size:13px;
+  font-weight:900;
+}
+
+.dual-card{
+  min-height:235px;
+  display:flex;
+  flex-direction:column;
+}
+
+.dual-card h3{
+  font-size:20px;
+}
+
+.ar-card-title{
+  direction:rtl;
+  text-align:right;
+  color:var(--gold-dark);
+  font-size:21px;
+  font-weight:900;
+  margin:0 0 14px;
+  line-height:1.5;
+}
+
+.dual-card p{
+  margin:0 0 15px;
+  color:var(--muted);
+  line-height:1.75;
+  font-size:15.8px;
+}
+
+.ar-card-text{
+  direction:rtl;
+  text-align:right;
+  color:#334155;
+  line-height:1.95;
+  border-top:1px solid rgba(176,138,53,.22);
+  padding-top:14px;
+  margin-top:auto;
+  font-size:15.8px;
+}
+
+.research-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.tag{
+  display:inline-flex;
+  align-items:center;
+  min-height:40px;
+  padding:9px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.86);
+  border:1px solid var(--border);
+  color:var(--navy);
+  font-weight:900;
+  font-size:14px;
+  box-shadow:0 10px 24px rgba(15,23,42,.05);
+}
+
+.publication-note{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:18px;
+  align-items:stretch;
+  margin:20px 0 26px;
+}
+
+.note-box{
+  padding:22px;
+  border-radius:24px;
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--border);
+}
+
+.note-box p{
+  margin:0;
 }
 
 .pub{
-  padding-left:24px;
+  list-style:none;
+  counter-reset:pub-counter;
+  padding:0;
+  margin:0;
+  display:grid;
+  gap:14px;
 }
 
 .pub li{
-  margin-bottom:14px;
+  counter-increment:pub-counter;
+  position:relative;
+  padding:20px 20px 20px 66px;
+  border-radius:22px;
+  background:rgba(255,255,255,.82);
+  border:1px solid var(--border);
+  box-shadow:0 12px 28px rgba(15,23,42,.045);
+  color:#334155;
+  line-height:1.75;
+  font-size:15.6px;
 }
 
-footer{
+.pub li::before{
+  content:counter(pub-counter, decimal-leading-zero);
+  position:absolute;
+  left:18px;
+  top:20px;
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:rgba(176,138,53,.12);
+  color:var(--gold-dark);
+  font-weight:900;
+  font-size:13px;
+}
+
+.pub strong{
+  display:block;
+  color:var(--navy);
+  font-size:16.2px;
+  margin-bottom:4px;
+}
+
+.doi{
+  color:var(--gold-dark);
+  font-weight:900;
+}
+
+.contact-card a{
+  color:var(--navy);
+  font-weight:900;
+  overflow-wrap:anywhere;
+}
+
+.footer{
   text-align:center;
-  padding:35px 20px;
+  padding:34px 20px 44px;
   color:var(--muted);
+  font-size:14px;
 }
 
-@media(max-width:850px){
+@media(max-width:950px){
   .hero{
     grid-template-columns:1fr;
+    gap:36px;
     text-align:center;
-    padding-top:42px;
+    min-height:auto;
   }
 
   .photo-wrap{
-    max-width:330px;
     margin:auto;
   }
 
-  h1{
-    font-size:38px;
+  .hero-card{
+    left:50%;
+    right:auto;
+    transform:translateX(-50%);
+    bottom:-22px;
+    width:min(280px,86%);
   }
 
-  .ar-name{
-    font-size:29px;
-    text-align:center;
+  .kicker{
+    justify-content:center;
   }
 
   .name-line{
     margin:0 auto 24px;
   }
 
-  .section-ar-title{
+  .ar-name{
     text-align:center;
   }
 
+  .positioning{
+    margin:auto;
+    text-align:left;
+  }
+
+  .hero-metrics{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .buttons{
+    justify-content:center;
+  }
+
+  .section-head{
+    grid-template-columns:1fr;
+    gap:6px;
+  }
+
+  .section-ar-title{
+    text-align:left;
+    direction:rtl;
+    min-width:0;
+  }
+
+  .publication-note{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:720px){
+  .nav-inner{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:10px;
+  }
+
   .links{
-    display:none;
+    width:100%;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    justify-content:flex-start;
+    padding-bottom:4px;
+  }
+
+  .links a{
+    white-space:nowrap;
+  }
+
+  section{
+    padding:38px 16px;
+  }
+
+  .hero{
+    padding-top:36px;
+  }
+
+  .card{
+    padding:24px;
+    border-radius:26px;
+  }
+
+  .hero-metrics{
+    grid-template-columns:1fr;
+  }
+
+  .positioning{
+    font-size:16.5px;
+  }
+
+  .pub li{
+    padding:18px 18px 18px 58px;
+  }
+
+  .pub li::before{
+    left:14px;
+    top:18px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after{
+    transition:none !important;
   }
 }
 </style>
 </head>
 
 <body>
+<a class="skip-link" href="#about">Skip to main content</a>
 
-<nav>
+<nav aria-label="Primary navigation">
   <div class="nav-inner">
-    <div class="brand">Dr. Abdulaziz Attaallah</div>
+    <div class="brand">
+      <span>Dr. Abdulaziz Attaallah</span>
+      <small>Academic Executive Portfolio</small>
+    </div>
+
     <div class="links">
       <a href="#home">Home</a>
       <a href="#about">About</a>
@@ -436,350 +837,437 @@ footer{
   </div>
 </nav>
 
-<section id="home" class="hero">
-  <div class="photo-wrap">
-    <img class="photo" src="profile.jpg" alt="Dr. Abdulaziz Attaallah">
-  </div>
+<header id="home">
+  <section class="hero" aria-label="Profile introduction">
+    <div class="photo-panel">
+      <div class="photo-wrap">
+        <img class="photo" src="profile.jpg" alt="Portrait of Dr. Abdulaziz Attaallah" />
+      </div>
 
-  <div>
-    <div class="kicker">Academic Executive Portfolio</div>
-    <h1>DR. ABDULAZIZ ATTAALLAH</h1>
-    <div class="ar-name">الدكتور عبدالعزيز عطاءالله</div>
-    <div class="name-line"></div>
-
-    <div class="subtitle">Associate Professor of Computer Science</div>
-    <div class="positioning">
-      Digital Transformation Leader<br>
-      Software Engineering Researcher<br>
-      Academic & Technology Strategist<br>
-      King Abdulaziz University, Jeddah, Saudi Arabia
+      <div class="hero-card">
+        <strong>King Abdulaziz University</strong>
+        <span>Computer Science, academic leadership, research, and digital transformation.</span>
+      </div>
     </div>
 
-    <div class="buttons">
-      <a class="btn" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank">Google Scholar</a>
-      <a class="btn gold" href="https://orcid.org/0000-0001-5363-040X" target="_blank">ORCID</a>
-      <a class="btn light" href="https://www.researchgate.net/profile/Abdulaziz-Attaallah-2" target="_blank">ResearchGate</a>
-      <a class="btn light" href="https://mail.google.com/mail/?view=cm&fs=1&to=aattallah@kau.edu.sa" target="_blank">Email</a>
+    <div class="hero-content">
+      <div class="kicker">Academic Executive Portfolio</div>
+      <h1>DR. ABDULAZIZ ATTAALLAH</h1>
+      <div class="ar-name" lang="ar" dir="rtl">الدكتور عبدالعزيز عطاءالله</div>
+      <div class="name-line" aria-hidden="true"></div>
+
+      <div class="subtitle">Associate Professor of Computer Science</div>
+
+      <div class="positioning">
+        <span>Digital Transformation Leader</span>
+        <span>Software Engineering Researcher</span>
+        <span>Academic & Technology Strategist</span>
+        <span>King Abdulaziz University, Jeddah, Saudi Arabia</span>
+      </div>
+
+      <div class="hero-metrics" aria-label="Academic profile highlights">
+        <div class="metric">
+          <strong>2024</strong>
+          <span>Associate Professor appointment</span>
+        </div>
+        <div class="metric">
+          <strong>16+</strong>
+          <span>Peer-reviewed publications listed</span>
+        </div>
+        <div class="metric">
+          <strong>KAU</strong>
+          <span>Academic leadership and digital platforms</span>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <a class="btn" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <a class="btn gold" href="https://orcid.org/0000-0001-5363-040X" target="_blank" rel="noopener">ORCID</a>
+        <a class="btn light" href="https://www.researchgate.net/profile/Abdulaziz-Attaallah-2" target="_blank" rel="noopener">ResearchGate</a>
+        <a class="btn light" href="https://mail.google.com/mail/?view=cm&fs=1&to=aattallah@kau.edu.sa" target="_blank" rel="noopener">Email</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+</header>
 
-<section id="about">
-  <div class="card">
-    <h2>Executive Profile</h2>
-    <div class="section-ar-title">النبذة التنفيذية</div>
+<main>
+  <section id="about">
+    <div class="card">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Profile</span>
+          <h2>Executive Profile</h2>
+        </div>
+        <div class="section-ar-title" lang="ar" dir="rtl">النبذة التنفيذية</div>
+      </div>
 
-    <p>
-      Dr. Abdulaziz Attaallah is an Associate Professor of Computer Science at King Abdulaziz University with a senior academic profile combining software engineering research, academic governance, digital transformation leadership, enterprise systems orientation, and technology strategy. His research expertise spans cybersecurity, artificial intelligence, blockchain applications, usable security, IoT/IoHT, healthcare informatics, big data security, and decision-support systems.
-    </p>
-    <p>
-      He has extensive experience in teaching, curriculum development, academic advising, research supervision, software architecture, secure systems, and leading university digital platforms.
-    </p>
-
-    <div class="ar-soft">
-      <h3>نبذة عربية</h3>
-      <p>
-        الدكتور عبدالعزيز عطاءالله أستاذ مشارك في علوم الحاسبات بجامعة الملك عبدالعزيز، ويتمتع بخبرة أكاديمية وقيادية تجمع بين البحث في هندسة البرمجيات، والحوكمة الأكاديمية، وقيادة التحول الرقمي، وتوجيه الأنظمة المؤسسية، واستراتيجية التقنية. تمتد خبراته البحثية إلى الأمن السيبراني، والذكاء الاصطناعي، وتطبيقات البلوك تشين، وأمن الاستخدام، وإنترنت الأشياء، والمعلوماتية الصحية، وأمن البيانات الضخمة، ونماذج دعم القرار.
+      <p class="lead">
+        Dr. Abdulaziz Attaallah is an Associate Professor of Computer Science at King Abdulaziz University with a senior academic profile combining software engineering research, academic governance, digital transformation leadership, enterprise systems orientation, and technology strategy. His research expertise spans cybersecurity, artificial intelligence, blockchain applications, usable security, IoT/IoHT, healthcare informatics, big data security, and decision-support systems.
       </p>
-      <p>
-        كما يمتلك خبرة واسعة في التدريس، وتطوير المناهج، والإرشاد الأكاديمي، والإشراف البحثي، وهندسة البرمجيات، والأنظمة الآمنة، وقيادة المنصات الرقمية الجامعية.
+      <p class="lead">
+        He has extensive experience in teaching, curriculum development, academic advising, research supervision, software architecture, secure systems, and leading university digital platforms.
       </p>
-    </div>
-  </div>
-</section>
 
-<section id="leadership">
-  <div class="card">
-    <h2>Academic Leadership & Appointments</h2>
-    <div class="section-ar-title">القيادة الأكاديمية والمناصب</div>
-
-    <div class="grid">
-      <div class="dual-card">
-        <h3>Associate Professor</h3>
-        <div class="ar-card-title">أستاذ مشارك</div>
-        <p>Computer Science Department, King Abdulaziz University<br>2024 – Present</p>
-        <div class="ar-card-text">أستاذ مشارك بقسم علوم الحاسبات في جامعة الملك عبدالعزيز.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Assistant Professor</h3>
-        <div class="ar-card-title">أستاذ مساعد</div>
-        <p>Faculty of Computing and Information Technology, KAU<br>2017 – 2024</p>
-        <div class="ar-card-text">أستاذ مساعد بكلية الحاسبات وتقنية المعلومات، مع خبرة في التدريس والبحث والإرشاد الأكاديمي.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>General Supervisor</h3>
-        <div class="ar-card-title">المشرف العام</div>
-        <p>Center of the University Knowledge Portal, KAU<br>2020 – 2021</p>
-        <div class="ar-card-text">الإشراف على مركز بوابة المعرفة الجامعية وتطوير المحتوى والخدمات والمنصات الرقمية.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Vice General Supervisor</h3>
-        <div class="ar-card-title">نائب المشرف العام</div>
-        <p>University Knowledge Portal Center<br>2019 – 2020</p>
-        <div class="ar-card-text">المساهمة في التخطيط والمحتوى وحوكمة المنصات الرقمية المرتبطة ببوابة المعرفة الجامعية.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Department Council Secretary</h3>
-        <div class="ar-card-title">أمين مجلس القسم</div>
-        <p>Computer Science Department<br>2018 – 2019</p>
-        <div class="ar-card-text">تنظيم أعمال مجلس قسم علوم الحاسبات، وتوثيق الإجراءات، ودعم الأعمال الأكاديمية والإدارية.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Academic Advisor</h3>
-        <div class="ar-card-title">مرشد أكاديمي</div>
-        <p>Computer Science Department<br>2017 – Present</p>
-        <div class="ar-card-text">تقديم الإرشاد الأكاديمي للطلاب ودعمهم في اختيار المقررات والمسارات الأكاديمية المناسبة.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="expertise">
-  <div class="card">
-    <h2>Professional Expertise</h2>
-    <div class="section-ar-title">الخبرات المهنية</div>
-
-    <div class="grid">
-      <div class="dual-card">
-        <h3>Digital Transformation</h3>
-        <div class="ar-card-title">قيادة التحول الرقمي</div>
-        <p>Strategic planning, technology modernization, innovation management, and transformation leadership.</p>
-        <div class="ar-card-text">التخطيط الاستراتيجي، وتحديث التقنية، وإدارة الابتكار، وقيادة مبادرات التحول الرقمي.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Enterprise & Solution Architecture</h3>
-        <div class="ar-card-title">هندسة الحلول المؤسسية</div>
-        <p>Aligning technology initiatives with institutional objectives and designing end-to-end solutions.</p>
-        <div class="ar-card-text">مواءمة المبادرات التقنية مع الأهداف المؤسسية وتصميم حلول تقنية متكاملة من البداية إلى النهاية.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Requirements Engineering</h3>
-        <div class="ar-card-title">هندسة المتطلبات</div>
-        <p>Requirements elicitation, stakeholder engagement, business process analysis, and system modeling.</p>
-        <div class="ar-card-text">استخلاص المتطلبات، وتحليل أصحاب المصلحة، ونمذجة العمليات والأنظمة بصورة منهجية.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Software Architecture</h3>
-        <div class="ar-card-title">معمارية البرمجيات</div>
-        <p>Software design, distributed systems, secure software systems, and enterprise application integration.</p>
-        <div class="ar-card-text">تصميم البرمجيات، والأنظمة الموزعة، والأنظمة الآمنة، وتكامل التطبيقات المؤسسية.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Technology Governance</h3>
-        <div class="ar-card-title">حوكمة التقنية</div>
-        <p>Project planning, risk management, platform governance, and execution oversight.</p>
-        <div class="ar-card-text">تخطيط المشاريع، وإدارة المخاطر، وحوكمة المنصات التقنية، ومتابعة التنفيذ.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Academic Quality</h3>
-        <div class="ar-card-title">الجودة الأكاديمية</div>
-        <p>Curriculum development, outcome-based education, research supervision, and accreditation activities.</p>
-        <div class="ar-card-text">تطوير المناهج، والتعليم المبني على المخرجات، والإشراف البحثي، وأنشطة الاعتماد الأكاديمي.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="research">
-  <div class="card">
-    <h2>Research Identity</h2>
-    <div class="section-ar-title">الهوية البحثية</div>
-
-    <div class="grid">
-      <div class="dual-card">
-        <h3>Software Engineering</h3>
-        <div class="ar-card-title">هندسة البرمجيات</div>
-        <p>Research in software requirements, modeling, architecture, quality, and secure software systems.</p>
-        <div class="ar-card-text">البحث في متطلبات البرمجيات، والنمذجة، والمعمارية، والجودة، والأنظمة البرمجية الآمنة.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Cybersecurity & Software Security</h3>
-        <div class="ar-card-title">الأمن السيبراني وأمن البرمجيات</div>
-        <p>Security assessment, risk mitigation, secure software engineering, and software attack detection.</p>
-        <div class="ar-card-text">تقييم الأمن، وتقليل المخاطر، وهندسة البرمجيات الآمنة، وكشف الهجمات على الأنظمة البرمجية.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Artificial Intelligence</h3>
-        <div class="ar-card-title">الذكاء الاصطناعي</div>
-        <p>AI applications, intelligent systems, computational models, and data-driven decision support.</p>
-        <div class="ar-card-text">تطبيقات الذكاء الاصطناعي، والأنظمة الذكية، والنماذج الحاسوبية، ودعم القرار المعتمد على البيانات.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Blockchain Systems</h3>
-        <div class="ar-card-title">أنظمة البلوك تشين</div>
-        <p>Blockchain-enabled security, healthcare applications, distributed systems, and trusted digital platforms.</p>
-        <div class="ar-card-text">توظيف البلوك تشين في الأمن، والتطبيقات الصحية، والأنظمة الموزعة، والمنصات الرقمية الموثوقة.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Usability & HCI</h3>
-        <div class="ar-card-title">قابلية الاستخدام وتفاعل الإنسان مع الحاسوب</div>
-        <p>Usable security, accessibility, user experience, and human-centered evaluation of software systems.</p>
-        <div class="ar-card-text">أمن الاستخدام، وإمكانية الوصول، وتجربة المستخدم، وتقييم الأنظمة البرمجية من منظور المستخدم.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Scientific Interests</h3>
-        <div class="ar-card-title">الاهتمامات العلمية</div>
-        <p>Quantum Physics, Quantum Computing, and Astronomy.</p>
-        <div class="ar-card-text">الفيزياء الكمية، والحوسبة الكمومية، وعلم الفلك.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="teaching">
-  <div class="card">
-    <h2>Teaching Portfolio</h2>
-    <div class="section-ar-title">المقررات والخبرة التدريسية</div>
-
-    <div class="grid">
-      <div class="dual-card">
-        <h3>Software Engineering</h3>
-        <div class="ar-card-title">هندسة البرمجيات</div>
+      <div class="ar-soft" lang="ar" dir="rtl">
+        <h3>نبذة عربية</h3>
         <p>
-          CPCS-351 Software Engineering I<br>
-          CPCS-353 Software Engineering Practices<br>
-          CPCS-454 Object-Oriented Analysis and Design
+          الدكتور عبدالعزيز عطاءالله أستاذ مشارك في علوم الحاسبات بجامعة الملك عبدالعزيز، ويتمتع بخبرة أكاديمية وقيادية تجمع بين البحث في هندسة البرمجيات، والحوكمة الأكاديمية، وقيادة التحول الرقمي، وتوجيه الأنظمة المؤسسية، واستراتيجية التقنية. تمتد خبراته البحثية إلى الأمن السيبراني، والذكاء الاصطناعي، وتطبيقات البلوك تشين، وأمن الاستخدام، وإنترنت الأشياء، والمعلوماتية الصحية، وأمن البيانات الضخمة، ونماذج دعم القرار.
         </p>
-        <div class="ar-card-text">
-          تدريس مقررات هندسة البرمجيات، وممارسات هندسة البرمجيات، والتحليل والتصميم كائني التوجه.
+        <p>
+          كما يمتلك خبرة واسعة في التدريس، وتطوير المناهج، والإرشاد الأكاديمي، والإشراف البحثي، وهندسة البرمجيات، والأنظمة الآمنة، وقيادة المنصات الرقمية الجامعية.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <div class="card">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Appointments</span>
+          <h2>Academic Leadership & Appointments</h2>
+        </div>
+        <div class="section-ar-title" lang="ar" dir="rtl">القيادة الأكاديمية والمناصب</div>
+      </div>
+
+      <div class="grid compact">
+        <div class="mini">
+          <h3>Associate Professor</h3>
+          <p>Computer Science Department, King Abdulaziz University</p>
+          <span class="date">2024 – Present</span>
+        </div>
+
+        <div class="mini">
+          <h3>Assistant Professor</h3>
+          <p>Faculty of Computing and Information Technology, KAU</p>
+          <span class="date">2017 – 2024</span>
+        </div>
+
+        <div class="mini">
+          <h3>General Supervisor</h3>
+          <p>Center of the University Knowledge Portal, KAU</p>
+          <span class="date">2020 – 2021</span>
+        </div>
+
+        <div class="mini">
+          <h3>Vice General Supervisor</h3>
+          <p>University Knowledge Portal Center</p>
+          <span class="date">2019 – 2020</span>
+        </div>
+
+        <div class="mini">
+          <h3>Department Council Secretary</h3>
+          <p>Computer Science Department</p>
+          <span class="date">2018 – 2019</span>
+        </div>
+
+        <div class="mini">
+          <h3>Academic Advisor</h3>
+          <p>Computer Science Department</p>
+          <span class="date">2017 – Present</span>
+        </div>
+
+        <div class="mini">
+          <h3>Committee Member</h3>
+          <p>Student and Alumni Affairs Committee</p>
+          <span class="date">2022 – Present</span>
         </div>
       </div>
 
-      <div class="dual-card">
-        <h3>Programming & AI</h3>
-        <div class="ar-card-title">البرمجة والذكاء الاصطناعي</div>
+      <div class="ar-soft" lang="ar" dir="rtl">
+        <h3>ملخص القيادة الأكاديمية</h3>
         <p>
-          CPCS-202 Programming I<br>
-          CPCS-203 Programming II<br>
-          CPCS-206 Introduction to Programming and Visual Basic<br>
-          CPCS-336 Introduction to Artificial Intelligence
+          شغل الدكتور عبدالعزيز عطاءالله عدداً من المناصب الأكاديمية والقيادية في جامعة الملك عبدالعزيز، من أبرزها أستاذ مشارك بقسم علوم الحاسبات، والمشرف العام السابق على مركز بوابة المعرفة الجامعية، ونائب المشرف العام السابق للمركز، وأمين مجلس قسم علوم الحاسبات سابقاً، إضافة إلى عمله مرشداً أكاديمياً وعضواً في لجنة شؤون الطلاب والخريجين.
         </p>
-        <div class="ar-card-text">
-          تدريس مقررات البرمجة الأساسية والمتقدمة، ومقدمة البرمجة، ومقرر مقدمة في الذكاء الاصطناعي.
+      </div>
+    </div>
+  </section>
+
+  <section id="expertise">
+    <div class="card">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Capabilities</span>
+          <h2>Professional Expertise</h2>
+        </div>
+        <div class="section-ar-title" lang="ar" dir="rtl">الخبرات المهنية</div>
+      </div>
+
+      <div class="grid">
+        <div class="dual-card">
+          <h3>Digital Transformation</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">قيادة التحول الرقمي</div>
+          <p>Strategic planning, technology modernization, innovation management, and transformation leadership.</p>
+          <div class="ar-card-text" lang="ar" dir="rtl">التخطيط الاستراتيجي، وتحديث التقنية، وإدارة الابتكار، وقيادة مبادرات التحول الرقمي.</div>
+        </div>
+
+        <div class="dual-card">
+          <h3>Enterprise & Solution Architecture</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">هندسة الحلول المؤسسية</div>
+          <p>Aligning technology initiatives with institutional objectives and designing end-to-end solutions.</p>
+          <div class="ar-card-text" lang="ar" dir="rtl">مواءمة المبادرات التقنية مع الأهداف المؤسسية وتصميم حلول تقنية متكاملة من البداية إلى النهاية.</div>
+        </div>
+
+        <div class="dual-card">
+          <h3>Requirements Engineering</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">هندسة المتطلبات</div>
+          <p>Requirements elicitation, stakeholder engagement, business process analysis, and system modeling.</p>
+          <div class="ar-card-text" lang="ar" dir="rtl">استخلاص المتطلبات، وتحليل أصحاب المصلحة، ونمذجة العمليات والأنظمة بصورة منهجية.</div>
+        </div>
+
+        <div class="dual-card">
+          <h3>Software Architecture</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">معمارية البرمجيات</div>
+          <p>Software design, distributed systems, secure software systems, and enterprise application integration.</p>
+          <div class="ar-card-text" lang="ar" dir="rtl">تصميم البرمجيات، والأنظمة الموزعة، والأنظمة الآمنة، وتكامل التطبيقات المؤسسية.</div>
+        </div>
+
+        <div class="dual-card">
+          <h3>Technology Governance</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">حوكمة التقنية</div>
+          <p>Project planning, risk management, platform governance, and execution oversight.</p>
+          <div class="ar-card-text" lang="ar" dir="rtl">تخطيط المشاريع، وإدارة المخاطر، وحوكمة المنصات التقنية، ومتابعة التنفيذ.</div>
+        </div>
+
+        <div class="dual-card">
+          <h3>Academic Quality</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">الجودة الأكاديمية</div>
+          <p>Curriculum development, outcome-based education, research supervision, and accreditation activities.</p>
+          <div class="ar-card-text" lang="ar" dir="rtl">تطوير المناهج، والتعليم المبني على المخرجات، والإشراف البحثي، وأنشطة الاعتماد الأكاديمي.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="card">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Research</span>
+          <h2>Research Identity</h2>
+        </div>
+        <div class="section-ar-title" lang="ar" dir="rtl">الهوية البحثية</div>
+      </div>
+
+      <div class="research-tags" aria-label="Research areas">
+        <span class="tag">Software Engineering</span>
+        <span class="tag">Software Security</span>
+        <span class="tag">Artificial Intelligence</span>
+        <span class="tag">Cybersecurity</span>
+        <span class="tag">Blockchain Systems</span>
+        <span class="tag">Usable Security</span>
+        <span class="tag">Human-Computer Interaction</span>
+        <span class="tag">Healthcare Informatics</span>
+        <span class="tag">Big Data Security</span>
+        <span class="tag">Fuzzy Logic</span>
+        <span class="tag">Decision-Support Systems</span>
+        <span class="tag">Quantum Physics</span>
+        <span class="tag">Quantum Computing</span>
+        <span class="tag">Astronomy</span>
+      </div>
+
+      <div class="ar-soft" lang="ar" dir="rtl">
+        <h3>الاهتمامات البحثية والعلمية</h3>
+        <p>
+          تتركز الهوية البحثية للدكتور عبدالعزيز عطاءالله حول هندسة البرمجيات، وأمن البرمجيات، والذكاء الاصطناعي، والأمن السيبراني، وتطبيقات البلوك تشين، وقابلية الاستخدام، وتفاعل الإنسان مع الحاسوب، والمعلوماتية الصحية، وأمن البيانات الضخمة، والمنطق الضبابي، ونماذج دعم القرار.
+        </p>
+        <p>
+          وتشمل اهتماماته العلمية الأوسع الفيزياء الكمية، والحوسبة الكمومية، وعلم الفلك.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching">
+    <div class="card">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Teaching</span>
+          <h2>Teaching Portfolio</h2>
+        </div>
+        <div class="section-ar-title" lang="ar" dir="rtl">المقررات والخبرة التدريسية</div>
+      </div>
+
+      <div class="grid compact">
+        <div class="dual-card">
+          <h3>Software Engineering</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">هندسة البرمجيات</div>
+          <p>CPCS-351 Software Engineering I<br>CPCS-353 Software Engineering Practices<br>CPCS-454 Object-Oriented Analysis and Design</p>
+          <div class="ar-card-text" lang="ar" dir="rtl">مقررات هندسة البرمجيات، والممارسات العملية، والتحليل والتصميم كائني التوجه.</div>
+        </div>
+
+        <div class="dual-card">
+          <h3>Programming & AI</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">البرمجة والذكاء الاصطناعي</div>
+          <p>CPCS-202 Programming I<br>CPCS-203 Programming II<br>CPCS-206 Introduction to Programming and Visual Basic<br>CPCS-336 Introduction to Artificial Intelligence</p>
+          <div class="ar-card-text" lang="ar" dir="rtl">مقررات البرمجة الأساسية والمتقدمة، ومقدمة في الذكاء الاصطناعي.</div>
+        </div>
+
+        <div class="dual-card">
+          <h3>Projects & Research</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">المشاريع والبحث</div>
+          <p>CPCS-498 Senior Project I<br>CPCS-499 Senior Project II<br>CPCS-699 Master’s Research</p>
+          <div class="ar-card-text" lang="ar" dir="rtl">الإشراف على مشاريع التخرج وبحوث الماجستير وربطها بالممارسة العلمية والتطبيقية.</div>
+        </div>
+
+        <div class="dual-card">
+          <h3>Professional Training</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">التدريب العملي</div>
+          <p>CPCS-323 Summer Workplace Training</p>
+          <div class="ar-card-text" lang="ar" dir="rtl">متابعة التدريب الصيفي وربط الخبرة الأكاديمية ببيئات العمل المهنية.</div>
         </div>
       </div>
 
-      <div class="dual-card">
-        <h3>Projects & Research</h3>
-        <div class="ar-card-title">المشاريع والبحث العلمي</div>
+      <div class="ar-soft" lang="ar" dir="rtl">
+        <h3>ملخص الخبرة التدريسية</h3>
         <p>
-          CPCS-498 Senior Project I<br>
-          CPCS-499 Senior Project II<br>
-          CPCS-699 Master’s Research
+          تشمل خبرته التدريسية مقررات في هندسة البرمجيات، وممارسات هندسة البرمجيات، والتحليل والتصميم كائني التوجه، والبرمجة، والذكاء الاصطناعي، ومشاريع التخرج، وبحوث الماجستير، والتدريب العملي الصيفي. ويجمع في تدريسه بين الأسس النظرية والتطبيقات العملية والمشاريع المرتبطة بالواقع الأكاديمي والمهني.
         </p>
-        <div class="ar-card-text">
-          الإشراف على مشاريع التخرج وبحوث الماجستير، ودعم الطلاب في تطوير حلول برمجية وبحثية تطبيقية.
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="card">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Scholarship</span>
+          <h2>Publications</h2>
+        </div>
+        <div class="section-ar-title" lang="ar" dir="rtl">المنشورات العلمية</div>
+      </div>
+
+      <div class="publication-note">
+        <div class="note-box">
+          <p class="muted">
+            Peer-reviewed publications in software engineering, cybersecurity, blockchain systems, healthcare technologies, fuzzy decision-making, and big data security.
+          </p>
+        </div>
+
+        <div class="note-box" lang="ar" dir="rtl">
+          <p>
+            تُعرض عناوين الأبحاث باللغة الإنجليزية حفاظاً على الصياغة الأكاديمية الأصلية ولتسهيل الوصول إليها عبر قواعد البيانات العلمية ومحركات البحث الأكاديمية.
+          </p>
         </div>
       </div>
 
-      <div class="dual-card">
-        <h3>Professional Training</h3>
-        <div class="ar-card-title">التدريب المهني</div>
-        <p>
-          CPCS-323 Summer Workplace Training
-        </p>
-        <div class="ar-card-text">
-          متابعة التدريب العملي الصيفي وربط الخبرة الأكاديمية بالتطبيقات المهنية في بيئات العمل.
+      <ol class="pub">
+        <li>
+          <strong>Security Test Case Prioritization Through Ant Colony Optimization Algorithm.</strong>
+          Computer Systems Science and Engineering, vol. 47, pp. 3165-3195, 2023. <span class="doi">DOI: 10.32604/csse.2023.040259</span>
+        </li>
+        <li>
+          <strong>Enhancing Healthcare Management During Covid-19: A Patient-Centric Architectural Framework Enabled by Hyperledger Fabric Blockchain.</strong>
+          Information, vol. 14, pp. 425, 2023. <span class="doi">DOI: 10.3390/info14080425</span>
+        </li>
+        <li>
+          <strong>A Trailblazing Framework of Security Assessment for Traffic Data Management.</strong>
+          Intelligent Automation & Soft Computing, vol. 37, pp. 1853-1875, 2023. <span class="doi">DOI: 10.32604/iasc.2023.039761</span>
+        </li>
+        <li>
+          <strong>A Fuzzy TOPSIS-Based Approach for Comprehensive Evaluation of Bio-Medical Waste Management: Advancing Sustainability and Decision-Making.</strong>
+          Sustainability, vol. 15, pp. 12565, 2023. <span class="doi">DOI: 10.3390/su151612565</span>
+        </li>
+        <li>
+          <strong>Fuzzy-Based Unified Decision-Making Technique to Evaluate Security Risks: A Healthcare Perspective.</strong>
+          Mathematics, vol. 11, pp. 2554, 2023. <span class="doi">DOI: 10.3390/math11112554</span>
+        </li>
+        <li>
+          <strong>A Security Testing Mechanism for Detecting Attacks in Distributed Software Applications Using Blockchain.</strong>
+          PLOS ONE, vol. 18, pp. e0280038, 2023. <span class="doi">DOI: 10.1371/journal.pone.0280038</span>
+        </li>
+        <li>
+          <strong>Analyzing the Big Data Security Through a Unified Decision-Making Approach.</strong>
+          Intelligent Automation & Soft Computing, vol. 32, pp. 1071-1088, 2022. <span class="doi">DOI: 10.32604/iasc.2022.022569</span>
+        </li>
+        <li>
+          <strong>Estimating Usable-Security Through Hesitant Fuzzy Linguistic Term Sets Based Technique.</strong>
+          Computers, Materials & Continua, vol. 70, pp. 5683-5705, 2021. <span class="doi">DOI: 10.32604/cmc.2022.021643</span>
+        </li>
+        <li>
+          <strong>Device Security Assessment of Internet of Healthcare Things.</strong>
+          Intelligent Automation & Soft Computing, vol. 27, pp. 593-603, 2021. <span class="doi">DOI: 10.32604/iasc.2021.015092</span>
+        </li>
+        <li>
+          <strong>Prediction of Covid-19 Pandemic Spread in Kingdom of Saudi Arabia.</strong>
+          Computer Systems Science and Engineering, vol. 37, pp. 313-329, 2021. <span class="doi">DOI: 10.32604/csse.2021.014933</span>
+        </li>
+        <li>
+          <strong>Estimating the Impact of Covid-19 Pandemic on the Research Community in the Kingdom of Saudi Arabia.</strong>
+          Computer Modeling in Engineering & Sciences, vol. 126, pp. 419-436, 2021. <span class="doi">DOI: 10.32604/cmes.2021.014263</span>
+        </li>
+        <li>
+          <strong>Standalone Behaviour-Based Attack Detection Techniques for Distributed Software Systems via Blockchain.</strong>
+          Applied Sciences, vol. 11, pp. 5685, 2021. <span class="doi">DOI: 10.3390/app11125685</span>
+        </li>
+        <li>
+          <strong>A Fuzzy Multi-Objective Covering-Based Security Quantification Model for Mitigating Risk of Web Based Medical Image Processing System.</strong>
+          International Journal of Advanced Computer Science and Applications, 2020.
+        </li>
+        <li>
+          <strong>Attribute Based Honey Encryption Algorithm for Securing Big Data: Hadoop Distributed File System Perspective.</strong>
+          PeerJ Computer Science, vol. 6, pp. e259, 2020. <span class="doi">DOI: 10.7717/peerj-cs.259</span>
+        </li>
+        <li>
+          <strong>Managing Security-Risks for Improving Security-Durability of Institutional Web-Applications: Design Perspective.</strong>
+          Computers, Materials & Continua, vol. 66, pp. 1849-1865, 2020. <span class="doi">DOI: 10.32604/cmc.2020.013854</span>
+        </li>
+        <li>
+          <strong>A Hybrid Fuzzy Rule-Based Multi-Criteria Framework for Security Assessment of Medical Device Software.</strong>
+          International Journal of Intelligent Engineering and Systems, vol. 13, pp. 51-62, 2020. <span class="doi">DOI: 10.22266/ijies2020.1031.06</span>
+        </li>
+      </ol>
+
+      <div class="buttons">
+        <a class="btn gold" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank" rel="noopener">View Full Google Scholar Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="card contact-card">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Connect</span>
+          <h2>Contact</h2>
+        </div>
+        <div class="section-ar-title" lang="ar" dir="rtl">التواصل والروابط الأكاديمية</div>
+      </div>
+
+      <div class="grid compact">
+        <div class="dual-card">
+          <h3>Email</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">البريد الجامعي</div>
+          <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=aattallah@kau.edu.sa" target="_blank" rel="noopener">aattallah@kau.edu.sa</a></p>
+          <div class="ar-card-text" lang="ar" dir="rtl">للتواصل الأكاديمي والبحثي.</div>
+        </div>
+
+        <div class="dual-card">
+          <h3>ORCID</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">المعرّف البحثي</div>
+          <p><a href="https://orcid.org/0000-0001-5363-040X" target="_blank" rel="noopener">0000-0001-5363-040X</a></p>
+          <div class="ar-card-text" lang="ar" dir="rtl">لربط الإنتاج العلمي بالهوية البحثية.</div>
+        </div>
+
+        <div class="dual-card">
+          <h3>Google Scholar</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">الباحث العلمي</div>
+          <p><a href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank" rel="noopener">Scholar Profile</a></p>
+          <div class="ar-card-text" lang="ar" dir="rtl">للاطلاع على المنشورات والاستشهادات العلمية.</div>
+        </div>
+
+        <div class="dual-card">
+          <h3>Institution</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">الجهة الأكاديمية</div>
+          <p>King Abdulaziz University<br>Jeddah, Saudi Arabia</p>
+          <div class="ar-card-text" lang="ar" dir="rtl">جامعة الملك عبدالعزيز، جدة، المملكة العربية السعودية.</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</main>
 
-<section id="publications">
-  <div class="card">
-    <h2>Publications</h2>
-    <div class="section-ar-title">المنشورات العلمية</div>
-
-    <p class="muted">
-      Selected peer-reviewed publications in software engineering, cybersecurity, blockchain systems, healthcare technologies, fuzzy decision-making, and big data security.
-    </p>
-
-    <div class="ar-soft">
-      <h3>ملاحظة</h3>
-      <p>
-        تُعرض عناوين الأبحاث باللغة الإنجليزية حفاظاً على الصياغة الأكاديمية الأصلية ولتسهيل الوصول إليها عبر قواعد البيانات العلمية ومحركات البحث الأكاديمية.
-      </p>
-    </div>
-
-    <ol class="pub">
-      <li>Security Test Case Prioritization Through Ant Colony Optimization Algorithm. Computer Systems Science and Engineering, vol. 47, pp. 3165-3195, 2023. DOI: 10.32604/csse.2023.040259</li>
-      <li>Enhancing Healthcare Management During Covid-19: A Patient-Centric Architectural Framework Enabled by Hyperledger Fabric Blockchain. Information, vol. 14, pp. 425, 2023. DOI: 10.3390/info14080425</li>
-      <li>A Trailblazing Framework of Security Assessment for Traffic Data Management. Intelligent Automation & Soft Computing, vol. 37, pp. 1853-1875, 2023. DOI: 10.32604/iasc.2023.039761</li>
-      <li>A Fuzzy TOPSIS-Based Approach for Comprehensive Evaluation of Bio-Medical Waste Management: Advancing Sustainability and Decision-Making. Sustainability, vol. 15, pp. 12565, 2023. DOI: 10.3390/su151612565</li>
-      <li>Fuzzy-Based Unified Decision-Making Technique to Evaluate Security Risks: A Healthcare Perspective. Mathematics, vol. 11, pp. 2554, 2023. DOI: 10.3390/math11112554</li>
-      <li>A Security Testing Mechanism for Detecting Attacks in Distributed Software Applications Using Blockchain. PLOS ONE, vol. 18, pp. e0280038, 2023. DOI: 10.1371/journal.pone.0280038</li>
-      <li>Analyzing the Big Data Security Through a Unified Decision-Making Approach. Intelligent Automation & Soft Computing, vol. 32, pp. 1071-1088, 2022. DOI: 10.32604/iasc.2022.022569</li>
-      <li>Estimating Usable-Security Through Hesitant Fuzzy Linguistic Term Sets Based Technique. Computers, Materials & Continua, vol. 70, pp. 5683-5705, 2021. DOI: 10.32604/cmc.2022.021643</li>
-      <li>Device Security Assessment of Internet of Healthcare Things. Intelligent Automation & Soft Computing, vol. 27, pp. 593-603, 2021. DOI: 10.32604/iasc.2021.015092</li>
-      <li>Prediction of Covid-19 Pandemic Spread in Kingdom of Saudi Arabia. Computer Systems Science and Engineering, vol. 37, pp. 313-329, 2021. DOI: 10.32604/csse.2021.014933</li>
-      <li>Estimating the Impact of Covid-19 Pandemic on the Research Community in the Kingdom of Saudi Arabia. Computer Modeling in Engineering & Sciences, vol. 126, pp. 419-436, 2021. DOI: 10.32604/cmes.2021.014263</li>
-      <li>Standalone Behaviour-Based Attack Detection Techniques for Distributed Software Systems via Blockchain. Applied Sciences, vol. 11, pp. 5685, 2021. DOI: 10.3390/app11125685</li>
-      <li>A Fuzzy Multi-Objective Covering-Based Security Quantification Model for Mitigating Risk of Web Based Medical Image Processing System. International Journal of Advanced Computer Science and Applications, 2020.</li>
-      <li>Attribute Based Honey Encryption Algorithm for Securing Big Data: Hadoop Distributed File System Perspective. PeerJ Computer Science, vol. 6, pp. e259, 2020. DOI: 10.7717/peerj-cs.259</li>
-      <li>Managing Security-Risks for Improving Security-Durability of Institutional Web-Applications: Design Perspective. Computers, Materials & Continua, vol. 66, pp. 1849-1865, 2020. DOI: 10.32604/cmc.2020.013854</li>
-      <li>A Hybrid Fuzzy Rule-Based Multi-Criteria Framework for Security Assessment of Medical Device Software. International Journal of Intelligent Engineering and Systems, vol. 13, pp. 51-62, 2020. DOI: 10.22266/ijies2020.1031.06</li>
-    </ol>
-
-    <div class="buttons">
-      <a class="btn gold" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank">View Full Google Scholar Profile</a>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="card">
-    <h2>Contact</h2>
-    <div class="section-ar-title">التواصل والروابط الأكاديمية</div>
-
-    <div class="grid">
-      <div class="dual-card">
-        <h3>Email</h3>
-        <div class="ar-card-title">البريد الإلكتروني</div>
-        <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=aattallah@kau.edu.sa" target="_blank">aattallah@kau.edu.sa</a></p>
-        <div class="ar-card-text">للتواصل الأكاديمي والبحثي والمهني.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>ORCID</h3>
-        <div class="ar-card-title">معرّف أوركيد</div>
-        <p><a href="https://orcid.org/0000-0001-5363-040X" target="_blank">0000-0001-5363-040X</a></p>
-        <div class="ar-card-text">معرّف الباحث الأكاديمي والمنشورات العلمية.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Google Scholar</h3>
-        <div class="ar-card-title">الباحث العلمي</div>
-        <p><a href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank">Scholar Profile</a></p>
-        <div class="ar-card-text">الملف البحثي والاستشهادات والمنشورات العلمية.</div>
-      </div>
-
-      <div class="dual-card">
-        <h3>Institution</h3>
-        <div class="ar-card-title">الجهة الأكاديمية</div>
-        <p>King Abdulaziz University<br>Jeddah, Saudi Arabia</p>
-        <div class="ar-card-text">جامعة الملك عبدالعزيز، جدة، المملكة العربية السعودية.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
+<footer class="footer">
   © 2026 Dr. Abdulaziz Attaallah. Academic Portfolio.
 </footer>
 
