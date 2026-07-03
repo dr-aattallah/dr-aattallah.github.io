@@ -15,7 +15,7 @@
   --card:rgba(255,255,255,.78);
   --border:rgba(148,163,184,.25);
 }
-  @font-face{
+@font-face{
   font-family:"Masmak";
   src:url("masmak.otf") format("opentype");
   font-weight:400 900;
@@ -26,7 +26,7 @@
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  font-family:"Masmak","Tahoma","Arial",sans-serif;
+  font-family:"Masmak",sans-serif;
   letter-spacing:.1px;
   text-rendering:optimizeLegibility;
   -webkit-font-smoothing:antialiased;
@@ -202,7 +202,7 @@ h2{
   direction:rtl;
   text-align:right;
   color:var(--gold);
-  font-family:"Tahoma","Arial","Segoe UI",sans-serif;
+ font-family:"Masmak",sans-serif;
   font-size:22px;
   font-weight:900;
   margin:0 0 24px;
@@ -219,7 +219,7 @@ p,li{
   border-top:1px solid var(--border);
   margin-top:24px;
   padding-top:24px;
-  font-family:"Tahoma","Arial","Segoe UI",sans-serif;
+ font-family:"Masmak",sans-serif;
 }
 .ar h2{
   margin-bottom:14px;
@@ -236,7 +236,7 @@ p,li{
   border-radius:22px;
   background:linear-gradient(145deg,rgba(176,138,53,.08),rgba(255,255,255,.72));
   border:1px solid rgba(176,138,53,.18);
-  font-family:"Tahoma","Arial","Segoe UI",sans-serif;
+ font-family:"Masmak",sans-serif;
 }
 .ar-soft h3{
   color:#6F5522;
@@ -265,7 +265,7 @@ p,li{
 }
 .ar-tag{
   direction:rtl;
-  font-family:"Tahoma","Arial","Segoe UI",sans-serif;
+ font-family:"Masmak",sans-serif;
   color:#6F5522;
 }
 .pub li{margin-bottom:14px}
@@ -285,6 +285,24 @@ footer{
     margin:0 auto 24px;
   }
   .links{display:none}
+}
+  body,
+button,
+input,
+textarea,
+select,
+a,
+p,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+span{
+  font-family:"Masmak",sans-serif !important;
 }
 </style>
 </head>
