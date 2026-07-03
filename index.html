@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -104,9 +105,9 @@ nav{
 }
 
 .nav-inner{
-  max-width:1180px;
+  max-width:1220px;
   margin:auto;
-  padding:14px 22px;
+  padding:15px 22px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -140,8 +141,8 @@ nav{
   color:var(--navy);
   text-decoration:none;
   font-weight:800;
-  font-size:13px;
-  padding:9px 10px;
+  font-size:14px;
+  padding:10px 12px;
   border-radius:999px;
   transition:background .2s ease,color .2s ease,transform .2s ease;
 }
@@ -162,7 +163,7 @@ section{
 .hero{
   min-height:calc(100vh - 72px);
   display:grid;
-  grid-template-columns:minmax(280px,390px) 1fr;
+  grid-template-columns:minmax(300px,410px) 1fr;
   gap:58px;
   align-items:center;
   padding-top:64px;
@@ -175,7 +176,7 @@ section{
 
 .photo-wrap{
   position:relative;
-  max-width:390px;
+  max-width:410px;
   background:
     linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,255,255,.42));
   border:1px solid rgba(255,255,255,.82);
@@ -211,11 +212,11 @@ section{
 
 .hero-card{
   position:absolute;
-  right:-18px;
+  right:-10px;
   bottom:22px;
   z-index:3;
-  max-width:245px;
-  padding:16px 18px;
+  max-width:285px;
+  padding:18px 20px;
   border-radius:22px;
   background:rgba(255,255,255,.88);
   border:1px solid rgba(255,255,255,.8);
@@ -227,14 +228,14 @@ section{
 .hero-card strong{
   display:block;
   color:var(--navy);
-  font-size:15px;
+  font-size:16px;
   line-height:1.35;
 }
 
 .hero-card span{
   display:block;
   color:var(--muted);
-  font-size:13px;
+  font-size:13.5px;
   line-height:1.65;
   margin-top:5px;
 }
@@ -263,7 +264,7 @@ section{
 
 h1{
   color:var(--navy);
-  font-size:clamp(40px,6vw,72px);
+  font-size:clamp(42px,6.4vw,78px);
   line-height:1;
   margin:18px 0 10px;
   letter-spacing:0;
@@ -579,7 +580,7 @@ p{
   direction:rtl;
   text-align:right;
   color:#334155;
-  line-height:1.95;
+  line-height:2.05;
   border-top:1px solid rgba(176,138,53,.22);
   padding-top:14px;
   margin-top:auto;
@@ -592,18 +593,98 @@ p{
   gap:10px;
 }
 
+.research-groups{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
+}
+
+.research-group{
+  padding:24px;
+  border-radius:24px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.94),rgba(255,255,255,.68));
+  border:1px solid var(--border);
+  box-shadow:
+    0 18px 42px rgba(15,23,42,.055),
+    inset 0 1px 1px rgba(255,255,255,.86);
+}
+
+.research-group h3{
+  margin-bottom:3px;
+}
+
+.ar-research-title{
+  direction:rtl;
+  text-align:right;
+  color:var(--gold-dark);
+  font-size:19px;
+  font-weight:900;
+  line-height:1.5;
+  margin-bottom:16px;
+}
+
+.research-group .research-tags{
+  gap:9px;
+}
+
 .tag{
   display:inline-flex;
   align-items:center;
-  min-height:40px;
-  padding:9px 14px;
+  min-height:42px;
+  padding:10px 15px;
   border-radius:999px;
   background:rgba(255,255,255,.86);
   border:1px solid var(--border);
   color:var(--navy);
   font-weight:900;
-  font-size:14px;
+  font-size:14.5px;
   box-shadow:0 10px 24px rgba(15,23,42,.05);
+}
+
+.contact-intro{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:24px;
+  align-items:center;
+  margin-bottom:24px;
+  padding:24px;
+  border-radius:26px;
+  background:
+    linear-gradient(135deg,rgba(11,31,58,.96),rgba(18,53,95,.92)),
+    var(--navy);
+  color:#fff;
+  box-shadow:0 20px 48px rgba(11,31,58,.16);
+}
+
+.contact-intro p{
+  max-width:760px;
+  margin:0;
+  color:rgba(255,255,255,.84);
+}
+
+.contact-intro .ar-contact-note{
+  direction:rtl;
+  text-align:right;
+  margin-top:10px;
+  color:rgba(255,255,255,.9);
+  line-height:2;
+}
+
+.contact-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:flex-end;
+}
+
+.contact-actions .btn{
+  margin:0;
+  white-space:nowrap;
+}
+
+.contact-card .dual-card{
+  min-height:220px;
 }
 
 .publication-note{
@@ -748,6 +829,15 @@ p{
   .publication-note{
     grid-template-columns:1fr;
   }
+
+  .contact-intro{
+    grid-template-columns:1fr;
+    text-align:left;
+  }
+
+  .contact-actions{
+    justify-content:flex-start;
+  }
 }
 
 @media(max-width:720px){
@@ -788,6 +878,14 @@ p{
 
   .positioning{
     font-size:16.5px;
+  }
+
+  .research-groups{
+    grid-template-columns:1fr;
+  }
+
+  .contact-intro{
+    padding:22px;
   }
 
   .pub li{
@@ -861,7 +959,7 @@ p{
       <div class="positioning">
         <span>Digital Transformation Leader</span>
         <span>Software Engineering Researcher</span>
-        <span>Academic & Technology Strategist</span>
+        <span>Academic &amp; Technology Strategist</span>
         <span>King Abdulaziz University, Jeddah, Saudi Arabia</span>
       </div>
 
@@ -884,7 +982,7 @@ p{
         <a class="btn" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
         <a class="btn gold" href="https://orcid.org/0000-0001-5363-040X" target="_blank" rel="noopener">ORCID</a>
         <a class="btn light" href="https://www.researchgate.net/profile/Abdulaziz-Attaallah-2" target="_blank" rel="noopener">ResearchGate</a>
-        <a class="btn light" href="https://mail.google.com/mail/?view=cm&fs=1&to=aattallah@kau.edu.sa" target="_blank" rel="noopener">Email</a>
+        <a class="btn light" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=aattallah@kau.edu.sa" target="_blank" rel="noopener">Email</a>
       </div>
     </div>
   </section>
@@ -925,7 +1023,7 @@ p{
       <div class="section-head">
         <div>
           <span class="eyebrow">Appointments</span>
-          <h2>Academic Leadership & Appointments</h2>
+          <h2>Academic Leadership &amp; Appointments</h2>
         </div>
         <div class="section-ar-title" lang="ar" dir="rtl">القيادة الأكاديمية والمناصب</div>
       </div>
@@ -1002,7 +1100,7 @@ p{
         </div>
 
         <div class="dual-card">
-          <h3>Enterprise & Solution Architecture</h3>
+          <h3>Enterprise &amp; Solution Architecture</h3>
           <div class="ar-card-title" lang="ar" dir="rtl">هندسة الحلول المؤسسية</div>
           <p>Aligning technology initiatives with institutional objectives and designing end-to-end solutions.</p>
           <div class="ar-card-text" lang="ar" dir="rtl">مواءمة المبادرات التقنية مع الأهداف المؤسسية وتصميم حلول تقنية متكاملة من البداية إلى النهاية.</div>
@@ -1049,21 +1147,51 @@ p{
         <div class="section-ar-title" lang="ar" dir="rtl">الهوية البحثية</div>
       </div>
 
-      <div class="research-tags" aria-label="Research areas">
-        <span class="tag">Software Engineering</span>
-        <span class="tag">Software Security</span>
-        <span class="tag">Artificial Intelligence</span>
-        <span class="tag">Cybersecurity</span>
-        <span class="tag">Blockchain Systems</span>
-        <span class="tag">Usable Security</span>
-        <span class="tag">Human-Computer Interaction</span>
-        <span class="tag">Healthcare Informatics</span>
-        <span class="tag">Big Data Security</span>
-        <span class="tag">Fuzzy Logic</span>
-        <span class="tag">Decision-Support Systems</span>
-        <span class="tag">Quantum Physics</span>
-        <span class="tag">Quantum Computing</span>
-        <span class="tag">Astronomy</span>
+      <div class="research-groups" aria-label="Research areas">
+        <div class="research-group">
+          <h3>Core Software &amp; Security Research</h3>
+          <div class="ar-research-title" lang="ar" dir="rtl">محور هندسة البرمجيات والأمن</div>
+          <div class="research-tags">
+            <span class="tag">Software Engineering</span>
+            <span class="tag">Software Security</span>
+            <span class="tag">Cybersecurity</span>
+            <span class="tag">Software Architecture</span>
+            <span class="tag">Requirements Engineering</span>
+          </div>
+        </div>
+
+        <div class="research-group">
+          <h3>Intelligent &amp; Decision-Support Systems</h3>
+          <div class="ar-research-title" lang="ar" dir="rtl">الأنظمة الذكية ودعم القرار</div>
+          <div class="research-tags">
+            <span class="tag">Artificial Intelligence</span>
+            <span class="tag">Fuzzy Logic</span>
+            <span class="tag">Decision-Support Systems</span>
+            <span class="tag">Human-Computer Interaction</span>
+          </div>
+        </div>
+
+        <div class="research-group">
+          <h3>Applied Digital Technologies</h3>
+          <div class="ar-research-title" lang="ar" dir="rtl">التقنيات الرقمية التطبيقية</div>
+          <div class="research-tags">
+            <span class="tag">Blockchain Systems</span>
+            <span class="tag">Usable Security</span>
+            <span class="tag">Healthcare Informatics</span>
+            <span class="tag">Big Data Security</span>
+            <span class="tag">IoT / IoHT</span>
+          </div>
+        </div>
+
+        <div class="research-group">
+          <h3>Scientific Interests</h3>
+          <div class="ar-research-title" lang="ar" dir="rtl">الاهتمامات العلمية الأوسع</div>
+          <div class="research-tags">
+            <span class="tag">Quantum Physics</span>
+            <span class="tag">Quantum Computing</span>
+            <span class="tag">Astronomy</span>
+          </div>
+        </div>
       </div>
 
       <div class="ar-soft" lang="ar" dir="rtl">
@@ -1097,14 +1225,14 @@ p{
         </div>
 
         <div class="dual-card">
-          <h3>Programming & AI</h3>
+          <h3>Programming &amp; AI</h3>
           <div class="ar-card-title" lang="ar" dir="rtl">البرمجة والذكاء الاصطناعي</div>
           <p>CPCS-202 Programming I<br>CPCS-203 Programming II<br>CPCS-206 Introduction to Programming and Visual Basic<br>CPCS-336 Introduction to Artificial Intelligence</p>
           <div class="ar-card-text" lang="ar" dir="rtl">مقررات البرمجة الأساسية والمتقدمة، ومقدمة في الذكاء الاصطناعي.</div>
         </div>
 
         <div class="dual-card">
-          <h3>Projects & Research</h3>
+          <h3>Projects &amp; Research</h3>
           <div class="ar-card-title" lang="ar" dir="rtl">المشاريع والبحث</div>
           <p>CPCS-498 Senior Project I<br>CPCS-499 Senior Project II<br>CPCS-699 Master’s Research</p>
           <div class="ar-card-text" lang="ar" dir="rtl">الإشراف على مشاريع التخرج وبحوث الماجستير وربطها بالممارسة العلمية والتطبيقية.</div>
@@ -1162,7 +1290,7 @@ p{
         </li>
         <li>
           <strong>A Trailblazing Framework of Security Assessment for Traffic Data Management.</strong>
-          Intelligent Automation & Soft Computing, vol. 37, pp. 1853-1875, 2023. <span class="doi">DOI: 10.32604/iasc.2023.039761</span>
+          Intelligent Automation &amp; Soft Computing, vol. 37, pp. 1853-1875, 2023. <span class="doi">DOI: 10.32604/iasc.2023.039761</span>
         </li>
         <li>
           <strong>A Fuzzy TOPSIS-Based Approach for Comprehensive Evaluation of Bio-Medical Waste Management: Advancing Sustainability and Decision-Making.</strong>
@@ -1178,15 +1306,15 @@ p{
         </li>
         <li>
           <strong>Analyzing the Big Data Security Through a Unified Decision-Making Approach.</strong>
-          Intelligent Automation & Soft Computing, vol. 32, pp. 1071-1088, 2022. <span class="doi">DOI: 10.32604/iasc.2022.022569</span>
+          Intelligent Automation &amp; Soft Computing, vol. 32, pp. 1071-1088, 2022. <span class="doi">DOI: 10.32604/iasc.2022.022569</span>
         </li>
         <li>
           <strong>Estimating Usable-Security Through Hesitant Fuzzy Linguistic Term Sets Based Technique.</strong>
-          Computers, Materials & Continua, vol. 70, pp. 5683-5705, 2021. <span class="doi">DOI: 10.32604/cmc.2022.021643</span>
+          Computers, Materials &amp; Continua, vol. 70, pp. 5683-5705, 2021. <span class="doi">DOI: 10.32604/cmc.2022.021643</span>
         </li>
         <li>
           <strong>Device Security Assessment of Internet of Healthcare Things.</strong>
-          Intelligent Automation & Soft Computing, vol. 27, pp. 593-603, 2021. <span class="doi">DOI: 10.32604/iasc.2021.015092</span>
+          Intelligent Automation &amp; Soft Computing, vol. 27, pp. 593-603, 2021. <span class="doi">DOI: 10.32604/iasc.2021.015092</span>
         </li>
         <li>
           <strong>Prediction of Covid-19 Pandemic Spread in Kingdom of Saudi Arabia.</strong>
@@ -1194,7 +1322,7 @@ p{
         </li>
         <li>
           <strong>Estimating the Impact of Covid-19 Pandemic on the Research Community in the Kingdom of Saudi Arabia.</strong>
-          Computer Modeling in Engineering & Sciences, vol. 126, pp. 419-436, 2021. <span class="doi">DOI: 10.32604/cmes.2021.014263</span>
+          Computer Modeling in Engineering &amp; Sciences, vol. 126, pp. 419-436, 2021. <span class="doi">DOI: 10.32604/cmes.2021.014263</span>
         </li>
         <li>
           <strong>Standalone Behaviour-Based Attack Detection Techniques for Distributed Software Systems via Blockchain.</strong>
@@ -1210,7 +1338,7 @@ p{
         </li>
         <li>
           <strong>Managing Security-Risks for Improving Security-Durability of Institutional Web-Applications: Design Perspective.</strong>
-          Computers, Materials & Continua, vol. 66, pp. 1849-1865, 2020. <span class="doi">DOI: 10.32604/cmc.2020.013854</span>
+          Computers, Materials &amp; Continua, vol. 66, pp. 1849-1865, 2020. <span class="doi">DOI: 10.32604/cmc.2020.013854</span>
         </li>
         <li>
           <strong>A Hybrid Fuzzy Rule-Based Multi-Criteria Framework for Security Assessment of Medical Device Software.</strong>
@@ -1234,11 +1362,27 @@ p{
         <div class="section-ar-title" lang="ar" dir="rtl">التواصل والروابط الأكاديمية</div>
       </div>
 
+      <div class="contact-intro">
+        <div>
+          <p>
+            For academic collaboration, research inquiries, supervision-related communication, and professional correspondence, please use the official university email or the academic profiles below.
+          </p>
+          <p class="ar-contact-note" lang="ar" dir="rtl">
+            للتواصل الأكاديمي والبحثي والاستفسارات المهنية، يمكن استخدام البريد الجامعي الرسمي أو الروابط الأكاديمية أدناه.
+          </p>
+        </div>
+
+        <div class="contact-actions" aria-label="Primary contact actions">
+          <a class="btn gold" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=aattallah@kau.edu.sa" target="_blank" rel="noopener">Email</a>
+          <a class="btn light" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank" rel="noopener">Scholar Profile</a>
+        </div>
+      </div>
+
       <div class="grid compact">
         <div class="dual-card">
           <h3>Email</h3>
           <div class="ar-card-title" lang="ar" dir="rtl">البريد الجامعي</div>
-          <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=aattallah@kau.edu.sa" target="_blank" rel="noopener">aattallah@kau.edu.sa</a></p>
+          <p><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=aattallah@kau.edu.sa" target="_blank" rel="noopener">aattallah@kau.edu.sa</a></p>
           <div class="ar-card-text" lang="ar" dir="rtl">للتواصل الأكاديمي والبحثي.</div>
         </div>
 
