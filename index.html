@@ -15,11 +15,21 @@
   --card:rgba(255,255,255,.78);
   --border:rgba(148,163,184,.25);
 }
+  @font-face{
+  font-family:"Masmak";
+  src:url("masmak.otf") format("opentype");
+  font-weight:400 900;
+  font-style:normal;
+  font-display:swap;
+}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   margin:0;
-  font-family:Inter,Segoe UI,Arial,sans-serif;
+  font-family:"Masmak","Tahoma","Arial",sans-serif;
+  letter-spacing:.1px;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
   background:
     radial-gradient(circle at top left,rgba(176,138,53,.16),transparent 28%),
     radial-gradient(circle at top right,rgba(11,31,58,.16),transparent 30%),
@@ -131,7 +141,7 @@ h1{
   direction:rtl;
   text-align:left;
   color:#6F5522;
-  font-family:"Tahoma","Arial","Segoe UI",sans-serif;
+font-family:"Masmak","Tahoma","Arial",sans-serif;
   font-size:28px;
   font-weight:800;
   line-height:1.4;
