@@ -31,6 +31,7 @@ nav{
   top:0;
   z-index:1000;
   backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
   background:rgba(255,255,255,.82);
   border-bottom:1px solid var(--border);
 }
@@ -64,8 +65,6 @@ section{
   gap:55px;
   align-items:center;
 }
-
-  
 .photo-wrap{
   position:relative;
   background:
@@ -82,7 +81,6 @@ section{
   -webkit-backdrop-filter:blur(22px) saturate(160%);
   overflow:hidden;
 }
-
 .photo-wrap::before{
   content:"";
   position:absolute;
@@ -92,7 +90,6 @@ section{
     linear-gradient(120deg,rgba(255,255,255,.75),transparent 35%,rgba(255,255,255,.18) 65%,transparent);
   pointer-events:none;
 }
-
 .photo-wrap::after{
   content:"";
   position:absolute;
@@ -105,7 +102,6 @@ section{
   filter:blur(2px);
   pointer-events:none;
 }
-
 .photo{
   width:100%;
   border-radius:26px;
@@ -131,15 +127,7 @@ h1{
   letter-spacing:-1.6px;
   text-shadow:0 12px 35px rgba(11,31,58,.12);
 }
-.name-line{
-  width:92px;
-  height:4px;
-  border-radius:999px;
-  background:linear-gradient(90deg,var(--gold),rgba(176,138,53,.18));
-  margin:0 0 24px;
-  box-shadow:0 8px 20px rgba(176,138,53,.28);
-}
-  .ar-name{
+.ar-name{
   direction:rtl;
   text-align:left;
   color:#6F5522;
@@ -147,9 +135,17 @@ h1{
   font-size:28px;
   font-weight:800;
   line-height:1.4;
-  margin:8px 0 24px;
+  margin:8px 0 10px;
   letter-spacing:0;
   text-shadow:0 8px 22px rgba(176,138,53,.18);
+}
+.name-line{
+  width:92px;
+  height:4px;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--gold),rgba(176,138,53,.18));
+  margin:0 0 24px;
+  box-shadow:0 8px 20px rgba(176,138,53,.28);
 }
 .subtitle{
   font-size:22px;
@@ -190,7 +186,16 @@ h1{
 h2{
   color:var(--navy);
   font-size:34px;
-  margin:0 0 22px;
+  margin:0 0 8px;
+}
+.section-ar-title{
+  direction:rtl;
+  text-align:right;
+  color:var(--gold);
+  font-family:"Tahoma","Arial","Segoe UI",sans-serif;
+  font-size:22px;
+  font-weight:900;
+  margin:0 0 24px;
 }
 h3{color:var(--navy);margin-top:0}
 p,li{
@@ -204,6 +209,28 @@ p,li{
   border-top:1px solid var(--border);
   margin-top:24px;
   padding-top:24px;
+  font-family:"Tahoma","Arial","Segoe UI",sans-serif;
+}
+.ar h2{
+  margin-bottom:14px;
+}
+.ar p,.ar li{
+  font-size:16px;
+  line-height:2;
+}
+.ar-soft{
+  direction:rtl;
+  text-align:right;
+  margin-top:24px;
+  padding:22px;
+  border-radius:22px;
+  background:linear-gradient(145deg,rgba(176,138,53,.08),rgba(255,255,255,.72));
+  border:1px solid rgba(176,138,53,.18);
+  font-family:"Tahoma","Arial","Segoe UI",sans-serif;
+}
+.ar-soft h3{
+  color:#6F5522;
+  margin-bottom:10px;
 }
 .grid{
   display:grid;
@@ -225,6 +252,11 @@ p,li{
   border:1px solid var(--border);
   color:var(--navy);
   font-weight:800;
+}
+.ar-tag{
+  direction:rtl;
+  font-family:"Tahoma","Arial","Segoe UI",sans-serif;
+  color:#6F5522;
 }
 .pub li{margin-bottom:14px}
 footer{
@@ -273,8 +305,8 @@ footer{
   <div>
     <div class="kicker">Academic Executive Portfolio</div>
     <h1>DR. ABDULAZIZ ATTAALLAH</h1>
-  <div class="ar-name">الدكتور عبدالعزيز عطاءالله</div>
-<div class="name-line"></div>
+    <div class="ar-name">الدكتور عبدالعزيز عطاءالله</div>
+    <div class="name-line"></div>
 
     <div class="subtitle">Associate Professor of Computer Science</div>
     <div class="positioning">
@@ -288,7 +320,7 @@ footer{
       <a class="btn" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank">Google Scholar</a>
       <a class="btn gold" href="https://orcid.org/0000-0001-5363-040X" target="_blank">ORCID</a>
       <a class="btn light" href="https://www.researchgate.net/profile/Abdulaziz-Attaallah-2" target="_blank">ResearchGate</a>
-    <a class="btn light" href="https://mail.google.com/mail/?view=cm&fs=1&to=aattallah@kau.edu.sa" target="_blank">Email</a>
+      <a class="btn light" href="https://mail.google.com/mail/?view=cm&fs=1&to=aattallah@kau.edu.sa" target="_blank">Email</a>
     </div>
   </div>
 </section>
@@ -296,6 +328,8 @@ footer{
 <section id="about">
   <div class="card">
     <h2>Executive Profile</h2>
+    <div class="section-ar-title">النبذة التنفيذية</div>
+
     <p>
       Dr. Abdulaziz Attaallah is an Associate Professor of Computer Science at King Abdulaziz University with a senior academic profile combining software engineering research, academic governance, digital transformation leadership, enterprise systems orientation, and technology strategy. His research expertise spans cybersecurity, artificial intelligence, blockchain applications, usable security, IoT/IoHT, healthcare informatics, big data security, and decision-support systems.
     </p>
@@ -303,10 +337,13 @@ footer{
       He has extensive experience in teaching, curriculum development, academic advising, research supervision, software architecture, secure systems, and leading university digital platforms.
     </p>
 
-    <div class="ar">
-      <h2>نبذة تنفيذية</h2>
+    <div class="ar-soft">
+      <h3>نبذة عربية</h3>
       <p>
         الدكتور عبدالعزيز عطاءالله أستاذ مشارك في علوم الحاسبات بجامعة الملك عبدالعزيز، ويتمتع بخبرة أكاديمية وقيادية تجمع بين البحث في هندسة البرمجيات، والحوكمة الأكاديمية، وقيادة التحول الرقمي، وتوجيه الأنظمة المؤسسية، واستراتيجية التقنية. تمتد خبراته البحثية إلى الأمن السيبراني، والذكاء الاصطناعي، وتطبيقات البلوك تشين، وأمن الاستخدام، وإنترنت الأشياء، والمعلوماتية الصحية، وأمن البيانات الضخمة، ونماذج دعم القرار.
+      </p>
+      <p>
+        كما يمتلك خبرة واسعة في التدريس، وتطوير المناهج، والإرشاد الأكاديمي، والإشراف البحثي، وهندسة البرمجيات، والأنظمة الآمنة، وقيادة المنصات الرقمية الجامعية.
       </p>
     </div>
   </div>
@@ -315,6 +352,8 @@ footer{
 <section id="leadership">
   <div class="card">
     <h2>Academic Leadership & Appointments</h2>
+    <div class="section-ar-title">القيادة الأكاديمية والمناصب</div>
+
     <div class="grid">
       <div class="mini"><h3>Associate Professor</h3><p>Computer Science Department, King Abdulaziz University<br>2024 – Present</p></div>
       <div class="mini"><h3>Assistant Professor</h3><p>Faculty of Computing and Information Technology, KAU<br>2017 – 2024</p></div>
@@ -323,12 +362,21 @@ footer{
       <div class="mini"><h3>Department Council Secretary</h3><p>Computer Science Department<br>2018 – 2019</p></div>
       <div class="mini"><h3>Academic Advisor</h3><p>Computer Science Department<br>2017 – Present</p></div>
     </div>
+
+    <div class="ar-soft">
+      <h3>ملخص القيادة الأكاديمية</h3>
+      <p>
+        شغل الدكتور عبدالعزيز عطاءالله عدداً من المناصب الأكاديمية والقيادية في جامعة الملك عبدالعزيز، من أبرزها أستاذ مشارك بقسم علوم الحاسبات، والمشرف العام السابق على مركز بوابة المعرفة الجامعية، ونائب المشرف العام السابق للمركز، وأمين مجلس قسم علوم الحاسبات سابقاً، إضافة إلى عمله مرشداً أكاديمياً وعضواً في لجنة شؤون الطلاب والخريجين.
+      </p>
+    </div>
   </div>
 </section>
 
 <section id="expertise">
   <div class="card">
     <h2>Professional Expertise</h2>
+    <div class="section-ar-title">الخبرات المهنية</div>
+
     <div class="grid">
       <div class="mini"><h3>Digital Transformation</h3><p>Strategic planning, technology modernization, innovation management, and transformation leadership.</p></div>
       <div class="mini"><h3>Enterprise & Solution Architecture</h3><p>Aligning technology initiatives with institutional objectives and designing end-to-end solutions.</p></div>
@@ -337,12 +385,21 @@ footer{
       <div class="mini"><h3>Technology Governance</h3><p>Project planning, risk management, platform governance, and execution oversight.</p></div>
       <div class="mini"><h3>Academic Quality</h3><p>Curriculum development, outcome-based education, research supervision, and accreditation activities.</p></div>
     </div>
+
+    <div class="ar-soft">
+      <h3>ملخص الخبرات المهنية</h3>
+      <p>
+        تشمل خبراته المهنية قيادة التحول الرقمي، واستراتيجية التقنية، وهندسة الحلول المؤسسية، وتحليل المتطلبات، وهندسة البرمجيات، وحوكمة المشاريع والمنصات التقنية، وضمان الجودة الأكاديمية، وتطوير المناهج، والإشراف البحثي، وربط المبادرات التقنية بالأهداف المؤسسية.
+      </p>
+    </div>
   </div>
 </section>
 
 <section id="research">
   <div class="card">
     <h2>Research Identity</h2>
+    <div class="section-ar-title">الهوية البحثية</div>
+
     <div>
       <span class="tag">Software Engineering</span>
       <span class="tag">Software Security</span>
@@ -359,17 +416,36 @@ footer{
       <span class="tag">Quantum Computing</span>
       <span class="tag">Astronomy</span>
     </div>
+
+    <div class="ar-soft">
+      <h3>الاهتمامات البحثية والعلمية</h3>
+      <p>
+        تتركز الهوية البحثية للدكتور عبدالعزيز عطاءالله حول هندسة البرمجيات، وأمن البرمجيات، والذكاء الاصطناعي، والأمن السيبراني، وتطبيقات البلوك تشين، وقابلية الاستخدام، وتفاعل الإنسان مع الحاسوب، والمعلوماتية الصحية، وأمن البيانات الضخمة، والمنطق الضبابي، ونماذج دعم القرار.
+      </p>
+      <p>
+        وتشمل اهتماماته العلمية الأوسع الفيزياء الكمية، والحوسبة الكمومية، وعلم الفلك.
+      </p>
+    </div>
   </div>
 </section>
 
 <section id="teaching">
   <div class="card">
     <h2>Teaching Portfolio</h2>
+    <div class="section-ar-title">المقررات والخبرة التدريسية</div>
+
     <div class="grid">
       <div class="mini"><h3>Software Engineering</h3><p>CPCS-351 Software Engineering I<br>CPCS-353 Software Engineering Practices<br>CPCS-454 Object-Oriented Analysis and Design</p></div>
       <div class="mini"><h3>Programming & AI</h3><p>CPCS-202 Programming I<br>CPCS-203 Programming II<br>CPCS-206 Introduction to Programming and Visual Basic<br>CPCS-336 Introduction to Artificial Intelligence</p></div>
       <div class="mini"><h3>Projects & Research</h3><p>CPCS-498 Senior Project I<br>CPCS-499 Senior Project II<br>CPCS-699 Master’s Research</p></div>
       <div class="mini"><h3>Professional Training</h3><p>CPCS-323 Summer Workplace Training</p></div>
+    </div>
+
+    <div class="ar-soft">
+      <h3>ملخص الخبرة التدريسية</h3>
+      <p>
+        تشمل خبرته التدريسية مقررات في هندسة البرمجيات، وممارسات هندسة البرمجيات، والتحليل والتصميم كائني التوجه، والبرمجة، والذكاء الاصطناعي، ومشاريع التخرج، وبحوث الماجستير، والتدريب العملي الصيفي. ويجمع في تدريسه بين الأسس النظرية والتطبيقات العملية والمشاريع المرتبطة بالواقع الأكاديمي والمهني.
+      </p>
     </div>
   </div>
 </section>
@@ -377,6 +453,19 @@ footer{
 <section id="publications">
   <div class="card">
     <h2>Publications</h2>
+    <div class="section-ar-title">المنشورات العلمية</div>
+
+    <p class="muted">
+      Selected peer-reviewed publications in software engineering, cybersecurity, blockchain systems, healthcare technologies, fuzzy decision-making, and big data security.
+    </p>
+
+    <div class="ar-soft">
+      <h3>ملاحظة</h3>
+      <p>
+        تُعرض عناوين الأبحاث باللغة الإنجليزية حفاظاً على الصياغة الأكاديمية الأصلية ولتسهيل الوصول إليها عبر قواعد البيانات العلمية ومحركات البحث الأكاديمية.
+      </p>
+    </div>
+
     <ol class="pub">
       <li>Security Test Case Prioritization Through Ant Colony Optimization Algorithm. Computer Systems Science and Engineering, 2023.</li>
       <li>Enhancing Healthcare Management During Covid-19: A Patient-Centric Architectural Framework Enabled by Hyperledger Fabric Blockchain. Information, 2023.</li>
@@ -395,6 +484,7 @@ footer{
       <li>Managing Security-Risks for Improving Security-Durability of Institutional Web-Applications: Design Perspective. Computers, Materials & Continua, 2020.</li>
       <li>A Hybrid Fuzzy Rule-Based Multi-Criteria Framework for Security Assessment of Medical Device Software. International Journal of Intelligent Engineering and Systems, 2020.</li>
     </ol>
+
     <div class="buttons">
       <a class="btn gold" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank">View Full Google Scholar Profile</a>
     </div>
@@ -404,11 +494,20 @@ footer{
 <section id="contact">
   <div class="card">
     <h2>Contact</h2>
+    <div class="section-ar-title">التواصل والروابط الأكاديمية</div>
+
     <div class="grid">
       <div class="mini"><h3>Email</h3><p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=aattallah@kau.edu.sa" target="_blank">aattallah@kau.edu.sa</a></p></div>
       <div class="mini"><h3>ORCID</h3><p><a href="https://orcid.org/0000-0001-5363-040X" target="_blank">0000-0001-5363-040X</a></p></div>
       <div class="mini"><h3>Google Scholar</h3><p><a href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank">Scholar Profile</a></p></div>
       <div class="mini"><h3>Institution</h3><p>King Abdulaziz University<br>Jeddah, Saudi Arabia</p></div>
+    </div>
+
+    <div class="ar-soft">
+      <h3>بيانات التواصل</h3>
+      <p>
+        يمكن التواصل مع الدكتور عبدالعزيز عطاءالله عبر البريد الجامعي أو من خلال الروابط الأكاديمية أعلاه للاطلاع على ملفه البحثي ومنشوراته العلمية.
+      </p>
     </div>
   </div>
 </section>
