@@ -253,6 +253,49 @@ p,li{
   border-radius:22px;
   padding:22px;
 }
+  .dual-card{
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.88),rgba(255,255,255,.58));
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:24px;
+  min-height:215px;
+  box-shadow:
+    0 18px 42px rgba(15,23,42,.06),
+    inset 0 1px 1px rgba(255,255,255,.85);
+}
+
+.dual-card h3{
+  margin:0 0 6px;
+  color:var(--navy);
+  font-size:19px;
+  line-height:1.35;
+}
+
+.dual-card .ar-card-title{
+  direction:rtl;
+  text-align:left;
+  color:#6F5522;
+  font-size:21px;
+  font-weight:800;
+  margin:0 0 15px;
+  line-height:1.45;
+}
+
+.dual-card p{
+  margin:0 0 14px;
+  color:var(--muted);
+  line-height:1.75;
+}
+
+.dual-card .ar-card-text{
+  direction:rtl;
+  text-align:right;
+  color:#334155;
+  line-height:1.95;
+  border-top:1px solid rgba(176,138,53,.2);
+  padding-top:14px;
+}
 .tag{
   display:inline-block;
   padding:9px 14px;
@@ -400,25 +443,53 @@ span{
   </div>
 </section>
 
-<section id="expertise">
+  <section id="expertise">
   <div class="card">
     <h2>Professional Expertise</h2>
     <div class="section-ar-title">الخبرات المهنية</div>
 
     <div class="grid">
-      <div class="mini"><h3>Digital Transformation</h3><p>Strategic planning, technology modernization, innovation management, and transformation leadership.</p></div>
-      <div class="mini"><h3>Enterprise & Solution Architecture</h3><p>Aligning technology initiatives with institutional objectives and designing end-to-end solutions.</p></div>
-      <div class="mini"><h3>Requirements Engineering</h3><p>Requirements elicitation, stakeholder engagement, business process analysis, and system modeling.</p></div>
-      <div class="mini"><h3>Software Architecture</h3><p>Software design, distributed systems, secure software systems, and enterprise application integration.</p></div>
-      <div class="mini"><h3>Technology Governance</h3><p>Project planning, risk management, platform governance, and execution oversight.</p></div>
-      <div class="mini"><h3>Academic Quality</h3><p>Curriculum development, outcome-based education, research supervision, and accreditation activities.</p></div>
-    </div>
+      <div class="dual-card">
+        <h3>Digital Transformation</h3>
+        <div class="ar-card-title">قيادة التحول الرقمي</div>
+        <p>Strategic planning, technology modernization, innovation management, and transformation leadership.</p>
+        <div class="ar-card-text">التخطيط الاستراتيجي، وتحديث التقنية، وإدارة الابتكار، وقيادة مبادرات التحول الرقمي.</div>
+      </div>
 
-    <div class="ar-soft">
-      <h3>ملخص الخبرات المهنية</h3>
-      <p>
-        تشمل خبراته المهنية قيادة التحول الرقمي، واستراتيجية التقنية، وهندسة الحلول المؤسسية، وتحليل المتطلبات، وهندسة البرمجيات، وحوكمة المشاريع والمنصات التقنية، وضمان الجودة الأكاديمية، وتطوير المناهج، والإشراف البحثي، وربط المبادرات التقنية بالأهداف المؤسسية.
-      </p>
+      <div class="dual-card">
+        <h3>Enterprise & Solution Architecture</h3>
+        <div class="ar-card-title">هندسة الحلول المؤسسية</div>
+        <p>Aligning technology initiatives with institutional objectives and designing end-to-end solutions.</p>
+        <div class="ar-card-text">مواءمة المبادرات التقنية مع الأهداف المؤسسية وتصميم حلول تقنية متكاملة من البداية إلى النهاية.</div>
+      </div>
+
+      <div class="dual-card">
+        <h3>Requirements Engineering</h3>
+        <div class="ar-card-title">هندسة المتطلبات</div>
+        <p>Requirements elicitation, stakeholder engagement, business process analysis, and system modeling.</p>
+        <div class="ar-card-text">استخلاص المتطلبات، وتحليل أصحاب المصلحة، ونمذجة العمليات والأنظمة بصورة منهجية.</div>
+      </div>
+
+      <div class="dual-card">
+        <h3>Software Architecture</h3>
+        <div class="ar-card-title">معمارية البرمجيات</div>
+        <p>Software design, distributed systems, secure software systems, and enterprise application integration.</p>
+        <div class="ar-card-text">تصميم البرمجيات، والأنظمة الموزعة، والأنظمة الآمنة، وتكامل التطبيقات المؤسسية.</div>
+      </div>
+
+      <div class="dual-card">
+        <h3>Technology Governance</h3>
+        <div class="ar-card-title">حوكمة التقنية</div>
+        <p>Project planning, risk management, platform governance, and execution oversight.</p>
+        <div class="ar-card-text">تخطيط المشاريع، وإدارة المخاطر، وحوكمة المنصات التقنية، ومتابعة التنفيذ.</div>
+      </div>
+
+      <div class="dual-card">
+        <h3>Academic Quality</h3>
+        <div class="ar-card-title">الجودة الأكاديمية</div>
+        <p>Curriculum development, outcome-based education, research supervision, and accreditation activities.</p>
+        <div class="ar-card-text">تطوير المناهج، والتعليم المبني على المخرجات، والإشراف البحثي، وأنشطة الاعتماد الأكاديمي.</div>
+      </div>
     </div>
   </div>
 </section>
