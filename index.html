@@ -11,6 +11,7 @@
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <meta name="googlebot" content="index, follow" />
 <meta name="theme-color" content="#0B1F3A" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="canonical" href="https://dr-aattallah.github.io/" />
 <link rel="alternate" href="https://dr-aattallah.github.io/" hreflang="en" />
 <link rel="alternate" href="https://dr-aattallah.github.io/" hreflang="ar" />
@@ -60,6 +61,12 @@
       "url": "https://dr-aattallah.github.io/",
       "image": "https://dr-aattallah.github.io/profile.jpg",
       "email": "mailto:aattallah@kau.edu.sa",
+      "subjectOf": {
+        "@type": "DigitalDocument",
+        "name": "Curriculum Vitae of Dr. Abdulaziz Attaallah",
+        "url": "https://dr-aattallah.github.io/Dr_Abdulaziz_Attaallah_13-6-2026_CV.pdf",
+        "encodingFormat": "application/pdf"
+      },
       "affiliation": {
         "@type": "CollegeOrUniversity",
         "name": "King Abdulaziz University",
@@ -505,6 +512,15 @@ h1{
   border-color:rgba(176,138,53,.25);
 }
 
+.btn.cv{
+  background:linear-gradient(135deg,var(--navy-2),var(--navy));
+  color:#fff;
+  border-color:rgba(176,138,53,.36);
+  box-shadow:
+    0 14px 28px rgba(11,31,58,.2),
+    inset 0 0 0 1px rgba(176,138,53,.22);
+}
+
 .btn.light{
   background:#fff;
   color:var(--navy);
@@ -591,9 +607,23 @@ p{
 }
 
 .lead{
-  font-size:17.5px;
+  font-size:18px;
   color:#334155;
   max-width:930px;
+  line-height:1.95;
+}
+
+.lead,
+.positioning,
+.hero-card span,
+.metric span,
+.mini p,
+.dual-card p,
+.note-box p,
+.research-focus p,
+.pub li{
+  font-weight:650;
+  letter-spacing:.01em;
 }
 
 .ar-soft{
@@ -669,7 +699,8 @@ p{
 .mini p{
   color:var(--muted);
   margin-bottom:0;
-  font-size:15.8px;
+  font-size:16px;
+  line-height:1.9;
 }
 
 .date{
@@ -706,8 +737,8 @@ p{
 .dual-card p{
   margin:0 0 15px;
   color:var(--muted);
-  line-height:1.75;
-  font-size:15.8px;
+  line-height:1.9;
+  font-size:16px;
 }
 
 .ar-card-text{
@@ -783,7 +814,8 @@ p{
 .research-focus p{
   margin:0;
   color:var(--muted);
-  font-size:15.8px;
+  font-size:16px;
+  line-height:1.9;
 }
 
 .tag{
@@ -915,8 +947,8 @@ p{
   border:1px solid var(--border);
   box-shadow:0 12px 28px rgba(15,23,42,.045);
   color:#334155;
-  line-height:1.75;
-  font-size:15.6px;
+  line-height:1.86;
+  font-size:15.9px;
 }
 
 .pub li::before{
@@ -1188,6 +1220,7 @@ p{
       <div class="buttons">
         <a class="btn" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
         <a class="btn gold" href="https://orcid.org/0000-0001-5363-040X" target="_blank" rel="noopener">ORCID</a>
+        <a class="btn cv" href="Dr_Abdulaziz_Attaallah_13-6-2026_CV.pdf" target="_blank" rel="noopener" download>Download CV</a>
         <a class="btn light" href="https://www.researchgate.net/profile/Abdulaziz-Attaallah-2" target="_blank" rel="noopener">ResearchGate</a>
         <a class="btn light" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=aattallah@kau.edu.sa" target="_blank" rel="noopener">Email</a>
       </div>
@@ -1605,6 +1638,7 @@ p{
 
         <div class="contact-actions" aria-label="Primary contact actions">
           <a class="btn gold" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=aattallah@kau.edu.sa" target="_blank" rel="noopener">Email</a>
+          <a class="btn cv" href="Dr_Abdulaziz_Attaallah_13-6-2026_CV.pdf" target="_blank" rel="noopener" download>Download CV</a>
           <a class="btn light" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank" rel="noopener">Scholar Profile</a>
         </div>
       </div>
