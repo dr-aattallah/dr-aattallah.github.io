@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -629,6 +628,23 @@ p{
   grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 }
 
+.grid.balanced{
+  align-items:stretch;
+}
+
+.expertise-grid{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+.teaching-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+
+.expertise-grid .dual-card,
+.teaching-grid .dual-card{
+  height:100%;
+}
+
 .mini,
 .dual-card{
   background:
@@ -712,7 +728,7 @@ p{
 
 .research-groups{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  grid-template-columns:repeat(3,minmax(0,1fr));
   gap:18px;
 }
 
@@ -743,6 +759,30 @@ p{
 
 .research-group .research-tags{
   gap:9px;
+}
+
+.research-summary{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:18px;
+}
+
+.research-focus{
+  padding:22px;
+  border-radius:24px;
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--border);
+}
+
+.research-focus h3{
+  color:var(--navy);
+}
+
+.research-focus p{
+  margin:0;
+  color:var(--muted);
+  font-size:15.8px;
 }
 
 .tag{
@@ -791,12 +831,15 @@ p{
 .contact-actions{
   display:flex;
   flex-wrap:wrap;
-  gap:10px;
+  gap:12px;
   justify-content:flex-end;
 }
 
 .contact-actions .btn{
   margin:0;
+  min-height:52px;
+  min-width:142px;
+  padding:14px 24px;
   white-space:nowrap;
 }
 
@@ -830,6 +873,36 @@ p{
   margin:0;
   display:grid;
   gap:14px;
+}
+
+.pub.continued{
+  counter-reset:pub-counter 6;
+}
+
+.publication-heading{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:baseline;
+  margin:30px 0 14px;
+  padding-top:10px;
+  border-top:1px solid rgba(148,163,184,.22);
+}
+
+.publication-heading:first-of-type{
+  margin-top:8px;
+  padding-top:0;
+  border-top:0;
+}
+
+.publication-heading h3{
+  margin:0;
+}
+
+.publication-heading span{
+  color:var(--gold-dark);
+  font-size:14px;
+  font-weight:900;
 }
 
 .pub li{
@@ -947,6 +1020,13 @@ p{
     grid-template-columns:1fr;
   }
 
+  .expertise-grid,
+  .teaching-grid,
+  .research-groups,
+  .research-summary{
+    grid-template-columns:1fr;
+  }
+
   .contact-intro{
     grid-template-columns:1fr;
     text-align:left;
@@ -999,6 +1079,15 @@ p{
 
   .research-groups{
     grid-template-columns:1fr;
+  }
+
+  .publication-heading{
+    display:block;
+  }
+
+  .publication-heading span{
+    display:block;
+    margin-top:6px;
   }
 
   .contact-intro{
@@ -1208,7 +1297,7 @@ p{
         <div class="section-ar-title" lang="ar" dir="rtl">الخبرات المهنية</div>
       </div>
 
-      <div class="grid">
+      <div class="grid expertise-grid balanced">
         <div class="dual-card">
           <h3>Digital Transformation</h3>
           <div class="ar-card-title" lang="ar" dir="rtl">قيادة التحول الرقمي</div>
@@ -1266,41 +1355,52 @@ p{
 
       <div class="research-groups" aria-label="Research areas">
         <div class="research-group">
-          <h3>Core Software &amp; Security Research</h3>
-          <div class="ar-research-title" lang="ar" dir="rtl">محور هندسة البرمجيات والأمن</div>
+          <h3>Secure Software Systems</h3>
+          <div class="ar-research-title" lang="ar" dir="rtl">أنظمة البرمجيات الآمنة</div>
           <div class="research-tags">
             <span class="tag">Software Engineering</span>
             <span class="tag">Software Security</span>
             <span class="tag">Cybersecurity</span>
             <span class="tag">Software Architecture</span>
             <span class="tag">Requirements Engineering</span>
+            <span class="tag">Usable Security</span>
           </div>
         </div>
 
         <div class="research-group">
-          <h3>Intelligent &amp; Decision-Support Systems</h3>
+          <h3>AI &amp; Decision-Support</h3>
           <div class="ar-research-title" lang="ar" dir="rtl">الأنظمة الذكية ودعم القرار</div>
           <div class="research-tags">
             <span class="tag">Artificial Intelligence</span>
             <span class="tag">Fuzzy Logic</span>
             <span class="tag">Decision-Support Systems</span>
             <span class="tag">Human-Computer Interaction</span>
+            <span class="tag">Big Data Security</span>
           </div>
         </div>
 
         <div class="research-group">
-          <h3>Applied Digital Technologies</h3>
-          <div class="ar-research-title" lang="ar" dir="rtl">التقنيات الرقمية التطبيقية</div>
+          <h3>Digital Health &amp; Blockchain</h3>
+          <div class="ar-research-title" lang="ar" dir="rtl">الصحة الرقمية والبلوك تشين</div>
           <div class="research-tags">
             <span class="tag">Blockchain Systems</span>
-            <span class="tag">Usable Security</span>
             <span class="tag">Healthcare Informatics</span>
-            <span class="tag">Big Data Security</span>
             <span class="tag">IoT / IoHT</span>
+            <span class="tag">Medical Device Software</span>
+            <span class="tag">Health Data Security</span>
           </div>
         </div>
+      </div>
 
-        <div class="research-group">
+      <div class="research-summary">
+        <div class="research-focus">
+          <h3>Research Positioning</h3>
+          <p>
+            The research profile connects secure software engineering, intelligent assessment methods, and applied digital health systems, with emphasis on practical risk evaluation, architecture, and technology-enabled decision support.
+          </p>
+        </div>
+
+        <div class="research-focus">
           <h3>Scientific Interests</h3>
           <div class="ar-research-title" lang="ar" dir="rtl">الاهتمامات العلمية الأوسع</div>
           <div class="research-tags">
@@ -1333,7 +1433,7 @@ p{
         <div class="section-ar-title" lang="ar" dir="rtl">المقررات والخبرة التدريسية</div>
       </div>
 
-      <div class="grid compact">
+      <div class="grid teaching-grid balanced">
         <div class="dual-card">
           <h3>Software Engineering</h3>
           <div class="ar-card-title" lang="ar" dir="rtl">هندسة البرمجيات</div>
@@ -1396,6 +1496,11 @@ p{
         </div>
       </div>
 
+      <div class="publication-heading">
+        <h3>Recent &amp; Featured Publications</h3>
+        <span>Selected recent research outputs</span>
+      </div>
+
       <ol class="pub">
         <li>
           <strong>Security Test Case Prioritization Through Ant Colony Optimization Algorithm.</strong>
@@ -1421,6 +1526,14 @@ p{
           <strong>A Security Testing Mechanism for Detecting Attacks in Distributed Software Applications Using Blockchain.</strong>
           PLOS ONE, vol. 18, pp. e0280038, 2023. <span class="doi">DOI: 10.1371/journal.pone.0280038</span>
         </li>
+      </ol>
+
+      <div class="publication-heading">
+        <h3>Additional Peer-Reviewed Publications</h3>
+        <span>Full academic record continued</span>
+      </div>
+
+      <ol class="pub continued">
         <li>
           <strong>Analyzing the Big Data Security Through a Unified Decision-Making Approach.</strong>
           Intelligent Automation &amp; Soft Computing, vol. 32, pp. 1071-1088, 2022. <span class="doi">DOI: 10.32604/iasc.2022.022569</span>
