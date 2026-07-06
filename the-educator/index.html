@@ -1,24 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The Educator | Academic Course Platform</title>
-<meta name="description" content="The Educator is an academic platform for instructors and students to manage courses, syllabi, learning resources, files, videos, links, assignments, and assessments." />
+<title>The Educator</title>
+<meta name="description" content="The Educator is a simple academic platform that connects instructors and students around each course, with resources, files, links, assignments, and updates in one place." />
 <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
 
 <style>
 :root{
-  --navy:#0B1F3A;
-  --navy-2:#12355F;
-  --gold:#B08A35;
-  --gold-dark:#6F5522;
-  --bg:#F8FAFC;
-  --text:#1E293B;
-  --muted:#64748B;
-  --border:rgba(148,163,184,.28);
-  --card:rgba(255,255,255,.86);
-  --shadow:0 24px 70px rgba(15,23,42,.09);
+  --bg:#050914;
+  --bg2:#0A1020;
+  --text:#F8FAFC;
+  --muted:#AAB6C8;
+  --blue:#38BDF8;
+  --amber:#F59E0B;
+  --line:rgba(255,255,255,.12);
 }
 
 @font-face{
@@ -30,491 +28,288 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:88px}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
   margin:0;
-  font-family:"Masmak",sans-serif;
+  min-height:100vh;
+  font-family:"Masmak",system-ui,sans-serif;
   color:var(--text);
   background:
-    radial-gradient(circle at top left,rgba(176,138,53,.18),transparent 30%),
-    radial-gradient(circle at top right,rgba(11,31,58,.16),transparent 34%),
-    linear-gradient(180deg,#F8FAFC,#EEF2F7);
+    radial-gradient(circle at 50% 24%, rgba(56,189,248,.18), transparent 28%),
+    radial-gradient(circle at 72% 42%, rgba(245,158,11,.12), transparent 24%),
+    linear-gradient(180deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
 }
-body,button,input,a,p,li,h1,h2,h3,h4,div,span{font-family:"Masmak",sans-serif!important}
-a{color:inherit}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size:56px 56px;
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,.75), transparent 78%);
+}
+
+a{
+  color:inherit;
+}
 
 nav{
-  position:sticky;
+  position:fixed;
   top:0;
-  z-index:1000;
-  background:rgba(255,255,255,.86);
-  backdrop-filter:blur(18px) saturate(150%);
-  -webkit-backdrop-filter:blur(18px) saturate(150%);
-  border-bottom:1px solid var(--border);
-}
-.nav-inner{
-  max-width:1180px;
-  margin:auto;
-  padding:15px 22px;
+  left:0;
+  right:0;
+  z-index:10;
+  padding:22px clamp(20px,5vw,72px);
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:18px;
+  backdrop-filter:blur(18px);
 }
+
 .brand{
   display:flex;
-  flex-direction:column;
-  color:var(--navy);
+  align-items:center;
+  gap:12px;
   font-weight:900;
-  line-height:1.15;
+  letter-spacing:.08em;
+  text-transform:uppercase;
 }
-.brand small{color:var(--gold-dark);font-size:12px;font-weight:900}
-.links{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.links a{
+
+.brand-mark{
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.28);
+  background:linear-gradient(135deg,rgba(56,189,248,.38),rgba(245,158,11,.26));
+  box-shadow:0 0 28px rgba(56,189,248,.24);
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.nav-links a{
   text-decoration:none;
-  color:var(--navy);
-  font-weight:900;
+  color:var(--muted);
+  font-weight:800;
   font-size:14px;
-  padding:10px 13px;
+  padding:10px 14px;
   border-radius:999px;
 }
-.links a:hover{color:var(--gold-dark);background:rgba(176,138,53,.1)}
 
-section{max-width:1180px;margin:auto;padding:58px 22px}
-.hero{
-  min-height:calc(100vh - 72px);
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:44px;
-  align-items:center;
-  padding-top:72px;
-  padding-bottom:72px;
+.nav-links a:hover{
+  color:var(--text);
+  background:rgba(255,255,255,.08);
 }
-.kicker{color:var(--gold-dark);font-weight:900;text-transform:uppercase;letter-spacing:3px;font-size:13px}
-h1{color:var(--navy);font-size:clamp(48px,8vw,98px);line-height:.95;margin:18px 0}
-.subtitle{color:var(--muted);font-size:22px;line-height:1.75;max-width:760px}
-.ar-subtitle{direction:rtl;text-align:right;color:#334155;font-size:20px;line-height:2;margin-top:18px;max-width:760px}
 
-.buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.login-top{
+  border:1px solid rgba(255,255,255,.2);
+  color:var(--text)!important;
+}
+
+main{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:110px 22px 52px;
+}
+
+.hero{
+  width:min(1060px,100%);
+  text-align:center;
+  display:grid;
+  justify-items:center;
+}
+
+.logo{
+  width:min(540px,86vw);
+  filter:
+    drop-shadow(0 0 40px rgba(56,189,248,.22))
+    drop-shadow(0 0 60px rgba(245,158,11,.14));
+  margin-bottom:20px;
+  user-select:none;
+}
+
+h1{
+  margin:0;
+  font-size:clamp(48px,8vw,92px);
+  line-height:.95;
+  letter-spacing:-.045em;
+  font-weight:900;
+}
+
+.tagline{
+  margin:20px auto 0;
+  max-width:780px;
+  color:var(--muted);
+  font-size:clamp(18px,2.3vw,25px);
+  line-height:1.75;
+}
+
+.ar{
+  direction:rtl;
+  margin:22px auto 0;
+  max-width:820px;
+  color:#DDE7F5;
+  font-size:clamp(18px,2.1vw,23px);
+  line-height:2;
+}
+
+.actions{
+  margin-top:36px;
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
 .btn{
+  min-width:176px;
+  min-height:54px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  min-height:46px;
+  padding:14px 24px;
   border-radius:999px;
-  padding:12px 22px;
   text-decoration:none;
   font-weight:900;
-  background:var(--navy);
-  color:white;
-  border:1px solid rgba(11,31,58,.12);
-  box-shadow:0 14px 28px rgba(11,31,58,.18);
-}
-.btn.gold{background:var(--gold)}
-.btn.light{
-  background:white;
-  color:var(--navy);
-  border:1px solid var(--border);
-  box-shadow:0 12px 24px rgba(15,23,42,.07);
+  border:1px solid rgba(255,255,255,.18);
 }
 
-.panel{
-  position:relative;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:32px;
-  padding:32px;
-  box-shadow:var(--shadow);
-  backdrop-filter:blur(16px) saturate(150%);
-  -webkit-backdrop-filter:blur(16px) saturate(150%);
-  overflow:hidden;
+.btn.primary{
+  background:linear-gradient(135deg,var(--blue),var(--amber));
+  color:#06101F;
+  box-shadow:
+    0 0 34px rgba(56,189,248,.22),
+    0 0 46px rgba(245,158,11,.14);
 }
-.panel::before{
-  content:"";
-  position:absolute;
+
+.btn.secondary{
+  color:var(--text);
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(16px);
+}
+
+.pill-row{
+  margin-top:44px;
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.pill{
+  padding:12px 16px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.045);
+  color:#D7E2F1;
+  font-weight:800;
+}
+
+.simple-note{
+  margin-top:34px;
+  max-width:760px;
+  color:#7F8EA5;
+  font-size:15px;
+  line-height:1.8;
+}
+
+footer{
+  position:fixed;
   left:0;
   right:0;
-  top:0;
-  height:3px;
-  background:linear-gradient(90deg,var(--navy),var(--gold),rgba(176,138,53,.12));
-}
-.login-card{
-  background:linear-gradient(135deg,rgba(11,31,58,.97),rgba(18,53,95,.94)),var(--navy);
-  color:white;
-}
-.login-card::before{background:linear-gradient(90deg,var(--gold),rgba(255,255,255,.28))}
-.login-card h2{color:white;margin:0 0 10px}
-.login-card p{color:rgba(255,255,255,.82)}
-.login-options{display:grid;gap:14px;margin-top:22px}
-.login-option{
-  padding:18px;
-  border-radius:22px;
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.16);
-}
-.login-option strong{display:block;font-size:19px;margin-bottom:6px}
-.login-option span{display:block;color:rgba(255,255,255,.78);line-height:1.65}
-.status-pill{
-  display:inline-flex;
-  align-items:center;
-  padding:8px 13px;
-  border-radius:999px;
-  background:rgba(176,138,53,.16);
-  color:#FFE2A4;
-  font-weight:900;
-  margin-bottom:18px;
+  bottom:0;
+  padding:18px 22px;
+  text-align:center;
+  color:#65748A;
+  font-size:13px;
 }
 
-.section-head{
-  display:grid;
-  grid-template-columns:1fr auto;
-  gap:22px;
-  align-items:start;
-  margin-bottom:26px;
-}
-.eyebrow{display:block;color:var(--gold-dark);text-transform:uppercase;font-weight:900;font-size:13px;margin-bottom:8px}
-h2{color:var(--navy);font-size:clamp(30px,3.4vw,42px);line-height:1.15;margin:0}
-.ar-title{
-  direction:rtl;
-  text-align:right;
-  min-width:240px;
-  color:var(--gold-dark);
-  font-size:clamp(23px,2.6vw,31px);
-  font-weight:900;
-  line-height:1.45;
-}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}
-.two-col{grid-template-columns:repeat(2,minmax(0,1fr))}
-.three-col{grid-template-columns:repeat(3,minmax(0,1fr))}
-.card{
-  background:rgba(255,255,255,.88);
-  border:1px solid var(--border);
-  border-radius:26px;
-  padding:25px;
-  box-shadow:0 18px 42px rgba(15,23,42,.06);
-}
-.card h3{margin:0 0 8px;color:var(--navy);font-size:22px}
-.card p,.card li{color:var(--muted);line-height:1.85;font-size:16px}
-.card ul{padding-left:22px;margin:10px 0 0}
-.ar{direction:rtl;text-align:right;color:#334155;border-top:1px solid rgba(176,138,53,.24);margin-top:16px;padding-top:16px;line-height:2}
-
-.course-preview{background:linear-gradient(145deg,rgba(255,255,255,.95),rgba(255,255,255,.72))}
-.course-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:20px}
-.course-code{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:42px;
-  padding:8px 14px;
-  border-radius:999px;
-  background:rgba(176,138,53,.12);
-  color:var(--gold-dark);
-  font-weight:900;
-}
-.modules{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-.module{
-  padding:16px;
-  border-radius:20px;
-  background:white;
-  border:1px solid var(--border);
-  color:var(--navy);
-  font-weight:900;
-  min-height:74px;
-}
-.badge{display:inline-flex;padding:7px 11px;border-radius:999px;background:rgba(11,31,58,.08);color:var(--navy);font-size:13px;font-weight:900}
-.note{
-  margin-top:22px;
-  padding:22px;
-  border-radius:24px;
-  background:rgba(176,138,53,.08);
-  border:1px solid rgba(176,138,53,.22);
-  color:#334155;
-  line-height:1.9;
-}
-.doc-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.doc-link{
-  display:block;
-  text-decoration:none;
-  background:white;
-  border:1px solid var(--border);
-  border-radius:22px;
-  padding:18px;
-  color:var(--navy);
-  font-weight:900;
-  box-shadow:0 12px 28px rgba(15,23,42,.045);
-}
-.doc-link span{display:block;color:var(--muted);font-size:14px;margin-top:6px;font-weight:800;line-height:1.55}
-footer{text-align:center;padding:34px 20px 44px;color:var(--muted);font-size:14px}
-
-@media(max-width:950px){
-  .hero,.two-col,.three-col{grid-template-columns:1fr}
-  .section-head{grid-template-columns:1fr;gap:8px}
-  .ar-title{text-align:left;min-width:0}
-}
 @media(max-width:720px){
-  .nav-inner{flex-direction:column;align-items:flex-start}
-  .links{width:100%;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding-bottom:4px}
-  .links a{white-space:nowrap}
-  section{padding:42px 16px}
-  .panel{padding:24px}
-  .course-top{display:block}
-  .course-code{margin-top:12px}
+  nav{
+    position:static;
+    padding:18px;
+  }
+
+  .nav-links a:not(.login-top){
+    display:none;
+  }
+
+  main{
+    padding-top:32px;
+  }
+
+  .logo{
+    width:min(430px,94vw);
+  }
+
+  footer{
+    position:static;
+  }
 }
 </style>
 </head>
 
 <body>
-<nav aria-label="Primary navigation">
-  <div class="nav-inner">
-    <div class="brand">
-      <span>The Educator</span>
-      <small>Academic Course Platform</small>
-    </div>
-    <div class="links">
-      <a href="../">Portfolio</a>
-      <a href="#platform">Platform</a>
-      <a href="#instructors">Instructors</a>
-      <a href="#students">Students</a>
-      <a href="#course">Course Workspace</a>
-      <a href="#docs">Docs</a>
-    </div>
+
+<nav>
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true"></div>
+    <span>The Educator</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="../">Portfolio</a>
+    <a class="login-top" href="#login">Login</a>
   </div>
 </nav>
 
-<header id="home">
-  <section class="hero" aria-label="The Educator introduction">
-    <div>
-      <div class="kicker">Public Platform Gateway</div>
-      <h1>The Educator</h1>
-      <p class="subtitle">
-        A flexible academic platform for managing courses, syllabi, teaching resources, files, videos, links, assignments, assessments, and course workspaces.
-      </p>
-      <p class="ar-subtitle" lang="ar" dir="rtl">
-        منصة أكاديمية مرنة لإدارة المقررات والموارد التعليمية والملفات والروابط والفيديوهات والواجبات والتقييمات ومساحات المواد.
-      </p>
-      <div class="buttons">
-        <a class="btn gold" href="#login">Login</a>
-        <a class="btn" href="#course">View Course Workspace</a>
-        <a class="btn light" href="../">Back to Academic Portfolio</a>
-      </div>
-    </div>
-
-    <div class="panel login-card" id="login">
-      <span class="status-pill">Prototype — Under Development</span>
-      <h2>Platform Access</h2>
-      <p>
-        The production version will include secure login, user roles, course access, file storage, and private course workspaces.
-      </p>
-
-      <div class="login-options">
-        <div class="login-option">
-          <strong>Instructor Login</strong>
-          <span>Create courses, upload resources, organize content, manage syllabus files, and prepare assessments.</span>
-        </div>
-
-        <div class="login-option">
-          <strong>Student Login</strong>
-          <span>Access enrolled courses, view course resources, download files, and follow updates from the instructor.</span>
-        </div>
-      </div>
-
-      <div class="buttons">
-        <a class="btn light" href="#status">System Status</a>
-      </div>
-    </div>
-  </section>
-</header>
-
 <main>
-  <section id="platform">
-    <div class="panel">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Platform Purpose</span>
-          <h2>What The Educator Does</h2>
-        </div>
-        <div class="ar-title" lang="ar" dir="rtl">ماذا تقدم المنصة؟</div>
-      </div>
+  <section class="hero" id="about" aria-label="The Educator landing page">
+    <img class="logo" src="../assets/images/the-educator-logo.png" alt="The Educator abstract logo" />
 
-      <div class="grid three-col">
-        <div class="card">
-          <h3>Course Management</h3>
-          <p>Create and manage courses with course code, academic year, semester, syllabus, and structured learning resources.</p>
-          <div class="ar">إنشاء وإدارة المقررات مع بيانات المادة والفصل الدراسي والمنهج والموارد التعليمية.</div>
-        </div>
+    <h1>The Educator</h1>
 
-        <div class="card">
-          <h3>Resource Hub</h3>
-          <p>Organize PDFs, PowerPoint slides, videos, external links, lecture files, and supporting materials in one place.</p>
-          <div class="ar">تنظيم ملفات PDF وعروض PowerPoint والفيديوهات والروابط والمواد المساندة في مكان واحد.</div>
-        </div>
+    <p class="tagline">
+      One simple space for every course, connecting instructors and students through resources, files, links, assignments, and updates.
+    </p>
 
-        <div class="card">
-          <h3>Assessment Ready</h3>
-          <p>The system is designed to later support assignments, assessments, grading, feedback, and student performance tracking.</p>
-          <div class="ar">تصميم المنصة قابل للتوسع لاحقًا لدعم الواجبات والتقييمات والدرجات والتغذية الراجعة.</div>
-        </div>
-      </div>
+    <p class="ar" lang="ar" dir="rtl">
+      مساحة أكاديمية واحدة تجمع الدكتور والطلاب حول كل مادة، وتنظم الملفات والروابط والواجبات والتحديثات في مكان واضح وسهل.
+    </p>
+
+    <div class="actions" id="login">
+      <a class="btn primary" href="#">Login</a>
+      <a class="btn secondary" href="../">Academic Portfolio</a>
     </div>
-  </section>
 
-  <section id="instructors">
-    <div class="panel">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Instructor Workspace</span>
-          <h2>For Instructors</h2>
-        </div>
-        <div class="ar-title" lang="ar" dir="rtl">مساحة عضو هيئة التدريس</div>
-      </div>
-
-      <div class="grid two-col">
-        <div class="card">
-          <h3>Main Instructor Capabilities</h3>
-          <ul>
-            <li>Create and edit courses.</li>
-            <li>Upload syllabus files.</li>
-            <li>Add PDFs, slides, videos, and links.</li>
-            <li>Enable, disable, edit, or delete resources.</li>
-            <li>Organize content by week, topic, type, or module.</li>
-          </ul>
-        </div>
-
-        <div class="card" lang="ar" dir="rtl">
-          <h3>أهم قدرات الدكتور</h3>
-          <ul>
-            <li>إنشاء المواد وتعديلها.</li>
-            <li>رفع ملف المنهج الدراسي.</li>
-            <li>إضافة ملفات وشرائح وفيديوهات وروابط.</li>
-            <li>تفعيل أو تعطيل أو تعديل أو حذف الموارد.</li>
-            <li>تنظيم المحتوى حسب الأسبوع أو الموضوع أو النوع.</li>
-          </ul>
-        </div>
-      </div>
+    <div class="pill-row" aria-label="Platform highlights">
+      <div class="pill">Courses</div>
+      <div class="pill">Resources</div>
+      <div class="pill">Students</div>
+      <div class="pill">Assignments</div>
     </div>
-  </section>
 
-  <section id="students">
-    <div class="panel">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Student Workspace</span>
-          <h2>For Students</h2>
-        </div>
-        <div class="ar-title" lang="ar" dir="rtl">مساحة الطالب</div>
-      </div>
-
-      <div class="grid two-col">
-        <div class="card">
-          <h3>Student Access</h3>
-          <p>Students will access their enrolled courses, view the syllabus, download lecture files, open links, watch videos, and follow course updates.</p>
-        </div>
-
-        <div class="card" lang="ar" dir="rtl">
-          <h3>وصول الطالب</h3>
-          <p>يمكن للطلاب الدخول إلى موادهم، عرض المنهج، تحميل ملفات المحاضرات، فتح الروابط، مشاهدة الفيديوهات، ومتابعة تحديثات المادة.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="course">
-    <div class="panel course-preview">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Course Workspace</span>
-          <h2>Each Course Has Its Own Space</h2>
-        </div>
-        <div class="ar-title" lang="ar" dir="rtl">لكل مادة مساحة مستقلة</div>
-      </div>
-
-      <div class="course-top">
-        <div>
-          <h3>CPCS-351 Software Engineering I</h3>
-          <p class="subtitle" style="font-size:18px;margin:0;">
-            Example workspace for a course. The final system will allow instructors to create real course workspaces and control access.
-          </p>
-        </div>
-        <div class="course-code">Sample Course</div>
-      </div>
-
-      <div class="modules">
-        <div class="module">Syllabus</div>
-        <div class="module">Lecture Slides</div>
-        <div class="module">PDF Files</div>
-        <div class="module">Videos</div>
-        <div class="module">External Links</div>
-        <div class="module">Assignments</div>
-        <div class="module">Assessments</div>
-        <div class="module">Grades</div>
-      </div>
-
-      <div class="note" lang="ar" dir="rtl">
-        في المرحلة الأولى نبدأ بإدارة المادة والموارد التعليمية الأساسية، ثم نضيف الواجبات والتقييمات والدرجات تدريجيًا ضمن Sprint لاحقة.
-      </div>
-    </div>
-  </section>
-
-  <section id="status">
-    <div class="panel">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Development Status</span>
-          <h2>Current Status</h2>
-        </div>
-        <div class="ar-title" lang="ar" dir="rtl">حالة التطوير الحالية</div>
-      </div>
-
-      <div class="grid three-col">
-        <div class="card">
-          <span class="badge">Now</span>
-          <h3>Prototype Stage</h3>
-          <p>The current page is a public interface prototype. It does not yet include real authentication or database features.</p>
-        </div>
-
-        <div class="card">
-          <span class="badge">Next</span>
-          <h3>Course MVP</h3>
-          <p>The first functional prototype will focus on creating courses and managing basic teaching resources.</p>
-        </div>
-
-        <div class="card">
-          <span class="badge">Future</span>
-          <h3>Full Platform</h3>
-          <p>The production version will require backend services, database, authentication, roles, and cloud storage.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="docs">
-    <div class="panel">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Internal Reference</span>
-          <h2>Project Documentation</h2>
-        </div>
-        <div class="ar-title" lang="ar" dir="rtl">توثيق المشروع الداخلي</div>
-      </div>
-
-      <p class="subtitle" style="font-size:18px;">
-        These documents are the living Agile reference for the project owner and development work. They are not the main student-facing experience.
-      </p>
-
-      <div class="doc-links">
-        <a class="doc-link" href="../docs/the-educator/00_PROJECT_CHARTER.md">Project Charter<span>Vision, scope, architecture direction.</span></a>
-        <a class="doc-link" href="../docs/the-educator/01_PRODUCT_BACKLOG.md">Product Backlog<span>Epics and planned features.</span></a>
-        <a class="doc-link" href="../docs/the-educator/02_USER_STORIES.md">User Stories<span>Instructor and student needs.</span></a>
-        <a class="doc-link" href="../docs/the-educator/03_SPRINT_PLANNING.md">Sprint Planning<span>Planning template and early sprint direction.</span></a>
-        <a class="doc-link" href="../docs/the-educator/04_SPRINT_REVIEW_AND_CHANGE_LOG.md">Sprint Review & Change Log<span>Review notes, decisions, and changes.</span></a>
-      </div>
-    </div>
+    <p class="simple-note">
+      The login button is a visual placeholder for now. The real system will later connect to secure accounts and private course spaces.
+    </p>
   </section>
 </main>
 
 <footer>
-  © 2026 The Educator. Academic platform concept by Dr. Abdulaziz Attaallah.
+  © 2026 The Educator
 </footer>
 
 </body>
