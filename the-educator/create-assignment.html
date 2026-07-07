@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create Assignment | The Educator</title>
+<meta name="description" content="Create assignment page prototype for The Educator academic platform." />
+<link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+
+<style>
+:root{
+  --ink:#152033;
+  --muted:#667085;
+  --soft:#F6F8FB;
+  --ivory:#FFFDF8;
+  --card:#FFFFFF;
+  --sky:#65C7F7;
+  --mint:#8EE6C8;
+  --sun:#FFB86B;
+  --blue:#2F80ED;
+  --border:rgba(21,32,51,.10);
+  --shadow:0 28px 80px rgba(35,48,70,.10);
+}
+
+@font-face{
+  font-family:"Masmak";
+  src:url("../assets/fonts/masmak.otf") format("opentype");
+  font-weight:400 900;
+  font-style:normal;
+  font-display:swap;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:"Masmak",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(142,230,200,.24), transparent 28%),
+    radial-gradient(circle at 92% 14%, rgba(101,199,247,.20), transparent 34%),
+    radial-gradient(circle at 70% 86%, rgba(255,184,107,.18), transparent 32%),
+    linear-gradient(180deg,var(--ivory),var(--soft));
+}
+
+body,button,input,textarea,select,a,p,h1,h2,h3,div,span,label{
+  font-family:"Masmak",system-ui,sans-serif !important;
+}
+
+a{color:inherit}
+
+.shell{
+  width:min(1180px,calc(100% - 36px));
+  margin:auto;
+}
+
+nav{
+  margin:22px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 16px 42px rgba(35,48,70,.06);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding-left:6px;
+  font-weight:900;
+  letter-spacing:.02em;
+}
+
+.brand-symbol{
+  width:35px;
+  height:35px;
+  border-radius:14px;
+  position:relative;
+  background:
+    radial-gradient(circle at 28% 30%, #fff 0 8%, transparent 9%),
+    linear-gradient(135deg,var(--sky),var(--mint) 56%,var(--sun));
+  box-shadow:0 10px 26px rgba(47,128,237,.18);
+}
+
+.brand-symbol::before,
+.brand-symbol::after{
+  content:"";
+  position:absolute;
+  border-radius:999px;
+  background:#fff;
+  opacity:.9;
+}
+
+.brand-symbol::before{width:18px;height:4px;left:8px;top:15px}
+.brand-symbol::after{width:4px;height:18px;left:15px;top:8px}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  font-weight:850;
+  color:var(--muted);
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:14px;
+}
+
+.nav-links a:hover{
+  background:rgba(47,128,237,.08);
+  color:var(--ink);
+}
+
+.nav-primary{
+  background:var(--ink) !important;
+  color:#fff !important;
+}
+
+main{
+  padding:48px 0 42px;
+}
+
+.page-head{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:22px;
+  align-items:stretch;
+  margin-bottom:24px;
+}
+
+.head-card,
+.tip-card,
+.form-card,
+.preview-card{
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.76);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:var(--shadow);
+}
+
+.head-card{
+  border-radius:38px;
+  padding:34px;
+  position:relative;
+  overflow:hidden;
+}
+
+.head-card::before{
+  content:"";
+  position:absolute;
+  width:310px;
+  height:310px;
+  border-radius:50%;
+  right:-120px;
+  top:-130px;
+  background:conic-gradient(from 220deg,var(--sky),var(--mint),var(--sun),var(--sky));
+  opacity:.18;
+}
+
+.breadcrumb{
+  position:relative;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  color:var(--muted);
+  font-size:14px;
+  font-weight:850;
+  margin-bottom:22px;
+}
+
+.breadcrumb a{
+  text-decoration:none;
+}
+
+.label{
+  position:relative;
+  display:inline-flex;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(47,128,237,.08);
+  color:#2A65B7;
+  font-weight:900;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+h1{
+  position:relative;
+  margin:0;
+  font-size:clamp(36px,5vw,66px);
+  line-height:1;
+  letter-spacing:-.045em;
+}
+
+.head-card p{
+  position:relative;
+  margin:18px 0 0;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.8;
+  max-width:730px;
+}
+
+.tip-card{
+  border-radius:38px;
+  padding:28px;
+  display:grid;
+  align-content:center;
+}
+
+.tip-card h2{
+  margin:0 0 16px;
+  font-size:24px;
+}
+
+.tip-list{
+  display:grid;
+  gap:12px;
+}
+
+.tip-item{
+  padding:14px 16px;
+  border-radius:20px;
+  background:#fff;
+  border:1px solid var(--border);
+  color:#52677E;
+  line-height:1.6;
+  font-weight:800;
+}
+
+.workspace{
+  display:grid;
+  grid-template-columns:1.12fr .88fr;
+  gap:22px;
+  align-items:start;
+}
+
+.form-card,
+.preview-card{
+  border-radius:38px;
+  padding:30px;
+}
+
+.form-card h2,
+.preview-card h2{
+  margin:0 0 20px;
+  font-size:30px;
+  letter-spacing:-.03em;
+}
+
+.form-grid{
+  display:grid;
+  gap:18px;
+}
+
+.field{
+  display:grid;
+  gap:8px;
+}
+
+label{
+  color:#35445A;
+  font-weight:900;
+  font-size:14px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--ink);
+  outline:none;
+  border-radius:18px;
+  padding:0 16px;
+  font-size:16px;
+}
+
+input,
+select{
+  min-height:54px;
+}
+
+textarea{
+  min-height:126px;
+  resize:vertical;
+  padding-top:14px;
+  line-height:1.7;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:rgba(47,128,237,.55);
+  box-shadow:0 0 0 4px rgba(47,128,237,.10);
+}
+
+.two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.three{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.upload-box{
+  border:1.5px dashed rgba(47,128,237,.30);
+  background:rgba(47,128,237,.045);
+  border-radius:24px;
+  padding:24px;
+  text-align:center;
+  color:#52677E;
+  line-height:1.7;
+  font-weight:850;
+}
+
+.rubric{
+  display:grid;
+  gap:10px;
+}
+
+.rubric-row{
+  display:grid;
+  grid-template-columns:1fr 90px;
+  gap:10px;
+  align-items:center;
+}
+
+.rubric-row input{
+  min-height:48px;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:6px;
+}
+
+.btn{
+  min-height:52px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:14px 22px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+  border:1px solid var(--border);
+  cursor:pointer;
+}
+
+.btn.primary{
+  background:var(--ink);
+  color:#fff;
+  box-shadow:0 18px 38px rgba(21,32,51,.18);
+}
+
+.btn.secondary{
+  background:#fff;
+  color:var(--ink);
+}
+
+.preview-card{
+  position:sticky;
+  top:24px;
+}
+
+.preview-box{
+  border-radius:28px;
+  background:#fff;
+  border:1px solid var(--border);
+  padding:24px;
+}
+
+.assignment-icon{
+  width:54px;
+  height:54px;
+  border-radius:20px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,rgba(101,199,247,.28),rgba(142,230,200,.28));
+  color:var(--ink);
+  font-weight:900;
+  margin-bottom:18px;
+}
+
+.preview-box h3{
+  margin:0 0 10px;
+  font-size:27px;
+  letter-spacing:-.025em;
+  line-height:1.15;
+}
+
+.preview-box p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.75;
+}
+
+.preview-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:20px;
+}
+
+.tag{
+  display:inline-flex;
+  padding:9px 11px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--border);
+  color:#52677E;
+  font-weight:850;
+  font-size:13px;
+}
+
+.timeline{
+  margin-top:20px;
+  display:grid;
+  gap:10px;
+}
+
+.timeline-item{
+  padding:14px 16px;
+  border-radius:18px;
+  background:rgba(47,128,237,.06);
+  border:1px solid rgba(47,128,237,.10);
+  color:#52677E;
+  font-weight:850;
+}
+
+.note{
+  margin-top:18px;
+  padding:16px;
+  border-radius:20px;
+  background:rgba(255,184,107,.12);
+  border:1px solid rgba(255,184,107,.20);
+  color:#6F5B3D;
+  line-height:1.7;
+  font-size:14px;
+  font-weight:800;
+}
+
+footer{
+  padding:30px 0 26px;
+  color:#8390A3;
+  font-size:13px;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+@media(max-width:950px){
+  .page-head,
+  .workspace,
+  .two,
+  .three{
+    grid-template-columns:1fr;
+  }
+
+  .preview-card{
+    position:relative;
+    top:auto;
+  }
+}
+
+@media(max-width:640px){
+  .shell{
+    width:min(100% - 24px,1180px);
+  }
+
+  nav{
+    border-radius:24px;
+    align-items:flex-start;
+  }
+
+  .nav-links a:nth-child(2){
+    display:none;
+  }
+
+  main{
+    padding-top:30px;
+  }
+
+  .head-card,
+  .tip-card,
+  .form-card,
+  .preview-card{
+    border-radius:30px;
+    padding:24px;
+  }
+
+  .rubric-row{
+    grid-template-columns:1fr;
+  }
+
+  footer{
+    justify-content:center;
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="shell">
+  <nav>
+    <div class="brand">
+      <div class="brand-symbol" aria-hidden="true"></div>
+      <span>The Educator</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="course.html">Course</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a class="nav-primary" href="login.html">Logout</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page-head" aria-label="Create assignment overview">
+      <div class="head-card">
+        <div class="breadcrumb">
+          <a href="dashboard.html">Dashboard</a>
+          <span>/</span>
+          <a href="course.html">Software Engineering I</a>
+          <span>/</span>
+          <span>Create Assignment</span>
+        </div>
+
+        <span class="label">Instructor action</span>
+        <h1>Create an assignment</h1>
+        <p>
+          Prepare a clear assignment brief with deadline, marks, submission instructions, and a simple rubric for students.
+        </p>
+      </div>
+
+      <aside class="tip-card">
+        <h2>Assignment tip</h2>
+        <div class="tip-list">
+          <div class="tip-item">State exactly what the student must submit.</div>
+          <div class="tip-item">Add a simple rubric before publishing.</div>
+          <div class="tip-item">Use clear deadlines and late policy notes.</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="workspace" aria-label="Create assignment form">
+      <form class="form-card" action="course.html">
+        <h2>Assignment details</h2>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="title">Assignment title</label>
+            <input id="title" name="title" type="text" placeholder="Example: Requirements Analysis Exercise" />
+          </div>
+
+          <div class="two">
+            <div class="field">
+              <label for="marks">Total marks</label>
+              <input id="marks" name="marks" type="number" placeholder="10" />
+            </div>
+
+            <div class="field">
+              <label for="due">Due date</label>
+              <input id="due" name="due" type="date" />
+            </div>
+          </div>
+
+          <div class="three">
+            <div class="field">
+              <label for="type">Submission type</label>
+              <select id="type" name="type">
+                <option>File upload</option>
+                <option>Text answer</option>
+                <option>External link</option>
+                <option>No submission</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="format">Accepted format</label>
+              <select id="format" name="format">
+                <option>PDF</option>
+                <option>DOCX</option>
+                <option>ZIP</option>
+                <option>Any file</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="visibility">Visibility</label>
+              <select id="visibility" name="visibility">
+                <option>Visible to students</option>
+                <option>Hidden draft</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="instructions">Instructions</label>
+            <textarea id="instructions" name="instructions" placeholder="Write the assignment instructions clearly. Include expected output, submission format, and any restrictions."></textarea>
+          </div>
+
+          <div class="field">
+            <label>Attach assignment file optional</label>
+            <div class="upload-box">
+              Drop assignment brief here or click to upload<br />
+              <small>Prototype placeholder — file upload will be connected later.</small>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Rubric quick draft</label>
+            <div class="rubric">
+              <div class="rubric-row">
+                <input type="text" placeholder="Accuracy and understanding" />
+                <input type="number" placeholder="4" />
+              </div>
+              <div class="rubric-row">
+                <input type="text" placeholder="Completeness" />
+                <input type="number" placeholder="3" />
+              </div>
+              <div class="rubric-row">
+                <input type="text" placeholder="Clarity and organization" />
+                <input type="number" placeholder="2" />
+              </div>
+              <div class="rubric-row">
+                <input type="text" placeholder="Writing quality" />
+                <input type="number" placeholder="1" />
+              </div>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" type="submit">Publish Assignment</button>
+            <a class="btn secondary" href="course.html">Save Draft</a>
+            <a class="btn secondary" href="course.html">Cancel</a>
+          </div>
+        </div>
+      </form>
+
+      <aside class="preview-card">
+        <h2>Preview</h2>
+
+        <div class="preview-box">
+          <div class="assignment-icon">A</div>
+          <h3>Requirements Analysis Exercise</h3>
+          <p>
+            Students will read a system description, identify functional and non-functional requirements, and submit a PDF file.
+          </p>
+
+          <div class="preview-tags">
+            <span class="tag">10 marks</span>
+            <span class="tag">PDF upload</span>
+            <span class="tag">Visible</span>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">Instructions visible to students</div>
+            <div class="timeline-item">Submission box placeholder</div>
+            <div class="timeline-item">Rubric attached to assignment</div>
+          </div>
+        </div>
+
+        <div class="note">
+          This is a prototype. Real submissions, grading, and student tracking will be connected later.
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 The Educator</span>
+    <span>Create assignment prototype</span>
+  </footer>
+</div>
+
+</body>
+</html>
