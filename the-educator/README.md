@@ -258,6 +258,12 @@ The backend-readiness blueprint is documented in:
 docs/backend-readiness.md
 ```
 
+The recommended future technical direction is documented in:
+
+```text
+docs/technical-direction.md
+```
+
 ---
 
 ## Suggested Data Models
@@ -414,7 +420,8 @@ the-educator/
 ├── profile.html
 ├── help.html
 ├── docs/
-│   └── backend-readiness.md
+│   ├── backend-readiness.md
+│   └── technical-direction.md
 └── assets/
     ├── css/
     │   └── style.css
@@ -461,7 +468,7 @@ the-educator/
   - [x] First backend vertical slice defined
   - [x] Future API boundary drafted
 - [ ] Backend implementation planning
-  - [ ] Backend technology choice
+  - [x] Backend technology recommendation
   - [ ] Database schema design
 
 ---
@@ -470,7 +477,7 @@ the-educator/
 
 The next recommended step is:
 
-> Choose the future technical direction for the real application, such as Supabase/Firebase for fast launch or a custom Node/Django/Laravel backend for more control.
+> Draft the future database schema around users, courses, enrollments, resources, assignments, submissions, grades, announcements, and notifications.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 

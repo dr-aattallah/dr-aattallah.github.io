@@ -21,6 +21,12 @@ This phase should not introduce:
 - Role-based access enforcement
 - React, Next.js, or other framework migration
 
+The future technology recommendation is documented separately in:
+
+```text
+docs/technical-direction.md
+```
+
 ---
 
 ## Roles
@@ -508,7 +514,7 @@ Recommended first production routes:
 - [x] Page-to-data mapping is documented
 - [x] First backend vertical slice is defined
 - [x] Future API boundary is drafted
-- [ ] Backend technology choice
+- [x] Backend technology recommendation
 - [ ] Authentication provider choice
 - [ ] Database schema design
 - [ ] File storage provider choice
