@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>My Grades | The Educator</title>
+<meta name="description" content="Student grades page prototype for The Educator academic platform." />
+<link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+
+<style>
+:root{
+  --ink:#152033;
+  --muted:#667085;
+  --soft:#F6F8FB;
+  --ivory:#FFFDF8;
+  --card:#FFFFFF;
+  --sky:#65C7F7;
+  --mint:#8EE6C8;
+  --sun:#FFB86B;
+  --blue:#2F80ED;
+  --border:rgba(21,32,51,.10);
+  --shadow:0 28px 80px rgba(35,48,70,.10);
+}
+
+@font-face{
+  font-family:"Masmak";
+  src:url("../assets/fonts/masmak.otf") format("opentype");
+  font-weight:400 900;
+  font-style:normal;
+  font-display:swap;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:"Masmak",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(142,230,200,.24), transparent 28%),
+    radial-gradient(circle at 92% 14%, rgba(101,199,247,.20), transparent 34%),
+    radial-gradient(circle at 70% 86%, rgba(255,184,107,.18), transparent 32%),
+    linear-gradient(180deg,var(--ivory),var(--soft));
+}
+
+body,button,input,a,p,h1,h2,h3,div,span,label{
+  font-family:"Masmak",system-ui,sans-serif !important;
+}
+
+a{color:inherit}
+
+.shell{
+  width:min(1180px,calc(100% - 36px));
+  margin:auto;
+}
+
+nav{
+  margin:22px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 16px 42px rgba(35,48,70,.06);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding-left:6px;
+  font-weight:900;
+  letter-spacing:.02em;
+}
+
+.brand-symbol{
+  width:35px;
+  height:35px;
+  border-radius:14px;
+  position:relative;
+  background:
+    radial-gradient(circle at 28% 30%, #fff 0 8%, transparent 9%),
+    linear-gradient(135deg,var(--sky),var(--mint) 56%,var(--sun));
+  box-shadow:0 10px 26px rgba(47,128,237,.18);
+}
+
+.brand-symbol::before,
+.brand-symbol::after{
+  content:"";
+  position:absolute;
+  border-radius:999px;
+  background:#fff;
+  opacity:.9;
+}
+
+.brand-symbol::before{width:18px;height:4px;left:8px;top:15px}
+.brand-symbol::after{width:4px;height:18px;left:15px;top:8px}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  font-weight:850;
+  color:var(--muted);
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:14px;
+}
+
+.nav-links a:hover{
+  background:rgba(47,128,237,.08);
+  color:var(--ink);
+}
+
+.nav-primary{
+  background:var(--ink) !important;
+  color:#fff !important;
+}
+
+main{
+  padding:48px 0 42px;
+}
+
+.page-head{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:22px;
+  align-items:stretch;
+  margin-bottom:24px;
+}
+
+.head-card,
+.summary-card,
+.grades-card,
+.feedback-card{
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.76);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:var(--shadow);
+}
+
+.head-card{
+  border-radius:38px;
+  padding:34px;
+  position:relative;
+  overflow:hidden;
+}
+
+.head-card::before{
+  content:"";
+  position:absolute;
+  width:310px;
+  height:310px;
+  border-radius:50%;
+  right:-120px;
+  top:-130px;
+  background:conic-gradient(from 220deg,var(--sky),var(--mint),var(--sun),var(--sky));
+  opacity:.18;
+}
+
+.breadcrumb{
+  position:relative;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  color:var(--muted);
+  font-size:14px;
+  font-weight:850;
+  margin-bottom:22px;
+}
+
+.breadcrumb a{text-decoration:none}
+
+.label{
+  position:relative;
+  display:inline-flex;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(47,128,237,.08);
+  color:#2A65B7;
+  font-weight:900;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+h1{
+  position:relative;
+  margin:0;
+  font-size:clamp(36px,5vw,66px);
+  line-height:1;
+  letter-spacing:-.045em;
+}
+
+.head-card p{
+  position:relative;
+  margin:18px 0 0;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.8;
+  max-width:730px;
+}
+
+.summary-card{
+  border-radius:38px;
+  padding:28px;
+  display:grid;
+  align-content:center;
+}
+
+.summary-card h2{
+  margin:0 0 16px;
+  font-size:24px;
+}
+
+.grade-circle{
+  width:156px;
+  height:156px;
+  border-radius:50%;
+  margin:0 auto 18px;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle at center,#fff 0 56%,transparent 57%),
+    conic-gradient(var(--mint) 0 82%, rgba(21,32,51,.08) 82% 100%);
+  box-shadow:0 20px 52px rgba(35,48,70,.10);
+}
+
+.grade-circle strong{
+  font-size:42px;
+  letter-spacing:-.04em;
+}
+
+.summary-card p{
+  margin:0;
+  text-align:center;
+  color:var(--muted);
+  line-height:1.7;
+  font-weight:850;
+}
+
+.workspace{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:22px;
+  align-items:start;
+}
+
+.grades-card,
+.feedback-card{
+  border-radius:38px;
+  padding:30px;
+}
+
+.grades-card h2,
+.feedback-card h2{
+  margin:0 0 20px;
+  font-size:30px;
+  letter-spacing:-.03em;
+}
+
+.grade-list{
+  display:grid;
+  gap:12px;
+}
+
+.grade-item{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:14px;
+  align-items:center;
+  padding:18px;
+  border-radius:24px;
+  background:#fff;
+  border:1px solid var(--border);
+}
+
+.grade-title strong{
+  display:block;
+  color:var(--ink);
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.grade-title span{
+  color:var(--muted);
+  font-weight:850;
+  line-height:1.55;
+}
+
+.score{
+  min-width:92px;
+  min-height:52px;
+  display:grid;
+  place-items:center;
+  border-radius:18px;
+  background:rgba(47,128,237,.08);
+  color:#2A65B7;
+  font-weight:900;
+}
+
+.status{
+  display:inline-flex;
+  margin-top:10px;
+  padding:8px 11px;
+  border-radius:999px;
+  font-weight:900;
+  font-size:13px;
+}
+
+.status.good{
+  background:rgba(142,230,200,.24);
+  color:#247B68;
+}
+
+.status.review{
+  background:rgba(255,184,107,.18);
+  color:#8B5A1E;
+}
+
+.status.pending{
+  background:rgba(21,32,51,.07);
+  color:#52677E;
+}
+
+.feedback-card{
+  position:sticky;
+  top:24px;
+}
+
+.feedback-list{
+  display:grid;
+  gap:12px;
+}
+
+.feedback-item{
+  padding:16px;
+  border-radius:20px;
+  background:#fff;
+  border:1px solid var(--border);
+}
+
+.feedback-item strong{
+  display:block;
+  color:var(--ink);
+  margin-bottom:7px;
+}
+
+.feedback-item p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.7;
+  font-weight:800;
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+
+.btn{
+  min-height:50px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 20px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+  border:1px solid var(--border);
+}
+
+.btn.primary{
+  background:var(--ink);
+  color:#fff;
+  box-shadow:0 18px 38px rgba(21,32,51,.18);
+}
+
+.btn.secondary{
+  background:#fff;
+  color:var(--ink);
+}
+
+.note{
+  margin-top:18px;
+  padding:16px;
+  border-radius:20px;
+  background:rgba(255,184,107,.12);
+  border:1px solid rgba(255,184,107,.20);
+  color:#6F5B3D;
+  line-height:1.7;
+  font-size:14px;
+  font-weight:800;
+}
+
+footer{
+  padding:30px 0 26px;
+  color:#8390A3;
+  font-size:13px;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+@media(max-width:980px){
+  .page-head,
+  .workspace{
+    grid-template-columns:1fr;
+  }
+
+  .feedback-card{
+    position:relative;
+    top:auto;
+  }
+}
+
+@media(max-width:640px){
+  .shell{
+    width:min(100% - 24px,1180px);
+  }
+
+  nav{
+    border-radius:24px;
+    align-items:flex-start;
+  }
+
+  .nav-links a:nth-child(2){
+    display:none;
+  }
+
+  main{
+    padding-top:30px;
+  }
+
+  .head-card,
+  .summary-card,
+  .grades-card,
+  .feedback-card{
+    border-radius:30px;
+    padding:24px;
+  }
+
+  .grade-item{
+    grid-template-columns:1fr;
+  }
+
+  .score{
+    width:max-content;
+  }
+
+  footer{
+    justify-content:center;
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="shell">
+  <nav>
+    <div class="brand">
+      <div class="brand-symbol" aria-hidden="true"></div>
+      <span>The Educator</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="student-course.html">Course</a>
+      <a href="dashboard.html">My Courses</a>
+      <a class="nav-primary" href="login.html">Logout</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page-head" aria-label="Student grades overview">
+      <div class="head-card">
+        <div class="breadcrumb">
+          <a href="student-course.html">Software Engineering I</a>
+          <span>/</span>
+          <span>My Grades</span>
+        </div>
+
+        <span class="label">Student progress</span>
+        <h1>My grades</h1>
+        <p>
+          View your marks, feedback, pending work, and overall progress in this course.
+        </p>
+      </div>
+
+      <aside class="summary-card">
+        <h2>Current Total</h2>
+        <div class="grade-circle">
+          <strong>82%</strong>
+        </div>
+        <p>Your current course progress based on graded items.</p>
+      </aside>
+    </section>
+
+    <section class="workspace" aria-label="Student grades workspace">
+      <article class="grades-card">
+        <h2>Graded Items</h2>
+
+        <div class="grade-list">
+          <div class="grade-item">
+            <div class="grade-title">
+              <strong>Requirements Analysis Exercise</strong>
+              <span>Functional and non-functional requirements extraction.</span>
+              <br />
+              <span class="status good">Graded</span>
+            </div>
+            <div class="score">8.5 / 10</div>
+          </div>
+
+          <div class="grade-item">
+            <div class="grade-title">
+              <strong>Project Proposal Draft</strong>
+              <span>Initial project idea and scope definition.</span>
+              <br />
+              <span class="status review">Needs Review</span>
+            </div>
+            <div class="score">7 / 10</div>
+          </div>
+
+          <div class="grade-item">
+            <div class="grade-title">
+              <strong>UML Diagram Practice</strong>
+              <span>Class diagram and sequence diagram exercise.</span>
+              <br />
+              <span class="status pending">Pending</span>
+            </div>
+            <div class="score">—</div>
+          </div>
+
+          <div class="grade-item">
+            <div class="grade-title">
+              <strong>Participation</strong>
+              <span>Course engagement and in-class activities.</span>
+              <br />
+              <span class="status good">Updated</span>
+            </div>
+            <div class="score">9 / 10</div>
+          </div>
+        </div>
+      </article>
+
+      <aside class="feedback-card">
+        <h2>Feedback</h2>
+
+        <div class="feedback-list">
+          <div class="feedback-item">
+            <strong>Requirements Analysis Exercise</strong>
+            <p>Good separation between functional and non-functional requirements. Add clearer source references next time.</p>
+          </div>
+
+          <div class="feedback-item">
+            <strong>Project Proposal Draft</strong>
+            <p>The idea is good, but the scope needs to be narrowed and the user roles should be clearer.</p>
+          </div>
+
+          <div class="feedback-item">
+            <strong>Next step</strong>
+            <p>Review the Week 2 materials before starting the UML diagram task.</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary" href="student-course.html">Back to Course</a>
+          <a class="btn secondary" href="assignment.html">Open Assignment</a>
+        </div>
+
+        <div class="note">
+          This is a prototype. Real grade visibility, instructor feedback, and final calculation rules will be connected later.
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 The Educator</span>
+    <span>Student grades prototype</span>
+  </footer>
+</div>
+
+</body>
+</html>
