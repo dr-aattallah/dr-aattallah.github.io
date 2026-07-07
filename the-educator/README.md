@@ -106,11 +106,11 @@ index.html
 
 ---
 
-## Recommended Unified Navigation
+## Current Unified Navigation
 
 ### Instructor Navigation
 
-Use this navigation block in instructor-facing pages:
+Instructor-facing pages use this navigation block:
 
 ```html
 <div class="nav-links">
@@ -123,7 +123,7 @@ Use this navigation block in instructor-facing pages:
 </div>
 ```
 
-Apply it to:
+Applied to:
 
 ```text
 dashboard.html
@@ -144,7 +144,7 @@ help.html
 
 ### Student Navigation
 
-Use this navigation block in student-facing pages:
+Student-facing pages use this navigation block:
 
 ```html
 <div class="nav-links">
@@ -157,7 +157,7 @@ Use this navigation block in student-facing pages:
 </div>
 ```
 
-Apply it to:
+Applied to:
 
 ```text
 student-course.html
@@ -355,8 +355,6 @@ The shared stylesheet is used as the common design foundation. All prototype pag
 A future production version should refactor this into:
 
 - Shared layout components
-- Shared navigation
-- Shared CSS file
 - Reusable cards and forms
 - Dynamic routing
 - Backend API integration
@@ -441,8 +439,8 @@ the-educator/
 - [x] Notifications page
 - [x] Profile page
 - [x] Help page
-- [ ] Unified navigation review
-- [ ] Link testing
+- [x] Unified navigation review
+- [x] Link testing
 - [x] CSS cleanup
   - [x] Dashboard styles moved into `assets/css/style.css`
   - [x] Course page styles
@@ -457,7 +455,7 @@ the-educator/
 
 The next recommended step is:
 
-> Visually review the main instructor and student flows, then continue simplifying duplicated scoped CSS into smaller reusable shared patterns.
+> Prepare the backend-readiness blueprint: define user roles, route ownership, page-to-data mapping, and the first database/API boundary without implementing a backend yet.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 
