@@ -150,6 +150,12 @@ The full future schema draft is documented in:
 docs/database-schema.md
 ```
 
+The static-to-app migration roadmap is documented in:
+
+```text
+docs/static-to-app-roadmap.md
+```
+
 ---
 
 ## Suggested Route Direction

@@ -270,6 +270,12 @@ The future database schema draft is documented in:
 docs/database-schema.md
 ```
 
+The static-to-app migration roadmap is documented in:
+
+```text
+docs/static-to-app-roadmap.md
+```
+
 ---
 
 ## Suggested Data Models
@@ -430,7 +436,8 @@ the-educator/
 ├── docs/
 │   ├── backend-readiness.md
 │   ├── technical-direction.md
-│   └── database-schema.md
+│   ├── database-schema.md
+│   └── static-to-app-roadmap.md
 └── assets/
     ├── css/
     │   └── style.css
@@ -479,7 +486,8 @@ the-educator/
 - [ ] Backend implementation planning
   - [x] Backend technology recommendation
   - [x] Database schema design
-  - [ ] Static-to-app migration roadmap
+  - [x] Static-to-app migration roadmap
+  - [ ] ASP.NET Core API skeleton
 
 ---
 
@@ -487,7 +495,7 @@ the-educator/
 
 The next recommended step is:
 
-> Draft the static-to-app migration roadmap so the current prototype can move toward an ASP.NET Core Web API + Supabase PostgreSQL architecture in small, controlled phases.
+> Create a separate ASP.NET Core Web API project skeleton with a health endpoint, without connecting production Supabase credentials yet.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 

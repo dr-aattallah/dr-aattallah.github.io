@@ -35,6 +35,12 @@ The future database schema draft is documented separately in:
 docs/database-schema.md
 ```
 
+The migration roadmap is documented separately in:
+
+```text
+docs/static-to-app-roadmap.md
+```
+
 ---
 
 ## Roles
@@ -526,4 +532,4 @@ Recommended first production routes:
 - [ ] Authentication provider choice
 - [x] Database schema design
 - [ ] File storage provider choice
-- [ ] Migration plan from static pages to app routes
+- [x] Migration plan from static pages to app routes
