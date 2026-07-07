@@ -5,18 +5,22 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Educator</title>
-<meta name="description" content="The Educator is a simple academic platform that connects instructors and students around each course, with resources, files, links, assignments, and updates in one place." />
+<meta name="description" content="The Educator is a simple academic space where instructors organize course resources and students find everything they need for each course." />
 <link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
 
 <style>
 :root{
-  --bg:#050914;
-  --bg2:#0A1020;
-  --text:#F8FAFC;
-  --muted:#AAB6C8;
-  --blue:#38BDF8;
-  --amber:#F59E0B;
-  --line:rgba(255,255,255,.12);
+  --ink:#152033;
+  --muted:#667085;
+  --soft:#F6F8FB;
+  --ivory:#FFFDF8;
+  --card:#FFFFFF;
+  --sky:#65C7F7;
+  --mint:#8EE6C8;
+  --sun:#FFB86B;
+  --blue:#2F80ED;
+  --border:rgba(21,32,51,.10);
+  --shadow:0 28px 80px rgba(35,48,70,.10);
 }
 
 @font-face{
@@ -28,235 +32,340 @@
 }
 
 *{box-sizing:border-box}
-
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
   min-height:100vh;
-  font-family:"Masmak",system-ui,sans-serif;
-  color:var(--text);
+  font-family:"Masmak",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
   background:
-    radial-gradient(circle at 50% 24%, rgba(56,189,248,.18), transparent 28%),
-    radial-gradient(circle at 72% 42%, rgba(245,158,11,.12), transparent 24%),
-    linear-gradient(180deg,var(--bg),var(--bg2));
-  overflow-x:hidden;
+    radial-gradient(circle at 14% 16%, rgba(142,230,200,.28), transparent 28%),
+    radial-gradient(circle at 88% 20%, rgba(101,199,247,.22), transparent 32%),
+    radial-gradient(circle at 68% 82%, rgba(255,184,107,.20), transparent 32%),
+    linear-gradient(180deg,var(--ivory),var(--soft));
 }
 
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(rgba(255,255,255,.028) 1px, transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.018) 1px, transparent 1px);
-  background-size:56px 56px;
-  mask-image:linear-gradient(to bottom, rgba(0,0,0,.75), transparent 78%);
+body,button,input,a,p,h1,h2,div,span{
+  font-family:"Masmak",system-ui,sans-serif !important;
 }
 
-a{
-  color:inherit;
-}
+a{color:inherit}
 
 nav{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:10;
-  padding:22px clamp(20px,5vw,72px);
+  width:min(1160px,calc(100% - 36px));
+  margin:22px auto 0;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:18px;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
   backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 16px 42px rgba(35,48,70,.06);
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:11px;
+  padding-left:6px;
   font-weight:900;
-  letter-spacing:.08em;
-  text-transform:uppercase;
+  letter-spacing:.02em;
 }
 
-.brand-mark{
-  width:34px;
-  height:34px;
-  border-radius:12px;
-  border:1px solid rgba(255,255,255,.28);
-  background:linear-gradient(135deg,rgba(56,189,248,.38),rgba(245,158,11,.26));
-  box-shadow:0 0 28px rgba(56,189,248,.24);
+.brand-symbol{
+  width:35px;
+  height:35px;
+  border-radius:14px;
+  position:relative;
+  background:
+    radial-gradient(circle at 28% 30%, #fff 0 8%, transparent 9%),
+    linear-gradient(135deg,var(--sky),var(--mint) 56%,var(--sun));
+  box-shadow:0 10px 26px rgba(47,128,237,.18);
 }
+
+.brand-symbol::before,
+.brand-symbol::after{
+  content:"";
+  position:absolute;
+  border-radius:999px;
+  background:#fff;
+  opacity:.9;
+}
+.brand-symbol::before{width:18px;height:4px;left:8px;top:15px}
+.brand-symbol::after{width:4px;height:18px;left:15px;top:8px}
 
 .nav-links{
   display:flex;
   align-items:center;
-  gap:14px;
+  gap:4px;
 }
 
 .nav-links a{
   text-decoration:none;
+  font-weight:850;
   color:var(--muted);
-  font-weight:800;
-  font-size:14px;
   padding:10px 14px;
   border-radius:999px;
+  font-size:14px;
 }
 
 .nav-links a:hover{
-  color:var(--text);
-  background:rgba(255,255,255,.08);
+  background:rgba(47,128,237,.08);
+  color:var(--ink);
 }
 
-.login-top{
-  border:1px solid rgba(255,255,255,.2);
-  color:var(--text)!important;
+.nav-login{
+  background:var(--ink) !important;
+  color:#fff !important;
 }
 
 main{
-  min-height:100vh;
+  min-height:calc(100vh - 82px);
   display:grid;
   place-items:center;
-  padding:110px 22px 52px;
+  padding:56px 18px 42px;
 }
 
 .hero{
-  width:min(1060px,100%);
-  text-align:center;
+  width:min(1080px,100%);
   display:grid;
-  justify-items:center;
+  grid-template-columns:.92fr 1.08fr;
+  gap:54px;
+  align-items:center;
 }
 
-.logo{
-  width:min(540px,86vw);
-  filter:
-    drop-shadow(0 0 40px rgba(56,189,248,.22))
-    drop-shadow(0 0 60px rgba(245,158,11,.14));
-  margin-bottom:20px;
-  user-select:none;
+.visual{
+  display:grid;
+  place-items:center;
+}
+
+.orbit-card{
+  width:min(430px,88vw);
+  aspect-ratio:1;
+  border-radius:44px;
+  background:rgba(255,255,255,.68);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:var(--shadow);
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+}
+
+.orbit-card::before{
+  content:"";
+  position:absolute;
+  width:88%;
+  height:88%;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.95) 0 28%, transparent 29%),
+    conic-gradient(from 210deg, var(--sky), var(--mint), var(--sun), var(--sky));
+  opacity:.90;
+  mask:radial-gradient(circle, transparent 0 48%, #000 49% 57%, transparent 58%);
+  -webkit-mask:radial-gradient(circle, transparent 0 48%, #000 49% 57%, transparent 58%);
+}
+
+.orbit-card::after{
+  content:"";
+  position:absolute;
+  width:78%;
+  height:34%;
+  border-radius:999px;
+  border:2px solid rgba(47,128,237,.18);
+  transform:rotate(-18deg);
+}
+
+.course-mark{
+  position:relative;
+  z-index:2;
+  width:176px;
+  height:176px;
+  border-radius:42px;
+  background:#fff;
+  border:1px solid rgba(21,32,51,.08);
+  box-shadow:0 24px 54px rgba(35,48,70,.12);
+  display:grid;
+  place-items:center;
+}
+
+.course-mark .node{
+  position:absolute;
+  width:16px;
+  height:16px;
+  border-radius:999px;
+  box-shadow:0 8px 20px rgba(35,48,70,.12);
+}
+.node.one{left:33px;top:42px;background:var(--sky)}
+.node.two{right:34px;top:42px;background:var(--mint)}
+.node.three{left:50%;bottom:30px;transform:translateX(-50%);background:var(--sun)}
+
+.connector{
+  width:96px;
+  height:96px;
+  border-radius:28px;
+  border:8px solid var(--ink);
+  border-top-color:transparent;
+  transform:rotate(45deg);
+  opacity:.94;
+}
+
+.copy{max-width:650px}
+
+.label{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 12px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--border);
+  color:#476076;
+  font-weight:900;
+  box-shadow:0 12px 30px rgba(35,48,70,.06);
+  margin-bottom:18px;
+}
+.label::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--sky),var(--mint),var(--sun));
 }
 
 h1{
   margin:0;
-  font-size:clamp(48px,8vw,92px);
-  line-height:.95;
-  letter-spacing:-.045em;
-  font-weight:900;
+  font-size:clamp(54px,8.6vw,104px);
+  line-height:.92;
+  letter-spacing:-.06em;
+  color:var(--ink);
 }
 
 .tagline{
-  margin:20px auto 0;
-  max-width:780px;
+  margin:24px 0 0;
+  max-width:660px;
+  color:#35445A;
+  font-size:clamp(21px,2.8vw,31px);
+  line-height:1.45;
+  font-weight:900;
+  letter-spacing:-.02em;
+}
+
+.description{
+  margin:22px 0 0;
+  max-width:640px;
   color:var(--muted);
-  font-size:clamp(18px,2.3vw,25px);
-  line-height:1.75;
+  font-size:18px;
+  line-height:1.85;
 }
 
 .ar{
   direction:rtl;
-  margin:22px auto 0;
-  max-width:820px;
-  color:#DDE7F5;
-  font-size:clamp(18px,2.1vw,23px);
+  text-align:right;
+  margin:18px 0 0;
+  max-width:640px;
+  color:#43566D;
+  font-size:18px;
   line-height:2;
 }
 
 .actions{
-  margin-top:36px;
   display:flex;
-  justify-content:center;
-  gap:14px;
   flex-wrap:wrap;
+  gap:12px;
+  margin-top:32px;
 }
 
 .btn{
-  min-width:176px;
-  min-height:54px;
+  min-height:52px;
+  padding:14px 24px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:14px 24px;
   border-radius:999px;
   text-decoration:none;
   font-weight:900;
-  border:1px solid rgba(255,255,255,.18);
+  border:1px solid var(--border);
 }
 
 .btn.primary{
-  background:linear-gradient(135deg,var(--blue),var(--amber));
-  color:#06101F;
-  box-shadow:
-    0 0 34px rgba(56,189,248,.22),
-    0 0 46px rgba(245,158,11,.14);
+  background:var(--ink);
+  color:#fff;
+  box-shadow:0 18px 38px rgba(21,32,51,.20);
 }
 
 .btn.secondary{
-  color:var(--text);
-  background:rgba(255,255,255,.06);
-  backdrop-filter:blur(16px);
+  background:#fff;
+  color:var(--ink);
 }
 
-.pill-row{
-  margin-top:44px;
+.trust-row{
   display:flex;
-  justify-content:center;
-  gap:12px;
+  gap:10px;
   flex-wrap:wrap;
+  margin-top:32px;
 }
 
-.pill{
-  padding:12px 16px;
+.trust{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:11px 14px;
   border-radius:999px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.045);
-  color:#D7E2F1;
-  font-weight:800;
+  background:rgba(255,255,255,.72);
+  border:1px solid var(--border);
+  color:#52677E;
+  font-size:14px;
+  font-weight:850;
 }
-
-.simple-note{
-  margin-top:34px;
-  max-width:760px;
-  color:#7F8EA5;
-  font-size:15px;
-  line-height:1.8;
+.trust::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:999px;
+  background:var(--blue);
 }
 
 footer{
-  position:fixed;
-  left:0;
-  right:0;
-  bottom:0;
-  padding:18px 22px;
-  text-align:center;
-  color:#65748A;
+  width:min(1160px,calc(100% - 36px));
+  margin:0 auto 22px;
+  color:#8390A3;
   font-size:13px;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
 }
 
-@media(max-width:720px){
+@media(max-width:900px){
+  .hero{
+    grid-template-columns:1fr;
+    gap:34px;
+    text-align:center;
+  }
+  .copy{margin:auto}
+  .description,.ar{margin-left:auto;margin-right:auto}
+  .ar{text-align:center}
+  .actions,.trust-row{justify-content:center}
+  .visual{order:-1}
+}
+
+@media(max-width:640px){
   nav{
-    position:static;
-    padding:18px;
+    border-radius:24px;
+    align-items:flex-start;
   }
-
-  .nav-links a:not(.login-top){
-    display:none;
-  }
-
-  main{
-    padding-top:32px;
-  }
-
-  .logo{
-    width:min(430px,94vw);
-  }
-
-  footer{
-    position:static;
-  }
+  .nav-links a:not(.nav-login){display:none}
+  main{padding-top:34px}
+  .orbit-card{border-radius:34px}
+  .course-mark{width:146px;height:146px;border-radius:34px}
+  .connector{width:80px;height:80px}
+  footer{justify-content:center;text-align:center}
 }
 </style>
 </head>
@@ -265,51 +374,62 @@ footer{
 
 <nav>
   <div class="brand">
-    <div class="brand-mark" aria-hidden="true"></div>
+    <div class="brand-symbol" aria-hidden="true"></div>
     <span>The Educator</span>
   </div>
 
   <div class="nav-links">
     <a href="#about">About</a>
     <a href="../">Portfolio</a>
-    <a class="login-top" href="#login">Login</a>
+    <a class="nav-login" href="login.html">Login</a>
   </div>
 </nav>
 
 <main>
   <section class="hero" id="about" aria-label="The Educator landing page">
-   <img class="logo" src="assets/images/the-educator-logo.png" alt="The Educator abstract logo" />
-
-    <h1>The Educator</h1>
-
-    <p class="tagline">
-      One simple space for every course, connecting instructors and students through resources, files, links, assignments, and updates.
-    </p>
-
-    <p class="ar" lang="ar" dir="rtl">
-      مساحة أكاديمية واحدة تجمع الدكتور والطلاب حول كل مادة، وتنظم الملفات والروابط والواجبات والتحديثات في مكان واضح وسهل.
-    </p>
-
-    <div class="actions" id="login">
-      <a class="btn primary" href="#">Login</a>
-      <a class="btn secondary" href="../">Academic Portfolio</a>
+    <div class="visual" aria-hidden="true">
+      <div class="orbit-card">
+        <div class="course-mark">
+          <span class="node one"></span>
+          <span class="node two"></span>
+          <span class="node three"></span>
+          <div class="connector"></div>
+        </div>
+      </div>
     </div>
 
-    <div class="pill-row" aria-label="Platform highlights">
-      <div class="pill">Courses</div>
-      <div class="pill">Resources</div>
-      <div class="pill">Students</div>
-      <div class="pill">Assignments</div>
-    </div>
+    <div class="copy">
+      <div class="label">Academic course space</div>
 
-    <p class="simple-note">
-      The login button is a visual placeholder for now. The real system will later connect to secure accounts and private course spaces.
-    </p>
+      <h1>The Educator</h1>
+
+      <p class="tagline">Your course, beautifully organized.</p>
+
+      <p class="description">
+        A simple academic space where instructors share resources and students find everything they need for each course.
+      </p>
+
+      <p class="ar" lang="ar" dir="rtl">
+        منصة بسيطة تجمع كل ما يخص المادة في مكان واحد: الملفات، الروابط، الواجبات، والتحديثات.
+      </p>
+
+      <div class="actions">
+        <a class="btn primary" href="login.html">Login</a>
+        <a class="btn secondary" href="../">Personal Homepage</a>
+      </div>
+
+      <div class="trust-row">
+        <div class="trust">Courses</div>
+        <div class="trust">Resources</div>
+        <div class="trust">Assignments</div>
+      </div>
+    </div>
   </section>
 </main>
 
 <footer>
-  © 2026 The Educator
+  <span>© 2026 The Educator</span>
+  <span>Simple. Organized. Course-centered.</span>
 </footer>
 
 </body>
