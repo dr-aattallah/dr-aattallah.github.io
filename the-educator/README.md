@@ -414,6 +414,8 @@ the-educator/
     │   └── style.css
     ├── fonts/
     │   └── masmak.otf
+    ├── icons/
+    │   └── favicon.svg
     └── images/
 ```
 
