@@ -350,7 +350,7 @@ All prototype pages now link the shared stylesheet at:
 <link rel="stylesheet" href="assets/css/style.css" />
 ```
 
-The shared stylesheet is used as the common design foundation. Existing inline page styles are still present and should be reduced incrementally, page by page, after visual checks.
+The shared stylesheet is used as the common design foundation. `dashboard.html` now relies on the shared stylesheet instead of a large inline style block. Remaining inline page styles should be reduced incrementally, page by page, after visual checks.
 
 A future production version should refactor this into:
 
@@ -410,6 +410,10 @@ the-educator/
 ├── profile.html
 ├── help.html
 └── assets/
+    ├── css/
+    │   └── style.css
+    ├── fonts/
+    │   └── masmak.otf
     └── images/
 ```
 
@@ -438,6 +442,10 @@ the-educator/
 - [ ] Unified navigation review
 - [ ] Link testing
 - [ ] CSS cleanup
+  - [x] Dashboard styles moved into `assets/css/style.css`
+  - [ ] Course page styles
+  - [ ] Student course page styles
+  - [ ] Login page styles
 - [ ] Backend planning
 
 ---
