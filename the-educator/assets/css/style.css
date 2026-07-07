@@ -1,0 +1,709 @@
+/* =========================================================
+   The Educator - Shared Style Sheet
+   Prototype version
+   ========================================================= */
+
+:root{
+  --ink:#152033;
+  --muted:#667085;
+  --soft:#F6F8FB;
+  --ivory:#FFFDF8;
+  --card:#FFFFFF;
+  --sky:#65C7F7;
+  --mint:#8EE6C8;
+  --sun:#FFB86B;
+  --blue:#2F80ED;
+  --border:rgba(21,32,51,.10);
+  --shadow:0 28px 80px rgba(35,48,70,.10);
+}
+
+@font-face{
+  font-family:"Masmak";
+  src:url("../fonts/masmak.otf") format("opentype");
+  font-weight:400 900;
+  font-style:normal;
+  font-display:swap;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:"Masmak",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(142,230,200,.24), transparent 28%),
+    radial-gradient(circle at 92% 14%, rgba(101,199,247,.20), transparent 34%),
+    radial-gradient(circle at 70% 86%, rgba(255,184,107,.18), transparent 32%),
+    linear-gradient(180deg,var(--ivory),var(--soft));
+}
+
+body,
+button,
+input,
+textarea,
+select,
+a,
+p,
+h1,
+h2,
+h3,
+div,
+span,
+label,
+table,
+th,
+td{
+  font-family:"Masmak",system-ui,sans-serif !important;
+}
+
+a{
+  color:inherit;
+}
+
+.shell{
+  width:min(1180px,calc(100% - 36px));
+  margin:auto;
+}
+
+/* =========================================================
+   Navigation
+   ========================================================= */
+
+nav{
+  margin:22px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 16px 42px rgba(35,48,70,.06);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding-left:6px;
+  font-weight:900;
+  letter-spacing:.02em;
+}
+
+.brand-symbol{
+  width:35px;
+  height:35px;
+  border-radius:14px;
+  position:relative;
+  background:
+    radial-gradient(circle at 28% 30%, #fff 0 8%, transparent 9%),
+    linear-gradient(135deg,var(--sky),var(--mint) 56%,var(--sun));
+  box-shadow:0 10px 26px rgba(47,128,237,.18);
+}
+
+.brand-symbol::before,
+.brand-symbol::after{
+  content:"";
+  position:absolute;
+  border-radius:999px;
+  background:#fff;
+  opacity:.9;
+}
+
+.brand-symbol::before{
+  width:18px;
+  height:4px;
+  left:8px;
+  top:15px;
+}
+
+.brand-symbol::after{
+  width:4px;
+  height:18px;
+  left:15px;
+  top:8px;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  font-weight:850;
+  color:var(--muted);
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:14px;
+}
+
+.nav-links a:hover{
+  background:rgba(47,128,237,.08);
+  color:var(--ink);
+}
+
+.nav-primary,
+.nav-login,
+.nav-logout{
+  background:var(--ink) !important;
+  color:#fff !important;
+}
+
+/* =========================================================
+   Layout
+   ========================================================= */
+
+main{
+  padding:48px 0 42px;
+}
+
+.page-head,
+.course-hero,
+.assignment-hero,
+.resource-layout,
+.welcome{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:22px;
+  align-items:stretch;
+  margin-bottom:24px;
+}
+
+.workspace{
+  display:grid;
+  grid-template-columns:1.12fr .88fr;
+  gap:22px;
+  align-items:start;
+}
+
+.head-card,
+.hero-card,
+.side-card,
+.main-card,
+.panel-card,
+.form-card,
+.preview-card,
+.table-card,
+.grade-card,
+.students-card,
+.invite-card,
+.settings-card,
+.gradebook-card,
+.actions-card,
+.summary-card,
+.stats-card,
+.resource-main,
+.viewer-card,
+.content-card,
+.submit-card,
+.rubric-card,
+.login-card,
+.info-card,
+.quick-card,
+.course-card,
+.resource-card,
+.note-card{
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.76);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:var(--shadow);
+}
+
+.head-card,
+.hero-card,
+.resource-main{
+  border-radius:38px;
+  padding:34px;
+  position:relative;
+  overflow:hidden;
+}
+
+.head-card::before,
+.hero-card::before,
+.resource-main::before{
+  content:"";
+  position:absolute;
+  width:310px;
+  height:310px;
+  border-radius:50%;
+  right:-120px;
+  top:-130px;
+  background:conic-gradient(from 220deg,var(--sky),var(--mint),var(--sun),var(--sky));
+  opacity:.18;
+}
+
+.side-card,
+.main-card,
+.panel-card,
+.form-card,
+.preview-card,
+.table-card,
+.grade-card,
+.students-card,
+.invite-card,
+.settings-card,
+.gradebook-card,
+.actions-card,
+.summary-card,
+.stats-card,
+.viewer-card,
+.content-card,
+.submit-card,
+.rubric-card{
+  border-radius:38px;
+  padding:30px;
+}
+
+.side-card{
+  display:grid;
+  align-content:center;
+}
+
+.panel-card,
+.preview-card,
+grade-card,
+.actions-card,
+.invite-card{
+  position:sticky;
+  top:24px;
+}
+
+/* =========================================================
+   Text
+   ========================================================= */
+
+.breadcrumb{
+  position:relative;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  color:var(--muted);
+  font-size:14px;
+  font-weight:850;
+  margin-bottom:22px;
+}
+
+.breadcrumb a{
+  text-decoration:none;
+}
+
+.label,
+.badge,
+.code{
+  position:relative;
+  display:inline-flex;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(47,128,237,.08);
+  color:#2A65B7;
+  font-weight:900;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+h1{
+  position:relative;
+  margin:0;
+  font-size:clamp(36px,5vw,66px);
+  line-height:1;
+  letter-spacing:-.045em;
+}
+
+h2{
+  margin:0 0 20px;
+  font-size:30px;
+  letter-spacing:-.03em;
+}
+
+h3{
+  letter-spacing:-.025em;
+}
+
+.head-card p,
+.hero-card p,
+.resource-main p{
+  position:relative;
+  margin:18px 0 0;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.8;
+  max-width:730px;
+}
+
+/* =========================================================
+   Forms
+   ========================================================= */
+
+.form-grid{
+  display:grid;
+  gap:18px;
+}
+
+.field{
+  display:grid;
+  gap:8px;
+  margin-bottom:14px;
+}
+
+label{
+  color:#35445A;
+  font-weight:900;
+  font-size:14px;
+}
+
+input,
+textarea,
+select{
+  width:100%;
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--ink);
+  outline:none;
+  border-radius:18px;
+  padding:0 16px;
+  font-size:16px;
+}
+
+input,
+select{
+  min-height:54px;
+}
+
+textarea{
+  min-height:126px;
+  resize:vertical;
+  padding-top:14px;
+  line-height:1.7;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color:rgba(47,128,237,.55);
+  box-shadow:0 0 0 4px rgba(47,128,237,.10);
+}
+
+.two{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.three{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+
+.actions,
+.buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+
+.btn,
+.add-btn,
+.open-link,
+.card-link,
+.action,
+.open{
+  min-height:50px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 20px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+  border:1px solid var(--border);
+  cursor:pointer;
+}
+
+.btn.primary,
+.add-btn,
+.open-link,
+.action,
+.open{
+  background:var(--ink);
+  color:#fff;
+  box-shadow:0 18px 38px rgba(21,32,51,.18);
+}
+
+.btn.secondary{
+  background:#fff;
+  color:var(--ink);
+}
+
+.btn.danger{
+  background:#fff;
+  color:#A43A2B;
+  border-color:rgba(164,58,43,.22);
+}
+
+/* =========================================================
+   Common cards and lists
+   ========================================================= */
+
+.info-list,
+.stats,
+.panel-list,
+.notice-list,
+.grade-list,
+.feedback-list,
+.action-list,
+.students,
+.submissions,
+.section-list,
+.tip-list,
+.step-list{
+  display:grid;
+  gap:12px;
+}
+
+.info,
+.stat,
+.item,
+.notice,
+.grade-item,
+.feedback-item,
+.action-item,
+.student-row,
+.submission,
+.section-item,
+.tip-item,
+.step,
+.role-box,
+structure-item,
+timeline-item,
+recent-item{
+  padding:14px 16px;
+  border-radius:20px;
+  background:#fff;
+  border:1px solid var(--border);
+}
+
+.info,
+.stat,
+.section-item{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  align-items:center;
+}
+
+.info strong,
+.stat strong{
+  color:var(--ink);
+}
+
+.info span,
+.stat span{
+  color:var(--muted);
+  font-weight:850;
+  text-align:right;
+}
+
+.tag-list,
+.preview-tags,
+.course-meta,
+.resource-meta,
+trust-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:18px;
+}
+
+.tag,
+.meta,
+.trust,
+.pill{
+  display:inline-flex;
+  padding:9px 11px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--border);
+  color:#52677E;
+  font-weight:850;
+  font-size:13px;
+}
+
+.note,
+.demo-note,
+.status-note{
+  margin-top:18px;
+  padding:16px;
+  border-radius:20px;
+  background:rgba(255,184,107,.12);
+  border:1px solid rgba(255,184,107,.20);
+  color:#6F5B3D;
+  line-height:1.7;
+  font-size:14px;
+  font-weight:800;
+}
+
+/* =========================================================
+   Upload boxes and toggles
+   ========================================================= */
+
+.upload-box,
+.file-box{
+  border:1.5px dashed rgba(47,128,237,.30);
+  background:rgba(47,128,237,.045);
+  border-radius:24px;
+  padding:24px;
+  text-align:center;
+  color:#52677E;
+  line-height:1.7;
+  font-weight:850;
+}
+
+.switch{
+  width:54px;
+  height:30px;
+  border-radius:999px;
+  background:var(--ink);
+  position:relative;
+  flex:0 0 auto;
+}
+
+.switch.off{
+  background:rgba(21,32,51,.18);
+}
+
+.switch::after{
+  content:"";
+  position:absolute;
+  width:22px;
+  height:22px;
+  right:4px;
+  top:4px;
+  border-radius:999px;
+  background:#fff;
+}
+
+.switch.off::after{
+  right:28px;
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+
+footer{
+  padding:30px 0 26px;
+  color:#8390A3;
+  font-size:13px;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+@media(max-width:980px){
+  .page-head,
+  .course-hero,
+  .assignment-hero,
+  .resource-layout,
+  .welcome,
+  .workspace,
+  .two,
+  .three{
+    grid-template-columns:1fr;
+  }
+
+  .panel-card,
+  .preview-card,
+  .grade-card,
+  .actions-card,
+  .invite-card{
+    position:relative;
+    top:auto;
+  }
+}
+
+@media(max-width:700px){
+  .student-row,
+  .submission,
+  .grade-item{
+    grid-template-columns:1fr !important;
+  }
+
+  .action,
+  .open{
+    justify-self:start;
+  }
+}
+
+@media(max-width:640px){
+  .shell{
+    width:min(100% - 24px,1180px);
+  }
+
+  nav{
+    border-radius:24px;
+    align-items:flex-start;
+  }
+
+  .nav-links a:nth-child(2){
+    display:none;
+  }
+
+  main{
+    padding-top:30px;
+  }
+
+  .head-card,
+  .hero-card,
+  .side-card,
+  .main-card,
+  .panel-card,
+  .form-card,
+  .preview-card,
+  .table-card,
+  .grade-card,
+  .students-card,
+  .invite-card,
+  .settings-card,
+  .gradebook-card,
+  .actions-card,
+  .summary-card,
+  .stats-card,
+  .resource-main,
+  .viewer-card,
+  .content-card,
+  .submit-card,
+  .rubric-card{
+    border-radius:30px;
+    padding:24px;
+  }
+
+  footer{
+    justify-content:center;
+    text-align:center;
+  }
+}
