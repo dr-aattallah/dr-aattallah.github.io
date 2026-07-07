@@ -438,6 +438,8 @@ the-educator/
 │   ├── technical-direction.md
 │   ├── database-schema.md
 │   └── static-to-app-roadmap.md
+├── src/
+│   └── Educator.Api/
 └── assets/
     ├── css/
     │   └── style.css
@@ -487,7 +489,8 @@ the-educator/
   - [x] Backend technology recommendation
   - [x] Database schema design
   - [x] Static-to-app migration roadmap
-  - [ ] ASP.NET Core API skeleton
+  - [x] ASP.NET Core API skeleton
+  - [ ] API project boundaries
 
 ---
 
@@ -495,7 +498,7 @@ the-educator/
 
 The next recommended step is:
 
-> Create a separate ASP.NET Core Web API project skeleton with a health endpoint, without connecting production Supabase credentials yet.
+> Add API project boundaries for domain, application, and infrastructure responsibilities without connecting production Supabase credentials yet.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 

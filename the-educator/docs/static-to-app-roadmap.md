@@ -357,7 +357,7 @@ GitHub Pages can continue serving the prototype while the production application
 - [x] Technical direction documented
 - [x] Database schema drafted
 - [x] Static-to-app roadmap drafted
-- [ ] ASP.NET Core API project created
+- [x] ASP.NET Core API project created
 - [ ] Supabase project created
 - [ ] First database migration prepared
 - [ ] Auth strategy implemented
@@ -371,6 +371,6 @@ GitHub Pages can continue serving the prototype while the production application
 
 ## Next Implementation Step
 
-When ready to start real backend work, the first implementation task should be:
+The API skeleton now exists with a health endpoint. The next implementation task should be:
 
-> Create a separate ASP.NET Core Web API project skeleton for The Educator and add only a `/health` endpoint plus project structure. Do not connect secrets or production Supabase credentials in the first commit.
+> Add project boundaries for domain, application, and infrastructure responsibilities. Do not connect secrets or production Supabase credentials in the next commit.

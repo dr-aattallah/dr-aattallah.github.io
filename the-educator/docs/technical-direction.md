@@ -80,8 +80,8 @@ No runtime backend is added here.
 
 Future work:
 
+- ASP.NET Core Web API shell created
 - Configure Supabase project
-- Create the ASP.NET Core Web API shell
 - Add Supabase PostgreSQL connection strategy
 - Add authentication strategy with Supabase Auth
 - Add user profile model and role checks
