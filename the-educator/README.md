@@ -350,7 +350,7 @@ All prototype pages now link the shared stylesheet at:
 <link rel="stylesheet" href="assets/css/style.css" />
 ```
 
-The shared stylesheet is used as the common design foundation. `dashboard.html` now relies on the shared stylesheet instead of a large inline style block. Remaining inline page styles should be reduced incrementally, page by page, after visual checks.
+The shared stylesheet is used as the common design foundation. All prototype pages now rely on `assets/css/style.css` instead of large inline style blocks. Page-specific rules are scoped with body classes such as `page-course`, `page-login`, and `page-student-course` so styles do not unintentionally leak across pages.
 
 A future production version should refactor this into:
 
@@ -441,11 +441,12 @@ the-educator/
 - [x] Help page
 - [ ] Unified navigation review
 - [ ] Link testing
-- [ ] CSS cleanup
+- [x] CSS cleanup
   - [x] Dashboard styles moved into `assets/css/style.css`
-  - [ ] Course page styles
-  - [ ] Student course page styles
-  - [ ] Login page styles
+  - [x] Course page styles
+  - [x] Student course page styles
+  - [x] Login page styles
+  - [x] Remaining page styles scoped in `assets/css/style.css`
 - [ ] Backend planning
 
 ---
@@ -454,7 +455,7 @@ the-educator/
 
 The next recommended step is:
 
-> Clean and unify all page navigation, then move repeated CSS into one shared stylesheet.
+> Visually review the main instructor and student flows, then continue simplifying duplicated scoped CSS into smaller reusable shared patterns.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 
