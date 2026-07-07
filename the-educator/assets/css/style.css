@@ -497,6 +497,24 @@ h3{
   font-weight:800;
 }
 
+.notification-filters{
+  margin-bottom:18px;
+}
+
+.profile-name{
+  margin:0 0 6px;
+  font-size:24px;
+}
+
+.profile-role{
+  color:var(--muted);
+  font-weight:850;
+}
+
+.flow-title{
+  margin-top:30px;
+}
+
 /* =========================================================
    Forms
    ========================================================= */
