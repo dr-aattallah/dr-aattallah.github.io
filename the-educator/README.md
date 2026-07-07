@@ -252,6 +252,12 @@ To convert The Educator into a working system, the next phase should include:
    - Database hosting
    - Secure file storage
 
+The backend-readiness blueprint is documented in:
+
+```text
+docs/backend-readiness.md
+```
+
 ---
 
 ## Suggested Data Models
@@ -407,6 +413,8 @@ the-educator/
 ├── notifications.html
 ├── profile.html
 ├── help.html
+├── docs/
+│   └── backend-readiness.md
 └── assets/
     ├── css/
     │   └── style.css
@@ -447,7 +455,14 @@ the-educator/
   - [x] Student course page styles
   - [x] Login page styles
   - [x] Remaining page styles scoped in `assets/css/style.css`
-- [ ] Backend planning
+- [x] Backend readiness blueprint
+  - [x] Role ownership documented
+  - [x] Page-to-data mapping documented
+  - [x] First backend vertical slice defined
+  - [x] Future API boundary drafted
+- [ ] Backend implementation planning
+  - [ ] Backend technology choice
+  - [ ] Database schema design
 
 ---
 
@@ -455,7 +470,7 @@ the-educator/
 
 The next recommended step is:
 
-> Prepare the backend-readiness blueprint: define user roles, route ownership, page-to-data mapping, and the first database/API boundary without implementing a backend yet.
+> Choose the future technical direction for the real application, such as Supabase/Firebase for fast launch or a custom Node/Django/Laravel backend for more control.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 
