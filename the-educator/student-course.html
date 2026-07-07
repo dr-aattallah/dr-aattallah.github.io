@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Student Course View | The Educator</title>
+<meta name="description" content="Student course view prototype for The Educator academic platform." />
+<link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+
+<style>
+:root{
+  --ink:#152033;
+  --muted:#667085;
+  --soft:#F6F8FB;
+  --ivory:#FFFDF8;
+  --card:#FFFFFF;
+  --sky:#65C7F7;
+  --mint:#8EE6C8;
+  --sun:#FFB86B;
+  --blue:#2F80ED;
+  --border:rgba(21,32,51,.10);
+  --shadow:0 28px 80px rgba(35,48,70,.10);
+}
+
+@font-face{
+  font-family:"Masmak";
+  src:url("../assets/fonts/masmak.otf") format("opentype");
+  font-weight:400 900;
+  font-style:normal;
+  font-display:swap;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:"Masmak",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(142,230,200,.24), transparent 28%),
+    radial-gradient(circle at 92% 14%, rgba(101,199,247,.20), transparent 34%),
+    radial-gradient(circle at 70% 86%, rgba(255,184,107,.18), transparent 32%),
+    linear-gradient(180deg,var(--ivory),var(--soft));
+}
+
+body,button,input,a,p,h1,h2,h3,div,span,label{
+  font-family:"Masmak",system-ui,sans-serif !important;
+}
+
+a{color:inherit}
+
+.shell{
+  width:min(1180px,calc(100% - 36px));
+  margin:auto;
+}
+
+nav{
+  margin:22px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 16px 42px rgba(35,48,70,.06);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding-left:6px;
+  font-weight:900;
+  letter-spacing:.02em;
+}
+
+.brand-symbol{
+  width:35px;
+  height:35px;
+  border-radius:14px;
+  position:relative;
+  background:
+    radial-gradient(circle at 28% 30%, #fff 0 8%, transparent 9%),
+    linear-gradient(135deg,var(--sky),var(--mint) 56%,var(--sun));
+  box-shadow:0 10px 26px rgba(47,128,237,.18);
+}
+
+.brand-symbol::before,
+.brand-symbol::after{
+  content:"";
+  position:absolute;
+  border-radius:999px;
+  background:#fff;
+  opacity:.9;
+}
+
+.brand-symbol::before{width:18px;height:4px;left:8px;top:15px}
+.brand-symbol::after{width:4px;height:18px;left:15px;top:8px}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  font-weight:850;
+  color:var(--muted);
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:14px;
+}
+
+.nav-links a:hover{
+  background:rgba(47,128,237,.08);
+  color:var(--ink);
+}
+
+.nav-primary{
+  background:var(--ink) !important;
+  color:#fff !important;
+}
+
+main{
+  padding:48px 0 42px;
+}
+
+.course-hero{
+  display:grid;
+  grid-template-columns:1.18fr .82fr;
+  gap:22px;
+  align-items:stretch;
+  margin-bottom:24px;
+}
+
+.hero-card,
+.side-card,
+.resource-card,
+.panel{
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.76);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:var(--shadow);
+}
+
+.hero-card{
+  border-radius:38px;
+  padding:34px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-card::before{
+  content:"";
+  position:absolute;
+  width:320px;
+  height:320px;
+  border-radius:50%;
+  right:-110px;
+  top:-130px;
+  background:conic-gradient(from 220deg,var(--sky),var(--mint),var(--sun),var(--sky));
+  opacity:.18;
+}
+
+.breadcrumb{
+  position:relative;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  color:var(--muted);
+  font-size:14px;
+  font-weight:850;
+  margin-bottom:22px;
+}
+
+.code{
+  position:relative;
+  display:inline-flex;
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:900;
+  background:rgba(47,128,237,.08);
+  color:#2A65B7;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+h1{
+  position:relative;
+  margin:0;
+  font-size:clamp(36px,5vw,66px);
+  line-height:1;
+  letter-spacing:-.045em;
+}
+
+.hero-card p{
+  position:relative;
+  margin:18px 0 0;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.8;
+  max-width:730px;
+}
+
+.side-card{
+  border-radius:38px;
+  padding:28px;
+  display:grid;
+  align-content:center;
+}
+
+.side-card h2{
+  margin:0 0 16px;
+  font-size:24px;
+}
+
+.next-box{
+  padding:18px;
+  border-radius:24px;
+  background:#fff;
+  border:1px solid var(--border);
+}
+
+.next-box strong{
+  display:block;
+  font-size:19px;
+  margin-bottom:8px;
+}
+
+.next-box p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.progress{
+  margin-top:18px;
+  height:12px;
+  border-radius:999px;
+  background:rgba(21,32,51,.08);
+  overflow:hidden;
+}
+
+.progress span{
+  display:block;
+  width:64%;
+  height:100%;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--sky),var(--mint),var(--sun));
+}
+
+.filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:34px 0 18px;
+}
+
+.filter{
+  display:inline-flex;
+  padding:11px 15px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--border);
+  color:#52677E;
+  font-weight:900;
+  text-decoration:none;
+}
+
+.filter.active{
+  background:var(--ink);
+  color:#fff;
+}
+
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:18px;
+  margin:30px 0 16px;
+}
+
+.section-head h2{
+  margin:0;
+  font-size:30px;
+  letter-spacing:-.03em;
+}
+
+.section-head p{
+  margin:6px 0 0;
+  color:var(--muted);
+}
+
+.resources{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+
+.resource-card{
+  border-radius:30px;
+  padding:24px;
+  min-height:230px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.resource-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 34px 90px rgba(35,48,70,.14);
+}
+
+.icon{
+  width:46px;
+  height:46px;
+  border-radius:17px;
+  display:grid;
+  place-items:center;
+  margin-bottom:18px;
+  background:linear-gradient(135deg,rgba(101,199,247,.28),rgba(142,230,200,.28));
+  color:var(--ink);
+  font-weight:900;
+}
+
+.resource-card h3{
+  margin:0 0 10px;
+  font-size:24px;
+  letter-spacing:-.025em;
+}
+
+.resource-card p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.75;
+}
+
+.resource-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:16px;
+}
+
+.meta{
+  display:inline-flex;
+  padding:8px 10px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--border);
+  color:#52677E;
+  font-weight:850;
+  font-size:12px;
+}
+
+.card-link{
+  margin-top:20px;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+  color:#fff;
+  background:var(--ink);
+}
+
+.panels{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:20px;
+}
+
+.panel{
+  border-radius:30px;
+  padding:24px;
+}
+
+.panel h3{
+  margin:0 0 12px;
+  font-size:23px;
+}
+
+.panel-list{
+  display:grid;
+  gap:10px;
+}
+
+.item{
+  padding:14px 16px;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:18px;
+  color:#52677E;
+  line-height:1.55;
+  font-weight:800;
+}
+
+.item small{
+  display:block;
+  color:#95A0B2;
+  font-size:12px;
+  margin-top:4px;
+}
+
+footer{
+  padding:30px 0 26px;
+  color:#8390A3;
+  font-size:13px;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+@media(max-width:950px){
+  .course-hero,
+  .resources,
+  .panels{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:640px){
+  .shell{
+    width:min(100% - 24px,1180px);
+  }
+
+  nav{
+    border-radius:24px;
+    align-items:flex-start;
+  }
+
+  .nav-links a:nth-child(2){
+    display:none;
+  }
+
+  main{
+    padding-top:30px;
+  }
+
+  .hero-card,
+  .side-card{
+    border-radius:30px;
+    padding:26px;
+  }
+
+  .section-head{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  footer{
+    justify-content:center;
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="shell">
+  <nav>
+    <div class="brand">
+      <div class="brand-symbol" aria-hidden="true"></div>
+      <span>The Educator</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="dashboard.html">My Courses</a>
+      <a href="index.html">Home</a>
+      <a class="nav-primary" href="login.html">Logout</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="course-hero" aria-label="Student course overview">
+      <div class="hero-card">
+        <div class="breadcrumb">
+          <span>My Courses</span>
+          <span>/</span>
+          <span>Software Engineering I</span>
+        </div>
+
+        <span class="code">CPCS-351</span>
+        <h1>Software Engineering I</h1>
+        <p>
+          Everything you need for this course in one clean space: syllabus, lecture files, slides, links, assignments, and announcements.
+        </p>
+      </div>
+
+      <aside class="side-card">
+        <h2>Next for you</h2>
+        <div class="next-box">
+          <strong>Review Week 1 materials</strong>
+          <p>Start with the syllabus, then open the Week 1 lecture file and slides.</p>
+          <div class="progress" aria-label="Course progress"><span></span></div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="filters" aria-label="Resource filters">
+      <a class="filter active" href="#resources">All</a>
+      <a class="filter" href="#resources">Syllabus</a>
+      <a class="filter" href="#resources">Slides</a>
+      <a class="filter" href="#resources">Files</a>
+      <a class="filter" href="#assignments">Assignments</a>
+    </div>
+
+    <section id="resources" aria-label="Student resources">
+      <div class="section-head">
+        <div>
+          <h2>Course Materials</h2>
+          <p>Open or download the resources shared by your instructor.</p>
+        </div>
+      </div>
+
+      <div class="resources">
+        <article class="resource-card">
+          <div>
+            <div class="icon">S</div>
+            <h3>Course Syllabus</h3>
+            <p>Course outline, grading policy, weekly plan, and main expectations.</p>
+            <div class="resource-meta">
+              <span class="meta">Syllabus</span>
+              <span class="meta">Required</span>
+            </div>
+          </div>
+          <a class="card-link" href="#">Open</a>
+        </article>
+
+        <article class="resource-card">
+          <div>
+            <div class="icon">PDF</div>
+            <h3>Week 1 Lecture File</h3>
+            <p>Introduction to software engineering and the course structure.</p>
+            <div class="resource-meta">
+              <span class="meta">PDF</span>
+              <span class="meta">Week 1</span>
+            </div>
+          </div>
+          <a class="card-link" href="#">Open</a>
+        </article>
+
+        <article class="resource-card">
+          <div>
+            <div class="icon">PPT</div>
+            <h3>Week 1 Slides</h3>
+            <p>Visual summary of the first lecture and key course concepts.</p>
+            <div class="resource-meta">
+              <span class="meta">Slides</span>
+              <span class="meta">Week 1</span>
+            </div>
+          </div>
+          <a class="card-link" href="#">Open</a>
+        </article>
+
+        <article class="resource-card">
+          <div>
+            <div class="icon">L</div>
+            <h3>Useful References</h3>
+            <p>External references and links recommended by the instructor.</p>
+            <div class="resource-meta">
+              <span class="meta">Links</span>
+              <span class="meta">Optional</span>
+            </div>
+          </div>
+          <a class="card-link" href="#">Open</a>
+        </article>
+
+        <article class="resource-card">
+          <div>
+            <div class="icon">A</div>
+            <h3>Project Proposal Task</h3>
+            <p>Initial project proposal instructions and expected submission format.</p>
+            <div class="resource-meta">
+              <span class="meta">Assignment</span>
+              <span class="meta">Draft</span>
+            </div>
+          </div>
+          <a class="card-link" href="#assignments">View</a>
+        </article>
+
+        <article class="resource-card">
+          <div>
+            <div class="icon">N</div>
+            <h3>Course Announcements</h3>
+            <p>Important course notices, reminders, and instructor updates.</p>
+            <div class="resource-meta">
+              <span class="meta">Updates</span>
+              <span class="meta">Live</span>
+            </div>
+          </div>
+          <a class="card-link" href="#announcements">View</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="panels" aria-label="Student assignments and announcements">
+      <div class="panel" id="assignments">
+        <h3>Assignments</h3>
+        <div class="panel-list">
+          <div class="item">Project proposal draft <small>Due date placeholder</small></div>
+          <div class="item">Requirements analysis exercise <small>Coming soon</small></div>
+          <div class="item">UML diagram practice <small>Coming soon</small></div>
+        </div>
+      </div>
+
+      <div class="panel" id="announcements">
+        <h3>Announcements</h3>
+        <div class="panel-list">
+          <div class="item">Welcome to the course workspace. <small>Instructor note</small></div>
+          <div class="item">Please review the syllabus before the next lecture. <small>Important</small></div>
+          <div class="item">Week 1 files are now available. <small>Resource update</small></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 The Educator</span>
+    <span>Student course view prototype</span>
+  </footer>
+</div>
+
+</body>
+</html>
