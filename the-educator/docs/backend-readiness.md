@@ -27,6 +27,8 @@ The future technology recommendation is documented separately in:
 docs/technical-direction.md
 ```
 
+The selected backend direction is ASP.NET Core Web API over Supabase PostgreSQL. GitHub is used for source control and future CI/CD, not as the runtime backend.
+
 The future database schema draft is documented separately in:
 
 ```text

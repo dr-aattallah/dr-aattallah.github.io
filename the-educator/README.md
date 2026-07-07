@@ -375,22 +375,24 @@ A future production version should refactor this into:
 - Shared layout components
 - Reusable cards and forms
 - Dynamic routing
-- Backend API integration
+- ASP.NET Core Web API integration
 
 Suggested frontend options:
 
+- Blazor
 - React
 - Next.js
 - Vue
 - SvelteKit
 
-Suggested backend options:
+Selected backend direction:
 
-- Supabase
-- Firebase
-- Node.js + Express
-- Django
-- Laravel
+- ASP.NET Core Web API for backend logic
+- Supabase PostgreSQL for database
+- Supabase Auth for authentication
+- Supabase Storage for files
+- GitHub for source control and future CI/CD only
+- .NET MAUI later for mobile/desktop clients if needed
 
 ---
 
@@ -485,7 +487,7 @@ the-educator/
 
 The next recommended step is:
 
-> Draft the static-to-app migration roadmap so the current prototype can move toward a Next.js/Supabase app in small, controlled phases.
+> Draft the static-to-app migration roadmap so the current prototype can move toward an ASP.NET Core Web API + Supabase PostgreSQL architecture in small, controlled phases.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 
