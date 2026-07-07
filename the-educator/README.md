@@ -264,6 +264,12 @@ The recommended future technical direction is documented in:
 docs/technical-direction.md
 ```
 
+The future database schema draft is documented in:
+
+```text
+docs/database-schema.md
+```
+
 ---
 
 ## Suggested Data Models
@@ -421,7 +427,8 @@ the-educator/
 ├── help.html
 ├── docs/
 │   ├── backend-readiness.md
-│   └── technical-direction.md
+│   ├── technical-direction.md
+│   └── database-schema.md
 └── assets/
     ├── css/
     │   └── style.css
@@ -469,7 +476,8 @@ the-educator/
   - [x] Future API boundary drafted
 - [ ] Backend implementation planning
   - [x] Backend technology recommendation
-  - [ ] Database schema design
+  - [x] Database schema design
+  - [ ] Static-to-app migration roadmap
 
 ---
 
@@ -477,7 +485,7 @@ the-educator/
 
 The next recommended step is:
 
-> Draft the future database schema around users, courses, enrollments, resources, assignments, submissions, grades, announcements, and notifications.
+> Draft the static-to-app migration roadmap so the current prototype can move toward a Next.js/Supabase app in small, controlled phases.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 

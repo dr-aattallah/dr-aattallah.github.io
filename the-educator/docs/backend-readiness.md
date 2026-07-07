@@ -27,6 +27,12 @@ The future technology recommendation is documented separately in:
 docs/technical-direction.md
 ```
 
+The future database schema draft is documented separately in:
+
+```text
+docs/database-schema.md
+```
+
 ---
 
 ## Roles
@@ -516,6 +522,6 @@ Recommended first production routes:
 - [x] Future API boundary is drafted
 - [x] Backend technology recommendation
 - [ ] Authentication provider choice
-- [ ] Database schema design
+- [x] Database schema design
 - [ ] File storage provider choice
 - [ ] Migration plan from static pages to app routes

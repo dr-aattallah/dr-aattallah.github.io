@@ -134,6 +134,12 @@ This keeps the first backend release focused and testable.
 
 Assignments, submissions, grades, announcements, and notifications should follow after the course/resource loop is stable.
 
+The full future schema draft is documented in:
+
+```text
+docs/database-schema.md
+```
+
 ---
 
 ## Suggested Route Direction
