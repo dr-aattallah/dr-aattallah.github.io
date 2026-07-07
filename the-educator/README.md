@@ -344,6 +344,14 @@ created_at
 
 The current prototype is intentionally built as separate HTML files to make the structure clear and easy to review.
 
+All prototype pages now link the shared stylesheet at:
+
+```html
+<link rel="stylesheet" href="assets/css/style.css" />
+```
+
+The shared stylesheet is used as the common design foundation. Existing inline page styles are still present and should be reduced incrementally, page by page, after visual checks.
+
 A future production version should refactor this into:
 
 - Shared layout components
