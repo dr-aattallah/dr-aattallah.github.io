@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Submissions | The Educator</title>
+<meta name="description" content="Assignment submissions page prototype for The Educator academic platform." />
+<link rel="icon" type="image/svg+xml" href="../assets/icons/favicon.svg" />
+
+<style>
+:root{
+  --ink:#152033;
+  --muted:#667085;
+  --soft:#F6F8FB;
+  --ivory:#FFFDF8;
+  --card:#FFFFFF;
+  --sky:#65C7F7;
+  --mint:#8EE6C8;
+  --sun:#FFB86B;
+  --blue:#2F80ED;
+  --border:rgba(21,32,51,.10);
+  --shadow:0 28px 80px rgba(35,48,70,.10);
+}
+
+@font-face{
+  font-family:"Masmak";
+  src:url("../assets/fonts/masmak.otf") format("opentype");
+  font-weight:400 900;
+  font-style:normal;
+  font-display:swap;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:"Masmak",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(circle at 12% 12%, rgba(142,230,200,.24), transparent 28%),
+    radial-gradient(circle at 92% 14%, rgba(101,199,247,.20), transparent 34%),
+    radial-gradient(circle at 70% 86%, rgba(255,184,107,.18), transparent 32%),
+    linear-gradient(180deg,var(--ivory),var(--soft));
+}
+
+body,button,input,textarea,a,p,h1,h2,h3,div,span,label{
+  font-family:"Masmak",system-ui,sans-serif !important;
+}
+
+a{color:inherit}
+
+.shell{
+  width:min(1180px,calc(100% - 36px));
+  margin:auto;
+}
+
+nav{
+  margin:22px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:12px 14px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 16px 42px rgba(35,48,70,.06);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  padding-left:6px;
+  font-weight:900;
+  letter-spacing:.02em;
+}
+
+.brand-symbol{
+  width:35px;
+  height:35px;
+  border-radius:14px;
+  position:relative;
+  background:
+    radial-gradient(circle at 28% 30%, #fff 0 8%, transparent 9%),
+    linear-gradient(135deg,var(--sky),var(--mint) 56%,var(--sun));
+  box-shadow:0 10px 26px rgba(47,128,237,.18);
+}
+
+.brand-symbol::before,
+.brand-symbol::after{
+  content:"";
+  position:absolute;
+  border-radius:999px;
+  background:#fff;
+  opacity:.9;
+}
+
+.brand-symbol::before{width:18px;height:4px;left:8px;top:15px}
+.brand-symbol::after{width:4px;height:18px;left:15px;top:8px}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  font-weight:850;
+  color:var(--muted);
+  padding:10px 14px;
+  border-radius:999px;
+  font-size:14px;
+}
+
+.nav-links a:hover{
+  background:rgba(47,128,237,.08);
+  color:var(--ink);
+}
+
+.nav-primary{
+  background:var(--ink) !important;
+  color:#fff !important;
+}
+
+main{
+  padding:48px 0 42px;
+}
+
+.page-head{
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:22px;
+  align-items:stretch;
+  margin-bottom:24px;
+}
+
+.head-card,
+.stats-card,
+.table-card,
+.grade-card{
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.76);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  box-shadow:var(--shadow);
+}
+
+.head-card{
+  border-radius:38px;
+  padding:34px;
+  position:relative;
+  overflow:hidden;
+}
+
+.head-card::before{
+  content:"";
+  position:absolute;
+  width:310px;
+  height:310px;
+  border-radius:50%;
+  right:-120px;
+  top:-130px;
+  background:conic-gradient(from 220deg,var(--sky),var(--mint),var(--sun),var(--sky));
+  opacity:.18;
+}
+
+.breadcrumb{
+  position:relative;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  color:var(--muted);
+  font-size:14px;
+  font-weight:850;
+  margin-bottom:22px;
+}
+
+.breadcrumb a{
+  text-decoration:none;
+}
+
+.label{
+  position:relative;
+  display:inline-flex;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(47,128,237,.08);
+  color:#2A65B7;
+  font-weight:900;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+h1{
+  position:relative;
+  margin:0;
+  font-size:clamp(36px,5vw,66px);
+  line-height:1;
+  letter-spacing:-.045em;
+}
+
+.head-card p{
+  position:relative;
+  margin:18px 0 0;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.8;
+  max-width:730px;
+}
+
+.stats-card{
+  border-radius:38px;
+  padding:28px;
+  display:grid;
+  align-content:center;
+}
+
+.stats-card h2{
+  margin:0 0 16px;
+  font-size:24px;
+}
+
+.stats{
+  display:grid;
+  gap:12px;
+}
+
+.stat{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  padding:14px 16px;
+  border-radius:20px;
+  background:#fff;
+  border:1px solid var(--border);
+}
+
+.stat strong{color:var(--ink)}
+.stat span{color:var(--muted);font-weight:850;text-align:right}
+
+.workspace{
+  display:grid;
+  grid-template-columns:1.18fr .82fr;
+  gap:22px;
+  align-items:start;
+}
+
+.table-card,
+.grade-card{
+  border-radius:38px;
+  padding:30px;
+}
+
+.table-card h2,
+.grade-card h2{
+  margin:0 0 20px;
+  font-size:30px;
+  letter-spacing:-.03em;
+}
+
+.filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:18px;
+}
+
+.filter{
+  display:inline-flex;
+  padding:10px 14px;
+  border-radius:999px;
+  background:#fff;
+  border:1px solid var(--border);
+  color:#52677E;
+  font-weight:900;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.filter.active{
+  background:var(--ink);
+  color:#fff;
+}
+
+.submissions{
+  display:grid;
+  gap:12px;
+}
+
+.submission{
+  display:grid;
+  grid-template-columns:1.1fr .75fr .55fr;
+  gap:12px;
+  align-items:center;
+  padding:16px;
+  border-radius:22px;
+  background:#fff;
+  border:1px solid var(--border);
+}
+
+.student strong{
+  display:block;
+  font-size:17px;
+}
+
+.student span,
+.time,
+.score{
+  color:var(--muted);
+  font-weight:850;
+  font-size:14px;
+}
+
+.status{
+  justify-self:start;
+  display:inline-flex;
+  padding:8px 11px;
+  border-radius:999px;
+  font-weight:900;
+  font-size:13px;
+}
+
+.status.submitted{
+  background:rgba(142,230,200,.24);
+  color:#247B68;
+}
+
+.status.late{
+  background:rgba(255,184,107,.18);
+  color:#8B5A1E;
+}
+
+.status.missing{
+  background:rgba(231,76,60,.09);
+  color:#A43A2B;
+}
+
+.open{
+  justify-self:end;
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 15px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+  color:#fff;
+  background:var(--ink);
+}
+
+.grade-card{
+  position:sticky;
+  top:24px;
+}
+
+.preview{
+  padding:22px;
+  border-radius:28px;
+  background:#fff;
+  border:1px solid var(--border);
+}
+
+.preview h3{
+  margin:0 0 10px;
+  font-size:25px;
+  letter-spacing:-.025em;
+}
+
+.preview p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+.file-box{
+  margin-top:18px;
+  min-height:150px;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  border-radius:24px;
+  background:rgba(47,128,237,.045);
+  border:1px dashed rgba(47,128,237,.25);
+  color:#52677E;
+  font-weight:850;
+  line-height:1.7;
+}
+
+.grade-form{
+  display:grid;
+  gap:14px;
+  margin-top:18px;
+}
+
+.field{
+  display:grid;
+  gap:8px;
+}
+
+label{
+  color:#35445A;
+  font-weight:900;
+  font-size:14px;
+}
+
+input,
+textarea{
+  width:100%;
+  border:1px solid var(--border);
+  background:#fff;
+  color:var(--ink);
+  outline:none;
+  border-radius:18px;
+  padding:0 16px;
+  font-size:16px;
+}
+
+input{
+  min-height:54px;
+}
+
+textarea{
+  min-height:110px;
+  resize:vertical;
+  padding-top:14px;
+  line-height:1.7;
+}
+
+input:focus,
+textarea:focus{
+  border-color:rgba(47,128,237,.55);
+  box-shadow:0 0 0 4px rgba(47,128,237,.10);
+}
+
+.actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+.btn{
+  min-height:50px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 20px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:900;
+  border:1px solid var(--border);
+  cursor:pointer;
+}
+
+.btn.primary{
+  background:var(--ink);
+  color:#fff;
+  box-shadow:0 18px 38px rgba(21,32,51,.18);
+}
+
+.btn.secondary{
+  background:#fff;
+  color:var(--ink);
+}
+
+.note{
+  margin-top:18px;
+  padding:16px;
+  border-radius:20px;
+  background:rgba(255,184,107,.12);
+  border:1px solid rgba(255,184,107,.20);
+  color:#6F5B3D;
+  line-height:1.7;
+  font-size:14px;
+  font-weight:800;
+}
+
+footer{
+  padding:30px 0 26px;
+  color:#8390A3;
+  font-size:13px;
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+@media(max-width:980px){
+  .page-head,
+  .workspace{
+    grid-template-columns:1fr;
+  }
+
+  .grade-card{
+    position:relative;
+    top:auto;
+  }
+}
+
+@media(max-width:700px){
+  .submission{
+    grid-template-columns:1fr;
+  }
+
+  .open{
+    justify-self:start;
+  }
+}
+
+@media(max-width:640px){
+  .shell{
+    width:min(100% - 24px,1180px);
+  }
+
+  nav{
+    border-radius:24px;
+    align-items:flex-start;
+  }
+
+  .nav-links a:nth-child(2){
+    display:none;
+  }
+
+  main{
+    padding-top:30px;
+  }
+
+  .head-card,
+  .stats-card,
+  .table-card,
+  .grade-card{
+    border-radius:30px;
+    padding:24px;
+  }
+
+  footer{
+    justify-content:center;
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="shell">
+  <nav>
+    <div class="brand">
+      <div class="brand-symbol" aria-hidden="true"></div>
+      <span>The Educator</span>
+    </div>
+
+    <div class="nav-links">
+      <a href="course.html">Course</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a class="nav-primary" href="login.html">Logout</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="page-head" aria-label="Submissions overview">
+      <div class="head-card">
+        <div class="breadcrumb">
+          <a href="dashboard.html">Dashboard</a>
+          <span>/</span>
+          <a href="course.html">Software Engineering I</a>
+          <span>/</span>
+          <span>Submissions</span>
+        </div>
+
+        <span class="label">Instructor grading</span>
+        <h1>Assignment submissions</h1>
+        <p>
+          Review student submissions, check status, assign marks, and prepare feedback from one clean grading workspace.
+        </p>
+      </div>
+
+      <aside class="stats-card">
+        <h2>Summary</h2>
+        <div class="stats">
+          <div class="stat"><strong>25</strong><span>Students</span></div>
+          <div class="stat"><strong>18</strong><span>Submitted</span></div>
+          <div class="stat"><strong>4</strong><span>Graded</span></div>
+          <div class="stat"><strong>7</strong><span>Pending</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="workspace" aria-label="Submission grading workspace">
+      <article class="table-card">
+        <h2>Requirements Analysis Exercise</h2>
+
+        <div class="filters">
+          <a class="filter active" href="#">All</a>
+          <a class="filter" href="#">Submitted</a>
+          <a class="filter" href="#">Late</a>
+          <a class="filter" href="#">Missing</a>
+          <a class="filter" href="#">Graded</a>
+        </div>
+
+        <div class="submissions">
+          <div class="submission">
+            <div class="student">
+              <strong>Student 001</strong>
+              <span>ID: 2200001</span>
+            </div>
+            <div>
+              <span class="status submitted">Submitted</span>
+              <div class="time">Today, 9:42 PM</div>
+            </div>
+            <a class="open" href="#">Review</a>
+          </div>
+
+          <div class="submission">
+            <div class="student">
+              <strong>Student 002</strong>
+              <span>ID: 2200002</span>
+            </div>
+            <div>
+              <span class="status submitted">Graded</span>
+              <div class="score">8.5 / 10</div>
+            </div>
+            <a class="open" href="#">View</a>
+          </div>
+
+          <div class="submission">
+            <div class="student">
+              <strong>Student 003</strong>
+              <span>ID: 2200003</span>
+            </div>
+            <div>
+              <span class="status late">Late</span>
+              <div class="time">Yesterday, 12:18 AM</div>
+            </div>
+            <a class="open" href="#">Review</a>
+          </div>
+
+          <div class="submission">
+            <div class="student">
+              <strong>Student 004</strong>
+              <span>ID: 2200004</span>
+            </div>
+            <div>
+              <span class="status missing">Missing</span>
+              <div class="time">No submission</div>
+            </div>
+            <a class="open" href="#">Mark</a>
+          </div>
+
+          <div class="submission">
+            <div class="student">
+              <strong>Student 005</strong>
+              <span>ID: 2200005</span>
+            </div>
+            <div>
+              <span class="status submitted">Submitted</span>
+              <div class="time">Today, 7:15 PM</div>
+            </div>
+            <a class="open" href="#">Review</a>
+          </div>
+        </div>
+      </article>
+
+      <aside class="grade-card">
+        <h2>Quick Grade</h2>
+
+        <div class="preview">
+          <h3>Student 001</h3>
+          <p>Submitted PDF file for Requirements Analysis Exercise.</p>
+
+          <div class="file-box">
+            PDF preview placeholder<br />
+            <small>Student_001_Requirements.pdf</small>
+          </div>
+        </div>
+
+        <form class="grade-form" action="submissions.html">
+          <div class="field">
+            <label for="mark">Mark out of 10</label>
+            <input id="mark" name="mark" type="number" placeholder="Example: 8.5" />
+          </div>
+
+          <div class="field">
+            <label for="feedback">Feedback</label>
+            <textarea id="feedback" name="feedback" placeholder="Write clear, useful feedback for the student."></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" type="submit">Save Grade</button>
+            <a class="btn secondary" href="course.html">Back</a>
+          </div>
+        </form>
+
+        <div class="note">
+          This is a prototype. Real file preview, grading storage, and feedback delivery will be connected later.
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 The Educator</span>
+    <span>Submissions prototype</span>
+  </footer>
+</div>
+
+</body>
+</html>
