@@ -7,7 +7,7 @@ Current scope:
 - Minimal API project
 - `/health` JSON endpoint
 - `/health/live` ASP.NET Core health check endpoint
-- `/api/me` reserved contract endpoint returning `501 Not Implemented`
+- `/api/me` protected current user contract endpoint
 - Project references to Domain, Application, and Infrastructure
 - Supabase/Auth configuration placeholders
 - JWT bearer authentication wiring for future Supabase Auth tokens
@@ -33,9 +33,11 @@ Reserved contract endpoint:
 http://localhost:5088/api/me
 ```
 
+Without a valid Bearer token, this endpoint returns `401 Unauthorized`.
+
 Next backend step:
 
-- Protect `/api/me` with authorization once local Supabase Auth configuration is available.
+- Add local development Supabase Auth configuration and test an authenticated `/api/me` request.
 - Do not commit secrets or production credentials.
 - Add real configuration only through user secrets, environment variables, or deployment secrets.
 

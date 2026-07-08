@@ -48,7 +48,9 @@ public static class IdentityEndpoints
         })
             .WithName("GetCurrentUser")
             .WithSummary("Returns the authenticated user's profile once authentication is implemented.")
+            .RequireAuthorization()
             .Produces<CurrentUserResponse>(StatusCodes.Status200OK)
+            .Produces(StatusCodes.Status401Unauthorized)
             .ProducesProblem(StatusCodes.Status404NotFound)
             .ProducesProblem(StatusCodes.Status501NotImplemented);
 

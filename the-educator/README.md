@@ -508,7 +508,8 @@ the-educator/
   - [x] Local user lookup contract
   - [x] `/api/me` local user lookup flow
   - [x] JWT bearer authentication wiring
-  - [ ] Protected `/api/me` authorization
+  - [x] Protected `/api/me` authorization
+  - [ ] Local Supabase Auth development configuration
 
 ---
 
@@ -516,7 +517,7 @@ the-educator/
 
 The next recommended step is:
 
-> Protect `/api/me` with authorization once a local development Supabase Auth configuration is available.
+> Add local Supabase Auth development configuration and test an authenticated `/api/me` request without committing secrets.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 
