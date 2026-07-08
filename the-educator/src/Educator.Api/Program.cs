@@ -1,5 +1,10 @@
+using Educator.Application;
+using Educator.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddEducatorApplication();
+builder.Services.AddEducatorInfrastructure(builder.Configuration);
 builder.Services.AddHealthChecks();
 
 var app = builder.Build();

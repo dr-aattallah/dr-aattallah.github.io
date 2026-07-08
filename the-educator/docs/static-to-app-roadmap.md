@@ -358,6 +358,7 @@ GitHub Pages can continue serving the prototype while the production application
 - [x] Database schema drafted
 - [x] Static-to-app roadmap drafted
 - [x] ASP.NET Core API project created
+- [x] API project boundaries created
 - [ ] Supabase project created
 - [ ] First database migration prepared
 - [ ] Auth strategy implemented
@@ -371,6 +372,6 @@ GitHub Pages can continue serving the prototype while the production application
 
 ## Next Implementation Step
 
-The API skeleton now exists with a health endpoint. The next implementation task should be:
+The API skeleton and project boundaries now exist. The next implementation task should be:
 
-> Add project boundaries for domain, application, and infrastructure responsibilities. Do not connect secrets or production Supabase credentials in the next commit.
+> Add Supabase configuration placeholders and authentication planning comments. Do not connect secrets or production Supabase credentials in the next commit.

@@ -439,7 +439,10 @@ the-educator/
 │   ├── database-schema.md
 │   └── static-to-app-roadmap.md
 ├── src/
-│   └── Educator.Api/
+│   ├── Educator.Api/
+│   ├── Educator.Application/
+│   ├── Educator.Domain/
+│   └── Educator.Infrastructure/
 └── assets/
     ├── css/
     │   └── style.css
@@ -490,7 +493,8 @@ the-educator/
   - [x] Database schema design
   - [x] Static-to-app migration roadmap
   - [x] ASP.NET Core API skeleton
-  - [ ] API project boundaries
+  - [x] API project boundaries
+  - [ ] Supabase configuration placeholders
 
 ---
 
@@ -498,7 +502,7 @@ the-educator/
 
 The next recommended step is:
 
-> Add API project boundaries for domain, application, and infrastructure responsibilities without connecting production Supabase credentials yet.
+> Add Supabase configuration placeholders and authentication planning comments without connecting production Supabase credentials yet.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 

@@ -7,6 +7,7 @@ Current scope:
 - Minimal API project
 - `/health` JSON endpoint
 - `/health/live` ASP.NET Core health check endpoint
+- Project references to Domain, Application, and Infrastructure
 - No Supabase connection
 - No production credentials
 - No authentication implementation yet
@@ -25,6 +26,12 @@ http://localhost:5088/health
 
 Next backend step:
 
-- Add project structure for domain/application/infrastructure boundaries.
+- Add Supabase configuration placeholders.
 - Decide how Supabase Auth JWT validation will be handled.
-- Add configuration placeholders without committing secrets.
+- Do not commit secrets or production credentials.
+
+Build the .NET solution:
+
+```bash
+dotnet build the-educator/Educator.sln
+```
