@@ -504,7 +504,8 @@ the-educator/
   - [x] Supabase configuration placeholders
   - [x] Supabase Auth JWT validation plan
   - [x] First authenticated API contract
-  - [ ] Current user context contract
+  - [x] Current user context contract
+  - [ ] Local user lookup contract
 
 ---
 
@@ -512,7 +513,7 @@ the-educator/
 
 The next recommended step is:
 
-> Add a current user context contract in the application layer, without connecting real Supabase credentials or a database.
+> Add a local user lookup contract in the application layer, without connecting real Supabase credentials or a database.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 
