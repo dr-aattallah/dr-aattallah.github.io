@@ -262,6 +262,7 @@ When authentication implementation begins, use this order:
 - [x] `/api/me` contract endpoint reserved
 - [x] Current user context contract added
 - [x] Local user lookup contract added
+- [x] `/api/me` local user lookup flow wired
 - [ ] JWT bearer authentication implemented
 - [ ] `/api/me` authenticated implementation
 - [ ] Local user lookup implemented
@@ -275,4 +276,4 @@ When authentication implementation begins, use this order:
 
 The next implementation step should be:
 
-> Wire `/api/me` through the local user lookup contract, still without connecting real Supabase credentials.
+> Add JWT bearer authentication wiring for Supabase Auth, still without committing real Supabase credentials.

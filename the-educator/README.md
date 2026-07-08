@@ -506,7 +506,8 @@ the-educator/
   - [x] First authenticated API contract
   - [x] Current user context contract
   - [x] Local user lookup contract
-  - [ ] `/api/me` local user lookup flow
+  - [x] `/api/me` local user lookup flow
+  - [ ] JWT bearer authentication wiring
 
 ---
 
@@ -514,7 +515,7 @@ the-educator/
 
 The next recommended step is:
 
-> Wire `/api/me` through the local user lookup contract, without connecting real Supabase credentials or a database.
+> Add JWT bearer authentication wiring for Supabase Auth, without committing real Supabase credentials or production secrets.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 
