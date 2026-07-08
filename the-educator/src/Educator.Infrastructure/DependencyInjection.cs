@@ -1,5 +1,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Educator.Infrastructure.Configuration;
 
 namespace Educator.Infrastructure;
 
@@ -9,7 +10,12 @@ public static class DependencyInjection
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        _ = configuration;
+        services.Configure<SupabaseOptions>(
+            configuration.GetSection(SupabaseOptions.SectionName));
+
+        services.Configure<AuthOptions>(
+            configuration.GetSection(AuthOptions.SectionName));
+
         return services;
     }
 }

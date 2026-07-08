@@ -8,6 +8,7 @@ Current scope:
 - `/health` JSON endpoint
 - `/health/live` ASP.NET Core health check endpoint
 - Project references to Domain, Application, and Infrastructure
+- Supabase/Auth configuration placeholders
 - No Supabase connection
 - No production credentials
 - No authentication implementation yet
@@ -26,9 +27,9 @@ http://localhost:5088/health
 
 Next backend step:
 
-- Add Supabase configuration placeholders.
 - Decide how Supabase Auth JWT validation will be handled.
 - Do not commit secrets or production credentials.
+- Add real configuration only through user secrets, environment variables, or deployment secrets.
 
 Build the .NET solution:
 

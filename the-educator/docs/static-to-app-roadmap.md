@@ -359,6 +359,7 @@ GitHub Pages can continue serving the prototype while the production application
 - [x] Static-to-app roadmap drafted
 - [x] ASP.NET Core API project created
 - [x] API project boundaries created
+- [x] Supabase configuration placeholders added
 - [ ] Supabase project created
 - [ ] First database migration prepared
 - [ ] Auth strategy implemented
@@ -372,6 +373,6 @@ GitHub Pages can continue serving the prototype while the production application
 
 ## Next Implementation Step
 
-The API skeleton and project boundaries now exist. The next implementation task should be:
+The API skeleton, project boundaries, and Supabase configuration placeholders now exist. The next implementation task should be:
 
-> Add Supabase configuration placeholders and authentication planning comments. Do not connect secrets or production Supabase credentials in the next commit.
+> Document the Supabase Auth JWT validation plan for ASP.NET Core. Do not connect secrets or production Supabase credentials in the next commit.

@@ -494,7 +494,8 @@ the-educator/
   - [x] Static-to-app migration roadmap
   - [x] ASP.NET Core API skeleton
   - [x] API project boundaries
-  - [ ] Supabase configuration placeholders
+  - [x] Supabase configuration placeholders
+  - [ ] Supabase Auth JWT validation plan
 
 ---
 
@@ -502,7 +503,7 @@ the-educator/
 
 The next recommended step is:
 
-> Add Supabase configuration placeholders and authentication planning comments without connecting production Supabase credentials yet.
+> Document the Supabase Auth JWT validation plan for ASP.NET Core before implementing authentication.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 
