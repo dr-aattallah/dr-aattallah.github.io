@@ -513,7 +513,8 @@ the-educator/
   - [x] Auth smoke test script
   - [ ] Authenticated `/api/me` smoke test
   - [x] Core domain models for users, courses, enrollments, and resources
-  - [ ] Course/resource application contracts
+  - [x] Course/resource application contracts
+  - [ ] `GET /api/courses` contract endpoint
 
 ---
 
@@ -521,7 +522,7 @@ the-educator/
 
 The next recommended step is:
 
-> Add course/resource application contracts for the first backend vertical slice, without connecting a database yet.
+> Add a protected `GET /api/courses` contract endpoint for the first backend vertical slice, without connecting a database yet.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 

@@ -370,6 +370,7 @@ GitHub Pages can continue serving the prototype while the production application
 - [x] Local Supabase Auth setup guide added
 - [x] Auth smoke test script added
 - [x] Core domain models added
+- [x] Course/resource application contracts added
 - [ ] Supabase project created
 - [ ] First database migration prepared
 - [ ] Auth strategy implemented
@@ -383,6 +384,6 @@ GitHub Pages can continue serving the prototype while the production application
 
 ## Next Implementation Step
 
-The API skeleton, project boundaries, Supabase configuration placeholders, JWT validation plan, first authenticated API contract, current user context contract, local user lookup contract, `/api/me` local lookup flow, JWT bearer wiring, protected `/api/me` authorization, local Supabase Auth setup guide, auth smoke-test script, and core domain models now exist. The next implementation task should be:
+The API skeleton, project boundaries, Supabase configuration placeholders, JWT validation plan, first authenticated API contract, current user context contract, local user lookup contract, `/api/me` local lookup flow, JWT bearer wiring, protected `/api/me` authorization, local Supabase Auth setup guide, auth smoke-test script, core domain models, and course/resource application contracts now exist. The next implementation task should be:
 
-> Add course/resource application contracts for the first backend vertical slice. Do not connect a database or commit secrets in the next commit.
+> Add a protected `GET /api/courses` contract endpoint for the first backend vertical slice. Do not connect a database or commit secrets in the next commit.
