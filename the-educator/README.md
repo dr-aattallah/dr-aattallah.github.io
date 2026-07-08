@@ -512,6 +512,8 @@ the-educator/
   - [x] Local Supabase Auth development configuration guide
   - [x] Auth smoke test script
   - [ ] Authenticated `/api/me` smoke test
+  - [x] Core domain models for users, courses, enrollments, and resources
+  - [ ] Course/resource application contracts
 
 ---
 
@@ -519,7 +521,7 @@ the-educator/
 
 The next recommended step is:
 
-> Create a local Supabase development project/user, set `EDUCATOR_SUPABASE_ACCESS_TOKEN` locally, and run the authenticated `/api/me` smoke test without committing secrets.
+> Add course/resource application contracts for the first backend vertical slice, without connecting a database yet.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 
