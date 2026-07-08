@@ -11,6 +11,12 @@ public sealed class PlatformUser : Entity
     public string? ProfileImagePath { get; private set; }
     public UserStatus Status { get; private set; }
 
+    private PlatformUser()
+    {
+        Name = string.Empty;
+        Email = string.Empty;
+    }
+
     public PlatformUser(
         Guid id,
         string name,

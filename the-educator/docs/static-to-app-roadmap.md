@@ -372,8 +372,10 @@ GitHub Pages can continue serving the prototype while the production application
 - [x] Core domain models added
 - [x] Course/resource application contracts added
 - [x] Protected `GET /api/courses` contract endpoint added
+- [x] Course persistence implementation added
+- [x] First database migration prepared
 - [ ] Supabase project created
-- [ ] First database migration prepared
+- [ ] Initial migration applied to Supabase development database
 - [ ] Auth strategy implemented
 - [ ] Course/resource vertical slice implemented
 - [ ] Web app shell selected and created
@@ -385,6 +387,6 @@ GitHub Pages can continue serving the prototype while the production application
 
 ## Next Implementation Step
 
-The API skeleton, project boundaries, Supabase configuration placeholders, JWT validation plan, first authenticated API contract, current user context contract, local user lookup contract, `/api/me` local lookup flow, JWT bearer wiring, protected `/api/me` authorization, local Supabase Auth setup guide, auth smoke-test script, core domain models, course/resource application contracts, and protected `GET /api/courses` contract endpoint now exist. The next implementation task should be:
+The API skeleton, project boundaries, Supabase configuration placeholders, JWT validation plan, first authenticated API contract, current user context contract, local user lookup contract, `/api/me` local lookup flow, JWT bearer wiring, protected `/api/me` authorization, local Supabase Auth setup guide, auth smoke-test script, core domain models, course/resource application contracts, protected `GET /api/courses` contract endpoint, course persistence implementation, and initial database migration now exist. The next implementation task should be:
 
-> Add the course persistence implementation for the first backend vertical slice. Use Supabase PostgreSQL configuration through user secrets or environment variables only.
+> Apply the initial migration to a Supabase development database using `Supabase:DatabaseConnectionString` from user secrets or environment variables only.

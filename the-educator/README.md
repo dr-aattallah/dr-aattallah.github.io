@@ -515,7 +515,9 @@ the-educator/
   - [x] Core domain models for users, courses, enrollments, and resources
   - [x] Course/resource application contracts
   - [x] `GET /api/courses` contract endpoint
-  - [ ] Course persistence implementation
+  - [x] Course persistence implementation
+  - [x] First database migration prepared
+  - [ ] Apply migration to a Supabase development database
 
 ---
 
@@ -523,7 +525,7 @@ the-educator/
 
 The next recommended step is:
 
-> Add the course persistence implementation for the first backend vertical slice, using Supabase PostgreSQL without committing secrets.
+> Apply the initial migration to a Supabase development database using a local `Supabase:DatabaseConnectionString` secret.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 

@@ -12,6 +12,13 @@ public sealed class Course : Entity
     public Guid InstructorId { get; private set; }
     public CourseVisibility Visibility { get; private set; }
 
+    private Course()
+    {
+        CourseCode = string.Empty;
+        Title = string.Empty;
+        Semester = string.Empty;
+    }
+
     public Course(
         string courseCode,
         string title,

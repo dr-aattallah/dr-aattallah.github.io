@@ -14,6 +14,12 @@ public sealed class CourseResource : Entity
     public ResourceVisibility Visibility { get; private set; }
     public Guid CreatedBy { get; private set; }
 
+    private CourseResource()
+    {
+        Title = string.Empty;
+        Section = string.Empty;
+    }
+
     public CourseResource(
         Guid courseId,
         string title,

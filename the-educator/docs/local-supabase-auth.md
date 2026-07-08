@@ -36,9 +36,29 @@ dotnet user-secrets set "Authentication:Authority" "https://YOUR_PROJECT_REF.sup
 dotnet user-secrets set "Authentication:Audience" "authenticated" --project the-educator/src/Educator.Api/Educator.Api.csproj
 dotnet user-secrets set "Supabase:ProjectUrl" "https://YOUR_PROJECT_REF.supabase.co" --project the-educator/src/Educator.Api/Educator.Api.csproj
 dotnet user-secrets set "Supabase:AnonKey" "YOUR_LOCAL_DEV_ANON_KEY" --project the-educator/src/Educator.Api/Educator.Api.csproj
+dotnet user-secrets set "Supabase:DatabaseConnectionString" "Host=YOUR_DB_HOST;Port=5432;Database=postgres;Username=postgres;Password=YOUR_LOCAL_DEV_PASSWORD;SSL Mode=Require;Trust Server Certificate=true" --project the-educator/src/Educator.Api/Educator.Api.csproj
 ```
 
 Only add `Supabase:ServiceRoleKey` locally when server-side database or admin operations are implemented and actually need it.
+
+---
+
+## Apply Local Development Migration
+
+After setting `Supabase:DatabaseConnectionString` locally, apply the initial schema:
+
+```bash
+dotnet ef database update \
+  --project the-educator/src/Educator.Infrastructure/Educator.Infrastructure.csproj \
+  --startup-project the-educator/src/Educator.Api/Educator.Api.csproj
+```
+
+This creates the first backend tables:
+
+- `users`
+- `courses`
+- `enrollments`
+- `resources`
 
 ---
 

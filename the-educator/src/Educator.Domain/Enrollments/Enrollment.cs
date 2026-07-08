@@ -9,6 +9,10 @@ public sealed class Enrollment : Entity
     public EnrollmentStatus Status { get; private set; }
     public string? Section { get; private set; }
 
+    private Enrollment()
+    {
+    }
+
     public Enrollment(
         Guid courseId,
         Guid studentId,

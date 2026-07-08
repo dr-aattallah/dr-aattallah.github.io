@@ -4,6 +4,9 @@ namespace Educator.Application.Courses;
 
 public interface ICourseRepository
 {
+    ValueTask<IReadOnlyList<CourseListItem>> ListAllAsync(
+        CancellationToken cancellationToken = default);
+
     ValueTask<IReadOnlyList<CourseListItem>> ListForInstructorAsync(
         Guid instructorId,
         CancellationToken cancellationToken = default);
