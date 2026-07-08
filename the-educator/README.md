@@ -503,7 +503,8 @@ the-educator/
   - [x] API project boundaries
   - [x] Supabase configuration placeholders
   - [x] Supabase Auth JWT validation plan
-  - [ ] First authenticated API contract
+  - [x] First authenticated API contract
+  - [ ] Current user context contract
 
 ---
 
@@ -511,7 +512,7 @@ the-educator/
 
 The next recommended step is:
 
-> Add the first authentication-safe API contract, such as `/api/me` planning or a user profile contract, without connecting real Supabase credentials.
+> Add a current user context contract in the application layer, without connecting real Supabase credentials or a database.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 

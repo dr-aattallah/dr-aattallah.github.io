@@ -7,6 +7,7 @@ Current scope:
 - Minimal API project
 - `/health` JSON endpoint
 - `/health/live` ASP.NET Core health check endpoint
+- `/api/me` reserved contract endpoint returning `501 Not Implemented`
 - Project references to Domain, Application, and Infrastructure
 - Supabase/Auth configuration placeholders
 - No Supabase connection
@@ -23,6 +24,12 @@ Then open:
 
 ```text
 http://localhost:5088/health
+```
+
+Reserved contract endpoint:
+
+```text
+http://localhost:5088/api/me
 ```
 
 Next backend step:

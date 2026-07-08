@@ -361,6 +361,7 @@ GitHub Pages can continue serving the prototype while the production application
 - [x] API project boundaries created
 - [x] Supabase configuration placeholders added
 - [x] Supabase Auth JWT validation plan documented
+- [x] First authenticated API contract reserved
 - [ ] Supabase project created
 - [ ] First database migration prepared
 - [ ] Auth strategy implemented
@@ -374,6 +375,6 @@ GitHub Pages can continue serving the prototype while the production application
 
 ## Next Implementation Step
 
-The API skeleton, project boundaries, Supabase configuration placeholders, and JWT validation plan now exist. The next implementation task should be:
+The API skeleton, project boundaries, Supabase configuration placeholders, JWT validation plan, and first authenticated API contract now exist. The next implementation task should be:
 
-> Add the first authentication-safe API contract, such as `/api/me` planning or a user profile contract. Do not connect secrets or production Supabase credentials in the next commit.
+> Add a current user context contract in the application layer. Do not connect secrets or production Supabase credentials in the next commit.

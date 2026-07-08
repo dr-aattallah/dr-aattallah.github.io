@@ -259,8 +259,9 @@ When authentication implementation begins, use this order:
 
 - [x] Supabase/Auth configuration placeholders exist
 - [x] JWT validation plan documented
+- [x] `/api/me` contract endpoint reserved
 - [ ] JWT bearer authentication implemented
-- [ ] `/api/me` endpoint implemented
+- [ ] `/api/me` authenticated implementation
 - [ ] Local user lookup implemented
 - [ ] Role policies implemented
 - [ ] Course authorization handlers implemented
@@ -272,4 +273,4 @@ When authentication implementation begins, use this order:
 
 The next implementation step should be:
 
-> Add the first authentication-safe API contract: `/api/me` planning or a user profile contract, still without connecting real Supabase credentials.
+> Add a current user context contract in the application layer, still without connecting real Supabase credentials.

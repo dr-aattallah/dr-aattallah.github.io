@@ -1,3 +1,4 @@
+using Educator.Api.Endpoints;
 using Educator.Application;
 using Educator.Infrastructure;
 
@@ -19,5 +20,6 @@ app.MapGet("/health", () => Results.Ok(new
 }));
 
 app.MapHealthChecks("/health/live");
+app.MapIdentityEndpoints();
 
 app.Run();
