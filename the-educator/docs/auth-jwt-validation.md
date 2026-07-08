@@ -266,6 +266,7 @@ When authentication implementation begins, use this order:
 - [x] JWT bearer authentication wiring added
 - [x] `/api/me` protected with authorization
 - [x] Local Supabase Auth setup guide added
+- [x] Auth smoke test script added
 - [ ] `/api/me` authenticated implementation
 - [ ] Local user lookup implemented
 - [ ] Role policies implemented
@@ -278,4 +279,4 @@ When authentication implementation begins, use this order:
 
 The next implementation step should be:
 
-> Create a local Supabase development project/user and run an authenticated `/api/me` smoke test without committing secrets.
+> Create a local Supabase development project/user, set `EDUCATOR_SUPABASE_ACCESS_TOKEN` locally, and run the authenticated `/api/me` smoke test without committing secrets.

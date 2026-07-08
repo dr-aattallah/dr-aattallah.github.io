@@ -38,7 +38,7 @@ Without a valid Bearer token, this endpoint returns `401 Unauthorized`.
 Next backend step:
 
 - Follow `the-educator/docs/local-supabase-auth.md` to configure local Supabase Auth with user secrets.
-- Create a local development Supabase Auth user and test an authenticated `/api/me` request.
+- Create a local development Supabase Auth user and test an authenticated `/api/me` request with `the-educator/scripts/smoke-test-auth.sh`.
 - Do not commit secrets or production credentials.
 - Add real configuration only through user secrets, environment variables, or deployment secrets.
 

@@ -510,6 +510,7 @@ the-educator/
   - [x] JWT bearer authentication wiring
   - [x] Protected `/api/me` authorization
   - [x] Local Supabase Auth development configuration guide
+  - [x] Auth smoke test script
   - [ ] Authenticated `/api/me` smoke test
 
 ---
@@ -518,7 +519,7 @@ the-educator/
 
 The next recommended step is:
 
-> Create a local Supabase development project/user and run an authenticated `/api/me` smoke test without committing secrets.
+> Create a local Supabase development project/user, set `EDUCATOR_SUPABASE_ACCESS_TOKEN` locally, and run the authenticated `/api/me` smoke test without committing secrets.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 

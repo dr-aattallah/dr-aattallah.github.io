@@ -91,6 +91,18 @@ Expected behavior at the current stage:
 
 The local user lookup is still intentionally unconfigured, so a valid token may authenticate while the Educator profile resolution remains unfinished.
 
+You can also run the smoke-test script:
+
+```bash
+EDUCATOR_SUPABASE_ACCESS_TOKEN="YOUR_LOCAL_DEV_ACCESS_TOKEN" \
+  ./the-educator/scripts/smoke-test-auth.sh
+```
+
+Without `EDUCATOR_SUPABASE_ACCESS_TOKEN`, the script still verifies:
+
+- `/health` returns `200 OK`
+- `/api/me` without a token returns `401 Unauthorized`
+
 ---
 
 ## Safety Rules
