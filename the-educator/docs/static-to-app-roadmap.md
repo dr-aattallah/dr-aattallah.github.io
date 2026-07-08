@@ -367,6 +367,7 @@ GitHub Pages can continue serving the prototype while the production application
 - [x] `/api/me` local user lookup flow wired
 - [x] JWT bearer authentication wiring added
 - [x] `/api/me` protected with authorization
+- [x] Local Supabase Auth setup guide added
 - [ ] Supabase project created
 - [ ] First database migration prepared
 - [ ] Auth strategy implemented
@@ -380,6 +381,6 @@ GitHub Pages can continue serving the prototype while the production application
 
 ## Next Implementation Step
 
-The API skeleton, project boundaries, Supabase configuration placeholders, JWT validation plan, first authenticated API contract, current user context contract, local user lookup contract, `/api/me` local lookup flow, JWT bearer wiring, and protected `/api/me` authorization now exist. The next implementation task should be:
+The API skeleton, project boundaries, Supabase configuration placeholders, JWT validation plan, first authenticated API contract, current user context contract, local user lookup contract, `/api/me` local lookup flow, JWT bearer wiring, protected `/api/me` authorization, and local Supabase Auth setup guide now exist. The next implementation task should be:
 
-> Add local Supabase Auth development configuration and test an authenticated `/api/me` request. Do not commit secrets or production Supabase credentials.
+> Create a local Supabase development project/user and run an authenticated `/api/me` smoke test. Do not commit secrets or production Supabase credentials.

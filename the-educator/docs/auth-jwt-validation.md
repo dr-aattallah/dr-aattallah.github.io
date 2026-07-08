@@ -265,6 +265,7 @@ When authentication implementation begins, use this order:
 - [x] `/api/me` local user lookup flow wired
 - [x] JWT bearer authentication wiring added
 - [x] `/api/me` protected with authorization
+- [x] Local Supabase Auth setup guide added
 - [ ] `/api/me` authenticated implementation
 - [ ] Local user lookup implemented
 - [ ] Role policies implemented
@@ -277,4 +278,4 @@ When authentication implementation begins, use this order:
 
 The next implementation step should be:
 
-> Add local Supabase Auth development configuration and test an authenticated `/api/me` request without committing secrets.
+> Create a local Supabase development project/user and run an authenticated `/api/me` smoke test without committing secrets.
