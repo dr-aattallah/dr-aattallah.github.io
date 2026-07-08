@@ -276,6 +276,12 @@ The static-to-app migration roadmap is documented in:
 docs/static-to-app-roadmap.md
 ```
 
+The Supabase Auth JWT validation plan is documented in:
+
+```text
+docs/auth-jwt-validation.md
+```
+
 ---
 
 ## Suggested Data Models
@@ -437,7 +443,8 @@ the-educator/
 │   ├── backend-readiness.md
 │   ├── technical-direction.md
 │   ├── database-schema.md
-│   └── static-to-app-roadmap.md
+│   ├── static-to-app-roadmap.md
+│   └── auth-jwt-validation.md
 ├── src/
 │   ├── Educator.Api/
 │   ├── Educator.Application/
@@ -495,7 +502,8 @@ the-educator/
   - [x] ASP.NET Core API skeleton
   - [x] API project boundaries
   - [x] Supabase configuration placeholders
-  - [ ] Supabase Auth JWT validation plan
+  - [x] Supabase Auth JWT validation plan
+  - [ ] First authenticated API contract
 
 ---
 
@@ -503,7 +511,7 @@ the-educator/
 
 The next recommended step is:
 
-> Document the Supabase Auth JWT validation plan for ASP.NET Core before implementing authentication.
+> Add the first authentication-safe API contract, such as `/api/me` planning or a user profile contract, without connecting real Supabase credentials.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 

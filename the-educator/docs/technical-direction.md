@@ -156,6 +156,12 @@ The static-to-app migration roadmap is documented in:
 docs/static-to-app-roadmap.md
 ```
 
+The Supabase Auth JWT validation plan is documented in:
+
+```text
+docs/auth-jwt-validation.md
+```
+
 ---
 
 ## Suggested Route Direction
