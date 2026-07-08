@@ -7,7 +7,7 @@ Current scope:
 - Dependency injection extension placeholder
 - Supabase configuration options
 - Authentication configuration options
-- Temporary unauthenticated current user context
+- HTTP-context current user context
 - Temporary unconfigured local user lookup
 - No Supabase connection
 - No production credentials

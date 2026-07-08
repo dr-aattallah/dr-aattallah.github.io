@@ -18,7 +18,8 @@ public static class DependencyInjection
         services.Configure<AuthOptions>(
             configuration.GetSection(AuthOptions.SectionName));
 
-        services.AddScoped<ICurrentUserContext, UnauthenticatedCurrentUserContext>();
+        services.AddHttpContextAccessor();
+        services.AddScoped<ICurrentUserContext, HttpContextCurrentUserContext>();
         services.AddScoped<ILocalUserLookup, UnconfiguredLocalUserLookup>();
 
         return services;

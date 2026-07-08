@@ -10,9 +10,10 @@ Current scope:
 - `/api/me` reserved contract endpoint returning `501 Not Implemented`
 - Project references to Domain, Application, and Infrastructure
 - Supabase/Auth configuration placeholders
+- JWT bearer authentication wiring for future Supabase Auth tokens
 - No Supabase connection
 - No production credentials
-- No authentication implementation yet
+- No protected production endpoints yet
 
 Run locally:
 
@@ -34,7 +35,7 @@ http://localhost:5088/api/me
 
 Next backend step:
 
-- Decide how Supabase Auth JWT validation will be handled.
+- Protect `/api/me` with authorization once local Supabase Auth configuration is available.
 - Do not commit secrets or production credentials.
 - Add real configuration only through user secrets, environment variables, or deployment secrets.
 

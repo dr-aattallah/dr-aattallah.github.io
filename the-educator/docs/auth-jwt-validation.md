@@ -2,7 +2,7 @@
 
 This document defines how **The Educator** should validate Supabase Auth JWTs in the future ASP.NET Core Web API.
 
-This is a planning document only. It does not add authentication packages, production secrets, Supabase keys, or runtime authentication code yet.
+This document tracks the planned and incremental Supabase Auth JWT integration. The API has JWT bearer wiring, but no production secrets, Supabase keys, protected course endpoints, or database-backed user lookup yet.
 
 ---
 
@@ -263,7 +263,7 @@ When authentication implementation begins, use this order:
 - [x] Current user context contract added
 - [x] Local user lookup contract added
 - [x] `/api/me` local user lookup flow wired
-- [ ] JWT bearer authentication implemented
+- [x] JWT bearer authentication wiring added
 - [ ] `/api/me` authenticated implementation
 - [ ] Local user lookup implemented
 - [ ] Role policies implemented
@@ -276,4 +276,4 @@ When authentication implementation begins, use this order:
 
 The next implementation step should be:
 
-> Add JWT bearer authentication wiring for Supabase Auth, still without committing real Supabase credentials.
+> Protect `/api/me` with authorization once a local development Supabase Auth configuration is available.
