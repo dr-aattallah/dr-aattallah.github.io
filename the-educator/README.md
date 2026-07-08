@@ -505,7 +505,8 @@ the-educator/
   - [x] Supabase Auth JWT validation plan
   - [x] First authenticated API contract
   - [x] Current user context contract
-  - [ ] Local user lookup contract
+  - [x] Local user lookup contract
+  - [ ] `/api/me` local user lookup flow
 
 ---
 
@@ -513,7 +514,7 @@ the-educator/
 
 The next recommended step is:
 
-> Add a local user lookup contract in the application layer, without connecting real Supabase credentials or a database.
+> Wire `/api/me` through the local user lookup contract, without connecting real Supabase credentials or a database.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 

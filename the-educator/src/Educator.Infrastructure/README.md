@@ -8,6 +8,7 @@ Current scope:
 - Supabase configuration options
 - Authentication configuration options
 - Temporary unauthenticated current user context
+- Temporary unconfigured local user lookup
 - No Supabase connection
 - No production credentials
 

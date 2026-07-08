@@ -7,6 +7,7 @@ Current scope:
 - Dependency injection extension placeholder
 - Current user response contract for future `/api/me`
 - Current user context contract for future authentication-aware use cases
+- Local user lookup contract for future role and profile resolution
 
 Future scope:
 

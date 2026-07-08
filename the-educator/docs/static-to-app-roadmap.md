@@ -363,6 +363,7 @@ GitHub Pages can continue serving the prototype while the production application
 - [x] Supabase Auth JWT validation plan documented
 - [x] First authenticated API contract reserved
 - [x] Current user context contract added
+- [x] Local user lookup contract added
 - [ ] Supabase project created
 - [ ] First database migration prepared
 - [ ] Auth strategy implemented
@@ -376,6 +377,6 @@ GitHub Pages can continue serving the prototype while the production application
 
 ## Next Implementation Step
 
-The API skeleton, project boundaries, Supabase configuration placeholders, JWT validation plan, first authenticated API contract, and current user context contract now exist. The next implementation task should be:
+The API skeleton, project boundaries, Supabase configuration placeholders, JWT validation plan, first authenticated API contract, current user context contract, and local user lookup contract now exist. The next implementation task should be:
 
-> Add a local user lookup contract in the application layer. Do not connect secrets or production Supabase credentials in the next commit.
+> Wire `/api/me` through the local user lookup contract. Do not connect secrets or production Supabase credentials in the next commit.
