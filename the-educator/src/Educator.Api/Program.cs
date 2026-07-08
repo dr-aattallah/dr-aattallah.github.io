@@ -26,5 +26,6 @@ app.MapGet("/health", () => Results.Ok(new
 
 app.MapHealthChecks("/health/live");
 app.MapIdentityEndpoints();
+app.MapCourseEndpoints();
 
 app.Run();

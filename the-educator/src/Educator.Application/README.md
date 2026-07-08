@@ -10,6 +10,7 @@ Current scope:
 - Local user lookup contract for future role and profile resolution
 - Course listing contract for the first backend vertical slice
 - Course, enrollment, and resource repository contracts
+- Temporary unconfigured course listing use-case
 
 Future scope:
 

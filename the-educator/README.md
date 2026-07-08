@@ -514,7 +514,8 @@ the-educator/
   - [ ] Authenticated `/api/me` smoke test
   - [x] Core domain models for users, courses, enrollments, and resources
   - [x] Course/resource application contracts
-  - [ ] `GET /api/courses` contract endpoint
+  - [x] `GET /api/courses` contract endpoint
+  - [ ] Course persistence implementation
 
 ---
 
@@ -522,7 +523,7 @@ the-educator/
 
 The next recommended step is:
 
-> Add a protected `GET /api/courses` contract endpoint for the first backend vertical slice, without connecting a database yet.
+> Add the course persistence implementation for the first backend vertical slice, using Supabase PostgreSQL without committing secrets.
 
 After that, the project can move from a static prototype into a real web application with backend services.
 

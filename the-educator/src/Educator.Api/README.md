@@ -8,6 +8,7 @@ Current scope:
 - `/health` JSON endpoint
 - `/health/live` ASP.NET Core health check endpoint
 - `/api/me` protected current user contract endpoint
+- `/api/courses` protected course listing contract endpoint
 - Project references to Domain, Application, and Infrastructure
 - Supabase/Auth configuration placeholders
 - JWT bearer authentication wiring for future Supabase Auth tokens
@@ -31,9 +32,11 @@ Reserved contract endpoint:
 
 ```text
 http://localhost:5088/api/me
+http://localhost:5088/api/courses
 ```
 
-Without a valid Bearer token, this endpoint returns `401 Unauthorized`.
+Without a valid Bearer token, protected endpoints return `401 Unauthorized`.
+With a valid token, `/api/courses` currently returns `501 Not Implemented` until persistence is connected.
 
 Next backend step:
 
