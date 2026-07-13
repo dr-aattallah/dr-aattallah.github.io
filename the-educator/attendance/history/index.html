@@ -1,73 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>سجل الحضور</title>
-
-<link rel="stylesheet" href="../css/attendance.css">
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script defer src="../js/history.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>سجل الحضور — The Educator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/attendance.css">
+  <link rel="stylesheet" href="../css/history.css">
 </head>
+<body class="history-page">
+  <div class="history-orb history-orb-a"></div>
+  <div class="history-orb history-orb-b"></div>
 
-<body>
+  <header class="history-nav history-glass">
+    <a class="history-brand" href="../">
+      <span class="history-logo">E</span>
+      <span>The Educator</span>
+    </a>
+    <div class="history-online"><i></i> النظام متصل</div>
+    <a class="history-back" href="../">رجوع</a>
+  </header>
 
-<div class="attendance-page">
+  <main class="history-shell">
+    <section class="history-heading">
+      <span>سجل الطالب</span>
+      <h1>سجل الحضور</h1>
+      <p>جميع عمليات تسجيل الحضور في مكان واحد.</p>
+    </section>
 
-    <header class="attendance-header glass">
-        <a href="../index.html">رجوع</a>
-        <div>سجل الحضور</div>
-    </header>
+    <section id="historyLoading" class="history-message history-glass">
+      <span class="history-spinner"></span>
+      <strong>جارٍ تحميل السجل...</strong>
+    </section>
 
-    <section class="glass summary-card">
+    <section id="historyError" class="history-message history-glass is-hidden">
+      <span class="history-error-icon">×</span>
+      <div>
+        <strong>تعذر تحميل السجل</strong>
+        <p id="historyErrorMessage"></p>
+      </div>
+    </section>
 
-        <h1 id="studentName">...</h1>
-
-        <div class="summary-grid">
-
-            <div>
-                <span>الرقم الجامعي</span>
-                <strong id="studentId">...</strong>
-            </div>
-
-            <div>
-                <span>إجمالي السجلات</span>
-                <strong id="totalAttendance">0</strong>
-            </div>
-
-            <div>
-                <span>نسبة الحضور</span>
-                <strong id="attendanceRate">0%</strong>
-            </div>
-
+    <section id="historyContent" class="is-hidden">
+      <section class="history-profile history-glass">
+        <div class="history-student">
+          <div class="history-avatar">ط</div>
+          <div>
+            <span>الطالب</span>
+            <h2 id="studentName">—</h2>
+            <p id="studentId">—</p>
+          </div>
         </div>
 
-    </section>
+        <div class="history-stats">
+          <article><span>إجمالي السجلات</span><strong id="totalAttendance">0</strong></article>
+          <article><span>حاضر</span><strong id="presentCount">0</strong></article>
+          <article><span>متأخر</span><strong id="lateCount">0</strong></article>
+          <article><span>نسبة الالتزام</span><strong id="attendanceRate">0%</strong></article>
+        </div>
+      </section>
 
-    <section class="glass table-card">
+      <section class="history-records history-glass">
+        <div class="history-records-head">
+          <div>
+            <span>السجل التفصيلي</span>
+            <h2>المحاضرات المسجلة</h2>
+          </div>
+          <b id="recordCountBadge">0 سجل</b>
+        </div>
 
-        <table>
+        <div id="emptyHistory" class="history-empty is-hidden">
+          لا توجد سجلات حضور لهذا الطالب حتى الآن.
+        </div>
 
+        <div class="history-table-wrap">
+          <table class="history-table">
             <thead>
-                <tr>
-                    <th>المقرر</th>
-                    <th>التاريخ</th>
-                    <th>الوقت</th>
-                    <th>الحالة</th>
-                </tr>
+              <tr>
+                <th>المقرر</th>
+                <th>التاريخ</th>
+                <th>الوقت</th>
+                <th>الحالة</th>
+              </tr>
             </thead>
-
-            <tbody id="attendanceTable">
-
-            </tbody>
-
-        </table>
-
+            <tbody id="attendanceTable"></tbody>
+          </table>
+        </div>
+      </section>
     </section>
+  </main>
 
-</div>
-
+  <script src="../js/history.js"></script>
 </body>
 </html>
