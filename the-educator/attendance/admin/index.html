@@ -1,19 +1,32 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Instructor Attendance — The Educator</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/attendance.css"></head>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>لوحة المعلم — The Educator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/attendance.css">
+</head>
 <body class="subpage">
-<div class="ambient a"></div><div class="ambient b"></div><div class="grain"></div>
-<header class="nav glass compact"><a class="brand" href="../../"><span class="orb">+</span><span>The Educator</span></a><a class="back" href="../">Attendance</a></header>
-<main class="shell page">
-<div class="page-title reveal"><span class="badge">Instructor workspace</span><h1>Attendance overview.</h1><p>Manage sessions, monitor check-ins, and review activity from one clear workspace.</p></div>
-<section class="metrics">
-<article class="glass reveal"><span>Active session</span><strong>None</strong><small>Create a session to begin</small></article>
-<article class="glass reveal delay-1"><span>Students checked in</span><strong>0</strong><small>Current session</small></article>
-<article class="glass reveal delay-2"><span>Late arrivals</span><strong>0</strong><small>Current session</small></article>
-</section>
-<section class="admin-next glass strong reveal"><div><span class="badge">Backend status</span><h2>Supabase connection pending.</h2><p>The visual system is ready. Next: live sessions, tag verification, and attendance storage.</p></div><button class="btn secondary" disabled>Not connected</button></section>
-</main><script src="../js/site.js"></script></body></html>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
+  <header class="nav-shell liquid-glass compact">
+    <a class="brand" href="../../"><span class="brand-orb">E</span><span>The Educator</span></a>
+    <a class="back-link" href="../">الحضور</a>
+  </header>
+  <main class="shell page-space">
+    <section class="page-title reveal">
+      <span class="eyebrow">لوحة المعلم</span>
+      <h1>ملخص الحضور</h1>
+      <p>ستظهر الجلسات والبيانات هنا بعد ربط Supabase.</p>
+    </section>
+    <section class="metrics-grid">
+      <article class="metric-card liquid-glass reveal"><span>الجلسة الحالية</span><strong>لا توجد</strong></article>
+      <article class="metric-card liquid-glass reveal delay-1"><span>الحضور</span><strong>0</strong></article>
+      <article class="metric-card liquid-glass reveal delay-2"><span>المتأخرون</span><strong>0</strong></article>
+    </section>
+  </main>
+  <script src="../js/site.js"></script>
+</body>
+</html>
