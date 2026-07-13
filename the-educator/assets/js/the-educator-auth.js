@@ -57,11 +57,18 @@ async function apiGet(path) {
     throw new Error("Please login first.");
   }
 
-  const response = await fetch(`${educatorConfig.apiBaseUrl}${path}`, {
-    headers: {
-      Authorization: `Bearer ${session.accessToken}`
-    }
-  });
+  let response;
+
+  try {
+    response = await fetch(`${educatorConfig.apiBaseUrl}${path}`, {
+      cache: "no-store",
+      headers: {
+        Authorization: `Bearer ${session.accessToken}`
+      }
+    });
+  } catch {
+    throw new Error("Could not reach The Educator API. Refresh the page and try again.");
+  }
 
   if (response.status === 401) {
     clearSession();
