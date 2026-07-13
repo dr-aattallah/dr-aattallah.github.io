@@ -1,14 +1,64 @@
 
 const form = document.getElementById('checkinForm');
-const input = document.getElementById('studentId');
-const button = document.getElementById('submitButton');
-const box = document.getElementById('messageBox');
+const studentIdInput = document.getElementById('studentId');
+const submitButton = document.getElementById('submitButton');
+const messageBox = document.getElementById('messageBox');
 const tagDisplay = document.getElementById('tagDisplay');
-const sessionDisplay = document.getElementById('sessionDisplay');
-const params = new URLSearchParams(location.search);
+const zoneDisplay = document.getElementById('zoneDisplay');
+
+const params = new URLSearchParams(window.location.search);
 const tag = params.get('tag') || params.get('card') || '';
-const names = { '1':'Card 1 · Front zone','2':'Card 2 · Middle zone','3':'Card 3 · Back zone','NFC-FRONT':'Card 1 · Front zone','NFC-MIDDLE':'Card 2 · Middle zone','NFC-BACK':'Card 3 · Back zone' };
-tagDisplay.textContent = names[tag] || (tag || 'Not detected');
-sessionDisplay.textContent = 'Prototype mode';
-function show(text,type){ box.textContent=text; box.className=`message-box show ${type}`; }
-form.addEventListener('submit', async e => { e.preventDefault(); const id=input.value.trim(); if(!/^[A-Za-z0-9-]{5,20}$/.test(id)){ show('Enter a valid university ID.','error'); input.focus(); return; } button.classList.add('is-loading'); button.disabled=true; box.className='message-box'; await new Promise(r=>setTimeout(r,900)); show(`Prototype ready. Student ${id} would be recorded using ${tagDisplay.textContent}.`,'success'); form.reset(); button.classList.remove('is-loading'); button.disabled=false; });
+const tagMap = {
+  '1': ['Card 1', 'Front zone'],
+  '2': ['Card 2', 'Middle zone'],
+  '3': ['Card 3', 'Back zone'],
+  'NFC-FRONT': ['Card 1', 'Front zone'],
+  'NFC-MIDDLE': ['Card 2', 'Middle zone'],
+  'NFC-BACK': ['Card 3', 'Back zone']
+};
+
+if (tagMap[tag]) {
+  tagDisplay.textContent = tagMap[tag][0];
+  zoneDisplay.textContent = tagMap[tag][1];
+}
+
+function showMessage(text, type) {
+  messageBox.textContent = text;
+  messageBox.className = `message show ${type}`;
+}
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const studentId = studentIdInput.value.trim();
+
+  if (!studentId) {
+    showMessage('Please enter your university ID.', 'error');
+    studentIdInput.focus();
+    return;
+  }
+
+  if (!/^[A-Za-z0-9-]{5,20}$/.test(studentId)) {
+    showMessage('Enter a valid university ID.', 'error');
+    studentIdInput.focus();
+    return;
+  }
+
+  submitButton.classList.add('is-loading');
+  submitButton.disabled = true;
+  messageBox.className = 'message';
+
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 850));
+    showMessage(`Prototype ready. Student ${studentId} would be recorded for CPCS-203.`, 'success');
+    form.reset();
+  } catch {
+    showMessage('Something went wrong. Please try again.', 'error');
+  } finally {
+    submitButton.classList.remove('is-loading');
+    submitButton.disabled = false;
+  }
+});
+
+requestAnimationFrame(() => {
+  document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+});
