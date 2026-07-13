@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>مراجعة الأعذار — The Educator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/attendance.css">
+  <link rel="stylesheet" href="../css/admin-excuses.css">
+</head>
+
+<body class="excuses-admin-page">
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <div class="grain"></div>
+
+  <header class="excuses-nav liquid-glass">
+    <a class="brand" href="./">
+      <span class="brand-orb">E</span>
+      <span>The Educator</span>
+    </a>
+
+    <div>
+      <span class="status-dot"></span>
+      النظام متصل
+    </div>
+
+    <a class="back-link" href="./">إدارة الجلسات</a>
+  </header>
+
+  <main class="excuses-shell">
+    <div class="excuses-heading">
+      <div>
+        <span class="eyebrow">لوحة المعلم</span>
+        <h1>مراجعة الأعذار</h1>
+        <p>
+          راجع الملف والوصف، ثم اقبل أو ارفض، أو استدعِ الطالب للمناقشة قبل القرار النهائي.
+        </p>
+      </div>
+      <button id="refreshExcuses" class="secondary-button" type="button">تحديث</button>
+    </div>
+
+    <section class="excuses-summary">
+      <article class="liquid-glass">
+        <span>قيد المراجعة</span>
+        <strong id="pendingCount">0</strong>
+      </article>
+      <article class="liquid-glass">
+        <span>مطلوب مناقشة</span>
+        <strong id="discussionCount">0</strong>
+      </article>
+      <article class="liquid-glass">
+        <span>مقبولة</span>
+        <strong id="acceptedCount">0</strong>
+      </article>
+      <article class="liquid-glass">
+        <span>مرفوضة</span>
+        <strong id="rejectedCount">0</strong>
+      </article>
+    </section>
+
+    <section class="excuses-card liquid-glass">
+      <div id="excusesLoading" class="excuses-empty">جارٍ تحميل الأعذار...</div>
+      <div id="excusesEmpty" class="excuses-empty is-hidden">لا توجد أعذار.</div>
+      <div id="excusesList" class="excuses-list is-hidden"></div>
+    </section>
+  </main>
+
+  <dialog id="discussionAdminDialog" class="admin-dialog">
+    <form id="discussionAdminForm" method="dialog" class="admin-dialog-card">
+      <div class="dialog-head">
+        <div>
+          <span class="eyebrow">استدعاء الطالب</span>
+          <h2 id="discussionStudentTitle">تحديد موعد المناقشة</h2>
+        </div>
+        <button id="closeDiscussionAdminDialog" class="dialog-close" type="button">×</button>
+      </div>
+
+      <input id="discussionExcuseId" type="hidden">
+
+      <label for="discussionScheduledAt">الموعد</label>
+      <input id="discussionScheduledAt" type="datetime-local" required>
+
+      <label for="discussionMethodAdmin">طريقة المناقشة</label>
+      <select id="discussionMethodAdmin" required>
+        <option value="Office">مكتب المعلم</option>
+        <option value="InPerson">حضوري</option>
+        <option value="Online">أونلاين</option>
+      </select>
+
+      <label for="discussionLocationAdmin">المكان أو الرابط</label>
+      <input id="discussionLocationAdmin"
+             placeholder="مثال: مكتب 215 أو رابط الاجتماع" required>
+
+      <label for="discussionMessageAdmin">رسالة للطالب</label>
+      <textarea id="discussionMessageAdmin" rows="4" maxlength="500"
+                placeholder="وضح سبب الاستدعاء وما المطلوب من الطالب"></textarea>
+
+      <button id="submitDiscussionButton" class="primary-button full" type="submit">
+        إرسال الاستدعاء
+      </button>
+
+      <div id="discussionAdminMessage" class="admin-message"></div>
+    </form>
+  </dialog>
+
+  <dialog id="decisionDialog" class="admin-dialog">
+    <form id="decisionForm" method="dialog" class="admin-dialog-card">
+      <div class="dialog-head">
+        <div>
+          <span class="eyebrow">القرار النهائي</span>
+          <h2 id="decisionStudentTitle">اعتماد القرار</h2>
+        </div>
+        <button id="closeDecisionDialog" class="dialog-close" type="button">×</button>
+      </div>
+
+      <input id="decisionExcuseId" type="hidden">
+      <input id="decisionValue" type="hidden">
+
+      <label for="decisionNote">ملاحظة القرار</label>
+      <textarea id="decisionNote" rows="4" maxlength="500"
+                placeholder="اكتب سبب القبول أو الرفض باختصار"></textarea>
+
+      <button id="submitDecisionButton" class="primary-button full" type="submit">
+        حفظ القرار النهائي
+      </button>
+
+      <div id="decisionMessage" class="admin-message"></div>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/admin-excuses.js"></script>
+</body>
+</html>
