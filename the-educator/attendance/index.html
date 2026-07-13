@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f4f8ff">
   <title>الحضور الأكاديمي — The Educator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,73 +11,19 @@
 </head>
 <body>
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
-
   <header class="nav-shell liquid-glass">
     <a class="brand" href="../"><span class="brand-orb">E</span><span>The Educator</span></a>
     <div class="nav-status"><span class="status-dot"></span><span>النظام متصل</span></div>
     <div class="clock-chip"><span>◷</span><strong id="liveClock">--:--</strong></div>
   </header>
-
-  <main class="shell">
-    <section class="hero">
-      <div class="hero-copy reveal">
-        <span class="eyebrow">الحضور الذكي</span>
-        <h1>تسجيل الحضور</h1>
-        <p>المس البطاقة، أدخل رقمك، وانتهى.</p>
-        <a class="primary-button" href="checkin/"><span class="nfc-mini">)))</span>ابدأ تسجيل الحضور</a>
-        <div class="trust-line">آمن • سريع • خاص</div>
-      </div>
-
-      <div class="hero-visual reveal delay-1">
-        <div class="liquid-shape"></div>
-        <div class="session-card liquid-glass">
-          <div class="session-header">
-            <div class="course-icon">🎓</div>
-            <div class="course-title"><strong>CPCS-203</strong><span>البرمجة 2</span></div>
-            <div class="session-active"><span class="status-dot"></span>الجلسة نشطة</div>
-          </div>
-          <div class="session-grid">
-            <div><span>الوقت</span><strong>09:00 - 10:20</strong></div>
-            <div><span>القاعة</span><strong>H1-7</strong></div>
-            <div><span>يغلق التسجيل خلال</span><strong class="countdown" id="countdown">06:13</strong></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="how-it-works liquid-glass reveal">
-      <div class="how-header">
-        <div><span class="eyebrow">كيف يعمل؟</span><h2>ثلاث خطوات فقط</h2></div>
-        <button id="pauseAnimation" class="pause-button" type="button" aria-label="إيقاف الحركة">Ⅱ</button>
-      </div>
-
-      <div class="steps-film" id="stepsFilm">
-        <article class="step-card active">
-          <span class="step-number">1</span>
-          <div class="scene scene-tap">
-            <div class="nfc-card back-card"></div><div class="nfc-card front-card"></div>
-            <div class="waves"><i></i><i></i><i></i></div>
-          </div>
-          <h3>المس بطاقة NFC</h3>
-        </article>
-        <div class="step-arrow">←</div>
-        <article class="step-card">
-          <span class="step-number">2</span>
-          <div class="scene scene-id"><div class="id-panel"><span>الرقم الجامعي</span><strong id="typingDemo">000000000</strong></div></div>
-          <h3>أدخل رقمك الجامعي</h3>
-        </article>
-        <div class="step-arrow">←</div>
-        <article class="step-card">
-          <span class="step-number">3</span>
-          <div class="scene scene-done"><div class="success-ring"><span>✓</span></div></div>
-          <h3>تم تسجيل حضورك</h3>
-        </article>
-      </div>
-
-      <div class="film-progress"><span id="progressOne" class="active"></span><span id="progressTwo"></span><span id="progressThree"></span></div>
+  <main class="shell landing-main">
+    <section class="landing-card liquid-glass reveal">
+      <span class="eyebrow">الحضور الذكي</span>
+      <h1>تسجيل الحضور</h1>
+      <p>ثلاث خطوات واضحة، ثم انتهى.</p>
+      <a class="primary-button" href="checkin/">ابدأ الآن</a>
     </section>
   </main>
-
   <script src="js/site.js"></script>
 </body>
 </html>
