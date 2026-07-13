@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>سجل الحضور</title>
+
+<link rel="stylesheet" href="../css/attendance.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script defer src="../js/history.js"></script>
+</head>
+
+<body>
+
+<div class="attendance-page">
+
+    <header class="attendance-header glass">
+        <a href="../index.html">رجوع</a>
+        <div>سجل الحضور</div>
+    </header>
+
+    <section class="glass summary-card">
+
+        <h1 id="studentName">...</h1>
+
+        <div class="summary-grid">
+
+            <div>
+                <span>الرقم الجامعي</span>
+                <strong id="studentId">...</strong>
+            </div>
+
+            <div>
+                <span>إجمالي السجلات</span>
+                <strong id="totalAttendance">0</strong>
+            </div>
+
+            <div>
+                <span>نسبة الحضور</span>
+                <strong id="attendanceRate">0%</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="glass table-card">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>المقرر</th>
+                    <th>التاريخ</th>
+                    <th>الوقت</th>
+                    <th>الحالة</th>
+                </tr>
+            </thead>
+
+            <tbody id="attendanceTable">
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+</div>
+
+</body>
+</html>
