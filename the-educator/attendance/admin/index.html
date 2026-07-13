@@ -1,26 +1,95 @@
-
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>لوحة المعلم — The Educator</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/attendance.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>إدارة الجلسات — The Educator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/attendance.css">
+<link rel="stylesheet" href="../css/admin.css">
 </head>
-<body class="subpage">
-  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
-  <header class="nav-shell liquid-glass compact">
-    <a class="brand" href="../../"><span class="brand-orb">E</span><span>The Educator</span></a>
-    <a class="back-link" href="../">الحضور</a>
-  </header>
-  <main class="shell page-space">
-    <section class="page-title reveal">
-      <span class="eyebrow">لوحة المعلم</span>
-      <h1>ملخص الحضور</h1>
-      <p>ستظهر بيانات الجلسات هنا بعد ربط Supabase.</p>
+<body class="admin-page">
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
+
+<header class="admin-nav liquid-glass">
+  <a class="brand" href="../"><span class="brand-orb">E</span><span>The Educator</span></a>
+  <div class="admin-online"><span class="status-dot"></span><span>النظام متصل</span></div>
+  <button id="logoutButton" class="admin-link is-hidden" type="button">تسجيل الخروج</button>
+</header>
+
+<main class="admin-shell">
+  <section id="loginView" class="admin-login liquid-glass">
+    <span class="admin-eyebrow">لوحة المعلم</span>
+    <h1>إدارة الجلسات</h1>
+    <p>سجّل الدخول بحساب المعلم.</p>
+    <form id="loginForm" class="admin-form" novalidate>
+      <label for="email">البريد الإلكتروني</label>
+      <input id="email" type="email" autocomplete="username" placeholder="aattallah@kau.edu.sa" required>
+      <label for="password">كلمة المرور</label>
+      <input id="password" type="password" autocomplete="current-password" required>
+      <button id="loginButton" class="primary-button full" type="submit"><span class="button-text">دخول</span><span class="spinner"></span></button>
+      <div id="loginMessage" class="admin-message"></div>
+    </form>
+  </section>
+
+  <section id="dashboardView" class="is-hidden">
+    <div class="admin-heading">
+      <div><span class="admin-eyebrow">لوحة المعلم</span><h1>إدارة الجلسات</h1><p>إنشاء الجلسات وتفعيلها وإغلاقها.</p></div>
+      <button id="refreshButton" class="secondary-button" type="button">تحديث</button>
+    </div>
+
+    <section class="admin-stats">
+      <article class="liquid-glass"><span>الجلسة النشطة</span><strong id="activeSessionCount">0</strong></article>
+      <article class="liquid-glass"><span>إجمالي الجلسات</span><strong id="totalSessionCount">0</strong></article>
+      <article class="liquid-glass"><span>حضور الجلسة النشطة</span><strong id="activeAttendanceCount">0</strong></article>
     </section>
-  </main>
-  <script src="../js/site.js"></script>
+
+    <section class="admin-grid">
+      <section class="admin-card liquid-glass">
+        <div class="admin-card-head"><div><span class="admin-eyebrow">جلسة جديدة</span><h2>إنشاء جلسة حضور</h2></div></div>
+        <form id="sessionForm" class="admin-form admin-form-grid" novalidate>
+          <div><label for="courseCode">رمز المقرر</label><input id="courseCode" placeholder="CPCS-203" required></div>
+          <div><label for="room">القاعة</label><input id="room" placeholder="H1-7" required></div>
+          <div><label for="startTime">وقت البداية</label><input id="startTime" type="datetime-local" required></div>
+          <div><label for="endTime">وقت النهاية</label><input id="endTime" type="datetime-local" required></div>
+          <div><label for="lateAfter">متأخر بعد</label><input id="lateAfter" type="datetime-local" required></div>
+          <div><label for="tagNumber">رقم البطاقة</label><select id="tagNumber"><option value="1">البطاقة 1</option><option value="2">البطاقة 2</option><option value="3">البطاقة 3</option></select></div>
+          <label class="switch-row"><input id="activateImmediately" type="checkbox" checked><span class="switch"></span><span>تفعيل الجلسة فورًا</span></label>
+          <button id="createSessionButton" class="primary-button full" type="submit"><span class="button-text">إنشاء الجلسة</span><span class="spinner"></span></button>
+          <div id="sessionFormMessage" class="admin-message full-row"></div>
+        </form>
+      </section>
+
+      <section class="admin-card liquid-glass">
+        <div class="admin-card-head"><div><span class="admin-eyebrow">الجلسة الحالية</span><h2>الحالة المباشرة</h2></div><span id="activeStatusBadge" class="admin-badge">لا توجد جلسة</span></div>
+        <div id="activeSessionEmpty" class="admin-empty">لا توجد جلسة نشطة حاليًا.</div>
+        <div id="activeSessionPanel" class="is-hidden">
+          <div class="active-course"><span>المقرر</span><strong id="activeCourseCode">—</strong></div>
+          <div class="active-meta">
+            <div><span>القاعة</span><strong id="activeRoom">—</strong></div>
+            <div><span>البداية</span><strong id="activeStart">—</strong></div>
+            <div><span>النهاية</span><strong id="activeEnd">—</strong></div>
+            <div><span>التأخير</span><strong id="activeLateAfter">—</strong></div>
+          </div>
+          <button id="closeActiveSessionButton" class="danger-button" type="button">إغلاق الجلسة</button>
+        </div>
+      </section>
+    </section>
+
+    <section class="admin-card liquid-glass sessions-card">
+      <div class="admin-card-head"><div><span class="admin-eyebrow">السجل</span><h2>آخر الجلسات</h2></div><span id="sessionCountBadge" class="admin-badge">0 جلسة</span></div>
+      <div id="sessionsLoading" class="admin-empty">جارٍ تحميل الجلسات...</div>
+      <div id="sessionsEmpty" class="admin-empty is-hidden">لا توجد جلسات.</div>
+      <div id="sessionsTableWrap" class="table-wrap is-hidden">
+        <table class="admin-table"><thead><tr><th>المقرر</th><th>القاعة</th><th>البداية</th><th>النهاية</th><th>الحالة</th><th>إجراء</th></tr></thead><tbody id="sessionsTableBody"></tbody></table>
+      </div>
+    </section>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../js/admin.js"></script>
 </body>
 </html>
