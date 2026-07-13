@@ -5,6 +5,7 @@ const educatorConfig = {
 };
 
 const sessionKey = "theEducatorSession";
+const apiHealthUrl = `${educatorConfig.apiBaseUrl}/health`;
 const retryDelays = [800, 2000, 4000];
 
 function readSession() {
@@ -80,7 +81,7 @@ async function apiGet(path) {
 }
 
 async function warmUpApi() {
-  await fetchWithRetry(`${educatorConfig.apiBaseUrl}/health`, {
+  await fetchWithRetry(apiHealthUrl, {
     cache: "no-store"
   });
 }
@@ -281,7 +282,9 @@ function renderApiUnavailable(error) {
         <span class="code">API unavailable</span>
         <h3>The hosted API is not responding yet</h3>
         <p>${escapeHtml(error?.message || "Render may still be waking up. Refresh the page in a few seconds.")}</p>
+        <p>Open the API health check in this browser to confirm access.</p>
       </div>
+      <a class="open-link" href="${apiHealthUrl}" target="_blank" rel="noopener">Open API Health</a>
     </article>
   `;
 }
