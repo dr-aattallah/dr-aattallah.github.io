@@ -5,6 +5,7 @@ const educatorConfig = {
 };
 
 const sessionKey = "theEducatorSession";
+const retryDelays = [800, 2000, 4000];
 
 function readSession() {
   try {
@@ -57,18 +58,12 @@ async function apiGet(path) {
     throw new Error("Please login first.");
   }
 
-  let response;
-
-  try {
-    response = await fetch(`${educatorConfig.apiBaseUrl}${path}`, {
-      cache: "no-store",
-      headers: {
-        Authorization: `Bearer ${session.accessToken}`
-      }
-    });
-  } catch {
-    throw new Error("Could not reach The Educator API. Refresh the page and try again.");
-  }
+  const response = await fetchWithRetry(`${educatorConfig.apiBaseUrl}${path}`, {
+    cache: "no-store",
+    headers: {
+      Authorization: `Bearer ${session.accessToken}`
+    }
+  });
 
   if (response.status === 401) {
     clearSession();
@@ -82,6 +77,39 @@ async function apiGet(path) {
   }
 
   return payload;
+}
+
+async function warmUpApi() {
+  await fetchWithRetry(`${educatorConfig.apiBaseUrl}/health`, {
+    cache: "no-store"
+  });
+}
+
+async function fetchWithRetry(url, options) {
+  let lastError;
+
+  for (let attempt = 0; attempt <= retryDelays.length; attempt += 1) {
+    try {
+      return await fetch(url, options);
+    } catch (error) {
+      lastError = error;
+      const delay = retryDelays[attempt];
+
+      if (!delay) {
+        break;
+      }
+
+      await wait(delay);
+    }
+  }
+
+  throw lastError ?? new Error("Network request failed.");
+}
+
+function wait(milliseconds) {
+  return new Promise(resolve => {
+    window.setTimeout(resolve, milliseconds);
+  });
 }
 
 function setMessage(element, message, tone = "neutral") {
@@ -216,9 +244,12 @@ async function setupDashboardPage() {
     return;
   }
 
-  setMessage(message, "Loading your live course data...", "neutral");
+  setMessage(message, "Waking the hosted Educator API...", "neutral");
 
   try {
+    await warmUpApi();
+    setMessage(message, "Loading your live course data...", "neutral");
+
     const [profile, courses] = await Promise.all([
       apiGet("/api/me"),
       apiGet("/api/courses")
@@ -232,8 +263,27 @@ async function setupDashboardPage() {
     updateDashboardStats(courses);
     setMessage(message, "Connected to Supabase and The Educator API.", "success");
   } catch (error) {
-    setMessage(message, error.message, "error");
+    renderApiUnavailable(error);
+    setMessage(message, "Could not reach The Educator API. Please refresh in a few seconds.", "error");
   }
+}
+
+function renderApiUnavailable(error) {
+  const container = document.querySelector("[data-courses]");
+
+  if (!container) {
+    return;
+  }
+
+  container.innerHTML = `
+    <article class="course-card state-card">
+      <div>
+        <span class="code">API unavailable</span>
+        <h3>The hosted API is not responding yet</h3>
+        <p>${escapeHtml(error?.message || "Render may still be waking up. Refresh the page in a few seconds.")}</p>
+      </div>
+    </article>
+  `;
 }
 
 function setupLogoutLinks() {
