@@ -10,7 +10,30 @@ const SUPABASE_URL = 'https://obgmbgsgwxbenglltcwv.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY =
   'sb_publishable_Qa-0cZ5V15zHHYIWD_SXcA_yCZ0N2GM';
 
-const DEFAULT_SESSION_ID = 'CPCS203-20260713';
+let activeSession = null;
+
+async function loadActiveSession() {
+
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/rpc/get_active_session`,
+    {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_PUBLISHABLE_KEY,
+        Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+        'Content-Type': 'application/json'
+      }
+    }
+  );
+
+  const data = await response.json();
+
+  if (!Array.isArray(data) || !data.length) {
+    throw new Error('لا توجد جلسة نشطة');
+  }
+
+  activeSession = data[0];
+}
 
 const TAGS = Object.freeze({
   '1': {
