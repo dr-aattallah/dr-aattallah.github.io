@@ -1,10 +1,13 @@
 using System;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Educator.Infrastructure.Persistence.Migrations;
 
+[DbContext(typeof(EducatorDbContext))]
+[Migration("20260709000100_InitialEducatorSchema")]
 public partial class InitialEducatorSchema : Migration
 {
     protected override void Up(MigrationBuilder migrationBuilder)
