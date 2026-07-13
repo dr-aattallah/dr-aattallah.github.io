@@ -1,0 +1,386 @@
+
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f8ff">
+  <title>سجل الحضور — The Educator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/attendance.css">
+  <link rel="stylesheet" href="../css/student.css">
+</head>
+
+<body class="student-page">
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <div class="grain"></div>
+
+  <header class="student-nav liquid-glass">
+    <a class="brand" href="../">
+      <span class="brand-orb">E</span>
+      <span>The Educator</span>
+    </a>
+
+    <div class="student-online">
+      <span class="status-dot"></span>
+      <span>النظام متصل</span>
+    </div>
+
+    <div class="student-nav-actions">
+      <a class="student-link" href="./help.html">مساعدة</a>
+      <button id="signOutButton" class="student-link button-link is-hidden" type="button">
+        تسجيل الخروج
+      </button>
+    </div>
+  </header>
+
+  <main class="student-shell">
+    <section id="publicView">
+      <section class="portal-hero">
+        <div class="portal-copy">
+          <span class="eyebrow">بوابة الطالب</span>
+          <h1>راجع حضورك<br><span>من أي مكان.</span></h1>
+          <p>
+            اعرض سجل الحضور والغياب، تابع نسبة الغياب، وارفع عذرك الرسمي
+            مباشرة على المحاضرة المعنية.
+          </p>
+
+          <div class="hero-actions">
+            <button id="openLoginButton" class="primary-button" type="button">
+              الدخول إلى سجلي
+            </button>
+            <a class="secondary-button help-cta" href="./help.html">
+              تغيير البريد أو طلب مساعدة
+            </a>
+          </div>
+
+          <div class="hero-trust">
+            <span>دخول برقمك الجامعي</span>
+            <span>رمز تحقق إلى بريدك المسجل</span>
+            <span>سجل خاص وآمن</span>
+          </div>
+        </div>
+
+        <div class="portal-visual liquid-glass" aria-hidden="true">
+          <div class="visual-ring ring-one"></div>
+          <div class="visual-ring ring-two"></div>
+
+          <div class="visual-card main-card">
+            <div class="visual-icon">
+              <svg viewBox="0 0 64 64" role="img">
+                <path d="M11 24 32 12l21 12-21 12L11 24Z"/>
+                <path d="M19 31v12c8 7 18 9 26 0V31"/>
+                <path d="M53 24v17"/>
+              </svg>
+            </div>
+            <span>سجل الطالب</span>
+            <strong>الحضور واضح</strong>
+          </div>
+
+          <div class="visual-card mini-card top">
+            <span>نسبة الغياب</span>
+            <strong>8.3%</strong>
+          </div>
+
+          <div class="visual-card mini-card bottom">
+            <span class="mini-dot"></span>
+            <strong>عذرك محفوظ</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="policy-section">
+        <div class="section-heading">
+          <span class="eyebrow">مختصر السياسة</span>
+          <h2>أهم ما يحتاج الطالب معرفته</h2>
+          <p>نصوص مباشرة ومختصرة، والسجل الفعلي داخل حسابك هو المرجع التفصيلي.</p>
+        </div>
+
+        <div class="policy-grid">
+          <article class="policy-card liquid-glass">
+            <div class="policy-illustration attendance-illustration" aria-hidden="true">
+              <svg viewBox="0 0 120 90">
+                <rect x="18" y="22" width="84" height="55" rx="16"/>
+                <path d="M34 16v16M86 16v16M18 39h84"/>
+                <path d="m42 58 10 10 25-28"/>
+              </svg>
+            </div>
+            <span class="policy-number">01</span>
+            <h3>الحضور إلزامي</h3>
+            <p>
+              تُحتسب الجلسات التي فعّل فيها المعلم الحضور، سواء كانت حضورية
+              أو أونلاين. المحاضرة الملغاة أو غير المحتسبة لا تدخل في النسبة.
+            </p>
+          </article>
+
+          <article class="policy-card liquid-glass">
+            <div class="policy-illustration threshold-illustration" aria-hidden="true">
+              <svg viewBox="0 0 120 90">
+                <path d="M20 68a40 40 0 1 1 80 0"/>
+                <path d="M60 68 84 39"/>
+                <circle cx="60" cy="68" r="7"/>
+                <path d="M28 68h8M84 68h8"/>
+              </svg>
+            </div>
+            <span class="policy-number">02</span>
+            <h3>الحرمان بعد تجاوز 25%</h3>
+            <p>
+              لا يصدر الحرمان عند 25% بالضبط في هذا النظام؛ يظهر عند تجاوزها.
+              الغياب الكامل نقطة، والتأخير المحتسب نصف نقطة.
+            </p>
+          </article>
+
+          <article class="policy-card liquid-glass">
+            <div class="policy-illustration excuse-illustration" aria-hidden="true">
+              <svg viewBox="0 0 120 90">
+                <path d="M31 14h42l16 16v47H31z"/>
+                <path d="M73 14v17h16"/>
+                <path d="M44 46h32M44 58h24"/>
+                <circle cx="85" cy="65" r="17"/>
+                <path d="m77 65 6 6 11-13"/>
+              </svg>
+            </div>
+            <span class="policy-number">03</span>
+            <h3>ارفع العذر خلال 5 أيام</h3>
+            <p>
+              عند ظهور غياب، افتح المحاضرة وارفع التقرير أو العذر الرسمي مع
+              وصف مختصر. يبقى الغياب ظاهرًا، وقد يطلب المعلم مناقشة العذر قبل القرار النهائي، ولا يُستبعد من النسبة إلا بعد قبوله.
+            </p>
+          </article>
+
+          <article class="policy-card liquid-glass">
+            <div class="policy-illustration privacy-illustration" aria-hidden="true">
+              <svg viewBox="0 0 120 90">
+                <path d="M60 11 94 24v22c0 22-15 34-34 42-19-8-34-20-34-42V24z"/>
+                <rect x="45" y="43" width="30" height="25" rx="7"/>
+                <path d="M51 43v-7a9 9 0 0 1 18 0v7"/>
+              </svg>
+            </div>
+            <span class="policy-number">04</span>
+            <h3>خصوصيتك محفوظة</h3>
+            <p>
+              لا يظهر سجلك إلا بعد التحقق من رقمك الجامعي والبريد المسجل.
+              ملفات الأعذار خاصة ولا يطّلع عليها إلا المخولون بالمراجعة.
+            </p>
+          </article>
+        </div>
+
+        <div class="policy-note liquid-glass">
+          <div class="note-icon">!</div>
+          <div>
+            <strong>تنبيه مهم</strong>
+            <p>
+              سياسة المقرر والكلية المعتمدة هي المرجع النهائي. تعرض هذه الصفحة
+              ملخصًا إرشاديًا مبسطًا وليست بديلًا عن اللوائح الرسمية.
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="loginView" class="student-login liquid-glass is-hidden">
+      <button id="backToPublic" class="back-button" type="button">رجوع</button>
+
+      <div id="idStep">
+        <span class="eyebrow">دخول آمن</span>
+        <h2>أدخل رقمك الجامعي</h2>
+        <p>سنرسل رمز تحقق إلى البريد الجامعي المسجل في النظام.</p>
+
+        <form id="requestCodeForm" class="student-form" novalidate>
+          <label for="universityId">الرقم الجامعي</label>
+          <input id="universityId" inputmode="numeric" autocomplete="username"
+                 placeholder="مثال: 2436317" maxlength="20" required>
+
+          <button id="requestCodeButton" class="primary-button full" type="submit">
+            <span class="button-text">إرسال رمز التحقق</span>
+            <span class="spinner"></span>
+          </button>
+
+          <div id="requestMessage" class="student-message"></div>
+        </form>
+
+        <a class="login-help" href="./help.html">
+          البريد غير صحيح أو لا يصلك الرمز؟
+        </a>
+      </div>
+
+      <div id="otpStep" class="is-hidden">
+        <span class="eyebrow">التحقق</span>
+        <h2>أدخل الرمز</h2>
+        <p id="maskedEmailText">أرسلنا رمزًا إلى بريدك المسجل.</p>
+
+        <form id="verifyCodeForm" class="student-form" novalidate>
+          <label for="otpCode">رمز التحقق</label>
+          <input id="otpCode" inputmode="numeric" autocomplete="one-time-code"
+                 class="otp-input" placeholder="000000" maxlength="8" required>
+
+          <button id="verifyCodeButton" class="primary-button full" type="submit">
+            <span class="button-text">فتح السجل</span>
+            <span class="spinner"></span>
+          </button>
+
+          <button id="resendCodeButton" class="secondary-button full" type="button">
+            إعادة إرسال الرمز
+          </button>
+
+          <div id="verifyMessage" class="student-message"></div>
+        </form>
+      </div>
+    </section>
+
+    <section id="portalView" class="is-hidden">
+      <div class="student-heading">
+        <div>
+          <span class="eyebrow">سجل الطالب</span>
+          <h1>حضوري وغيابي</h1>
+          <p id="studentIdentity">—</p>
+        </div>
+        <button id="refreshButton" class="secondary-button" type="button">تحديث</button>
+      </div>
+
+      <section class="student-stats">
+        <article class="liquid-glass">
+          <span>المحاضرات المحتسبة</span>
+          <strong id="countedSessions">0</strong>
+        </article>
+        <article class="liquid-glass">
+          <span>الحضور</span>
+          <strong id="presentCount">0</strong>
+        </article>
+        <article class="liquid-glass">
+          <span>التأخير</span>
+          <strong id="lateCount">0</strong>
+        </article>
+        <article class="liquid-glass">
+          <span>نقاط الغياب</span>
+          <strong id="absencePoints">0</strong>
+        </article>
+        <article class="liquid-glass">
+          <span>نسبة الغياب</span>
+          <strong id="absencePercentage">0%</strong>
+        </article>
+        <article class="liquid-glass">
+          <span>حالة الحرمان</span>
+          <strong id="denialStatus">سليم</strong>
+        </article>
+      </section>
+
+      <section class="student-card liquid-glass">
+        <div class="student-card-head">
+          <div>
+            <span class="eyebrow">السجل التفصيلي</span>
+            <h2>المحاضرات</h2>
+          </div>
+          <span id="recordsBadge" class="student-badge">0 سجل</span>
+        </div>
+
+        <div id="recordsLoading" class="student-empty">جارٍ تحميل السجل...</div>
+        <div id="recordsEmpty" class="student-empty is-hidden">
+          لا توجد محاضرات محتسبة حتى الآن.
+        </div>
+
+        <div id="recordsTableWrap" class="student-table-wrap is-hidden">
+          <table class="student-table">
+            <thead>
+              <tr>
+                <th>المقرر</th>
+                <th>التاريخ</th>
+                <th>الطريقة</th>
+                <th>الحالة الفعلية</th>
+                <th>العذر</th>
+                <th>المحتسب</th>
+                <th>إجراء</th>
+              </tr>
+            </thead>
+            <tbody id="recordsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+
+  <dialog id="discussionDialog" class="excuse-dialog">
+    <section class="excuse-card discussion-card">
+      <div class="dialog-head">
+        <div>
+          <span class="eyebrow">مناقشة العذر</span>
+          <h2 id="discussionDialogTitle">تم استدعاؤك للمناقشة</h2>
+        </div>
+        <button id="closeDiscussionDialog" class="icon-button" type="button">×</button>
+      </div>
+
+      <div class="discussion-details">
+        <div>
+          <span>الموعد</span>
+          <strong id="discussionDate">—</strong>
+        </div>
+        <div>
+          <span>طريقة المناقشة</span>
+          <strong id="discussionMethod">—</strong>
+        </div>
+        <div>
+          <span>المكان أو الرابط</span>
+          <strong id="discussionLocation">—</strong>
+        </div>
+      </div>
+
+      <div class="discussion-message-box">
+        <span>رسالة المعلم</span>
+        <p id="discussionMessage">—</p>
+      </div>
+
+      <p class="discussion-note">
+        يبقى القرار النهائي معلقًا حتى تتم المناقشة ومراجعة العذر.
+      </p>
+    </section>
+  </dialog>
+
+  <dialog id="excuseDialog" class="excuse-dialog">
+    <form id="excuseForm" method="dialog" class="excuse-card">
+      <div class="dialog-head">
+        <div>
+          <span class="eyebrow">رفع عذر رسمي</span>
+          <h2 id="excuseDialogTitle">عذر غياب</h2>
+        </div>
+        <button id="closeExcuseDialog" class="icon-button" type="button">×</button>
+      </div>
+
+      <input id="excuseSessionId" type="hidden">
+
+      <label for="excuseType">نوع العذر</label>
+      <select id="excuseType" required>
+        <option value="Medical">عذر طبي</option>
+        <option value="Official">عذر رسمي</option>
+        <option value="University">مهمة جامعية</option>
+        <option value="Other">أخرى</option>
+      </select>
+
+      <label for="excuseDescription">وصف مختصر</label>
+      <textarea id="excuseDescription" rows="4" maxlength="500"
+                placeholder="اكتب وصفًا مختصرًا للعذر" required></textarea>
+
+      <label for="excuseFile">المرفق</label>
+      <input id="excuseFile" type="file"
+             accept=".pdf,image/jpeg,image/png,image/webp" required>
+
+      <small>الحد الأعلى 10 ميجابايت. PDF أو صورة.</small>
+
+      <button id="submitExcuseButton" class="primary-button full" type="submit">
+        <span class="button-text">إرسال العذر</span>
+        <span class="spinner"></span>
+      </button>
+
+      <div id="excuseMessage" class="student-message"></div>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/student.js"></script>
+</body>
+</html>
