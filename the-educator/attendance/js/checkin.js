@@ -115,8 +115,43 @@ const sessionId =
 
 let selectedTag = TAGS[tagKey] || null;
 let cardRead = false;
+let activeSession = null;
 let secondsLeft = 347;
 let currentStudentId = '';
+
+async function loadActiveSession() {
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/rpc/get_active_session`,
+    {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_PUBLISHABLE_KEY,
+        Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: '{}'
+    }
+  );
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      data?.message ||
+      data?.details ||
+      'تعذر تحميل الجلسة النشطة.'
+    );
+  }
+
+  if (!Array.isArray(data) || data.length === 0) {
+    throw new Error('لا توجد جلسة نشطة حاليًا.');
+  }
+
+  activeSession = data[0];
+
+  return activeSession;
+}
 
 function showStep(number) {
   steps.forEach((step, index) => {
@@ -363,13 +398,14 @@ function showResult(result, submittedStudentId) {
   }
 }
 
-async function recordAttendance(
-  universityId
-) {
+
+async function recordAttendance(universityId) {
   if (!selectedTag) {
-    throw new Error(
-      'لم يتم التعرف على بطاقة NFC.'
-    );
+    throw new Error('لم يتم التعرف على بطاقة NFC.');
+  }
+
+  if (!activeSession) {
+    throw new Error('لم يتم تحميل بيانات الجلسة النشطة.');
   }
 
   const response = await fetch(
@@ -378,30 +414,17 @@ async function recordAttendance(
       method: 'POST',
 
       headers: {
-        apikey:
-          SUPABASE_PUBLISHABLE_KEY,
-
-        Authorization:
-          `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
-
-        'Content-Type':
-          'application/json',
-
-        Accept:
-          'application/json'
+        apikey: SUPABASE_PUBLISHABLE_KEY,
+        Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
       },
 
       body: JSON.stringify({
-        p_university_id:
-          universityId,
-
+        p_university_id: universityId,
         p_session_id: activeSession.session_id,
-
-        p_tag_number:
-          selectedTag.number,
-
-        p_card_uid:
-          selectedTag.uid
+        p_tag_number: selectedTag.number,
+        p_card_uid: selectedTag.uid
       })
     }
   );
@@ -409,8 +432,7 @@ async function recordAttendance(
   let payload = null;
 
   try {
-    payload =
-      await response.json();
+    payload = await response.json();
   } catch {
     payload = null;
   }
@@ -419,15 +441,18 @@ async function recordAttendance(
     const serverMessage =
       payload?.message ||
       payload?.details ||
+      payload?.hint ||
       `تعذر الاتصال بخدمة الحضور (${response.status}).`;
 
-    throw new Error(
-      serverMessage
-    );
+    throw new Error(serverMessage);
   }
 
   return payload;
 }
+
+
+
+
 
 form?.addEventListener(
   'submit',
@@ -559,6 +584,15 @@ window.setInterval(() => {
   countdown.textContent =
     `${minutes}:${seconds}`;
 }, 1000);
+
+window.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await loadActiveSession();
+    console.log('Active session loaded:', activeSession);
+  } catch (error) {
+    console.error('Active session error:', error);
+  }
+});
 
 window.requestAnimationFrame(() => {
   document
