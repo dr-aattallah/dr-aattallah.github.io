@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
@@ -12,35 +13,117 @@
 </head>
 <body class="subpage">
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
+
   <header class="nav-shell liquid-glass compact">
     <a class="brand" href="../"><span class="brand-orb">E</span><span>The Educator</span></a>
-    <a class="back-link" href="../">رجوع</a>
+    <div class="nav-status"><span class="status-dot"></span><span>النظام متصل</span></div>
+    <a class="back-link" href="../">خروج</a>
   </header>
 
-  <main class="checkin-wrap">
-    <section class="checkin-card liquid-glass reveal">
-      <span class="eyebrow">تسجيل حضور آمن</span>
-      <h1>أهلًا بك</h1>
-      <p>أدخل رقمك الجامعي لتسجيل حضورك.</p>
+  <main class="checkin-layout">
+    <aside class="session-side liquid-glass reveal">
+      <span class="side-label">الجلسة الحالية</span>
+      <div class="course-badge">🎓</div>
+      <h2>CPCS-203</h2>
+      <p>البرمجة 2</p>
 
-      <div class="session-summary">
-        <div><span>المقرر</span><strong>CPCS-203</strong></div>
-        <div><span>الجلسة</span><strong>09:00 - 10:20</strong></div>
-        <div><span>البطاقة</span><strong id="tagDisplay">غير محددة</strong></div>
+      <div class="session-meta">
+        <div><span>الوقت</span><strong>09:00 - 10:20</strong></div>
+        <div><span>القاعة</span><strong>H1-7</strong></div>
+        <div><span>يغلق خلال</span><strong class="countdown" id="countdown">05:47</strong></div>
+      </div>
+    </aside>
+
+    <section class="checkin-flow reveal delay-1">
+      <div class="flow-header">
+        <span class="eyebrow">الحضور الذكي</span>
+        <h1>تسجيل الحضور</h1>
+        <p>أكمل الخطوات بالترتيب.</p>
       </div>
 
-      <form id="checkinForm" novalidate>
-        <label for="studentId">الرقم الجامعي</label>
-        <input id="studentId" name="studentId" type="text" inputmode="numeric" placeholder="أدخل الرقم الجامعي" minlength="5" maxlength="20" required>
-        <button id="submitButton" class="primary-button full" type="submit">
-          <span class="button-text">تسجيل الحضور</span>
-          <span class="spinner" aria-hidden="true"></span>
-        </button>
-      </form>
+      <div class="stepper" aria-label="مراحل تسجيل الحضور">
+        <div class="stepper-item active" data-step="1"><span>1</span><small>قراءة البطاقة</small></div>
+        <div class="stepper-line"></div>
+        <div class="stepper-item" data-step="2"><span>2</span><small>الرقم الجامعي</small></div>
+        <div class="stepper-line"></div>
+        <div class="stepper-item" data-step="3"><span>3</span><small>النتيجة</small></div>
+      </div>
 
-      <div id="messageBox" class="message" role="status" aria-live="polite"></div>
+      <section class="flow-card liquid-glass">
+        <!-- STEP 1 -->
+        <div class="flow-step active" id="stepOne">
+          <div class="step-copy">
+            <span class="step-kicker">الخطوة الأولى</span>
+            <h2>المس بطاقة NFC</h2>
+            <p>ضع الهاتف بالقرب من البطاقة حتى تتم قراءتها.</p>
+          </div>
+
+          <div class="reader-stage" id="readerStage">
+            <div class="reader-base"></div>
+            <div class="reader-card">
+              <span class="reader-logo">NFC</span>
+              <div class="reader-waves"><i></i><i></i><i></i></div>
+            </div>
+            <div class="reader-glow"></div>
+          </div>
+
+          <div class="reader-status waiting" id="readerStatus">
+            <span class="status-spinner"></span>
+            <strong>بانتظار قراءة البطاقة...</strong>
+          </div>
+
+          <button class="secondary-button" id="simulateRead" type="button">
+            محاكاة قراءة البطاقة
+          </button>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="flow-step" id="stepTwo">
+          <div class="step-copy">
+            <span class="step-kicker">الخطوة الثانية</span>
+            <h2>أدخل رقمك الجامعي</h2>
+            <p>تحقق من الرقم قبل المتابعة.</p>
+          </div>
+
+          <div class="read-summary success">
+            <span>تمت قراءة البطاقة</span>
+            <strong id="readTagLabel">البطاقة 1</strong>
+          </div>
+
+          <form id="checkinForm" novalidate>
+            <label for="studentId">الرقم الجامعي</label>
+            <input id="studentId" name="studentId" type="text" inputmode="numeric"
+                   placeholder="أدخل الرقم الجامعي" minlength="5" maxlength="20" required>
+            <button id="submitButton" class="primary-button full" type="submit">
+              <span class="button-text">تسجيل الحضور</span>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+          </form>
+          <div id="formMessage" class="message" role="status" aria-live="polite"></div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="flow-step" id="stepThree">
+          <div class="result-icon" id="resultIcon"><span>✓</span></div>
+          <span class="step-kicker">الخطوة الثالثة</span>
+          <h2 id="resultTitle">تم تسجيل حضورك</h2>
+          <p id="resultText">تم حفظ حضورك بنجاح.</p>
+
+          <div class="result-details">
+            <div><span>المقرر</span><strong>CPCS-203</strong></div>
+            <div><span>الحالة</span><strong id="attendanceStatus">حاضر</strong></div>
+            <div><span>الوقت</span><strong id="attendanceTime">--:--</strong></div>
+          </div>
+
+          <div class="result-actions">
+            <a class="primary-button" href="../history/">عرض سجل الحضور</a>
+            <a class="secondary-button" href="../">العودة للرئيسية</a>
+          </div>
+        </div>
+      </section>
     </section>
   </main>
+
   <script src="../js/checkin.js"></script>
 </body>
 </html>
