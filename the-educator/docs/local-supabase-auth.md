@@ -60,6 +60,34 @@ This creates the first backend tables:
 - `enrollments`
 - `resources`
 
+For Supabase projects where the direct database host is IPv6-only, use the **Session pooler** connection string in .NET format:
+
+```text
+Host=YOUR_SESSION_POOLER_HOST;Port=5432;Database=postgres;Username=YOUR_POOLER_USER;Password=YOUR_LOCAL_DEV_PASSWORD;SSL Mode=Require;Trust Server Certificate=true;Timeout=15;Command Timeout=120
+```
+
+Avoid using the URI form directly with EF Core; Npgsql expects the .NET key-value connection string format.
+
+---
+
+## Seed Development Data
+
+After applying migrations, seed a small development dataset:
+
+```bash
+dotnet run --project the-educator/src/Educator.Api/Educator.Api.csproj -- --seed-dev-data
+```
+
+This creates:
+
+- Instructor profile: `aattallah@kau.edu.sa`
+- Demo student profile: `student.demo@the-educator.local`
+- Course: `CPCS-351 Software Engineering I`
+- Active demo enrollment
+- Visible syllabus resource
+
+The seeder is idempotent and can be run more than once.
+
 ---
 
 ## Run The API
@@ -106,10 +134,8 @@ curl -i http://127.0.0.1:5088/api/me \
 Expected behavior at the current stage:
 
 - Invalid or expired token: `401 Unauthorized`
-- Valid token without a matching local Educator user profile: `404 Not Found`
-- Valid token with a future local profile lookup implementation: `200 OK`
-
-The local user lookup is still intentionally unconfigured, so a valid token may authenticate while the Educator profile resolution remains unfinished.
+- Valid token without a matching local Educator user profile by id or email: `404 Not Found`
+- Valid token matching a seeded or stored local profile by id or email: `200 OK`
 
 You can also run the smoke-test script:
 

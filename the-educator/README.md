@@ -6,7 +6,7 @@ The goal is simple:
 
 > Your course, beautifully organized.
 
-The platform is currently a **static HTML/CSS prototype** hosted through GitHub Pages. It does not yet include real login, database, file upload, grading storage, or backend authentication.
+The public interface is currently a **static HTML/CSS prototype** hosted through GitHub Pages. A first ASP.NET Core backend foundation now exists for Supabase Auth validation, PostgreSQL persistence, and course-listing APIs, but the static pages are not connected to it yet.
 
 ---
 
@@ -190,7 +190,7 @@ The design avoids:
 
 ## Current Technical Status
 
-This version is a static frontend prototype.
+This version is still primarily a static frontend prototype, with an early ASP.NET Core backend foundation under active development.
 
 ### What works now
 
@@ -201,18 +201,20 @@ This version is a static frontend prototype.
 - Prototype forms
 - Prototype dashboards
 - Course resource structure
+- ASP.NET Core API skeleton
+- Supabase PostgreSQL schema for users, courses, enrollments, and resources
+- Development seed data runner
 
 ### What does not work yet
 
 - Real login
 - User accounts
-- Database
 - File upload
 - Assignment submission storage
 - Real grading logic
 - Notifications backend
-- Student enrollment system
-- Role-based permissions
+- Frontend-to-backend integration
+- Full role-based permissions
 
 ---
 
@@ -517,7 +519,9 @@ the-educator/
   - [x] `GET /api/courses` contract endpoint
   - [x] Course persistence implementation
   - [x] First database migration prepared
-  - [ ] Apply migration to a Supabase development database
+  - [x] Apply migration to a Supabase development database
+  - [x] Development seed data runner
+  - [x] Local user lookup by Supabase JWT id or email
 
 ---
 
@@ -525,9 +529,9 @@ the-educator/
 
 The next recommended step is:
 
-> Apply the initial migration to a Supabase development database using a local `Supabase:DatabaseConnectionString` secret.
+> Create a Supabase Auth test user and run an authenticated smoke test against `/api/me` and `/api/courses`.
 
-After that, the project can move from a static prototype into a real web application with backend services.
+After that, the project can start connecting the static prototype screens to real backend data.
 
 ---
 

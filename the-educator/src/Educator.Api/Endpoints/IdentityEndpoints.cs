@@ -19,17 +19,28 @@ public static class IdentityEndpoints
                     statusCode: StatusCodes.Status501NotImplemented);
             }
 
-            if (currentUserContext.User.Id is not { } currentUserId)
+            var currentUser = currentUserContext.User;
+
+            if (currentUser.Id is null && string.IsNullOrWhiteSpace(currentUser.Email))
             {
                 return Results.Problem(
-                    title: "Authenticated user id is unavailable.",
-                    detail: "JWT validation must provide a local user id before the current profile can be resolved.",
+                    title: "Authenticated user identity is incomplete.",
+                    detail: "JWT validation must provide either a subject id or email before the current profile can be resolved.",
                     statusCode: StatusCodes.Status501NotImplemented);
             }
 
-            var localUser = await localUserLookup.FindByIdAsync(
-                currentUserId,
-                cancellationToken);
+            var localUser = currentUser.Id is { } currentUserId
+                ? await localUserLookup.FindByIdAsync(
+                    currentUserId,
+                    cancellationToken)
+                : null;
+
+            if (localUser is null && !string.IsNullOrWhiteSpace(currentUser.Email))
+            {
+                localUser = await localUserLookup.FindByEmailAsync(
+                    currentUser.Email,
+                    cancellationToken);
+            }
 
             if (localUser is null)
             {

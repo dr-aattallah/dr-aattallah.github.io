@@ -2,6 +2,7 @@ using Educator.Api.Authentication;
 using Educator.Api.Endpoints;
 using Educator.Application;
 using Educator.Infrastructure;
+using Educator.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,13 @@ builder.Services.AddEducatorJwtAuthentication(builder.Configuration);
 builder.Services.AddHealthChecks();
 
 var app = builder.Build();
+
+if (args.Contains("--seed-dev-data", StringComparer.OrdinalIgnoreCase))
+{
+    await DevelopmentDataSeeder.SeedAsync(app.Services);
+    Console.WriteLine("Development seed data has been applied.");
+    return;
+}
 
 app.MapGet("/", () => Results.Redirect("/health"));
 

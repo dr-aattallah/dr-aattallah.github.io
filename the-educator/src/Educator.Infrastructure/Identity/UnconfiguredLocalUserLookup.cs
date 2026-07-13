@@ -10,4 +10,11 @@ public sealed class UnconfiguredLocalUserLookup : ILocalUserLookup
     {
         return ValueTask.FromResult<LocalUser?>(null);
     }
+
+    public ValueTask<LocalUser?> FindByEmailAsync(
+        string email,
+        CancellationToken cancellationToken = default)
+    {
+        return ValueTask.FromResult<LocalUser?>(null);
+    }
 }
