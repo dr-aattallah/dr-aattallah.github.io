@@ -1,7 +1,7 @@
 const educatorConfig = {
   supabaseUrl: "https://obgmbgsgwxbenglltcwv.supabase.co",
   supabaseKey: "sb_publishable_Qa-0cZ5V15zHHYIWD_SXcA_yCZ0N2GM",
-  apiBaseUrl: "http://127.0.0.1:5088"
+  apiBaseUrl: "https://the-educator-api.onrender.com"
 };
 
 const sessionKey = "theEducatorSession";
