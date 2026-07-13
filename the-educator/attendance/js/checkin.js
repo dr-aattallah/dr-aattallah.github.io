@@ -395,8 +395,7 @@ async function recordAttendance(
         p_university_id:
           universityId,
 
-        p_session_id:
-          sessionId,
+        p_session_id: activeSession.session_id,
 
         p_tag_number:
           selectedTag.number,
