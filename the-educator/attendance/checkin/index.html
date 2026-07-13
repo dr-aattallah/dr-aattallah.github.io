@@ -1,35 +1,28 @@
-
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#edf4ff" />
-  <title>Check in — The Educator</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/attendance.css" />
-</head>
-<body class="checkin-page">
-  <div class="aurora aurora-one"></div><div class="aurora aurora-two"></div><div class="noise"></div>
-  <header class="site-header glass shell compact-header"><a class="brand" href="../"><span class="brand-mark">+</span><span>The Educator</span></a><a class="back-link" href="../">Back</a></header>
-  <main class="checkin-shell">
-    <section class="checkin-card glass reveal visible">
-      <div class="checkin-icon"><div class="nfc-wave wave-one"></div><div class="nfc-wave wave-two"></div><div class="nfc-wave wave-three"></div><div class="nfc-core"></div></div>
-      <span class="eyebrow">Secure classroom check-in</span>
-      <h1>Welcome.</h1>
-      <p class="checkin-intro">Enter your university ID to record your attendance.</p>
-      <div class="session-card"><div><span class="meta-label">Card</span><strong id="tagDisplay">Not detected</strong></div><div><span class="meta-label">Session</span><strong id="sessionDisplay">Waiting</strong></div></div>
-      <form id="checkinForm" novalidate>
-        <label for="studentId">University ID</label>
-        <div class="input-wrap"><input id="studentId" name="studentId" type="text" inputmode="numeric" autocomplete="off" placeholder="Enter your ID" minlength="5" maxlength="20" required /></div>
-        <button id="submitButton" class="primary-btn full-width" type="submit"><span class="button-label">Record attendance</span><span class="button-loader"></span></button>
-      </form>
-      <div id="messageBox" class="message-box" role="status" aria-live="polite"></div>
-      <p class="privacy-note">Your ID is used only to record attendance for the active class session.</p>
-    </section>
-  </main>
-  <script src="../js/checkin.js"></script>
-</body>
-</html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#eef4fb"><title>Check in — The Educator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/attendance.css"></head>
+<body class="subpage">
+<div class="ambient a"></div><div class="ambient b"></div><div class="grain"></div>
+<header class="nav glass compact"><a class="brand" href="../"><span class="orb">+</span><span>The Educator</span></a><a class="back" href="../">Back</a></header>
+<main class="checkin-wrap">
+<section class="checkin-card glass strong reveal">
+<div class="checkin-head"><span class="badge"><i></i> Secure classroom check-in</span><h1>Welcome.</h1><p>Confirm your university ID to record attendance for the active session.</p></div>
+<div class="context">
+<div><span>Course</span><strong>CPCS-203</strong><small>Programming II</small></div>
+<div><span>Session</span><strong>09:00–10:20</strong><small>Late after 09:10</small></div>
+<div><span>NFC card</span><strong id="tagDisplay">Not detected</strong><small id="zoneDisplay">Open from NFC card</small></div>
+</div>
+<form id="checkinForm" novalidate>
+<label for="studentId">University ID</label>
+<input id="studentId" name="studentId" type="text" inputmode="numeric" placeholder="Enter your university ID" minlength="5" maxlength="20" required>
+<button id="submitButton" class="btn primary full" type="submit"><span class="button-text">Record attendance</span><span class="spinner"></span></button>
+</form>
+<div id="messageBox" class="message" role="status" aria-live="polite"></div>
+<div class="privacy"><span>Privacy</span><p>Your ID is used only to verify enrollment and record this attendance event.</p></div>
+</section>
+</main>
+<script src="../js/checkin.js"></script></body></html>
