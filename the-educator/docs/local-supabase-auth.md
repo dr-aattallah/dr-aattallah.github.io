@@ -96,6 +96,9 @@ The seeder is idempotent and can be run more than once.
 dotnet run --project the-educator/src/Educator.Api/Educator.Api.csproj --urls http://127.0.0.1:5088
 ```
 
+Use `dotnet run` for local smoke tests so launch settings run the API in `Development` and load `dotnet user-secrets`.
+Running the compiled DLL directly defaults to `Production` and will not load local user secrets unless you explicitly set the environment.
+
 Health check:
 
 ```bash
