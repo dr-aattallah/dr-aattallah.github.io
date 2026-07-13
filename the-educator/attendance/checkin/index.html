@@ -29,34 +29,34 @@
   </header>
 
   <main class="checkin-page-shell">
-    <section class="flow-header reveal">
+    <section class="flow-header reveal visible">
       <span class="eyebrow">الحضور الذكي</span>
       <h1>تسجيل الحضور</h1>
       <p>أكمل الخطوات بالترتيب.</p>
     </section>
 
-    <section class="session-ribbon liquid-glass reveal delay-1" aria-label="بيانات الجلسة الحالية">
+    <section class="session-ribbon liquid-glass reveal visible delay-1" aria-label="بيانات الجلسة الحالية">
       <div class="session-ribbon-title">
         <div class="course-badge compact-badge">🎓</div>
         <div>
           <span class="side-label">الجلسة الحالية</span>
-          <h2>CPCS-203</h2>
-          <p>البرمجة 2</p>
+          <h2 id="sessionCourseCode">CPCS-203</h2>
+          <p id="sessionCourseName">البرمجة 2</p>
         </div>
       </div>
 
       <div class="session-ribbon-meta">
         <div>
           <span>الوقت</span>
-          <strong>09:00 - 10:20</strong>
+          <strong id="sessionTime">09:00 - 10:20</strong>
         </div>
         <div>
           <span>القاعة</span>
-          <strong>H1-7</strong>
+          <strong id="sessionRoom">H1-7</strong>
         </div>
         <div>
           <span>يغلق خلال</span>
-          <strong class="countdown" id="countdown">05:47</strong>
+          <strong class="countdown" id="countdown">--:--</strong>
         </div>
       </div>
 
@@ -66,7 +66,7 @@
       </div>
     </section>
 
-    <section class="checkin-flow reveal delay-1">
+    <section class="checkin-flow reveal visible delay-1">
       <div class="stepper" aria-label="مراحل تسجيل الحضور">
         <div class="stepper-item active" data-step="1">
           <span>1</span>
@@ -145,7 +145,7 @@
           <div class="result-details">
             <div>
               <span>المقرر</span>
-              <strong>CPCS-203</strong>
+              <strong id="resultCourseCode">CPCS-203</strong>
             </div>
             <div>
               <span>الحالة</span>
