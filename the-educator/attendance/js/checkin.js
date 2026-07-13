@@ -5,7 +5,7 @@
  * Replace only: the-educator/attendance/js/checkin.js
  */
 
-const SUPABASE_URL = 'https://obgmbgsgwxbenglltcvv.supabase.co';
+const SUPABASE_URL = 'https://obgmbgsgwxbenglltcwv.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY =
   'sb_publishable_Qa-0cZ5V15zHHYIWD_SXcA_yCZ0N2GM';
 
