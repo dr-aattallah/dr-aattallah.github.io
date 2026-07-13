@@ -109,9 +109,30 @@ const tagKey =
   query.get('card') ||
   '';
 
-const sessionId =
-  query.get('session') ||
-  DEFAULT_SESSION_ID;
+let activeSession = null;
+
+async function loadActiveSession() {
+
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/rpc/get_active_session`,
+    {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_PUBLISHABLE_KEY,
+        Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+        'Content-Type': 'application/json'
+      }
+    }
+  );
+
+  const data = await response.json();
+
+  if (!Array.isArray(data) || !data.length) {
+    throw new Error('لا توجد جلسة نشطة');
+  }
+
+  activeSession = data[0];
+}
 
 let selectedTag = TAGS[tagKey] || null;
 let cardRead = false;
