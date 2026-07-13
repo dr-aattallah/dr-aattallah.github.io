@@ -10,6 +10,19 @@ builder.Services.AddEducatorApplication();
 builder.Services.AddEducatorInfrastructure(builder.Configuration);
 builder.Services.AddEducatorJwtAuthentication(builder.Configuration);
 builder.Services.AddHealthChecks();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("EducatorFrontend", policy =>
+    {
+        policy
+            .WithOrigins(
+                "https://dr-aattallah.github.io",
+                "http://127.0.0.1:8765",
+                "http://localhost:8765")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
@@ -22,6 +35,7 @@ if (args.Contains("--seed-dev-data", StringComparer.OrdinalIgnoreCase))
 
 app.MapGet("/", () => Results.Redirect("/health"));
 
+app.UseCors("EducatorFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
 

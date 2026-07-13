@@ -25,7 +25,7 @@
   <a href="notifications.html">Notifications</a>
   <a href="profile.html">Profile</a>
   <a href="help.html">Help</a>
-  <a class="nav-primary" href="login.html">Logout</a>
+  <a class="nav-primary" href="login.html" data-logout>Logout</a>
 </div>
   </nav>
 
@@ -35,16 +35,17 @@
         <div class="label">Instructor Dashboard</div>
         <h1>Your courses, organized.</h1>
         <p>
-          Manage your course spaces, resources, files, assignments, and updates from one clean academic dashboard.
+          Welcome, <span data-user-name>Instructor</span>. Manage your course spaces, resources, files, assignments, and updates from one clean academic dashboard.
         </p>
+        <div class="app-message" data-dashboard-message hidden></div>
       </div>
 
       <aside class="quick-card">
         <h2>Today</h2>
         <div class="stats">
-          <div class="stat"><strong>3</strong><span>Active courses</span></div>
-          <div class="stat"><strong>18</strong><span>Resources</span></div>
-          <div class="stat"><strong>2</strong><span>Pending updates</span></div>
+          <div class="stat"><strong data-stat="courses">-</strong><span>Active courses</span></div>
+          <div class="stat"><strong data-stat="resources">-</strong><span>Resources</span></div>
+          <div class="stat"><strong data-stat="updates">-</strong><span>Pending updates</span></div>
         </div>
       </aside>
     </section>
@@ -58,56 +59,13 @@
         <a class="add-btn" href="create-course.html">+ New Course</a>
       </div>
 
-      <div class="courses">
-        <article class="course-card">
+      <div class="courses" data-courses>
+        <article class="course-card state-card">
           <div>
-            <div class="course-top">
-              <span class="code">CPCS-351</span>
-              <span class="status">Active</span>
-            </div>
-            <h3>Software Engineering I</h3>
-            <p>Course resources, syllabus, project materials, and lecture files.</p>
-            <div class="course-meta">
-              <span class="meta">Syllabus</span>
-              <span class="meta">Slides</span>
-              <span class="meta">Assignments</span>
-            </div>
+            <span class="code">Loading</span>
+            <h3>Loading your courses...</h3>
+            <p>Connecting to The Educator API.</p>
           </div>
-          <a class="open-link" href="course.html">Open Course</a>
-        </article>
-
-        <article class="course-card">
-          <div>
-            <div class="course-top">
-              <span class="code">CPCS-203</span>
-              <span class="status">Active</span>
-            </div>
-            <h3>Programming II</h3>
-            <p>Java course space for files, exercises, references, and updates.</p>
-            <div class="course-meta">
-              <span class="meta">Java</span>
-              <span class="meta">Files</span>
-              <span class="meta">Labs</span>
-            </div>
-          </div>
-          <a class="open-link" href="course.html">Open Course</a>
-        </article>
-
-        <article class="course-card">
-          <div>
-            <div class="course-top">
-              <span class="code">CPCS-206</span>
-              <span class="status">Active</span>
-            </div>
-            <h3>Introduction to Programming</h3>
-            <p>Beginner-friendly course space for lectures, tasks, and announcements.</p>
-            <div class="course-meta">
-              <span class="meta">Slides</span>
-              <span class="meta">Tasks</span>
-              <span class="meta">Links</span>
-            </div>
-          </div>
-          <a class="open-link" href="course.html">Open Course</a>
         </article>
       </div>
     </section>
@@ -139,5 +97,6 @@
   </footer>
 </div>
 
+<script src="assets/js/the-educator-auth.js"></script>
 </body>
 </html>

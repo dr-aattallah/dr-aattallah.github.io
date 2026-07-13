@@ -59,15 +59,17 @@
         <button class="role" type="button">Student</button>
       </div>
 
-      <form class="form" action="dashboard.html">
+      <div class="app-message" data-login-message hidden></div>
+
+      <form class="form" data-login-form>
         <div class="field">
-          <label for="user">Email or University ID</label>
-          <input id="user" name="user" type="text" placeholder="name@university.edu or student ID" />
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="name@university.edu" autocomplete="email" required />
         </div>
 
         <div class="field">
           <label for="password">Password</label>
-          <input id="password" name="password" type="password" placeholder="Enter your password" />
+          <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required />
         </div>
 
         <button class="submit" type="submit">Continue</button>
@@ -79,11 +81,12 @@
       </div>
 
       <div class="demo-note">
-        This is a prototype login page. Authentication, user roles, and private course spaces will be connected later.
+        Development login is connected to Supabase Auth and the local Educator API.
       </div>
     </section>
   </section>
 </main>
 
+<script src="assets/js/the-educator-auth.js"></script>
 </body>
 </html>

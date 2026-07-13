@@ -469,6 +469,30 @@ h3{
   line-height:1.7;
 }
 
+.course-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:16px;
+}
+
+.meta{
+  display:inline-flex;
+  align-items:center;
+  min-height:32px;
+  padding:7px 10px;
+  border-radius:999px;
+  background:rgba(101,199,247,.12);
+  color:#365E79;
+  font-size:13px;
+  font-weight:900;
+}
+
+.state-card{
+  min-height:190px;
+  justify-content:center;
+}
+
 .course-card .open-link{
   margin-top:22px;
   min-height:46px;
@@ -495,6 +519,28 @@ h3{
   color:#52677E;
   line-height:1.55;
   font-weight:800;
+}
+
+.app-message{
+  position:relative;
+  margin:18px 0 0;
+  padding:12px 14px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  color:#40546B;
+  background:rgba(255,255,255,.74);
+  font-weight:850;
+  line-height:1.55;
+}
+
+.app-message[data-tone="success"]{
+  color:#247B68;
+  background:rgba(142,230,200,.18);
+}
+
+.app-message[data-tone="error"]{
+  color:#9D3B3B;
+  background:rgba(255,184,107,.18);
 }
 
 .notification-filters{
