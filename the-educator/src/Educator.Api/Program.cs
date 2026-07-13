@@ -3,6 +3,7 @@ using Educator.Api.Endpoints;
 using Educator.Application;
 using Educator.Infrastructure;
 using Educator.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -110,21 +111,15 @@ app.MapGet("/health/database", async (
     {
         await using var scope = serviceProvider.CreateAsyncScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<EducatorDbContext>();
-        var canConnect = await dbContext.Database.CanConnectAsync(cancellationToken);
+        await dbContext.Database.OpenConnectionAsync(cancellationToken);
+        await dbContext.Database.ExecuteSqlRawAsync("SELECT 1", cancellationToken);
+        await dbContext.Database.CloseConnectionAsync();
 
-        return canConnect
-            ? Results.Ok(new
-            {
-                status = "ok",
-                database = "reachable"
-            })
-            : Results.Json(
-                new
-                {
-                    status = "unavailable",
-                    database = "unreachable"
-                },
-                statusCode: StatusCodes.Status503ServiceUnavailable);
+        return Results.Ok(new
+        {
+            status = "ok",
+            database = "reachable"
+        });
     }
     catch (Exception exception)
     {
@@ -135,9 +130,8 @@ app.MapGet("/health/database", async (
             {
                 status = "unavailable",
                 database = "error",
-                detail = app.Environment.IsDevelopment()
-                    ? exception.Message
-                    : "The API could not connect to the configured database."
+                detail = SanitizeDatabaseError(exception.Message),
+                errorType = exception.GetType().Name
             },
             statusCode: StatusCodes.Status503ServiceUnavailable);
     }
@@ -148,3 +142,44 @@ app.MapIdentityEndpoints();
 app.MapCourseEndpoints();
 
 app.Run();
+
+static string SanitizeDatabaseError(string message)
+{
+    if (string.IsNullOrWhiteSpace(message))
+    {
+        return "database_connection_failed";
+    }
+
+    var normalized = message.ToLowerInvariant();
+
+    if (normalized.Contains("password authentication failed", StringComparison.Ordinal))
+    {
+        return "authentication_failed";
+    }
+
+    if (normalized.Contains("timeout", StringComparison.Ordinal) ||
+        normalized.Contains("timed out", StringComparison.Ordinal))
+    {
+        return "network_timeout";
+    }
+
+    if (normalized.Contains("name or service not known", StringComparison.Ordinal) ||
+        normalized.Contains("nodename nor servname provided", StringComparison.Ordinal) ||
+        normalized.Contains("could not translate host name", StringComparison.Ordinal))
+    {
+        return "host_not_found";
+    }
+
+    if (normalized.Contains("ssl", StringComparison.Ordinal) ||
+        normalized.Contains("certificate", StringComparison.Ordinal))
+    {
+        return "ssl_error";
+    }
+
+    if (normalized.Contains("connection refused", StringComparison.Ordinal))
+    {
+        return "connection_refused";
+    }
+
+    return "database_connection_failed";
+}
