@@ -10,31 +10,6 @@ const SUPABASE_URL = 'https://obgmbgsgwxbenglltcwv.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY =
   'sb_publishable_Qa-0cZ5V15zHHYIWD_SXcA_yCZ0N2GM';
 
-let activeSession = null;
-
-async function loadActiveSession() {
-
-  const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/rpc/get_active_session`,
-    {
-      method: 'POST',
-      headers: {
-        apikey: SUPABASE_PUBLISHABLE_KEY,
-        Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
-        'Content-Type': 'application/json'
-      }
-    }
-  );
-
-  const data = await response.json();
-
-  if (!Array.isArray(data) || !data.length) {
-    throw new Error('لا توجد جلسة نشطة');
-  }
-
-  activeSession = data[0];
-}
-
 const TAGS = Object.freeze({
   '1': {
     number: 1,
@@ -96,9 +71,6 @@ const attendanceTime = document.getElementById('attendanceTime');
 
 const countdown = document.getElementById('countdown');
 
-/*
- * البحث عن زر سجل الحضور الموجود داخل قسم النتيجة.
- */
 const historyLink =
   document.querySelector('.result-actions a[href*="history"]');
 
@@ -109,36 +81,11 @@ const tagKey =
   query.get('card') ||
   '';
 
-let activeSession = null;
-
-async function loadActiveSession() {
-
-  const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/rpc/get_active_session`,
-    {
-      method: 'POST',
-      headers: {
-        apikey: SUPABASE_PUBLISHABLE_KEY,
-        Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
-        'Content-Type': 'application/json'
-      }
-    }
-  );
-
-  const data = await response.json();
-
-  if (!Array.isArray(data) || !data.length) {
-    throw new Error('لا توجد جلسة نشطة');
-  }
-
-  activeSession = data[0];
-}
-
 let selectedTag = TAGS[tagKey] || null;
 let cardRead = false;
 let activeSession = null;
-let secondsLeft = 347;
 let currentStudentId = '';
+let countdownTimer = null;
 
 async function loadActiveSession() {
   const response = await fetch(
@@ -155,12 +102,19 @@ async function loadActiveSession() {
     }
   );
 
-  const data = await response.json();
+  let data = null;
+
+  try {
+    data = await response.json();
+  } catch {
+    data = null;
+  }
 
   if (!response.ok) {
     throw new Error(
       data?.message ||
       data?.details ||
+      data?.hint ||
       'تعذر تحميل الجلسة النشطة.'
     );
   }
@@ -170,8 +124,51 @@ async function loadActiveSession() {
   }
 
   activeSession = data[0];
+  initializeCountdown(activeSession.end_time);
 
   return activeSession;
+}
+
+function initializeCountdown(endTime) {
+  if (!countdown || !endTime) {
+    return;
+  }
+
+  const endTimestamp = new Date(endTime).getTime();
+
+  if (Number.isNaN(endTimestamp)) {
+    countdown.textContent = '--:--';
+    return;
+  }
+
+  function updateCountdown() {
+    const secondsLeft = Math.max(
+      0,
+      Math.floor((endTimestamp - Date.now()) / 1000)
+    );
+
+    const hours = Math.floor(secondsLeft / 3600);
+    const minutes = Math.floor((secondsLeft % 3600) / 60);
+    const seconds = secondsLeft % 60;
+
+    countdown.textContent =
+      hours > 0
+        ? `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`
+        : `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+    if (secondsLeft <= 0 && countdownTimer) {
+      window.clearInterval(countdownTimer);
+      countdownTimer = null;
+    }
+  }
+
+  updateCountdown();
+
+  if (countdownTimer) {
+    window.clearInterval(countdownTimer);
+  }
+
+  countdownTimer = window.setInterval(updateCountdown, 1000);
 }
 
 function showStep(number) {
@@ -204,12 +201,15 @@ function formatTime(value) {
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
-    hour12: true
+    hour12: true,
+    timeZone: 'Asia/Riyadh'
   }).format(date);
 }
 
 function setReaderStatus(type, message) {
-  if (!readerStatus) return;
+  if (!readerStatus) {
+    return;
+  }
 
   readerStatus.className =
     `reader-status ${type}`;
@@ -258,7 +258,9 @@ function markCardAsRead(tag) {
 }
 
 function simulateCardRead() {
-  if (!simulateReadButton) return;
+  if (!simulateReadButton) {
+    return;
+  }
 
   setReaderStatus(
     'waiting',
@@ -268,10 +270,6 @@ function simulateCardRead() {
   simulateReadButton.disabled = true;
 
   window.setTimeout(() => {
-    /*
-     * المحاكاة مخصصة للتطوير فقط.
-     * إذا لم يوجد Tag في الرابط فسيتم استخدام البطاقة الأولى.
-     */
     markCardAsRead(
       selectedTag || TAGS['1']
     );
@@ -285,10 +283,6 @@ simulateReadButton?.addEventListener(
   simulateCardRead
 );
 
-/*
- * مثال الرابط الحقيقي:
- * /checkin/?tag=1&session=CPCS203-20260713
- */
 if (selectedTag) {
   window.setTimeout(() => {
     markCardAsRead(selectedTag);
@@ -296,7 +290,9 @@ if (selectedTag) {
 }
 
 function showFormMessage(text) {
-  if (!formMessage) return;
+  if (!formMessage) {
+    return;
+  }
 
   formMessage.textContent = text;
   formMessage.className =
@@ -320,7 +316,9 @@ function statusToArabic(status) {
 }
 
 function updateHistoryLink(studentId) {
-  if (!historyLink || !studentId) return;
+  if (!historyLink || !studentId) {
+    return;
+  }
 
   const encodedStudentId =
     encodeURIComponent(studentId);
@@ -341,10 +339,6 @@ function showResult(result, submittedStudentId) {
     currentStudentId;
 
   currentStudentId = studentId;
-
-  /*
-   * ربط زر سجل الحضور بالطالب الحالي.
-   */
   updateHistoryLink(studentId);
 
   const recordedAt =
@@ -419,28 +413,29 @@ function showResult(result, submittedStudentId) {
   }
 }
 
-
 async function recordAttendance(universityId) {
   if (!selectedTag) {
-    throw new Error('لم يتم التعرف على بطاقة NFC.');
+    throw new Error(
+      'لم يتم التعرف على بطاقة NFC.'
+    );
   }
 
   if (!activeSession) {
-    throw new Error('لم يتم تحميل بيانات الجلسة النشطة.');
+    throw new Error(
+      'لم يتم تحميل بيانات الجلسة النشطة.'
+    );
   }
 
   const response = await fetch(
     `${SUPABASE_URL}/rest/v1/rpc/record_attendance`,
     {
       method: 'POST',
-
       headers: {
         apikey: SUPABASE_PUBLISHABLE_KEY,
         Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
         'Content-Type': 'application/json',
         Accept: 'application/json'
       },
-
       body: JSON.stringify({
         p_university_id: universityId,
         p_session_id: activeSession.session_id,
@@ -471,19 +466,12 @@ async function recordAttendance(universityId) {
   return payload;
 }
 
-
-
-
-
 form?.addEventListener(
   'submit',
   async (event) => {
     event.preventDefault();
 
-    if (
-      !cardRead ||
-      !selectedTag
-    ) {
+    if (!cardRead || !selectedTag) {
       showStep(1);
 
       setReaderStatus(
@@ -522,13 +510,7 @@ form?.addEventListener(
       return;
     }
 
-    currentStudentId =
-      studentId;
-
-    /*
-     * تجهيز رابط السجل قبل وصول النتيجة،
-     * حتى يعمل أيضًا عند التسجيل المكرر.
-     */
+    currentStudentId = studentId;
     updateHistoryLink(studentId);
 
     submitButton?.classList.add(
@@ -560,7 +542,6 @@ form?.addEventListener(
           success: false,
           code:
             'NETWORK_OR_API_ERROR',
-
           message:
             error instanceof Error
               ? error.message
@@ -580,40 +561,30 @@ form?.addEventListener(
   }
 );
 
-window.setInterval(() => {
-  if (
-    !countdown ||
-    secondsLeft <= 0
-  ) {
-    return;
+window.addEventListener(
+  'DOMContentLoaded',
+  async () => {
+    try {
+      await loadActiveSession();
+
+      console.log(
+        'Active session loaded:',
+        activeSession
+      );
+    } catch (error) {
+      console.error(
+        'Active session error:',
+        error
+      );
+
+      showFormMessage(
+        error instanceof Error
+          ? error.message
+          : 'تعذر تحميل الجلسة النشطة.'
+      );
+    }
   }
-
-  secondsLeft -= 1;
-
-  const minutes =
-    String(
-      Math.floor(
-        secondsLeft / 60
-      )
-    ).padStart(2, '0');
-
-  const seconds =
-    String(
-      secondsLeft % 60
-    ).padStart(2, '0');
-
-  countdown.textContent =
-    `${minutes}:${seconds}`;
-}, 1000);
-
-window.addEventListener('DOMContentLoaded', async () => {
-  try {
-    await loadActiveSession();
-    console.log('Active session loaded:', activeSession);
-  } catch (error) {
-    console.error('Active session error:', error);
-  }
-});
+);
 
 window.requestAnimationFrame(() => {
   document
