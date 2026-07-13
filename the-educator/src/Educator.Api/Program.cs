@@ -89,6 +89,60 @@ app.MapGet("/health", () => Results.Ok(new
     timestampUtc = DateTimeOffset.UtcNow
 }));
 
+app.MapGet("/health/database", async (
+    IConfiguration configuration,
+    IServiceProvider serviceProvider,
+    CancellationToken cancellationToken) =>
+{
+    var connectionString = configuration["Supabase:DatabaseConnectionString"];
+    if (string.IsNullOrWhiteSpace(connectionString))
+    {
+        return Results.Json(
+            new
+            {
+                status = "unavailable",
+                database = "not_configured"
+            },
+            statusCode: StatusCodes.Status503ServiceUnavailable);
+    }
+
+    try
+    {
+        await using var scope = serviceProvider.CreateAsyncScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<EducatorDbContext>();
+        var canConnect = await dbContext.Database.CanConnectAsync(cancellationToken);
+
+        return canConnect
+            ? Results.Ok(new
+            {
+                status = "ok",
+                database = "reachable"
+            })
+            : Results.Json(
+                new
+                {
+                    status = "unavailable",
+                    database = "unreachable"
+                },
+                statusCode: StatusCodes.Status503ServiceUnavailable);
+    }
+    catch (Exception exception)
+    {
+        app.Logger.LogError(exception, "Database health check failed.");
+
+        return Results.Json(
+            new
+            {
+                status = "unavailable",
+                database = "error",
+                detail = app.Environment.IsDevelopment()
+                    ? exception.Message
+                    : "The API could not connect to the configured database."
+            },
+            statusCode: StatusCodes.Status503ServiceUnavailable);
+    }
+});
+
 app.MapHealthChecks("/health/live");
 app.MapIdentityEndpoints();
 app.MapCourseEndpoints();
