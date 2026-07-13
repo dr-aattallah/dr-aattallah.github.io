@@ -1,78 +1,84 @@
 <!doctype html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#eef4fb">
-<title>Academic Attendance — The Educator</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/attendance.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f8ff">
+  <title>الحضور الأكاديمي — The Educator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/attendance.css">
 </head>
 <body>
-<div class="ambient a"></div><div class="ambient b"></div><div class="grain"></div>
-<header class="nav glass">
-<a class="brand" href="../"><span class="orb">+</span><span>The Educator</span></a>
-<nav><a href="../">Courses</a><a href="history/">History</a><a href="admin/">Instructor</a><a class="nav-cta" href="checkin/">Check in</a></nav>
-</header>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
 
-<main>
-<section class="hero shell">
-<div class="hero-copy reveal">
-<span class="badge"><i></i> Academic attendance</span>
-<h1>Academic attendance<br><span>for the modern classroom.</span></h1>
-<p>A focused attendance experience inside The Educator. Tap an NFC card, confirm your identity, and receive an instant result.</p>
-<div class="actions"><a class="btn primary" href="checkin/">Start check-in</a><a class="btn secondary" href="#workflow">View workflow</a></div>
-<div class="trust"><span>Secure NFC</span><span>Instant confirmation</span><span>Built for students</span></div>
-</div>
+  <header class="nav-shell liquid-glass">
+    <a class="brand" href="../"><span class="brand-orb">E</span><span>The Educator</span></a>
+    <div class="nav-status"><span class="status-dot"></span><span>النظام متصل</span></div>
+    <div class="clock-chip"><span>◷</span><strong id="liveClock">--:--</strong></div>
+  </header>
 
-<div class="hero-stage reveal delay-1">
-<div class="session glass strong">
-<div class="session-head">
-<div><small>Current session</small><h2>CPCS-203</h2><p>Programming II</p></div>
-<span class="live"><i></i> Active</span>
-</div>
-<div class="times">
-<div><span>Starts</span><strong>09:00</strong></div>
-<div><span>Ends</span><strong>10:20</strong></div>
-<div><span>Late after</span><strong>09:10</strong></div>
-</div>
-<div class="prompt">
-<div class="nfc"><span></span><span></span><span></span><b></b></div>
-<div><strong>Touch any classroom NFC card</strong><small>Then enter your university ID</small></div>
-</div>
-<a class="btn primary full" href="checkin/">Continue to check-in</a>
-</div>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <span class="eyebrow">الحضور الذكي</span>
+        <h1>تسجيل الحضور</h1>
+        <p>المس البطاقة، أدخل رقمك، وانتهى.</p>
+        <a class="primary-button" href="checkin/"><span class="nfc-mini">)))</span>ابدأ تسجيل الحضور</a>
+        <div class="trust-line">آمن • سريع • خاص</div>
+      </div>
 
-<aside class="status glass">
-<div><span>System</span><strong><i></i> Online</strong></div>
-<div><span>Database</span><strong><i></i> Connected</strong></div>
-<div><span>Session</span><strong><i></i> Active</strong></div>
-</aside>
-</div>
-</section>
+      <div class="hero-visual reveal delay-1">
+        <div class="liquid-shape"></div>
+        <div class="session-card liquid-glass">
+          <div class="session-header">
+            <div class="course-icon">🎓</div>
+            <div class="course-title"><strong>CPCS-203</strong><span>البرمجة 2</span></div>
+            <div class="session-active"><span class="status-dot"></span>الجلسة نشطة</div>
+          </div>
+          <div class="session-grid">
+            <div><span>الوقت</span><strong>09:00 - 10:20</strong></div>
+            <div><span>القاعة</span><strong>H1-7</strong></div>
+            <div><span>يغلق التسجيل خلال</span><strong class="countdown" id="countdown">06:13</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section id="workflow" class="workflow shell">
-<div class="section-head reveal">
-<span class="badge">One task. Three steps.</span>
-<h2>Designed to finish in seconds.</h2>
-<p>No crowded forms, no QR sharing, and no unnecessary navigation.</p>
-</div>
-<div class="cards">
-<article class="glass reveal"><span>01</span><h3>Tap</h3><p>Touch one of the three NFC cards placed around the classroom.</p></article>
-<article class="glass reveal delay-1"><span>02</span><h3>Confirm</h3><p>Enter your university ID on a secure, focused check-in page.</p></article>
-<article class="glass reveal delay-2"><span>03</span><h3>Done</h3><p>See your result immediately: Present, Late, or Rejected.</p></article>
-</div>
-</section>
+    <section class="how-it-works liquid-glass reveal">
+      <div class="how-header">
+        <div><span class="eyebrow">كيف يعمل؟</span><h2>ثلاث خطوات فقط</h2></div>
+        <button id="pauseAnimation" class="pause-button" type="button" aria-label="إيقاف الحركة">Ⅱ</button>
+      </div>
 
-<section class="focus shell reveal">
-<div class="focus-card glass strong">
-<div><span class="badge">Student-first by design</span><h2>Less interface.<br>More certainty.</h2></div>
-<p>Every screen is built around one clear action. Students see the course, session time, and result without guessing what to do next.</p>
-</div>
-</section>
-</main>
+      <div class="steps-film" id="stepsFilm">
+        <article class="step-card active">
+          <span class="step-number">1</span>
+          <div class="scene scene-tap">
+            <div class="nfc-card back-card"></div><div class="nfc-card front-card"></div>
+            <div class="waves"><i></i><i></i><i></i></div>
+          </div>
+          <h3>المس بطاقة NFC</h3>
+        </article>
+        <div class="step-arrow">←</div>
+        <article class="step-card">
+          <span class="step-number">2</span>
+          <div class="scene scene-id"><div class="id-panel"><span>الرقم الجامعي</span><strong id="typingDemo">000000000</strong></div></div>
+          <h3>أدخل رقمك الجامعي</h3>
+        </article>
+        <div class="step-arrow">←</div>
+        <article class="step-card">
+          <span class="step-number">3</span>
+          <div class="scene scene-done"><div class="success-ring"><span>✓</span></div></div>
+          <h3>تم تسجيل حضورك</h3>
+        </article>
+      </div>
 
-<footer class="shell"><span>© 2026 The Educator</span><span>Attendance subsystem · Supabase ready</span></footer>
-<script src="js/site.js"></script>
-</body></html>
+      <div class="film-progress"><span id="progressOne" class="active"></span><span id="progressTwo"></span><span id="progressThree"></span></div>
+    </section>
+  </main>
+
+  <script src="js/site.js"></script>
+</body>
+</html>
