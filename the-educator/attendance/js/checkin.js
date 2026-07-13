@@ -4,41 +4,39 @@ const studentIdInput = document.getElementById('studentId');
 const submitButton = document.getElementById('submitButton');
 const messageBox = document.getElementById('messageBox');
 const tagDisplay = document.getElementById('tagDisplay');
-const zoneDisplay = document.getElementById('zoneDisplay');
 
 const params = new URLSearchParams(window.location.search);
 const tag = params.get('tag') || params.get('card') || '';
-const tagMap = {
-  '1': ['Card 1', 'Front zone'],
-  '2': ['Card 2', 'Middle zone'],
-  '3': ['Card 3', 'Back zone'],
-  'NFC-FRONT': ['Card 1', 'Front zone'],
-  'NFC-MIDDLE': ['Card 2', 'Middle zone'],
-  'NFC-BACK': ['Card 3', 'Back zone']
+
+const tags = {
+  '1': 'البطاقة 1',
+  '2': 'البطاقة 2',
+  '3': 'البطاقة 3',
+  'NFC-FRONT': 'البطاقة 1',
+  'NFC-MIDDLE': 'البطاقة 2',
+  'NFC-BACK': 'البطاقة 3'
 };
 
-if (tagMap[tag]) {
-  tagDisplay.textContent = tagMap[tag][0];
-  zoneDisplay.textContent = tagMap[tag][1];
-}
+if (tags[tag]) tagDisplay.textContent = tags[tag];
 
 function showMessage(text, type) {
   messageBox.textContent = text;
   messageBox.className = `message show ${type}`;
 }
 
-form.addEventListener('submit', async (event) => {
+form?.addEventListener('submit', async (event) => {
   event.preventDefault();
+
   const studentId = studentIdInput.value.trim();
 
   if (!studentId) {
-    showMessage('Please enter your university ID.', 'error');
+    showMessage('أدخل الرقم الجامعي أولًا.', 'error');
     studentIdInput.focus();
     return;
   }
 
   if (!/^[A-Za-z0-9-]{5,20}$/.test(studentId)) {
-    showMessage('Enter a valid university ID.', 'error');
+    showMessage('الرقم الجامعي غير صحيح.', 'error');
     studentIdInput.focus();
     return;
   }
@@ -48,11 +46,11 @@ form.addEventListener('submit', async (event) => {
   messageBox.className = 'message';
 
   try {
-    await new Promise((resolve) => setTimeout(resolve, 850));
-    showMessage(`Prototype ready. Student ${studentId} would be recorded for CPCS-203.`, 'success');
+    await new Promise((resolve) => setTimeout(resolve, 900));
+    showMessage(`تم تجهيز النموذج التجريبي للطالب ${studentId}.`, 'success');
     form.reset();
-  } catch {
-    showMessage('Something went wrong. Please try again.', 'error');
+  } catch (error) {
+    showMessage('تعذر تسجيل الحضور. حاول مرة أخرى.', 'error');
   } finally {
     submitButton.classList.remove('is-loading');
     submitButton.disabled = false;
@@ -60,5 +58,5 @@ form.addEventListener('submit', async (event) => {
 });
 
 requestAnimationFrame(() => {
-  document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+  document.querySelectorAll('.reveal').forEach((item) => item.classList.add('visible'));
 });
