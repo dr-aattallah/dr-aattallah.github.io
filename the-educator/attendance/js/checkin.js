@@ -1,3 +1,48 @@
+'use strict';
+
+/*
+ * NFC Attendance — Supabase RPC integration
+ * Replace only: the-educator/attendance/js/checkin.js
+ */
+
+const SUPABASE_URL = 'https://obgmbgsgwxbenglltcvv.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY =
+  'sb_publishable_Qa-0cZ5V15zHHYIWD_SXcA_yCZ0N2GM';
+
+const DEFAULT_SESSION_ID = 'CPCS203-20260713';
+
+const TAGS = Object.freeze({
+  '1': {
+    number: 1,
+    label: 'البطاقة 1',
+    uid: '04:79:0F:CA:9C:17:90'
+  },
+  '2': {
+    number: 2,
+    label: 'البطاقة 2',
+    uid: '04:65:4E:CA:9C:17:90'
+  },
+  '3': {
+    number: 3,
+    label: 'البطاقة 3',
+    uid: '04:5D:24:CA:9C:17:90'
+  },
+  'NFC-FRONT': {
+    number: 1,
+    label: 'البطاقة 1',
+    uid: '04:79:0F:CA:9C:17:90'
+  },
+  'NFC-MIDDLE': {
+    number: 2,
+    label: 'البطاقة 2',
+    uid: '04:65:4E:CA:9C:17:90'
+  },
+  'NFC-BACK': {
+    number: 3,
+    label: 'البطاقة 3',
+    uid: '04:5D:24:CA:9C:17:90'
+  }
+});
 
 const steps = [
   document.getElementById('stepOne'),
@@ -21,27 +66,17 @@ const attendanceStatus = document.getElementById('attendanceStatus');
 const attendanceTime = document.getElementById('attendanceTime');
 const countdown = document.getElementById('countdown');
 
-const params = new URLSearchParams(window.location.search);
-const tagValue = params.get('tag') || params.get('card') || '';
+const query = new URLSearchParams(window.location.search);
+const tagKey = query.get('tag') || query.get('card') || '';
+const sessionId = query.get('session') || DEFAULT_SESSION_ID;
 
-const tagMap = {
-  '1': 'البطاقة 1',
-  '2': 'البطاقة 2',
-  '3': 'البطاقة 3',
-  'NFC-FRONT': 'البطاقة 1',
-  'NFC-MIDDLE': 'البطاقة 2',
-  'NFC-BACK': 'البطاقة 3'
-};
-
-let currentStep = 1;
+let selectedTag = TAGS[tagKey] || null;
 let cardRead = false;
 let secondsLeft = 347;
 
 function showStep(number) {
-  currentStep = number;
-
   steps.forEach((step, index) => {
-    step.classList.toggle('active', index === number - 1);
+    step?.classList.toggle('active', index === number - 1);
   });
 
   stepperItems.forEach((item, index) => {
@@ -50,7 +85,9 @@ function showStep(number) {
   });
 }
 
-function formatTime(date) {
+function formatTime(value) {
+  const date = value ? new Date(value) : new Date();
+
   return new Intl.DateTimeFormat('ar-SA', {
     hour: '2-digit',
     minute: '2-digit',
@@ -59,33 +96,54 @@ function formatTime(date) {
   }).format(date);
 }
 
-function markCardAsRead(label) {
-  cardRead = true;
-  readTagLabel.textContent = label;
-  readerStatus.className = 'reader-status success';
-  readerStatus.innerHTML = '<span>✓</span><strong>تمت قراءة البطاقة بنجاح</strong>';
-  readerStage.classList.add('read-complete');
+function setReaderStatus(type, message) {
+  readerStatus.className = `reader-status ${type}`;
 
-  setTimeout(() => showStep(2), 850);
+  if (type === 'waiting') {
+    readerStatus.innerHTML =
+      `<span class="status-spinner"></span><strong>${message}</strong>`;
+    return;
+  }
+
+  const icon = type === 'success' ? '✓' : '×';
+  readerStatus.innerHTML = `<span>${icon}</span><strong>${message}</strong>`;
+}
+
+function markCardAsRead(tag) {
+  selectedTag = tag;
+  cardRead = true;
+
+  if (readTagLabel) readTagLabel.textContent = tag.label;
+
+  setReaderStatus('success', 'تمت قراءة البطاقة بنجاح');
+  readerStage?.classList.add('read-complete');
+
+  window.setTimeout(() => {
+    showStep(2);
+    studentIdInput?.focus();
+  }, 700);
 }
 
 function simulateCardRead() {
-  readerStatus.className = 'reader-status waiting';
-  readerStatus.innerHTML = '<span class="status-spinner"></span><strong>جارٍ قراءة البطاقة...</strong>';
+  setReaderStatus('waiting', 'جارٍ قراءة البطاقة...');
   simulateReadButton.disabled = true;
 
-  setTimeout(() => {
-    const label = tagMap[tagValue] || 'البطاقة 1';
-    markCardAsRead(label);
+  window.setTimeout(() => {
+    // The simulation is for development only and defaults to Card 1.
+    markCardAsRead(selectedTag || TAGS['1']);
     simulateReadButton.disabled = false;
-  }, 1200);
+  }, 1000);
 }
 
 simulateReadButton?.addEventListener('click', simulateCardRead);
 
-// If the page was opened by an NFC URL, treat the tag parameter as a successful read.
-if (tagMap[tagValue]) {
-  setTimeout(() => markCardAsRead(tagMap[tagValue]), 650);
+/*
+ * Opening the page from a programmed NFC URL such as:
+ * /checkin/?tag=1&session=CPCS203-20260713
+ * counts as completion of the browser-side card-read stage.
+ */
+if (selectedTag) {
+  window.setTimeout(() => markCardAsRead(selectedTag), 550);
 }
 
 function showFormMessage(text) {
@@ -93,30 +151,99 @@ function showFormMessage(text) {
   formMessage.className = 'message show error';
 }
 
-function showResult(success, studentId) {
+function statusToArabic(status) {
+  const values = {
+    Present: 'حاضر',
+    Late: 'متأخر',
+    Absent: 'غائب',
+    Partial: 'حضور جزئي',
+    Rejected: 'مرفوض'
+  };
+
+  return values[status] || status || 'غير محدد';
+}
+
+function showResult(result) {
   showStep(3);
-  attendanceTime.textContent = formatTime(new Date());
+
+  const success = result?.success === true;
+  const recordedAt = result?.recorded_at || new Date().toISOString();
+
+  if (attendanceTime) attendanceTime.textContent = formatTime(recordedAt);
 
   if (success) {
     resultIcon.className = 'result-icon';
     resultIcon.innerHTML = '<span>✓</span>';
-    resultTitle.textContent = 'تم تسجيل حضورك';
-    resultText.textContent = `تم حفظ حضور الطالب ${studentId} بنجاح.`;
-    attendanceStatus.textContent = 'حاضر';
-  } else {
-    resultIcon.className = 'result-icon failure';
-    resultIcon.innerHTML = '<span>×</span>';
-    resultTitle.textContent = 'تعذر تسجيل الحضور';
-    resultText.textContent = 'لم يتم حفظ حضورك. حاول مرة أخرى أو تواصل مع المعلم.';
-    attendanceStatus.textContent = 'مرفوض';
+    resultTitle.textContent = result.message || 'تم تسجيل حضورك';
+    resultText.textContent = result.student_name
+      ? `مرحبًا ${result.student_name}، تم حفظ حضورك بنجاح.`
+      : 'تم حفظ حضورك بنجاح.';
+    attendanceStatus.textContent = statusToArabic(result.status);
+    return;
   }
+
+  resultIcon.className = 'result-icon failure';
+  resultIcon.innerHTML = '<span>×</span>';
+  resultTitle.textContent =
+    result?.code === 'DUPLICATE_ATTENDANCE'
+      ? 'حضورك مسجل مسبقًا'
+      : 'تعذر تسجيل الحضور';
+  resultText.textContent =
+    result?.message || 'لم يتم حفظ حضورك. حاول مرة أخرى أو تواصل مع المعلم.';
+  attendanceStatus.textContent =
+    result?.code === 'DUPLICATE_ATTENDANCE' ? 'مسجل مسبقًا' : 'مرفوض';
+}
+
+async function recordAttendance(universityId) {
+  if (!selectedTag) {
+    throw new Error('لم يتم التعرف على بطاقة NFC.');
+  }
+
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/rpc/record_attendance`,
+    {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_PUBLISHABLE_KEY,
+        Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        p_university_id: universityId,
+        p_session_id: sessionId,
+        p_tag_number: selectedTag.number,
+        p_card_uid: selectedTag.uid
+      })
+    }
+  );
+
+  let payload;
+
+  try {
+    payload = await response.json();
+  } catch {
+    payload = null;
+  }
+
+  if (!response.ok) {
+    const serverMessage =
+      payload?.message ||
+      payload?.details ||
+      `تعذر الاتصال بخدمة الحضور (${response.status}).`;
+
+    throw new Error(serverMessage);
+  }
+
+  return payload;
 }
 
 form?.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  if (!cardRead) {
+  if (!cardRead || !selectedTag) {
     showStep(1);
+    setReaderStatus('error', 'المس بطاقة NFC أولًا.');
     return;
   }
 
@@ -128,8 +255,8 @@ form?.addEventListener('submit', async (event) => {
     return;
   }
 
-  if (!/^[A-Za-z0-9-]{5,20}$/.test(studentId)) {
-    showFormMessage('الرقم الجامعي غير صحيح.');
+  if (!/^[A-Za-z0-9-]{5,40}$/.test(studentId)) {
+    showFormMessage('صيغة الرقم الجامعي غير صحيحة.');
     studentIdInput.focus();
     return;
   }
@@ -139,25 +266,33 @@ form?.addEventListener('submit', async (event) => {
   formMessage.className = 'message';
 
   try {
-    // Prototype: replace this delay with a Supabase request.
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    showResult(true, studentId);
+    const result = await recordAttendance(studentId);
+    showResult(result);
   } catch (error) {
-    showResult(false, studentId);
+    showResult({
+      success: false,
+      code: 'NETWORK_OR_API_ERROR',
+      message: error instanceof Error
+        ? error.message
+        : 'تعذر الاتصال بخدمة الحضور.'
+    });
   } finally {
     submitButton.classList.remove('is-loading');
     submitButton.disabled = false;
   }
 });
 
-setInterval(() => {
+window.setInterval(() => {
   if (!countdown || secondsLeft <= 0) return;
+
   secondsLeft -= 1;
   const minutes = String(Math.floor(secondsLeft / 60)).padStart(2, '0');
   const seconds = String(secondsLeft % 60).padStart(2, '0');
   countdown.textContent = `${minutes}:${seconds}`;
 }, 1000);
 
-requestAnimationFrame(() => {
-  document.querySelectorAll('.reveal').forEach((item) => item.classList.add('visible'));
+window.requestAnimationFrame(() => {
+  document.querySelectorAll('.reveal').forEach((item) => {
+    item.classList.add('visible');
+  });
 });
