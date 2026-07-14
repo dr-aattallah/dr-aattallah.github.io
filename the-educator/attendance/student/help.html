@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f4f8ff">
+  <title>مساعدة الوصول — The Educator</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/attendance.css">
+  <link rel="stylesheet" href="../css/student.css">
+</head>
+
+<body class="student-page help-page">
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <div class="grain"></div>
+
+  <header class="student-nav liquid-glass">
+    <a class="brand" href="../">
+      <span class="brand-orb">E</span>
+      <span>The Educator</span>
+    </a>
+
+    <div class="student-online">
+      <span class="status-dot"></span>
+      <span>المساعدة</span>
+    </div>
+
+    <a class="student-link" href="./">العودة إلى سجل الحضور</a>
+  </header>
+
+  <main class="student-shell help-shell">
+    <section class="help-hero">
+      <div>
+        <span class="eyebrow">مساعدة الوصول</span>
+        <h1>تعذّر الدخول؟</h1>
+        <p>
+          أرسل طلبًا لتحديث البريد المسجل أو حل مشكلة وصول رمز التحقق.
+          سيتم حفظ الطلب ومراجعته دون عرض بياناتك للطلاب الآخرين.
+        </p>
+      </div>
+
+      <div class="help-visual liquid-glass" aria-hidden="true">
+        <svg viewBox="0 0 160 130">
+          <path d="M30 35h100v64H30z"/>
+          <path d="m30 39 50 37 50-37"/>
+          <circle cx="118" cy="99" r="25"/>
+          <path d="M118 86v17M118 113h.1"/>
+        </svg>
+      </div>
+    </section>
+
+    <section class="help-layout">
+      <section class="help-card liquid-glass">
+        <span class="eyebrow">طلب مساعدة</span>
+        <h2>بيانات الطالب</h2>
+
+        <form id="supportForm" class="student-form support-form" novalidate>
+          <label for="supportUniversityId">الرقم الجامعي</label>
+          <input id="supportUniversityId" inputmode="numeric"
+                 placeholder="الرقم الجامعي" required>
+
+          <label for="supportName">الاسم الكامل</label>
+          <input id="supportName" placeholder="الاسم كما هو مسجل" required>
+
+          <label for="supportType">نوع الطلب</label>
+          <select id="supportType" required>
+            <option value="ChangeEmail">تغيير البريد الإلكتروني</option>
+            <option value="CodeNotReceived">لم يصل رمز التحقق</option>
+            <option value="AccessProblem">مشكلة أخرى في الوصول</option>
+          </select>
+
+          <div id="newEmailField">
+            <label for="supportNewEmail">البريد الجامعي الجديد</label>
+            <input id="supportNewEmail" type="email"
+                   placeholder="student@stu.kau.edu.sa">
+          </div>
+
+          <label for="supportDescription">وصف المشكلة</label>
+          <textarea id="supportDescription" rows="5" maxlength="1000"
+                    placeholder="اشرح المشكلة باختصار" required></textarea>
+
+          <label for="supportFile">مرفق اختياري</label>
+          <input id="supportFile" type="file"
+                 accept=".pdf,image/jpeg,image/png,image/webp">
+
+          <button id="supportSubmitButton" class="primary-button full" type="submit">
+            <span class="button-text">إرسال الطلب</span>
+            <span class="spinner"></span>
+          </button>
+
+          <div id="supportMessage" class="student-message"></div>
+        </form>
+      </section>
+
+      <aside class="help-tips">
+        <article class="tip-card liquid-glass">
+          <div class="tip-icon">1</div>
+          <div>
+            <h3>تحقق من البريد غير المرغوب</h3>
+            <p>قد يصل رمز الدخول إلى Spam أو Junk.</p>
+          </div>
+        </article>
+
+        <article class="tip-card liquid-glass">
+          <div class="tip-icon">2</div>
+          <div>
+            <h3>استخدم رقمك الجامعي الصحيح</h3>
+            <p>أدخل الأرقام فقط دون مسافات أو رموز إضافية.</p>
+          </div>
+        </article>
+
+        <article class="tip-card liquid-glass">
+          <div class="tip-icon">3</div>
+          <div>
+            <h3>تغيير البريد يحتاج مراجعة</h3>
+            <p>لن يتغير البريد تلقائيًا حتى يتم التحقق من هوية الطالب.</p>
+          </div>
+        </article>
+
+        <article class="tip-card liquid-glass">
+          <div class="tip-icon">4</div>
+          <div>
+            <h3>لا تشارك رمز التحقق</h3>
+            <p>الرمز خاص بك ولا يطلبه منك المعلم أو أي طالب آخر.</p>
+          </div>
+        </article>
+      </aside>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/student-help.js"></script>
+</body>
+</html>
