@@ -1,0 +1,95 @@
+
+:root{
+  --ink:#10264b;
+  --muted:#75839c;
+  --blue:#7185ff;
+  --mint:#55cdb4;
+  --red:#dd6680;
+}
+*{box-sizing:border-box}
+body.course-plans-page{
+  min-height:100vh;margin:0;color:var(--ink);font-family:"Tajawal",sans-serif;
+  background:
+    radial-gradient(circle at 5% 8%,rgba(111,227,202,.25),transparent 30%),
+    radial-gradient(circle at 92% 8%,rgba(123,139,255,.25),transparent 32%),
+    radial-gradient(circle at 80% 96%,rgba(255,216,177,.20),transparent 27%),
+    linear-gradient(135deg,#f8fcff 0%,#f2f6ff 52%,#fffaf6 100%);
+}
+.course-plans-shell{width:min(1180px,calc(100% - 28px));margin:55px auto 90px}
+.page-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:22px}
+.page-heading h1{margin:7px 0 8px;font-size:clamp(44px,6vw,72px);line-height:.95}
+.page-heading p{margin:0;color:var(--muted);font-size:16px}
+.eyebrow{color:#6f7e98;font-size:13px;font-weight:800}
+.course-plan-layout{display:grid;grid-template-columns:1.4fr .6fr;gap:18px}
+.plan-form,.plan-guide,.plans-list-card{border-radius:32px;padding:25px}
+.section-title,.meetings-head,.list-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.section-title h2,.list-head h2{margin:7px 0 0;font-size:30px}
+.meetings-head{align-items:flex-end;margin:25px 0 12px}
+.meetings-head h3{margin:7px 0 0;font-size:23px}
+.step-pill{padding:7px 11px;border-radius:999px;background:rgba(113,133,255,.12);color:#5368d7;font-size:12px;font-weight:800}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:20px}
+label{display:grid;gap:7px}
+label>span{color:#53627c;font-size:13px;font-weight:700}
+input,select{
+  width:100%;min-height:48px;border:1px solid rgba(139,154,184,.20);border-radius:15px;
+  background:rgba(255,255,255,.58);color:var(--ink);font:inherit;padding:0 13px;outline:none
+}
+input:focus,select:focus{border-color:rgba(113,133,255,.50);box-shadow:0 0 0 4px rgba(113,133,255,.08)}
+.meeting-rows{display:grid;gap:10px}
+.meeting-row{
+  display:grid;grid-template-columns:1fr .85fr .85fr 1fr 1fr .9fr auto;gap:9px;align-items:end;
+  padding:14px;border:1px solid rgba(255,255,255,.82);border-radius:22px;background:rgba(255,255,255,.35)
+}
+.remove-meeting-button{
+  width:42px;height:48px;border:0;border-radius:14px;color:#a52b47;background:rgba(221,102,128,.12);
+  font:inherit;font-size:23px;cursor:pointer
+}
+.switch-row{
+  display:flex;align-items:center;gap:12px;margin-top:20px;padding:15px;border-radius:20px;background:rgba(255,255,255,.34)
+}
+.switch-row input{position:absolute;opacity:0;pointer-events:none}
+.switch-control{width:50px;height:29px;border-radius:999px;background:#aab4c7;position:relative;transition:.2s}
+.switch-control::after{
+  content:"";position:absolute;width:23px;height:23px;top:3px;right:3px;border-radius:50%;
+  background:#fff;box-shadow:0 3px 10px rgba(30,45,80,.18);transition:.2s
+}
+.switch-row input:checked+.switch-control{background:linear-gradient(135deg,var(--mint),var(--blue))}
+.switch-row input:checked+.switch-control::after{transform:translateX(-21px)}
+.switch-row strong,.switch-row small{display:block}.switch-row small{margin-top:3px;color:var(--muted)}
+.form-actions{margin-top:18px}
+.plan-message{min-height:24px;margin-top:11px;color:var(--muted);font-size:13px;font-weight:700}
+.plan-message.error{color:var(--red)}.plan-message.success{color:#13856f}
+.plan-guide h2{margin:8px 0 20px;font-size:31px}
+.guide-list{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.guide-list li{display:flex;align-items:center;gap:12px;padding:13px;border-radius:19px;background:rgba(255,255,255,.38)}
+.guide-list li>span{
+  width:35px;height:35px;display:grid;place-items:center;border-radius:12px;
+  color:#fff;font-weight:800;background:linear-gradient(135deg,var(--mint),var(--blue))
+}
+.guide-list strong,.guide-list small{display:block}.guide-list small{margin-top:3px;color:var(--muted)}
+.guide-note{margin-top:16px;padding:14px;border-radius:18px;color:#6d5b35;background:rgba(255,215,150,.17);line-height:1.7}
+.plans-list-card{margin-top:18px}
+.empty-state{min-height:140px;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.plan-card{padding:18px;border-radius:23px;border:1px solid rgba(255,255,255,.82);background:rgba(255,255,255,.38)}
+.plan-card-head{display:flex;justify-content:space-between;gap:12px}
+.plan-card h3{margin:0;font-size:24px}.plan-card p{margin:4px 0 0;color:var(--muted)}
+.plan-status{padding:6px 9px;border-radius:999px;font-size:11px;font-weight:800}
+.plan-status.active{color:#13856f;background:rgba(85,205,180,.14)}
+.plan-status.inactive{color:#68768f;background:rgba(117,131,156,.12)}
+.plan-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:15px 0}
+.plan-meta div{padding:10px;border-radius:15px;background:rgba(255,255,255,.42)}
+.plan-meta span{display:block;color:var(--muted);font-size:11px}.plan-meta strong{display:block;margin-top:3px}
+.plan-actions{display:flex;gap:8px}
+.plan-actions button{flex:1}
+.is-hidden{display:none!important}
+@media(max-width:980px){
+  .course-plan-layout{grid-template-columns:1fr}
+  .meeting-row{grid-template-columns:repeat(3,1fr)}
+  .remove-meeting-button{width:100%}
+  .plans-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:680px){
+  .page-heading{align-items:flex-start;flex-direction:column}
+  .form-grid,.meeting-row,.plans-grid{grid-template-columns:1fr}
+}
