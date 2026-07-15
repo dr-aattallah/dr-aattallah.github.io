@@ -24,25 +24,68 @@
       <div>
         <span class="eyebrow">لوحة المعلم</span>
         <h1>المقررات الفصلية</h1>
-        <p>
-          أدخل جدول المقرر مرة واحدة، وسيُنشئ النظام جميع محاضرات الفصل تلقائيًا.
-        </p>
+        <p>أنشئ جدول المقرر مرة واحدة، ثم دع النظام يولّد محاضرات الفصل كاملة.</p>
       </div>
 
-      <a class="secondary-button" href="./">إدارة الجلسات</a>
+      <a class="secondary-button heading-action" href="./">إدارة الجلسات</a>
     </section>
 
-    <section class="course-plan-layout">
-      <form id="coursePlanForm" class="plan-form liquid-glass">
-        <div class="section-title">
-          <div>
-            <span class="eyebrow">خطة جديدة</span>
-            <h2>إعداد مقرر للفصل</h2>
-          </div>
-          <span class="step-pill">مرة واحدة فقط</span>
+    <section class="workflow-overview liquid-glass" aria-label="مراحل إنشاء الخطة">
+      <article class="workflow-step is-current">
+        <span class="workflow-number">1</span>
+        <div>
+          <strong>بيانات المقرر</strong>
+          <small>المقرر والشعبة والفصل</small>
         </div>
+      </article>
 
-        <div class="form-grid">
+      <span class="workflow-line"></span>
+
+      <article class="workflow-step">
+        <span class="workflow-number">2</span>
+        <div>
+          <strong>الفترة الدراسية</strong>
+          <small>البداية والنهاية والتأخير</small>
+        </div>
+      </article>
+
+      <span class="workflow-line"></span>
+
+      <article class="workflow-step">
+        <span class="workflow-number">3</span>
+        <div>
+          <strong>الجدول الأسبوعي</strong>
+          <small>الأيام والأوقات والقاعات</small>
+        </div>
+      </article>
+
+      <span class="workflow-line"></span>
+
+      <article class="workflow-step">
+        <span class="workflow-number">4</span>
+        <div>
+          <strong>التوليد</strong>
+          <small>إنشاء جميع المحاضرات</small>
+        </div>
+      </article>
+    </section>
+
+    <form id="coursePlanForm" class="plan-form">
+      <section class="form-section liquid-glass">
+        <header class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-index">01</span>
+            <div>
+              <span class="eyebrow">الخطوة الأولى</span>
+              <h2>بيانات المقرر</h2>
+              <p>عرّف المقرر والشعبة التي سيتم إنشاء الخطة لها.</p>
+            </div>
+          </div>
+
+          <span class="step-pill">بيانات أساسية</span>
+        </header>
+
+        <div class="form-grid course-data-grid">
           <label>
             <span>رمز المقرر</span>
             <input id="courseCode" required placeholder="CPCS-203" maxlength="30">
@@ -53,7 +96,7 @@
             <input id="sectionCode" required placeholder="IS1" maxlength="30">
           </label>
 
-          <label>
+          <label class="wide-field">
             <span>اسم المقرر</span>
             <input id="courseName" required placeholder="Programming II" maxlength="120">
           </label>
@@ -62,7 +105,24 @@
             <span>الفصل الدراسي</span>
             <input id="termCode" required placeholder="2026-1" maxlength="30">
           </label>
+        </div>
+      </section>
 
+      <section class="form-section liquid-glass">
+        <header class="section-header">
+          <div class="section-title-wrap">
+            <span class="section-index">02</span>
+            <div>
+              <span class="eyebrow">الخطوة الثانية</span>
+              <h2>الفترة الدراسية</h2>
+              <p>حدد نطاق الفصل وقاعدة التأخير التي ستطبق على جميع المحاضرات.</p>
+            </div>
+          </div>
+
+          <span class="step-pill">إعدادات الفصل</span>
+        </header>
+
+        <div class="form-grid semester-grid">
           <label>
             <span>بداية الدراسة</span>
             <input id="termStart" type="date" required>
@@ -83,92 +143,77 @@
             <input id="lateMinutes" type="number" min="0" max="120" value="15" required>
           </label>
         </div>
+      </section>
 
-        <div class="meetings-head">
-          <div>
-            <span class="eyebrow">الجدول الأسبوعي</span>
-            <h3>مواعيد المحاضرات</h3>
+      <section class="form-section schedule-section liquid-glass">
+        <header class="section-header schedule-header">
+          <div class="section-title-wrap">
+            <span class="section-index">03</span>
+            <div>
+              <span class="eyebrow">الخطوة الثالثة</span>
+              <h2>الجدول الأسبوعي</h2>
+              <p>
+                اختر عدة أيام عندما يكون الوقت والقاعة متماثلين،
+                أو أضف موعدًا جديدًا عندما يختلف الوقت أو المكان.
+              </p>
+            </div>
           </div>
 
-          <button id="addMeetingButton" class="secondary-button small" type="button">
-            إضافة موعد
+          <button id="addMeetingButton" class="secondary-button add-meeting-button" type="button">
+            <span class="button-plus">+</span>
+            إضافة موعد مختلف
           </button>
-        </div>
+        </header>
 
         <div id="meetingRows" class="meeting-rows"></div>
+      </section>
 
-        <label class="switch-row">
-          <input id="activatePlan" type="checkbox" checked>
-          <span class="switch-control"></span>
-          <span>
-            <strong>تفعيل الخطة فورًا</strong>
-            <small>ستظهر المحاضرات المولدة في لوحة الجلسة الحية.</small>
-          </span>
-        </label>
+      <section class="finalize-section liquid-glass">
+        <div class="finalize-content">
+          <div class="section-title-wrap">
+            <span class="section-index">04</span>
+            <div>
+              <span class="eyebrow">الخطوة الأخيرة</span>
+              <h2>مراجعة وتوليد الخطة</h2>
+              <p>بعد التأكد من البيانات، أنشئ جميع محاضرات الفصل دفعة واحدة.</p>
+            </div>
+          </div>
 
-        <div class="form-actions">
-          <button id="savePlanButton" class="primary-button full" type="submit">
+          <label class="switch-row">
+            <input id="activatePlan" type="checkbox" checked>
+            <span class="switch-control"></span>
+            <span>
+              <strong>تفعيل الخطة فورًا</strong>
+              <small>ستظهر المحاضرات المولدة في لوحة الجلسة الحية.</small>
+            </span>
+          </label>
+        </div>
+
+        <div class="submit-panel">
+          <div class="submit-summary">
+            <strong>جاهز لتوليد الجدول؟</strong>
+            <span>يمكنك تعديل الاستثناءات لاحقًا لكل محاضرة.</span>
+          </div>
+
+          <button id="savePlanButton" class="primary-button create-plan-button" type="submit">
             إنشاء الخطة وتوليد المحاضرات
           </button>
+
+          <div id="formMessage" class="plan-message"></div>
         </div>
-
-        <div id="formMessage" class="plan-message"></div>
-      </form>
-
-      <aside class="plan-guide liquid-glass">
-        <span class="eyebrow">ماذا سيحدث؟</span>
-        <h2>النظام يجهز الفصل كاملًا</h2>
-
-        <ol class="guide-list">
-          <li>
-            <span>1</span>
-            <div>
-              <strong>تدخل جدول المقرر</strong>
-              <small>محاضرتان أو 3 أو 4 أسبوعيًا.</small>
-            </div>
-          </li>
-
-          <li>
-            <span>2</span>
-            <div>
-              <strong>يولد جميع الجلسات</strong>
-              <small>بالتاريخ والقاعة ووقت التأخير.</small>
-            </div>
-          </li>
-
-          <li>
-            <span>3</span>
-            <div>
-              <strong>تفتح النظام قبل المحاضرة</strong>
-              <small>فيتعرف تلقائيًا على المقرر والقاعة.</small>
-            </div>
-          </li>
-
-          <li>
-            <span>4</span>
-            <div>
-              <strong>تدير الاستثناءات لاحقًا</strong>
-              <small>إلغاء، أونلاين، تغيير قاعة، أو عدم احتساب.</small>
-            </div>
-          </li>
-        </ol>
-
-        <div class="guide-note">
-          هذه المرحلة تنشئ الجدول الأساسي. سنضيف بعد نجاحها الإجازات
-          الجماعية والتعديل على أسبوع أو شهر كامل.
-        </div>
-      </aside>
-    </section>
+      </section>
+    </form>
 
     <section class="plans-list-card liquid-glass">
       <div class="list-head">
         <div>
           <span class="eyebrow">الخطط الحالية</span>
           <h2>المقررات المضافة</h2>
+          <p>راجع الخطط التي أنشأتها وفعّل أو أوقف أي خطة.</p>
         </div>
 
-        <button id="refreshPlansButton" class="secondary-button small" type="button">
-          تحديث
+        <button id="refreshPlansButton" class="secondary-button" type="button">
+          تحديث القائمة
         </button>
       </div>
 
@@ -179,77 +224,98 @@
   </main>
 
   <template id="meetingRowTemplate">
-    <div class="meeting-row">
+    <article class="meeting-row">
+      <header class="meeting-row-header">
+        <div>
+          <span class="meeting-badge">موعد أسبوعي</span>
+          <h3>اختر الأيام ثم أكمل تفاصيل المحاضرة</h3>
+        </div>
+
+        <button class="remove-meeting-button" type="button" aria-label="حذف الموعد">
+          حذف الموعد
+        </button>
+      </header>
+
       <fieldset class="meeting-days-field">
         <legend>أيام المحاضرة</legend>
+
         <div class="meeting-days" role="group" aria-label="اختيار أيام المحاضرة">
           <label class="day-chip">
             <input class="meeting-day" type="checkbox" value="0">
             <span>الأحد</span>
           </label>
+
           <label class="day-chip">
             <input class="meeting-day" type="checkbox" value="1">
             <span>الإثنين</span>
           </label>
+
           <label class="day-chip">
             <input class="meeting-day" type="checkbox" value="2">
             <span>الثلاثاء</span>
           </label>
+
           <label class="day-chip">
             <input class="meeting-day" type="checkbox" value="3">
             <span>الأربعاء</span>
           </label>
+
           <label class="day-chip">
             <input class="meeting-day" type="checkbox" value="4">
             <span>الخميس</span>
           </label>
+
           <label class="day-chip">
             <input class="meeting-day" type="checkbox" value="5">
             <span>الجمعة</span>
           </label>
+
           <label class="day-chip">
             <input class="meeting-day" type="checkbox" value="6">
             <span>السبت</span>
           </label>
         </div>
-        <small class="days-hint">يمكن اختيار يومين أو ثلاثة أو أربعة أيام لنفس الوقت والقاعة.</small>
+
+        <small class="days-hint">
+          يمكنك اختيار يومين أو ثلاثة أو أربعة أيام عندما يكون الوقت والقاعة نفسهما.
+        </small>
       </fieldset>
 
-      <label>
-        <span>البداية</span>
-        <input class="meeting-start" type="time" required>
-      </label>
+      <div class="meeting-details-grid">
+        <label>
+          <span>وقت البداية</span>
+          <input class="meeting-start" type="time" required>
+        </label>
 
-      <label>
-        <span>النهاية</span>
-        <input class="meeting-end" type="time" required>
-      </label>
+        <label>
+          <span>وقت النهاية</span>
+          <input class="meeting-end" type="time" required>
+        </label>
 
-      <label>
-        <span>القاعة</span>
-        <input class="meeting-room" required placeholder="H1-7" maxlength="50">
-      </label>
+        <label>
+          <span>القاعة</span>
+          <input class="meeting-room" required placeholder="H1-7" maxlength="50">
+        </label>
 
-      <label>
-        <span>طريقة التدريس</span>
-        <select class="meeting-mode" required>
-          <option value="InPerson">حضوري</option>
-          <option value="Online">أونلاين</option>
-          <option value="Hybrid">هجين</option>
-        </select>
-      </label>
+        <label>
+          <span>طريقة التدريس</span>
+          <select class="meeting-mode" required>
+            <option value="InPerson">حضوري</option>
+            <option value="Online">أونلاين</option>
+            <option value="Hybrid">هجين</option>
+          </select>
+        </label>
 
-      <label>
-        <span>البطاقة</span>
-        <select class="meeting-tag" required>
-          <option value="1">البطاقة 1</option>
-          <option value="2">البطاقة 2</option>
-          <option value="3">البطاقة 3</option>
-        </select>
-      </label>
-
-      <button class="remove-meeting-button" type="button" aria-label="حذف الموعد">×</button>
-    </div>
+        <label>
+          <span>بطاقة NFC</span>
+          <select class="meeting-tag" required>
+            <option value="1">البطاقة 1</option>
+            <option value="2">البطاقة 2</option>
+            <option value="3">البطاقة 3</option>
+          </select>
+        </label>
+      </div>
+    </article>
   </template>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
