@@ -54,8 +54,13 @@ function addMeetingRow(defaults = {}) {
   const fragment = $('meetingRowTemplate').content.cloneNode(true);
   const row = fragment.querySelector('.meeting-row');
 
-  row.querySelector('.meeting-day').value =
-    String(defaults.day ?? 0);
+  const selectedDays = Array.isArray(defaults.days)
+    ? defaults.days.map(Number)
+    : [Number(defaults.day ?? 0)];
+
+  row.querySelectorAll('.meeting-day').forEach((checkbox) => {
+    checkbox.checked = selectedDays.includes(Number(checkbox.value));
+  });
 
   row.querySelector('.meeting-start').value =
     defaults.start || '09:00';
@@ -88,25 +93,44 @@ function addMeetingRow(defaults = {}) {
 }
 
 function readMeetings() {
-  return Array.from(
+  const result = [];
+
+  Array.from(
     document.querySelectorAll('.meeting-row')
-  ).map((row, index) => {
+  ).forEach((row, index) => {
     const start = row.querySelector('.meeting-start').value;
     const end = row.querySelector('.meeting-end').value;
+    const selectedDays = Array.from(
+      row.querySelectorAll('.meeting-day:checked')
+    ).map((checkbox) => Number(checkbox.value));
+
+    if (!selectedDays.length) {
+      throw new Error(
+        `اختر يومًا واحدًا على الأقل في الموعد رقم ${index + 1}.`
+      );
+    }
 
     if (!start || !end || end <= start) {
       throw new Error(`وقت الموعد رقم ${index + 1} غير صحيح.`);
     }
 
-    return {
-      day_of_week: Number(row.querySelector('.meeting-day').value),
+    const shared = {
       start_time: start,
       end_time: end,
       room: row.querySelector('.meeting-room').value.trim(),
       delivery_mode: row.querySelector('.meeting-mode').value,
       tag_number: Number(row.querySelector('.meeting-tag').value)
     };
+
+    selectedDays.forEach((day) => {
+      result.push({
+        day_of_week: day,
+        ...shared
+      });
+    });
   });
+
+  return result;
 }
 
 function validateDates(start, end, expectedWeeks) {
@@ -322,7 +346,7 @@ $('refreshPlansButton')?.addEventListener(
 
 (async function init() {
   addMeetingRow({
-    day: 0,
+    days: [0, 2, 4],
     start: '09:00',
     end: '10:20',
     room: 'H1-7',
