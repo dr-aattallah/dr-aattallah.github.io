@@ -71,6 +71,11 @@
         icon: 'dashboard'
       },
       {
+  label: 'المقررات الفصلية',
+  href: `${ATTENDANCE_ROOT}admin/courses.html`,
+  icon: 'sessions'
+},
+      {
         label: 'الجلسة الحية',
         href: `${ATTENDANCE_ROOT}admin/live-session.html`,
         icon: 'live',
