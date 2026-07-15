@@ -180,18 +180,40 @@
 
   <template id="meetingRowTemplate">
     <div class="meeting-row">
-      <label>
-        <span>اليوم</span>
-        <select class="meeting-day" required>
-          <option value="0">الأحد</option>
-          <option value="1">الإثنين</option>
-          <option value="2">الثلاثاء</option>
-          <option value="3">الأربعاء</option>
-          <option value="4">الخميس</option>
-          <option value="5">الجمعة</option>
-          <option value="6">السبت</option>
-        </select>
-      </label>
+      <fieldset class="meeting-days-field">
+        <legend>أيام المحاضرة</legend>
+        <div class="meeting-days" role="group" aria-label="اختيار أيام المحاضرة">
+          <label class="day-chip">
+            <input class="meeting-day" type="checkbox" value="0">
+            <span>الأحد</span>
+          </label>
+          <label class="day-chip">
+            <input class="meeting-day" type="checkbox" value="1">
+            <span>الإثنين</span>
+          </label>
+          <label class="day-chip">
+            <input class="meeting-day" type="checkbox" value="2">
+            <span>الثلاثاء</span>
+          </label>
+          <label class="day-chip">
+            <input class="meeting-day" type="checkbox" value="3">
+            <span>الأربعاء</span>
+          </label>
+          <label class="day-chip">
+            <input class="meeting-day" type="checkbox" value="4">
+            <span>الخميس</span>
+          </label>
+          <label class="day-chip">
+            <input class="meeting-day" type="checkbox" value="5">
+            <span>الجمعة</span>
+          </label>
+          <label class="day-chip">
+            <input class="meeting-day" type="checkbox" value="6">
+            <span>السبت</span>
+          </label>
+        </div>
+        <small class="days-hint">يمكن اختيار يومين أو ثلاثة أو أربعة أيام لنفس الوقت والقاعة.</small>
+      </fieldset>
 
       <label>
         <span>البداية</span>
