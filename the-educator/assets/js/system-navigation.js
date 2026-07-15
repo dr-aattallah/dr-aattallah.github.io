@@ -40,7 +40,7 @@
     student: [
       {
         label: 'بوابة الحضور',
-        href: `${ATTENDANCE_ROOT}student/`,
+        href: ATTENDANCE_ROOT,
         icon: 'attendance'
       },
       {
@@ -178,6 +178,10 @@
     const current = normalizePath(window.location.pathname);
     const target = normalizePath(href);
 
+    if (target.endsWith('/attendance')) {
+      return current.endsWith('/attendance');
+    }
+
     if (target.endsWith('/attendance/student')) {
       return current.endsWith('/attendance/student');
     }
@@ -196,6 +200,7 @@
   function hideLegacyNavigation() {
     const selectors = [
       'body > nav',
+      'body > header.nav-shell',
       'body > header.admin-nav',
       'body > header.student-nav',
       'body > header.live-nav',
@@ -208,6 +213,10 @@
     document
       .querySelectorAll(selectors.join(','))
       .forEach((element) => {
+        if (element.closest('#systemNavigationRoot')) {
+          return;
+        }
+
         element.classList.add('system-nav-legacy-hidden');
         element.setAttribute('aria-hidden', 'true');
       });
@@ -667,6 +676,23 @@
 
     preventDisabledLinks(root);
 
+    root
+      .querySelectorAll('.system-nav-item:not(.is-disabled)')
+      .forEach((link) => {
+        link.addEventListener('click', (event) => {
+          const href = link.getAttribute('href');
+
+          if (!href || href === '#') {
+            return;
+          }
+
+          event.preventDefault();
+          window.location.assign(
+            new URL(href, window.location.origin).href
+          );
+        });
+      });
+
     const button =
       root.querySelector('.system-menu-button');
 
@@ -696,6 +722,15 @@
           'false'
         );
       }
+    });
+
+    const legacyObserver = new MutationObserver(() => {
+      hideLegacyNavigation();
+    });
+
+    legacyObserver.observe(document.body, {
+      childList: true,
+      subtree: false
     });
   }
 
