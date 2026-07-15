@@ -71,10 +71,10 @@
         icon: 'dashboard'
       },
       {
-  label: 'المقررات الفصلية',
-  href: `${ATTENDANCE_ROOT}admin/courses.html`,
-  icon: 'sessions'
-},
+        label: 'المقررات الفصلية',
+        href: `${ATTENDANCE_ROOT}admin/courses.html`,
+        icon: 'sessions'
+      },
       {
         label: 'الجلسة الحية',
         href: `${ATTENDANCE_ROOT}admin/live-session.html`,
@@ -95,8 +95,7 @@
         label: 'بوابة الطالب',
         href: `${ATTENDANCE_ROOT}student/`,
         icon: 'student'
-      },
-      { label: 'The Educator', href: ROOT, icon: 'educator' }
+      }
     ]
   };
 
