@@ -1,0 +1,163 @@
+
+/*
+ * Student identity enhancement
+ * Add this file after student.css.
+ */
+
+#portalView .student-heading > div:first-child {
+  position: relative;
+}
+
+#portalView #studentIdentity {
+  position: relative;
+  width: fit-content;
+  max-width: min(100%, 620px);
+  min-height: 64px;
+  margin: 14px 0 0;
+  padding: 12px 22px 12px 64px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  color: #10264b;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: 0;
+
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at 12% 0%,
+      rgba(255, 255, 255, 0.98),
+      transparent 42%
+    ),
+    linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.76),
+      rgba(113, 133, 255, 0.13) 52%,
+      rgba(85, 205, 180, 0.16)
+    ),
+    rgba(255, 255, 255, 0.48);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset 0 -1px 0 rgba(89, 110, 176, 0.08),
+    0 16px 42px rgba(54, 75, 129, 0.15);
+
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+#portalView #studentIdentity::before {
+  content: "ط";
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+  place-items: center;
+
+  color: #fff;
+  font-size: 18px;
+  font-weight: 800;
+
+  border: 1px solid rgba(255, 255, 255, 0.68);
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #55cdb4,
+      #7185ff 68%,
+      #8a73f6
+    );
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.52),
+    0 9px 24px rgba(83, 112, 207, 0.28);
+}
+
+#portalView #studentIdentity::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
+  width: 110px;
+  height: 110px;
+  top: -86px;
+  right: 18%;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  filter: blur(18px);
+  opacity: 0.78;
+
+  animation: studentIdentityLiquid 6s ease-in-out infinite alternate;
+}
+
+#portalView #studentIdentity:hover {
+  transform: translateY(-2px) scale(1.01);
+  border-color: rgba(255, 255, 255, 1);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(89, 110, 176, 0.08),
+    0 21px 52px rgba(54, 75, 129, 0.2);
+}
+
+#portalView #studentIdentity:hover::after {
+  opacity: 1;
+}
+
+@keyframes studentIdentityLiquid {
+  from {
+    transform: translateX(0) scale(0.88);
+  }
+
+  to {
+    transform: translateX(-170px) scale(1.18);
+  }
+}
+
+@media (max-width: 720px) {
+  #portalView #studentIdentity {
+    width: 100%;
+    max-width: 100%;
+    min-height: 60px;
+    padding: 11px 18px 11px 60px;
+    font-size: 18px;
+    border-radius: 20px;
+  }
+
+  #portalView #studentIdentity::before {
+    left: 9px;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #portalView #studentIdentity::after {
+    animation: none;
+  }
+
+  #portalView #studentIdentity {
+    transition: none;
+  }
+}
