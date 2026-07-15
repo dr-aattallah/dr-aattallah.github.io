@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>الجلسة الحية — The Educator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/attendance.css">
+  <link rel="stylesheet" href="../css/live-session.css">
+</head>
+<body class="live-page">
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
+  <header class="live-nav liquid-glass">
+    <a class="brand" href="./"><span class="brand-orb">E</span><span>The Educator</span></a>
+    <div class="live-connection"><span class="status-dot"></span><span>الجلسة الحية</span></div>
+    <div class="live-nav-actions">
+      <a href="./excuses.html" class="nav-pill">الأعذار</a>
+      <a href="./" class="nav-pill">إدارة الجلسات</a>
+    </div>
+  </header>
+
+  <main class="live-shell">
+    <section id="loadingView" class="live-loading liquid-glass">جارٍ تجهيز محاضرتك...</section>
+
+    <section id="emptyView" class="live-empty liquid-glass is-hidden">
+      <span class="eyebrow">الجدول اليومي</span>
+      <h1>لا توجد محاضرة قريبة</h1>
+      <p>ستظهر المحاضرة القادمة تلقائيًا عندما تكون ضمن نافذة التشغيل.</p>
+      <a href="./" class="primary-button">العودة إلى إدارة الجلسات</a>
+    </section>
+
+    <section id="liveView" class="is-hidden">
+      <div class="live-heading">
+        <div><span id="sessionEyebrow" class="eyebrow">المحاضرة القادمة</span><h1 id="courseCode">—</h1><p id="sessionSummary">—</p></div>
+        <div class="session-clock liquid-glass"><span id="clockLabel">تبدأ بعد</span><strong id="sessionClock">00:00:00</strong></div>
+      </div>
+
+      <section class="session-hero liquid-glass">
+        <div class="session-primary">
+          <span id="sessionStatusBadge" class="live-badge ready">جاهزة</span>
+          <div class="session-main-data">
+            <div><span>القاعة</span><strong id="room">—</strong></div>
+            <div><span>الوقت</span><strong id="sessionTime">—</strong></div>
+            <div><span>طريقة التدريس</span><strong id="deliveryMode">—</strong></div>
+            <div><span>احتساب الحضور</span><strong id="attendanceRequired">—</strong></div>
+          </div>
+          <div class="session-actions">
+            <button id="startSessionButton" class="primary-button" type="button">بدء التحضير</button>
+            <button id="closeSessionButton" class="danger-button is-hidden" type="button">إغلاق التحضير</button>
+            <button id="editExceptionButton" class="secondary-button" type="button">استثناءات المحاضرة</button>
+          </div>
+        </div>
+        <div class="session-visual" aria-hidden="true">
+          <div class="pulse pulse-one"></div><div class="pulse pulse-two"></div>
+          <div class="reader-orb"><svg viewBox="0 0 64 64"><path d="M18 24c8-8 20-8 28 0"/><path d="M23 30c5-5 13-5 18 0"/><path d="M28 36c2-2 6-2 8 0"/><circle cx="32" cy="43" r="3"/></svg></div>
+          <strong>جاهز لاستقبال الطلاب</strong>
+        </div>
+      </section>
+
+      <section class="live-stats">
+        <article class="liquid-glass"><span>المسجلون</span><strong id="studentCount">0</strong></article>
+        <article class="liquid-glass"><span>حاضر</span><strong id="presentCount">0</strong></article>
+        <article class="liquid-glass"><span>متأخر</span><strong id="lateCount">0</strong></article>
+        <article class="liquid-glass"><span>لم يسجل</span><strong id="unmarkedCount">0</strong></article>
+      </section>
+
+      <section class="roster-card liquid-glass">
+        <div class="roster-head">
+          <div><span class="eyebrow">كشف مباشر</span><h2>طلاب المقرر</h2></div>
+          <div class="roster-tools"><input id="studentSearch" type="search" placeholder="ابحث بالاسم أو الرقم"><button id="refreshRosterButton" class="secondary-button small" type="button">تحديث</button></div>
+        </div>
+        <div id="rosterLoading" class="roster-empty">جارٍ تحميل الطلاب...</div>
+        <div id="rosterEmpty" class="roster-empty is-hidden">لا يوجد طلاب.</div>
+        <div id="rosterTableWrap" class="table-wrap is-hidden">
+          <table class="live-table"><thead><tr><th>الرقم الجامعي</th><th>الاسم</th><th>الحالة</th><th>المصدر</th><th>الوقت</th><th>الإجراء</th></tr></thead><tbody id="rosterTableBody"></tbody></table>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="manualDialog" class="live-dialog">
+    <form id="manualForm" method="dialog" class="dialog-card">
+      <div class="dialog-head"><div><span class="eyebrow">تحضير يدوي</span><h2 id="manualStudentName">—</h2></div><button id="closeManualDialog" class="icon-button" type="button">×</button></div>
+      <input id="manualStudentId" type="hidden">
+      <label for="manualStatus">الحالة</label>
+      <select id="manualStatus"><option value="Present">حاضر</option><option value="Late">متأخر</option><option value="Absent">غائب</option></select>
+      <label for="manualReason">سبب التعديل</label>
+      <textarea id="manualReason" rows="4" maxlength="300" placeholder="مثال: نسي الجوال في المنزل" required></textarea>
+      <button id="saveManualButton" class="primary-button full" type="submit">حفظ التحضير اليدوي</button>
+      <div id="manualMessage" class="live-message"></div>
+    </form>
+  </dialog>
+
+  <dialog id="exceptionDialog" class="live-dialog">
+    <form id="exceptionForm" method="dialog" class="dialog-card">
+      <div class="dialog-head"><div><span class="eyebrow">استثناء المحاضرة</span><h2>تعديل هذه المحاضرة فقط</h2></div><button id="closeExceptionDialog" class="icon-button" type="button">×</button></div>
+      <label for="exceptionAction">الإجراء</label>
+      <select id="exceptionAction"><option value="ROOM">تغيير القاعة</option><option value="ONLINE">تحويل إلى أونلاين مع تحضير</option><option value="ONLINE_NO_ATTENDANCE">أونلاين دون تحضير</option><option value="NO_COUNT">عدم احتساب المحاضرة</option><option value="CANCEL">إلغاء المحاضرة</option></select>
+      <div id="exceptionRoomField"><label for="exceptionRoom">القاعة الجديدة</label><input id="exceptionRoom" placeholder="H1-7"></div>
+      <label for="exceptionReason">ملاحظة</label><textarea id="exceptionReason" rows="3" maxlength="300" placeholder="سبب الاستثناء"></textarea>
+      <button id="saveExceptionButton" class="primary-button full" type="submit">تطبيق الاستثناء</button>
+      <div id="exceptionMessage" class="live-message"></div>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/live-session.js"></script>
+</body>
+</html>
