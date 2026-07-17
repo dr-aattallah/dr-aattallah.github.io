@@ -124,6 +124,48 @@ async function loadActiveSession() {
   }
 
   activeSession = data[0];
+  const sessionCourseCode =
+  document.getElementById('sessionCourseCode');
+
+const resultCourseCode =
+  document.getElementById('resultCourseCode');
+
+const sessionRoom =
+  document.getElementById('sessionRoom');
+
+const sessionTime =
+  document.getElementById('sessionTime');
+
+if (sessionCourseCode) {
+  sessionCourseCode.textContent =
+    activeSession.course_code || '—';
+}
+
+if (resultCourseCode) {
+  resultCourseCode.textContent =
+    activeSession.course_code || '—';
+}
+
+if (sessionRoom) {
+  sessionRoom.textContent =
+    activeSession.room || '—';
+}
+
+if (sessionTime) {
+  const start = new Date(activeSession.start_time);
+  const end = new Date(activeSession.end_time);
+
+  sessionTime.textContent =
+    `${start.toLocaleTimeString('ar-SA', {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'Asia/Riyadh'
+    })} - ${end.toLocaleTimeString('ar-SA', {
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZone: 'Asia/Riyadh'
+    })}`;
+}
   initializeCountdown(activeSession.end_time);
 
   return activeSession;
