@@ -71,7 +71,7 @@
       </article>
     </section>
 
-    <form id="coursePlanForm" class="plan-form">
+    <form id="coursePlanForm" class="plan-form" autocomplete="off" novalidate>
       <section class="form-section liquid-glass">
         <header class="section-header">
           <div class="section-title-wrap">
@@ -89,22 +89,51 @@
         <div class="form-grid course-data-grid">
           <label>
             <span>رمز المقرر</span>
-            <input id="courseCode" required placeholder="CPCS-203" maxlength="30">
+            <input
+              id="courseCode"
+              name="courseCode"
+              required
+              placeholder="مثال: CPCS-206"
+              maxlength="30"
+              autocomplete="off"
+              autocapitalize="characters"
+              spellcheck="false">
           </label>
 
           <label>
             <span>الشعبة</span>
-            <input id="sectionCode" required placeholder="IS1" maxlength="30">
+            <input
+              id="sectionCode"
+              name="sectionCode"
+              required
+              placeholder="مثال: C3"
+              maxlength="30"
+              autocomplete="off"
+              autocapitalize="characters"
+              spellcheck="false">
           </label>
 
           <label class="wide-field">
             <span>اسم المقرر</span>
-            <input id="courseName" required placeholder="Programming II" maxlength="120">
+            <input
+              id="courseName"
+              name="courseName"
+              required
+              placeholder="مثال: Programming Intro"
+              maxlength="120"
+              autocomplete="off">
           </label>
 
           <label>
             <span>الفصل الدراسي</span>
-            <input id="termCode" required placeholder="2026-1" maxlength="30">
+            <input
+              id="termCode"
+              name="termCode"
+              required
+              placeholder="مثال: 2026-2"
+              maxlength="30"
+              autocomplete="off"
+              spellcheck="false">
           </label>
         </div>
       </section>
@@ -126,22 +155,22 @@
         <div class="form-grid semester-grid">
           <label>
             <span>بداية الدراسة</span>
-            <input id="termStart" type="date" required>
+            <input id="termStart" name="termStart" type="date" required autocomplete="off">
           </label>
 
           <label>
             <span>نهاية الدراسة</span>
-            <input id="termEnd" type="date" required>
+            <input id="termEnd" name="termEnd" type="date" required autocomplete="off">
           </label>
 
           <label>
             <span>عدد الأسابيع المتوقع</span>
-            <input id="expectedWeeks" type="number" min="1" max="24" value="16" required>
+            <input id="expectedWeeks" name="expectedWeeks" type="number" min="1" max="24" value="16" required>
           </label>
 
           <label>
             <span>دقائق التأخير</span>
-            <input id="lateMinutes" type="number" min="0" max="120" value="15" required>
+            <input id="lateMinutes" name="lateMinutes" type="number" min="0" max="120" value="15" required>
           </label>
         </div>
       </section>
@@ -181,7 +210,7 @@
           </div>
 
           <label class="switch-row">
-            <input id="activatePlan" type="checkbox" checked>
+            <input id="activatePlan" name="activatePlan" type="checkbox" checked>
             <span class="switch-control"></span>
             <span>
               <strong>تفعيل الخطة فورًا</strong>
@@ -200,7 +229,7 @@
             إنشاء الخطة وتوليد المحاضرات
           </button>
 
-          <div id="formMessage" class="plan-message"></div>
+          <div id="formMessage" class="plan-message" role="status" aria-live="polite"></div>
         </div>
       </section>
     </form>
@@ -295,7 +324,7 @@
 
         <label>
           <span>القاعة</span>
-          <input class="meeting-room" required placeholder="H1-7" maxlength="50">
+          <input class="meeting-room" required placeholder="مثال: H1-7" maxlength="50" autocomplete="off">
         </label>
 
         <label>
