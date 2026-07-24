@@ -739,12 +739,65 @@ h1{
 }
 
 .btn.cv{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
   background:linear-gradient(135deg,var(--navy-2),var(--navy));
   color:#fff;
   border-color:rgba(176,138,53,.36);
   box-shadow:
     0 14px 28px rgba(11,31,58,.2),
     inset 0 0 0 1px rgba(176,138,53,.22);
+  animation:cv-water-pulse 3.8s ease-in-out infinite;
+}
+
+.btn.cv::before{
+  content:"";
+  position:absolute;
+  z-index:0;
+  left:-18%;
+  bottom:-115%;
+  width:136%;
+  height:155%;
+  border-radius:44% 56% 48% 52%;
+  background:
+    radial-gradient(circle at 38% 28%,rgba(255,255,255,.42),transparent 25%),
+    linear-gradient(180deg,rgba(123,220,235,.6),rgba(33,128,166,.38));
+  filter:blur(.2px);
+  animation:cv-water-wave 5.2s linear infinite;
+}
+
+.btn.cv::after{
+  content:"";
+  position:absolute;
+  inset:-35% auto -35% -45%;
+  width:34%;
+  transform:skewX(-18deg);
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);
+  opacity:.75;
+  pointer-events:none;
+  animation:cv-water-shine 3.4s ease-in-out infinite;
+}
+
+@keyframes cv-water-wave{
+  0%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-12%) rotate(180deg)}
+  100%{transform:translateY(0) rotate(360deg)}
+}
+
+@keyframes cv-water-shine{
+  0%,22%{left:-45%;opacity:0}
+  38%{opacity:.78}
+  62%,100%{left:120%;opacity:0}
+}
+
+@keyframes cv-water-pulse{
+  0%,100%{
+    box-shadow:0 14px 28px rgba(11,31,58,.2),inset 0 0 0 1px rgba(176,138,53,.22);
+  }
+  50%{
+    box-shadow:0 17px 36px rgba(29,139,173,.34),0 0 0 3px rgba(120,211,228,.1),inset 0 1px 0 rgba(255,255,255,.28);
+  }
 }
 
 .btn.light{
@@ -1872,6 +1925,12 @@ main section:nth-of-type(3n)::after{
   *::before,
   *::after{
     transition:none !important;
+  }
+
+  .btn.cv,
+  .btn.cv::before,
+  .btn.cv::after{
+    animation:none !important;
   }
 }
 </style>
