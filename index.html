@@ -1803,27 +1803,30 @@ html[dir="rtl"] .office-details .map-link{
 }
 
 .hero-content > .buttons .btn:nth-child(odd){
-  background:linear-gradient(135deg,#285f91,#173f6a);
-  border-color:rgba(109,163,207,.34);
+  background:linear-gradient(135deg,#274d74,#112f50);
+  border-color:rgba(154,190,219,.4);
 }
 
 .hero-content > .buttons .btn:nth-child(even){
-  background:linear-gradient(135deg,#39848e,#17616c);
-  border-color:rgba(201,241,246,.34);
+  background:linear-gradient(135deg,#d4deeb,#99acc4);
+  border-color:rgba(255,255,255,.72);
 }
 
 .btn.gold,
+.btn.light,
 .hero-content > .buttons .btn:nth-child(even){
-  color:#f8feff;
-  background:linear-gradient(135deg,#39848e,#17616c);
-  border-color:rgba(201,241,246,.34);
-  text-shadow:0 1px 5px rgba(0,20,27,.58);
+  color:#0b2747;
+  background:linear-gradient(135deg,#d4deeb,#99acc4);
+  border-color:rgba(255,255,255,.72);
+  text-shadow:0 1px 0 rgba(255,255,255,.48);
   box-shadow:
-    0 12px 24px rgba(7,48,57,.17),
-    inset 0 1px 0 rgba(231,253,255,.22);
+    0 12px 24px rgba(31,55,84,.16),
+    inset 0 1px 0 rgba(255,255,255,.72),
+    inset 0 -1px 0 rgba(72,102,139,.12);
 }
 
 .btn.gold::before,
+.btn.light::before,
 .hero-content > .buttons .btn:nth-child(even)::before{
   content:none;
   animation:none;
@@ -1831,19 +1834,22 @@ html[dir="rtl"] .office-details .map-link{
 
 .btn.gold:hover,
 .btn.gold:focus-visible,
+.btn.light:hover,
+.btn.light:focus-visible,
 .hero-content > .buttons .btn:nth-child(even):hover,
 .hero-content > .buttons .btn:nth-child(even):focus-visible{
-  color:#fff;
-  border-color:rgba(227,252,255,.52);
-  background:linear-gradient(135deg,#438e98,#1c6974);
+  color:#071f3b;
+  border-color:rgba(255,255,255,.9);
+  background:linear-gradient(135deg,#e0e7f0,#a9b9cd);
   box-shadow:
-    0 15px 29px rgba(7,48,57,.24),
-    inset 0 1px 0 rgba(240,254,255,.3);
+    0 15px 29px rgba(31,55,84,.22),
+    inset 0 1px 0 rgba(255,255,255,.86);
 }
 
-.hero-content > .buttons .btn:hover,
-.hero-content > .buttons .btn:focus-visible{
+.hero-content > .buttons .btn:nth-child(odd):hover,
+.hero-content > .buttons .btn:nth-child(odd):focus-visible{
   color:#fff;
+  background:linear-gradient(135deg,#315c86,#173a60);
   box-shadow:
     0 18px 34px rgba(11,31,58,.24),
     inset 0 1px 0 rgba(255,255,255,.24);
