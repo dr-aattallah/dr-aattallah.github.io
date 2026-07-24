@@ -1129,8 +1129,8 @@ p{
   grid-template-columns:1fr auto;
   gap:24px;
   align-items:center;
-  margin-bottom:24px;
-  padding:24px;
+  margin-bottom:18px;
+  padding:20px 22px;
   border-radius:26px;
   background:
     linear-gradient(135deg,rgba(11,31,58,.96),rgba(18,53,95,.92)),
@@ -1169,7 +1169,21 @@ p{
 }
 
 .contact-card .dual-card{
-  min-height:220px;
+  min-height:168px;
+  padding:20px 22px;
+}
+
+.contact-card .grid.compact{
+  gap:14px;
+}
+
+.contact-card .dual-card h3{
+  margin:0 0 10px;
+}
+
+.contact-card .dual-card p{
+  margin:0;
+  line-height:1.65;
 }
 
 .publication-note{
@@ -1339,11 +1353,11 @@ p{
 .office-card{
   grid-column:1 / -1;
   display:grid;
-  grid-template-columns:.78fr 1.1fr 1.1fr;
-  gap:26px;
+  grid-template-columns:minmax(220px,.7fr) minmax(0,1.8fr);
+  gap:22px;
   align-items:center;
   min-height:0 !important;
-  padding:26px 28px;
+  padding:20px 24px;
   background:
     radial-gradient(circle at 94% 18%,rgba(176,138,53,.14),transparent 25%),
     linear-gradient(145deg,rgba(176,138,53,.09),rgba(255,255,255,.92));
@@ -1371,6 +1385,27 @@ p{
 .office-details p{
   margin:0;
   line-height:1.7;
+}
+
+html[dir="rtl"] .office-heading{
+  padding-right:0;
+  padding-left:22px;
+  border-right:0;
+  border-left:1px solid rgba(176,138,53,.28);
+  text-align:right;
+}
+
+html[dir="rtl"] .office-details > div{
+  text-align:right;
+}
+
+html[dir="rtl"] .office-details p{
+  direction:rtl;
+  text-align:right;
+}
+
+html[dir="rtl"] .office-details .map-link{
+  direction:rtl;
 }
 
 .map-link{
@@ -1593,8 +1628,14 @@ main section:nth-of-type(3n)::after{
 
   .office-details{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1fr;
     gap:20px;
+  }
+
+  html[dir="rtl"] .office-heading{
+    padding:0 0 16px;
+    border-left:0;
+    border-bottom:1px solid rgba(176,138,53,.28);
   }
 }
 
@@ -2386,6 +2427,8 @@ main section:nth-of-type(3n)::after{
     "Scholar Profile":"ملف الباحث العلمي","Institution":"الجهة الأكاديمية",
     "King Abdulaziz University\nJeddah, Saudi Arabia":"جامعة الملك عبدالعزيز\nجدة، المملكة العربية السعودية",
     "Office & Directions":"المكتب ومعلومات الوصول",
+    "Room No. 35F97 (354), 3rd Floor":"غرفة رقم 35F97 (354)، الدور الثالث",
+    "Faculty of Computing and Information Technology, Building 70":"كلية الحاسبات وتقنية المعلومات، مبنى 70",
     "Room No. 35F97 (354), 3rd Floor\nFaculty of Computing and Information Technology, Building 70":"غرفة رقم 35F97 (354)، الدور الثالث\nكلية الحاسبات وتقنية المعلومات، مبنى 70",
     "Open in Google Maps":"فتح الموقع في خرائط Google",
     "© 2026 Dr. Abdulaziz Attaallah. Academic Portfolio.":"© 2026 الدكتور عبدالعزيز عطاءالله. الملف الأكاديمي."
