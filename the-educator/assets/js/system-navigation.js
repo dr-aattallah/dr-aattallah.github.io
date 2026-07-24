@@ -97,6 +97,11 @@
         icon: 'excuses'
       },
       {
+        label: 'سجل التدقيق',
+        href: `${ATTENDANCE_ROOT}admin/audit-log.html`,
+        icon: 'audit'
+      },
+      {
         label: 'بوابة الطالب',
         href: `${ATTENDANCE_ROOT}student/`,
         icon: 'student'
@@ -140,6 +145,9 @@
 
     reports:
       '<path d="M5 20V10M10 20V4M15 20v-7M20 20V7M3 20h19"/>',
+
+    audit:
+      '<path d="M12 3 5 6v5c0 4.8 2.9 8.3 7 10 4.1-1.7 7-5.2 7-10V6z"/><path d="M9 11h6M9 15h4"/>',
 
     student:
       '<circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/>',

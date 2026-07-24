@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>سجل تدقيق الحضور — The Educator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/attendance.css">
+  <link rel="stylesheet" href="../css/audit-log.css">
+</head>
+<body class="audit-page">
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
+
+  <header class="audit-nav liquid-glass">
+    <a class="brand" href="./"><span class="brand-orb">E</span><span>The Educator</span></a>
+    <nav aria-label="تنقل سجل التدقيق">
+      <a href="./live-session.html">الجلسة الحية</a>
+      <a href="./">إدارة الجلسات</a>
+    </nav>
+  </header>
+
+  <main class="audit-shell">
+    <section class="audit-heading">
+      <div>
+        <span class="eyebrow">الأمان والامتثال</span>
+        <h1>سجل تدقيق الحضور</h1>
+        <p>تسلسل زمني غير قابل للتعديل لكل تغييرات الجلسات والحضور والأعذار.</p>
+      </div>
+      <button id="refreshAuditButton" class="primary-button" type="button">تحديث السجل</button>
+    </section>
+
+    <section class="audit-filters liquid-glass" aria-label="مرشحات سجل التدقيق">
+      <label>العملية
+        <select id="actionFilter">
+          <option value="">كل العمليات</option>
+        </select>
+      </label>
+      <label>رمز المقرر
+        <input id="courseFilter" type="search" placeholder="مثال: CPCS-351" autocomplete="off">
+      </label>
+      <label>عدد النتائج
+        <select id="limitFilter">
+          <option value="100">100</option>
+          <option value="200" selected>200</option>
+          <option value="500">500</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="audit-summary">
+      <article class="liquid-glass"><span>العمليات المعروضة</span><strong id="auditCount">0</strong></article>
+      <article class="liquid-glass"><span>آخر تحديث</span><strong id="lastRefresh">—</strong></article>
+      <article class="liquid-glass"><span>حالة السجل</span><strong class="secure-state">محمي وغير قابل للتعديل</strong></article>
+    </section>
+
+    <section class="audit-card liquid-glass">
+      <div id="auditMessage" class="audit-message" role="status" aria-live="polite">جارٍ تحميل السجل...</div>
+      <div id="auditTableWrap" class="table-wrap is-hidden">
+        <table class="audit-table">
+          <thead><tr><th>الوقت</th><th>العملية</th><th>المنفذ</th><th>المقرر</th><th>الجلسة</th><th>الطالب</th><th>التفاصيل</th></tr></thead>
+          <tbody id="auditTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/role-access.js"></script>
+  <script src="../js/audit-log-format.js"></script>
+  <script src="../js/audit-log.js"></script>
+  <script src="../../assets/js/system-navigation.js?v=20260724-audit"></script>
+</body>
+</html>
