@@ -80,6 +80,45 @@ function renderHistory(rows) {
   });
 }
 
+function renderScenarioCoverage(statuses, metrics) {
+  const container = $('scenarioCoverageList');
+  const resultLabels = {
+    Passed: 'ناجح',
+    Failed: 'فشل',
+    Blocked: 'متعذر'
+  };
+  container.innerHTML = '';
+
+  Object.entries(window.PilotReadiness.SCENARIOS).forEach(
+    ([scenarioCode, label]) => {
+      const status = statuses?.[scenarioCode] || {};
+      const result = status.result || 'NotTested';
+      const row = document.createElement('article');
+      row.className = 'scenario-coverage-row';
+
+      const title = document.createElement('strong');
+      title.textContent = label;
+
+      const badge = document.createElement('span');
+      badge.className =
+        `scenario-state ${result === 'NotTested'
+          ? 'not-tested'
+          : result.toLowerCase()}`;
+      badge.textContent = resultLabels[result] || 'لم يُختبر';
+
+      row.append(title, badge);
+      container.appendChild(row);
+    }
+  );
+
+  const passed = Number(metrics?.passed_scenarios || 0);
+  const required = Number(
+    metrics?.required_scenarios ||
+    Object.keys(window.PilotReadiness.SCENARIOS).length
+  );
+  $('scenarioCoverage').textContent = `${passed}/${required}`;
+}
+
 function renderReadiness(data) {
   const metrics = data?.metrics || {};
   const issues = data?.issues || {};
@@ -96,6 +135,7 @@ function renderReadiness(data) {
   metric('totalSessions', metrics.total_sessions);
   metric('attendanceRecords', metrics.attendance_records);
   renderHealth(issues);
+  renderScenarioCoverage(data?.scenario_statuses, metrics);
   renderHistory(data?.latest_checks || []);
   $('pilotMessage').classList.add('is-hidden');
   $('pilotView').classList.remove('is-hidden');
