@@ -1076,20 +1076,40 @@ p{
 }
 
 .office-card{
-  grid-column:span 2;
-  background:linear-gradient(145deg,rgba(176,138,53,.1),rgba(255,255,255,.86));
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:.78fr 1.1fr 1.1fr;
+  gap:26px;
+  align-items:center;
+  min-height:0 !important;
+  padding:26px 28px;
+  background:
+    radial-gradient(circle at 94% 18%,rgba(176,138,53,.14),transparent 25%),
+    linear-gradient(145deg,rgba(176,138,53,.09),rgba(255,255,255,.92));
   border-color:var(--gold-border);
 }
 
+.office-heading{
+  padding-right:24px;
+  border-right:1px solid rgba(176,138,53,.28);
+}
+
+.office-heading h3{
+  margin-bottom:5px;
+}
+
+.office-heading .ar-card-title{
+  margin:0;
+  text-align:left;
+}
+
 .office-details{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
-  align-items:start;
+  display:contents;
 }
 
 .office-details p{
   margin:0;
+  line-height:1.7;
 }
 
 .map-link{
@@ -1191,11 +1211,22 @@ p{
   }
 
   .office-card{
-    grid-column:auto;
+    grid-column:1 / -1;
+    grid-template-columns:1fr;
+    gap:18px;
+    padding:24px;
+  }
+
+  .office-heading{
+    padding:0 0 16px;
+    border-right:0;
+    border-bottom:1px solid rgba(176,138,53,.28);
   }
 
   .office-details{
-    grid-template-columns:1fr;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
   }
 }
 
@@ -1254,6 +1285,10 @@ p{
 
   .contact-intro{
     padding:22px;
+  }
+
+  .office-details{
+    grid-template-columns:1fr;
   }
 
   .pub li{
@@ -1814,8 +1849,10 @@ p{
         </div>
 
         <div class="dual-card office-card">
-          <h3>Office &amp; Directions</h3>
-          <div class="ar-card-title" lang="ar" dir="rtl">المكتب ومعلومات الوصول</div>
+          <div class="office-heading">
+            <h3>Office &amp; Directions</h3>
+            <div class="ar-card-title" lang="ar" dir="rtl">المكتب ومعلومات الوصول</div>
+          </div>
           <div class="office-details">
             <div>
               <p>Room No. 35F97 (354), 3rd Floor<br>Faculty of Computing and Information Technology, Building 70</p>
