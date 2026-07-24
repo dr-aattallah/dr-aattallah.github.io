@@ -22,6 +22,7 @@
   const $ = (id) => document.getElementById(id);
   const show = (el) => el?.classList.remove('is-hidden');
   const hide = (el) => el?.classList.add('is-hidden');
+  let activeCalendar = null;
 
   function setMessage(text = '', type = '') {
     const el = $('formMessage');
@@ -217,6 +218,76 @@
       mode: 'InPerson',
       tag: 1
     });
+
+    applyCalendarDefaults();
+  }
+
+  function applyCalendarDefaults() {
+    if (!activeCalendar) return;
+
+    if (!$('termStart').value) {
+      $('termStart').value = activeCalendar.term_start || '';
+    }
+    if (!$('termEnd').value) {
+      $('termEnd').value = activeCalendar.term_end || '';
+    }
+    if (!$('termCode').value) {
+      $('termCode').value = '2026/2027-1';
+    }
+    $('expectedWeeks').value = '18';
+  }
+
+  function renderCalendarReference(calendar) {
+    activeCalendar = calendar || null;
+    const section = $('calendarReference');
+
+    if (!calendar) {
+      $('calendarReferenceName').textContent =
+        'لا يوجد تقويم أكاديمي نشط';
+      $('calendarReferenceMeta').textContent =
+        'أدخل نطاق الفصل يدويًا وتحقق منه قبل التوليد.';
+      hide($('calendarSourceLink'));
+      return;
+    }
+
+    $('calendarReferenceName').textContent = calendar.name_ar;
+    $('calendarReferenceMeta').textContent =
+      `${calendar.authority_ar} • ${formatDate(calendar.term_start)} ` +
+      `إلى ${formatDate(calendar.term_end)} • ${calendar.timezone}`;
+
+    const periods = $('calendarPeriods');
+    periods.innerHTML = '';
+    (calendar.periods || []).forEach((period) => {
+      const item = document.createElement('span');
+      item.className = `calendar-period ${
+        period.automatic_session_exclusion ? '' : 'assessment'
+      }`.trim();
+      item.textContent =
+        `${period.name_ar}: ${formatDate(period.starts_on)} - ` +
+        `${formatDate(period.ends_on)}`;
+      item.title = period.automatic_session_exclusion
+        ? 'تُستبعد الجلسات تلقائيًا'
+        : 'نافذة تقييم لا تلغي الجلسات تلقائيًا';
+      periods.appendChild(item);
+    });
+
+    const sourceLink = $('calendarSourceLink');
+    sourceLink.href = calendar.source_path;
+    show(sourceLink);
+    section.dataset.calendarId = calendar.calendar_id;
+    applyCalendarDefaults();
+  }
+
+  async function loadCalendarReference() {
+    try {
+      const calendar = await rpc(
+        'admin_get_academic_calendar_reference'
+      );
+      renderCalendarReference(calendar);
+    } catch (error) {
+      console.error('Unable to load academic calendar:', error);
+      renderCalendarReference(null);
+    }
   }
 
   async function savePlan(event) {
@@ -268,9 +339,11 @@
         result?.generated_sessions ??
         result?.generated ??
         0;
+      const excluded = result?.excluded_sessions ?? 0;
 
       setMessage(
-        `تم إنشاء الخطة وتوليد ${generated} محاضرة بنجاح.`,
+        `تم إنشاء الخطة وتوليد ${generated} محاضرة، ` +
+        `واستبعاد ${excluded} موعدًا وفق التقويم الأكاديمي.`,
         'success'
       );
 
@@ -346,6 +419,8 @@
         ['الفصل', plan.term_code],
         ['المواعيد أسبوعيًا', plan.weekly_meetings],
         ['الجلسات المولدة', plan.generated_sessions],
+        ['الجلسات المستبعدة', plan.excluded_sessions],
+        ['مرجع التقويم', plan.academic_calendar_name || 'غير مرتبط'],
         [
           'الفترة',
           `${formatDate(plan.term_start)} – ${formatDate(plan.term_end)}`
@@ -403,7 +478,7 @@
     hide($('plansGrid'));
 
     try {
-      const plans = await rpc('admin_list_course_plans');
+      const plans = await rpc('admin_list_course_plans_v2');
       renderPlans(Array.isArray(plans) ? plans : []);
     } catch (error) {
       console.error('Unable to load course plans:', error);
@@ -439,6 +514,7 @@
     clearPlanForm();
 
     if (await verifyAdmin()) {
+      await loadCalendarReference();
       await loadPlans();
     }
   })();
