@@ -1,6 +1,6 @@
 begin;
 
-create table if not exists public.attendance_audit_log (
+create table if not exists public.attendance_event_audit (
   audit_id bigint generated always as identity primary key,
   occurred_at timestamptz not null default now(),
   actor_user_id uuid,
@@ -15,18 +15,18 @@ create table if not exists public.attendance_audit_log (
   details jsonb not null default '{}'::jsonb
 );
 
-create index if not exists attendance_audit_log_occurred_at_idx
-  on public.attendance_audit_log (occurred_at desc);
-create index if not exists attendance_audit_log_action_idx
-  on public.attendance_audit_log (action);
-create index if not exists attendance_audit_log_course_code_idx
-  on public.attendance_audit_log (course_code);
-create index if not exists attendance_audit_log_session_id_idx
-  on public.attendance_audit_log (session_id);
+create index if not exists attendance_event_audit_occurred_at_idx
+  on public.attendance_event_audit (occurred_at desc);
+create index if not exists attendance_event_audit_action_idx
+  on public.attendance_event_audit (action);
+create index if not exists attendance_event_audit_course_code_idx
+  on public.attendance_event_audit (course_code);
+create index if not exists attendance_event_audit_session_id_idx
+  on public.attendance_event_audit (session_id);
 
-alter table public.attendance_audit_log enable row level security;
-revoke all on public.attendance_audit_log from anon, authenticated;
-grant select on public.attendance_audit_log to authenticated;
+alter table public.attendance_event_audit enable row level security;
+revoke all on public.attendance_event_audit from anon, authenticated;
+grant select on public.attendance_event_audit to authenticated;
 
 create or replace function public.attendance_is_privileged()
 returns boolean
@@ -47,9 +47,9 @@ revoke all on function public.attendance_is_privileged() from public;
 grant execute on function public.attendance_is_privileged() to authenticated;
 
 drop policy if exists attendance_audit_select_privileged
-  on public.attendance_audit_log;
+  on public.attendance_event_audit;
 create policy attendance_audit_select_privileged
-  on public.attendance_audit_log
+  on public.attendance_event_audit
   for select
   to authenticated
   using (public.attendance_is_privileged());
@@ -129,7 +129,7 @@ begin
     row_data ->> 'id'
   );
 
-  insert into public.attendance_audit_log (
+  insert into public.attendance_event_audit (
     actor_user_id,
     actor_email,
     actor_role,
@@ -152,7 +152,11 @@ begin
     entity_key,
     coalesce(row_data ->> 'course_code', row_data ->> 'course'),
     row_data ->> 'session_id',
-    coalesce(row_data ->> 'university_id', row_data ->> 'student_university_id'),
+    coalesce(
+      row_data ->> 'university_id',
+      row_data ->> 'student_university_id',
+      row_data ->> 'student_id'
+    ),
     jsonb_strip_nulls(jsonb_build_object(
       'operation', tg_op,
       'status_before', row_old ->> 'status',
@@ -179,7 +183,12 @@ begin
     select distinct c.table_schema, c.table_name
       from information_schema.columns c
      where c.table_schema = 'public'
-       and c.table_name <> 'attendance_audit_log'
+       and c.table_name not in (
+         'attendance_audit_log',
+         'attendance_event_audit',
+         'attendance_manual_audit',
+         'session_exception_audit'
+       )
        and (
          c.table_name in ('sessions', 'excuse_requests')
          or (
@@ -197,7 +206,8 @@ begin
                 and x.table_name = c.table_name
                 and x.column_name in (
                   'attendance_status', 'attendance_time',
-                  'attendance_source', 'university_id'
+                  'attendance_source', 'university_id',
+                  'status', 'source', 'student_id', 'recorded_at'
                 )
            )
          )
@@ -230,9 +240,9 @@ end;
 $$;
 
 drop trigger if exists attendance_audit_immutable
-  on public.attendance_audit_log;
+  on public.attendance_event_audit;
 create trigger attendance_audit_immutable
-before update or delete on public.attendance_audit_log
+before update or delete on public.attendance_event_audit
 for each row execute function public.attendance_audit_immutable();
 
 revoke all on function public.attendance_audit_immutable() from public, anon, authenticated;
@@ -279,7 +289,7 @@ begin
     a.session_id,
     a.student_university_id,
     a.details
-  from public.attendance_audit_log a
+  from public.attendance_event_audit a
   where (p_action is null or a.action = p_action)
     and (
       p_course_code is null
