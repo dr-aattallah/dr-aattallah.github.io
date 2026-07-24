@@ -3,7 +3,10 @@
 const SUPABASE_URL='https://obgmbgsgwxbenglltcwv.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY=
   'sb_publishable_Qa-0cZ5V15zHHYIWD_SXcA_yCZ0N2GM';
-const ADMIN_EMAIL='aattallah@kau.edu.sa';
+const EXCUSE_REVIEW_ROLES=[
+  window.RoleAccess.ROLES.ADMINISTRATOR,
+  window.RoleAccess.ROLES.INSTRUCTOR
+];
 
 const db=window.supabase.createClient(
   SUPABASE_URL,
@@ -52,15 +55,11 @@ function setMessage(id,message='',type=''){
 }
 
 async function verifyAdmin(){
-  const {data:{session}}=await db.auth.getSession();
-  if(
-    !session ||
-    session.user.email?.toLowerCase()!==ADMIN_EMAIL.toLowerCase()
-  ){
-    location.href='./';
-    return false;
-  }
-  return true;
+  return Boolean(await window.RoleAccess.requireRole(
+    db,
+    EXCUSE_REVIEW_ROLES,
+    './'
+  ));
 }
 
 async function openFile(path){
