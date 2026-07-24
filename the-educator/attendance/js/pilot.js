@@ -55,8 +55,13 @@ function renderHistory(rows) {
       item.scenario_code;
     const note = document.createElement('p');
     note.textContent = [
+      item.execution_mode === 'HumanField' ? 'ميداني' : 'تحقق آلي',
+      item.participant_count != null
+        ? `${item.participant_count} مشارك`
+        : null,
       item.course_code,
       item.session_id,
+      item.evidence_reference,
       item.note
     ].filter(Boolean).join(' • ') || 'دون ملاحظات';
     details.append(title, note);
@@ -80,7 +85,29 @@ function renderHistory(rows) {
   });
 }
 
-function renderScenarioCoverage(statuses, metrics) {
+function renderScenarioGuide() {
+  const scenarioCode = $('scenarioCode').value;
+  const details = window.PilotReadiness.SCENARIO_DETAILS[scenarioCode];
+  if (!details) return;
+  $('participantCount').min =
+    $('executionMode').value === 'HumanField'
+      ? String(details.participants)
+      : '0';
+  if (
+    $('executionMode').value === 'HumanField' &&
+    Number($('participantCount').value) < details.participants
+  ) {
+    $('participantCount').value = String(details.participants);
+  }
+  $('scenarioGuide').innerHTML = '';
+  const steps = document.createElement('p');
+  const acceptance = document.createElement('p');
+  steps.textContent = `طريقة التنفيذ: ${details.steps}`;
+  acceptance.textContent = `معيار النجاح: ${details.acceptance}`;
+  $('scenarioGuide').append(steps, acceptance);
+}
+
+function renderScenarioCoverage(statuses, rehearsals, metrics) {
   const container = $('scenarioCoverageList');
   const resultLabels = {
     Passed: 'ناجح',
@@ -92,6 +119,7 @@ function renderScenarioCoverage(statuses, metrics) {
   Object.entries(window.PilotReadiness.SCENARIOS).forEach(
     ([scenarioCode, label]) => {
       const status = statuses?.[scenarioCode] || {};
+      const rehearsal = rehearsals?.[scenarioCode] || {};
       const result = status.result || 'NotTested';
       const row = document.createElement('article');
       row.className = 'scenario-coverage-row';
@@ -106,7 +134,18 @@ function renderScenarioCoverage(statuses, metrics) {
           : result.toLowerCase()}`;
       badge.textContent = resultLabels[result] || 'لم يُختبر';
 
-      row.append(title, badge);
+      const badges = document.createElement('div');
+      badges.className = 'scenario-badges';
+      if (rehearsal.result) {
+        const rehearsalBadge = document.createElement('span');
+        rehearsalBadge.className =
+          `scenario-state rehearsal ${rehearsal.result.toLowerCase()}`;
+        rehearsalBadge.textContent =
+          `آلي: ${resultLabels[rehearsal.result] || rehearsal.result}`;
+        badges.appendChild(rehearsalBadge);
+      }
+      badges.appendChild(badge);
+      row.append(title, badges);
       container.appendChild(row);
     }
   );
@@ -117,6 +156,8 @@ function renderScenarioCoverage(statuses, metrics) {
     Object.keys(window.PilotReadiness.SCENARIOS).length
   );
   $('scenarioCoverage').textContent = `${passed}/${required}`;
+  $('rehearsalCoverage').textContent =
+    `${Number(metrics?.passed_rehearsal_scenarios || 0)}/${required}`;
 }
 
 function renderReadiness(data) {
@@ -135,7 +176,11 @@ function renderReadiness(data) {
   metric('totalSessions', metrics.total_sessions);
   metric('attendanceRecords', metrics.attendance_records);
   renderHealth(issues);
-  renderScenarioCoverage(data?.scenario_statuses, metrics);
+  renderScenarioCoverage(
+    data?.scenario_statuses,
+    data?.rehearsal_statuses,
+    metrics
+  );
   renderHistory(data?.latest_checks || []);
   $('pilotMessage').classList.add('is-hidden');
   $('pilotView').classList.remove('is-hidden');
@@ -174,7 +219,10 @@ $('pilotCheckForm').addEventListener('submit', async (event) => {
     p_result: $('scenarioResult').value,
     p_course_code: $('pilotCourseCode').value.trim() || null,
     p_session_id: $('pilotSessionId').value.trim() || null,
-    p_note: $('pilotNote').value.trim() || null
+    p_note: $('pilotNote').value.trim() || null,
+    p_execution_mode: $('executionMode').value,
+    p_participant_count: Number($('participantCount').value),
+    p_evidence_reference: $('evidenceReference').value.trim()
   });
   button.disabled = false;
   if (error) {
@@ -188,6 +236,8 @@ $('pilotCheckForm').addEventListener('submit', async (event) => {
 });
 
 $('refreshPilotButton').addEventListener('click', loadReadiness);
+$('scenarioCode').addEventListener('change', renderScenarioGuide);
+$('executionMode').addEventListener('change', renderScenarioGuide);
 
 async function initialize() {
   const access = await window.RoleAccess.requireRole(
@@ -197,6 +247,7 @@ async function initialize() {
   );
   if (!access) return;
   populateScenarios();
+  renderScenarioGuide();
   await loadReadiness();
 }
 

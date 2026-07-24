@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/attendance.css">
-  <link rel="stylesheet" href="../css/pilot.css?v=20260724-scenario-coverage">
+  <link rel="stylesheet" href="../css/pilot.css?v=20260724-field-evidence">
 </head>
 <body class="pilot-page">
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
@@ -24,7 +24,7 @@
   <main class="pilot-shell">
     <section class="pilot-heading">
       <div>
-        <span class="eyebrow">Priority 7</span>
+        <span class="eyebrow">الأولوية 1</span>
         <h1>الإطلاق التجريبي</h1>
         <p>لوحة جاهزية واختبار ميداني لنظام الحضور قبل التعميم.</p>
       </div>
@@ -49,6 +49,7 @@
         <article class="liquid-glass"><span>الجلسات</span><strong id="totalSessions">0</strong></article>
         <article class="liquid-glass"><span>سجلات الحضور</span><strong id="attendanceRecords">0</strong></article>
         <article class="liquid-glass"><span>تغطية السيناريوهات</span><strong id="scenarioCoverage">0/9</strong></article>
+        <article class="liquid-glass"><span>التحقق الحي الآلي</span><strong id="rehearsalCoverage">0/9</strong></article>
       </section>
 
       <section class="pilot-grid">
@@ -62,18 +63,22 @@
           <form id="pilotCheckForm" class="pilot-form">
             <label>السيناريو<select id="scenarioCode" required></select></label>
             <label>النتيجة<select id="scenarioResult" required><option value="Passed">ناجح</option><option value="Failed">فشل</option><option value="Blocked">متعذر</option></select></label>
+            <label>نوع التنفيذ<select id="executionMode" required><option value="HumanField">ميداني بشري</option><option value="AutomatedLive">تحقق حي آلي</option></select></label>
+            <label>عدد المشاركين<input id="participantCount" type="number" min="0" max="500" value="1" required></label>
             <label>رمز المقرر<input id="pilotCourseCode" maxlength="40" placeholder="اختياري"></label>
             <label>معرف الجلسة<input id="pilotSessionId" maxlength="120" placeholder="اختياري"></label>
+            <label class="wide">مرجع الدليل<input id="evidenceReference" maxlength="300" placeholder="رابط لقطة الشاشة أو رقم سجل التدقيق" required></label>
             <label class="wide">ملاحظة<textarea id="pilotNote" maxlength="500" rows="3" placeholder="النتيجة أو المشكلة المرصودة"></textarea></label>
             <button class="primary-button wide" type="submit">حفظ نتيجة الاختبار</button>
           </form>
+          <section id="scenarioGuide" class="scenario-guide" aria-live="polite"></section>
           <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
         </article>
       </section>
 
       <section class="pilot-card liquid-glass">
         <header><div><span class="eyebrow">قرار التعميم</span><h2>تغطية السيناريوهات المطلوبة</h2></div></header>
-        <p class="coverage-note">تعتمد الجاهزية على أحدث نتيجة لكل سيناريو، وليس على إجمالي مرات الاختبار.</p>
+        <p class="coverage-note">تعتمد الجاهزية على أحدث نتيجة ميدانية بشرية لكل سيناريو. يظهر التحقق الآلي للاستعداد فقط ولا يرفع جاهزية التعميم.</p>
         <div id="scenarioCoverageList" class="scenario-coverage"></div>
       </section>
 
@@ -86,8 +91,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="../js/role-access.js"></script>
-  <script src="../js/pilot-readiness.js?v=20260724-scenario-coverage"></script>
-  <script src="../js/pilot.js?v=20260724-scenario-coverage"></script>
+  <script src="../js/pilot-readiness.js?v=20260724-field-evidence"></script>
+  <script src="../js/pilot.js?v=20260724-field-evidence"></script>
   <script src="../../assets/js/system-navigation.js?v=20260724-spacious-nav"></script>
 <script src="/the-educator/assets/js/iso-accessibility.js?v=20260724-iso-ux"></script>
 </body>

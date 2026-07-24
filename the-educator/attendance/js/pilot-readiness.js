@@ -13,6 +13,54 @@
     REALTIME_UPDATE: 'التحديث اللحظي'
   });
 
+  const SCENARIO_DETAILS = Object.freeze({
+    NFC_CHECKIN: {
+      participants: 2,
+      steps: 'افتح جلسة فعلية، ثم يسجل طالبان مختلفان عبر هاتفين يدعمان NFC.',
+      acceptance: 'يظهر سجل واحد لكل طالب مع المصدر NFC ووقت التسجيل الصحيح.'
+    },
+    DUPLICATE_PREVENTION: {
+      participants: 1,
+      steps: 'يحاول الطالب نفسه تسجيل الحضور مرتين للجلسة ذاتها.',
+      acceptance: 'يبقى سجل واحد فقط وتظهر رسالة واضحة للمحاولة الثانية.'
+    },
+    LATE_CALCULATION: {
+      participants: 2,
+      steps: 'يسجل طالب قبل حد التأخير وآخر بعده في جلسة حية.',
+      acceptance: 'يُسجل الأول حاضرًا والثاني متأخرًا وفق توقيت الجلسة.'
+    },
+    MANUAL_ATTENDANCE: {
+      participants: 1,
+      steps: 'يعدل المعلم حالة طالب يدويًا ويكتب سبب التعديل.',
+      acceptance: 'تتغير الحالة ويظهر السبب والفاعل في سجل التدقيق.'
+    },
+    SESSION_LIFECYCLE: {
+      participants: 1,
+      steps: 'يفتح المعلم جلسة مخططة ثم يغلقها ويحاول التسجيل بعدها.',
+      acceptance: 'يُقبل التسجيل أثناء الفتح ويُرفض بعد الإغلاق.'
+    },
+    STUDENT_PRIVACY: {
+      participants: 2,
+      steps: 'يسجل طالبان الدخول ويحاول كل منهما الوصول لسجل الآخر.',
+      acceptance: 'لا يرى كل طالب إلا بياناته ولا تنكشف بيانات الطالب الآخر.'
+    },
+    EXCUSE_RECALCULATION: {
+      participants: 1,
+      steps: 'يرفع طالب عذرًا ثم يقبله المعلم من لوحة الأعذار.',
+      acceptance: 'تتحدث حالة العذر والمؤشرات والتقرير دون تعديل يدوي إضافي.'
+    },
+    MOBILE_RTL: {
+      participants: 2,
+      steps: 'تُنفذ الرحلة على هاتف iOS وهاتف Android بعرض ضيق.',
+      acceptance: 'لا يوجد قص أو تمرير أفقي وتبقى عناصر RTL قابلة للاستخدام.'
+    },
+    REALTIME_UPDATE: {
+      participants: 2,
+      steps: 'تبقى شاشة المعلم مفتوحة بينما يسجل طالبان تباعًا.',
+      acceptance: 'تظهر السجلات الجديدة دون تحديث يدوي خلال خمس ثوانٍ.'
+    }
+  });
+
   const ISSUE_LABELS = Object.freeze({
     duplicate_attendance: 'سجلات حضور مكررة',
     orphan_attendance: 'حضور دون جلسة مرتبطة',
@@ -57,7 +105,13 @@
     return 'bad';
   }
 
-  const api = {ISSUE_LABELS, SCENARIOS, calculateReadiness, issueTone};
+  const api = {
+    ISSUE_LABELS,
+    SCENARIOS,
+    SCENARIO_DETAILS,
+    calculateReadiness,
+    issueTone
+  };
   globalScope.PilotReadiness = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof window !== 'undefined' ? window : globalThis);

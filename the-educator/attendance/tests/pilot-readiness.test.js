@@ -45,6 +45,19 @@ test('latest failed scenario prevents rollout readiness', () => {
   assert.notEqual(result.state, 'جاهز للتعميم');
 });
 
+test('every field scenario has executable steps and acceptance criteria', () => {
+  const scenarioCodes = Object.keys(readiness.SCENARIOS);
+  assert.deepEqual(
+    Object.keys(readiness.SCENARIO_DETAILS).sort(),
+    scenarioCodes.sort()
+  );
+  Object.values(readiness.SCENARIO_DETAILS).forEach((details) => {
+    assert.ok(details.participants >= 1);
+    assert.ok(details.steps.length > 20);
+    assert.ok(details.acceptance.length > 20);
+  });
+});
+
 test('classifies health issue severity', () => {
   assert.equal(readiness.issueTone(0), 'good');
   assert.equal(readiness.issueTone(2), 'warning');
