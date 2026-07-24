@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>الإطلاق التجريبي — The Educator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/attendance.css">
+  <link rel="stylesheet" href="../css/pilot.css">
+</head>
+<body class="pilot-page">
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
+
+  <header class="pilot-nav liquid-glass">
+    <a class="brand" href="./"><span class="brand-orb">E</span><span>The Educator</span></a>
+    <nav aria-label="تنقل الإطلاق التجريبي">
+      <a href="./live-session.html">الجلسة الحية</a>
+      <a href="./audit-log.html">سجل التدقيق</a>
+    </nav>
+  </header>
+
+  <main class="pilot-shell">
+    <section class="pilot-heading">
+      <div>
+        <span class="eyebrow">Priority 7</span>
+        <h1>الإطلاق التجريبي</h1>
+        <p>لوحة جاهزية واختبار ميداني لنظام الحضور قبل التعميم.</p>
+      </div>
+      <button id="refreshPilotButton" class="primary-button" type="button">تحديث الجاهزية</button>
+    </section>
+
+    <section id="pilotMessage" class="pilot-message liquid-glass" role="status" aria-live="polite">جارٍ فحص الجاهزية...</section>
+
+    <section id="pilotView" class="is-hidden">
+      <section class="readiness-card liquid-glass">
+        <div>
+          <span class="eyebrow">حالة النظام</span>
+          <h2 id="readinessLabel">—</h2>
+          <p id="readinessDescription">—</p>
+        </div>
+        <div id="readinessScore" class="readiness-score">0%</div>
+      </section>
+
+      <section class="pilot-metrics">
+        <article class="liquid-glass"><span>المقررات النشطة</span><strong id="activeCoursePlans">0</strong></article>
+        <article class="liquid-glass"><span>الطلاب النشطون</span><strong id="activeStudents">0</strong></article>
+        <article class="liquid-glass"><span>الجلسات</span><strong id="totalSessions">0</strong></article>
+        <article class="liquid-glass"><span>سجلات الحضور</span><strong id="attendanceRecords">0</strong></article>
+      </section>
+
+      <section class="pilot-grid">
+        <article class="pilot-card liquid-glass">
+          <header><div><span class="eyebrow">سلامة البيانات</span><h2>الفحوص الآلية</h2></div></header>
+          <div id="healthChecks" class="health-checks"></div>
+        </article>
+
+        <article class="pilot-card liquid-glass">
+          <header><div><span class="eyebrow">الاختبار الميداني</span><h2>تسجيل نتيجة سيناريو</h2></div></header>
+          <form id="pilotCheckForm" class="pilot-form">
+            <label>السيناريو<select id="scenarioCode" required></select></label>
+            <label>النتيجة<select id="scenarioResult" required><option value="Passed">ناجح</option><option value="Failed">فشل</option><option value="Blocked">متعذر</option></select></label>
+            <label>رمز المقرر<input id="pilotCourseCode" maxlength="40" placeholder="اختياري"></label>
+            <label>معرف الجلسة<input id="pilotSessionId" maxlength="120" placeholder="اختياري"></label>
+            <label class="wide">ملاحظة<textarea id="pilotNote" maxlength="500" rows="3" placeholder="النتيجة أو المشكلة المرصودة"></textarea></label>
+            <button class="primary-button wide" type="submit">حفظ نتيجة الاختبار</button>
+          </form>
+          <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+        </article>
+      </section>
+
+      <section class="pilot-card liquid-glass">
+        <header><div><span class="eyebrow">آخر النتائج</span><h2>سجل الاختبارات الميدانية</h2></div></header>
+        <div id="pilotHistory" class="pilot-history"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/role-access.js"></script>
+  <script src="../js/pilot-readiness.js"></script>
+  <script src="../js/pilot.js"></script>
+  <script src="../../assets/js/system-navigation.js?v=20260724-pilot"></script>
+</body>
+</html>
