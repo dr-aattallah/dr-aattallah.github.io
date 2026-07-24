@@ -144,19 +144,20 @@ Deno.serve(async (request) => {
 
       const email = String(student.email).trim().toLowerCase();
       const numericOtpEnabled = Boolean(RESEND_API_KEY && OTP_FROM_EMAIL);
-
-      const { error: createError } = await admin.auth.admin.createUser({
-        email,
-        email_confirm: true,
-        password: `${crypto.randomUUID()}Aa9!`,
-        user_metadata: { university_id: universityId, role: "Student" },
-      });
-      if (
-        createError &&
-        !/already|registered|exists/i.test(createError.message)
-      ) {
-        throw createError;
-      }
+      const expiresAt = new Date(
+        Date.now() + CHALLENGE_MINUTES * 60 * 1000,
+      ).toISOString();
+      const { data: challenge, error: challengeError } = await admin
+        .from("student_login_challenges")
+        .insert({
+          university_id: universityId,
+          email,
+          expires_at: expiresAt,
+          request_ip_hash: ipHash,
+        })
+        .select("challenge_id")
+        .single();
+      if (challengeError) throw challengeError;
 
       if (numericOtpEnabled) {
         const { data: link, error: linkError } =
@@ -171,21 +172,6 @@ Deno.serve(async (request) => {
 
         await sendNumericOtp(email, link.properties.email_otp);
 
-        const expiresAt = new Date(
-          Date.now() + CHALLENGE_MINUTES * 60 * 1000,
-        ).toISOString();
-        const { data: challenge, error: challengeError } = await admin
-          .from("student_login_challenges")
-          .insert({
-            university_id: universityId,
-            email,
-            expires_at: expiresAt,
-            request_ip_hash: ipHash,
-          })
-          .select("challenge_id")
-          .single();
-        if (challengeError) throw challengeError;
-
         return json({
           success: true,
           delivery_method: "otp",
@@ -198,7 +184,11 @@ Deno.serve(async (request) => {
       const { error: linkError } = await authClient.auth.signInWithOtp({
         email,
         options: {
-          shouldCreateUser: false,
+          shouldCreateUser: true,
+          data: {
+            university_id: universityId,
+            role: "Student",
+          },
           emailRedirectTo: STUDENT_PORTAL_URL,
         },
       });
@@ -272,6 +262,22 @@ Deno.serve(async (request) => {
     return json({ success: false, message: "طلب غير صالح." }, 400);
   } catch (error) {
     console.error("student-access", error);
+    const authError = error as { status?: number; code?: string };
+    const errorText = String(
+      (error as { message?: string })?.message || error || "",
+    ).toLowerCase();
+    if (
+      authError?.status === 429 ||
+      authError?.code === "over_email_send_rate_limit" ||
+      errorText.includes("rate limit")
+    ) {
+      return json({
+        success: false,
+        retry_after_seconds: 3600,
+        message:
+          "بلغ البريد حد الإرسال المؤقت. حاول بعد ساعة أو استخدم آخر رسالة صالحة.",
+      }, 429);
+    }
     return json({
       success: false,
       message: "تعذر إرسال رمز الدخول الآن. حاول لاحقًا.",

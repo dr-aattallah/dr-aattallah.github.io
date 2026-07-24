@@ -26,6 +26,9 @@ alter table public.student_login_challenges enable row level security;
 
 revoke all on public.student_login_challenges
   from public, anon, authenticated;
+grant select, insert, update, delete
+  on public.student_login_challenges
+  to service_role;
 
 comment on table public.student_login_challenges is
   'Server-only, short-lived challenges for student email OTP login.';

@@ -31,7 +31,12 @@ test('student login uses provider-generated OTP and never a fixed token', () => 
 test('student login safely falls back to a one-time email link', () => {
   assert.match(edgeSource, /delivery_method:\s*"magic_link"/);
   assert.match(edgeSource, /emailRedirectTo:\s*STUDENT_PORTAL_URL/);
-  assert.match(edgeSource, /shouldCreateUser:\s*false/);
+  assert.match(edgeSource, /shouldCreateUser:\s*true/);
+  assert.match(edgeSource, /university_id:\s*universityId/);
+});
+
+test('student requests do not depend on Auth admin createUser', () => {
+  assert.doesNotMatch(edgeSource, /admin\.auth\.admin\.createUser/);
 });
 
 test('pasted sign-in links are restricted to this Supabase project', () => {
@@ -47,6 +52,8 @@ test('student login limits requests, attempts, and expiry', () => {
   assert.match(edgeSource, /MAX_REQUESTS_PER_15_MINUTES\s*=\s*3/);
   assert.match(edgeSource, /MAX_VERIFY_ATTEMPTS\s*=\s*5/);
   assert.match(edgeSource, /CHALLENGE_MINUTES\s*=\s*10/);
+  assert.match(edgeSource, /over_email_send_rate_limit/);
+  assert.match(edgeSource, /retry_after_seconds:\s*3600/);
 });
 
 test('challenge storage is private and protected by RLS', () => {
