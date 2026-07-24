@@ -9,9 +9,18 @@ const db = window.supabase.createClient(
 );
 const $ = (id) => document.getElementById(id);
 const params = new URLSearchParams(window.location.search);
+const isAttendanceRecovery = params.get('system') === 'attendance';
 const returnPath = window.AccountRecoveryRules.safeReturnPath(
   params.get('return')
 );
+
+if (isAttendanceRecovery) {
+  document.title = 'استعادة حساب نظام الحضور — The Educator';
+  $('recoveryProductLabel').textContent = 'نظام الحضور';
+  $('recoveryTitle').textContent = 'استعادة دخول نظام الحضور';
+  $('recoveryDescription').textContent =
+    'للمعلم ومسؤول النظام. سنرسل رابطًا مؤقتًا إلى البريد المسجل في نظام الحضور.';
+}
 
 function message(text = '', type = '') {
   const element = $('recoveryMessage');
@@ -56,6 +65,9 @@ $('recoveryRequestForm').addEventListener('submit', async (event) => {
     window.location.origin
   );
   redirect.searchParams.set('return', returnPath);
+  if (isAttendanceRecovery) {
+    redirect.searchParams.set('system', 'attendance');
+  }
 
   await db.auth.resetPasswordForEmail(email, {
     redirectTo: redirect.href
