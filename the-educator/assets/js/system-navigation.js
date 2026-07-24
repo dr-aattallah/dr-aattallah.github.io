@@ -102,6 +102,11 @@
         icon: 'audit'
       },
       {
+        label: 'الإطلاق التجريبي',
+        href: `${ATTENDANCE_ROOT}admin/pilot.html`,
+        icon: 'pilot'
+      },
+      {
         label: 'بوابة الطالب',
         href: `${ATTENDANCE_ROOT}student/`,
         icon: 'student'
@@ -148,6 +153,9 @@
 
     audit:
       '<path d="M12 3 5 6v5c0 4.8 2.9 8.3 7 10 4.1-1.7 7-5.2 7-10V6z"/><path d="M9 11h6M9 15h4"/>',
+
+    pilot:
+      '<path d="M8 3h8M10 3v5l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M8 15h8"/>',
 
     student:
       '<circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/>',
