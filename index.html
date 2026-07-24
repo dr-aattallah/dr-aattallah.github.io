@@ -1,7 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8" />
+<script>
+  (() => {
+    const requested = new URLSearchParams(location.search).get("lang");
+    let saved = null;
+    try { saved = localStorage.getItem("portfolio-language"); } catch (_) {}
+    const language = requested === "en" || requested === "ar"
+      ? requested
+      : saved === "en" || saved === "ar" ? saved : "ar";
+    document.documentElement.lang = language;
+    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+  })();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Dr. Abdulaziz Attaallah | Academic Executive Portfolio</title>
 <meta name="description" content="Official academic portfolio of Dr. Abdulaziz Attaallah, Associate Professor of Computer Science at King Abdulaziz University, specializing in software engineering, cybersecurity, artificial intelligence, blockchain applications, digital transformation, and technology strategy." />
@@ -12,8 +24,8 @@
 <meta name="theme-color" content="#0B1F3A" />
 <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
 <link rel="canonical" href="https://dr-aattallah.github.io/" />
-<link rel="alternate" href="https://dr-aattallah.github.io/" hreflang="en" />
-<link rel="alternate" href="https://dr-aattallah.github.io/" hreflang="ar" />
+<link rel="alternate" href="https://dr-aattallah.github.io/?lang=en" hreflang="en" />
+<link rel="alternate" href="https://dr-aattallah.github.io/?lang=ar" hreflang="ar" />
 <link rel="alternate" href="https://dr-aattallah.github.io/" hreflang="x-default" />
 
 <meta property="og:type" content="profile" />
@@ -296,10 +308,10 @@ nav{
   max-width:1220px;
   margin:auto;
   padding:15px 22px;
-  display:flex;
-  justify-content:space-between;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
   align-items:center;
-  gap:22px;
+  gap:14px;
 }
 
 .brand{
@@ -330,9 +342,84 @@ nav{
   text-decoration:none;
   font-weight:800;
   font-size:14px;
-  padding:10px 12px;
+  padding:10px 9px;
   border-radius:999px;
   transition:background .2s ease,color .2s ease,transform .2s ease;
+}
+
+.language-toggle{
+  min-width:86px;
+  border:1px solid rgba(255,255,255,.78);
+  border-radius:999px;
+  padding:10px 14px;
+  cursor:pointer;
+  color:var(--navy);
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.78),rgba(255,255,255,.34)),
+    radial-gradient(circle at 18% 8%,rgba(255,255,255,.92),transparent 42%);
+  box-shadow:0 9px 24px rgba(15,23,42,.1),inset 0 1px 0 rgba(255,255,255,.92);
+  backdrop-filter:blur(18px) saturate(170%);
+  -webkit-backdrop-filter:blur(18px) saturate(170%);
+  font:800 13px/1 "Masmak",sans-serif;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+
+.language-toggle:hover,
+.language-toggle:focus-visible{
+  transform:translateY(-2px);
+  border-color:rgba(176,138,53,.55);
+  box-shadow:0 13px 30px rgba(15,23,42,.14),inset 0 1px 0 #fff;
+  outline:none;
+}
+
+.section-ar-title,
+.ar-name,
+.ar-soft,
+.ar-card-title,
+.ar-card-text,
+.ar-research-title,
+.degree-ar,
+.ar-contact-note,
+.publication-note > [lang="ar"],
+.office-details > [lang="ar"]{
+  display:none !important;
+}
+
+html[dir="rtl"] body{
+  direction:rtl;
+  text-align:right;
+}
+
+html[dir="rtl"] .hero-content,
+html[dir="rtl"] .contact-intro{
+  text-align:right;
+}
+
+html[dir="rtl"] .positioning{
+  text-align:right;
+}
+
+html[dir="rtl"] .links{
+  justify-content:flex-start;
+}
+
+html[dir="rtl"] .buttons,
+html[dir="rtl"] .contact-actions{
+  justify-content:flex-start;
+}
+
+html[dir="rtl"] .pub li,
+html[dir="rtl"] .featured-publication .publication-citation,
+html[dir="rtl"] .doi{
+  direction:ltr;
+  text-align:left;
+}
+
+html[dir="rtl"] [href^="mailto:"],
+html[dir="rtl"] [href*="mail.google.com"],
+html[dir="rtl"] [href*="orcid.org"]{
+  direction:ltr;
+  unicode-bidi:isolate;
 }
 
 .links a:hover,
@@ -1507,12 +1594,13 @@ main section:nth-of-type(3n)::after{
 
 @media(max-width:720px){
   .nav-inner{
-    align-items:flex-start;
-    flex-direction:column;
+    grid-template-columns:1fr auto;
     gap:10px;
   }
 
   .links{
+    grid-column:1 / -1;
+    grid-row:2;
     width:100%;
     overflow-x:auto;
     flex-wrap:nowrap;
@@ -1522,6 +1610,11 @@ main section:nth-of-type(3n)::after{
 
   .links a{
     white-space:nowrap;
+  }
+
+  .language-toggle{
+    grid-column:2;
+    grid-row:1;
   }
 
   section{
@@ -1612,6 +1705,7 @@ main section:nth-of-type(3n)::after{
   <a href="the-educator/">The Educator</a>
   <a href="#contact">Contact</a>
 </div>
+    <button class="language-toggle" id="language-toggle" type="button" aria-label="Switch to English">English</button>
   </div>
 </nav>
 
@@ -1650,7 +1744,7 @@ main section:nth-of-type(3n)::after{
           <span>Associate Professor appointment</span>
         </div>
         <div class="metric">
-          <strong>16+</strong>
+          <strong>17+</strong>
           <span>Peer-reviewed publications listed</span>
         </div>
         <div class="metric">
@@ -2185,5 +2279,187 @@ main section:nth-of-type(3n)::after{
   © 2026 Dr. Abdulaziz Attaallah. Academic Portfolio.
 </footer>
 
+<script>
+(() => {
+  const ar = {
+    "Skip to main content":"تجاوز إلى المحتوى الرئيسي",
+    "Dr. Abdulaziz Attaallah":"الدكتور عبدالعزيز عطاءالله",
+    "Academic Executive Portfolio":"الملف الأكاديمي التنفيذي",
+    "Home":"الرئيسية","About":"نبذة","Education":"المؤهلات","Leadership":"القيادة",
+    "Expertise":"الخبرات","Research":"البحث العلمي","Teaching":"التدريس",
+    "Publications":"المنشورات","The Educator":"المنصة التعليمية","Contact":"التواصل",
+    "Academic Affiliation":"الانتماء الأكاديمي","King Abdulaziz University":"جامعة الملك عبدالعزيز",
+    "Computer Science · Academic Leadership · Research · Digital Transformation":"علوم الحاسبات · القيادة الأكاديمية · البحث العلمي · التحول الرقمي",
+    "DR. ABDULAZIZ ATTAALLAH":"الدكتور عبدالعزيز عطاءالله",
+    "Associate Professor of Computer Science":"أستاذ مشارك في علوم الحاسبات",
+    "Digital Transformation Leader":"قائد في التحول الرقمي",
+    "Software Engineering Researcher":"باحث في هندسة البرمجيات",
+    "Academic & Technology Strategist":"استراتيجي أكاديمي وتقني",
+    "King Abdulaziz University, Jeddah, Saudi Arabia":"جامعة الملك عبدالعزيز، جدة، المملكة العربية السعودية",
+    "Associate Professor appointment":"تعيين أستاذ مشارك",
+    "Peer-reviewed publications listed":"منشورًا علميًا محكّمًا",
+    "Academic leadership and digital platforms":"القيادة الأكاديمية والمنصات الرقمية",
+    "Google Scholar":"الباحث العلمي","Download CV":"تحميل السيرة الذاتية","ResearchGate":"ريسيرش غيت",
+    "Email":"البريد الإلكتروني","Profile":"الملف الشخصي","Executive Profile":"النبذة التنفيذية",
+    "Dr. Abdulaziz Attaallah is an Associate Professor of Computer Science at King Abdulaziz University, with an academic and leadership profile spanning software engineering research, academic governance, digital transformation leadership, enterprise systems direction, and technology strategy. His research experience includes cybersecurity, artificial intelligence, blockchain applications, usable security, Internet of Things, healthcare informatics, big data security, and decision-support models.":"الدكتور عبدالعزيز عطاءالله أستاذ مشارك في علوم الحاسبات بجامعة الملك عبدالعزيز، ويتمتع بخبرة أكاديمية وقيادية تجمع بين البحث في هندسة البرمجيات، والحوكمة الأكاديمية، وقيادة التحول الرقمي، وتوجيه الأنظمة المؤسسية، واستراتيجية التقنية. تمتد خبراته البحثية إلى الأمن السيبراني، والذكاء الاصطناعي، وتطبيقات البلوك تشين، وأمن الاستخدام، وإنترنت الأشياء، والمعلوماتية الصحية، وأمن البيانات الضخمة، ونماذج دعم القرار.",
+    "He also brings extensive experience in teaching, curriculum development, academic advising, research supervision, software engineering, secure systems, and the leadership of university digital platforms.":"كما يمتلك خبرة واسعة في التدريس، وتطوير المناهج، والإرشاد الأكاديمي، والإشراف البحثي، وهندسة البرمجيات، والأنظمة الآمنة، وقيادة المنصات الرقمية الجامعية.",
+    "Academic Foundation":"التأسيس الأكاديمي","PhD in Software Engineering":"دكتوراه في هندسة البرمجيات",
+    "North Dakota State University":"جامعة ولاية داكوتا الشمالية","Fargo, North Dakota, USA":"فارغو، داكوتا الشمالية، الولايات المتحدة",
+    "Master of Computer and Information Science":"ماجستير علوم الحاسب والمعلومات",
+    "Software Engineering":"هندسة البرمجيات","Gannon University, Erie, Pennsylvania, USA":"جامعة غانون، إيري، بنسلفانيا، الولايات المتحدة",
+    "BSc in Computer Science":"بكالوريوس علوم الحاسبات","Jeddah, Saudi Arabia":"جدة، المملكة العربية السعودية",
+    "Appointments":"المناصب","Academic Leadership & Appointments":"القيادة الأكاديمية والمناصب",
+    "Associate Professor":"أستاذ مشارك","Computer Science Department, King Abdulaziz University":"قسم علوم الحاسبات، جامعة الملك عبدالعزيز",
+    "2024 – Present":"2024 – حتى الآن","Assistant Professor":"أستاذ مساعد",
+    "Faculty of Computing and Information Technology, KAU":"كلية الحاسبات وتقنية المعلومات، جامعة الملك عبدالعزيز",
+    "2017 – 2024":"2017 – 2024","General Supervisor":"المشرف العام",
+    "Center of the University Knowledge Portal, KAU":"مركز بوابة المعرفة الجامعية، جامعة الملك عبدالعزيز",
+    "2020 – 2021":"2020 – 2021","Vice General Supervisor":"نائب المشرف العام",
+    "University Knowledge Portal Center":"مركز بوابة المعرفة الجامعية","2019 – 2020":"2019 – 2020",
+    "Department Council Secretary":"أمين مجلس القسم","Computer Science Department":"قسم علوم الحاسبات",
+    "2018 – 2019":"2018 – 2019","Academic Advisor":"مرشد أكاديمي","2017 – Present":"2017 – حتى الآن",
+    "Committee Member":"عضو لجنة","Student and Alumni Affairs Committee":"لجنة شؤون الطلاب والخريجين","2022 – Present":"2022 – حتى الآن",
+    "Capabilities":"القدرات","Professional Expertise":"الخبرات المهنية",
+    "Digital Transformation":"قيادة التحول الرقمي",
+    "Strategic planning, technology modernization, innovation management, and transformation leadership.":"التخطيط الاستراتيجي، وتحديث التقنية، وإدارة الابتكار، وقيادة مبادرات التحول الرقمي.",
+    "Strategic planning, technology modernization, innovation management, and leadership of digital transformation initiatives.":"التخطيط الاستراتيجي، وتحديث التقنية، وإدارة الابتكار، وقيادة مبادرات التحول الرقمي.",
+    "Enterprise & Solution Architecture":"هندسة الحلول المؤسسية",
+    "Aligning technology initiatives with institutional objectives and designing end-to-end solutions.":"مواءمة المبادرات التقنية مع الأهداف المؤسسية وتصميم حلول تقنية متكاملة من البداية إلى النهاية.",
+    "Aligning technology initiatives with institutional objectives and designing integrated end-to-end solutions.":"مواءمة المبادرات التقنية مع الأهداف المؤسسية وتصميم حلول تقنية متكاملة من البداية إلى النهاية.",
+    "Requirements Engineering":"هندسة المتطلبات",
+    "Requirements elicitation, stakeholder engagement, business process analysis, and system modeling.":"استخلاص المتطلبات، وتحليل أصحاب المصلحة، ونمذجة العمليات والأنظمة بصورة منهجية.",
+    "Requirements elicitation, stakeholder analysis, and systematic business and system process modeling.":"استخلاص المتطلبات، وتحليل أصحاب المصلحة، ونمذجة العمليات والأنظمة بصورة منهجية.",
+    "Software Architecture":"معمارية البرمجيات",
+    "Software design, distributed systems, secure software systems, and enterprise application integration.":"تصميم البرمجيات، والأنظمة الموزعة، والأنظمة الآمنة، وتكامل التطبيقات المؤسسية.",
+    "Software design, distributed systems, secure systems, and enterprise application integration.":"تصميم البرمجيات، والأنظمة الموزعة، والأنظمة الآمنة، وتكامل التطبيقات المؤسسية.",
+    "Technology Governance":"حوكمة التقنية",
+    "Project planning, risk management, platform governance, and execution oversight.":"تخطيط المشاريع، وإدارة المخاطر، وحوكمة المنصات التقنية، ومتابعة التنفيذ.",
+    "Project planning, risk management, technology-platform governance, and implementation oversight.":"تخطيط المشاريع، وإدارة المخاطر، وحوكمة المنصات التقنية، ومتابعة التنفيذ.",
+    "Academic Quality":"الجودة الأكاديمية",
+    "Curriculum development, outcome-based education, research supervision, and accreditation activities.":"تطوير المناهج، والتعليم المبني على المخرجات، والإشراف البحثي، وأنشطة الاعتماد الأكاديمي.",
+    "Curriculum development, outcomes-based education, research supervision, and accreditation activities.":"تطوير المناهج، والتعليم المبني على المخرجات، والإشراف البحثي، وأنشطة الاعتماد الأكاديمي.",
+    "Research Identity":"الهوية البحثية","Secure Software Systems":"أنظمة البرمجيات الآمنة",
+    "Software Security":"أمن البرمجيات","Cybersecurity":"الأمن السيبراني","Usable Security":"أمن الاستخدام",
+    "Software Engineering, Software Security, Cybersecurity, Software Architecture, Requirements Engineering, Usable Security":"هندسة البرمجيات، وأمن البرمجيات، والأمن السيبراني، ومعمارية البرمجيات، وهندسة المتطلبات، وأمن الاستخدام",
+    "AI & Decision-Support":"الذكاء الاصطناعي ودعم القرار",
+    "Artificial Intelligence":"الذكاء الاصطناعي","Fuzzy Logic":"المنطق الضبابي",
+    "Decision-Support Systems":"أنظمة دعم القرار","Human-Computer Interaction":"التفاعل بين الإنسان والحاسب",
+    "Big Data Security":"أمن البيانات الضخمة",
+    "Artificial Intelligence, Fuzzy Logic, Decision-Support Systems, Human-Computer Interaction, Big Data Security":"الذكاء الاصطناعي، والمنطق الضبابي، وأنظمة دعم القرار، والتفاعل بين الإنسان والحاسب، وأمن البيانات الضخمة",
+    "Digital Health & Blockchain":"الصحة الرقمية والبلوك تشين",
+    "Blockchain Systems":"أنظمة البلوك تشين","Healthcare Informatics":"المعلوماتية الصحية",
+    "Medical Device Software":"برمجيات الأجهزة الطبية","Health Data Security":"أمن البيانات الصحية",
+    "Blockchain Systems, Healthcare Informatics, IoT / IoHT, Medical Device Software, Health Data Security":"أنظمة البلوك تشين، والمعلوماتية الصحية، وإنترنت الأشياء، وإنترنت الأشياء الصحية، وبرمجيات الأجهزة الطبية، وأمن البيانات الصحية",
+    "Research Positioning":"التوجه البحثي",
+    "The research profile connects secure software engineering, intelligent assessment methods, and applied digital health systems, with emphasis on practical risk evaluation, architecture, and technology-enabled decision support.":"تربط الهوية البحثية بين هندسة البرمجيات الآمنة، وأساليب التقييم الذكية، وأنظمة الصحة الرقمية التطبيقية، مع التركيز على التقييم العملي للمخاطر والمعمارية ودعم القرار المدعوم بالتقنية.",
+    "Dr. Attaallah’s research connects secure software engineering with intelligent decision-support, digital health, and emerging distributed technologies. The work is positioned at the intersection of software quality, cybersecurity, human-centered computing, and technology-enabled institutional transformation.":"يربط بحث الدكتور عطاءالله بين هندسة البرمجيات الآمنة، ودعم القرار الذكي، والصحة الرقمية، والتقنيات الموزعة الناشئة، عند تقاطع جودة البرمجيات والأمن السيبراني والحوسبة المتمحورة حول الإنسان والتحول المؤسسي المدعوم بالتقنية.",
+    "Scientific Interests":"الاهتمامات العلمية","Quantum Physics, Quantum Computing, Astronomy":"فيزياء الكم، والحوسبة الكمية، وعلم الفلك",
+    "Quantum Physics":"فيزياء الكم","Quantum Computing":"الحوسبة الكمية","Astronomy":"علم الفلك",
+    "Teaching Portfolio":"المقررات والخبرة التدريسية","Programming & AI":"البرمجة والذكاء الاصطناعي",
+    "Projects & Research":"المشروعات والبحث العلمي","Professional Training":"التدريب المهني",
+    "CPCS-351 Software Engineering I":"CPCS-351 هندسة البرمجيات 1",
+    "CPCS-353 Software Engineering Practices":"CPCS-353 ممارسات هندسة البرمجيات",
+    "CPCS-454 Object-Oriented Analysis and Design":"CPCS-454 التحليل والتصميم كائني التوجه",
+    "CPCS-202 Programming I":"CPCS-202 البرمجة 1","CPCS-203 Programming II":"CPCS-203 البرمجة 2",
+    "CPCS-206 Introduction to Programming and Visual Basic":"CPCS-206 مقدمة في البرمجة وفيجوال بيسك",
+    "CPCS-336 Introduction to Artificial Intelligence":"CPCS-336 مقدمة في الذكاء الاصطناعي",
+    "CPCS-498 Senior Project I":"CPCS-498 مشروع التخرج 1","CPCS-499 Senior Project II":"CPCS-499 مشروع التخرج 2",
+    "CPCS-699 Master’s Research":"CPCS-699 بحث الماجستير","CPCS-323 Summer Workplace Training":"CPCS-323 التدريب الصيفي في بيئة العمل",
+    "Scholarship":"الإنتاج العلمي","Recent & Featured Publications":"أحدث المنشورات وأبرزها",
+    "Peer-reviewed publications in software engineering, cybersecurity, blockchain systems, healthcare technologies, fuzzy decision-making, and big data security.":"منشورات علمية محكّمة في هندسة البرمجيات، والأمن السيبراني، وأنظمة البلوك تشين، وتقنيات الرعاية الصحية، واتخاذ القرار الضبابي، وأمن البيانات الضخمة.",
+    "Selected recent research outputs":"مختارات من أحدث المخرجات البحثية",
+    "New · IEEE Access 2026":"جديد · IEEE Access 2026",
+    "Read Full Paper (PDF)":"قراءة البحث كاملًا (PDF)","View on IEEE via DOI":"عرض البحث في IEEE عبر DOI",
+    "Additional Peer-Reviewed Publications":"منشورات علمية محكّمة إضافية",
+    "Full academic record continued":"استكمال السجل الأكاديمي الكامل",
+    "View Full Google Scholar Profile":"عرض ملف الباحث العلمي الكامل",
+    "Connect":"تواصل","Primary contact actions":"إجراءات التواصل الرئيسية",
+    "For academic collaboration, research inquiries, supervision-related communication, and professional correspondence, please use the official university email or the academic profiles below.":"للتعاون الأكاديمي والاستفسارات البحثية والتواصل المتعلق بالإشراف والمراسلات المهنية، يُرجى استخدام البريد الجامعي الرسمي أو الملفات الأكاديمية أدناه.",
+    "Scholar Profile":"ملف الباحث العلمي","Institution":"الجهة الأكاديمية",
+    "King Abdulaziz University\nJeddah, Saudi Arabia":"جامعة الملك عبدالعزيز\nجدة، المملكة العربية السعودية",
+    "Office & Directions":"المكتب ومعلومات الوصول",
+    "Room No. 35F97 (354), 3rd Floor\nFaculty of Computing and Information Technology, Building 70":"غرفة رقم 35F97 (354)، الدور الثالث\nكلية الحاسبات وتقنية المعلومات، مبنى 70",
+    "Open in Google Maps":"فتح الموقع في خرائط Google",
+    "© 2026 Dr. Abdulaziz Attaallah. Academic Portfolio.":"© 2026 الدكتور عبدالعزيز عطاءالله. الملف الأكاديمي."
+  };
+
+  const attributeAr = {
+    "Primary navigation":"التنقل الرئيسي",
+    "Profile introduction":"مقدمة الملف الأكاديمي",
+    "Portrait of Dr. Abdulaziz Attaallah":"صورة الدكتور عبدالعزيز عطاءالله",
+    "Academic profile highlights":"أبرز ملامح الملف الأكاديمي",
+    "Research areas":"مجالات البحث",
+    "Access publication":"الوصول إلى البحث",
+    "Primary contact actions":"إجراءات التواصل الرئيسية",
+    "Open the Faculty of Computing and Information Technology location in Google Maps":"فتح موقع كلية الحاسبات وتقنية المعلومات في خرائط Google"
+  };
+
+  const nodes = [];
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (!["SCRIPT","STYLE","NOSCRIPT"].includes(node.parentElement?.tagName)) {
+      nodes.push({node, original:node.nodeValue});
+    }
+  }
+
+  const attributes = [];
+  document.querySelectorAll("[aria-label],[title],[alt],[placeholder]").forEach(element => {
+    ["aria-label","title","alt","placeholder"].forEach(name => {
+      if (element.hasAttribute(name)) attributes.push({element,name,original:element.getAttribute(name)});
+    });
+  });
+
+  const metaDescription = document.querySelector('meta[name="description"]');
+  const originalDescription = metaDescription?.content || "";
+  const toggle = document.getElementById("language-toggle");
+
+  function replacePreservingSpace(original, translation) {
+    const leading = original.match(/^\s*/)?.[0] || "";
+    const trailing = original.match(/\s*$/)?.[0] || "";
+    return leading + translation + trailing;
+  }
+
+  function applyLanguage(language, persist = false) {
+    const isArabic = language === "ar";
+    document.documentElement.lang = language;
+    document.documentElement.dir = isArabic ? "rtl" : "ltr";
+    document.documentElement.dataset.language = language;
+
+    nodes.forEach(({node,original}) => {
+      const key = original.trim();
+      node.nodeValue = isArabic && ar[key] ? replacePreservingSpace(original, ar[key]) : original;
+    });
+
+    attributes.forEach(({element,name,original}) => {
+      element.setAttribute(name, isArabic && attributeAr[original] ? attributeAr[original] : original);
+    });
+
+    document.title = isArabic
+      ? "الدكتور عبدالعزيز عطاءالله | الملف الأكاديمي التنفيذي"
+      : "Dr. Abdulaziz Attaallah | Academic Executive Portfolio";
+    if (metaDescription) {
+      metaDescription.content = isArabic
+        ? "الموقع الأكاديمي الرسمي للدكتور عبدالعزيز عطاءالله، أستاذ مشارك في علوم الحاسبات بجامعة الملك عبدالعزيز، والمتخصص في هندسة البرمجيات والأمن السيبراني والذكاء الاصطناعي والتحول الرقمي."
+        : originalDescription;
+    }
+    toggle.textContent = isArabic ? "English" : "العربية";
+    toggle.setAttribute("aria-label", isArabic ? "Switch to English" : "التبديل إلى العربية");
+
+    if (persist) {
+      try { localStorage.setItem("portfolio-language", language); } catch (_) {}
+      const url = new URL(location.href);
+      url.searchParams.set("lang", language);
+      history.replaceState(null, "", url);
+    }
+  }
+
+  toggle.addEventListener("click", () => {
+    applyLanguage(document.documentElement.lang === "ar" ? "en" : "ar", true);
+  });
+
+  applyLanguage(document.documentElement.lang === "en" ? "en" : "ar");
+})();
+</script>
 </body>
 </html>
