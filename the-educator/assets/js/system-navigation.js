@@ -82,6 +82,11 @@
         featured: true
       },
       {
+        label: 'تقارير المقررات',
+        href: `${ATTENDANCE_ROOT}admin/reports.html`,
+        icon: 'reports'
+      },
+      {
         label: 'إدارة الجلسات',
         href: `${ATTENDANCE_ROOT}admin/`,
         icon: 'sessions'
@@ -132,6 +137,9 @@
 
     excuses:
       '<path d="M6 3h9l4 4v14H6zM15 3v5h5M9 13h6M9 17h5"/>',
+
+    reports:
+      '<path d="M5 20V10M10 20V4M15 20v-7M20 20V7M3 20h19"/>',
 
     student:
       '<circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/>',
