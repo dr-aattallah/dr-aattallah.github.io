@@ -621,13 +621,17 @@ html[dir="rtl"] .hero-flag{
   width:100%;
   height:100%;
   object-fit:cover;
-  opacity:.72;
+  object-position:center 22%;
+  transform-origin:12% 50%;
+  opacity:.76;
   filter:
-    saturate(.62)
-    contrast(1.18)
-    brightness(1.12)
+    saturate(.78)
+    contrast(1.12)
+    brightness(1.08)
     drop-shadow(0 0 5px rgba(226,255,251,.3))
     drop-shadow(0 2px 8px rgba(4,54,42,.18));
+  will-change:transform,filter;
+  animation:hero-flag-wind 7.9s cubic-bezier(.42,.02,.35,.98) infinite;
 }
 
 .hero-flag::before{
@@ -667,6 +671,32 @@ html[dir="rtl"] .hero-flag{
   0%,100%{margin-top:0}
   36%{margin-top:-7px}
   72%{margin-top:5px}
+}
+
+@keyframes hero-flag-wind{
+  0%,100%{
+    transform:perspective(520px) rotateY(-1deg) skewY(0deg) scaleX(1.015);
+    filter:saturate(.78) contrast(1.12) brightness(1.08) drop-shadow(0 0 5px rgba(226,255,251,.3));
+  }
+  17%{
+    transform:perspective(520px) rotateY(3.2deg) skewY(-.7deg) scaleX(.992) scaleY(1.012);
+    filter:saturate(.8) contrast(1.15) brightness(1.12) drop-shadow(0 0 7px rgba(235,255,252,.36));
+  }
+  39%{
+    transform:perspective(520px) rotateY(-4.5deg) skewY(.9deg) scaleX(1.026) scaleY(.994);
+    filter:saturate(.75) contrast(1.1) brightness(1.05) drop-shadow(0 0 4px rgba(213,250,245,.25));
+  }
+  58%{
+    transform:perspective(520px) rotateY(2deg) skewY(-.35deg) scaleX(1.004) scaleY(1.018);
+    filter:saturate(.82) contrast(1.16) brightness(1.13) drop-shadow(0 0 8px rgba(241,255,253,.4));
+  }
+  76%{
+    transform:perspective(520px) rotateY(-3deg) skewY(.55deg) scaleX(1.02) scaleY(.997);
+    filter:saturate(.77) contrast(1.13) brightness(1.07) drop-shadow(0 0 5px rgba(220,252,248,.29));
+  }
+  91%{
+    transform:perspective(520px) rotateY(1.4deg) skewY(-.25deg) scaleX(.998) scaleY(1.009);
+  }
 }
 
 @keyframes hero-flag-liquid{
@@ -2157,6 +2187,7 @@ main section:nth-of-type(3n)::after{
   }
 
   .hero-flag,
+  .hero-flag img,
   .hero-flag::before,
   .hero-flag::after{
     animation:none !important;
@@ -2221,7 +2252,7 @@ main section:nth-of-type(3n)::after{
       </div>
 
       <div class="hero-flag" aria-hidden="true">
-        <img src="assets/images/saudi-flag.svg" alt="" />
+        <img src="assets/images/saudi-flag-glass.png" alt="" />
       </div>
 
       <div class="hero-metrics" aria-label="Academic profile highlights">
