@@ -18,6 +18,7 @@ const loginView = $('loginView');
 const portalView = $('portalView');
 const idStep = $('idStep');
 const otpStep = $('otpStep');
+const emailLinkStep = $('emailLinkStep');
 
 const openLoginButton = $('openLoginButton');
 const backToPublic = $('backToPublic');
@@ -26,8 +27,10 @@ const verifyCodeForm = $('verifyCodeForm');
 const requestCodeButton = $('requestCodeButton');
 const verifyCodeButton = $('verifyCodeButton');
 const resendCodeButton = $('resendCodeButton');
+const sendAgainButton = $('sendAgainButton');
 const requestMessage = $('requestMessage');
 const verifyMessage = $('verifyMessage');
+const emailLinkMessage = $('emailLinkMessage');
 const signOutButton = $('signOutButton');
 const refreshButton = $('refreshButton');
 
@@ -79,13 +82,27 @@ function showLogin(){
   hide(portalView);
   show(idStep);
   hide(otpStep);
+  hide(emailLinkStep);
   setMessage(requestMessage);
   setMessage(verifyMessage);
   $('universityId')?.focus();
 }
 
+function showEmailLink(maskedEmail){
+  hide(idStep);
+  hide(otpStep);
+  show(emailLinkStep);
+  $('emailLinkText').textContent =
+    `إذا كان الرقم مرتبطًا بحساب نشط فسيصل رابط دخول آمن إلى ${
+      maskedEmail || 'البريد المسجل'
+    }. افتح الرابط للانتقال مباشرة إلى سجلك.`;
+  setMessage(emailLinkMessage);
+  sendAgainButton?.focus();
+}
+
 function showOtp(maskedEmail){
   hide(idStep);
+  hide(emailLinkStep);
   show(otpStep);
   $('maskedEmailText').textContent =
     `أرسلنا رمز التحقق إلى ${maskedEmail || 'البريد المسجل'}.`;
@@ -404,12 +421,44 @@ requestCodeForm?.addEventListener('submit',async event=>{
     });
 
     submittedUniversityId=universityId;
-    loginChallengeId=data.challenge_id;
-    showOtp(data.masked_email);
+    if(data.delivery_method==='otp'){
+      loginChallengeId=data.challenge_id;
+      showOtp(data.masked_email);
+    }else{
+      showEmailLink(data.masked_email);
+    }
   }catch(error){
     setMessage(requestMessage,error.message,'error');
   }finally{
     setLoading(requestCodeButton,false);
+  }
+});
+
+sendAgainButton?.addEventListener('click',async()=>{
+  if(!submittedUniversityId)return;
+
+  setLoading(sendAgainButton,true);
+  setMessage(emailLinkMessage);
+  try{
+    const data=await accessFunction({
+      action:'request',
+      university_id:submittedUniversityId
+    });
+    if(data.delivery_method==='otp'){
+      loginChallengeId=data.challenge_id;
+      showOtp(data.masked_email);
+      setMessage(verifyMessage,'تم إرسال رمز التحقق.','success');
+    }else{
+      setMessage(
+        emailLinkMessage,
+        'إذا كان الحساب نشطًا فقد أرسلنا رابطًا جديدًا.',
+        'success'
+      );
+    }
+  }catch(error){
+    setMessage(emailLinkMessage,error.message,'error');
+  }finally{
+    setLoading(sendAgainButton,false);
   }
 });
 

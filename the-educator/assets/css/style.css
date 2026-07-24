@@ -46,6 +46,15 @@
   :where(button,.btn,input,select,textarea,a){border:1px solid ButtonText}
 }
 
+.recovery-page{direction:rtl}
+.recovery-page nav{width:min(1180px,calc(100% - 36px))}
+.recovery-shell{direction:rtl}
+.recovery-shell .info-card,.recovery-shell .login-card{text-align:right}
+.recovery-shell .field input{direction:ltr;text-align:right}
+.recovery-message{margin-bottom:18px;padding:12px 14px;border-radius:14px}
+.recovery-message.success{color:#08755f;background:rgba(22,138,115,.11)}
+.recovery-message.error{color:#a52b47;background:rgba(185,65,93,.11)}
+
 :root{
   --ink:#152033;
   --muted:#667085;

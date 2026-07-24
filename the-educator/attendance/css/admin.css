@@ -49,6 +49,7 @@ body.admin-page{
 .switch-row input:checked+.switch{background:linear-gradient(135deg,var(--mint),var(--blue))}
 .switch-row input:checked+.switch:after{transform:translateX(-20px)}
 .admin-message{min-height:22px;color:var(--muted);font-size:13px;font-weight:600}
+.auth-help-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;color:#5063ca;font-size:13px;font-weight:800;text-decoration:none}
 .admin-message.error{color:var(--red)} .admin-message.success{color:#13856f}
 .admin-badge{display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:999px;color:#50617d;background:rgba(255,255,255,.52);border:1px solid rgba(255,255,255,.82);font-size:12px;font-weight:800}
 .admin-badge.active{color:#14816d;background:rgba(85,205,180,.14)}
