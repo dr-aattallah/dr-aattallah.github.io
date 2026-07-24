@@ -161,7 +161,10 @@
       '<circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/>',
 
     educator:
-      '<path d="m3 9 9-5 9 5-9 5zM7 12v5c3 2.5 7 2.5 10 0v-5M21 9v6"/>'
+      '<path d="m3 9 9-5 9 5-9 5zM7 12v5c3 2.5 7 2.5 10 0v-5M21 9v6"/>',
+
+    more:
+      '<circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/>'
   };
 
   function icon(name) {
@@ -269,7 +272,7 @@
       #systemNavigationRoot {
         position: relative;
         z-index: 9998;
-        width: min(1180px, calc(100% - 28px));
+        width: min(1260px, calc(100% - 28px));
         margin: 14px auto 0;
         font-family:
           "Tajawal",
@@ -281,12 +284,12 @@
       }
 
       .system-navigation {
-        min-height: 68px;
-        padding: 9px 11px;
+        min-height: 76px;
+        padding: 11px 14px;
         display: grid;
         grid-template-columns: auto 1fr auto;
         align-items: center;
-        gap: 16px;
+        gap: 22px;
         border: 1px solid rgba(255, 255, 255, 0.82);
         border-radius: 25px;
         background:
@@ -339,24 +342,24 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 5px;
+        gap: 9px;
         min-width: 0;
       }
 
       .system-nav-item {
         position: relative;
-        min-height: 44px;
-        padding: 0 13px;
+        min-height: 48px;
+        padding: 0 17px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
+        gap: 9px;
         border: 1px solid transparent;
         border-radius: 16px;
         color: var(--system-nav-ink);
         text-decoration: none;
         white-space: nowrap;
-        font-size: 13px;
+        font-size: 13.5px;
         font-weight: 800;
         overflow: hidden;
         isolation: isolate;
@@ -474,6 +477,69 @@
         gap: 8px;
       }
 
+      .system-nav-more {
+        position: relative;
+      }
+
+      .system-nav-more-button {
+        min-width: 108px;
+        cursor: pointer;
+        font-family: inherit;
+        background: rgba(255, 255, 255, 0.34);
+      }
+
+      .system-nav-more-button .system-nav-chevron {
+        width: 8px;
+        height: 8px;
+        margin-inline-start: 2px;
+        border-inline-end: 1.8px solid currentColor;
+        border-bottom: 1.8px solid currentColor;
+        transform: rotate(45deg) translateY(-2px);
+        transition: transform 0.18s ease;
+      }
+
+      .system-nav-more-button[aria-expanded="true"]
+        .system-nav-chevron {
+        transform: rotate(225deg) translate(-2px, -1px);
+      }
+
+      .system-nav-more-button.has-active-item {
+        color: var(--system-nav-accent);
+        border-color: rgba(113, 133, 255, 0.22);
+        background: rgba(113, 133, 255, 0.09);
+      }
+
+      .system-nav-more-menu {
+        position: absolute;
+        top: calc(100% + 13px);
+        left: 50%;
+        width: min(580px, calc(100vw - 40px));
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        border-radius: 22px;
+        background: rgba(248, 251, 255, 0.94);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 1),
+          0 24px 64px rgba(40, 59, 110, 0.2);
+        backdrop-filter: blur(30px) saturate(175%);
+        -webkit-backdrop-filter: blur(30px) saturate(175%);
+        transform: translateX(-50%);
+        animation: systemNavOpen 0.18s ease;
+      }
+
+      .system-nav-more-menu[hidden] {
+        display: none;
+      }
+
+      .system-nav-more-menu .system-nav-item {
+        justify-content: flex-start;
+        width: 100%;
+        min-height: 52px;
+      }
+
       .system-menu-button {
         display: none;
         width: 44px;
@@ -508,12 +574,28 @@
         display: none;
       }
 
+      @keyframes systemNavOpen {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -7px) scale(0.985);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateX(-50%);
+        }
+      }
+
       @media (max-width: 980px) {
         .system-navigation {
           grid-template-columns: auto 1fr auto;
         }
 
         .system-nav-center {
+          display: none;
+        }
+
+        .system-nav-more {
           display: none;
         }
 
@@ -547,18 +629,20 @@
           width: 100%;
         }
 
-        @keyframes systemNavOpen {
+        @keyframes systemMobileNavOpen {
           from {
             opacity: 0;
-            transform:
-              translateY(-7px)
-              scale(0.985);
+            transform: translateY(-7px) scale(0.985);
           }
 
           to {
             opacity: 1;
             transform: none;
           }
+        }
+
+        .system-mobile-panel {
+          animation-name: systemMobileNavOpen;
         }
       }
 
@@ -643,6 +727,12 @@
 
     const context = currentContext();
     const items = NAVIGATION[context];
+    const primaryItems =
+      context === 'admin' ? items.slice(0, 4) : items;
+    const secondaryItems =
+      context === 'admin' ? items.slice(4) : [];
+    const secondaryHasActive =
+      secondaryItems.some((item) => isActive(item.href));
 
     const contextLabel = {
       educator: 'المنصة الأكاديمية',
@@ -671,7 +761,40 @@
         </a>
 
         <div class="system-nav-center">
-          ${items.map(itemMarkup).join('')}
+          ${primaryItems.map(itemMarkup).join('')}
+
+          ${
+            secondaryItems.length
+              ? `
+                <div class="system-nav-more">
+                  <button
+                    class="system-nav-item system-nav-more-button ${
+                      secondaryHasActive ? 'has-active-item' : ''
+                    }"
+                    type="button"
+                    aria-label="عرض بقية أدوات الإدارة"
+                    aria-expanded="false"
+                    aria-controls="systemNavMoreMenu"
+                  >
+                    ${icon('more')}
+                    <span>المزيد</span>
+                    <span
+                      class="system-nav-chevron"
+                      aria-hidden="true"
+                    ></span>
+                  </button>
+
+                  <div
+                    id="systemNavMoreMenu"
+                    class="system-nav-more-menu"
+                    hidden
+                  >
+                    ${secondaryItems.map(itemMarkup).join('')}
+                  </div>
+                </div>
+              `
+              : ''
+          }
         </div>
 
         <div class="system-nav-side">
@@ -727,6 +850,12 @@
     const panel =
       root.querySelector('.system-mobile-panel');
 
+    const moreButton =
+      root.querySelector('.system-nav-more-button');
+
+    const moreMenu =
+      root.querySelector('.system-nav-more-menu');
+
     button?.addEventListener('click', () => {
       const open = panel.hasAttribute('hidden');
 
@@ -738,7 +867,25 @@
       );
     });
 
+    moreButton?.addEventListener('click', () => {
+      const open = moreMenu.hasAttribute('hidden');
+
+      moreMenu.toggleAttribute('hidden', !open);
+      moreButton.setAttribute(
+        'aria-expanded',
+        String(open)
+      );
+    });
+
     document.addEventListener('click', (event) => {
+      if (
+        moreMenu &&
+        !root.querySelector('.system-nav-more')?.contains(event.target)
+      ) {
+        moreMenu.setAttribute('hidden', '');
+        moreButton?.setAttribute('aria-expanded', 'false');
+      }
+
       if (
         !root.contains(event.target) &&
         !panel.hasAttribute('hidden')
