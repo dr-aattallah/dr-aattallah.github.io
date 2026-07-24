@@ -71,6 +71,26 @@
       </article>
     </section>
 
+    <section id="calendarReference" class="calendar-reference liquid-glass">
+      <div class="calendar-reference-copy">
+        <span class="calendar-reference-badge">مرجع رسمي</span>
+        <div>
+          <h2 id="calendarReferenceName">جارٍ تحميل التقويم الأكاديمي...</h2>
+          <p id="calendarReferenceMeta">
+            ستُضبط حدود الفصل وتُستبعد الإجازات والاختبارات النهائية تلقائيًا.
+          </p>
+        </div>
+      </div>
+      <div id="calendarPeriods" class="calendar-periods"></div>
+      <a
+        id="calendarSourceLink"
+        class="secondary-button calendar-source-link is-hidden"
+        target="_blank"
+        rel="noopener">
+        فتح المرجع
+      </a>
+    </section>
+
     <form id="coursePlanForm" class="plan-form" autocomplete="off" novalidate>
       <section class="form-section liquid-glass">
         <header class="section-header">
@@ -351,6 +371,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="../js/role-access.js"></script>
   <script src="../js/course-plans.js"></script>
-  <script src="../../assets/js/system-navigation.js"></script>
+  <script src="../../assets/js/system-navigation.js?v=20260724-calendar-generation"></script>
 </body>
 </html>

@@ -182,6 +182,69 @@ body.course-plans-page {
   white-space: nowrap;
 }
 
+.calendar-reference {
+  display: grid;
+  grid-template-columns:minmax(280px,1fr) minmax(320px,1.3fr) auto;
+  gap:18px;
+  align-items:center;
+  margin-bottom:20px;
+  padding:20px 22px;
+  border-radius:28px;
+}
+
+.calendar-reference-copy {
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.calendar-reference-copy h2 {
+  margin:2px 0 5px;
+  font-size:20px;
+}
+
+.calendar-reference-copy p {
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+}
+
+.calendar-reference-badge {
+  flex:0 0 auto;
+  padding:7px 10px;
+  border-radius:999px;
+  color:#167b68;
+  background:rgba(85,205,180,.14);
+  font-size:11px;
+  font-weight:800;
+}
+
+.calendar-periods {
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+
+.calendar-period {
+  padding:7px 10px;
+  border-radius:999px;
+  color:#52617a;
+  background:rgba(255,255,255,.58);
+  border:1px solid rgba(133,150,188,.14);
+  font-size:11px;
+  font-weight:700;
+}
+
+.calendar-period.assessment {
+  color:#856019;
+  background:rgba(226,166,66,.13);
+}
+
+.calendar-source-link {
+  white-space:nowrap;
+}
+
 /* form fields */
 
 .form-grid {
@@ -238,6 +301,16 @@ select:focus {
   box-shadow:
     0 0 0 4px rgba(113, 133, 255, 0.09),
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+@media (max-width: 900px) {
+  .calendar-reference {
+    grid-template-columns:1fr;
+  }
+
+  .calendar-source-link {
+    width:100%;
+  }
 }
 
 /* schedule */
