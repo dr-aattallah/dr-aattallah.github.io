@@ -244,6 +244,12 @@
         <button id="refreshButton" class="secondary-button" type="button">تحديث</button>
       </div>
 
+      <section id="courseSelectorSection" class="course-selector liquid-glass is-hidden">
+        <label for="courseSelector">إحصاءات المقرر</label>
+        <select id="courseSelector" aria-describedby="courseSelectorHint"></select>
+        <small id="courseSelectorHint">كل مقرر مستقل تمامًا في احتساب الحضور والحرمان.</small>
+      </section>
+
       <section class="student-stats">
         <article class="liquid-glass">
           <span>المحاضرات المحتسبة</span>
@@ -258,8 +264,16 @@
           <strong id="lateCount">0</strong>
         </article>
         <article class="liquid-glass">
+          <span>الغياب</span>
+          <strong id="absentCount">0</strong>
+        </article>
+        <article class="liquid-glass">
           <span>نقاط الغياب</span>
           <strong id="absencePoints">0</strong>
+        </article>
+        <article class="liquid-glass">
+          <span>نسبة الحضور</span>
+          <strong id="attendancePercentage">0%</strong>
         </article>
         <article class="liquid-glass">
           <span>نسبة الغياب</span>
@@ -382,10 +396,8 @@
   </dialog>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/attendance-calculations.js"></script>
   <script src="../js/student.js"></script>
   <script src="../../assets/js/system-navigation.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../js/student.js"></script>
-<script src="../../assets/js/system-navigation.js"></script>
 </body>
 </html>

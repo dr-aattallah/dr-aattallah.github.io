@@ -35,6 +35,8 @@ const recordsLoading = $('recordsLoading');
 const recordsEmpty = $('recordsEmpty');
 const recordsTableWrap = $('recordsTableWrap');
 const recordsTableBody = $('recordsTableBody');
+const courseSelector = $('courseSelector');
+const courseSelectorSection = $('courseSelectorSection');
 
 const discussionDialog = $('discussionDialog');
 const closeDiscussionDialog = $('closeDiscussionDialog');
@@ -45,7 +47,7 @@ const submitExcuseButton = $('submitExcuseButton');
 const excuseMessage = $('excuseMessage');
 
 let currentProfile = null;
-let currentRecords = [];
+let currentCourses = [];
 let loginChallengeId = '';
 let submittedUniversityId = '';
 
@@ -169,7 +171,10 @@ function renderSummary(summary){
   $('countedSessions').textContent=String(summary.counted_sessions||0);
   $('presentCount').textContent=String(summary.present_count||0);
   $('lateCount').textContent=String(summary.late_count||0);
+  $('absentCount').textContent=String(summary.absent_count||0);
   $('absencePoints').textContent=String(summary.absence_points||0);
+  $('attendancePercentage').textContent=
+    `${Number(summary.attendance_percentage||0).toFixed(2)}%`;
   $('absencePercentage').textContent=
     `${Number(summary.absence_percentage||0).toFixed(2)}%`;
 
@@ -222,7 +227,6 @@ function openDiscussion(record){
 }
 
 function renderRecords(records){
-  currentRecords=records;
   recordsTableBody.innerHTML='';
   $('recordsBadge').textContent=`${records.length} سجل`;
 
@@ -297,26 +301,62 @@ function renderRecords(records){
   });
 }
 
+function renderSelectedCourse(courseIndex){
+  const course=currentCourses[Number(courseIndex)];
+
+  if(!course){
+    renderSummary({});
+    renderRecords([]);
+    return;
+  }
+
+  renderSummary(course.summary);
+  renderRecords(course.records);
+}
+
+function renderCourses(records){
+  currentCourses=window.AttendanceCalculations.groupRecordsByCourse(records);
+  courseSelector.innerHTML='';
+
+  if(!currentCourses.length){
+    hide(courseSelectorSection);
+    renderSummary({});
+    renderRecords([]);
+    return;
+  }
+
+  currentCourses.forEach((course,index)=>{
+    const option=document.createElement('option');
+    option.value=String(index);
+    option.textContent=course.course_code;
+    courseSelector.appendChild(option);
+  });
+
+  show(courseSelectorSection);
+  renderSelectedCourse(0);
+}
+
 async function loadPortal(){
   show(recordsLoading);
   hide(recordsEmpty);
   hide(recordsTableWrap);
 
   try{
-    const [summary,records]=await Promise.all([
-      rpc('get_my_attendance_summary'),
-      rpc('get_my_attendance_records')
-    ]);
-
-    renderSummary(summary||{});
+    const records=await rpc('get_my_attendance_records');
+    const safeRecords=Array.isArray(records)?records:[];
     hide(recordsLoading);
-    renderRecords(Array.isArray(records)?records:[]);
+    renderCourses(safeRecords);
   }catch(error){
     hide(recordsLoading);
     show(recordsEmpty);
     recordsEmpty.textContent=error.message;
   }
 }
+
+courseSelector?.addEventListener(
+  'change',
+  ()=>renderSelectedCourse(courseSelector.value)
+);
 
 function openExcuse(record){
   $('excuseSessionId').value=record.session_id;
