@@ -3,6 +3,7 @@
 const SUPABASE_URL='https://obgmbgsgwxbenglltcwv.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY=
   'sb_publishable_Qa-0cZ5V15zHHYIWD_SXcA_yCZ0N2GM';
+const ADMIN_EMAIL='aattallah@kau.edu.sa';
 
 const db=window.supabase.createClient(
   SUPABASE_URL,
@@ -52,16 +53,32 @@ function setMessage(id,message='',type=''){
 
 async function verifyAdmin(){
   const {data:{session}}=await db.auth.getSession();
-  if(!session)location.href='./';
+  if(
+    !session ||
+    session.user.email?.toLowerCase()!==ADMIN_EMAIL.toLowerCase()
+  ){
+    location.href='./';
+    return false;
+  }
+  return true;
 }
 
 async function openFile(path){
-  const {data,error}=await db.storage
-    .from('attendance-excuses')
-    .createSignedUrl(path,120);
+  setMessage('excusesPageMessage');
+  try{
+    const {data,error}=await db.storage
+      .from('attendance-excuses')
+      .createSignedUrl(path,120);
 
-  if(error)throw error;
-  window.open(data.signedUrl,'_blank','noopener');
+    if(error)throw error;
+    window.open(data.signedUrl,'_blank','noopener');
+  }catch(error){
+    setMessage(
+      'excusesPageMessage',
+      error.message||'تعذر فتح المرفق.',
+      'error'
+    );
+  }
 }
 
 function openDiscussion(item){
@@ -78,13 +95,22 @@ function openDiscussion(item){
 }
 
 function openDecision(item,decision){
+  const labels={
+    Accepted:['قبول','اعتماد قبول العذر','ملاحظة القبول (اختيارية)'],
+    Rejected:['رفض','اعتماد رفض العذر','سبب الرفض (مطلوب)'],
+    MoreInfo:['طلب توضيح','إرسال طلب التوضيح','التوضيح المطلوب من الطالب']
+  };
+  const [title,buttonText,placeholder]=labels[decision]||labels.Rejected;
   $('decisionExcuseId').value=item.excuse_id;
   $('decisionValue').value=decision;
   $('decisionStudentTitle').textContent=
-    `${decision==='Accepted'?'قبول':'رفض'} عذر ${item.student_name}`;
+    `${title} لعذر ${item.student_name}`;
   $('decisionNote').value='';
+  $('decisionNote').placeholder=placeholder;
+  $('decisionNote').required=
+    window.ExcuseWorkflow.decisionNeedsNote(decision);
   $('submitDecisionButton').textContent=
-    decision==='Accepted'?'اعتماد قبول العذر':'اعتماد رفض العذر';
+    buttonText;
   setMessage('decisionMessage');
   decisionDialog.showModal();
 }
@@ -162,7 +188,7 @@ function render(rows){
     view.addEventListener('click',()=>openFile(item.file_path));
     actions.appendChild(view);
 
-    if(['Pending','MoreInfo'].includes(item.status)){
+    if(item.status==='Pending'){
       const discuss=document.createElement('button');
       discuss.className='discussion';
       discuss.textContent='استدعاء للمناقشة';
@@ -178,7 +204,12 @@ function render(rows){
       reject.textContent='رفض مباشر';
       reject.addEventListener('click',()=>openDecision(item,'Rejected'));
 
-      actions.append(discuss,accept,reject);
+      const moreInfo=document.createElement('button');
+      moreInfo.className='discussion';
+      moreInfo.textContent='طلب توضيح';
+      moreInfo.addEventListener('click',()=>openDecision(item,'MoreInfo'));
+
+      actions.append(discuss,accept,reject,moreInfo);
     }
 
     if(item.status==='DiscussionRequested'){
@@ -270,14 +301,25 @@ $('discussionAdminForm')?.addEventListener('submit',async event=>{
 
 $('decisionForm')?.addEventListener('submit',async event=>{
   event.preventDefault();
+  const action=$('decisionValue').value;
+  const note=$('decisionNote').value.trim();
+
+  if(window.ExcuseWorkflow.decisionNeedsNote(action)&&!note){
+    setMessage(
+      'decisionMessage',
+      action==='Rejected'?'اكتب سبب رفض العذر.':'اكتب التوضيح المطلوب من الطالب.',
+      'error'
+    );
+    return;
+  }
 
   $('submitDecisionButton').disabled=true;
 
   try{
     await rpc('admin_process_excuse',{
       p_excuse_id:$('decisionExcuseId').value,
-      p_action:$('decisionValue').value,
-      p_note:$('decisionNote').value.trim()||null,
+      p_action:action,
+      p_note:note||null,
       p_discussion_at:null,
       p_discussion_method:null,
       p_discussion_location:null,
@@ -312,6 +354,5 @@ $('closeDecisionDialog')?.addEventListener(
 $('refreshExcuses')?.addEventListener('click',loadExcuses);
 
 (async function init(){
-  await verifyAdmin();
-  await loadExcuses();
+  if(await verifyAdmin())await loadExcuses();
 })();
