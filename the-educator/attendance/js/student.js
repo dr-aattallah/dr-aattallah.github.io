@@ -24,8 +24,10 @@ const openLoginButton = $('openLoginButton');
 const backToPublic = $('backToPublic');
 const requestCodeForm = $('requestCodeForm');
 const verifyCodeForm = $('verifyCodeForm');
+const verifyEmailLinkForm = $('verifyEmailLinkForm');
 const requestCodeButton = $('requestCodeButton');
 const verifyCodeButton = $('verifyCodeButton');
+const verifyEmailLinkButton = $('verifyEmailLinkButton');
 const resendCodeButton = $('resendCodeButton');
 const sendAgainButton = $('sendAgainButton');
 const requestMessage = $('requestMessage');
@@ -97,7 +99,23 @@ function showEmailLink(maskedEmail){
       maskedEmail || 'البريد المسجل'
     }. افتح الرابط للانتقال مباشرة إلى سجلك.`;
   setMessage(emailLinkMessage);
-  sendAgainButton?.focus();
+  $('emailSignInLink')?.focus();
+}
+
+function parseEmailSignInToken(value){
+  try{
+    const url=new URL(String(value||'').trim());
+    if(
+      url.protocol!=='https:'||
+      url.hostname!=='obgmbgsgwxbenglltcwv.supabase.co'||
+      url.pathname!=='/auth/v1/verify'||
+      url.searchParams.get('type')!=='magiclink'
+    )return '';
+    const token=url.searchParams.get('token')||'';
+    return /^[0-9a-f]{40,128}$/i.test(token)?token:'';
+  }catch{
+    return '';
+  }
 }
 
 function showOtp(maskedEmail){
@@ -431,6 +449,44 @@ requestCodeForm?.addEventListener('submit',async event=>{
     setMessage(requestMessage,error.message,'error');
   }finally{
     setLoading(requestCodeButton,false);
+  }
+});
+
+verifyEmailLinkForm?.addEventListener('submit',async event=>{
+  event.preventDefault();
+  const tokenHash=parseEmailSignInToken($('emailSignInLink').value);
+  if(!tokenHash){
+    setMessage(
+      emailLinkMessage,
+      'الصق رابط Sign in الكامل الموجود في رسالة Supabase.',
+      'error'
+    );
+    return;
+  }
+
+  setLoading(verifyEmailLinkButton,true);
+  setMessage(emailLinkMessage);
+  try{
+    const {error}=await db.auth.verifyOtp({
+      token_hash:tokenHash,
+      type:'magiclink'
+    });
+    if(error)throw error;
+    if(await verifyExistingSession()){
+      await loadPortal();
+    }else{
+      throw new Error('تعذر فتح سجل الطالب.');
+    }
+  }catch(error){
+    setMessage(
+      emailLinkMessage,
+      /expired|invalid/i.test(error.message||'')
+        ? 'الرابط منتهي أو مستخدم سابقًا. اطلب رابطًا جديدًا.'
+        : (error.message||'تعذر التحقق من الرابط.'),
+      'error'
+    );
+  }finally{
+    setLoading(verifyEmailLinkButton,false);
   }
 });
 

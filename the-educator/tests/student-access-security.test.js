@@ -15,6 +15,10 @@ const migration = fs.readFileSync(
   ),
   'utf8'
 );
+const studentClient = fs.readFileSync(
+  path.join(root, 'attendance/js/student.js'),
+  'utf8'
+);
 
 test('student login uses provider-generated OTP and never a fixed token', () => {
   assert.match(edgeSource, /generateLink/);
@@ -28,6 +32,15 @@ test('student login safely falls back to a one-time email link', () => {
   assert.match(edgeSource, /delivery_method:\s*"magic_link"/);
   assert.match(edgeSource, /emailRedirectTo:\s*STUDENT_PORTAL_URL/);
   assert.match(edgeSource, /shouldCreateUser:\s*false/);
+});
+
+test('pasted sign-in links are restricted to this Supabase project', () => {
+  assert.match(
+    studentClient,
+    /url\.hostname!=='obgmbgsgwxbenglltcwv\.supabase\.co'/
+  );
+  assert.match(studentClient, /url\.pathname!=='\/auth\/v1\/verify'/);
+  assert.match(studentClient, /token_hash:tokenHash/);
 });
 
 test('student login limits requests, attempts, and expiry', () => {
