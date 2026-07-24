@@ -1,0 +1,101 @@
+name: Attendance operational monitor
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: attendance-operational-monitor
+  cancel-in-progress: true
+
+jobs:
+  health-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check production services
+        id: health
+        shell: bash
+        env:
+          SITE_URL: https://dr-aattallah.github.io/the-educator/attendance/
+          PILOT_URL: https://dr-aattallah.github.io/the-educator/attendance/admin/pilot.html
+          SUPABASE_URL: https://obgmbgsgwxbenglltcwv.supabase.co
+          SUPABASE_KEY: sb_publishable_Qa-0cZ5V15zHHYIWD_SXcA_yCZ0N2GM
+        run: |
+          set -uo pipefail
+          failures=()
+
+          check_url() {
+            local name="$1"
+            local url="$2"
+            shift 2
+            if ! curl --fail --silent --show-error \
+              --retry 2 --retry-delay 3 --max-time 20 "$@" "$url" \
+              >/dev/null; then
+              failures+=("$name")
+            fi
+          }
+
+          check_url "بوابة الحضور" "$SITE_URL"
+          check_url "لوحة التجربة الميدانية" "$PILOT_URL"
+          check_url "Supabase Auth" "$SUPABASE_URL/auth/v1/health" \
+            -H "apikey: $SUPABASE_KEY"
+          check_url "Supabase REST" "$SUPABASE_URL/rest/v1/" \
+            -H "apikey: $SUPABASE_KEY"
+
+          if ((${#failures[@]})); then
+            printf 'تعذر الوصول إلى: %s\n' "${failures[*]}" | tee health-failure.txt
+            exit 1
+          fi
+
+          echo "جميع نقاط الخدمة الأساسية سليمة."
+
+      - name: Open or update incident
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = "[تشغيل] تعطل خدمة في نظام الحضور";
+            const marker = "<!-- attendance-operational-monitor -->";
+            const body = `${marker}
+            رصد الفحص الآلي تعذر الوصول إلى خدمة أساسية.
+
+            - وقت الفحص: ${new Date().toISOString()}
+            - تشغيل الإجراء: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}
+
+            يلزم تطبيق دليل الاستجابة للحوادث في:
+            \`the-educator/docs/attendance-operations-runbook.md\``;
+            const { data } = await github.rest.issues.listForRepo({
+              ...context.repo,
+              state: "open",
+              labels: "attendance-incident"
+            });
+            const existing = data.find(issue => issue.body?.includes(marker));
+            if (existing) {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: existing.number,
+                body
+              });
+            } else {
+              try {
+                await github.rest.issues.create({
+                  ...context.repo,
+                  title,
+                  body,
+                  labels: ["attendance-incident"]
+                });
+              } catch (error) {
+                await github.rest.issues.create({
+                  ...context.repo,
+                  title,
+                  body
+                });
+              }
+            }
+

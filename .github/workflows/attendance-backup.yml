@@ -1,0 +1,92 @@
+name: Attendance database backup
+
+on:
+  schedule:
+    - cron: "15 22 * * *"
+  workflow_dispatch:
+    inputs:
+      verify_restore:
+        description: Restore the backup into the isolated verification database
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: attendance-database-backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+      RESTORE_TEST_DATABASE_URL: ${{ secrets.RESTORE_TEST_DATABASE_URL }}
+    steps:
+      - name: Validate backup configuration
+        id: config
+        shell: bash
+        run: |
+          if [[ -z "$SUPABASE_DB_URL" ]]; then
+            echo "::warning::SUPABASE_DB_URL is not configured; no backup was produced."
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install PostgreSQL client
+        if: steps.config.outputs.configured == 'true'
+        run: sudo apt-get update && sudo apt-get install -y postgresql-client
+
+      - name: Create encrypted-transport database backup
+        if: steps.config.outputs.configured == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p backup
+          stamp="$(date -u +%Y%m%dT%H%M%SZ)"
+          pg_dump "$SUPABASE_DB_URL" \
+            --format=custom \
+            --no-owner \
+            --no-privileges \
+            --file="backup/the-educator-$stamp.dump"
+          sha256sum backup/*.dump > backup/SHA256SUMS
+
+      - name: Verify backup structure
+        if: steps.config.outputs.configured == 'true'
+        shell: bash
+        run: |
+          pg_restore --list backup/*.dump > backup/restore-list.txt
+          test -s backup/restore-list.txt
+          grep -q "TABLE DATA public" backup/restore-list.txt
+
+      - name: Restore into isolated verification database
+        if: >-
+          steps.config.outputs.configured == 'true' &&
+          inputs.verify_restore == true
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -z "$RESTORE_TEST_DATABASE_URL" ]]; then
+            echo "::error::RESTORE_TEST_DATABASE_URL is required for restore verification."
+            exit 1
+          fi
+          pg_restore \
+            --dbname="$RESTORE_TEST_DATABASE_URL" \
+            --clean --if-exists --no-owner --no-privileges \
+            backup/*.dump
+          psql "$RESTORE_TEST_DATABASE_URL" \
+            -v ON_ERROR_STOP=1 \
+            -c "select count(*) from public.attendance_sessions;"
+
+      - name: Upload backup artifact
+        if: steps.config.outputs.configured == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: attendance-backup-${{ github.run_id }}
+          path: backup/
+          retention-days: 30
+          if-no-files-found: error
+
