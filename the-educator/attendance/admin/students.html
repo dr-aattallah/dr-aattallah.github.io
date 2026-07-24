@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>إدارة الطلاب — The Educator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/attendance.css">
+  <link rel="stylesheet" href="../css/students-admin.css?v=20260725">
+</head>
+<body class="students-admin-page">
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
+  <header class="students-nav liquid-glass">
+    <a class="brand" href="./"><span class="brand-orb">E</span><span>The Educator</span></a>
+    <nav aria-label="تنقل إدارة الطلاب">
+      <a href="./courses.html">المقررات الفصلية</a>
+      <a href="./reports.html">التقارير</a>
+      <a href="./">إدارة الجلسات</a>
+    </nav>
+  </header>
+
+  <main class="students-shell">
+    <section class="students-heading">
+      <div><span class="eyebrow">إدارة التسجيل</span><h1>طلاب المقررات</h1><p>أضف الطلاب، انقل الشعب، عالج الانسحاب والتسجيل المتأخر، أو استورد قائمة CSV.</p></div>
+      <button id="refreshButton" class="secondary-button" type="button">تحديث</button>
+    </section>
+
+    <section id="pageMessage" class="page-message liquid-glass" role="status" aria-live="polite">جارٍ التحقق من الصلاحية...</section>
+    <section id="rosterView" class="is-hidden">
+      <section class="roster-toolbar liquid-glass">
+        <label><span>المقرر</span><select id="courseSelector"></select></label>
+        <label><span>بحث</span><input id="studentSearch" type="search" placeholder="الاسم أو الرقم الجامعي"></label>
+        <label><span>الحالة</span><select id="statusFilter"><option value="">الكل</option><option value="Active">نشط</option><option value="Pending">معلق</option><option value="Dropped">منسحب</option><option value="Completed">مكتمل</option></select></label>
+      </section>
+
+      <section class="roster-stats">
+        <article class="liquid-glass"><span>إجمالي القائمة</span><strong id="totalStudents">0</strong></article>
+        <article class="liquid-glass"><span>النشطون</span><strong id="activeStudents">0</strong></article>
+        <article class="liquid-glass"><span>المعلقون</span><strong id="pendingStudents">0</strong></article>
+        <article class="liquid-glass"><span>المنسحبون</span><strong id="droppedStudents">0</strong></article>
+      </section>
+
+      <section class="roster-grid">
+        <article class="roster-card liquid-glass">
+          <div class="card-head"><div><span class="eyebrow">القائمة الحالية</span><h2>الطلاب المسجلون</h2></div><span id="visibleCount" class="count-pill">0</span></div>
+          <div class="table-wrap"><table><thead><tr><th>الطالب</th><th>الرقم الجامعي</th><th>الشعبة</th><th>الحالة</th><th>حفظ</th></tr></thead><tbody id="rosterBody"></tbody></table></div>
+          <div id="rosterEmpty" class="empty-state is-hidden">لا توجد سجلات مطابقة.</div>
+        </article>
+
+        <aside class="roster-side">
+          <form id="addStudentForm" class="roster-card liquid-glass">
+            <span class="eyebrow">إضافة أو تحديث</span><h2>تسجيل طالب</h2>
+            <label><span>الرقم الجامعي</span><input id="universityId" required maxlength="40"></label>
+            <label><span>الشعبة</span><input id="studentSection" maxlength="100"></label>
+            <label><span>الحالة</span><select id="studentStatus"><option value="Active">نشط</option><option value="Pending">معلق</option><option value="Dropped">منسحب</option><option value="Completed">مكتمل</option></select></label>
+            <button id="saveStudentButton" class="primary-button" type="submit">حفظ التسجيل</button>
+            <p id="formMessage" class="form-message" aria-live="polite"></p>
+          </form>
+
+          <form id="importForm" class="roster-card liquid-glass">
+            <span class="eyebrow">استيراد جماعي</span><h2>رفع قائمة CSV</h2>
+            <p>الأعمدة: <code>university_id,section,status</code> — بحد أقصى 500 طالب.</p>
+            <input id="csvFile" type="file" accept=".csv,text/csv" required>
+            <button id="importButton" class="secondary-button" type="submit">استيراد القائمة</button>
+            <p id="importMessage" class="form-message" aria-live="polite"></p>
+          </form>
+        </aside>
+      </section>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/role-access.js"></script>
+  <script src="../js/roster-utils.js?v=20260725"></script>
+  <script src="../js/students-admin.js?v=20260725"></script>
+  <script src="../../assets/js/system-navigation.js?v=20260724-spacious-nav"></script>
+  <script src="/the-educator/assets/js/iso-accessibility.js?v=20260724-iso-ux"></script>
+</body>
+</html>

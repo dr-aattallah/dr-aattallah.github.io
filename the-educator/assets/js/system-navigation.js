@@ -76,6 +76,11 @@
         icon: 'sessions'
       },
       {
+        label: 'إدارة الطلاب',
+        href: `${ATTENDANCE_ROOT}admin/students.html`,
+        icon: 'student'
+      },
+      {
         label: 'الجلسة الحية',
         href: `${ATTENDANCE_ROOT}admin/live-session.html`,
         icon: 'live',
