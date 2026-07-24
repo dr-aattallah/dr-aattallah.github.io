@@ -591,7 +591,7 @@ html[lang="ar"] .hero-card > *{
   z-index:1;
   top:34%;
   left:50%;
-  width:min(248px,37%);
+  width:min(285px,42.5%);
   aspect-ratio:3 / 2;
   overflow:hidden;
   border:0;
@@ -853,7 +853,7 @@ h1{
   border-radius:999px;
   text-decoration:none;
   font-weight:900;
-  font-size:14px;
+  font-size:15px;
   background:var(--navy);
   color:#fff;
   box-shadow:0 13px 25px rgba(11,31,58,.18);
@@ -1794,60 +1794,39 @@ html[dir="rtl"] .office-details .map-link{
 
 .hero-content > .buttons .btn{
   min-height:48px;
+  font-size:15.5px;
   color:#fff;
   border:1px solid rgba(255,255,255,.16);
   box-shadow:
-    0 14px 28px rgba(11,31,58,.18),
+    0 12px 24px rgba(11,31,58,.14),
     inset 0 1px 0 rgba(255,255,255,.18);
 }
 
 .hero-content > .buttons .btn:nth-child(odd){
-  background:linear-gradient(135deg,var(--navy-2),var(--navy));
-  border-color:rgba(11,31,58,.3);
+  background:linear-gradient(135deg,#285f91,#173f6a);
+  border-color:rgba(109,163,207,.34);
 }
 
 .hero-content > .buttons .btn:nth-child(even){
-  background:
-    linear-gradient(135deg,rgba(34,105,116,.96),rgba(8,52,62,.99)),
-    #0b4652;
-  border-color:rgba(201,241,246,.42);
+  background:linear-gradient(135deg,#39848e,#17616c);
+  border-color:rgba(201,241,246,.34);
 }
 
 .btn.gold,
 .hero-content > .buttons .btn:nth-child(even){
-  position:relative;
-  isolation:isolate;
-  overflow:hidden;
   color:#f8feff;
-  background:
-    linear-gradient(135deg,rgba(34,105,116,.96),rgba(8,52,62,.99)),
-    #0b4652;
-  border-color:rgba(201,241,246,.42);
-  text-shadow:0 1px 7px rgba(0,20,27,.78);
+  background:linear-gradient(135deg,#39848e,#17616c);
+  border-color:rgba(201,241,246,.34);
+  text-shadow:0 1px 5px rgba(0,20,27,.58);
   box-shadow:
-    0 14px 30px rgba(7,48,57,.26),
-    inset 0 1px 0 rgba(231,253,255,.34),
-    inset 0 -1px 0 rgba(112,200,210,.16);
+    0 12px 24px rgba(7,48,57,.17),
+    inset 0 1px 0 rgba(231,253,255,.22);
 }
 
 .btn.gold::before,
 .hero-content > .buttons .btn:nth-child(even)::before{
-  content:"";
-  position:absolute;
-  z-index:0;
-  top:-75%;
-  bottom:-75%;
-  left:-58%;
-  width:44%;
-  transform:rotate(16deg);
-  background:
-    radial-gradient(ellipse at center,rgba(255,255,255,.76) 0 6%,rgba(211,249,255,.35) 18%,transparent 52%),
-    linear-gradient(90deg,transparent,rgba(225,251,255,.42),transparent);
-  filter:blur(2.5px);
-  mix-blend-mode:screen;
-  opacity:0;
-  pointer-events:none;
-  animation:icy-button-glint 6.8s cubic-bezier(.4,0,.25,1) infinite;
+  content:none;
+  animation:none;
 }
 
 .btn.gold:hover,
@@ -1855,21 +1834,11 @@ html[dir="rtl"] .office-details .map-link{
 .hero-content > .buttons .btn:nth-child(even):hover,
 .hero-content > .buttons .btn:nth-child(even):focus-visible{
   color:#fff;
-  border-color:rgba(227,252,255,.7);
-  background:
-    linear-gradient(135deg,rgba(40,119,131,.98),rgba(7,58,69,.99)),
-    #0b4652;
+  border-color:rgba(227,252,255,.52);
+  background:linear-gradient(135deg,#438e98,#1c6974);
   box-shadow:
-    0 18px 36px rgba(7,48,57,.34),
-    0 0 0 2px rgba(205,246,250,.1),
-    inset 0 1px 0 rgba(240,254,255,.44);
-}
-
-@keyframes icy-button-glint{
-  0%,24%{left:-58%;opacity:0;transform:rotate(16deg) scale(.82)}
-  34%{opacity:.45}
-  48%{left:42%;opacity:.82;transform:rotate(11deg) scale(1)}
-  61%,100%{left:126%;opacity:0;transform:rotate(7deg) scale(.86)}
+    0 15px 29px rgba(7,48,57,.24),
+    inset 0 1px 0 rgba(240,254,255,.3);
 }
 
 .hero-content > .buttons .btn:hover,
@@ -1979,7 +1948,7 @@ main section:nth-of-type(3n)::after{
   html[dir="ltr"] .hero-flag,
   html[dir="rtl"] .hero-flag{
     top:29%;
-    width:210px;
+    width:242px;
     transform:translateX(-50%);
     opacity:.16;
   }
