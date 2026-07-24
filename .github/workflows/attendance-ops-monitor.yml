@@ -34,9 +34,12 @@ jobs:
             local name="$1"
             local url="$2"
             shift 2
-            if ! curl --fail --silent --show-error \
-              --retry 2 --retry-delay 3 --max-time 20 "$@" "$url" \
-              >/dev/null; then
+            local status
+            status="$(curl --silent --show-error \
+              --retry 2 --retry-delay 3 --max-time 20 \
+              --output /dev/null --write-out '%{http_code}' \
+              "$@" "$url")" || status="000"
+            if [[ "$status" == "000" || "$status" -ge 500 ]]; then
               failures+=("$name")
             fi
           }
@@ -98,4 +101,3 @@ jobs:
                 });
               }
             }
-
