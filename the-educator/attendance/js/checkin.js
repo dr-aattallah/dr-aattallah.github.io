@@ -86,6 +86,70 @@ let cardRead = false;
 let activeSession = null;
 let currentStudentId = '';
 let countdownTimer = null;
+let retryFlushInProgress = false;
+
+function pendingAttendancePayload(universityId) {
+  return {
+    universityId,
+    sessionId: activeSession?.session_id,
+    tagNumber: selectedTag?.number,
+    cardUid: selectedTag?.uid,
+    sessionEndsAt: new Date(activeSession?.end_time || 0).getTime()
+  };
+}
+
+async function sendPendingAttendance(item) {
+  const response = await fetch(
+    `${SUPABASE_URL}/rest/v1/rpc/record_attendance`,
+    {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE_PUBLISHABLE_KEY,
+        Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        p_university_id: item.universityId,
+        p_session_id: item.sessionId,
+        p_tag_number: item.tagNumber,
+        p_card_uid: item.cardUid
+      })
+    }
+  );
+  const payload = await response.json().catch(() => null);
+  if (!response.ok) {
+    const error = new Error(
+      payload?.message || `تعذر إرسال الحضور (${response.status}).`
+    );
+    error.retryable = response.status >= 500 || response.status === 429;
+    throw error;
+  }
+  return payload;
+}
+
+async function flushPendingAttendance() {
+  if (
+    retryFlushInProgress ||
+    !navigator.onLine ||
+    !window.CheckinOfflineQueue
+  ) return;
+  retryFlushInProgress = true;
+  try {
+    const outcome = await window.CheckinOfflineQueue.flush(
+      sessionStorage,
+      sendPendingAttendance
+    );
+    const success = outcome.results.find(result => result.success);
+    if (success) {
+      showResult(success.result, success.item.universityId);
+    }
+  } finally {
+    retryFlushInProgress = false;
+  }
+}
+
+window.addEventListener('online', flushPendingAttendance);
 
 async function loadActiveSession() {
   const response = await fetch(
@@ -347,6 +411,7 @@ function statusToArabic(status) {
     Late: 'متأخر',
     Absent: 'غائب',
     Partial: 'حضور جزئي',
+    PendingSync: 'بانتظار المزامنة',
     Rejected: 'مرفوض'
   };
 
@@ -408,8 +473,9 @@ function showResult(result, submittedStudentId) {
     }
 
     if (resultText) {
-      resultText.textContent =
-        result.student_name
+      resultText.textContent = result.status === 'PendingSync'
+        ? 'سيُرسل الطلب تلقائيًا عند عودة الشبكة خلال صلاحية الجلسة.'
+        : result.student_name
           ? `مرحبًا ${result.student_name}، تم حفظ حضورك بنجاح.`
           : 'تم حفظ حضورك بنجاح.';
     }
@@ -468,44 +534,7 @@ async function recordAttendance(universityId) {
     );
   }
 
-  const response = await fetch(
-    `${SUPABASE_URL}/rest/v1/rpc/record_attendance`,
-    {
-      method: 'POST',
-      headers: {
-        apikey: SUPABASE_PUBLISHABLE_KEY,
-        Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
-      body: JSON.stringify({
-        p_university_id: universityId,
-        p_session_id: activeSession.session_id,
-        p_tag_number: selectedTag.number,
-        p_card_uid: selectedTag.uid
-      })
-    }
-  );
-
-  let payload = null;
-
-  try {
-    payload = await response.json();
-  } catch {
-    payload = null;
-  }
-
-  if (!response.ok) {
-    const serverMessage =
-      payload?.message ||
-      payload?.details ||
-      payload?.hint ||
-      `تعذر الاتصال بخدمة الحضور (${response.status}).`;
-
-    throw new Error(serverMessage);
-  }
-
-  return payload;
+  return sendPendingAttendance(pendingAttendancePayload(universityId));
 }
 
 form?.addEventListener(
@@ -579,6 +608,27 @@ form?.addEventListener(
         studentId
       );
     } catch (error) {
+      const retryable =
+        !navigator.onLine ||
+        error?.retryable !== false;
+      const queued = retryable && window.CheckinOfflineQueue
+        ? window.CheckinOfflineQueue.enqueue(
+          sessionStorage,
+          pendingAttendancePayload(studentId)
+        )
+        : {queued:false};
+
+      if (queued.queued || queued.reason === 'duplicate') {
+        showResult(
+          {
+            success:true,
+            status:'PendingSync',
+            message:'حُفظ الطلب مؤقتًا بأمان'
+          },
+          studentId
+        );
+        return;
+      }
       showResult(
         {
           success: false,
