@@ -591,7 +591,7 @@ html[lang="ar"] .hero-card > *{
   z-index:1;
   top:34%;
   left:50%;
-  width:min(285px,42.5%);
+  width:min(228px,34%);
   aspect-ratio:3 / 2;
   overflow:hidden;
   border:0;
@@ -603,7 +603,7 @@ html[lang="ar"] .hero-card > *{
   -webkit-backdrop-filter:blur(18px) saturate(135%);
   mask-image:radial-gradient(ellipse at center,black 22%,rgba(0,0,0,.88) 43%,rgba(0,0,0,.36) 66%,transparent 88%);
   -webkit-mask-image:radial-gradient(ellipse at center,black 22%,rgba(0,0,0,.88) 43%,rgba(0,0,0,.36) 66%,transparent 88%);
-  opacity:.34;
+  opacity:.27;
   pointer-events:none;
   transition:transform 1.15s cubic-bezier(.22,.72,.24,1),opacity .5s ease;
   animation:hero-flag-float 10.8s ease-in-out infinite;
@@ -1536,6 +1536,102 @@ html[dir="rtl"] #about .lead{
   font-weight:900;
 }
 
+.publication-expand{
+  width:100%;
+  min-height:84px;
+  margin:28px 0 0;
+  padding:18px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  border:1px solid rgba(154,190,219,.42);
+  border-radius:24px;
+  cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,#274d74,#112f50);
+  box-shadow:
+    0 15px 30px rgba(11,31,58,.18),
+    inset 0 1px 0 rgba(255,255,255,.18);
+  text-align:start;
+  transition:transform .22s ease,box-shadow .22s ease,background .22s ease;
+}
+
+.publication-expand:hover,
+.publication-expand:focus-visible{
+  transform:translateY(-2px);
+  background:linear-gradient(135deg,#315c86,#173a60);
+  box-shadow:
+    0 19px 38px rgba(11,31,58,.24),
+    inset 0 1px 0 rgba(255,255,255,.24);
+  outline:none;
+}
+
+.publication-expand-copy{
+  display:grid;
+  gap:4px;
+}
+
+.publication-expand-copy strong{
+  color:#fff;
+  font-size:19px;
+  line-height:1.35;
+}
+
+.publication-expand-copy small{
+  color:rgba(255,255,255,.76);
+  font-size:14.5px;
+  line-height:1.45;
+}
+
+.publication-expand-arrow{
+  width:18px;
+  height:18px;
+  flex:0 0 auto;
+  border-right:3px solid #fff;
+  border-bottom:3px solid #fff;
+  transform:rotate(45deg) translate(-2px,-2px);
+  transition:transform .35s cubic-bezier(.22,.72,.24,1);
+}
+
+.publication-expand[aria-expanded="true"] .publication-expand-arrow{
+  transform:rotate(225deg) translate(-2px,-2px);
+}
+
+.publication-archive-panel{
+  display:grid;
+  grid-template-rows:0fr;
+  opacity:0;
+  visibility:hidden;
+  transition:
+    grid-template-rows .55s cubic-bezier(.22,.72,.24,1),
+    opacity .32s ease,
+    visibility 0s linear .55s;
+}
+
+.publication-archive-panel.is-open{
+  grid-template-rows:1fr;
+  opacity:1;
+  visibility:visible;
+  transition:
+    grid-template-rows .62s cubic-bezier(.22,.72,.24,1),
+    opacity .38s ease .08s,
+    visibility 0s;
+}
+
+.publication-archive-inner{
+  min-height:0;
+  overflow:hidden;
+}
+
+.publication-archive-inner .pub{
+  margin-top:18px;
+}
+
+.publication-archive-inner > .buttons{
+  margin-top:20px;
+}
+
 .pub li{
   counter-increment:pub-counter;
   position:relative;
@@ -1954,7 +2050,7 @@ main section:nth-of-type(3n)::after{
   html[dir="ltr"] .hero-flag,
   html[dir="rtl"] .hero-flag{
     top:29%;
-    width:242px;
+    width:194px;
     transform:translateX(-50%);
     opacity:.16;
   }
@@ -2119,6 +2215,27 @@ main section:nth-of-type(3n)::after{
   .publication-heading span{
     display:block;
     margin-top:6px;
+  }
+
+  .publication-expand{
+    min-height:78px;
+    margin-top:22px;
+    padding:16px 18px;
+    border-radius:20px;
+    gap:14px;
+  }
+
+  .publication-expand-copy strong{
+    font-size:17px;
+  }
+
+  .publication-expand-copy small{
+    font-size:13.5px;
+  }
+
+  .publication-expand-arrow{
+    width:16px;
+    height:16px;
   }
 
   .contact-intro{
@@ -2636,12 +2753,17 @@ main section:nth-of-type(3n)::after{
         </li>
       </ol>
 
-      <div class="publication-heading">
-        <h3>Additional Peer-Reviewed Publications</h3>
-        <span>Full academic record continued</span>
-      </div>
+      <button class="publication-expand" type="button" aria-expanded="false" aria-controls="additional-publications">
+        <span class="publication-expand-copy">
+          <strong>Additional Peer-Reviewed Publications</strong>
+          <small>Full academic record continued</small>
+        </span>
+        <span class="publication-expand-arrow" aria-hidden="true"></span>
+      </button>
 
-      <ol class="pub continued">
+      <div class="publication-archive-panel" id="additional-publications" aria-hidden="true" inert>
+        <div class="publication-archive-inner">
+          <ol class="pub continued">
         <li>
           <strong>Analyzing the Big Data Security Through a Unified Decision-Making Approach.</strong>
           Intelligent Automation &amp; Soft Computing, vol. 32, pp. 1071-1088, 2022. <span class="doi">DOI: 10.32604/iasc.2022.022569</span>
@@ -2682,10 +2804,12 @@ main section:nth-of-type(3n)::after{
           <strong>A Hybrid Fuzzy Rule-Based Multi-Criteria Framework for Security Assessment of Medical Device Software.</strong>
           International Journal of Intelligent Engineering and Systems, vol. 13, pp. 51-62, 2020. <span class="doi">DOI: 10.22266/ijies2020.1031.06</span>
         </li>
-      </ol>
+          </ol>
 
-      <div class="buttons">
-        <a class="btn gold" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank" rel="noopener">View Full Google Scholar Profile</a>
+          <div class="buttons">
+            <a class="btn gold" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank" rel="noopener">View Full Google Scholar Profile</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2952,6 +3076,17 @@ main section:nth-of-type(3n)::after{
 
   toggle.addEventListener("click", () => {
     applyLanguage(document.documentElement.lang === "ar" ? "en" : "ar", true);
+  });
+
+  const publicationExpand = document.querySelector(".publication-expand");
+  const publicationArchive = document.getElementById("additional-publications");
+
+  publicationExpand?.addEventListener("click", () => {
+    const expanded = publicationExpand.getAttribute("aria-expanded") === "true";
+    publicationExpand.setAttribute("aria-expanded", String(!expanded));
+    publicationArchive.setAttribute("aria-hidden", String(expanded));
+    publicationArchive.inert = expanded;
+    publicationArchive.classList.toggle("is-open", !expanded);
   });
 
   applyLanguage(document.documentElement.lang === "en" ? "en" : "ar");
