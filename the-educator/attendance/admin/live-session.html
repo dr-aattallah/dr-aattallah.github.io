@@ -14,7 +14,7 @@
   <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
   <header class="live-nav liquid-glass">
     <a class="brand" href="./"><span class="brand-orb">E</span><span>The Educator</span></a>
-    <div class="live-connection"><span class="status-dot"></span><span>الجلسة الحية</span></div>
+    <div class="live-connection"><span class="status-dot"></span><span id="connectionLabel">تحديث مباشر</span></div>
     <div class="live-nav-actions">
       <a href="./excuses.html" class="nav-pill">الأعذار</a>
       <a href="./" class="nav-pill">إدارة الجلسات</a>
@@ -63,7 +63,10 @@
         <article class="liquid-glass"><span>المسجلون</span><strong id="studentCount">0</strong></article>
         <article class="liquid-glass"><span>حاضر</span><strong id="presentCount">0</strong></article>
         <article class="liquid-glass"><span>متأخر</span><strong id="lateCount">0</strong></article>
+        <article class="liquid-glass"><span>غائب</span><strong id="absentCount">0</strong></article>
         <article class="liquid-glass"><span>لم يسجل</span><strong id="unmarkedCount">0</strong></article>
+        <article class="liquid-glass"><span>نسبة الحضور</span><strong id="attendancePercentage">0%</strong></article>
+        <article class="liquid-glass last-attendee"><span>آخر مسجل</span><strong id="lastAttendee">—</strong><small id="lastAttendeeTime">—</small></article>
       </section>
 
       <section class="roster-card liquid-glass">
@@ -106,10 +109,8 @@
   </dialog>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/live-session-calculations.js"></script>
   <script src="../js/live-session.js"></script>
   <script src="../../assets/js/system-navigation.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="../js/student.js"></script>
-<script src="../../assets/js/system-navigation.js"></script>
 </body>
 </html>
