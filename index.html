@@ -36,6 +36,13 @@
 
 <meta name="citation_author" content="Attaallah, Abdulaziz" />
 <meta name="citation_author_institution" content="King Abdulaziz University" />
+<meta name="citation_title" content="Explainable AI-Driven Metrics for Transparent Software Quality Prediction" />
+<meta name="citation_publication_date" content="2026/07/13" />
+<meta name="citation_journal_title" content="IEEE Access" />
+<meta name="citation_volume" content="14" />
+<meta name="citation_firstpage" content="107875" />
+<meta name="citation_doi" content="10.1109/ACCESS.2026.3712592" />
+<meta name="citation_pdf_url" content="https://dr-aattallah.github.io/assets/files/Explainable_AI-Driven_Metrics_for_Transparent_Software_Quality_Prediction.pdf" />
 <meta name="DC.title" content="Dr. Abdulaziz Attaallah Academic Portfolio" />
 <meta name="DC.creator" content="Dr. Abdulaziz Attaallah" />
 <meta name="DC.subject" content="Computer Science; Software Engineering; Cybersecurity; Artificial Intelligence; Blockchain; Digital Transformation" />
@@ -124,6 +131,31 @@
       },
       "about": {
         "@id": "https://dr-aattallah.github.io/#person"
+      }
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "headline": "Explainable AI-Driven Metrics for Transparent Software Quality Prediction",
+      "datePublished": "2026-07-13",
+      "isPartOf": {
+        "@type": "Periodical",
+        "name": "IEEE Access"
+      },
+      "author": [
+        {
+          "@id": "https://dr-aattallah.github.io/#person"
+        },
+        {
+          "@type": "Person",
+          "name": "Khalil AlSulbi"
+        }
+      ],
+      "identifier": "https://doi.org/10.1109/ACCESS.2026.3712592",
+      "url": "https://doi.org/10.1109/ACCESS.2026.3712592",
+      "encoding": {
+        "@type": "MediaObject",
+        "contentUrl": "https://dr-aattallah.github.io/assets/files/Explainable_AI-Driven_Metrics_for_Transparent_Software_Quality_Prediction.pdf",
+        "encodingFormat": "application/pdf"
       }
     }
   ]
@@ -908,7 +940,7 @@ p{
 }
 
 .pub.continued{
-  counter-reset:pub-counter 6;
+  counter-reset:pub-counter 7;
 }
 
 .publication-heading{
@@ -973,6 +1005,65 @@ p{
   margin-bottom:4px;
 }
 
+.pub li.featured-publication{
+  background:linear-gradient(135deg,rgba(11,31,58,.98),rgba(18,53,95,.95));
+  border-color:rgba(176,138,53,.46);
+  color:rgba(255,255,255,.84);
+  box-shadow:0 20px 44px rgba(11,31,58,.16);
+}
+
+.pub li.featured-publication::before{
+  background:var(--gold);
+  color:#fff;
+}
+
+.pub li.featured-publication strong{
+  color:#fff;
+  font-size:18px;
+}
+
+.pub li.featured-publication .doi{
+  color:#f5dfaa;
+}
+
+.publication-badge{
+  display:inline-flex;
+  margin-bottom:8px;
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(176,138,53,.2);
+  color:#f5dfaa;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+.publication-access{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:15px;
+}
+
+.publication-access a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:42px;
+  padding:10px 16px;
+  border-radius:999px;
+  text-decoration:none;
+  background:var(--gold);
+  color:#fff;
+  font-weight:900;
+}
+
+.publication-access a.secondary{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.28);
+}
+
 .doi{
   color:var(--gold-dark);
   font-weight:900;
@@ -982,6 +1073,37 @@ p{
   color:var(--navy);
   font-weight:900;
   overflow-wrap:anywhere;
+}
+
+.office-card{
+  grid-column:span 2;
+  background:linear-gradient(145deg,rgba(176,138,53,.1),rgba(255,255,255,.86));
+  border-color:var(--gold-border);
+}
+
+.office-details{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  align-items:start;
+}
+
+.office-details p{
+  margin:0;
+}
+
+.map-link{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:14px;
+  text-decoration:none;
+  color:var(--gold-dark) !important;
+}
+
+.map-link::before{
+  content:"⌖";
+  font-size:20px;
 }
 
 .footer{
@@ -1066,6 +1188,14 @@ p{
 
   .contact-actions{
     justify-content:flex-start;
+  }
+
+  .office-card{
+    grid-column:auto;
+  }
+
+  .office-details{
+    grid-template-columns:1fr;
   }
 }
 
@@ -1537,6 +1667,16 @@ p{
       </div>
 
       <ol class="pub">
+        <li class="featured-publication">
+          <span class="publication-badge">New · IEEE Access 2026</span>
+          <strong>Explainable AI-Driven Metrics for Transparent Software Quality Prediction.</strong>
+          Abdulaziz Attaallah and Khalil AlSulbi. IEEE Access, vol. 14, pp. 107875-107895, 2026.
+          <span class="doi">DOI: 10.1109/ACCESS.2026.3712592</span>
+          <div class="publication-access" aria-label="Access publication">
+            <a href="assets/files/Explainable_AI-Driven_Metrics_for_Transparent_Software_Quality_Prediction.pdf" target="_blank" rel="noopener">Read Full Paper (PDF)</a>
+            <a class="secondary" href="https://doi.org/10.1109/ACCESS.2026.3712592" target="_blank" rel="noopener">View on IEEE via DOI</a>
+          </div>
+        </li>
         <li>
           <strong>Security Test Case Prioritization Through Ant Colony Optimization Algorithm.</strong>
           Computer Systems Science and Engineering, vol. 47, pp. 3165-3195, 2023. <span class="doi">DOI: 10.32604/csse.2023.040259</span>
@@ -1671,6 +1811,21 @@ p{
           <div class="ar-card-title" lang="ar" dir="rtl">الجهة الأكاديمية</div>
           <p>King Abdulaziz University<br>Jeddah, Saudi Arabia</p>
           <div class="ar-card-text" lang="ar" dir="rtl">جامعة الملك عبدالعزيز، جدة، المملكة العربية السعودية.</div>
+        </div>
+
+        <div class="dual-card office-card">
+          <h3>Office &amp; Directions</h3>
+          <div class="ar-card-title" lang="ar" dir="rtl">المكتب ومعلومات الوصول</div>
+          <div class="office-details">
+            <div>
+              <p>Room No. 35F97 (354), 3rd Floor<br>Faculty of Computing and Information Technology, Building 70</p>
+              <a class="map-link" href="https://www.google.com/maps/place/%D9%83%D9%84%D9%8A%D8%A9+%D8%B9%D9%84%D9%88%D9%85+%D8%A7%D9%84%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA+%D9%88%D8%AA%D9%82%D9%86%D9%8A%D8%A9+%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA+-+%D8%B4%D8%B7%D8%B1+%D8%A7%D9%84%D8%B7%D9%84%D8%A7%D8%A8%25E2%2580%25AD/data=!4m7!3m6!1s0x15c3cddca9276515:0xd3fa51911327949c!8m2!3d21.496514!4d39.247456!16s%252Fg%252F11dxbnpg1g!19sChIJFWUnqdzNwxURnJQnE5FR-tM?authuser=0&amp;hl=ar&amp;rclk=1" target="_blank" rel="noopener" aria-label="Open the Faculty of Computing and Information Technology location in Google Maps">Open in Google Maps</a>
+            </div>
+            <div lang="ar" dir="rtl">
+              <p>غرفة رقم: ٣٥ ف ٩٧ (٣٥٤)، الدور الثالث<br>كلية الحاسبات وتقنية المعلومات، مبنى (٧٠)</p>
+              <a class="map-link" href="https://www.google.com/maps/place/%D9%83%D9%84%D9%8A%D8%A9+%D8%B9%D9%84%D9%88%D9%85+%D8%A7%D9%84%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA+%D9%88%D8%AA%D9%82%D9%86%D9%8A%D8%A9+%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA+-+%D8%B4%D8%B7%D8%B1+%D8%A7%D9%84%D8%B7%D9%84%D8%A7%D8%A8%25E2%2580%25AD/data=!4m7!3m6!1s0x15c3cddca9276515:0xd3fa51911327949c!8m2!3d21.496514!4d39.247456!16s%252Fg%252F11dxbnpg1g!19sChIJFWUnqdzNwxURnJQnE5FR-tM?authuser=0&amp;hl=ar&amp;rclk=1" target="_blank" rel="noopener" aria-label="فتح موقع كلية الحاسبات وتقنية المعلومات في خرائط Google">فتح الموقع في خرائط Google</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
