@@ -25,8 +25,12 @@
   function calculateReadiness(issues, metrics) {
     const issueValues = Object.values(issues || {}).map(Number);
     const blockingIssues = issueValues.filter((value) => value > 0).length;
-    const passed = Number(metrics?.passed_checks || 0);
-    const required = Object.keys(SCENARIOS).length;
+    const passed = Number(
+      metrics?.passed_scenarios ?? metrics?.passed_checks ?? 0
+    );
+    const required = Number(
+      metrics?.required_scenarios || Object.keys(SCENARIOS).length
+    );
     const coverage = Math.min(passed / required, 1);
     const score = Math.max(
       0,
@@ -36,7 +40,11 @@
     if (blockingIssues === 0 && coverage === 1) {
       return {score, state: 'جاهز للتعميم', tone: 'ready'};
     }
-    if (blockingIssues <= 1 && score >= 70) {
+    if (
+      blockingIssues <= 1 &&
+      coverage >= 2 / 3 &&
+      score >= 70
+    ) {
       return {score, state: 'جاهز لتجربة محدودة', tone: 'pilot'};
     }
     return {score, state: 'يحتاج معالجة قبل التجربة', tone: 'blocked'};
