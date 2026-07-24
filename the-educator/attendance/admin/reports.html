@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>تقارير المقررات — The Educator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/attendance.css">
+  <link rel="stylesheet" href="../css/reports.css">
+</head>
+<body class="reports-page">
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grain"></div>
+
+  <header class="reports-nav liquid-glass">
+    <a class="brand" href="./"><span class="brand-orb">E</span><span>The Educator</span></a>
+    <nav aria-label="تنقل التقارير">
+      <a href="./live-session.html">الجلسة الحية</a>
+      <a href="./">إدارة الجلسات</a>
+    </nav>
+  </header>
+
+  <main class="reports-shell">
+    <section class="reports-heading">
+      <div>
+        <span class="eyebrow">Priority 3</span>
+        <h1>تقارير المقررات</h1>
+        <p>إحصاءات مستقلة لكل مقرر، وقائمة واضحة بالطلاب المتجاوزين لنسبة 25%.</p>
+      </div>
+      <div class="report-actions no-print">
+        <button id="exportExcelButton" class="secondary-button" type="button" disabled>تصدير Excel</button>
+        <button id="exportPdfButton" class="primary-button" type="button" disabled>تصدير PDF</button>
+      </div>
+    </section>
+
+    <section class="report-filter liquid-glass no-print">
+      <label for="courseSelector">المقرر</label>
+      <select id="courseSelector" disabled></select>
+      <button id="refreshReportButton" class="secondary-button" type="button">تحديث التقرير</button>
+      <span id="reportProgress" role="status" aria-live="polite">جارٍ تحميل المقررات...</span>
+    </section>
+
+    <section id="reportEmpty" class="report-empty liquid-glass">لا توجد بيانات تقرير متاحة بعد.</section>
+
+    <section id="reportView" class="is-hidden">
+      <header class="print-heading">
+        <span>تقرير حضور المقرر</span>
+        <h2 id="reportCourseTitle">—</h2>
+        <p id="reportGeneratedAt">—</p>
+      </header>
+
+      <section class="report-stats">
+        <article class="liquid-glass"><span>الجلسات المحتسبة</span><strong id="countedSessions">0</strong></article>
+        <article class="liquid-glass"><span>الطلاب</span><strong id="studentCount">0</strong></article>
+        <article class="liquid-glass"><span>متوسط الحضور</span><strong id="averageAttendance">0%</strong></article>
+        <article class="liquid-glass denied-stat"><span>المحرومون</span><strong id="deniedCount">0</strong></article>
+      </section>
+
+      <section class="report-card liquid-glass">
+        <div class="report-card-head">
+          <div><span class="eyebrow">تفاصيل الطلاب</span><h2>إحصاءات الحضور</h2></div>
+          <label class="no-print" for="deniedOnly">
+            <input id="deniedOnly" type="checkbox">
+            عرض المحرومين فقط
+          </label>
+        </div>
+        <div class="table-wrap">
+          <table class="report-table">
+            <thead><tr><th>الرقم الجامعي</th><th>الاسم</th><th>الجلسات</th><th>حاضر</th><th>متأخر</th><th>غائب</th><th>نقاط الغياب</th><th>نسبة الحضور</th><th>نسبة الغياب</th><th>الحالة</th></tr></thead>
+            <tbody id="reportTableBody"></tbody>
+          </table>
+        </div>
+        <div id="tableEmpty" class="table-empty is-hidden">لا توجد نتائج مطابقة.</div>
+      </section>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/course-report-calculations.js"></script>
+  <script src="../js/reports.js"></script>
+  <script src="../../assets/js/system-navigation.js?v=20260724-reports"></script>
+</body>
+</html>
