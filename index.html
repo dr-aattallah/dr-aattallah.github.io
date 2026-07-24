@@ -589,25 +589,21 @@ html[lang="ar"] .hero-card > *{
 .hero-flag{
   position:absolute;
   z-index:1;
-  top:43%;
+  top:34%;
   left:50%;
-  width:min(285px,43%);
+  width:min(248px,37%);
   aspect-ratio:3 / 2;
   overflow:hidden;
-  border:1px solid rgba(225,251,247,.28);
-  border-radius:30px;
+  border:0;
+  border-radius:0;
   background:
-    linear-gradient(135deg,rgba(255,255,255,.16),rgba(218,244,241,.05)),
-    rgba(14,88,70,.08);
-  box-shadow:
-    0 22px 54px rgba(14,76,65,.09),
-    inset 0 1px 0 rgba(255,255,255,.35),
-    inset 0 -1px 0 rgba(156,224,214,.12);
+    radial-gradient(ellipse at center,rgba(215,249,244,.13),rgba(14,88,70,.035) 52%,transparent 78%);
+  box-shadow:none;
   backdrop-filter:blur(18px) saturate(135%);
   -webkit-backdrop-filter:blur(18px) saturate(135%);
-  mask-image:radial-gradient(ellipse at center,black 30%,rgba(0,0,0,.76) 58%,transparent 90%);
-  -webkit-mask-image:radial-gradient(ellipse at center,black 30%,rgba(0,0,0,.76) 58%,transparent 90%);
-  opacity:.3;
+  mask-image:radial-gradient(ellipse at center,black 22%,rgba(0,0,0,.88) 43%,rgba(0,0,0,.36) 66%,transparent 88%);
+  -webkit-mask-image:radial-gradient(ellipse at center,black 22%,rgba(0,0,0,.88) 43%,rgba(0,0,0,.36) 66%,transparent 88%);
+  opacity:.34;
   pointer-events:none;
   transition:transform 1.15s cubic-bezier(.22,.72,.24,1),opacity .5s ease;
   animation:hero-flag-float 10.8s ease-in-out infinite;
@@ -625,8 +621,13 @@ html[dir="rtl"] .hero-flag{
   width:100%;
   height:100%;
   object-fit:cover;
-  opacity:.64;
-  filter:saturate(.72) contrast(.88) brightness(1.08);
+  opacity:.72;
+  filter:
+    saturate(.62)
+    contrast(1.18)
+    brightness(1.12)
+    drop-shadow(0 0 5px rgba(226,255,251,.3))
+    drop-shadow(0 2px 8px rgba(4,54,42,.18));
 }
 
 .hero-flag::before{
@@ -636,8 +637,8 @@ html[dir="rtl"] .hero-flag{
   inset:-70% -40%;
   border-radius:42% 58% 64% 36% / 55% 38% 62% 45%;
   background:
-    radial-gradient(ellipse at 32% 38%,rgba(255,255,255,.42),transparent 27%),
-    radial-gradient(ellipse at 68% 62%,rgba(166,232,224,.25),transparent 35%),
+    radial-gradient(ellipse at 32% 38%,rgba(255,255,255,.5),transparent 24%),
+    radial-gradient(ellipse at 68% 62%,rgba(166,232,224,.3),transparent 32%),
     conic-gradient(from 70deg,transparent,rgba(222,252,248,.2),transparent 38%,rgba(255,255,255,.14),transparent 72%);
   filter:blur(8px);
   mix-blend-mode:screen;
@@ -654,9 +655,9 @@ html[dir="rtl"] .hero-flag{
   height:260%;
   border-radius:50%;
   background:
-    radial-gradient(ellipse,rgba(255,255,255,.62) 0 4%,rgba(210,247,243,.25) 14%,transparent 42%),
-    linear-gradient(105deg,transparent 39%,rgba(255,255,255,.3) 49%,transparent 61%);
-  filter:blur(4px);
+    radial-gradient(ellipse,rgba(255,255,255,.82) 0 4%,rgba(221,253,249,.36) 13%,transparent 39%),
+    linear-gradient(105deg,transparent 38%,rgba(241,255,253,.48) 49%,rgba(177,235,228,.17) 55%,transparent 63%);
+  filter:blur(3px);
   mix-blend-mode:screen;
   opacity:0;
   animation:hero-flag-flare 11.8s ease-in-out infinite;
@@ -1947,8 +1948,8 @@ main section:nth-of-type(3n)::after{
 
   html[dir="ltr"] .hero-flag,
   html[dir="rtl"] .hero-flag{
-    top:36%;
-    width:230px;
+    top:29%;
+    width:210px;
     transform:translateX(-50%);
     opacity:.16;
   }
