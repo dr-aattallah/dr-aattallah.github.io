@@ -284,6 +284,14 @@ The Supabase Auth JWT validation plan is documented in:
 docs/auth-jwt-validation.md
 ```
 
+The official attendance session calendar reference for the 2026/2027
+academic year is documented in:
+
+```text
+attendance/docs/references/academic-calendar-2026-2027.md
+attendance/docs/references/academic-calendar-2026-2027.json
+```
+
 ---
 
 ## Suggested Data Models
