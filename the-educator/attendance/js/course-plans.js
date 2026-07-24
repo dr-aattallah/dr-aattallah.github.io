@@ -4,7 +4,10 @@
   const SUPABASE_URL = 'https://obgmbgsgwxbenglltcwv.supabase.co';
   const SUPABASE_PUBLISHABLE_KEY =
     'sb_publishable_Qa-0cZ5V15zHHYIWD_SXcA_yCZ0N2GM';
-  const ADMIN_EMAIL = 'aattallah@kau.edu.sa';
+  const COURSE_PLAN_ROLES = [
+    window.RoleAccess.ROLES.ADMINISTRATOR,
+    window.RoleAccess.ROLES.INSTRUCTOR
+  ];
 
   if (!window.supabase?.createClient) {
     console.error('Supabase client library was not loaded.');
@@ -38,24 +41,11 @@
   }
 
   async function verifyAdmin() {
-    const {
-      data: { session },
-      error
-    } = await db.auth.getSession();
-
-    if (error) {
-      console.error('Unable to read the current session:', error);
-    }
-
-    if (
-      !session ||
-      session.user.email?.toLowerCase() !== ADMIN_EMAIL.toLowerCase()
-    ) {
-      location.href = './';
-      return false;
-    }
-
-    return true;
+    return Boolean(await window.RoleAccess.requireRole(
+      db,
+      COURSE_PLAN_ROLES,
+      './'
+    ));
   }
 
   function getSelectedDays(defaults = {}) {

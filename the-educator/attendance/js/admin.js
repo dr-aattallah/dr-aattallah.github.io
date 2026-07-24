@@ -3,7 +3,10 @@
 const SUPABASE_URL = 'https://obgmbgsgwxbenglltcwv.supabase.co';
 const SUPABASE_PUBLISHABLE_KEY =
   'sb_publishable_Qa-0cZ5V15zHHYIWD_SXcA_yCZ0N2GM';
-const ADMIN_EMAIL = 'aattallah@kau.edu.sa';
+const ADMIN_ROLES = [
+  window.RoleAccess.ROLES.ADMINISTRATOR,
+  window.RoleAccess.ROLES.INSTRUCTOR
+];
 
 const db = window.supabase.createClient(
   SUPABASE_URL,
@@ -78,11 +81,12 @@ async function rpc(name, params = {}){
 }
 
 async function verifyAdmin(){
-  const { data:{ session } } = await db.auth.getSession();
-  const email = session?.user?.email?.toLowerCase();
-
-  if (!session || email !== ADMIN_EMAIL.toLowerCase()){
-    await db.auth.signOut();
+  const access = await window.RoleAccess.requireRole(
+    db,
+    ADMIN_ROLES,
+    null
+  );
+  if (!access){
     show(loginView); hide(dashboardView); hide(logoutButton);
     return false;
   }
@@ -230,9 +234,9 @@ loginForm?.addEventListener('submit', async event => {
     const { data, error } = await db.auth.signInWithPassword({email,password});
     if (error) throw error;
 
-    if (data.user?.email?.toLowerCase() !== ADMIN_EMAIL.toLowerCase()){
+    if (!window.RoleAccess.hasRole(data.session,ADMIN_ROLES)){
       await db.auth.signOut();
-      throw new Error('هذا الحساب غير مصرح له.');
+      throw new Error('هذا الحساب لا يملك صلاحية إدارة الحضور.');
     }
 
     await verifyAdmin();
