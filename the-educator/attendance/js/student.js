@@ -48,6 +48,7 @@ const excuseMessage = $('excuseMessage');
 
 let currentProfile = null;
 let currentCourses = [];
+let currentExcuseStatus = 'None';
 let loginChallengeId = '';
 let submittedUniversityId = '';
 
@@ -285,12 +286,12 @@ function renderRecords(records){
         record.excuse_status==='Pending'?'العذر قيد المراجعة':
         record.excuse_status==='Accepted'?'العذر مقبول':
         record.excuse_status==='Rejected'?'العذر مرفوض':
-        record.excuse_status==='MoreInfo'?'مطلوب توضيح':
+        record.excuse_status==='MoreInfo'?'رفع التوضيح المطلوب':
         record.actual_status==='Absent'?'رفع عذر':'—';
 
       button.disabled=
         record.actual_status!=='Absent' ||
-        ['Pending','Accepted','Rejected','MoreInfo'].includes(record.excuse_status);
+        !window.ExcuseWorkflow.canStudentSubmit(record.excuse_status);
 
       button.addEventListener('click',()=>openExcuse(record));
     }
@@ -359,9 +360,21 @@ courseSelector?.addEventListener(
 );
 
 function openExcuse(record){
+  currentExcuseStatus=record.excuse_status||'None';
+  const reviewNote=
+    record.decision_note||record.review_note||record.admin_note||'';
   $('excuseSessionId').value=record.session_id;
   $('excuseDialogTitle').textContent=
-    `${record.course_code} — ${formatDate(record.start_time)}`;
+    currentExcuseStatus==='MoreInfo'
+      ? `استكمال عذر ${record.course_code}`
+      : `${record.course_code} — ${formatDate(record.start_time)}`;
+  $('excuseReviewNote').textContent=reviewNote
+    ? `توضيح المعلم: ${reviewNote}`
+    : 'أرفق التوضيح المطلوب مع وصف محدّث.';
+  $('excuseReviewNote').classList.toggle(
+    'is-hidden',
+    currentExcuseStatus!=='MoreInfo'
+  );
   $('excuseDescription').value='';
   $('excuseFile').value='';
   setMessage(excuseMessage);
@@ -468,14 +481,15 @@ excuseForm?.addEventListener('submit',async event=>{
   const file=$('excuseFile').files[0];
   const description=$('excuseDescription').value.trim();
   const sessionId=$('excuseSessionId').value;
+  const fileError=window.ExcuseWorkflow.validateFile(file);
 
-  if(!file||!description){
-    setMessage(excuseMessage,'أكمل الوصف وأرفق الملف.','error');
+  if(!description){
+    setMessage(excuseMessage,'اكتب وصفًا مختصرًا للعذر.','error');
     return;
   }
 
-  if(file.size>10*1024*1024){
-    setMessage(excuseMessage,'حجم الملف يتجاوز 10 ميجابايت.','error');
+  if(fileError){
+    setMessage(excuseMessage,fileError,'error');
     return;
   }
 
@@ -484,7 +498,8 @@ excuseForm?.addEventListener('submit',async event=>{
 
   try{
     const {data:{session}}=await db.auth.getSession();
-    const extension=file.name.split('.').pop().toLowerCase();
+    if(!session?.user)throw new Error('انتهت جلسة الدخول. سجّل الدخول مجددًا.');
+    const extension=window.ExcuseWorkflow.fileExtension(file.name);
     const safeName=`${crypto.randomUUID()}.${extension}`;
     const path=`${session.user.id}/${sessionId}/${safeName}`;
 
@@ -513,7 +528,13 @@ excuseForm?.addEventListener('submit',async event=>{
       throw error;
     }
 
-    setMessage(excuseMessage,'تم إرسال العذر للمراجعة.','success');
+    setMessage(
+      excuseMessage,
+      currentExcuseStatus==='MoreInfo'
+        ? 'تم إرسال التوضيح وإعادة العذر للمراجعة.'
+        : 'تم إرسال العذر للمراجعة.',
+      'success'
+    );
 
     setTimeout(async()=>{
       excuseDialog.close();
