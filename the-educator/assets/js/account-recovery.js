@@ -80,6 +80,40 @@ $('recoveryRequestForm').addEventListener('submit', async (event) => {
   );
 });
 
+$('recoveryLinkForm').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const button = event.submitter;
+  const tokenHash = window.AccountRecoveryRules.parseSupabaseEmailToken(
+    $('recoveryEmailLink').value,
+    'recovery'
+  );
+  if (!tokenHash) {
+    message('الصق رابط استعادة كلمة المرور الكامل من رسالة Supabase.', 'error');
+    return;
+  }
+
+  loading(button, true);
+  message();
+  const { error } = await db.auth.verifyOtp({
+    token_hash: tokenHash,
+    type: 'recovery'
+  });
+  loading(button, false);
+
+  if (error) {
+    message(
+      /expired|invalid/i.test(error.message || '')
+        ? 'الرابط منتهي أو مستخدم سابقًا. اطلب رابط استعادة جديدًا.'
+        : (error.message || 'تعذر التحقق من رابط الاستعادة.'),
+      'error'
+    );
+    return;
+  }
+
+  showUpdateMode();
+  message('تم التحقق من الرابط. أدخل كلمة المرور الجديدة.', 'success');
+});
+
 $('passwordUpdateForm').addEventListener('submit', async (event) => {
   event.preventDefault();
   const button = event.submitter;

@@ -54,6 +54,10 @@
 .recovery-message{margin-bottom:18px;padding:12px 14px;border-radius:14px}
 .recovery-message.success{color:#08755f;background:rgba(22,138,115,.11)}
 .recovery-message.error{color:#a52b47;background:rgba(185,65,93,.11)}
+.recovery-paste{margin-top:20px;padding-top:16px;border-top:1px solid var(--line)}
+.recovery-paste summary{cursor:pointer;color:var(--accent);font-weight:800}
+.recovery-paste .hint{margin:12px 0}
+.secondary-submit{background:transparent!important;color:var(--accent)!important;border:1px solid var(--line)!important}
 
 :root{
   --ink:#152033;

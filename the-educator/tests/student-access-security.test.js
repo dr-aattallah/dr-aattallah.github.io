@@ -48,6 +48,13 @@ test('pasted sign-in links are restricted to this Supabase project', () => {
   assert.match(studentClient, /token_hash:tokenHash/);
 });
 
+test('email rate-limit cooldown persists and disables repeat requests', () => {
+  assert.match(studentClient, /SEND_COOLDOWN_KEY/);
+  assert.match(studentClient, /localStorage\.setItem\(SEND_COOLDOWN_KEY/);
+  assert.match(studentClient, /requestCodeButton\.disabled=active/);
+  assert.match(studentClient, /retryAfterSeconds/);
+});
+
 test('student login limits requests, attempts, and expiry', () => {
   assert.match(edgeSource, /MAX_REQUESTS_PER_15_MINUTES\s*=\s*3/);
   assert.match(edgeSource, /MAX_VERIFY_ATTEMPTS\s*=\s*5/);

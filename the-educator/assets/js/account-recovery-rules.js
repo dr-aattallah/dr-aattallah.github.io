@@ -23,7 +23,28 @@
       : '/the-educator/login.html';
   }
 
-  const api = { validatePassword, safeReturnPath };
+  function parseSupabaseEmailToken(value, expectedType) {
+    try {
+      const url = new URL(String(value || '').trim());
+      const token = url.searchParams.get('token') || '';
+      if (
+        url.protocol !== 'https:' ||
+        url.hostname !== 'obgmbgsgwxbenglltcwv.supabase.co' ||
+        url.pathname !== '/auth/v1/verify' ||
+        url.searchParams.get('type') !== expectedType ||
+        !/^[0-9a-f]{40,128}$/i.test(token)
+      ) return '';
+      return token;
+    } catch {
+      return '';
+    }
+  }
+
+  const api = {
+    validatePassword,
+    safeReturnPath,
+    parseSupabaseEmailToken
+  };
   globalScope.AccountRecoveryRules = api;
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
 })(typeof window !== 'undefined' ? window : globalThis);

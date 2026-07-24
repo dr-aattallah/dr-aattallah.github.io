@@ -56,6 +56,8 @@ let currentCourses = [];
 let currentExcuseStatus = 'None';
 let loginChallengeId = '';
 let submittedUniversityId = '';
+let sendCooldownTimer = null;
+const SEND_COOLDOWN_KEY = 'educator.studentAccessRetryAt';
 
 function show(el){ el?.classList.remove('is-hidden'); }
 function hide(el){ el?.classList.add('is-hidden'); }
@@ -70,6 +72,45 @@ function setLoading(button,loading){
   if(!button)return;
   button.disabled=loading;
   button.classList.toggle('is-loading',loading);
+}
+
+function formatCooldown(seconds){
+  const minutes=Math.max(1,Math.ceil(seconds/60));
+  return minutes===1?'دقيقة واحدة':`${minutes} دقيقة`;
+}
+
+function startSendCooldown(seconds,messageElement=requestMessage){
+  const retryAt=Date.now()+Math.max(1,Number(seconds)||0)*1000;
+  localStorage.setItem(SEND_COOLDOWN_KEY,String(retryAt));
+  clearInterval(sendCooldownTimer);
+
+  const update=()=>{
+    const remaining=Math.ceil((retryAt-Date.now())/1000);
+    const active=remaining>0;
+    if(requestCodeButton)requestCodeButton.disabled=active;
+    if(sendAgainButton)sendAgainButton.disabled=active;
+    if(!active){
+      clearInterval(sendCooldownTimer);
+      localStorage.removeItem(SEND_COOLDOWN_KEY);
+      setMessage(messageElement,'يمكنك طلب رسالة جديدة الآن.','success');
+      return;
+    }
+    setMessage(
+      messageElement,
+      `بلغ البريد حد الإرسال. أعد المحاولة بعد ${formatCooldown(remaining)}.`,
+      'error'
+    );
+  };
+
+  update();
+  sendCooldownTimer=setInterval(update,30000);
+}
+
+function restoreSendCooldown(messageElement=requestMessage){
+  const retryAt=Number(localStorage.getItem(SEND_COOLDOWN_KEY)||0);
+  const remaining=Math.ceil((retryAt-Date.now())/1000);
+  if(remaining>0)startSendCooldown(remaining,messageElement);
+  else localStorage.removeItem(SEND_COOLDOWN_KEY);
 }
 
 function showPublic(){
@@ -87,6 +128,7 @@ function showLogin(){
   hide(emailLinkStep);
   setMessage(requestMessage);
   setMessage(verifyMessage);
+  restoreSendCooldown(requestMessage);
   $('universityId')?.focus();
 }
 
@@ -99,6 +141,7 @@ function showEmailLink(maskedEmail){
       maskedEmail || 'البريد المسجل'
     }. افتح الرابط للانتقال مباشرة إلى سجلك.`;
   setMessage(emailLinkMessage);
+  restoreSendCooldown(emailLinkMessage);
   $('emailSignInLink')?.focus();
 }
 
@@ -178,7 +221,9 @@ async function accessFunction(payload){
   const data = await response.json().catch(()=>null);
 
   if(!response.ok || data?.success===false){
-    throw new Error(data?.message || 'تعذر تنفيذ طلب الدخول.');
+    const error=new Error(data?.message || 'تعذر تنفيذ طلب الدخول.');
+    error.retryAfterSeconds=Number(data?.retry_after_seconds)||0;
+    throw error;
   }
 
   return data;
@@ -446,9 +491,14 @@ requestCodeForm?.addEventListener('submit',async event=>{
       showEmailLink(data.masked_email);
     }
   }catch(error){
-    setMessage(requestMessage,error.message,'error');
+    if(error.retryAfterSeconds){
+      startSendCooldown(error.retryAfterSeconds,requestMessage);
+    }else{
+      setMessage(requestMessage,error.message,'error');
+    }
   }finally{
     setLoading(requestCodeButton,false);
+    restoreSendCooldown(requestMessage);
   }
 });
 
@@ -512,9 +562,14 @@ sendAgainButton?.addEventListener('click',async()=>{
       );
     }
   }catch(error){
-    setMessage(emailLinkMessage,error.message,'error');
+    if(error.retryAfterSeconds){
+      startSendCooldown(error.retryAfterSeconds,emailLinkMessage);
+    }else{
+      setMessage(emailLinkMessage,error.message,'error');
+    }
   }finally{
     setLoading(sendAgainButton,false);
+    restoreSendCooldown(emailLinkMessage);
   }
 });
 

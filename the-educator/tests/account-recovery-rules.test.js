@@ -22,3 +22,28 @@ test('accepts only local Educator return paths', () => {
     '/the-educator/login.html'
   );
 });
+
+test('accepts only recovery links from the configured Supabase project', () => {
+  const token = 'a'.repeat(64);
+  assert.equal(
+    rules.parseSupabaseEmailToken(
+      `https://obgmbgsgwxbenglltcwv.supabase.co/auth/v1/verify?token=${token}&type=recovery`,
+      'recovery'
+    ),
+    token
+  );
+  assert.equal(
+    rules.parseSupabaseEmailToken(
+      `https://malicious.example/auth/v1/verify?token=${token}&type=recovery`,
+      'recovery'
+    ),
+    ''
+  );
+  assert.equal(
+    rules.parseSupabaseEmailToken(
+      `https://obgmbgsgwxbenglltcwv.supabase.co/auth/v1/verify?token=${token}&type=magiclink`,
+      'recovery'
+    ),
+    ''
+  );
+});
