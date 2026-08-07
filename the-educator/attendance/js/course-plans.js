@@ -23,6 +23,8 @@
   const show = (el) => el?.classList.remove('is-hidden');
   const hide = (el) => el?.classList.add('is-hidden');
   let activeCalendar = null;
+  let editingPlanId = null;
+  let editingFeatureAvailable = false;
 
   function setMessage(text = '', type = '') {
     const el = $('formMessage');
@@ -158,6 +160,17 @@
       });
     });
 
+    const seen = new Set();
+    result.forEach((meeting) => {
+      const key = `${meeting.day_of_week}|${meeting.start_time}`;
+      if (seen.has(key)) {
+        throw new Error(
+          'لا يمكن تكرار اليوم ووقت البداية في أكثر من موعد.'
+        );
+      }
+      seen.add(key);
+    });
+
     return result;
   }
 
@@ -195,9 +208,47 @@
     }
   }
 
+  function setIdentityFieldsLocked(locked) {
+    ['courseCode', 'sectionCode', 'courseName', 'termCode', 'termStart']
+      .forEach((id) => {
+        const field = $(id);
+        if (!field) return;
+        field.readOnly = Boolean(locked);
+        if (locked) {
+          field.setAttribute('aria-describedby', 'identityLockHint');
+        } else {
+          field.removeAttribute('aria-describedby');
+        }
+      });
+  }
+
+  function setEditMode(plan = null) {
+    editingPlanId = plan?.plan_id || null;
+    const isEditing = Boolean(editingPlanId);
+
+    if (isEditing) {
+      $('editModeTitle').textContent =
+        `تعديل ${plan.course_code} — شعبة ${plan.section_code}`;
+      $('savePlanButton').textContent =
+        'حفظ التعديلات وتحديث الجلسات القادمة';
+      $('submitSummaryText').textContent =
+        'لن تتغير الجلسات السابقة أو سجلات الحضور المرتبطة بها.';
+      show($('editModeBanner'));
+    } else {
+      $('savePlanButton').textContent =
+        'إنشاء الخطة وتوليد المحاضرات';
+      $('submitSummaryText').textContent =
+        'يمكنك تعديل الاستثناءات لاحقًا لكل محاضرة.';
+      hide($('editModeBanner'));
+    }
+
+    setIdentityFieldsLocked(Boolean(plan?.has_started_sessions));
+  }
+
   function clearPlanForm() {
     const form = $('coursePlanForm');
     form?.reset();
+    setEditMode(null);
 
     ['courseCode', 'sectionCode', 'courseName', 'termCode',
       'termStart', 'termEnd'].forEach((id) => {
@@ -220,6 +271,58 @@
     });
 
     applyCalendarDefaults();
+  }
+
+  async function editPlan(planSummary) {
+    setMessage('جارٍ تحميل بيانات المقرر...', 'info');
+
+    try {
+      const plan = await rpc('admin_get_course_plan_for_edit', {
+        p_plan_id: planSummary.plan_id
+      });
+
+      $('courseCode').value = plan.course_code || '';
+      $('sectionCode').value = plan.section_code || '';
+      $('courseName').value = plan.course_name || '';
+      $('termCode').value = plan.term_code || '';
+      $('termStart').value = plan.term_start || '';
+      $('termEnd').value = plan.term_end || '';
+      $('expectedWeeks').value = String(plan.expected_weeks || 16);
+      $('lateMinutes').value = String(plan.late_minutes ?? 15);
+      $('activatePlan').checked = Boolean(plan.is_active);
+      $('meetingRows').innerHTML = '';
+
+      const grouped = window.CoursePlanEditorUtils.groupMeetings(
+        plan.meetings
+      );
+      grouped.forEach(addMeetingRow);
+
+      if (!grouped.length) {
+        addMeetingRow({
+          days: [],
+          start: '09:00',
+          end: '10:20',
+          room: '',
+          mode: 'InPerson',
+          tag: 1
+        });
+      }
+
+      setEditMode(plan);
+      setMessage(
+        plan.has_started_sessions
+          ? 'بدأ سجل هذا المقرر؛ تم قفل بيانات الهوية، ويمكنك تعديل نهاية الفترة والمواعيد المستقبلية.'
+          : 'يمكنك تعديل جميع البيانات. ستُعاد جدولة الجلسات المستقبلية فقط.',
+        'success'
+      );
+      $('editModeBanner').scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } catch (error) {
+      console.error('Unable to load course plan for editing:', error);
+      setMessage(error.message, 'error');
+    }
   }
 
   function applyCalendarDefaults() {
@@ -322,7 +425,11 @@
 
       const meetings = readMeetings();
 
-      const result = await rpc('admin_create_course_plan', {
+      const wasEditing = Boolean(editingPlanId);
+      const rpcName = wasEditing
+        ? 'admin_update_course_plan'
+        : 'admin_create_course_plan';
+      const params = {
         p_course_code: $('courseCode').value.trim().toUpperCase(),
         p_section_code: $('sectionCode').value.trim().toUpperCase(),
         p_course_name: $('courseName').value.trim(),
@@ -333,7 +440,13 @@
         p_late_minutes: lateMinutes,
         p_is_active: $('activatePlan').checked,
         p_meetings: meetings
-      });
+      };
+
+      if (wasEditing) {
+        params.p_plan_id = editingPlanId;
+      }
+
+      const result = await rpc(rpcName, params);
 
       const generated =
         result?.generated_sessions ??
@@ -341,13 +454,30 @@
         0;
       const excluded = result?.excluded_sessions ?? 0;
 
-      setMessage(
-        `تم إنشاء الخطة وتوليد ${generated} محاضرة، ` +
-        `واستبعاد ${excluded} موعدًا وفق التقويم الأكاديمي.`,
-        'success'
-      );
+      let successMessage;
+      if (result?.unchanged) {
+        successMessage = 'لم تتغير البيانات؛ بقيت الخطة والجلسات كما هي.';
+      } else if (result?.plan_updated_only) {
+        successMessage =
+          'تم حفظ بيانات المقرر دون تغيير جدول الجلسات.';
+      } else if (wasEditing) {
+        successMessage =
+          `تم حفظ التعديلات: تحديث ${
+            result?.updated_future_sessions ?? 0
+          } جلسة، حذف ${
+            result?.removed_future_sessions ?? 0
+          }، وتوليد ${generated} جلسة مستقبلية جديدة، ` +
+          `مع حفظ ${
+            result?.preserved_historical_sessions ?? 0
+          } جلسة سابقة دون تغيير.`;
+      } else {
+        successMessage =
+          `تم إنشاء الخطة وتوليد ${generated} محاضرة، ` +
+          `واستبعاد ${excluded} موعدًا وفق التقويم الأكاديمي.`;
+      }
 
       clearPlanForm();
+      setMessage(successMessage, 'success');
       await loadPlans();
     } catch (error) {
       console.error('Unable to save course plan:', error);
@@ -466,6 +596,30 @@
         }
       });
 
+      if (editingFeatureAvailable) {
+        const editButton = document.createElement('button');
+        editButton.type = 'button';
+        editButton.className =
+          'secondary-button small plan-edit-button';
+        editButton.textContent = 'تعديل المقرر';
+        editButton.setAttribute(
+          'aria-label',
+          `تعديل ${plan.course_code} شعبة ${plan.section_code}`
+        );
+
+        editButton.addEventListener('click', async () => {
+          editButton.disabled = true;
+
+          try {
+            await editPlan(plan);
+          } finally {
+            editButton.disabled = false;
+          }
+        });
+
+        actions.appendChild(editButton);
+      }
+
       actions.appendChild(toggleButton);
       card.append(head, meta, actions);
       grid.appendChild(card);
@@ -479,7 +633,24 @@
 
     try {
       const plans = await rpc('admin_list_course_plans_v2');
-      renderPlans(Array.isArray(plans) ? plans : []);
+      const normalizedPlans = Array.isArray(plans) ? plans : [];
+      editingFeatureAvailable = false;
+
+      if (normalizedPlans.length) {
+        try {
+          await rpc('admin_get_course_plan_for_edit', {
+            p_plan_id: normalizedPlans[0].plan_id
+          });
+          editingFeatureAvailable = true;
+        } catch (error) {
+          console.info(
+            'Course plan editing is waiting for its database migration.',
+            error.message
+          );
+        }
+      }
+
+      renderPlans(normalizedPlans);
     } catch (error) {
       console.error('Unable to load course plans:', error);
       hide($('plansLoading'));
@@ -503,6 +674,18 @@
   $('coursePlanForm')?.addEventListener(
     'submit',
     savePlan
+  );
+
+  $('cancelEditButton')?.addEventListener(
+    'click',
+    () => {
+      clearPlanForm();
+      setMessage('تم إلغاء التعديل والعودة إلى إنشاء مقرر جديد.', 'info');
+      $('coursePlanForm')?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   );
 
   $('refreshPlansButton')?.addEventListener(

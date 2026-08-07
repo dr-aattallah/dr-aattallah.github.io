@@ -11,8 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../css/attendance.css">
-  <link rel="stylesheet" href="../css/course-plans.css">
-  <link rel="stylesheet" href="../css/course-plans-layout-fix.css">
+  <link rel="stylesheet" href="../css/course-plans.css?v=20260807-course-editing">
+  <link rel="stylesheet" href="../css/course-plans-layout-fix.css?v=20260807-course-editing">
 </head>
 
 <body class="course-plans-page">
@@ -92,6 +92,14 @@
     </section>
 
     <form id="coursePlanForm" class="plan-form" autocomplete="off" novalidate>
+      <section id="editModeBanner" class="edit-mode-banner liquid-glass is-hidden" role="status">
+        <div>
+          <span class="edit-mode-badge">وضع التعديل</span>
+          <strong id="editModeTitle">تعديل المقرر</strong>
+          <small id="identityLockHint">سيُحفظ السجل السابق كما هو، وستُحدّث الجلسات المستقبلية فقط.</small>
+        </div>
+        <button id="cancelEditButton" class="secondary-button" type="button">إلغاء التعديل</button>
+      </section>
       <section class="form-section liquid-glass">
         <header class="section-header">
           <div class="section-title-wrap">
@@ -242,7 +250,7 @@
         <div class="submit-panel">
           <div class="submit-summary">
             <strong>جاهز لتوليد الجدول؟</strong>
-            <span>يمكنك تعديل الاستثناءات لاحقًا لكل محاضرة.</span>
+            <span id="submitSummaryText">يمكنك تعديل الاستثناءات لاحقًا لكل محاضرة.</span>
           </div>
 
           <button id="savePlanButton" class="primary-button create-plan-button" type="submit">
@@ -259,7 +267,7 @@
         <div>
           <span class="eyebrow">الخطط الحالية</span>
           <h2>المقررات المضافة</h2>
-          <p>راجع الخطط التي أنشأتها وفعّل أو أوقف أي خطة.</p>
+          <p>راجع الخطط التي أنشأتها، وعدّلها، أو فعّل وأوقف أي خطة.</p>
         </div>
 
         <button id="refreshPlansButton" class="secondary-button" type="button">
@@ -370,8 +378,9 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="../js/role-access.js"></script>
-  <script src="../js/course-plans.js"></script>
+  <script src="../js/course-plan-editor-utils.js?v=20260807-course-editing"></script>
+  <script src="../js/course-plans.js?v=20260807-course-editing"></script>
   <script src="../../assets/js/system-navigation.js?v=20260724-spacious-nav"></script>
-<script src="/the-educator/assets/js/iso-accessibility.js?v=20260724-iso-ux"></script>
+  <script src="/the-educator/assets/js/iso-accessibility.js?v=20260724-iso-ux"></script>
 </body>
 </html>

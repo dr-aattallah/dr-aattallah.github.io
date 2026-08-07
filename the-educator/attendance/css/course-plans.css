@@ -127,6 +127,53 @@ body.course-plans-page {
   gap: 18px;
 }
 
+.edit-mode-banner {
+  position: sticky;
+  top: 12px;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 20px;
+  border: 1px solid rgba(113, 133, 255, 0.3);
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(236, 241, 255, 0.94), rgba(237, 252, 248, 0.94));
+  box-shadow: 0 18px 50px rgba(58, 76, 137, 0.16);
+  backdrop-filter: blur(20px);
+}
+
+.edit-mode-banner > div {
+  display: grid;
+  gap: 3px;
+}
+
+.edit-mode-banner strong {
+  font-size: 18px;
+}
+
+.edit-mode-banner small {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.edit-mode-badge {
+  width: fit-content;
+  padding: 5px 9px;
+  border-radius: 999px;
+  color: #5267d7;
+  background: rgba(113, 133, 255, 0.13);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+input[readonly] {
+  color: #596983;
+  cursor: not-allowed;
+  background: rgba(231, 236, 248, 0.74);
+}
+
 .form-section,
 .finalize-section,
 .plans-list-card {
@@ -688,6 +735,13 @@ select:focus {
   flex: 1;
 }
 
+.plan-edit-button {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, var(--blue), var(--purple));
+  box-shadow: 0 10px 24px rgba(113, 133, 255, 0.2);
+}
+
 .is-hidden {
   display: none !important;
 }
@@ -714,6 +768,14 @@ select:focus {
 
   .plans-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .edit-mode-banner {
+    position: static;
+    align-items: stretch;
+    flex-direction: column;
   }
 }
 
