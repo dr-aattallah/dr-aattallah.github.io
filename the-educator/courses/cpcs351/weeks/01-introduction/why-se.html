@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Why Software Engineering? | CPCS 351</title>
+
+<meta
+  name="description"
+  content="CPCS 351 Software Engineering I — Why Software Engineering?"
+>
+
+<style>
+
+:root{
+  --ink:#172033;
+  --muted:#657187;
+  --line:#e6eaf0;
+  --soft:#f7f9fc;
+
+  --blue:#2f80ed;
+  --blue-soft:#eef6ff;
+
+  --mint:#5fd1b3;
+  --mint-soft:#effbf7;
+
+  --orange:#f2a45b;
+  --orange-soft:#fff6ed;
+
+  --purple:#8b74df;
+  --purple-soft:#f4f1ff;
+
+  --sidebar:250px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color:var(--ink);
+  background:#fff;
+}
+
+a{
+  color:inherit;
+}
+
+/* =====================================================
+   TOP BAR
+===================================================== */
+
+.topbar{
+
+  position:sticky;
+  top:0;
+  z-index:100;
+
+  height:64px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 22px;
+
+  background:rgba(255,255,255,.95);
+
+  border-bottom:1px solid var(--line);
+
+  backdrop-filter:blur(14px);
+}
+
+.brand{
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  text-decoration:none;
+  font-weight:800;
+}
+
+.brand-mark{
+
+  width:31px;
+  height:31px;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--mint),
+      var(--orange)
+    );
+
+  position:relative;
+}
+
+.brand-mark::before,
+.brand-mark::after{
+
+  content:"";
+
+  position:absolute;
+
+  background:#fff;
+
+  border-radius:20px;
+}
+
+.brand-mark::before{
+  width:16px;
+  height:4px;
+
+  left:7px;
+  top:13px;
+}
+
+.brand-mark::after{
+  width:4px;
+  height:16px;
+
+  left:13px;
+  top:7px;
+}
+
+.top-links{
+  display:flex;
+  gap:5px;
+}
+
+.top-links a{
+
+  text-decoration:none;
+
+  color:var(--muted);
+
+  font-size:14px;
+  font-weight:650;
+
+  padding:9px 11px;
+
+  border-radius:9px;
+}
+
+.top-links a:hover{
+  background:var(--soft);
+  color:var(--ink);
+}
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.layout{
+
+  display:grid;
+
+  grid-template-columns:
+    var(--sidebar)
+    minmax(0,1fr);
+
+  min-height:
+    calc(100vh - 64px);
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar{
+
+  position:sticky;
+
+  top:64px;
+
+  height:
+    calc(100vh - 64px);
+
+  overflow:auto;
+
+  padding:
+    25px 14px 30px;
+
+  border-right:
+    1px solid var(--line);
+
+  background:#fafbfc;
+}
+
+.sidebar-course{
+
+  padding:
+    0 12px 18px;
+
+  margin-bottom:14px;
+
+  border-bottom:
+    1px solid var(--line);
+}
+
+.sidebar-course small{
+
+  display:block;
+
+  color:#8d98a8;
+
+  font-size:11px;
+  font-weight:800;
+
+  letter-spacing:.08em;
+
+  text-transform:uppercase;
+
+  margin-bottom:6px;
+}
+
+.sidebar-course strong{
+
+  display:block;
+
+  font-size:15px;
+
+  line-height:1.35;
+}
+
+.side-title{
+
+  padding:7px 12px;
+
+  margin-top:10px;
+
+  color:#98a2b3;
+
+  font-size:11px;
+
+  font-weight:800;
+
+  letter-spacing:.08em;
+
+  text-transform:uppercase;
+}
+
+.side-link{
+
+  display:block;
+
+  padding:9px 12px;
+
+  border-radius:8px;
+
+  text-decoration:none;
+
+  color:#5f6c80;
+
+  font-size:13px;
+
+  font-weight:650;
+
+  line-height:1.4;
+}
+
+.side-link:hover{
+
+  background:#f0f3f7;
+
+  color:var(--ink);
+}
+
+.side-link.active{
+
+  background:#eaf3ff;
+
+  color:#1768c4;
+
+  font-weight:800;
+}
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+main{
+  min-width:0;
+}
+
+.content{
+
+  width:
+    min(
+      900px,
+      calc(100% - 48px)
+    );
+
+  margin:auto;
+
+  padding:
+    64px 0 90px;
+}
+
+.breadcrumb{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:7px;
+
+  margin-bottom:28px;
+
+  color:#8c97a7;
+
+  font-size:13px;
+
+  font-weight:650;
+}
+
+.breadcrumb a{
+  text-decoration:none;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1fr)
+    285px;
+
+  gap:34px;
+
+  align-items:center;
+}
+
+.topic-label{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:7px;
+
+  color:#3175a4;
+
+  font-size:12px;
+
+  font-weight:850;
+
+  letter-spacing:.06em;
+
+  text-transform:uppercase;
+
+  margin-bottom:14px;
+}
+
+.topic-label::before{
+
+  content:"";
+
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:var(--mint);
+}
+
+h1{
+
+  margin:0;
+
+  font-size:
+    clamp(
+      44px,
+      6vw,
+      68px
+    );
+
+  line-height:1;
+
+  letter-spacing:-.045em;
+}
+
+.lead{
+
+  margin:
+    22px 0 0;
+
+  color:var(--muted);
+
+  font-size:19px;
+
+  line-height:1.75;
+}
+
+/* =====================================================
+   MENTOR
+===================================================== */
+
+.mentor-card{
+
+  border:
+    1px solid var(--line);
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  background:#fff;
+}
+
+.mentor-image{
+
+  height:220px;
+
+  display:flex;
+
+  align-items:flex-end;
+
+  justify-content:center;
+
+  background:
+
+    radial-gradient(
+      circle at 50% 20%,
+      #fff,
+      #f2f7fb
+    );
+}
+
+.mentor-image img{
+
+  width:100%;
+
+  height:100%;
+
+  object-fit:contain;
+
+  object-position:center bottom;
+}
+
+.mentor-message{
+
+  padding:18px;
+
+  border-top:
+    1px solid var(--line);
+}
+
+.mentor-message blockquote{
+
+  margin:0;
+
+  color:#334155;
+
+  font-size:15px;
+
+  line-height:1.7;
+
+  font-weight:650;
+}
+
+.mentor-name{
+
+  margin-top:10px;
+
+  color:#3175a4;
+
+  font-size:12px;
+
+  font-weight:800;
+}
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.section{
+
+  margin-top:58px;
+}
+
+.section-kicker{
+
+  margin:0 0 7px;
+
+  color:#98a2b3;
+
+  font-size:12px;
+
+  font-weight:850;
+
+  text-transform:uppercase;
+
+  letter-spacing:.06em;
+}
+
+h2{
+
+  margin:0 0 14px;
+
+  font-size:31px;
+
+  letter-spacing:-.03em;
+}
+
+.section > p{
+
+  color:#536176;
+
+  font-size:16px;
+
+  line-height:1.8;
+}
+
+/* =====================================================
+   COMIC STORY
+===================================================== */
+
+.story{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(5,1fr);
+
+  gap:12px;
+
+  margin-top:25px;
+}
+
+.story-panel{
+
+  min-height:280px;
+
+  padding:16px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:15px;
+
+  background:#fff;
+
+  position:relative;
+}
+
+.story-number{
+
+  display:block;
+
+  margin-bottom:18px;
+
+  color:#3175a4;
+
+  font-size:11px;
+
+  font-weight:850;
+
+  text-transform:uppercase;
+}
+
+.story-visual{
+
+  min-height:100px;
+
+  display:grid;
+
+  place-items:center;
+
+  margin-bottom:16px;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f2f7ff,
+      #f6fbfa
+    );
+
+  font-size:38px;
+}
+
+.story-panel h3{
+
+  margin:0 0 8px;
+
+  font-size:17px;
+}
+
+.story-panel p{
+
+  margin:0;
+
+  color:#667085;
+
+  font-size:13px;
+
+  line-height:1.6;
+}
+
+/* =====================================================
+   REASONS GRID
+===================================================== */
+
+.reason-grid{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:12px;
+
+  margin-top:22px;
+}
+
+.reason{
+
+  padding:18px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:14px;
+
+  background:#fff;
+}
+
+.reason-icon{
+
+  width:43px;
+  height:43px;
+
+  display:grid;
+
+  place-items:center;
+
+  border-radius:13px;
+
+  margin-bottom:15px;
+
+  font-size:20px;
+}
+
+.reason:nth-child(1)
+.reason-icon{
+  background:var(--blue-soft);
+}
+
+.reason:nth-child(2)
+.reason-icon{
+  background:var(--mint-soft);
+}
+
+.reason:nth-child(3)
+.reason-icon{
+  background:var(--purple-soft);
+}
+
+.reason:nth-child(4)
+.reason-icon{
+  background:var(--orange-soft);
+}
+
+.reason h3{
+
+  margin:0 0 8px;
+
+  font-size:17px;
+}
+
+.reason p{
+
+  margin:0;
+
+  color:#667085;
+
+  font-size:13px;
+
+  line-height:1.65;
+}
+
+/* =====================================================
+   HISTORICAL LECTURE EXAMPLE
+===================================================== */
+
+.lecture-example{
+
+  margin-top:26px;
+
+  padding:24px;
+
+  border-radius:16px;
+
+  background:var(--blue-soft);
+
+  border:
+    1px solid #dfeeff;
+}
+
+.lecture-label{
+
+  color:#3175a4;
+
+  font-size:12px;
+
+  font-weight:850;
+
+  text-transform:uppercase;
+
+  letter-spacing:.05em;
+}
+
+.number-flow{
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:10px;
+
+  margin-top:18px;
+}
+
+.number-box{
+
+  padding:18px 12px;
+
+  background:#fff;
+
+  border-radius:12px;
+
+  text-align:center;
+}
+
+.number-box strong{
+
+  display:block;
+
+  font-size:21px;
+
+  margin-bottom:4px;
+}
+
+.number-box span{
+
+  color:#667085;
+
+  font-size:12px;
+
+  line-height:1.5;
+}
+
+/* =====================================================
+   RISKS
+===================================================== */
+
+.risks{
+
+  display:flex;
+
+  flex-wrap:wrap;
+
+  gap:9px;
+
+  margin-top:20px;
+}
+
+.risk{
+
+  padding:
+    10px 13px;
+
+  border-radius:999px;
+
+  background:#f8fafc;
+
+  border:
+    1px solid var(--line);
+
+  font-size:13px;
+
+  font-weight:700;
+
+  color:#526176;
+}
+
+/* =====================================================
+   THINK
+===================================================== */
+
+.think{
+
+  display:grid;
+
+  grid-template-columns:
+    minmax(0,1fr)
+    160px;
+
+  gap:20px;
+
+  align-items:end;
+
+  margin-top:35px;
+
+  padding:
+    24px 24px 0;
+
+  border-radius:16px;
+
+  background:var(--mint-soft);
+
+  border:
+    1px solid #d8f1e9;
+
+  overflow:hidden;
+}
+
+.think-label{
+
+  color:#327867;
+
+  font-size:12px;
+
+  font-weight:850;
+
+  letter-spacing:.06em;
+
+  text-transform:uppercase;
+}
+
+.think h3{
+
+  margin:
+    8px 0;
+
+  font-size:21px;
+}
+
+.think p{
+
+  margin:
+    0 0 24px;
+
+  color:#45685f;
+
+  line-height:1.7;
+}
+
+.think img{
+
+  width:100%;
+
+  max-height:170px;
+
+  object-fit:contain;
+
+  object-position:center bottom;
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.lesson-nav{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:12px;
+
+  margin-top:50px;
+
+  padding-top:24px;
+
+  border-top:
+    1px solid var(--line);
+}
+
+.nav-button{
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:9px;
+
+  padding:
+    13px 16px;
+
+  border-radius:11px;
+
+  text-decoration:none;
+
+  font-size:14px;
+
+  font-weight:800;
+
+  border:
+    1px solid var(--line);
+
+  background:#fff;
+
+  color:#526176;
+}
+
+.nav-button.next{
+
+  background:var(--ink);
+
+  color:#fff;
+
+  border-color:var(--ink);
+}
+
+footer{
+
+  padding:25px 0;
+
+  border-top:
+    1px solid var(--line);
+
+  color:#98a2b3;
+
+  text-align:center;
+
+  font-size:12px;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+.mobile-menu{
+  display:none;
+}
+
+@media(max-width:1000px){
+
+  .story{
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .reason-grid{
+    grid-template-columns:
+      1fr 1fr;
+  }
+}
+
+@media(max-width:850px){
+
+  .layout{
+    grid-template-columns:1fr;
+  }
+
+  .sidebar{
+    display:none;
+  }
+
+  .mobile-menu{
+
+    display:block;
+
+    padding:11px 18px;
+
+    background:#fafbfc;
+
+    border-bottom:
+      1px solid var(--line);
+
+    overflow-x:auto;
+
+    white-space:nowrap;
+  }
+
+  .mobile-menu a{
+
+    display:inline-block;
+
+    margin-right:5px;
+
+    padding:
+      8px 10px;
+
+    background:#fff;
+
+    border:
+      1px solid var(--line);
+
+    border-radius:8px;
+
+    color:#59687c;
+
+    text-decoration:none;
+
+    font-size:12px;
+
+    font-weight:700;
+  }
+
+  .content{
+    width:
+      min(
+        100% - 28px,
+        900px
+      );
+
+    padding-top:45px;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  .mentor-card{
+    max-width:360px;
+  }
+}
+
+@media(max-width:620px){
+
+  .topbar{
+    padding:0 13px;
+  }
+
+  .top-links a:nth-child(2){
+    display:none;
+  }
+
+  h1{
+    font-size:43px;
+  }
+
+  .lead{
+    font-size:17px;
+  }
+
+  .story{
+    grid-template-columns:1fr;
+  }
+
+  .reason-grid{
+    grid-template-columns:1fr;
+  }
+
+  .number-flow{
+    grid-template-columns:1fr;
+  }
+
+  .think{
+    grid-template-columns:1fr;
+  }
+
+  .think img{
+    max-height:190px;
+  }
+
+  .lesson-nav{
+    flex-direction:column;
+  }
+
+  .nav-button{
+    justify-content:center;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =====================================================
+TOP BAR
+===================================================== -->
+
+<header class="topbar">
+
+<a class="brand" href="../../index.html">
+
+<span class="brand-mark"></span>
+
+<span>The Educator</span>
+
+</a>
+
+<nav class="top-links">
+
+<a href="../../index.html">
+CPCS 351
+</a>
+
+<a href="../../resources/">
+Resources
+</a>
+
+<a href="../../../../index.html">
+All Courses
+</a>
+
+</nav>
+
+</header>
+
+
+<!-- =====================================================
+MOBILE NAV
+===================================================== -->
+
+<div class="mobile-menu">
+
+<a href="index.html">
+Overview
+</a>
+
+<a href="nature-of-software.html">
+Nature of Software
+</a>
+
+<a href="what-is-se.html">
+What is SE?
+</a>
+
+<a href="why-se.html">
+Why SE?
+</a>
+
+</div>
+
+
+<div class="layout">
+
+
+<!-- =====================================================
+SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+<div class="sidebar-course">
+
+<small>
+CPCS 351 · Topic 01
+</small>
+
+<strong>
+Introduction to Software Engineering
+</strong>
+
+</div>
+
+<div class="side-title">
+Topic 01
+</div>
+
+<a
+class="side-link"
+href="index.html">
+Overview
+</a>
+
+<a
+class="side-link"
+href="nature-of-software.html">
+1. Nature of Software
+</a>
+
+<a
+class="side-link"
+href="what-is-se.html">
+2. What is Software Engineering?
+</a>
+
+<a
+class="side-link active"
+href="why-se.html">
+3. Why Software Engineering?
+</a>
+
+<a
+class="side-link"
+href="teamwork.html">
+4. Teamwork Challenges
+</a>
+
+<a
+class="side-link"
+href="life-cycle.html">
+5. Software Life Cycle
+</a>
+
+<a
+class="side-link"
+href="development-process.html">
+6. Development Process
+</a>
+
+<a
+class="side-link"
+href="waterfall.html">
+7. Waterfall Process
+</a>
+
+<a
+class="side-link"
+href="sqa.html">
+8. Software Quality Assurance
+</a>
+
+<a
+class="side-link"
+href="project-management.html">
+9. Project Management
+</a>
+
+<a
+class="side-link"
+href="oose.html">
+10. OO Software Engineering
+</a>
+
+<div class="side-title">
+Course
+</div>
+
+<a
+class="side-link"
+href="../../index.html">
+Course Home
+</a>
+
+</aside>
+
+
+<!-- =====================================================
+MAIN
+===================================================== -->
+
+<main>
+
+<article class="content">
+
+
+<div class="breadcrumb">
+
+<a href="../../index.html">
+CPCS 351
+</a>
+
+<span>›</span>
+
+<a href="index.html">
+Topic 01
+</a>
+
+<span>›</span>
+
+<span>
+Why Software Engineering?
+</span>
+
+</div>
+
+
+<!-- =====================================================
+HERO
+===================================================== -->
+
+<section class="hero">
+
+<div>
+
+<div class="topic-label">
+Topic 01 · Section 3
+</div>
+
+<h1>
+Why Software Engineering?
+</h1>
+
+<p class="lead">
+
+Software has become the engine of modern life.
+
+Systems are larger, more complex, more connected,
+and more important than ever.
+
+That is why building serious software requires
+a disciplined engineering approach.
+
+</p>
+
+</div>
+
+
+<div class="mentor-card">
+
+<div class="mentor-image">
+
+<img
+src="../../assets/images/software-engineer-mentor.png"
+alt="Software Engineer Mentor">
+
+</div>
+
+<div class="mentor-message">
+
+<blockquote>
+
+“Great software does not happen by accident.
+It is engineered.”
+
+</blockquote>
+
+<div class="mentor-name">
+
+— Your Software Engineering Mentor
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+STORY
+===================================================== -->
+
+<section class="section">
+
+<p class="section-kicker">
+The Story
+</p>
+
+<h2>
+From a small program to a real software system
+</h2>
+
+<p>
+
+The need for software engineering becomes easier
+to understand when we look at what happens as
+software grows.
+
+</p>
+
+
+<div class="story">
+
+
+<div class="story-panel">
+
+<span class="story-number">
+01
+</span>
+
+<div class="story-visual">
+💻
+</div>
+
+<h3>
+It starts simple
+</h3>
+
+<p>
+
+One developer writes a small program.
+
+The program is short,
+the requirements are simple,
+and one person understands most of it.
+
+</p>
+
+</div>
+
+
+<div class="story-panel">
+
+<span class="story-number">
+02
+</span>
+
+<div class="story-visual">
+🧩
+</div>
+
+<h3>
+Then it grows
+</h3>
+
+<p>
+
+New features appear.
+
+Databases, APIs, security,
+mobile applications,
+cloud services, and integrations
+are added.
+
+</p>
+
+</div>
+
+
+<div class="story-panel">
+
+<span class="story-number">
+03
+</span>
+
+<div class="story-visual">
+🕸️
+</div>
+
+<h3>
+Complexity explodes
+</h3>
+
+<p>
+
+Components depend on each other.
+
+A small change can unexpectedly
+affect many other parts of the system.
+
+</p>
+
+</div>
+
+
+<div class="story-panel">
+
+<span class="story-number">
+04
+</span>
+
+<div class="story-visual">
+👥
+</div>
+
+<h3>
+Many people must work together
+</h3>
+
+<p>
+
+Developers, analysts, testers,
+designers, operations teams,
+managers, and stakeholders
+must coordinate their work.
+
+</p>
+
+</div>
+
+
+<div class="story-panel">
+
+<span class="story-number">
+05
+</span>
+
+<div class="story-visual">
+🛠️
+</div>
+
+<h3>
+Engineering becomes necessary
+</h3>
+
+<p>
+
+Processes, methods, modeling,
+tools, testing, and quality practices
+help the team build the right system
+in the right way.
+
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+ORIGINAL LECTURE REASONS
+===================================================== -->
+
+<section class="section">
+
+<p class="section-kicker">
+From the Original Lecture
+</p>
+
+<h2>
+Why do we need Software Engineering?
+</h2>
+
+
+<div class="reason-grid">
+
+
+<div class="reason">
+
+<div class="reason-icon">
+🌍
+</div>
+
+<h3>
+Software is everywhere
+</h3>
+
+<p>
+
+Companies and organizations
+depend on software to operate,
+compete, communicate,
+and provide services.
+
+Today software is central to
+finance, healthcare, education,
+transportation, government,
+entertainment, and many
+other sectors.
+
+</p>
+
+</div>
+
+
+<div class="reason">
+
+<div class="reason-icon">
+📈
+</div>
+
+<h3>
+Systems are growing and becoming more complex
+</h3>
+
+<p>
+
+Real systems may contain
+millions of lines of code
+and large numbers of interacting
+components, services,
+databases, devices,
+and external systems.
+
+</p>
+
+</div>
+
+
+<div class="reason">
+
+<div class="reason-icon">
+💰
+</div>
+
+<h3>
+Software represents major investment
+</h3>
+
+<p>
+
+The original lecture emphasizes
+how software became a major portion
+of overall system cost.
+
+The exact percentages in the original
+slide are historical examples,
+but the engineering lesson remains:
+software requires substantial
+development and maintenance effort.
+
+</p>
+
+</div>
+
+
+<div class="reason">
+
+<div class="reason-icon">
+🛡️
+</div>
+
+<h3>
+Quality can be critical
+</h3>
+
+<p>
+
+In embedded and safety-critical
+systems, failure may be expensive,
+dangerous, or unacceptable.
+
+Examples include medical devices,
+vehicles, aviation systems,
+industrial control systems,
+and critical infrastructure.
+
+</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+ORIGINAL NUMERIC EXAMPLE
+===================================================== -->
+
+<section class="section">
+
+<p class="section-kicker">
+Historical Example from the Original Lecture
+</p>
+
+<h2>
+Large systems cannot be built by one person
+</h2>
+
+<p>
+
+The original lecture uses lines of code
+and programmer productivity estimates
+to illustrate the scale problem.
+
+These figures should be understood as
+teaching examples from the original material,
+not as modern productivity benchmarks.
+
+</p>
+
+
+<div class="lecture-example">
+
+<span class="lecture-label">
+
+Original lecture example
+
+</span>
+
+
+<div class="number-flow">
+
+
+<div class="number-box">
+
+<strong>
+50–100
+</strong>
+
+<span>
+
+lines of source code per day
+for a typical software engineer
+in the lecture example.
+
+</span>
+
+</div>
+
+
+<div class="number-box">
+
+<strong>
+10,000 LOC
+</strong>
+
+<span>
+
+A small system would require
+approximately 100–200 engineer-days.
+
+</span>
+
+</div>
+
+
+<div class="number-box">
+
+<strong>
+500,000 LOC
+</strong>
+
+<span>
+
+A medium system would require
+thousands of engineer-days
+for one person.
+
+</span>
+
+</div>
+
+
+<div class="number-box">
+
+<strong>
+Many Engineers
+</strong>
+
+<span>
+
+Real-world systems therefore require
+teams working together.
+
+</span>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+MODERN CONTEXT
+===================================================== -->
+
+<section class="section">
+
+<p class="section-kicker">
+Modern Context
+</p>
+
+<h2>
+Today's systems are complex in more ways than code size
+</h2>
+
+<p>
+
+Lines of code alone do not measure software complexity.
+
+Modern systems may combine:
+
+</p>
+
+
+<div class="risks">
+
+<span class="risk">
+Cloud infrastructure
+</span>
+
+<span class="risk">
+APIs
+</span>
+
+<span class="risk">
+Microservices
+</span>
+
+<span class="risk">
+Databases
+</span>
+
+<span class="risk">
+Mobile applications
+</span>
+
+<span class="risk">
+Security controls
+</span>
+
+<span class="risk">
+AI components
+</span>
+
+<span class="risk">
+Third-party services
+</span>
+
+<span class="risk">
+Continuous deployment
+</span>
+
+<span class="risk">
+Millions of users
+</span>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+WITHOUT ENGINEERING
+===================================================== -->
+
+<section class="section">
+
+<p class="section-kicker">
+Implication
+</p>
+
+<h2>
+What happens without disciplined engineering?
+</h2>
+
+
+<div class="risks">
+
+<span class="risk">
+⏱ Delays
+</span>
+
+<span class="risk">
+💸 Budget overruns
+</span>
+
+<span class="risk">
+⚠ Low quality
+</span>
+
+<span class="risk">
+🔐 Security problems
+</span>
+
+<span class="risk">
+🧱 Difficult maintenance
+</span>
+
+<span class="risk">
+😕 Unhappy users
+</span>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+THINK
+===================================================== -->
+
+<div class="think">
+
+<div>
+
+<span class="think-label">
+Think Like a Software Engineer
+</span>
+
+<h3>
+
+Look around you.
+Which software systems do people rely on every day?
+
+</h3>
+
+<p>
+
+Choose one system—for example online banking,
+a hospital system, airline booking,
+university registration, or navigation.
+
+What could happen if that software failed?
+
+Your answer should help explain why
+software engineering matters.
+
+</p>
+
+</div>
+
+
+<img
+src="../../assets/images/software-engineer-mentor.png"
+alt="Software Engineer Mentor">
+
+</div>
+
+
+<!-- =====================================================
+NAVIGATION
+===================================================== -->
+
+<div class="lesson-nav">
+
+<a
+class="nav-button"
+href="what-is-se.html">
+
+← What Is Software Engineering?
+
+</a>
+
+
+<a
+class="nav-button next"
+href="teamwork.html">
+
+Next: Teamwork Challenges →
+
+</a>
+
+</div>
+
+
+</article>
+
+
+<footer>
+
+CPCS 351 · Software Engineering I · The Educator
+
+</footer>
+
+</main>
+
+</div>
+
+
+<script>
+
+if(
+  sessionStorage.getItem(
+    "cpcs351_access"
+  )
+  !==
+  "granted"
+){
+  window.location.href=
+    "../../access.html";
+}
+
+</script>
+
+</body>
+</html>
