@@ -305,6 +305,34 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
   margin-top:9px;font-size:9.5px;color:#6b788b;line-height:1.45
 }
 
+
+/* UML-DIAGRAMS.ORG REFERENCE FIGURES */
+.reference-figure{
+  margin:22px 0 28px;border:1px solid var(--line);border-radius:22px;background:#fff;
+  padding:18px;box-shadow:0 10px 28px rgba(24,50,74,.05)
+}
+.reference-figure .rf-head{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:0 2px 13px;border-bottom:1px solid var(--line);margin-bottom:16px
+}
+.reference-figure .rf-head b{font-size:12px}
+.reference-figure .rf-head span{font-size:9.5px;color:#7a8798;font-weight:750}
+.reference-figure .rf-img{
+  display:block;width:auto;max-width:100%;max-height:760px;margin:0 auto;object-fit:contain;
+  background:#fff
+}
+.reference-figure .rf-caption{
+  margin-top:14px;padding-top:12px;border-top:1px solid var(--line);
+  color:#68778b;font-size:10.5px;line-height:1.6
+}
+.reference-figure .rf-caption a{
+  font-weight:850;color:#28617d;text-decoration:none
+}
+.reference-figure .rf-caption a:hover{text-decoration:underline}
+.reference-figure .fallback{
+  display:none;padding:28px;text-align:center;background:#f8fafb;border-radius:12px;color:#69778b;font-size:11px
+}
+
 /* closure */
 .note{margin-top:30px;border-radius:16px;padding:22px;background:#eef5f6;border:1px solid #d5e5e7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}
 .note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
@@ -442,6 +470,12 @@ A system architecture can be depicted using block diagrams, UML component diagra
   <a href="https://www.uml-diagrams.org/uml-25-diagrams.html" target="_blank" rel="noopener">↗ UML 2.5 Diagram Overview</a>
 </div>
 
+
+<div style="margin-top:18px;padding:15px 17px;border-radius:13px;background:#f3f8fb;border:1px solid #d8e5ec;color:#526b7c;font-size:11px;line-height:1.65">
+<strong>Reference convention on this page:</strong> whenever a UML diagram is discussed, the original
+reference figure from <strong>uml-diagrams.org</strong> is shown first, followed by our simplified
+teaching/example diagram. This lets you learn the standard notation before seeing the CPCS 351 adaptation.
+</div>
 </div>
 </section>
 
@@ -512,6 +546,25 @@ and connectors.
   <a href="https://www.uml-diagrams.org/component-diagrams.html" target="_blank" rel="noopener">↗ UML Component Diagrams</a>
   <a href="https://www.uml-diagrams.org/component-diagrams-reference.html" target="_blank" rel="noopener">↗ Notation Reference</a>
   <span class="tag">Primary UML reference: uml-diagrams.org</span>
+</div>
+
+
+<div class="reference-figure">
+  <div class="rf-head">
+    <b>REFERENCE FIGURE · UML Component Diagram</b>
+    <span>© uml-diagrams.org · displayed from the original source</span>
+  </div>
+  <img class="rf-img"
+       src="https://www.uml-diagrams.org/component-diagram-overview.png"
+       alt="Major elements of UML component diagram: components, provided and required interfaces, ports and connectors"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+  <div class="fallback">The external reference image could not be loaded. Use the source link below to open the original figure.</div>
+  <div class="rf-caption">
+    This reference map shows the notation students should recognize: subsystem/component,
+    internal structure, ports, provided and required interfaces, delegation connectors,
+    assembly connectors, dependencies, and ball-and-socket notation.
+    <a href="https://www.uml-diagrams.org/component-diagrams.html" target="_blank" rel="noopener">Open original UML Component Diagram reference ↗</a>
+  </div>
 </div>
 
 <div class="diagram-frame">
@@ -631,6 +684,25 @@ showing the internal structure of a classifier using parts, ports, and connector
   <span class="tag">UML counterpart to the SysML internal-structure idea</span>
 </div>
 
+
+<div class="reference-figure">
+  <div class="rf-head">
+    <b>REFERENCE FIGURE · UML Composite Structure Diagram</b>
+    <span>© uml-diagrams.org · displayed from the original source</span>
+  </div>
+  <img class="rf-img"
+       src="https://www.uml-diagrams.org/composite-structure-diagram-overview.png"
+       alt="UML composite structure diagram overview showing roles, parts, ports and connectors"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+  <div class="fallback">The external reference image could not be loaded. Use the source link below to open the original figure.</div>
+  <div class="rf-caption">
+    The UML reference emphasizes internal structure: structured classifier, parts, roles,
+    ports and connectors. This is the closest UML counterpart to the internal-structure idea
+    students see in the SysML IBD below.
+    <a href="https://www.uml-diagrams.org/composite-structure-diagrams.html" target="_blank" rel="noopener">Open original Composite Structure reference ↗</a>
+  </div>
+</div>
+
 <div class="ibd-shell">
 <div class="ibd-label">ibd [Block] Terminal Subsystem [Nested Flow]</div>
 
@@ -690,6 +762,24 @@ between UML model elements, UML also provides <strong>Information Flow</strong>.
   <span class="tag">Related UML view — not a replacement for DFD</span>
 </div>
 
+
+<div class="reference-figure">
+  <div class="rf-head">
+    <b>REFERENCE FIGURE · UML Information Flow</b>
+    <span>© uml-diagrams.org · displayed from the original source</span>
+  </div>
+  <img class="rf-img"
+       src="https://www.uml-diagrams.org/information-flow-diagram-elements.png"
+       alt="UML information flow diagram elements showing information flow and information item"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+  <div class="fallback">The external reference image could not be loaded. Use the source link below to open the original figure.</div>
+  <div class="rf-caption">
+    UML Information Flow represents high-level exchange of information between model elements.
+    Keep it conceptually separate from the DFD example below: they answer related questions but use different notation.
+    <a href="https://www.uml-diagrams.org/information-flow-diagrams.html" target="_blank" rel="noopener">Open original UML Information Flow reference ↗</a>
+  </div>
+</div>
+
 <div class="diagram-frame">
 <div class="diagram-title">Library / Publication Handling Example · Material + Information Flow</div>
 
@@ -732,6 +822,24 @@ deployed to nodes; components are represented indirectly through the artifacts t
   <a href="https://www.uml-diagrams.org/deployment-diagrams.html" target="_blank" rel="noopener">↗ UML Deployment Diagrams</a>
   <a href="https://www.uml-diagrams.org/deployment-diagrams-reference.html" target="_blank" rel="noopener">↗ Deployment Notation Reference</a>
   <span class="tag">Added architecture view</span>
+</div>
+
+
+<div class="reference-figure">
+  <div class="rf-head">
+    <b>REFERENCE FIGURE · UML Deployment Diagram</b>
+    <span>© uml-diagrams.org · displayed from the original source</span>
+  </div>
+  <img class="rf-img"
+       src="https://www.uml-diagrams.org/web-application-uml-deployment-diagram-example.png"
+       alt="UML deployment diagram example for a web application"
+       onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+  <div class="fallback">The external reference image could not be loaded. Use the source link below to open the original figure.</div>
+  <div class="rf-caption">
+    This official example connects the core deployment concepts: devices/nodes, execution environments,
+    artifacts, manifestation and communication paths.
+    <a href="https://www.uml-diagrams.org/web-application-uml-deployment-diagram-example.html" target="_blank" rel="noopener">Open original Deployment Diagram example ↗</a>
+  </div>
 </div>
 
 <div class="diagram-frame">
