@@ -70,13 +70,54 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
 .finalbox:first-child{background:var(--violet2)}.finalbox:last-child{background:var(--indigo);color:#fff}.finalbox:last-child span{color:#dddaf5}
 .lab-note{margin-top:18px;padding:14px;border-radius:12px;background:#fff;border:1px dashed #c7cad8;text-align:center;color:#626c82;font-size:11px;line-height:1.6}
 
-/* COMPACT ACADEMIC SOURCE WINDOWS */
-.source-strip{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.source-card{border:1px solid var(--line);border-radius:18px;padding:14px;background:#fff}
-.source-card .tag{display:inline-block;padding:5px 8px;border-radius:999px;background:var(--indigo2);color:#4d4595;font-size:8.5px;font-weight:900}
-.source-card iframe{width:100%;height:260px;border:1px solid var(--line);border-radius:12px;margin-top:10px;background:#fff}
-.source-card b{display:block;margin-top:10px;font-size:12px}.source-card p{margin:5px 0 0;color:#68738a;font-size:10px;line-height:1.5}
-.source-card a{display:inline-block;margin-top:8px;text-decoration:none;color:#48418d;font-size:9.5px;font-weight:850}
+/* LARGE REFERENCE DIAGRAM */
+.reference-figure{
+  margin-top:28px;border:1px solid var(--line);border-radius:24px;padding:20px;background:#fff;
+}
+.reference-figure .source-label{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;
+}
+.reference-figure .source-label span{
+  padding:6px 10px;border-radius:999px;background:var(--indigo2);color:#4d4595;
+  font-size:9px;font-weight:900;letter-spacing:.04em
+}
+.reference-figure .source-label a{
+  text-decoration:none;color:#49418f;font-size:10px;font-weight:850
+}
+.reference-figure img{
+  display:block;width:100%;max-width:900px;max-height:680px;object-fit:contain;margin:0 auto;
+  border:1px solid var(--line);border-radius:16px;background:#fff
+}
+.reference-figure figcaption{
+  max-width:900px;margin:14px auto 0;color:#667187;font-size:11px;line-height:1.65
+}
+
+/* PROTOTYPE TYPES */
+.types-map{
+  margin-top:28px;border:1px solid var(--line);border-radius:28px;padding:25px;
+  background:linear-gradient(180deg,#fdfcff,#f8f7ff)
+}
+.types-core{
+  width:190px;height:105px;border-radius:55px;margin:0 auto 25px;background:var(--indigo);color:#fff;
+  display:grid;place-items:center;text-align:center;padding:15px;box-shadow:0 14px 35px rgba(45,42,120,.15)
+}
+.types-core b{font-size:16px}.types-core span{display:block;font-size:9.5px;color:#dddaf5;margin-top:4px}
+.types-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.type-card{border:1px solid var(--line);border-radius:19px;padding:19px;background:#fff;position:relative}
+.type-card:before{
+  content:"";position:absolute;top:-25px;left:50%;width:1px;height:25px;background:#c9cad8
+}
+.type-head{display:flex;align-items:center;gap:10px}.type-icon{font-size:28px}
+.type-card h3{margin:0;font-size:15px}.type-card p{margin:8px 0 0;color:#657087;font-size:10.8px;line-height:1.55}
+.type-flow{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap}
+.type-flow span{padding:7px 9px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:8.8px;font-weight:800}
+.type-flow i{font-style:normal;color:#969bad;font-weight:900}
+.throw{background:var(--magenta2)}.evolutionary{background:var(--lime2)}
+.incremental{background:var(--orange2)}.extreme{background:var(--cyan2)}
+.type-memory{
+  margin-top:16px;padding:14px;border:1px dashed #c9cad8;border-radius:13px;background:#fff;
+  text-align:center;color:#616b80;font-size:10.5px;line-height:1.6
+}
 
 /* WHY PROTOTYPE */
 .why{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
@@ -128,7 +169,7 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
 
 @media(max-width:950px){.proto-flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.why{grid-template-columns:1fr 1fr}.source-strip{grid-template-columns:1fr}.screen-row,.story{grid-template-columns:1fr 1fr}}
 @media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,1000px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}.phase{grid-template-columns:75px 1fr}.phase-out{grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}}
-@media(max-width:650px){.why,.screen-row,.examples,.pc,.story{grid-template-columns:1fr}.throwaway,.finalpath{grid-template-columns:1fr}.discard{transform:rotate(90deg)}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}}
+@media(max-width:650px){.types-grid,.why,.screen-row,.examples,.pc,.story{grid-template-columns:1fr}.throwaway,.finalpath{grid-template-columns:1fr}.discard{transform:rotate(90deg)}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}}
 </style>
 </head>
 <body>
@@ -193,22 +234,76 @@ Instead of freezing uncertain requirements and hoping they are correct, the team
 
 <div class="lab-note"><strong>Core distinction:</strong> the prototype is deliberately incomplete. Its purpose is to reveal knowledge early, before the project spends heavily on full-scale design and implementation.</div>
 
-<div class="source-strip">
-<div class="source-card">
-<span class="tag">UNIVERSITY OF TORONTO · COMPUTER SCIENCE</span>
-<iframe src="https://www.cs.toronto.edu/~sme/CSC340F/slides/03-engineering.pdf#page=12&view=FitH" title="University of Toronto prototyping lifecycle" loading="lazy"></iframe>
-<b>Reference view: Prototyping lifecycle</b>
-<p>Toronto's lifecycle shows Preliminary Requirements → Design Prototype → Build Prototype → Evaluate Prototype, then the full requirements/design/code/test/integration path.</p>
-<a href="https://www.cs.toronto.edu/~sme/CSC340F/slides/03-engineering.pdf#page=12" target="_blank" rel="noopener">Open academic source ↗</a>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Reference Diagram</div>
+<h2>Prototyping Lifecycle — see the complete cycle at full size</h2>
+<p>
+The lifecycle below makes the key distinction visible: the prototype is built and tested first to learn,
+then the clarified knowledge feeds the engineering of the real system. The diagram originates from
+University of Toronto Computer Science teaching material by Steve Easterbrook; this web image is
+linked directly rather than stored in The Educator.
+</p>
+
+<figure class="reference-figure">
+<div class="source-label">
+<span>UNIVERSITY OF TORONTO · COMPUTER SCIENCE</span>
+<a href="https://www.cs.toronto.edu/~sme/CSC444F/slides/L04-Lifecycles.pdf" target="_blank" rel="noopener">Open original academic slides ↗</a>
+</div>
+<img src="https://image.slideserve.com/291340/prototyping-lifecycle-l.jpg"
+     alt="University of Toronto prototyping lifecycle showing prototype requirements, design, build and test followed by documented requirements, design, code, test and integration"
+     loading="lazy">
+<figcaption>
+<strong>How to read it:</strong> requirements are explored through a short prototype cycle—requirements → design prototype →
+build prototype → test prototype. What the team learns is then documented and carried into the disciplined production path:
+requirements → design → code → test → integrate.
+</figcaption>
+</figure>
+</section>
+
+<section class="section">
+<div class="kicker">Prototype Families</div>
+<h2>Not every prototype has the same destination</h2>
+<p>
+“Prototype” describes a learning strategy, but teams can use prototypes in different ways.
+The most important distinction is whether the prototype is <strong>discarded</strong> or <strong>allowed to evolve</strong>.
+Other forms control what part of the system is explored.
+</p>
+
+<div class="types-map">
+<div class="types-core"><div><b>PROTOTYPE</b><span>A model built to reduce uncertainty</span></div></div>
+
+<div class="types-grid">
+<div class="type-card throw">
+<div class="type-head"><div class="type-icon">🧪</div><h3>1. Throwaway / Exploratory</h3></div>
+<p>Build quickly to understand unclear requirements or compare ideas. Once enough has been learned, discard the prototype and engineer the real system properly.</p>
+<div class="type-flow"><span>Question</span><i>→</i><span>Prototype</span><i>→</i><span>Learn</span><i>→</i><span>🗑 Discard</span></div>
 </div>
 
-<div class="source-card">
-<span class="tag">VASSAR COLLEGE · COMPUTER SCIENCE</span>
-<iframe src="https://www.cs.vassar.edu/~cs335/slides/P-Models.pdf#page=7&view=FitH" title="Vassar College prototyping model" loading="lazy"></iframe>
-<b>Reference view: Prototype revisions</b>
-<p>Vassar's process-model slides emphasize repeated prototype revisions driven by user/customer review before delivery of the engineered system.</p>
-<a href="https://www.cs.vassar.edu/~cs335/slides/P-Models.pdf#page=7" target="_blank" rel="noopener">Open academic source ↗</a>
+<div class="type-card evolutionary">
+<div class="type-head"><div class="type-icon">🌱</div><h3>2. Evolutionary</h3></div>
+<p>Start with a working core and repeatedly refine it. Unlike throwaway prototyping, the implementation itself grows toward the final operational system.</p>
+<div class="type-flow"><span>v1</span><i>→</i><span>v2</span><i>→</i><span>v3</span><i>→</i><span>Final System</span></div>
 </div>
+
+<div class="type-card incremental">
+<div class="type-head"><div class="type-icon">🧩</div><h3>3. Incremental</h3></div>
+<p>Prototype separate parts or capabilities and progressively combine them. Useful when different sections of a large solution can be explored independently.</p>
+<div class="type-flow"><span>Part A</span><span>Part B</span><span>Part C</span><i>→</i><span>Integrated</span></div>
+</div>
+
+<div class="type-card extreme">
+<div class="type-head"><div class="type-icon">🎯</div><h3>4. Focused Prototype / Spike</h3></div>
+<p>Explore one narrow uncertainty—such as a difficult interface, risky algorithm, performance bottleneck, or unfamiliar technology—without modeling the entire product.</p>
+<div class="type-flow"><span>High-risk Question</span><i>→</i><span>Small Experiment</span><i>→</i><span>Decision</span></div>
+</div>
+</div>
+
+<div class="type-memory">
+<strong>Memory hook:</strong> Throwaway = learn then discard · Evolutionary = learn while growing ·
+Incremental = learn by parts · Focused/Spike = answer one risky question.
 </div>
 </div>
 </section>
