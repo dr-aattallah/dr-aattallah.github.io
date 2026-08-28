@@ -1,0 +1,664 @@
+/* =========================================================
+   The Educator - Landing Page
+   ========================================================= */
+
+.page-index{
+  background:
+    radial-gradient(circle at 8% 8%, rgba(142,230,200,.20), transparent 28%),
+    radial-gradient(circle at 92% 12%, rgba(101,199,247,.18), transparent 32%),
+    radial-gradient(circle at 72% 88%, rgba(255,184,107,.16), transparent 30%),
+    linear-gradient(180deg,#fffdf8,#f7f9fc);
+  color:#152033;
+}
+
+/* -------------------------
+   Navigation
+------------------------- */
+
+.site-nav{
+  width:min(1180px,calc(100% - 36px));
+  margin:22px auto 0;
+  border:1px solid rgba(21,32,51,.10);
+  border-radius:999px;
+  background:rgba(255,255,255,.78);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 16px 42px rgba(35,48,70,.06);
+}
+
+.nav-container{
+  min-height:68px;
+  padding:0 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+
+.site-nav .brand{
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand-name{
+  font-size:18px;
+  font-weight:900;
+}
+
+.site-nav .nav-links{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.site-nav .nav-links a{
+  text-decoration:none;
+  color:#52677e;
+  font-size:14px;
+  font-weight:850;
+  padding:10px 14px;
+  border-radius:999px;
+}
+
+.site-nav .nav-links a:hover{
+  color:#152033;
+  background:rgba(47,128,237,.07);
+}
+
+/* -------------------------
+   Hero
+------------------------- */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:120px 0 100px;
+}
+
+.hero-content{
+  width:min(850px,calc(100% - 36px));
+  margin:auto;
+  text-align:center;
+  position:relative;
+  z-index:2;
+}
+
+.hero-label,
+.section-label{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border:1px solid rgba(21,32,51,.09);
+  background:rgba(255,255,255,.82);
+  padding:9px 14px;
+  border-radius:999px;
+  color:#52677e;
+  font-size:13px;
+  font-weight:900;
+  box-shadow:0 10px 24px rgba(35,48,70,.05);
+}
+
+.label-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#65c7f7,#8ee6c8,#ffb86b);
+}
+
+.hero h1{
+  margin:22px 0 12px;
+  font-size:clamp(64px,10vw,118px);
+  line-height:.88;
+  letter-spacing:-.055em;
+}
+
+.tagline{
+  margin:28px 0 0;
+  font-size:clamp(24px,3vw,38px);
+  font-weight:900;
+  letter-spacing:-.03em;
+}
+
+.tagline span{
+  background:linear-gradient(90deg,#2f80ed,#6bd3c2,#f2a65a);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero-description{
+  max-width:720px;
+  margin:24px auto 0;
+  color:#667085;
+  font-size:18px;
+  line-height:1.8;
+}
+
+.hero-arabic{
+  max-width:760px;
+  margin:18px auto 0;
+  color:#52677e;
+  font-size:16px;
+  line-height:2;
+  font-weight:850;
+}
+
+/* feature row */
+
+.feature-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:48px;
+}
+
+.feature{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-align:left;
+  padding:16px 18px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(21,32,51,.09);
+  border-radius:22px;
+}
+
+.feature-icon{
+  width:42px;
+  height:42px;
+  flex:0 0 auto;
+  border-radius:15px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,rgba(101,199,247,.20),rgba(142,230,200,.20));
+  font-weight:900;
+}
+
+.feature strong{
+  display:block;
+  margin-bottom:3px;
+}
+
+.feature span{
+  display:block;
+  color:#7b8798;
+  font-size:13px;
+  line-height:1.4;
+}
+
+/* soft decorative shapes */
+
+.hero-decoration{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(2px);
+  opacity:.6;
+}
+
+.decoration-left{
+  width:420px;
+  height:420px;
+  left:-220px;
+  top:10%;
+  background:radial-gradient(circle,rgba(142,230,200,.24),transparent 68%);
+}
+
+.decoration-right{
+  width:460px;
+  height:460px;
+  right:-240px;
+  top:14%;
+  background:radial-gradient(circle,rgba(101,199,247,.24),transparent 68%);
+}
+
+/* -------------------------
+   Courses
+------------------------- */
+
+.courses-section{
+  padding:80px 0 40px;
+}
+
+.section-container{
+  width:min(1180px,calc(100% - 36px));
+  margin:auto;
+}
+
+.section-heading{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:24px;
+}
+
+.section-heading h2,
+.how-header h2,
+.philosophy-card h2{
+  margin:12px 0 8px;
+  font-size:clamp(34px,4vw,54px);
+  letter-spacing:-.04em;
+}
+
+.section-heading p,
+.how-header p{
+  margin:0;
+  color:#667085;
+  line-height:1.7;
+}
+
+.course-count{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  background:#fff;
+  border:1px solid rgba(21,32,51,.09);
+  border-radius:999px;
+  color:#667085;
+  font-size:13px;
+  font-weight:850;
+}
+
+.course-count span{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#8ee6c8;
+}
+
+/* main course card */
+
+.course-card{
+  display:grid;
+  grid-template-columns:280px 1fr auto;
+  gap:28px;
+  align-items:center;
+  padding:26px;
+  border-radius:34px;
+  border:1px solid rgba(21,32,51,.09);
+  background:rgba(255,255,255,.82);
+  box-shadow:0 26px 70px rgba(35,48,70,.08);
+}
+
+.course-visual{
+  min-height:220px;
+  border-radius:26px;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle at 30% 25%,rgba(101,199,247,.28),transparent 32%),
+    linear-gradient(135deg,#2f80ed,#5867e8);
+}
+
+.course-code-symbol{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:#9ed7ff;
+  font-size:46px;
+  font-weight:900;
+}
+
+.course-content{
+  min-width:0;
+}
+
+.course-status{
+  display:inline-flex;
+  padding:8px 12px;
+  border-radius:999px;
+  background:rgba(142,230,200,.22);
+  color:#2b7c69;
+  font-size:12px;
+  font-weight:900;
+}
+
+.course-code{
+  margin-top:18px;
+  color:#152033;
+  font-size:34px;
+  font-weight:900;
+  letter-spacing:-.03em;
+}
+
+.course-card h3{
+  margin:6px 0 12px;
+  font-size:25px;
+}
+
+.course-description{
+  margin:0;
+  color:#667085;
+  line-height:1.75;
+  max-width:700px;
+}
+
+.course-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:22px;
+  margin-top:20px;
+}
+
+.meta-item{
+  display:grid;
+  gap:4px;
+}
+
+.meta-label{
+  color:#98a2b3;
+  font-size:12px;
+  font-weight:850;
+}
+
+.meta-item strong{
+  font-size:13px;
+  color:#35445a;
+}
+
+.course-action{
+  align-self:stretch;
+  display:flex;
+  align-items:center;
+}
+
+.course-open-button{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  white-space:nowrap;
+  color:#fff;
+  background:#152033;
+  padding:14px 18px;
+  border-radius:999px;
+  font-weight:900;
+  box-shadow:0 16px 34px rgba(21,32,51,.16);
+}
+
+.course-open-button:hover{
+  transform:translateY(-1px);
+}
+
+.future-courses-note{
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  margin-top:20px;
+  padding:18px 20px;
+  border-radius:22px;
+  border:1px dashed rgba(21,32,51,.12);
+  color:#667085;
+}
+
+.future-icon{
+  width:32px;
+  height:32px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:rgba(47,128,237,.08);
+  color:#2f80ed;
+  font-weight:900;
+}
+
+.future-courses-note strong{
+  color:#35445a;
+}
+
+.future-courses-note p{
+  margin:4px 0 0;
+  line-height:1.6;
+  font-size:14px;
+}
+
+/* -------------------------
+   How It Works
+------------------------- */
+
+.how-section{
+  padding:80px 0;
+}
+
+.how-header{
+  text-align:center;
+  max-width:720px;
+  margin:0 auto 34px;
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr;
+  gap:18px;
+  align-items:center;
+}
+
+.step{
+  min-height:250px;
+  text-align:center;
+  padding:26px;
+  border-radius:28px;
+  border:1px solid rgba(21,32,51,.09);
+  background:rgba(255,255,255,.78);
+  box-shadow:0 18px 50px rgba(35,48,70,.06);
+}
+
+.step-number{
+  color:#98a2b3;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
+.step-icon{
+  width:64px;
+  height:64px;
+  margin:20px auto 18px;
+  border-radius:22px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,rgba(101,199,247,.18),rgba(142,230,200,.20));
+  font-size:24px;
+}
+
+.step h3{
+  margin:0 0 10px;
+  font-size:20px;
+}
+
+.step p{
+  margin:0;
+  color:#667085;
+  line-height:1.7;
+  font-size:14px;
+}
+
+.step-connector{
+  color:#b2bdcb;
+  font-size:24px;
+}
+
+/* -------------------------
+   Philosophy
+------------------------- */
+
+.platform-philosophy{
+  padding:30px 0 100px;
+}
+
+.philosophy-card{
+  padding:54px;
+  border-radius:38px;
+  border:1px solid rgba(21,32,51,.09);
+  background:
+    radial-gradient(circle at 85% 20%,rgba(101,199,247,.12),transparent 30%),
+    radial-gradient(circle at 15% 80%,rgba(255,184,107,.13),transparent 30%),
+    rgba(255,255,255,.82);
+  box-shadow:0 24px 70px rgba(35,48,70,.07);
+}
+
+.philosophy-label{
+  color:#667085;
+  font-size:13px;
+  font-weight:900;
+}
+
+.philosophy-card h2{
+  font-size:clamp(42px,6vw,76px);
+  line-height:.98;
+}
+
+.philosophy-card p{
+  max-width:780px;
+  color:#667085;
+  line-height:1.8;
+  font-size:16px;
+}
+
+.philosophy-arabic{
+  margin-top:18px !important;
+  font-weight:850;
+}
+
+/* -------------------------
+   Footer
+------------------------- */
+
+.site-footer{
+  width:min(1180px,calc(100% - 36px));
+  margin:0 auto;
+  padding:34px 0 28px;
+  border-top:1px solid rgba(21,32,51,.09);
+}
+
+.footer-container{
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  align-items:flex-start;
+}
+
+.footer-brand p{
+  color:#98a2b3;
+  margin:12px 0 0;
+}
+
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+}
+
+.footer-links a{
+  text-decoration:none;
+  color:#667085;
+  font-size:14px;
+  font-weight:850;
+}
+
+.footer-bottom{
+  margin-top:28px;
+  padding-top:18px;
+  border-top:1px solid rgba(21,32,51,.06);
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  color:#98a2b3;
+  font-size:12px;
+}
+
+/* -------------------------
+   Responsive
+------------------------- */
+
+@media(max-width:900px){
+
+  .site-nav{
+    border-radius:26px;
+  }
+
+  .nav-container{
+    align-items:flex-start;
+    flex-direction:column;
+    padding:16px;
+  }
+
+  .site-nav .nav-links{
+    width:100%;
+    overflow-x:auto;
+  }
+
+  .hero{
+    padding:80px 0 70px;
+  }
+
+  .feature-row{
+    grid-template-columns:1fr;
+  }
+
+  .section-heading{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+
+  .course-card{
+    grid-template-columns:1fr;
+  }
+
+  .course-visual{
+    min-height:200px;
+  }
+
+  .course-action{
+    align-self:auto;
+  }
+
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+  .step-connector{
+    transform:rotate(90deg);
+    text-align:center;
+  }
+
+  .footer-container,
+  .footer-bottom{
+    flex-direction:column;
+  }
+}
+
+@media(max-width:600px){
+
+  .hero-content,
+  .section-container,
+  .site-nav,
+  .site-footer{
+    width:min(100% - 24px,1180px);
+  }
+
+  .hero h1{
+    font-size:64px;
+  }
+
+  .tagline{
+    font-size:24px;
+  }
+
+  .course-card{
+    padding:18px;
+    border-radius:26px;
+  }
+
+  .course-code{
+    font-size:28px;
+  }
+
+  .philosophy-card{
+    padding:30px;
+    border-radius:28px;
+  }
+}
