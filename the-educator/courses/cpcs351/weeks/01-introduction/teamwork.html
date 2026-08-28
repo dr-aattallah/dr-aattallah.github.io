@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teamwork Challenges | CPCS 351</title>
+<meta name="description" content="CPCS 351 Software Engineering I — Teamwork Challenges in Software Engineering.">
+<style>
+:root{
+  --ink:#172033;--muted:#657187;--line:#e6eaf0;--soft:#f7f9fc;
+  --blue:#2f80ed;--blue-soft:#eef6ff;--mint:#5fd1b3;--mint-soft:#effbf7;
+  --orange:#f2a45b;--orange-soft:#fff6ed;--purple:#8b74df;--purple-soft:#f4f1ff;
+  --sidebar:250px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:100;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800}
+.brand-mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--mint),var(--orange));position:relative}
+.brand-mark:before,.brand-mark:after{content:"";position:absolute;background:#fff;border-radius:20px}
+.brand-mark:before{width:16px;height:4px;left:7px;top:13px}.brand-mark:after{width:4px;height:16px;left:13px;top:7px}
+.top-links{display:flex;gap:5px}.top-links a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:650;padding:9px 11px;border-radius:9px}.top-links a:hover{background:var(--soft);color:var(--ink)}
+.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);min-height:calc(100vh - 64px)}
+.sidebar{position:sticky;top:64px;height:calc(100vh - 64px);overflow:auto;padding:25px 14px 30px;border-right:1px solid var(--line);background:#fafbfc}
+.sidebar-course{padding:0 12px 18px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.sidebar-course small{display:block;color:#8d98a8;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.sidebar-course strong{display:block;font-size:15px;line-height:1.35}
+.side-title{padding:7px 12px;margin-top:10px;color:#98a2b3;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.side-link{display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#5f6c80;font-size:13px;font-weight:650;line-height:1.4}
+.side-link:hover{background:#f0f3f7;color:var(--ink)} .side-link.active{background:#eaf3ff;color:#1768c4;font-weight:800}
+main{min-width:0}.content{width:min(900px,calc(100% - 48px));margin:auto;padding:64px 0 90px}
+.breadcrumb{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px;color:#8c97a7;font-size:13px;font-weight:650}.breadcrumb a{text-decoration:none}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:34px;align-items:center}
+.topic-label{display:inline-flex;align-items:center;gap:7px;color:#3175a4;font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}.topic-label:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint)}
+h1{margin:0;font-size:clamp(44px,6vw,68px);line-height:1;letter-spacing:-.045em}.lead{margin:22px 0 0;color:var(--muted);font-size:19px;line-height:1.75}
+.mentor-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.mentor-image{height:220px;display:flex;align-items:flex-end;justify-content:center;background:radial-gradient(circle at 50% 20%,#fff,#f2f7fb)}
+.mentor-image img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.mentor-message{padding:18px;border-top:1px solid var(--line)}.mentor-message blockquote{margin:0;color:#334155;font-size:15px;line-height:1.7;font-weight:650}.mentor-name{margin-top:10px;color:#3175a4;font-size:12px;font-weight:800}
+.section{margin-top:58px}.section-kicker{margin:0 0 7px;color:#98a2b3;font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.06em}
+h2{margin:0 0 14px;font-size:31px;letter-spacing:-.03em}.section>p{color:#536176;font-size:16px;line-height:1.8}
+.challenge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.challenge{padding:20px;border:1px solid var(--line);border-radius:15px;background:#fff}
+.challenge img{width:92px;height:92px;object-fit:contain;display:block;margin:0 auto 14px}
+.challenge h3{margin:0 0 8px;text-align:center;font-size:18px}.challenge p{margin:0;color:#667085;font-size:14px;line-height:1.7;text-align:center}
+.story{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.story-panel{padding:14px;border:1px solid var(--line);border-radius:15px;background:#fff}
+.story-visual{height:125px;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(135deg,#f6f9ff,#f7fbfa);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.story-visual img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.story-panel strong{display:block;margin-bottom:6px;font-size:15px}.story-panel p{margin:0;color:#667085;font-size:13px;line-height:1.6}
+.solution-map{margin-top:24px;padding:24px;border:1px solid var(--line);border-radius:16px;background:#fbfcfe}
+.solution-row{display:grid;grid-template-columns:1fr 70px 1fr;gap:12px;align-items:center;margin-top:14px}
+.solution-box{padding:18px;border-radius:13px;background:#fff;border:1px solid var(--line)}
+.solution-box h3{margin:0 0 6px;font-size:17px}.solution-box p{margin:0;color:#667085;font-size:13px;line-height:1.6}
+.solution-arrow{text-align:center;color:#98a2b3;font-size:22px;font-weight:800}
+.lecture-note{margin-top:24px;padding:20px;border-left:4px solid var(--blue);background:var(--blue-soft);border-radius:14px}
+.lecture-note strong{display:block;color:#2368b3;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.lecture-note p{margin:0;color:#31475f;line-height:1.7;font-size:15px}
+.think{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:20px;align-items:end;margin-top:35px;padding:24px 24px 0;border-radius:16px;background:var(--mint-soft);border:1px solid #d8f1e9;overflow:hidden}
+.think-label{color:#327867;font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase}.think h3{margin:8px 0;font-size:21px}.think p{margin:0 0 24px;color:#45685f;line-height:1.7}.think img{width:100%;max-height:170px;object-fit:contain;object-position:center bottom}
+.lesson-nav{display:flex;justify-content:space-between;gap:12px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+.nav-button{display:inline-flex;align-items:center;gap:9px;padding:13px 16px;border-radius:11px;text-decoration:none;font-size:14px;font-weight:800;border:1px solid var(--line);background:#fff;color:#526176}.nav-button.next{background:var(--ink);color:#fff;border-color:var(--ink)}
+footer{padding:25px 0;border-top:1px solid var(--line);color:#98a2b3;text-align:center;font-size:12px}.mobile-menu{display:none}
+@media(max-width:900px){.challenge-grid{grid-template-columns:1fr}.story{grid-template-columns:1fr 1fr}.hero{grid-template-columns:1fr}.mentor-card{max-width:360px}}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{display:none}.mobile-menu{display:block;padding:11px 18px;background:#fafbfc;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}.mobile-menu a{display:inline-block;margin-right:5px;padding:8px 10px;background:#fff;border:1px solid var(--line);border-radius:8px;color:#59687c;text-decoration:none;font-size:12px;font-weight:700}.content{width:min(100% - 28px,900px);padding-top:45px}}
+@media(max-width:620px){.topbar{padding:0 13px}.top-links a:nth-child(2){display:none}h1{font-size:43px}.lead{font-size:17px}.story{grid-template-columns:1fr}.solution-row{grid-template-columns:1fr}.solution-arrow{transform:rotate(90deg)}.think{grid-template-columns:1fr}.lesson-nav{flex-direction:column}.nav-button{justify-content:center}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html"><span class="brand-mark"></span><span>The Educator</span></a>
+  <nav class="top-links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+
+<div class="mobile-menu">
+  <a href="index.html">Overview</a><a href="nature-of-software.html">Nature of Software</a>
+  <a href="what-is-se.html">What is SE?</a><a href="why-se.html">Why SE?</a><a href="teamwork.html">Teamwork</a>
+</div>
+
+<div class="layout">
+<aside class="sidebar">
+  <div class="sidebar-course"><small>CPCS 351 · Topic 01</small><strong>Introduction to Software Engineering</strong></div>
+  <div class="side-title">Topic 01</div>
+  <a class="side-link" href="index.html">Overview</a>
+  <a class="side-link" href="nature-of-software.html">1. Nature of Software</a>
+  <a class="side-link" href="what-is-se.html">2. What is Software Engineering?</a>
+  <a class="side-link" href="why-se.html">3. Why Software Engineering?</a>
+  <a class="side-link active" href="teamwork.html">4. Teamwork Challenges</a>
+  <a class="side-link" href="life-cycle.html">5. Software Life Cycle</a>
+  <a class="side-link" href="development-process.html">6. Development Process</a>
+  <a class="side-link" href="waterfall.html">7. Waterfall Process</a>
+  <a class="side-link" href="sqa.html">8. Software Quality Assurance</a>
+  <a class="side-link" href="project-management.html">9. Project Management</a>
+  <a class="side-link" href="oose.html">10. OO Software Engineering</a>
+  <div class="side-title">Course</div><a class="side-link" href="../../index.html">Course Home</a>
+</aside>
+
+<main>
+<article class="content">
+  <div class="breadcrumb"><a href="../../index.html">CPCS 351</a><span>›</span><a href="index.html">Topic 01</a><span>›</span><span>Teamwork Challenges</span></div>
+
+  <section class="hero">
+    <div>
+      <div class="topic-label">Topic 01 · Section 4</div>
+      <h1>Teamwork Challenges</h1>
+      <p class="lead">Large software systems are team efforts. The challenge is not only writing code—it is helping many people build one coherent system together.</p>
+    </div>
+
+    <div class="mentor-card">
+      <div class="mentor-image"><img src="../../assets/images/mentor-06-pointing.png" alt="Software Engineering Mentor explaining teamwork"></div>
+      <div class="mentor-message">
+        <blockquote>“A team can have excellent programmers and still fail if they cannot communicate, coordinate, and share the same mental model.”</blockquote>
+        <div class="mentor-name">— Your Software Engineering Mentor</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-kicker">From the Original Lecture</p>
+    <h2>Three challenges teams must overcome</h2>
+    <p>The lecture identifies three major teamwork challenges: communication, coordination, and conceptualization.</p>
+
+    <div class="challenge-grid">
+      <div class="challenge">
+        <img src="../../assets/images/mentor-02-explaining.png" alt="Mentor explaining">
+        <h3>Communication</h3>
+        <p>Team members must exchange requirements, decisions, assumptions, progress, risks, and technical information clearly.</p>
+      </div>
+
+      <div class="challenge">
+        <img src="../../assets/images/mentor-06-pointing.png" alt="Mentor coordinating">
+        <h3>Coordination</h3>
+        <p>People must organize who does what, when tasks depend on each other, how changes are integrated, and how conflicts are resolved.</p>
+      </div>
+
+      <div class="challenge">
+        <img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking">
+        <h3>Conceptualization</h3>
+        <p>The team needs a shared understanding of the problem, system structure, behavior, responsibilities, and design concepts.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-kicker">Visual Story</p>
+    <h2>How a team gets into trouble</h2>
+
+    <div class="story">
+      <div class="story-panel">
+        <div class="story-visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div>
+        <strong>1. Everyone starts coding</strong>
+        <p>Developers move quickly, but requirements and responsibilities are not fully aligned.</p>
+      </div>
+
+      <div class="story-panel">
+        <div class="story-visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div>
+        <strong>2. Assumptions diverge</strong>
+        <p>Different team members interpret the same feature in different ways.</p>
+      </div>
+
+      <div class="story-panel">
+        <div class="story-visual"><img src="../../assets/images/mentor-11-serious.png" alt=""></div>
+        <strong>3. Integration becomes painful</strong>
+        <p>Components do not fit together cleanly, rework increases, and defects appear.</p>
+      </div>
+
+      <div class="story-panel">
+        <div class="story-visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
+        <strong>4. Engineering practices restore alignment</strong>
+        <p>Shared processes, models, and tools create a common way of working and thinking.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-kicker">The Lecture's Solutions</p>
+    <h2>How Software Engineering supports teamwork</h2>
+
+    <div class="solution-map">
+      <div class="solution-row">
+        <div class="solution-box"><h3>Processes & Methodologies</h3><p>Provide structured steps for analysis, design, development, review, and decision-making.</p></div>
+        <div class="solution-arrow">→</div>
+        <div class="solution-box"><h3>Better Analysis & Design</h3><p>People work from a more consistent process rather than relying only on individual habits.</p></div>
+      </div>
+
+      <div class="solution-row">
+        <div class="solution-box"><h3>UML</h3><p>Provides a visual modeling language for communicating structure, behavior, interactions, and responsibilities.</p></div>
+        <div class="solution-arrow">→</div>
+        <div class="solution-box"><h3>Communication & Coordination</h3><p>A shared visual model helps different team members discuss the same system more precisely.</p></div>
+      </div>
+
+      <div class="solution-row">
+        <div class="solution-box"><h3>Tools</h3><p>Support or automate methodology steps such as version control, issue tracking, modeling, testing, CI/CD, and collaboration.</p></div>
+        <div class="solution-arrow">→</div>
+        <div class="solution-box"><h3>Repeatability & Visibility</h3><p>Teams can track work, changes, defects, decisions, and system evolution more reliably.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="lecture-note">
+    <strong>Original Lecture Summary</strong>
+    <p>To work together effectively, software engineers need processes and methodologies for analysis and design, UML for communication and coordination, and tools that automate or support methodology steps.</p>
+  </div>
+
+  <section class="section">
+    <p class="section-kicker">Modern Example</p>
+    <h2>A team building an online registration system</h2>
+    <p>One group works on the student interface, another on prerequisites, another on payments, another on APIs, and another on infrastructure. If each team changes its assumptions independently, the system can fail even when every individual component appears correct.</p>
+  </section>
+
+  <div class="think">
+    <div>
+      <span class="think-label">Think Like a Software Engineer</span>
+      <h3>Which challenge is this?</h3>
+      <p>Two developers implement the same requirement differently because they understood the requirement in different ways. Is the main problem communication, coordination, conceptualization—or a combination? Explain your reasoning.</p>
+    </div>
+    <img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking">
+  </div>
+
+  <div class="lesson-nav">
+    <a class="nav-button" href="why-se.html">← Why Software Engineering?</a>
+    <a class="nav-button next" href="life-cycle.html">Next: Software Life Cycle →</a>
+  </div>
+</article>
+
+<footer>CPCS 351 · Software Engineering I · The Educator</footer>
+</main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access") !== "granted"){
+  window.location.href="../../access.html";
+}
+</script>
+</body>
+</html>
