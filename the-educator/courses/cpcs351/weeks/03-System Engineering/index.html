@@ -1,1 +1,319 @@
-ssssss
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>System Engineering | CPCS 351</title>
+<meta name="description" content="CPCS 351 Software Engineering I — Topic 03: System Engineering.">
+<style>
+:root{
+  --ink:#172338;--muted:#65748a;--line:#dfe6ec;--soft:#f7fafb;
+  --navy:#18324a;--navy2:#edf3f7;
+  --teal:#159a9c;--teal2:#e9f8f7;
+  --amber:#e9a23b;--amber2:#fff6e8;
+  --coral:#e76f51;--coral2:#fff0eb;
+  --sky:#5aa9e6;--sky2:#edf7fe;
+  --side:242px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+.top{height:62px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}
+.mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--teal),var(--amber));display:grid;place-items:center;color:#fff;font-weight:900}
+.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
+.layout{display:grid;grid-template-columns:var(--side) 1fr}
+.side{height:calc(100vh - 62px);position:sticky;top:62px;overflow:auto;border-right:1px solid var(--line);background:#f9fbfc;padding:24px 14px}
+.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}
+.course small,.label{font-size:11px;font-weight:850;color:#8d9aab;letter-spacing:.08em;text-transform:uppercase}
+.course strong{display:block;margin-top:7px;font-size:15px;line-height:1.35}
+.label{margin:18px 0 8px}
+.side a,.side span{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5d6c80;font-size:13px;font-weight:650;line-height:1.35}
+.side a.active{background:#e8f5f5;color:#087f80;font-weight:850}
+.side span.future{color:#a4adb8}
+.content{width:min(930px,calc(100% - 48px));margin:auto;padding:58px 0 90px}
+.crumb{color:#8a97a7;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}
+.hero{display:grid;grid-template-columns:1fr 280px;gap:36px;align-items:center}
+.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+.eyebrow{color:#0f7f81}.eyebrow:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--amber);margin-right:7px}
+h1{font-size:clamp(46px,6vw,68px);line-height:.98;letter-spacing:-.045em;margin:14px 0 20px}
+.lead{color:var(--muted);font-size:19px;line-height:1.75}
+.mentor{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff}
+.mentor .pic{height:225px;background:linear-gradient(180deg,#f7fbfc,#edf5f7);display:flex;align-items:flex-end}
+.mentor img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.mentor p{margin:0;padding:17px;border-top:1px solid var(--line);font-size:14px;line-height:1.65;font-weight:650;color:#46566b}
+.section{margin-top:68px}.kicker{color:#95a1b0;margin-bottom:7px}
+h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c;line-height:1.8;font-size:16px}
+
+/* VISUAL HOOK: SYSTEM RADAR */
+.radar-wrap{margin-top:28px;border:1px solid var(--line);border-radius:26px;padding:28px;background:
+radial-gradient(circle at 50% 50%,rgba(21,154,156,.10),transparent 28%),
+linear-gradient(180deg,#fbfdfe,#f5fafb);overflow:hidden}
+.radar{position:relative;min-height:560px;max-width:840px;margin:auto}
+.ring{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:1px dashed #b9ccd2;border-radius:50%}
+.r1{width:210px;height:210px}.r2{width:360px;height:360px}.r3{width:510px;height:510px}
+.mission-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:180px;height:180px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;text-align:center;padding:20px;box-shadow:0 20px 48px rgba(24,50,74,.20)}
+.mission-core b{font-size:20px}.mission-core span{display:block;margin-top:7px;font-size:11px;line-height:1.45;color:#cbd8e3}
+.node{position:absolute;width:190px;padding:16px 17px;border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 24px rgba(28,48,65,.06)}
+.node b{font-size:13px}.node span{display:block;margin-top:5px;color:#68778b;font-size:11px;line-height:1.5}
+.n1{left:10px;top:45px;background:var(--sky2)}
+.n2{right:10px;top:45px;background:var(--teal2)}
+.n3{left:8px;bottom:70px;background:var(--amber2)}
+.n4{right:8px;bottom:70px;background:var(--coral2)}
+.n5{left:50%;bottom:0;transform:translateX(-50%);background:#fff}
+.radar-caption{margin-top:14px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:#627287;line-height:1.65}
+
+/* SYSTEM SCALE */
+.scale{margin-top:25px;border:1px solid var(--line);border-radius:22px;padding:25px;background:#fbfcfd}
+.scale-line{position:relative;height:18px;border-radius:999px;background:linear-gradient(90deg,var(--sky),var(--teal),var(--amber),var(--coral));margin:55px 30px}
+.scale-item{position:absolute;top:50%;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;background:#fff;border:5px solid var(--navy)}
+.s1{left:8%}.s2{left:34%}.s3{left:62%}.s4{left:92%}
+.scale-item span{position:absolute;top:32px;left:50%;transform:translateX(-50%);width:150px;text-align:center;font-size:10.5px;color:#657489;line-height:1.45}
+.scale-item b{display:block;color:var(--ink);font-size:11px;margin-bottom:3px}
+
+/* SYSTEM CHARACTERISTICS: WINDOW */
+.window{margin-top:28px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#fff}
+.window-top{background:var(--navy);color:#fff;padding:14px 18px;font-size:12px;font-weight:850;letter-spacing:.06em}
+.window-body{display:grid;grid-template-columns:1fr 1fr}
+.char{padding:22px;min-height:150px;border-bottom:1px solid var(--line)}
+.char:nth-child(odd){border-right:1px solid var(--line)}
+.char:nth-child(1){background:var(--sky2)}.char:nth-child(2){background:var(--teal2)}.char:nth-child(3){background:var(--amber2)}.char:nth-child(4){background:var(--coral2)}
+.char .icon{font-size:25px;margin-bottom:8px}.char b{font-size:15px}.char p{margin:7px 0 0;color:#617087;font-size:12px;line-height:1.6}
+
+/* CONTROL TOWER */
+.tower-wrap{margin-top:28px;border:1px solid var(--line);border-radius:24px;padding:28px;background:linear-gradient(180deg,#fbfdfe,#f7fafb)}
+.tower-stage{display:grid;grid-template-columns:1fr 150px 1fr;gap:20px;align-items:center}
+.teamcol{display:grid;gap:12px}
+.team{padding:16px;border-radius:14px;border:1px solid var(--line);background:#fff}
+.team b{font-size:13px}.team span{display:block;margin-top:5px;color:#6a788c;font-size:11px;line-height:1.5}
+.team.hw{background:var(--amber2)}.team.sw{background:var(--sky2)}.team.hm{background:var(--teal2)}
+.control{height:230px;border-radius:24px 24px 14px 14px;background:var(--navy);color:#fff;display:grid;place-items:center;text-align:center;padding:20px;box-shadow:0 18px 40px rgba(24,50,74,.18)}
+.control b{font-size:18px}.control span{display:block;margin-top:7px;font-size:11px;line-height:1.5;color:#c9d6df}
+.principles{display:grid;gap:12px}.principle{padding:16px;border-left:4px solid var(--teal);background:#fff;border-radius:12px}.principle b{font-size:12px}.principle p{margin:5px 0 0;color:#69778c;font-size:11px;line-height:1.55}
+
+/* EMBEDDED SYSTEM LAYERS */
+.layers{margin-top:26px;border:1px solid var(--line);border-radius:22px;padding:26px;background:#fbfcfd}
+.layer-stack{max-width:700px;margin:auto;display:grid;gap:10px}
+.layer{padding:18px;border-radius:14px;text-align:center;font-size:13px;font-weight:850}
+.layer span{display:block;font-size:11px;font-weight:600;margin-top:5px;opacity:.75}
+.l-system{background:var(--navy);color:#fff}
+.l-hw{background:var(--amber2);color:#7a5420}
+.l-sw{background:var(--sky2);color:#2c6087}
+.l-human{background:var(--teal2);color:#2d6e6f}
+
+/* STORY */
+.story{margin-top:25px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.panel{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fff;overflow:hidden}
+.visual{height:120px;border-radius:11px;background:linear-gradient(135deg,#f5f9fb,#f7fbfa);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;margin-bottom:11px}
+.visual img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.panel .no{font-size:10px;font-weight:900;color:#8794a6;text-transform:uppercase}
+.panel h4{margin:5px 0 6px;font-size:14px}.panel p{margin:0;color:#68768a;font-size:11.5px;line-height:1.55}
+.panel:nth-child(1){border-top:4px solid var(--sky)}.panel:nth-child(2){border-top:4px solid var(--teal)}.panel:nth-child(3){border-top:4px solid var(--coral)}.panel:nth-child(4){border-top:4px solid var(--amber)}
+
+/* closure */
+.note{margin-top:30px;border-radius:16px;padding:22px;background:#eef5f6;border:1px solid #d5e5e7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}
+.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.note b{color:#2f6b70}.note p{margin:0 0 20px;color:#536d72;line-height:1.7;font-size:14px}.note img{width:100%;max-height:150px;object-fit:contain}
+.take{margin-top:28px;padding:22px;border-left:4px solid var(--amber);border-radius:15px;background:var(--amber2)}.take b{color:#9a642b}.take p{margin:0;color:#68563d;line-height:1.7;font-weight:650;font-size:14px}
+.think{margin-top:30px;border:1px solid #cfe7ed;background:#eef8fa;border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end}.think .tlabel{color:#197a82}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#4f6f75;line-height:1.7;font-size:14px}.think img{width:100%;max-height:155px;object-fit:contain}
+.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:var(--navy);color:#fff;border-color:var(--navy)}
+.mobile{display:none}
+@media(max-width:900px){.story{grid-template-columns:1fr 1fr}.tower-stage{grid-template-columns:1fr}.control{height:auto;min-height:150px}}
+@media(max-width:850px){.layout{display:block}.side{display:none}.mobile{display:block;padding:10px 14px;border-bottom:1px solid var(--line)}.content{width:min(100% - 28px,930px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
+@media(max-width:720px){.radar{display:grid;gap:10px;min-height:0}.ring{display:none}.mission-core,.node{position:static;width:auto;transform:none}.mission-core{height:auto;border-radius:18px;padding:22px}.window-body{grid-template-columns:1fr}.char:nth-child(odd){border-right:0}.story{grid-template-columns:1fr}.scale-line{height:auto;background:none;margin:0;display:grid;gap:12px}.scale-item{position:static;width:auto;height:auto;transform:none;border:0;border-radius:14px;padding:15px;background:#fff}.scale-item span{position:static;transform:none;width:auto}}
+@media(max-width:520px){.links a:nth-child(2){display:none}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}}
+</style>
+</head>
+<body>
+<header class="top">
+<a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
+<nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+
+<div class="layout">
+<aside class="side">
+<div class="course"><small>CPCS 351 · TOPIC 03</small><strong>System Engineering</strong></div>
+<div class="label">Topic 03</div>
+<a class="active" href="index.html">1. Systems &amp; System Engineering</a>
+<span class="future">2. System Engineering Process</span>
+<span class="future">3. System Requirements</span>
+<span class="future">4. System Architecture</span>
+<span class="future">5. Requirements Allocation</span>
+<span class="future">6. Architecture Diagrams</span>
+<span class="future">7. Integration &amp; Deployment</span>
+<span class="future">8. Configuration Management</span>
+<div class="label">Course</div>
+<a href="../02-Software Quality/index.html">Topic 02 · Software Quality</a>
+<a href="../../index.html">Course Home</a>
+</aside>
+
+<main><article class="content">
+<div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 03 › System Engineering</div>
+
+<section class="hero">
+<div>
+<div class="eyebrow">Topic 03 · Lesson 01</div>
+<h1>Systems &amp; System Engineering</h1>
+<p class="lead">A working software component is only one piece of a real-world system. System Engineering coordinates software, hardware, people, constraints, and interfaces so the whole system can accomplish its mission.</p>
+</div>
+<div class="mentor">
+<div class="pic"><img src="../../assets/images/mentor-06-pointing.png" alt="Software engineering mentor explaining a system"></div>
+<p>“The key shift is simple: stop looking only at the program. Start looking at the mission, the components, and the connections.”</p>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Core Concept</div>
+<h2>What is a system?</h2>
+<p>A system is a set of <strong>interrelated components</strong>. It can be large or small, simple or complex, natural or man-made, physical or conceptual.</p>
+
+<div class="scale">
+<div class="scale-line">
+<div class="scale-item s1"><span><b>The Universe</b>natural, enormous, highly interconnected</span></div>
+<div class="scale-item s2"><span><b>An Ant</b>small biological system</span></div>
+<div class="scale-item s3"><span><b>Telephone System</b>engineered physical system</span></div>
+<div class="scale-item s4"><span><b>ABHS</b>computer-based HW + SW + human system</span></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Visual Hook</div>
+<h2>The System Radar</h2>
+<p>System thinking begins with the mission in the center. Around it are components that must cooperate—not merely coexist.</p>
+
+<div class="radar-wrap">
+<div class="radar">
+<div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+
+<div class="mission-core"><div><b>ABHS MISSION</b><span>Move the correct luggage to the correct destination safely and on time.</span></div></div>
+
+<div class="node n1"><b>Luggage Check-In Software</b><span>Captures luggage, passenger, destination, and tracking data.</span></div>
+<div class="node n2"><b>Conveyor System</b><span>Moves baggage physically through terminals and transfer points.</span></div>
+<div class="node n3"><b>Flight Information System</b><span>Supplies destination and flight information needed for routing.</span></div>
+<div class="node n4"><b>Human Operators</b><span>Airline agents, maintenance staff, handlers, and passengers interact with the system.</span></div>
+<div class="node n5"><b>Airport System</b><span>ABHS itself exists inside a larger system hierarchy.</span></div>
+</div>
+<div class="radar-caption">A subsystem can be individually correct while the system mission still fails. The interfaces and interactions are part of the engineering problem.</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Main Characteristics</div>
+<h2>Four windows into every system</h2>
+
+<div class="window">
+<div class="window-top">SYSTEM CHARACTERISTICS</div>
+<div class="window-body">
+<div class="char"><div class="icon">↔</div><b>Interacting Components</b><p>Components exchange material, information, control, or services.</p></div>
+<div class="char"><div class="icon">◉</div><b>Hierarchy</b><p>A system can contain subsystems and can itself belong to a larger system.</p></div>
+<div class="char"><div class="icon">◎</div><b>Environment</b><p>Every system operates within a context and interacts with its environment.</p></div>
+<div class="char"><div class="icon">↻</div><b>Evolution</b><p>Systems change as missions, technologies, users, and constraints change.</p></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">System Engineering</div>
+<h2>The Control Tower for the whole system</h2>
+<p>System Engineering applies an engineering process across the entire system life cycle, decomposes the system top-down, and coordinates multidisciplinary teams.</p>
+
+<div class="tower-wrap">
+<div class="tower-stage">
+<div class="teamcol">
+<div class="team hw"><b>Hardware Engineering</b><span>Conveyors, scanners, sensors, terminals, tracks.</span></div>
+<div class="team sw"><b>Software Engineering</b><span>Control logic, applications, services, interfaces.</span></div>
+<div class="team hm"><b>Human / Operations</b><span>Airline agents, operators, procedures, responsibilities.</span></div>
+</div>
+
+<div class="control"><div><b>SYSTEM<br>ENGINEERING</b><span>Coordinates requirements, decomposition, interfaces, integration, and mission success.</span></div></div>
+
+<div class="principles">
+<div class="principle"><b>Whole Life Cycle</b><p>Engineering continues from requirements through deployment and maintenance.</p></div>
+<div class="principle"><b>Top-Down Divide &amp; Conquer</b><p>Break the system into manageable subsystems and components.</p></div>
+<div class="principle"><b>Multidisciplinary Teamwork</b><p>Different engineering disciplines must collaborate on shared system problems.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Embedded Systems</div>
+<h2>Hardware + Software + Humans</h2>
+<p>Many real systems combine several kinds of components. Their interactions accomplish the system mission.</p>
+
+<div class="layers">
+<div class="layer-stack">
+<div class="layer l-system">SYSTEM MISSION<span>What the complete system must accomplish</span></div>
+<div class="layer l-hw">Hardware Subsystems<span>Physical devices and machines</span></div>
+<div class="layer l-sw">Software Subsystems<span>Programs, controllers, interfaces, services</span></div>
+<div class="layer l-human">Human Components<span>Users, operators, maintainers, procedures</span></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Illustrated Example</div>
+<h2>The baggage system that passed every software test</h2>
+
+<div class="story">
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div>
+<span class="no">Panel 1</span><h4>The software is correct</h4><p>The control software correctly calculates where every bag should go.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div>
+<span class="no">Panel 2</span><h4>The team celebrates</h4><p>Unit and integration tests inside the software subsystem all pass.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div>
+<span class="no">Panel 3</span><h4>The airport still loses bags</h4><p>A scanner misses damaged tags, a conveyor jams, and recovery instructions confuse operators.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
+<span class="no">Panel 4</span><h4>The system lesson</h4><p>Mission success depends on software, hardware, humans, interfaces, and environment working together.</p>
+</div>
+</div>
+</section>
+
+<div class="note">
+<div>
+<b>Mentor Insight</b>
+<p>Software Engineering is part of System Engineering. When software is embedded in a larger system, engineers must understand what other components expect from the software—and what the software expects from them.</p>
+</div>
+<img src="../../assets/images/mentor-11-serious.png" alt="Mentor emphasizing whole-system thinking">
+</div>
+
+<div class="take">
+<b>Key Takeaway</b>
+<p>A system is made of interrelated components. Systems interact with their environments, exist in hierarchies, and evolve over time. System Engineering coordinates the complete life cycle, decomposes complex systems, and integrates hardware, software, and human subsystems into one mission-oriented whole.</p>
+</div>
+
+<div class="think">
+<div>
+<span class="tlabel">Think Like a Software Engineer</span>
+<h3>If the control software is perfect but a conveyor sensor sends the wrong signal, where should the failure be investigated?</h3>
+<p>Think about subsystem boundaries, interfaces, assumptions, responsibilities, and the overall system mission.</p>
+</div>
+<img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about system interfaces">
+</div>
+
+<div class="nav">
+<a href="../02-Software Quality/se-vs-cs.html">← Topic 02</a>
+<a class="next" href="system-engineering-process.html">Next · System Engineering Process →</a>
+</div>
+
+</article></main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access")!=="granted"){
+  window.location.href="../../access.html";
+}
+</script>
+</body>
+</html>
