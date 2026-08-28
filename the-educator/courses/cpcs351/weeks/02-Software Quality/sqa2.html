@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software Quality Assurance | CPCS 351</title>
+<style>
+:root{--ink:#182236;--muted:#607089;--line:#e2e8f0;--blue:#2f80ed;--blue2:#eaf4ff;--mint:#54cdb0;--mint2:#ebfaf5;--orange:#f0a35c;--orange2:#fff4e9;--red:#df6262;--red2:#fff0f0;--purple:#8a72db;--purple2:#f3efff;--soft:#f8fafc;--side:238px}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}a{color:inherit}.top{height:60px;position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 14px}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}.mark{width:29px;height:29px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--mint),var(--orange));display:grid;place-items:center;color:#fff;font-size:22px}.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}.layout{display:grid;grid-template-columns:var(--side) 1fr}.side{height:calc(100vh - 60px);position:sticky;top:60px;overflow:auto;border-right:1px solid var(--line);background:#fafbfc;padding:24px 14px}.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}.course small,.label{font-size:11px;font-weight:850;color:#8e9aad;letter-spacing:.07em;text-transform:uppercase}.course strong{display:block;margin-top:7px;font-size:15px;line-height:1.35}.label{margin:18px 0 8px}.side a,.side span{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5c6d85;font-size:13px;font-weight:650;line-height:1.35}.side a.active{background:#e9f3ff;color:#1269ca;font-weight:850}.side span.future{color:#a3adba}.content{width:min(900px,calc(100% - 48px));margin:auto;padding:58px 0 90px}.crumb{color:#8a97a8;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}.hero{display:grid;grid-template-columns:1fr 270px;gap:34px;align-items:center}.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.07em;text-transform:uppercase}.eyebrow{color:#2e76ad}.eyebrow:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mint);margin-right:7px}h1{font-size:clamp(43px,6vw,66px);line-height:1;letter-spacing:-.045em;margin:14px 0 20px}.lead{color:var(--muted);font-size:18px;line-height:1.75}.mentor{border:1px solid var(--line);border-radius:18px;overflow:hidden}.mentor .pic{height:220px;background:radial-gradient(circle at top,#fff,#f1f6fb);display:flex;align-items:flex-end}.mentor img{width:100%;height:100%;object-fit:contain;object-position:center bottom}.mentor p{margin:0;padding:17px;border-top:1px solid var(--line);font-size:14px;line-height:1.65;font-weight:650;color:#46556b}.section{margin-top:58px}.kicker{color:#96a1b1;margin-bottom:7px}h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c;line-height:1.8;font-size:16px}.definition{margin-top:22px;padding:23px;border-radius:16px;border:1px solid #dceaff;background:var(--blue2);font-size:17px;line-height:1.75;color:#365d82}.definition strong{color:#1e609a}
+
+/* HOOK: QUALITY CONTROL ROOM */
+.control-room{margin-top:27px;border:1px solid #dfe5ed;border-radius:22px;padding:28px;background:linear-gradient(180deg,#fbfcfe,#f6f9fc);overflow:hidden}
+.screen{max-width:730px;margin:auto;border:1px solid #dce2ea;border-radius:18px;background:#fff;box-shadow:0 18px 50px rgba(30,43,65,.08);overflow:hidden}
+.screen-head{background:#202b3e;color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:800;letter-spacing:.04em}.status{display:flex;align-items:center;gap:7px}.dot{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(84,205,176,.12)}
+.flow{padding:26px;display:grid;grid-template-columns:1fr 55px 1.15fr 55px 1fr;align-items:center;text-align:center}.node{padding:18px 10px;border:1px solid var(--line);border-radius:14px;background:#fff}.node b{display:block;font-size:14px;margin-bottom:7px}.node span{color:#6c788a;font-size:12px;line-height:1.45}.node.middle{background:var(--mint2);border-color:#cfeee5}.arrow{color:#9ca7b6;font-size:24px}.monitors{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:0 26px 26px}.monitor{border-radius:12px;padding:14px;border:1px solid var(--line)}.monitor:nth-child(1){background:var(--blue2)}.monitor:nth-child(2){background:var(--orange2)}.monitor:nth-child(3){background:var(--purple2)}.monitor:nth-child(4){background:var(--red2)}.monitor b{display:block;font-size:13px;margin-bottom:5px}.monitor span{font-size:11px;color:#667085;line-height:1.45}
+
+.four{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:22px}.card{border:1px solid var(--line);border-radius:15px;padding:20px}.card .num{font-size:11px;font-weight:900;color:#8e99a9}.card h3{margin:7px 0;font-size:18px}.card p{margin:0;color:#667085;font-size:14px;line-height:1.65}.card:nth-child(1){background:var(--blue2)}.card:nth-child(2){background:var(--orange2)}.card:nth-child(3){background:var(--purple2)}.card:nth-child(4){background:var(--mint2)}
+
+.balance{margin-top:25px;display:grid;grid-template-columns:1fr 90px 1fr;align-items:stretch}.cost{border:1px solid var(--line);border-radius:16px;padding:21px}.cost.prevent{background:var(--mint2)}.cost.fail{background:var(--red2)}.cost h3{margin:0 0 11px;font-size:18px}.cost ul{margin:0;padding-left:19px;color:#59697e;font-size:13px;line-height:1.8}.vs{display:grid;place-items:center;font-weight:900;color:#99a4b3;font-size:13px}
+
+.trade{margin-top:25px;border:1px solid var(--line);border-radius:18px;padding:24px;background:#fff}.trade-title{display:flex;justify-content:space-between;gap:15px;margin-bottom:18px;font-size:13px;font-weight:800}.trade-bars{display:grid;gap:13px}.bar-row{display:grid;grid-template-columns:135px 1fr 70px;align-items:center;gap:12px;font-size:12px;color:#657287}.bar{height:12px;background:#eef1f5;border-radius:20px;overflow:hidden}.fill{height:100%;border-radius:20px}.prevention .fill{width:72%;background:var(--mint)}.failure .fill{width:28%;background:var(--red)}.trade-note{margin:18px 0 0;color:#69778a;font-size:13px;line-height:1.65}
+
+.escalator{margin-top:25px;border:1px solid var(--line);border-radius:18px;padding:25px;background:linear-gradient(180deg,#fff,#fbfcfd)}.stages{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;align-items:end;height:230px}.stage{text-align:center}.tower{margin:auto;width:72%;border-radius:9px 9px 3px 3px;background:linear-gradient(180deg,#ffb06c,#df6262);display:flex;align-items:flex-start;justify-content:center;padding-top:8px;color:#fff;font-weight:900;font-size:12px}.stage:nth-child(1) .tower{height:25px;background:#72cfb6}.stage:nth-child(2) .tower{height:40px;background:#7dcbb4}.stage:nth-child(3) .tower{height:65px;background:#e8b66d}.stage:nth-child(4) .tower{height:95px}.stage:nth-child(5) .tower{height:145px}.stage:nth-child(6) .tower{height:205px}.stage span{display:block;margin-top:8px;color:#657287;font-size:10px;line-height:1.25}.caption{margin:18px 0 0;text-align:center;color:#5d6d82;font-size:13px;line-height:1.6}
+
+.story{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:23px}.panel{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff}.panel b{font-size:12px}.panel p{font-size:12px;line-height:1.55;color:#68768a;margin:8px 0 0}.panel:nth-child(1){border-top:4px solid var(--blue)}.panel:nth-child(2){border-top:4px solid var(--orange)}.panel:nth-child(3){border-top:4px solid var(--red)}.panel:nth-child(4){border-top:4px solid var(--mint)}
+
+.note{margin-top:30px;border-radius:16px;padding:22px;background:var(--orange2);border:1px solid #f2dec9;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}.note b{color:#9a652e}.note p{margin:0 0 20px;color:#705b47;line-height:1.7;font-size:14px}.note img{width:100%;max-height:150px;object-fit:contain;object-position:bottom}.take{margin-top:28px;padding:22px;border-left:4px solid var(--mint);border-radius:15px;background:var(--mint2)}.take b{color:#317868}.take p{margin:0;color:#45675e;line-height:1.7;font-weight:650;font-size:14px}.think{margin-top:30px;border:1px solid #d5e8ff;background:var(--blue2);border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end;overflow:hidden}.think .tlabel{color:#2d6fa7}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#496681;line-height:1.7;font-size:14px}.think img{width:100%;max-height:155px;object-fit:contain;object-position:bottom}.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:#182236;color:#fff;border-color:#182236}.mobile{display:none}
+@media(max-width:850px){.layout{display:block}.side{display:none}.mobile{display:block;padding:10px 14px;border-bottom:1px solid var(--line);overflow:auto;white-space:nowrap}.mobile a{display:inline-block;padding:8px 10px;margin-right:5px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-size:12px;font-weight:700}.content{width:min(100% - 28px,900px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
+@media(max-width:700px){.flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.monitors,.four,.story{grid-template-columns:1fr}.balance{grid-template-columns:1fr}.vs{padding:10px}.stages{height:210px}.tower{width:85%}.stage span{font-size:9px}}
+@media(max-width:570px){.links a:nth-child(2){display:none}.note,.think{grid-template-columns:1fr}.bar-row{grid-template-columns:90px 1fr 45px}.nav{flex-direction:column}.nav a{text-align:center}}
+</style>
+</head>
+<body>
+<header class="top">
+<a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
+<nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+<div class="mobile"><a href="index.html">Topic 02 Overview</a><a href="sqa.html">SQA</a><a href="../../index.html">Course Home</a></div>
+<div class="layout">
+<aside class="side">
+<div class="course"><small>CPCS 351 · TOPIC 02</small><strong>Software Quality</strong></div>
+<div class="label">Topic 02</div>
+<a href="index.html">Overview</a>
+<a class="active" href="sqa.html">1. Software Quality Assurance</a>
+<span class="future">2. Verification &amp; Validation</span>
+<span class="future">3. Static &amp; Dynamic V&amp;V</span>
+<span class="future">4. Reviews &amp; Inspections</span>
+<span class="future">5. V&amp;V in the Life Cycle</span>
+<span class="future">6. Quality Metrics</span>
+<span class="future">7. Quality Attributes</span>
+<span class="future">8. Short vs. Long Term Quality</span>
+<div class="label">Course</div>
+<a href="../01-introduction/index.html">Topic 01 · Introduction</a>
+<a href="../../index.html">Course Home</a>
+</aside>
+
+<main><article class="content">
+<div class="crumb"><a href="../../index.html">CPCS 351</a> › <a href="index.html">Topic 02</a> › Software Quality Assurance</div>
+
+<section class="hero">
+<div>
+<div class="eyebrow">Topic 02 · Lesson 01</div>
+<h1>Software Quality Assurance</h1>
+<p class="lead">Quality assurance is not a person waiting at the end of development. It is a set of activities that protects both the <strong>software product</strong> and the <strong>process used to create it</strong>.</p>
+</div>
+<div class="mentor">
+<div class="pic"><img src="../../assets/images/mentor-02-explaining.png" alt="Software Engineering Mentor explaining SQA"></div>
+<p>“The engineering question is not only ‘Does it work?’ It is also ‘Was it built correctly, does it satisfy the right need, and what did failure cost us?’”</p>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Original Lecture Concept</div>
+<h2>What is Software Quality Assurance?</h2>
+<p>The lecture defines SQA through its purpose: ensuring conformance to established requirements and quality standards.</p>
+<div class="definition"><strong>Software Quality Assurance (SQA)</strong> is a set of activities to ensure that the software <strong>product and/or process</strong> conforms to established <strong>requirements</strong> and <strong>quality standards</strong>.</div>
+</section>
+
+<section class="section">
+<div class="kicker">Visual Hook</div>
+<h2>The Quality Control Room</h2>
+<p>Imagine SQA as a control room watching development continuously. Work enters, quality activities inspect the evidence, and the team gets feedback before problems escape into operation.</p>
+
+<div class="control-room">
+<div class="screen">
+<div class="screen-head"><span>SOFTWARE QUALITY CONTROL ROOM</span><span class="status"><span class="dot"></span> SQA ACTIVE</span></div>
+<div class="flow">
+<div class="node"><b>Software Work</b><span>Requirements<br>Design<br>Code</span></div>
+<div class="arrow">→</div>
+<div class="node middle"><b>SQA Activities</b><span>Check the process + check the product</span></div>
+<div class="arrow">→</div>
+<div class="node"><b>Quality Evidence</b><span>Conformance<br>Defects found<br>Confidence</span></div>
+</div>
+<div class="monitors">
+<div class="monitor"><b>Verification</b><span>Are we building the product right?</span></div>
+<div class="monitor"><b>Validation</b><span>Are we building the right product?</span></div>
+<div class="monitor"><b>Technical Reviews</b><span>Examine artifacts and reasoning.</span></div>
+<div class="monitor"><b>Testing</b><span>Attempt to uncover program errors.</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Four Activities Named in the Lecture</div>
+<h2>How SQA looks at software</h2>
+<p>The original material explicitly identifies four major activities. They overlap, but they answer different questions.</p>
+<div class="four">
+<div class="card"><span class="num">01</span><h3>Verification</h3><p><strong>Are we building the product right?</strong> Check whether an implementation conforms to its specification.</p></div>
+<div class="card"><span class="num">02</span><h3>Validation</h3><p><strong>Are we building the right product?</strong> Check whether what we model and build corresponds to real customer needs.</p></div>
+<div class="card"><span class="num">03</span><h3>Technical Reviews</h3><p>People examine software work products to discover defects, inconsistencies, or non-compliance before those problems travel further.</p></div>
+<div class="card"><span class="num">04</span><h3>Testing</h3><p>Execute software in an attempt to uncover program errors and observe its behavior.</p></div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Cost of Quality</div>
+<h2>Quality has a cost. Failure has a cost too.</h2>
+<p>The lecture separates quality cost into two families. This is a crucial engineering trade-off: spending resources to prevent failures versus paying for failures after they occur.</p>
+<div class="balance">
+<div class="cost prevent">
+<h3>Prevention Costs</h3>
+<ul>
+<li>Implement an SQA framework — once.</li>
+<li>Perform SQA activities — ongoing.</li>
+<li>Monitor and improve the framework — ongoing.</li>
+<li>Provide needed equipment, machines, and tools.</li>
+</ul>
+</div>
+<div class="vs">VERSUS</div>
+<div class="cost fail">
+<h3>Failure Costs</h3>
+<ul>
+<li>Analyze and remove failures.</li>
+<li>Lost productivity — developer and customer.</li>
+<li>Liability, lawsuits, and increased insurance premiums.</li>
+<li>Damage to the company's reputation.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Engineering Trade-off</div>
+<h2>More prevention can mean less failure cost</h2>
+<p>Software engineering considers the cost required to accomplish a goal. Quality therefore involves a <strong>quality–cost trade-off</strong>, not an unlimited pursuit of perfection.</p>
+<div class="trade">
+<div class="trade-title"><span>Investment in prevention</span><span>Exposure to failure</span></div>
+<div class="trade-bars">
+<div class="bar-row prevention"><span>Prevention Cost</span><div class="bar"><div class="fill"></div></div><b>↑</b></div>
+<div class="bar-row failure"><span>Failure Cost</span><div class="bar"><div class="fill"></div></div><b>↓</b></div>
+</div>
+<p class="trade-note">The exact balance differs by project. A safety-critical medical system and a disposable prototype should not make identical quality-cost decisions.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Why Early Quality Matters</div>
+<h2>A defect becomes more expensive as it travels</h2>
+<p>The lecture illustrates relative error-correction cost rising dramatically as a defect survives from requirements through design, coding, testing, and finally field operation.</p>
+<div class="escalator">
+<div class="stages">
+<div class="stage"><div class="tower">1×</div><span>Requirements</span></div>
+<div class="stage"><div class="tower">↑</div><span>Design</span></div>
+<div class="stage"><div class="tower">↑</div><span>Coding</span></div>
+<div class="stage"><div class="tower">10×</div><span>Development Test</span></div>
+<div class="stage"><div class="tower">100×</div><span>System Test</span></div>
+<div class="stage"><div class="tower">1000×</div><span>Field Operation</span></div>
+</div>
+<p class="caption"><strong>Visual memory:</strong> the farther a defect escapes, the more expensive correction can become. The original slide presents relative correction-cost markers of <strong>1, 10, 100, and 1000</strong> across the development-to-operation journey.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Example · University Registration System</div>
+<h2>One small requirement, two very different costs</h2>
+<div class="story">
+<div class="panel"><b>1 · Requirement</b><p>“A student must satisfy prerequisites before registering.” A reviewer notices that concurrent prerequisites were never defined.</p></div>
+<div class="panel"><b>2 · Prevent Early</b><p>The SRS is clarified before design and coding. The team changes a few lines of requirements.</p></div>
+<div class="panel"><b>3 · Escape Late</b><p>The ambiguity reaches production. Students register incorrectly and schedules, billing, and academic records are affected.</p></div>
+<div class="panel"><b>4 · Engineering Lesson</b><p>Early SQA did not merely “find a typo.” It prevented downstream rework and operational damage.</p></div>
+</div>
+</section>
+
+<div class="note">
+<div><b>Mentor Warning</b><p>Do not confuse <strong>SQA with testing</strong>. Testing is one SQA activity named in the lecture. SQA is broader: it also includes verification, validation, and technical reviews, and it concerns both product and process.</p></div>
+<img src="../../assets/images/mentor-10-concerned.png" alt="Mentor warning about confusing SQA and testing">
+</div>
+
+<div class="take">
+<b>Key Takeaway</b>
+<p>SQA is a set of activities used to make the software product and/or process conform to requirements and quality standards. It includes verification, validation, technical reviews, and testing. Investing in prevention costs money—but failures can cost far more, especially when defects survive until later stages.</p>
+</div>
+
+<div class="think">
+<div><span class="tlabel">Think Like a Software Engineer</span><h3>A defect costs 20 minutes to clarify in the requirements meeting. What could the same defect cost after deployment?</h3><p>Think beyond developer time: customer productivity, data correction, support, reputation, liability, and the cost of changing interconnected software.</p></div>
+<img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about cost of quality">
+</div>
+
+<div class="nav">
+<a href="index.html">← Topic 02 Overview</a>
+<a class="next" href="verification-validation.html">Next · Verification vs. Validation →</a>
+</div>
+</article></main>
+</div>
+<script>
+if(sessionStorage.getItem("cpcs351_access") !== "granted"){
+  window.location.href="../../access.html";
+}
+</script>
+</body>
+</html>
