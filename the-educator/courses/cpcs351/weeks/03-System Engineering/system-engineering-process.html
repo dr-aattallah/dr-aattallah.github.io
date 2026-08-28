@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>System Engineering Process | CPCS 351</title>
+<style>
+:root{
+ --ink:#172338;--muted:#63748a;--line:#dfe7ec;--navy:#18324a;
+ --teal:#159a9c;--teal2:#e9f8f7;--amber:#e9a23b;--amber2:#fff6e8;
+ --coral:#e76f51;--coral2:#fff0eb;--sky:#5aa9e6;--sky2:#edf7fe;
+ --violet:#7667c5;--violet2:#f2efff;--side:242px
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}.top{height:62px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}.mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--teal),var(--amber));display:grid;place-items:center;color:#fff;font-weight:900}.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
+.layout{display:grid;grid-template-columns:var(--side) 1fr}.side{height:calc(100vh - 62px);position:sticky;top:62px;overflow:auto;border-right:1px solid var(--line);background:#f9fbfc;padding:24px 14px}.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}.course small,.label{font-size:11px;font-weight:850;color:#8d9aab;letter-spacing:.08em;text-transform:uppercase}.course strong{display:block;margin-top:7px;font-size:15px;line-height:1.35}.label{margin:18px 0 8px}.side a,.side span{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5d6c80;font-size:13px;font-weight:650;line-height:1.35}.side a.active{background:#e8f5f5;color:#087f80;font-weight:850}.side span.future{color:#a4adb8}
+.content{width:min(930px,calc(100% - 48px));margin:auto;padding:58px 0 90px}.crumb{color:#8a97a7;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}.hero{display:grid;grid-template-columns:1fr 270px;gap:34px;align-items:center}.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}.eyebrow{color:#0f7f81}.eyebrow:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--amber);margin-right:7px}h1{font-size:clamp(44px,6vw,64px);line-height:1;letter-spacing:-.045em;margin:14px 0 20px}.lead{color:var(--muted);font-size:18px;line-height:1.75}.mentor{border:1px solid var(--line);border-radius:20px;overflow:hidden}.mentor .pic{height:220px;background:linear-gradient(180deg,#f7fbfc,#edf5f7)}.mentor img{width:100%;height:100%;object-fit:contain;object-position:center bottom}.mentor p{margin:0;padding:16px;border-top:1px solid var(--line);font-size:13px;line-height:1.65;font-weight:650;color:#46566b}
+.section{margin-top:66px}.kicker{color:#95a1b0;margin-bottom:7px}h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c;line-height:1.8;font-size:16px}
+
+/* VISUAL HOOK — AIRPORT OPERATIONS BOARD */
+.board{margin-top:28px;border:1px solid var(--line);border-radius:26px;overflow:hidden;background:#f7fafb;box-shadow:0 16px 40px rgba(24,50,74,.07)}
+.board-head{background:var(--navy);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}.board-head b{font-size:12px;letter-spacing:.08em}.board-head span{font-size:10px;color:#b9cad7}
+.runway{padding:30px 24px 26px;position:relative}
+.mainflow{display:grid;grid-template-columns:repeat(6,1fr);gap:9px;position:relative}
+.phase{position:relative;min-height:145px;border:1px solid var(--line);border-radius:16px;padding:16px 12px;background:#fff;text-align:center;z-index:2}
+.phase .num{width:28px;height:28px;border-radius:50%;margin:0 auto 10px;display:grid;place-items:center;font-size:11px;font-weight:900;color:#fff;background:var(--navy)}
+.phase b{font-size:12px;line-height:1.35;display:block}.phase small{display:block;color:#738095;font-size:10px;line-height:1.45;margin-top:7px}
+.phase:not(:last-child):after{content:"→";position:absolute;right:-16px;top:57px;font-size:20px;font-weight:900;color:#91a2b1;z-index:5}
+.p1{background:var(--sky2)}.p2{background:var(--teal2)}.p3{background:var(--violet2)}.p4{background:var(--amber2)}.p5{background:var(--coral2)}.p6{background:#eef5f6}
+.parallel{margin-top:24px;border-top:1px dashed #bdcbd4;padding-top:20px}.parallel-title{text-align:center;font-size:10px;font-weight:900;color:#8492a3;letter-spacing:.08em;margin-bottom:12px}.tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.track{padding:14px;border-radius:13px;border:1px solid var(--line);background:#fff;font-size:11px;font-weight:800;text-align:center}.track:nth-child(1){border-left:4px solid var(--sky)}.track:nth-child(2){border-left:4px solid var(--amber)}.track:nth-child(3){border-left:4px solid var(--teal)}
+.legend{display:flex;gap:15px;flex-wrap:wrap;margin-top:18px;padding-top:15px;border-top:1px solid var(--line);font-size:10px;color:#718095}.legend b{color:var(--ink)}.lg{display:inline-flex;align-items:center;gap:6px}.dot{width:8px;height:8px;border-radius:50%;background:var(--teal)}.arr{font-size:14px;color:#789}
+
+/* ZOOM LENS */
+.zoom{margin-top:28px;display:grid;grid-template-columns:1fr 70px 1fr;align-items:center}.zoom-card{border:1px solid var(--line);border-radius:18px;padding:22px;background:#fff}.zoom-card h3{margin:0 0 10px;font-size:17px}.zoom-card p{margin:0;color:#66758a;font-size:13px;line-height:1.65}.zoom-arrow{text-align:center;font-size:28px;color:var(--teal);font-weight:900}.zoom-card.system{background:#f6fafb}.zoom-card.sub{background:var(--sky2)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}.chip{padding:6px 9px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:10px;font-weight:800;color:#5c6c80}
+
+/* RELATIONSHIPS */
+.relationships{margin-top:25px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.rel{border:1px solid var(--line);border-radius:17px;padding:19px;background:#fff}.rel .symbol{font-size:27px;font-weight:900;margin-bottom:10px}.rel b{font-size:14px}.rel p{font-size:12px;color:#68778c;line-height:1.6;margin:7px 0 0}.rel:nth-child(1){background:var(--teal2)}.rel:nth-child(2){background:var(--amber2)}.rel:nth-child(3){background:var(--sky2)}
+
+/* STORY */
+.story{margin-top:25px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.panel{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fff;overflow:hidden}.visual{height:120px;border-radius:11px;background:linear-gradient(135deg,#f5f9fb,#f7fbfa);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;margin-bottom:11px}.visual img{width:100%;height:100%;object-fit:contain;object-position:center bottom}.panel .no{font-size:10px;font-weight:900;color:#8794a6;text-transform:uppercase}.panel h4{margin:5px 0 6px;font-size:14px}.panel p{margin:0;color:#68768a;font-size:11.5px;line-height:1.55}.panel:nth-child(1){border-top:4px solid var(--sky)}.panel:nth-child(2){border-top:4px solid var(--teal)}.panel:nth-child(3){border-top:4px solid var(--amber)}.panel:nth-child(4){border-top:4px solid var(--coral)}
+
+/* closure */
+.note{margin-top:30px;border-radius:16px;padding:22px;background:#eef5f6;border:1px solid #d5e5e7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}.note b{color:#2f6b70}.note p{margin:0 0 20px;color:#536d72;line-height:1.7;font-size:14px}.note img{width:100%;max-height:150px;object-fit:contain}
+.take{margin-top:28px;padding:22px;border-left:4px solid var(--amber);border-radius:15px;background:var(--amber2)}.take b{color:#9a642b}.take p{margin:0;color:#68563d;line-height:1.7;font-weight:650;font-size:14px}
+.think{margin-top:30px;border:1px solid #cfe7ed;background:#eef8fa;border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end}.think .tlabel{color:#197a82}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#4f6f75;line-height:1.7;font-size:14px}.think img{width:100%;max-height:155px;object-fit:contain}
+.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:var(--navy);color:#fff;border-color:var(--navy)}
+@media(max-width:900px){.mainflow{grid-template-columns:repeat(3,1fr)}.phase:nth-child(3):after{display:none}.story{grid-template-columns:1fr 1fr}}
+@media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,930px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
+@media(max-width:650px){.mainflow,.tracks,.relationships{grid-template-columns:1fr}.phase:not(:last-child):after{content:"↓";right:auto;left:50%;top:auto;bottom:-24px;transform:translateX(-50%)}.phase:nth-child(3):after{display:block}.zoom{grid-template-columns:1fr}.zoom-arrow{transform:rotate(90deg)}.story{grid-template-columns:1fr}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}}
+</style>
+</head>
+<body>
+<header class="top">
+<a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
+<nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+<div class="layout">
+<aside class="side">
+<div class="course"><small>CPCS 351 · TOPIC 03</small><strong>System Engineering</strong></div>
+<div class="label">Topic 03</div>
+<a href="index.html">1. Systems &amp; System Engineering</a>
+<a class="active" href="system-engineering-process.html">2. System Engineering Process</a>
+<span class="future">3. System Requirements</span>
+<span class="future">4. System Architecture</span>
+<span class="future">5. Requirements Allocation</span>
+<span class="future">6. Architecture Diagrams</span>
+<span class="future">7. Integration &amp; Deployment</span>
+<span class="future">8. Configuration Management</span>
+<div class="label">Course</div><a href="../../index.html">Course Home</a>
+</aside>
+
+<main><article class="content">
+<div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 03 › System Engineering Process</div>
+
+<section class="hero">
+<div>
+<div class="eyebrow">Topic 03 · Lesson 02</div>
+<h1>System Engineering Process</h1>
+<p class="lead">A system does not move through one isolated development stream. System-level activities guide several specialized development efforts and bring them back together as one operational system.</p>
+</div>
+<div class="mentor">
+<div class="pic"><img src="../../assets/images/mentor-02-explaining.png" alt="Mentor explaining the system engineering process"></div>
+<p>“Think of the process as airport operations: many teams move in parallel, but all of them must reach the same destination.”</p>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Visual Hook</div>
+<h2>The System Engineering Flight Board</h2>
+<p>The system engineering process covers the full system life cycle. The main system-level workflow moves from requirements to design, integration, deployment, and maintenance, while hardware, software, and human-resource development interact with that workflow.</p>
+
+<div class="board">
+<div class="board-head"><b>SYSTEM ENGINEERING · OPERATIONS BOARD</b><span>ONE SYSTEM · MULTIPLE DEVELOPMENT STREAMS</span></div>
+<div class="runway">
+<div class="mainflow">
+<div class="phase p1"><span class="num">1</span><b>System Requirements Definition</b><small>Define what capabilities the complete system must deliver.</small></div>
+<div class="phase p2"><span class="num">2</span><b>System Modeling &amp; Design</b><small>Structure and model the system and its subsystems.</small></div>
+<div class="phase p3"><span class="num">3</span><b>System Integration &amp; Testing</b><small>Bring developed subsystems together and test the complete system.</small></div>
+<div class="phase p4"><span class="num">4</span><b>System Deployment</b><small>Place the integrated system into its target environment.</small></div>
+<div class="phase p5"><span class="num">5</span><b>System Maintenance</b><small>Keep the operational system working as it evolves.</small></div>
+<div class="phase p6"><span class="num">↻</span><b>Life-Cycle Interaction</b><small>Activities influence one another rather than existing as isolated boxes.</small></div>
+</div>
+
+<div class="parallel">
+<div class="parallel-title">SPECIALIZED DEVELOPMENT ACTIVITIES INTERACT WITH THE SYSTEM PROCESS</div>
+<div class="tracks">
+<div class="track">Software Development</div>
+<div class="track">Hardware Development</div>
+<div class="track">Human Resource Development</div>
+</div>
+</div>
+<div class="legend">
+<span class="lg"><span class="dot"></span><b>Phase / Activity</b></span>
+<span class="lg"><span class="arr">→</span><b>Work Flow</b></span>
+<span class="lg"><span class="arr">↔</span><b>Interaction</b></span>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">The Big Shift</div>
+<h2>From one process to coordinated processes</h2>
+<p>System Engineering works at the level of the complete system. Specialized teams can develop different parts, but their work remains connected through shared system requirements, interfaces, integration, and the system mission.</p>
+
+<div class="zoom">
+<div class="zoom-card system">
+<h3>System-Level Process</h3>
+<p>Defines and coordinates the complete system: what it must achieve, how it is structured, how its parts are integrated, and how it operates after deployment.</p>
+<div class="chips"><span class="chip">Requirements</span><span class="chip">Modeling</span><span class="chip">Integration</span><span class="chip">Deployment</span><span class="chip">Maintenance</span></div>
+</div>
+<div class="zoom-arrow">→</div>
+<div class="zoom-card sub">
+<h3>Subsystem Development</h3>
+<p>Different engineering efforts develop the pieces that will eventually be integrated into the complete system.</p>
+<div class="chips"><span class="chip">Software</span><span class="chip">Hardware</span><span class="chip">Human Resources</span></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Read the Diagram Correctly</div>
+<h2>Workflow is not the same as interaction</h2>
+<p>The process diagram distinguishes the main progression of system activities from the interactions among development streams. That distinction matters: system work is coordinated, not simply a row of independent phases.</p>
+
+<div class="relationships">
+<div class="rel"><div class="symbol">→</div><b>Work Flow</b><p>Shows progression from one system-level activity toward another.</p></div>
+<div class="rel"><div class="symbol">↔</div><b>Interaction</b><p>Shows that activities and specialized development efforts exchange information and affect one another.</p></div>
+<div class="rel"><div class="symbol">▣</div><b>Phase / Activity</b><p>Represents a major piece of engineering work within the system life cycle.</p></div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">ABHS Example</div>
+<h2>One airport system, several engineering streams</h2>
+<p>For the Airport Baggage Handling System, the system process coordinates work that cannot be solved by the software team alone.</p>
+
+<div class="story">
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
+<span class="no">1 · Requirements</span><h4>What must ABHS achieve?</h4><p>Engineers first define the capabilities required from the complete baggage-handling system.</p>
+</div>
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-06-pointing.png" alt=""></div>
+<span class="no">2 · Modeling &amp; Design</span><h4>Who does what?</h4><p>The complete system is structured so hardware, software, and human responsibilities can be understood.</p>
+</div>
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div>
+<span class="no">3 · Development</span><h4>Teams build in parallel</h4><p>Software, hardware, and human-resource development proceed as specialized but interacting efforts.</p>
+</div>
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div>
+<span class="no">4 · Integration onward</span><h4>One operational system</h4><p>The subsystems are integrated and tested, then the system is deployed and maintained.</p>
+</div>
+</div>
+</section>
+
+<div class="note">
+<div><b>Mentor Insight</b><p>The hardest part is often not developing each subsystem. It is making sure independently developed parts can cooperate when they are finally integrated.</p></div>
+<img src="../../assets/images/mentor-11-serious.png" alt="Mentor emphasizing system integration">
+</div>
+
+<div class="take">
+<b>Key Takeaway</b>
+<p>The System Engineering Process spans the complete system life cycle: System Requirements Definition → System Modeling &amp; Design → System Integration &amp; Testing → System Deployment → System Maintenance. Software Development, Hardware Development, and Human Resource Development interact with this system-level process.</p>
+</div>
+
+<div class="think">
+<div><span class="tlabel">Think Like a Software Engineer</span>
+<h3>Three subsystem teams finish their work on time. Does that mean the system is ready to deploy?</h3>
+<p>Consider what still has to happen at the system level before separate hardware, software, and human components become one operational system.</p></div>
+<img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about integration">
+</div>
+
+<div class="nav">
+<a href="index.html">← Systems &amp; System Engineering</a>
+<a class="next" href="system-requirements.html">Next · System Requirements →</a>
+</div>
+</article></main>
+</div>
+<script>
+if(sessionStorage.getItem("cpcs351_access")!=="granted"){
+ window.location.href="../../access.html";
+}
+</script>
+</body>
+</html>
