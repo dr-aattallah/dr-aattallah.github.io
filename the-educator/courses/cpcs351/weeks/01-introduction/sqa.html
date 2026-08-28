@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software Quality Assurance | CPCS 351</title>
+<meta name="description" content="CPCS 351 Software Engineering I — Software Quality Assurance.">
+
+<style>
+:root{
+  --ink:#172033;--muted:#657187;--line:#e6eaf0;--soft:#f7f9fc;
+  --blue:#2f80ed;--blue-soft:#eef6ff;--mint:#5fd1b3;--mint-soft:#effbf7;
+  --orange:#f2a45b;--orange-soft:#fff6ed;--purple:#8b74df;--purple-soft:#f4f1ff;
+  --red:#d94d4d;--red-soft:#fff1f1;--sidebar:250px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+
+/* Shared shell */
+.topbar{position:sticky;top:0;z-index:100;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800}
+.brand-mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--mint),var(--orange));position:relative}
+.brand-mark:before,.brand-mark:after{content:"";position:absolute;background:#fff;border-radius:20px}
+.brand-mark:before{width:16px;height:4px;left:7px;top:13px}
+.brand-mark:after{width:4px;height:16px;left:13px;top:7px}
+.top-links{display:flex;gap:5px}
+.top-links a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:650;padding:9px 11px;border-radius:9px}
+.top-links a:hover{background:var(--soft);color:var(--ink)}
+.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);min-height:calc(100vh - 64px)}
+.sidebar{position:sticky;top:64px;height:calc(100vh - 64px);overflow:auto;padding:25px 14px 30px;border-right:1px solid var(--line);background:#fafbfc}
+.sidebar-course{padding:0 12px 18px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.sidebar-course small{display:block;color:#8d98a8;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.sidebar-course strong{display:block;font-size:15px;line-height:1.35}
+.side-title{padding:7px 12px;margin-top:10px;color:#98a2b3;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.side-link{display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#5f6c80;font-size:13px;font-weight:650;line-height:1.4}
+.side-link:hover{background:#f0f3f7;color:var(--ink)}
+.side-link.active{background:#eaf3ff;color:#1768c4;font-weight:800}
+
+main{min-width:0}
+.content{width:min(900px,calc(100% - 48px));margin:auto;padding:64px 0 90px}
+.breadcrumb{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px;color:#8c97a7;font-size:13px;font-weight:650}
+.breadcrumb a{text-decoration:none}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:34px;align-items:center}
+.topic-label{display:inline-flex;align-items:center;gap:7px;color:#3175a4;font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.topic-label:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint)}
+h1{margin:0;font-size:clamp(44px,6vw,68px);line-height:1;letter-spacing:-.045em}
+.lead{margin:22px 0 0;color:var(--muted);font-size:19px;line-height:1.75}
+.mentor-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.mentor-image{height:220px;display:flex;align-items:flex-end;justify-content:center;background:radial-gradient(circle at 50% 20%,#fff,#f2f7fb)}
+.mentor-image img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.mentor-message{padding:18px;border-top:1px solid var(--line)}
+.mentor-message blockquote{margin:0;color:#334155;font-size:15px;line-height:1.7;font-weight:650}
+.mentor-name{margin-top:10px;color:#3175a4;font-size:12px;font-weight:800}
+
+.section{margin-top:58px}
+.section-kicker{margin:0 0 7px;color:#98a2b3;font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.06em}
+h2{margin:0 0 14px;font-size:31px;letter-spacing:-.03em}
+.section>p{color:#536176;font-size:16px;line-height:1.8}
+
+/* DISTINCTIVE VISUAL HOOK: QUALITY GATE */
+.quality-lab{
+  margin-top:26px;
+  padding:28px;
+  border:1px solid #dce9f7;
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 90% 10%,rgba(95,209,179,.14),transparent 28%),
+    radial-gradient(circle at 8% 90%,rgba(47,128,237,.10),transparent 30%),
+    linear-gradient(180deg,#fbfdff,#f7fbff);
+  overflow:hidden;
+}
+.lab-title{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  margin-bottom:22px;
+}
+.lab-title strong{font-size:15px}
+.lab-title span{font-size:12px;color:#6d7b90}
+.scanner{
+  display:grid;
+  grid-template-columns:1fr 54px 1.3fr 54px 1fr;
+  gap:10px;
+  align-items:center;
+}
+.scan-box{
+  min-height:170px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#fff;
+  padding:18px;
+  position:relative;
+}
+.scan-box h3{margin:0 0 8px;font-size:17px}
+.scan-box p{margin:0;color:#667085;font-size:13px;line-height:1.65}
+.scan-box.input:before{
+  content:"INPUT";position:absolute;top:12px;right:12px;
+  font-size:10px;font-weight:900;letter-spacing:.08em;color:#98a2b3
+}
+.scan-box.output{
+  background:var(--mint-soft);
+  border-color:#cfeee4;
+}
+.scan-box.output:before{
+  content:"QUALITY GATE PASSED";position:absolute;top:12px;right:12px;
+  font-size:9px;font-weight:900;letter-spacing:.07em;color:#2c7b68
+}
+.scan-arrow{
+  display:grid;place-items:center;color:#8ea0b5;font-size:28px;font-weight:900
+}
+.check-engine{
+  min-height:220px;
+  border-radius:18px;
+  padding:18px;
+  background:#172033;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.check-engine:before{
+  content:"";
+  position:absolute;inset:0;
+  background:repeating-linear-gradient(
+    90deg,transparent 0 22px,rgba(255,255,255,.035) 22px 23px
+  );
+}
+.engine-label{position:relative;font-size:11px;font-weight:900;letter-spacing:.08em;color:#9fd1ff;text-transform:uppercase}
+.engine-core{
+  position:relative;
+  width:118px;height:118px;border-radius:50%;
+  margin:18px auto;
+  display:grid;place-items:center;text-align:center;
+  background:radial-gradient(circle,#223955 0 48%,#2d80c9 49% 52%,#172033 53%);
+  box-shadow:0 0 0 10px rgba(47,128,237,.08),0 0 45px rgba(47,128,237,.18);
+  font-size:13px;font-weight:850;line-height:1.35;
+}
+.engine-checks{
+  position:relative;
+  display:grid;grid-template-columns:1fr 1fr;gap:8px
+}
+.engine-check{
+  padding:9px;border-radius:10px;background:rgba(255,255,255,.07);
+  font-size:11px;line-height:1.45;color:#dbe7f4
+}
+
+/* TWO DIMENSIONS */
+.two-checks{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.check-card{padding:22px;border-radius:16px;border:1px solid var(--line)}
+.check-card.process{background:var(--blue-soft)}
+.check-card.artifact{background:var(--mint-soft)}
+.check-icon{width:46px;height:46px;display:grid;place-items:center;border-radius:14px;background:#fff;margin-bottom:14px;font-size:22px}
+.check-card h3{margin:0 0 8px;font-size:19px}
+.check-card p{margin:0;color:#5e6b7f;font-size:14px;line-height:1.7}
+
+/* defect lens */
+.defect-lens{
+  display:grid;grid-template-columns:1fr 220px;gap:22px;align-items:center;
+  margin-top:26px;padding:24px;border:1px solid var(--line);border-radius:18px;background:#fff
+}
+.defect-list{display:grid;gap:10px}
+.defect-item{padding:12px 14px;border-radius:11px;background:#f8fafc;border:1px solid var(--line);font-size:13px;color:#5d6b7e}
+.lens{
+  width:190px;height:190px;border-radius:50%;margin:auto;
+  border:10px solid #d9e8f7;
+  background:
+    radial-gradient(circle at 40% 40%,rgba(217,77,77,.22) 0 8%,transparent 9%),
+    radial-gradient(circle at 66% 55%,rgba(217,77,77,.18) 0 6%,transparent 7%),
+    radial-gradient(circle at 52% 72%,rgba(217,77,77,.15) 0 5%,transparent 6%),
+    linear-gradient(135deg,#f8fbff,#edf5fc);
+  position:relative;
+  box-shadow:inset 0 0 35px rgba(47,128,237,.08);
+}
+.lens:after{
+  content:"";position:absolute;width:76px;height:18px;background:#8ca4bb;
+  right:-55px;bottom:7px;transform:rotate(42deg);border-radius:10px
+}
+.lens span{
+  position:absolute;inset:0;display:grid;place-items:center;text-align:center;
+  font-size:13px;font-weight:850;color:#56718a;padding:30px
+}
+
+/* modern example */
+.case{margin-top:24px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.case-head{padding:18px 20px;background:var(--purple-soft);border-bottom:1px solid var(--line)}
+.case-head small{color:#6952a0;font-weight:850;text-transform:uppercase;letter-spacing:.06em}
+.case-head h3{margin:5px 0 0;font-size:21px}
+.case-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line)}
+.case-row:last-child{border-bottom:0}
+.case-row strong{color:var(--ink)}
+.case-row span{color:#5d6a7e;line-height:1.6}
+
+.mentor-note{display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end;margin-top:28px;padding:22px 22px 0;border-radius:15px;background:var(--red-soft);border:1px solid #f4d9d9;overflow:hidden}
+.mentor-note strong{display:block;color:#a34646;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.mentor-note p{margin:0 0 22px;color:#6d5252;line-height:1.7;font-size:15px}
+.mentor-note img{width:100%;max-height:160px;object-fit:contain;object-position:center bottom}
+
+.takeaway{margin-top:30px;padding:22px;border-radius:15px;background:var(--blue-soft);border-left:4px solid var(--blue)}
+.takeaway strong{display:block;color:#2368b3;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.takeaway p{margin:0;color:#31475f;line-height:1.7;font-size:15px;font-weight:600}
+
+.think{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:20px;align-items:end;margin-top:35px;padding:24px 24px 0;border-radius:16px;background:var(--mint-soft);border:1px solid #d8f1e9;overflow:hidden}
+.think-label{color:#327867;font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase}
+.think h3{margin:8px 0;font-size:21px}
+.think p{margin:0 0 24px;color:#45685f;line-height:1.7}
+.think img{width:100%;max-height:170px;object-fit:contain;object-position:center bottom}
+
+.lesson-nav{display:flex;justify-content:space-between;gap:12px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+.nav-button{display:inline-flex;align-items:center;gap:9px;padding:13px 16px;border-radius:11px;text-decoration:none;font-size:14px;font-weight:800;border:1px solid var(--line);background:#fff;color:#526176}
+.nav-button.next{background:var(--ink);color:#fff;border-color:var(--ink)}
+footer{padding:25px 0;border-top:1px solid var(--line);color:#98a2b3;text-align:center;font-size:12px}
+.mobile-menu{display:none}
+
+@media(max-width:950px){
+  .hero{grid-template-columns:1fr}.mentor-card{max-width:360px}
+  .scanner{grid-template-columns:1fr}
+  .scan-arrow{transform:rotate(90deg)}
+  .two-checks{grid-template-columns:1fr}
+  .defect-lens{grid-template-columns:1fr}
+}
+@media(max-width:850px){
+  .layout{grid-template-columns:1fr}.sidebar{display:none}
+  .mobile-menu{display:block;padding:11px 18px;background:#fafbfc;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+  .mobile-menu a{display:inline-block;margin-right:5px;padding:8px 10px;background:#fff;border:1px solid var(--line);border-radius:8px;color:#59687c;text-decoration:none;font-size:12px;font-weight:700}
+  .content{width:min(100% - 28px,900px);padding-top:45px}
+}
+@media(max-width:620px){
+  .topbar{padding:0 13px}.top-links a:nth-child(2){display:none}
+  h1{font-size:43px}.lead{font-size:17px}
+  .case-row{grid-template-columns:1fr;gap:5px}
+  .mentor-note,.think{grid-template-columns:1fr}
+  .lesson-nav{flex-direction:column}.nav-button{justify-content:center}
+}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html"><span class="brand-mark"></span><span>The Educator</span></a>
+  <nav class="top-links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+
+<div class="mobile-menu">
+  <a href="waterfall.html">Waterfall</a>
+  <a href="sqa.html">SQA</a>
+  <a href="project-management.html">Project Management</a>
+</div>
+
+<div class="layout">
+
+<aside class="sidebar">
+  <div class="sidebar-course"><small>CPCS 351 · Topic 01</small><strong>Introduction to Software Engineering</strong></div>
+  <div class="side-title">Topic 01</div>
+  <a class="side-link" href="index.html">Overview</a>
+  <a class="side-link" href="nature-of-software.html">1. Nature of Software</a>
+  <a class="side-link" href="what-is-se.html">2. What is Software Engineering?</a>
+  <a class="side-link" href="why-se.html">3. Why Software Engineering?</a>
+  <a class="side-link" href="teamwork.html">4. Teamwork Challenges</a>
+  <a class="side-link" href="life-cycle.html">5. Software Life Cycle</a>
+  <a class="side-link" href="development-process.html">6. Development Process</a>
+  <a class="side-link" href="waterfall.html">7. Waterfall Process</a>
+  <a class="side-link active" href="sqa.html">8. Software Quality Assurance</a>
+  <a class="side-link" href="project-management.html">9. Project Management</a>
+  <a class="side-link" href="oose.html">10. OO Software Engineering</a>
+  <div class="side-title">Course</div><a class="side-link" href="../../index.html">Course Home</a>
+</aside>
+
+<main>
+<article class="content">
+
+<div class="breadcrumb">
+  <a href="../../index.html">CPCS 351</a><span>›</span>
+  <a href="index.html">Topic 01</a><span>›</span>
+  <span>Software Quality Assurance</span>
+</div>
+
+<section class="hero">
+  <div>
+    <div class="topic-label">Topic 01 · Section 8</div>
+    <h1>Software Quality Assurance</h1>
+    <p class="lead">
+      SQA asks two critical questions: <strong>Are we performing the development activities properly?</strong>
+      And <strong>do the resulting software artifacts meet the requirements and desired quality standards?</strong>
+    </p>
+  </div>
+
+  <div class="mentor-card">
+    <div class="mentor-image">
+      <img src="../../assets/images/mentor-11-serious.png" alt="Software Engineering Mentor discussing quality assurance">
+    </div>
+    <div class="mentor-message">
+      <blockquote>“Quality is not a final inspection. It must be protected throughout the work.”</blockquote>
+      <div class="mentor-name">— Your Software Engineering Mentor</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-kicker">From the Original Lecture</p>
+  <h2>What does SQA ensure?</h2>
+
+  <div class="two-checks">
+    <div class="check-card process">
+      <div class="check-icon">⚙️</div>
+      <h3>1. Activities are performed properly</h3>
+      <p>SQA checks whether development work follows the expected processes, procedures, methods, and controls.</p>
+    </div>
+
+    <div class="check-card artifact">
+      <div class="check-icon">✓</div>
+      <h3>2. Artifacts meet requirements and quality standards</h3>
+      <p>SQA checks whether the outputs of development satisfy the required expectations for the software and its artifacts.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-kicker">Visual Hook</p>
+  <h2>The Quality Gate</h2>
+  <p>
+    Think of SQA as a quality gate that looks both at <strong>how the work was done</strong>
+    and at <strong>what the work produced</strong>.
+  </p>
+
+  <div class="quality-lab">
+    <div class="lab-title">
+      <strong>SQA Quality Gate Scanner</strong>
+      <span>Process + Artifact → Evidence of Quality</span>
+    </div>
+
+    <div class="scanner">
+      <div class="scan-box input">
+        <h3>Development Work</h3>
+        <p>
+          Requirements, designs, source code, tests, reviews, build results,
+          change records, and other software artifacts enter the quality gate.
+        </p>
+      </div>
+
+      <div class="scan-arrow">→</div>
+
+      <div class="check-engine">
+        <div class="engine-label">SQA inspection engine</div>
+        <div class="engine-core">QUALITY<br>GATE</div>
+        <div class="engine-checks">
+          <div class="engine-check">Process followed?</div>
+          <div class="engine-check">Requirements met?</div>
+          <div class="engine-check">Evidence available?</div>
+          <div class="engine-check">Standards satisfied?</div>
+        </div>
+      </div>
+
+      <div class="scan-arrow">→</div>
+
+      <div class="scan-box output">
+        <h3>Trusted Artifact</h3>
+        <p>
+          The goal is stronger confidence that the work was performed properly
+          and that the resulting artifact satisfies requirements and quality expectations.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-kicker">Why This Matters</p>
+  <h2>Quality problems can hide beneath a working interface</h2>
+
+  <div class="defect-lens">
+    <div>
+      <div class="defect-list">
+        <div class="defect-item">A requirement was misunderstood.</div>
+        <div class="defect-item">A security check was omitted.</div>
+        <div class="defect-item">A test was never executed.</div>
+        <div class="defect-item">A design rule was violated.</div>
+        <div class="defect-item">A change introduced a regression.</div>
+      </div>
+    </div>
+
+    <div class="lens">
+      <span>Look beyond “it seems to work”</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-kicker">Modern Example</p>
+  <h2>SQA in a university registration system</h2>
+
+  <div class="case">
+    <div class="case-head">
+      <small>Quality assurance across the work</small>
+      <h3>More than just testing the final screen</h3>
+    </div>
+
+    <div class="case-row">
+      <strong>Requirements</strong>
+      <span>Review whether prerequisite, seat-capacity, security, privacy, and registration rules are clear, complete, and testable.</span>
+    </div>
+
+    <div class="case-row">
+      <strong>Design</strong>
+      <span>Check that architecture and interfaces address important requirements such as security, reliability, maintainability, and integration.</span>
+    </div>
+
+    <div class="case-row">
+      <strong>Implementation</strong>
+      <span>Use reviews, coding standards, static analysis, automated checks, and controlled changes to reduce avoidable defects.</span>
+    </div>
+
+    <div class="case-row">
+      <strong>Testing</strong>
+      <span>Confirm that required tests exist, are executed, and provide evidence that expected behavior and important quality characteristics are satisfied.</span>
+    </div>
+
+    <div class="case-row">
+      <strong>Release</strong>
+      <span>Verify that required quality evidence is available before the system is released to students.</span>
+    </div>
+  </div>
+</section>
+
+<div class="mentor-note">
+  <div>
+    <strong>Mentor Warning</strong>
+    <p>
+      Testing and SQA are related, but they are not identical.
+      Testing is one important way to evaluate software behavior.
+      SQA has a broader concern: the quality of both the development activities
+      and the artifacts those activities produce.
+    </p>
+  </div>
+  <img src="../../assets/images/mentor-10-concerned.png" alt="Concerned Software Engineering Mentor">
+</div>
+
+<div class="takeaway">
+  <strong>Key Takeaway</strong>
+  <p>
+    Software Quality Assurance ensures that development activities are performed properly
+    and that the resulting software artifacts meet requirements and desired quality standards.
+  </p>
+</div>
+
+<div class="think">
+  <div>
+    <span class="think-label">Think Like a Software Engineer</span>
+    <h3>The system passes all visible tests. Can SQA still find a problem?</h3>
+    <p>
+      Give two examples of quality problems that may still exist even when the main user interface appears to work correctly.
+    </p>
+  </div>
+  <img src="../../assets/images/mentor-03-thinking.png" alt="Software Engineering Mentor thinking">
+</div>
+
+<div class="lesson-nav">
+  <a class="nav-button" href="waterfall.html">← Waterfall Process</a>
+  <a class="nav-button next" href="project-management.html">Next: Project Management →</a>
+</div>
+
+</article>
+<footer>CPCS 351 · Software Engineering I · The Educator</footer>
+</main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access") !== "granted"){
+  window.location.href="../../access.html";
+}
+</script>
+
+</body>
+</html>
