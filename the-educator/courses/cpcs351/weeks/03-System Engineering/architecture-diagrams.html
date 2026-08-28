@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Architecture Diagrams | CPCS 351</title>
+<style>
+:root{
+  --ink:#172338;--muted:#63748a;--line:#dfe7ec;
+  --navy:#15334d;--navy2:#edf4f8;
+  --teal:#159a9c;--teal2:#e9f8f7;
+  --amber:#e5a13a;--amber2:#fff6e7;
+  --coral:#df6b50;--coral2:#fff0ea;
+  --sky:#5aa9e6;--sky2:#edf7fe;
+  --violet:#7765c4;--violet2:#f2efff;
+  --green:#5e9d55;--green2:#eef8eb;
+  --side:242px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+.top{height:62px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}
+.mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--teal),var(--amber));display:grid;place-items:center;color:#fff;font-weight:900}
+.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
+
+.layout{display:grid;grid-template-columns:var(--side) 1fr}
+.side{height:calc(100vh - 62px);position:sticky;top:62px;overflow:auto;border-right:1px solid var(--line);background:#f9fbfc;padding:24px 14px}
+.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}
+.course small,.label{font-size:11px;font-weight:850;color:#8d9aab;letter-spacing:.08em;text-transform:uppercase}
+.course strong{display:block;margin-top:7px;font-size:15px;line-height:1.35}
+.label{margin:18px 0 8px}
+.side a,.side span{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5d6c80;font-size:13px;font-weight:650;line-height:1.35}
+.side a.active{background:#e8f5f5;color:#087f80;font-weight:850}.side span.future{color:#a4adb8}
+
+.content{width:min(980px,calc(100% - 48px));margin:auto;padding:58px 0 90px}
+.crumb{color:#8a97a7;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}
+.hero{display:grid;grid-template-columns:1fr 275px;gap:34px;align-items:center}
+.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+.eyebrow{color:#0f7f81}.eyebrow:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--amber);margin-right:7px}
+h1{font-size:clamp(44px,6vw,64px);line-height:1;letter-spacing:-.045em;margin:14px 0 20px}
+.lead{color:var(--muted);font-size:18px;line-height:1.75}
+.mentor{border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.mentor .pic{height:220px;background:linear-gradient(180deg,#f7fbfc,#edf5f7)}
+.mentor img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.mentor p{margin:0;padding:16px;border-top:1px solid var(--line);font-size:13px;line-height:1.65;font-weight:650;color:#46566b}
+
+.section{margin-top:72px}
+.kicker{color:#95a1b0;margin-bottom:7px}
+h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
+.section>p{color:#56667c;line-height:1.8;font-size:16px}
+
+/* =========================================================
+   VISUAL ATLAS HOOK
+========================================================= */
+.atlas{
+  margin-top:30px;border:1px solid var(--line);border-radius:28px;padding:28px;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(21,154,156,.08),transparent 24%),
+    linear-gradient(180deg,#fbfdfe,#f6fafb)
+}
+.atlas-core{
+  width:210px;height:210px;border-radius:50%;margin:0 auto;background:var(--navy);
+  color:#fff;display:grid;place-items:center;text-align:center;padding:24px;
+  box-shadow:0 18px 40px rgba(21,51,77,.18)
+}
+.atlas-core b{font-size:20px}.atlas-core span{display:block;margin-top:7px;color:#cbd7e0;font-size:11px;line-height:1.45}
+.atlas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+.atlas-card{border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff;min-height:190px}
+.atlas-card .glyph{font-size:32px;margin-bottom:10px}
+.atlas-card b{font-size:14px}.atlas-card p{margin:7px 0 0;color:#68778b;font-size:11px;line-height:1.55}
+.atlas-card:nth-child(1){background:var(--sky2)}.atlas-card:nth-child(2){background:var(--violet2)}.atlas-card:nth-child(3){background:var(--teal2)}.atlas-card:nth-child(4){background:var(--amber2)}
+.atlas-note{margin-top:18px;padding-top:15px;border-top:1px solid var(--line);font-size:12px;color:#617087;line-height:1.65;text-align:center}
+
+/* =========================================================
+   BLOCK DIAGRAM - ABHS
+========================================================= */
+.diagram-frame{
+  margin-top:28px;border:1px solid var(--line);border-radius:24px;padding:24px;
+  background:#fbfcfd
+}
+.diagram-title{font-size:11px;font-weight:900;letter-spacing:.08em;color:#7b899a;text-transform:uppercase;margin-bottom:18px}
+.block-stage{position:relative;min-height:460px}
+.box{
+  position:absolute;border:1px solid var(--line);border-radius:15px;background:#fff;
+  padding:16px;text-align:center;box-shadow:0 8px 20px rgba(24,50,74,.05)
+}
+.box b{font-size:12px}.box span{display:block;margin-top:5px;font-size:10px;color:#6b788c;line-height:1.4}
+.passenger{left:20px;top:170px;width:140px;background:var(--coral2)}
+.terminal{left:225px;top:70px;width:210px;background:var(--sky2)}
+.tracks{right:20px;top:70px;width:210px;background:var(--amber2)}
+.flight{right:20px;bottom:50px;width:210px;background:var(--teal2)}
+.control{left:360px;bottom:45px;width:220px;background:var(--violet2)}
+.flowline{position:absolute;height:2px;background:#9fb0bd;transform-origin:left center}
+.fl1{width:120px;left:150px;top:205px;transform:rotate(-33deg)}
+.fl2{width:230px;left:410px;top:135px}
+.fl3{width:170px;left:470px;bottom:120px;transform:rotate(-15deg)}
+.fl4{width:150px;right:180px;bottom:120px;transform:rotate(18deg)}
+.flowlabel{position:absolute;font-size:9.5px;color:#6d7a8d;font-weight:700;background:#fff;padding:3px 5px;border-radius:6px}
+.lab1{left:155px;top:145px}.lab2{left:495px;top:105px}.lab3{left:500px;bottom:145px}.lab4{right:165px;bottom:145px}
+
+/* =========================================================
+   UML COMPONENT DIAGRAM
+========================================================= */
+.uml-stage{position:relative;min-height:500px}
+.comp{
+  position:absolute;border:2px solid #8ca3b4;border-radius:12px;background:#fff;
+  padding:18px 20px;min-width:180px
+}
+.comp:before{
+  content:"";position:absolute;right:10px;top:12px;width:20px;height:11px;border:2px solid #8ca3b4;background:#fff
+}
+.comp b{font-size:12px}.comp span{display:block;margin-top:5px;color:#6b788c;font-size:10px}
+.cbase{left:50%;top:45px;transform:translateX(-50%);background:var(--sky2)}
+.cmobile{left:70px;top:210px;background:var(--teal2)}
+.caccount{right:70px;top:210px;background:var(--violet2)}
+.chw{left:180px;bottom:40px;background:var(--amber2)}
+.csw{right:180px;bottom:40px;background:var(--coral2)}
+.uml-line{position:absolute;height:2px;background:#8ea3b2;transform-origin:left center}
+.u1{width:200px;left:285px;top:145px;transform:rotate(35deg)}
+.u2{width:200px;right:285px;top:145px;transform:rotate(145deg)}
+.u3{width:170px;left:200px;bottom:140px;transform:rotate(-15deg)}
+.u4{width:170px;right:200px;bottom:140px;transform:rotate(195deg)}
+.uml-tag{position:absolute;font-size:9px;color:#617087;background:#fff;padding:4px 6px;border:1px solid var(--line);border-radius:7px}
+.ut1{left:245px;top:150px}.ut2{right:245px;top:150px}.ut3{left:300px;bottom:130px}.ut4{right:300px;bottom:130px}
+
+/* =========================================================
+   SYSML BDD
+========================================================= */
+.bdd-stage{display:grid;justify-items:center;gap:14px}
+.bdd-root{padding:17px 22px;border-radius:15px;background:var(--navy);color:#fff;font-weight:900}
+.bdd-down{font-size:23px;color:#91a1af;font-weight:900}
+.bdd-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%}
+.bdd-block{border:2px solid #8ea3b2;border-radius:12px;background:#fff;overflow:hidden}
+.bdd-head{padding:10px 12px;border-bottom:1px solid var(--line);font-size:10px;font-weight:900;color:#738095;background:#f8fafb}
+.bdd-body{padding:16px;text-align:center;font-size:12px;font-weight:850}
+.bdd-block:nth-child(1){background:var(--sky2)}.bdd-block:nth-child(2){background:var(--amber2)}.bdd-block:nth-child(3){background:var(--violet2)}
+
+/* =========================================================
+   SYSML IBD
+========================================================= */
+.ibd-shell{
+  margin-top:28px;border:2px solid #6f8798;border-radius:18px;padding:18px;
+  background:#fff;position:relative
+}
+.ibd-label{position:absolute;left:14px;top:-13px;background:#fff;padding:4px 8px;font-size:10px;font-weight:900;color:#627287}
+.ibd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+.iblock{border:1px solid var(--line);border-radius:14px;padding:16px;background:#f9fbfc;text-align:center}
+.iblock b{font-size:12px}.iblock span{display:block;margin-top:5px;font-size:10px;color:#6a788c}
+.iblock:nth-child(1){background:var(--coral2)}.iblock:nth-child(2){background:var(--sky2)}.iblock:nth-child(3){background:var(--amber2)}
+.portline{margin:20px 0 6px;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--coral),var(--sky),var(--amber),var(--teal))}
+.portlegend{font-size:10px;color:#6b788c;text-align:center}
+
+/* =========================================================
+   DFD
+========================================================= */
+.dfd-stage{position:relative;min-height:470px}
+.entity{position:absolute;border:2px solid #7d93a4;padding:14px 16px;background:#fff;border-radius:8px;font-weight:850;font-size:11px}
+.process{
+  position:absolute;border-radius:50%;width:120px;height:120px;background:var(--sky2);
+  border:2px solid #6fa2c6;display:grid;place-items:center;text-align:center;font-size:11px;font-weight:850;padding:10px
+}
+.store{
+  position:absolute;width:155px;padding:12px;border-top:3px solid #778d9e;border-bottom:3px solid #778d9e;
+  text-align:center;font-size:11px;font-weight:850;background:#fff
+}
+.publisher{left:20px;top:80px}
+.dock{left:20px;bottom:80px}
+.p1{left:245px;top:45px}
+.p2{left:430px;top:200px}
+.p3{right:30px;bottom:55px}
+.catalog{right:30px;top:55px}
+.shelves{right:250px;bottom:55px}
+.dflow{position:absolute;height:2px;background:#8fa3b1;transform-origin:left center}
+.df1{width:125px;left:135px;top:115px;transform:rotate(-8deg)}
+.df2{width:145px;left:130px;bottom:130px;transform:rotate(-32deg)}
+.df3{width:125px;left:355px;top:155px;transform:rotate(35deg)}
+.df4{width:150px;left:545px;top:250px;transform:rotate(-27deg)}
+.df5{width:135px;right:150px;bottom:120px;transform:rotate(12deg)}
+.dlabel{position:absolute;font-size:9px;color:#69778b;background:#fff;padding:3px 5px;border-radius:5px}
+.dl1{left:150px;top:90px}.dl2{left:155px;bottom:160px}.dl3{left:390px;top:175px}.dl4{right:210px;top:190px}.dl5{right:175px;bottom:145px}
+
+/* =========================================================
+   WHICH DIAGRAM?
+========================================================= */
+.selector{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sel{border:1px solid var(--line);border-radius:17px;padding:18px;background:#fff}
+.sel b{font-size:13px}.sel p{margin:7px 0 0;color:#68778b;font-size:11px;line-height:1.55}
+.sel:nth-child(1){background:var(--sky2)}.sel:nth-child(2){background:var(--violet2)}.sel:nth-child(3){background:var(--teal2)}.sel:nth-child(4){background:var(--amber2)}
+
+/* =========================================================
+   STUDENT EXAMPLE
+========================================================= */
+.student-demo{
+  margin-top:28px;border:1px solid var(--line);border-radius:24px;padding:24px;background:#fbfcfd
+}
+.student-demo h3{margin:0 0 16px;text-align:center}
+.demo-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.demo-card{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}
+.demo-card b{font-size:13px}.demo-card p{margin:6px 0 0;color:#68778b;font-size:11px;line-height:1.55}
+.demo-visual{margin-top:15px;display:grid;gap:8px}
+.demo-node{padding:10px;border-radius:10px;border:1px solid var(--line);background:#f8fafb;text-align:center;font-size:10px;font-weight:800}
+.demo-arrow{text-align:center;color:#91a1af;font-size:18px}
+
+/* STORY */
+.story{margin-top:25px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.panel{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fff;overflow:hidden}
+.visual{height:120px;border-radius:11px;background:linear-gradient(135deg,#f5f9fb,#f7fbfa);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;margin-bottom:11px}
+.visual img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.panel .no{font-size:10px;font-weight:900;color:#8794a6;text-transform:uppercase}
+.panel h4{margin:5px 0 6px;font-size:14px}.panel p{margin:0;color:#68768a;font-size:11.5px;line-height:1.55}
+.panel:nth-child(1){border-top:4px solid var(--sky)}.panel:nth-child(2){border-top:4px solid var(--violet)}.panel:nth-child(3){border-top:4px solid var(--teal)}.panel:nth-child(4){border-top:4px solid var(--amber)}
+
+/* closure */
+.note{margin-top:30px;border-radius:16px;padding:22px;background:#eef5f6;border:1px solid #d5e5e7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}
+.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.note b{color:#2f6b70}.note p{margin:0 0 20px;color:#536d72;line-height:1.7;font-size:14px}.note img{width:100%;max-height:150px;object-fit:contain}
+.take{margin-top:28px;padding:22px;border-left:4px solid var(--amber);border-radius:15px;background:var(--amber2)}
+.take b{color:#9a642b}.take p{margin:0;color:#68563d;line-height:1.7;font-weight:650;font-size:14px}
+.think{margin-top:30px;border:1px solid #cfe7ed;background:#eef8fa;border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end}
+.think .tlabel{color:#197a82}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#4f6f75;line-height:1.7;font-size:14px}.think img{width:100%;max-height:155px;object-fit:contain}
+.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}
+.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}
+.nav a.next{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+@media(max-width:950px){
+  .atlas-grid,.selector{grid-template-columns:1fr 1fr}
+  .story{grid-template-columns:1fr 1fr}
+}
+@media(max-width:850px){
+  .layout{display:block}.side{display:none}
+  .content{width:min(100% - 28px,980px);padding-top:42px}
+  .hero{grid-template-columns:1fr}.mentor{max-width:350px}
+}
+@media(max-width:700px){
+  .atlas-grid,.selector,.bdd-row,.ibd-grid,.demo-row,.story{grid-template-columns:1fr}
+  .block-stage,.uml-stage,.dfd-stage{min-height:0;display:grid;gap:10px}
+  .box,.comp,.entity,.process,.store{position:static;transform:none;width:auto;height:auto;min-width:0}
+  .flowline,.flowlabel,.uml-line,.uml-tag,.dflow,.dlabel{display:none}
+  .process{border-radius:15px;padding:16px}
+  .note,.think{grid-template-columns:1fr}
+  .nav{flex-direction:column}.nav a{text-align:center}
+}
+</style>
+</head>
+
+<body>
+<header class="top">
+<a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
+<nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+
+<div class="layout">
+
+<aside class="side">
+<div class="course"><small>CPCS 351 · TOPIC 03</small><strong>System Engineering</strong></div>
+<div class="label">Topic 03</div>
+<a href="index.html">1. Systems &amp; System Engineering</a>
+<a href="system-engineering-process.html">2. System Engineering Process</a>
+<a href="system-requirements.html">3. System Requirements</a>
+<a href="system-architecture.html">4. System Architecture</a>
+<a href="requirements-allocation.html">5. Requirements Allocation</a>
+<a class="active" href="architecture-diagrams.html">6. Architecture Diagrams</a>
+<span class="future">7. Integration &amp; Deployment</span>
+<span class="future">8. Configuration Management</span>
+<div class="label">Course</div>
+<a href="../../index.html">Course Home</a>
+</aside>
+
+<main><article class="content">
+
+<div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 03 › Architecture Diagrams</div>
+
+<section class="hero">
+<div>
+<div class="eyebrow">Topic 03 · Lesson 06</div>
+<h1>Architecture Diagrams</h1>
+<p class="lead">
+One architecture can be viewed through several diagramming languages.
+Each diagram emphasizes a different question: <strong>What exists? How is it connected? What is inside? What flows?</strong>
+</p>
+</div>
+
+<div class="mentor">
+<div class="pic"><img src="../../assets/images/mentor-06-pointing.png" alt="Mentor explaining architecture diagrams"></div>
+<p>“Do not choose a diagram because it looks technical. Choose it because it answers the question your audience needs answered.”</p>
+</div>
+</section>
+
+<!-- VISUAL ATLAS -->
+<section class="section">
+<div class="kicker">Visual Hook</div>
+<h2>The Architecture Diagram Atlas</h2>
+<p>
+Imagine one system in the center and four different lenses around it.
+The architecture does not change—the viewpoint does.
+</p>
+
+<div class="atlas">
+
+<div class="atlas-core">
+<div>
+<b>ONE SYSTEM<br>ARCHITECTURE</b>
+<span>Different diagrams reveal different truths.</span>
+</div>
+</div>
+
+<div class="atlas-grid">
+
+<div class="atlas-card">
+<div class="glyph">▦</div>
+<b>Block Diagram</b>
+<p>Best for a high-level structural overview of major subsystems and their connections.</p>
+</div>
+
+<div class="atlas-card">
+<div class="glyph">▣</div>
+<b>UML Component Diagram</b>
+<p>Best for software-oriented components, subsystems, ports, interfaces, and dependencies.</p>
+</div>
+
+<div class="atlas-card">
+<div class="glyph">⬚</div>
+<b>SysML Diagrams</b>
+<p>Useful for multidisciplinary systems that combine hardware, software, people, and material/information flows.</p>
+</div>
+
+<div class="atlas-card">
+<div class="glyph">⇢</div>
+<b>Data Flow Diagram</b>
+<p>Best for showing how information or material moves through functions, stores, and external entities.</p>
+</div>
+
+</div>
+
+<div class="atlas-note">
+A system architecture can be depicted using block diagrams, UML component diagrams, SysML diagrams, data flow diagrams, and other techniques. The right representation depends on what must be communicated.
+</div>
+
+</div>
+</section>
+
+<!-- BLOCK DIAGRAM -->
+<section class="section">
+<div class="kicker">Diagram 1</div>
+<h2>Block Diagram — see the big pieces first</h2>
+<p>
+A block diagram strips away detail and emphasizes the major subsystems and the exchanges among them.
+</p>
+
+<div class="diagram-frame">
+<div class="diagram-title">Airport Baggage Handling System · Block Diagram</div>
+
+<div class="block-stage">
+
+<div class="box passenger">
+<b>Passenger</b>
+<span>luggage · ticket · ID</span>
+</div>
+
+<div class="box terminal">
+<b>Terminal Subsystem</b>
+<span>check-in · local baggage movement</span>
+</div>
+
+<div class="box tracks">
+<b>High-Speed Tracks Subsystem</b>
+<span>inter-terminal transport</span>
+</div>
+
+<div class="box flight">
+<b>Flight Information System</b>
+<span>flight &amp; destination data</span>
+</div>
+
+<div class="box control">
+<b>ABHS Control Software</b>
+<span>instructions · coordination · routing data</span>
+</div>
+
+<div class="flowline fl1"></div>
+<div class="flowline fl2"></div>
+<div class="flowline fl3"></div>
+<div class="flowline fl4"></div>
+
+<div class="flowlabel lab1">luggage / ticket / ID</div>
+<div class="flowlabel lab2">luggage</div>
+<div class="flowlabel lab3">data / instructions</div>
+<div class="flowlabel lab4">flight data</div>
+
+</div>
+</div>
+</section>
+
+<!-- UML COMPONENT -->
+<section class="section">
+<div class="kicker">Diagram 2</div>
+<h2>UML Component Diagram — see software structure and interfaces</h2>
+<p>
+Component diagrams emphasize components and subsystems, their interfaces, ports, and the events or instructions exchanged among them.
+</p>
+
+<div class="diagram-frame">
+<div class="diagram-title">Example · Communication System Component View</div>
+
+<div class="uml-stage">
+
+<div class="comp cbase">
+<b>&lt;&lt;subsystem&gt;&gt; Base Station</b>
+<span>central communication subsystem</span>
+</div>
+
+<div class="comp cmobile">
+<b>&lt;&lt;subsystem&gt;&gt; Mobile Units</b>
+<span>mobile-side subsystem</span>
+</div>
+
+<div class="comp caccount">
+<b>Account Management</b>
+<span>service / component</span>
+</div>
+
+<div class="comp chw">
+<b>Controller Hardware</b>
+<span>hardware-side component</span>
+</div>
+
+<div class="comp csw">
+<b>Controller Software</b>
+<span>software-side component</span>
+</div>
+
+<div class="uml-line u1"></div><div class="uml-line u2"></div><div class="uml-line u3"></div><div class="uml-line u4"></div>
+
+<div class="uml-tag ut1">air link / instructions</div>
+<div class="uml-tag ut2">call data</div>
+<div class="uml-tag ut3">events</div>
+<div class="uml-tag ut4">instructions</div>
+
+</div>
+</div>
+</section>
+
+<!-- SYSML BDD -->
+<section class="section">
+<div class="kicker">Diagram 3</div>
+<h2>SysML Block Definition Diagram — see what the system consists of</h2>
+<p>
+A Block Definition Diagram (BDD) focuses on system composition: which subsystems or components make up the larger system.
+</p>
+
+<div class="diagram-frame">
+<div class="diagram-title">bdd [package] Structure · ABHS</div>
+
+<div class="bdd-stage">
+
+<div class="bdd-root">Airport Baggage Handling System</div>
+<div class="bdd-down">↓ consists of ↓</div>
+
+<div class="bdd-row">
+
+<div class="bdd-block">
+<div class="bdd-head">&lt;&lt;subsystem&gt;&gt;</div>
+<div class="bdd-body">Terminal Subsystem</div>
+</div>
+
+<div class="bdd-block">
+<div class="bdd-head">&lt;&lt;subsystem&gt;&gt;</div>
+<div class="bdd-body">High-Speed Tracks Subsystem</div>
+</div>
+
+<div class="bdd-block">
+<div class="bdd-head">&lt;&lt;component&gt;&gt;</div>
+<div class="bdd-body">ABHS Control Software</div>
+</div>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SYSML IBD -->
+<section class="section">
+<div class="kicker">Diagram 4</div>
+<h2>SysML Internal Block Diagram — see what happens inside</h2>
+<p>
+An Internal Block Diagram (IBD) exposes internal parts, ports, and flows inside a subsystem.
+</p>
+
+<div class="ibd-shell">
+<div class="ibd-label">ibd [Block] Terminal Subsystem [Nested Flow]</div>
+
+<div class="ibd-grid">
+
+<div class="iblock">
+<b>Passenger Check-In</b>
+<span>Airline Agent (human)</span>
+</div>
+
+<div class="iblock">
+<b>Check-In Terminal</b>
+<span>HW / SW</span>
+</div>
+
+<div class="iblock">
+<b>Conveyor Hardware</b>
+<span>scanner · bag pushers · conveyor</span>
+</div>
+
+<div class="iblock">
+<b>Bar-Code Scanner</b>
+<span>HW</span>
+</div>
+
+<div class="iblock">
+<b>ABHS Control Software Interface</b>
+<span>instructions / control</span>
+</div>
+
+<div class="iblock">
+<b>High-Speed Track Interface</b>
+<span>luggage transfer</span>
+</div>
+
+</div>
+
+<div class="portline"></div>
+<div class="portlegend">
+boarding pass &amp; ID → information/material flow · luggage → material flow · barcode → data · instructions → control flow
+</div>
+</div>
+</section>
+
+<!-- DFD -->
+<section class="section">
+<div class="kicker">Diagram 5</div>
+<h2>Data Flow Diagram — follow what moves</h2>
+<p>
+A DFD focuses on functions and flows. It can represent both information flow and material flow.
+</p>
+
+<div class="diagram-frame">
+<div class="diagram-title">Library / Publication Handling Example · Material + Information Flow</div>
+
+<div class="dfd-stage">
+
+<div class="entity publisher">Publisher</div>
+<div class="entity dock">Receiving Dock</div>
+
+<div class="process p1">1<br>Verify Shipment Content</div>
+<div class="process p2">2<br>Classify Publications Received</div>
+<div class="process p3">3<br>Handle Documents Check-In / Out</div>
+
+<div class="store catalog">Cataloging Room</div>
+<div class="store shelves">Book Shelves</div>
+
+<div class="dflow df1"></div><div class="dflow df2"></div><div class="dflow df3"></div><div class="dflow df4"></div><div class="dflow df5"></div>
+
+<div class="dlabel dl1">shipment slip</div>
+<div class="dlabel dl2">raw shipment</div>
+<div class="dlabel dl3">publications</div>
+<div class="dlabel dl4">publications w/call numbers</div>
+<div class="dlabel dl5">new titles available</div>
+
+</div>
+</div>
+</section>
+
+<!-- CHOOSING DIAGRAM -->
+<section class="section">
+<div class="kicker">Choosing the View</div>
+<h2>Ask the question first, then choose the diagram</h2>
+
+<div class="selector">
+
+<div class="sel">
+<b>“What are the major parts?”</b>
+<p>Use a <strong>Block Diagram</strong> for a fast structural overview.</p>
+</div>
+
+<div class="sel">
+<b>“How do software components connect?”</b>
+<p>Use a <strong>UML Component Diagram</strong> to emphasize components, interfaces, and dependencies.</p>
+</div>
+
+<div class="sel">
+<b>“What is the system made of internally?”</b>
+<p>Use <strong>SysML BDD / IBD</strong> to show composition, nested blocks, ports, and multidisciplinary flows.</p>
+</div>
+
+<div class="sel">
+<b>“Where does information or material move?”</b>
+<p>Use a <strong>Data Flow Diagram</strong> to follow processes, stores, external entities, and flows.</p>
+</div>
+
+</div>
+</section>
+
+<!-- STUDENT-NEAR EXAMPLE -->
+<section class="section">
+<div class="kicker">Example Closer to Students</div>
+<h2>University Registration System — same system, two diagrams</h2>
+
+<div class="student-demo">
+
+<h3>One system, different questions</h3>
+
+<div class="demo-row">
+
+<div class="demo-card">
+<b>Block Diagram View</b>
+<p>Useful when explaining the main subsystems to a non-technical stakeholder.</p>
+
+<div class="demo-visual">
+<div class="demo-node">University Registration System</div>
+<div class="demo-arrow">↓</div>
+<div class="demo-node">Student Portal</div>
+<div class="demo-node">Registration Service</div>
+<div class="demo-node">Academic Records</div>
+<div class="demo-node">Notification Service</div>
+</div>
+</div>
+
+<div class="demo-card">
+<b>Data Flow View</b>
+<p>Useful when explaining how a registration request moves through the system.</p>
+
+<div class="demo-visual">
+<div class="demo-node">Student</div>
+<div class="demo-arrow">↓ registration request</div>
+<div class="demo-node">Check Prerequisites</div>
+<div class="demo-arrow">↓ valid request</div>
+<div class="demo-node">Reserve Seat</div>
+<div class="demo-arrow">↓ confirmation</div>
+<div class="demo-node">Student</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ANOTHER EXAMPLE -->
+<section class="section">
+<div class="kicker">Another Example</div>
+<h2>Ride-Sharing System — choose the right lens</h2>
+
+<div class="student-demo">
+<div class="demo-row">
+
+<div class="demo-card">
+<b>Component View</b>
+<p>Passenger App ↔ Driver App ↔ Trip Service ↔ Payment Service ↔ Map Service. Best when discussing software dependencies and interfaces.</p>
+</div>
+
+<div class="demo-card">
+<b>System / SysML View</b>
+<p>Passenger + driver + mobile devices + GPS + backend + payment provider + cellular network. Better when the complete socio-technical system matters.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Illustrated Story</div>
+<h2>The diagram that answered the wrong question</h2>
+
+<div class="story">
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div>
+<span class="no">Panel 1</span>
+<h4>Huge UML diagram</h4>
+<p>The team shows a detailed component diagram to an airport manager who only wants to know the major subsystems.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div>
+<span class="no">Panel 2</span>
+<h4>Technically correct, practically useless</h4>
+<p>The diagram contains useful detail—but not at the level the audience needs.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-06-pointing.png" alt=""></div>
+<span class="no">Panel 3</span>
+<h4>Change the lens</h4>
+<p>The team switches to a block diagram showing ABHS, terminal, tracks, flight information, and control software.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
+<span class="no">Panel 4</span>
+<h4>Same architecture, better communication</h4>
+<p>The architecture did not change. The representation changed to match the question.</p>
+</div>
+
+</div>
+</section>
+
+<div class="note">
+<div>
+<b>Mentor Insight</b>
+<p>
+A diagram is a communication tool, not an ornament. Good engineers choose the representation that reveals
+the structure, interface, composition, or flow that matters to the current audience.
+</p>
+</div>
+<img src="../../assets/images/mentor-11-serious.png" alt="Mentor emphasizing diagram selection">
+</div>
+
+<div class="take">
+<b>Key Takeaway</b>
+<p>
+Architectural design can be visualized with several diagramming techniques. Block diagrams emphasize high-level structure;
+UML component diagrams emphasize components and interfaces; SysML BDD/IBD diagrams capture multidisciplinary composition,
+internal parts, ports, and flows; Data Flow Diagrams emphasize functions and the movement of information or material.
+</p>
+</div>
+
+<div class="think">
+<div>
+<span class="tlabel">Think Like a Software Engineer</span>
+<h3>You need to explain a system to three audiences: executives, software developers, and integration engineers. Would you use the same diagram for all three?</h3>
+<p>
+Choose a diagram type for each audience and explain what information each one needs to see.
+</p>
+</div>
+<img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about diagram selection">
+</div>
+
+<div class="nav">
+<a href="requirements-allocation.html">← Requirements Allocation</a>
+<a class="next" href="integration-deployment.html">Next · Integration &amp; Deployment →</a>
+</div>
+
+</article></main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access")!=="granted"){
+  window.location.href="../../access.html";
+}
+</script>
+</body>
+</html>
