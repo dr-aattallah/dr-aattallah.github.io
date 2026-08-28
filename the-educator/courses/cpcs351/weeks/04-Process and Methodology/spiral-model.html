@@ -145,6 +145,63 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
 .nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}
 .nav a.next{background:#9f6317;color:#fff;border-color:#9f6317}
 
+
+/* NASA SPIRAL REFERENCE */
+.nasa-reference{
+  background:
+    radial-gradient(circle at 50% 40%,rgba(230,154,56,.08),transparent 30%),
+    linear-gradient(180deg,#fffdf9,#fff9f2);
+  padding:26px;
+}
+.nasa-reference .nasa-image-link{
+  display:block;max-width:920px;margin:0 auto;text-decoration:none;
+}
+.nasa-reference img{
+  width:100%;
+  max-width:920px;
+  max-height:none;
+  background:#fff;
+  padding:16px;
+  border-radius:18px;
+  border:1px solid #ddd8d2;
+  box-shadow:0 16px 42px rgba(79,58,32,.09);
+}
+.nasa-read{
+  max-width:920px;margin:20px auto 0;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+}
+.nr{
+  border:1px solid var(--line);border-radius:14px;padding:13px;background:#fff;
+  display:grid;grid-template-columns:28px 1fr;gap:9px;align-items:start;
+}
+.nr>span{
+  width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
+  color:#fff;font-size:10px;font-weight:900;
+}
+.nr:nth-child(1){background:var(--violet2)}
+.nr:nth-child(1)>span{background:var(--violet)}
+.nr:nth-child(2){background:var(--red2)}
+.nr:nth-child(2)>span{background:var(--red)}
+.nr:nth-child(3){background:var(--cyan2)}
+.nr:nth-child(3)>span{background:var(--cyan)}
+.nr:nth-child(4){background:var(--green2)}
+.nr:nth-child(4)>span{background:var(--green)}
+.nr b{font-size:10.5px}
+.nr small{display:block;margin-top:4px;color:#6a6461;font-size:8.8px;line-height:1.45}
+.nasa-caption{
+  max-width:920px;margin:13px auto 0;padding:13px 15px;
+  border:1px dashed #d7b77e;border-radius:12px;background:#fff;
+  color:#675f55;font-size:10.5px;line-height:1.6;text-align:center;
+}
+@media(max-width:750px){
+  .nasa-read{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .nasa-read{grid-template-columns:1fr}
+  .nasa-reference{padding:15px}
+  .nasa-reference img{padding:7px}
+}
+
 @media(max-width:950px){.four,.story{grid-template-columns:1fr 1fr}.iterations{grid-template-columns:1fr}.cycle{grid-template-columns:85px 1fr}.cout{grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}}
 @media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,1000px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
 @media(max-width:700px){.radar{display:grid;gap:10px;min-height:0}.ring,.spiral-path{display:none}.core,.quad{position:static;transform:none;width:auto;height:auto;border-radius:16px}.core{padding:18px}.four,.pc,.story{grid-template-columns:1fr}.riskrow{grid-template-columns:1fr}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}.refhead{flex-direction:column;align-items:flex-start}}
@@ -178,8 +235,8 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
 <div class="eyebrow">Topic 04 · Model 04</div>
 <h1>The Spiral Model</h1>
 <p class="lead">
-An iterative process model in which each cycle moves the project forward while explicitly asking:
-<strong>What could go wrong, and what should we do about it before committing more?</strong>
+A <strong>risk-driven iterative</strong> process model in which each outward cycle moves the project forward while explicitly asking:
+<strong>What could go wrong, what evidence will reduce that uncertainty, and how much should we commit next?</strong>
 </p>
 </div>
 <div class="mentor">
@@ -190,42 +247,67 @@ An iterative process model in which each cycle moves the project forward while e
 
 <section class="section">
 <div class="kicker">The Model · Large Reference Image</div>
-<h2>Boehm's Spiral Model</h2>
+<h2>NASA's Schematic of the Standard Spiral Model</h2>
 <p>
-Read the diagram from the center outward. Every loop represents another development cycle.
-As the spiral expands, cumulative effort increases, the product becomes more complete, and major risks are repeatedly identified and reduced.
+This is the main reference diagram for the lesson. Read it from the center outward:
+each loop represents another development iteration, while the project repeatedly passes through
+<strong>objectives → risk reduction → development &amp; test → planning</strong>.
+The radial movement represents increasing time/cost, and the angular movement represents progress.
 </p>
 
-<figure class="reference">
+<figure class="reference nasa-reference">
 <div class="refhead">
-<span>OLD DOMINION UNIVERSITY · COMPUTER SCIENCE</span>
-<a href="https://www.cs.odu.edu/~zeil/cs350/web/Public/processModels/index.html#the-spiral-model" target="_blank" rel="noopener">Open academic source ↗</a>
+<span>NASA · SOFTWARE ENGINEERING HANDBOOK</span>
+<a href="https://swehb.nasa.gov/spaces/7150/pages/16449735/SWE-019+-+Software+Life+Cycle"
+   target="_blank" rel="noopener">Open NASA source ↗</a>
 </div>
-<img src="https://www.cs.odu.edu/~zeil/cs350/web/Public/processModels/spiral.png"
-     alt="Boehm spiral software development model showing objectives, risk analysis, development and planning across expanding cycles"
-     loading="lazy">
+
+<a class="nasa-image-link"
+   href="https://swehb.nasa.gov/download/attachments/16449735/SWE-019%20Spiral_model_BoehC_1988.png?api=v2&modificationDate=1342193830000&version=1"
+   target="_blank" rel="noopener">
+<img
+ src="https://swehb.nasa.gov/download/attachments/16449735/SWE-019%20Spiral_model_BoehC_1988.png?api=v2&modificationDate=1342193830000&version=1"
+ alt="NASA schematic of the standard Spiral Model showing objectives, risk resolution, development and test, planning, cumulative cost and outward progress"
+ loading="lazy">
+</a>
+
 <figcaption>
-<strong>How to read it:</strong> the spiral begins near the center. A cycle establishes objectives and alternatives,
-evaluates them and resolves risks, develops/verifies the next product level, then plans the next cycle.
-The outward movement represents increasing progress and commitment—not simply repeating the same work.
+<strong>How to read the NASA diagram:</strong>
+start near the center with the concept of operation and initial requirements.
+Move clockwise through the four sectors. Risk-analysis activities appear early in each outward loop;
+prototypes progressively mature; requirements and plans become more concrete; then design, code,
+integration, testing, implementation, and release appear as the project makes larger commitments.
 </figcaption>
 
-<div class="second-ref">
-<p><strong>Second academic rendering:</strong> Carnegie Mellon University uses the same Boehm spiral in its software-engineering teaching material.</p>
-<img src="https://www.cs.cmu.edu/~bam/uicourse/1998spring/lect04spiral.gif"
-     alt="Spiral model diagram used in Carnegie Mellon University software engineering course"
-     loading="lazy">
-<div class="refhead" style="margin-top:10px;margin-bottom:0">
-<span>CARNEGIE MELLON UNIVERSITY · SCHOOL OF COMPUTER SCIENCE</span>
-<a href="https://www.cs.cmu.edu/~bam/uicourse/1998spring/lecture04process.html" target="_blank" rel="noopener">Open CMU lecture ↗</a>
+<div class="nasa-read">
+<div class="nr">
+<span>1</span>
+<div><b>Determine Objectives</b><small>Define goals, alternatives, and constraints for this iteration.</small></div>
 </div>
+<div class="nr">
+<span>2</span>
+<div><b>Identify &amp; Resolve Risks</b><small>Analyze uncertainty and use prototypes, simulations, benchmarks, or other evidence to reduce risk.</small></div>
+</div>
+<div class="nr">
+<span>3</span>
+<div><b>Development &amp; Test</b><small>Engineer and verify the next level of the product.</small></div>
+</div>
+<div class="nr">
+<span>4</span>
+<div><b>Plan the Next Iteration</b><small>Review what was learned and decide what the next outward loop should accomplish.</small></div>
+</div>
+</div>
+
+<div class="nasa-caption">
+<strong>Why the spiral gets larger:</strong>
+later loops represent greater commitment. The project should not spend heavily while critical risks remain unexplored.
 </div>
 </figure>
 </section>
 
 <section class="section">
 <div class="kicker">Visual Hook</div>
-<h2>The Risk Radar Spiral</h2>
+<h2>Translate the NASA model into one memory image: Risk Radar</h2>
 <p>
 The easiest way to remember Spiral is to imagine a radar screen. Every orbit scans for risk before the project moves farther from the center and commits more cost.
 </p>
