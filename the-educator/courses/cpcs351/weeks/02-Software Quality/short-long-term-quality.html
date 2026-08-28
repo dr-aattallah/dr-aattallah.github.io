@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Short-Term vs. Long-Term Quality | CPCS 351</title>
+<style>
+:root{--ink:#182236;--muted:#617087;--line:#e4e9f0;--blue:#2f80ed;--blue2:#edf6ff;--mint:#56ceb1;--mint2:#ecfaf6;--orange:#f2a45f;--orange2:#fff4e9;--purple:#8a75db;--purple2:#f3efff;--red:#dd6262;--red2:#fff0f0;--side:238px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}a{color:inherit}
+.top{height:60px;position:sticky;top:0;z-index:50;background:#fffffff2;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 14px;backdrop-filter:blur(12px)}.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}.mark{width:29px;height:29px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--mint),var(--orange));display:grid;place-items:center;color:white;font-size:21px}.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
+.layout{display:grid;grid-template-columns:var(--side) 1fr}.side{height:calc(100vh - 60px);position:sticky;top:60px;overflow:auto;border-right:1px solid var(--line);background:#fafbfc;padding:24px 14px}.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}.course small,.label{font-size:11px;font-weight:850;color:#8e9aad;letter-spacing:.07em;text-transform:uppercase}.course strong{display:block;margin-top:7px;font-size:15px}.label{margin:18px 0 8px}.side a{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5c6d85;font-size:13px;font-weight:650}.side a.active{background:#e9f3ff;color:#1269ca;font-weight:850}
+.content{width:min(900px,calc(100% - 48px));margin:auto;padding:58px 0 90px}.crumb{color:#8a97a8;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}.hero{display:grid;grid-template-columns:1fr 270px;gap:34px;align-items:center}.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.07em;text-transform:uppercase}.eyebrow{color:#2e76ad}.eyebrow:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mint);margin-right:7px}h1{font-size:clamp(42px,6vw,62px);line-height:1;letter-spacing:-.045em;margin:14px 0 20px}.lead{color:var(--muted);font-size:18px;line-height:1.75}.mentor{border:1px solid var(--line);border-radius:18px;overflow:hidden}.mentor .pic{height:220px;background:radial-gradient(circle at top,#fff,#f1f6fb);display:flex;align-items:flex-end}.mentor img{width:100%;height:100%;object-fit:contain;object-position:center bottom}.mentor p{margin:0;padding:17px;border-top:1px solid var(--line);font-size:14px;line-height:1.65;font-weight:650;color:#46556b}.section{margin-top:66px}.kicker{color:#96a1b1;margin-bottom:7px}h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c;line-height:1.8;font-size:16px}
+
+/* ICEBERG HOOK */
+.iceberg{margin-top:28px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:linear-gradient(#f8fcff 0 42%,#dff2fb 42% 100%);position:relative;min-height:540px}
+.waterline{position:absolute;top:42%;left:0;right:0;border-top:2px dashed #8cc7df}.waterlabel{position:absolute;right:18px;top:calc(42% - 28px);font-size:10px;font-weight:900;color:#5b9db9;letter-spacing:.08em}
+.tip{position:absolute;top:64px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:110px solid transparent;border-right:110px solid transparent;border-bottom:160px solid #eef7fb;filter:drop-shadow(0 9px 12px #7893a322)}
+.tiptext{position:absolute;top:122px;left:50%;transform:translateX(-50%);text-align:center;width:220px}.tiptext b{font-size:19px}.tiptext span{display:block;margin-top:7px;font-size:11px;color:#66778c;line-height:1.45}
+.deep{position:absolute;top:43%;left:50%;transform:translateX(-50%);width:590px;height:265px;clip-path:polygon(31% 0,69% 0,100% 100%,0 100%);background:linear-gradient(180deg,#b8dce9,#8fc5d8);padding:45px 100px 25px;color:#173c4c;text-align:center}
+.deep h3{margin:0 0 12px;font-size:22px}.deep p{margin:0;font-size:12px;line-height:1.65}.deep-tags{display:flex;justify-content:center;flex-wrap:wrap;gap:7px;margin-top:18px}.deep-tags span{padding:7px 9px;border-radius:999px;background:#ffffffaa;font-size:10px;font-weight:850}
+.ice-caption{position:absolute;bottom:0;left:0;right:0;background:#ffffffed;border-top:1px solid #d4e7ef;padding:15px 20px;font-size:12px;color:#5f7187;line-height:1.6}
+
+/* TWO CLOCKS */
+.clocks{margin-top:27px;display:grid;grid-template-columns:1fr 70px 1fr;align-items:center}.clockside{border:1px solid var(--line);border-radius:20px;padding:24px;text-align:center}.clockside.short{background:var(--orange2)}.clockside.long{background:var(--mint2)}.clock{width:125px;height:125px;border:9px solid #fff;border-radius:50%;margin:0 auto 17px;position:relative;box-shadow:0 8px 22px #33415516}.clock:before{content:"";position:absolute;width:4px;height:42px;background:#344155;left:50%;top:20px;transform-origin:bottom;transform:translateX(-50%) rotate(20deg);border-radius:4px}.clock:after{content:"";position:absolute;width:38px;height:4px;background:#344155;left:50%;top:50%;transform-origin:left;transform:rotate(5deg);border-radius:4px}.clockside h3{margin:0;font-size:19px}.clockside p{margin:8px 0 0;color:#637187;font-size:12px;line-height:1.6}.vs{text-align:center;font-weight:950;color:#a1aab6;font-size:17px}
+
+/* DEBT STORY */
+.road{margin-top:28px;border:1px solid var(--line);border-radius:22px;padding:26px;background:#fbfcfd;overflow:hidden}.roadline{height:12px;border-radius:999px;background:linear-gradient(90deg,var(--mint),var(--blue),var(--orange),var(--red));position:relative;margin:50px 30px 70px}.mile{position:absolute;top:50%;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;background:#fff;border:5px solid #344155}.m1{left:5%}.m2{left:35%}.m3{left:67%}.m4{left:96%}.mile span{position:absolute;width:150px;left:50%;transform:translateX(-50%);top:30px;font-size:10.5px;color:#637287;text-align:center;line-height:1.45}.mile b{display:block;color:var(--ink);font-size:11px;margin-bottom:3px}.shortcut{margin-top:8px;padding:18px;border-left:4px solid var(--red);background:var(--red2);border-radius:13px}.shortcut b{font-size:13px}.shortcut p{margin:5px 0 0;color:#725d62;font-size:12px;line-height:1.6}
+
+/* HOUSE ANALOGY */
+.house{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:18px}.housebox{border:1px solid var(--line);border-radius:20px;overflow:hidden}.roof{height:115px;clip-path:polygon(50% 0,100% 100%,0 100%);margin:20px 35px 0}.housebox:first-child .roof{background:var(--orange)}.housebox:last-child .roof{background:var(--mint)}.building{margin:0 55px 22px;padding:18px;background:#fff;border:1px solid var(--line);text-align:center}.building b{font-size:14px}.building span{display:block;margin-top:6px;color:#6b788b;font-size:11px;line-height:1.5}.housecopy{padding:0 20px 20px;color:#627187;font-size:12px;line-height:1.65}
+
+/* DECISION TABLE */
+.decision{margin-top:26px;border:1px solid var(--line);border-radius:20px;overflow:hidden}.drow{display:grid;grid-template-columns:1.2fr 1fr 1fr;border-bottom:1px solid var(--line)}.drow:last-child{border-bottom:0}.drow>div{padding:15px 17px;font-size:12px;line-height:1.55}.drow>div+div{border-left:1px solid var(--line)}.dhead{background:#182236;color:#fff;font-weight:850}.good{background:var(--mint2)}.risk{background:var(--red2)}
+
+/* STORY */
+.story{margin-top:25px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.panel{border:1px solid var(--line);border-radius:15px;padding:13px;background:#fff;overflow:hidden}.visual{height:118px;border-radius:11px;background:linear-gradient(135deg,#f5f9ff,#f7fbfa);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;margin-bottom:11px}.visual img{width:100%;height:100%;object-fit:contain;object-position:center bottom}.panel .no{font-size:10px;font-weight:900;color:#8794a6;text-transform:uppercase}.panel h4{margin:5px 0 6px;font-size:14px}.panel p{margin:0;color:#68768a;font-size:11.5px;line-height:1.55}.panel:nth-child(1){border-top:4px solid var(--mint)}.panel:nth-child(2){border-top:4px solid var(--orange)}.panel:nth-child(3){border-top:4px solid var(--red)}.panel:nth-child(4){border-top:4px solid var(--blue)}
+
+.note{margin-top:30px;border-radius:16px;padding:22px;background:var(--purple2);border:1px solid #e1daf7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}.note b{color:#6955a0}.note p{margin:0 0 20px;color:#5e5678;line-height:1.7;font-size:14px}.note img{width:100%;max-height:150px;object-fit:contain;object-position:bottom}.take{margin-top:28px;padding:22px;border-left:4px solid var(--mint);border-radius:15px;background:var(--mint2)}.take b{color:#317868}.take p{margin:0;color:#45675e;line-height:1.7;font-weight:650;font-size:14px}.think{margin-top:30px;border:1px solid #d5e8ff;background:var(--blue2);border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end}.think .tlabel{color:#2d6fa7}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#496681;line-height:1.7;font-size:14px}.think img{width:100%;max-height:155px;object-fit:contain;object-position:bottom}.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:#182236;color:#fff;border-color:#182236}.mobile{display:none}
+@media(max-width:850px){.layout{display:block}.side{display:none}.mobile{display:block;padding:10px 14px;border-bottom:1px solid var(--line);overflow:auto;white-space:nowrap}.mobile a{display:inline-block;padding:8px 10px;margin-right:5px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-size:12px;font-weight:700}.content{width:min(100% - 28px,900px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}.story{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.clocks,.house{grid-template-columns:1fr}.vs{padding:10px}.drow{grid-template-columns:1fr}.drow>div+div{border-left:0;border-top:1px solid var(--line)}.deep{width:92%;padding-left:50px;padding-right:50px}.story{grid-template-columns:1fr}}
+@media(max-width:520px){.links a:nth-child(2){display:none}.iceberg{min-height:620px}.deep{height:320px}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a><nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header>
+<div class="mobile"><a href="index.html">Topic 02</a><a href="short-long-term-quality.html">Quality Over Time</a></div>
+<div class="layout">
+<aside class="side"><div class="course"><small>CPCS 351 · TOPIC 02</small><strong>Software Quality</strong></div><div class="label">Topic 02</div>
+<a href="index.html">1. Software Quality Assurance</a><a href="verification-validation.html">2. Verification &amp; Validation</a><a href="quality-metrics.html">3. Quality Measurements &amp; Metrics</a><a href="quality-attributes.html">4. Quality Attributes</a><a class="active" href="short-long-term-quality.html">5. Short vs. Long Term Quality</a>
+<div class="label">Course</div><a href="../01-introduction/index.html">Topic 01 · Introduction</a><a href="../../index.html">Course Home</a></aside>
+<main><article class="content">
+<div class="crumb"><a href="../../index.html">CPCS 351</a> › <a href="index.html">Topic 02</a> › Short-Term vs. Long-Term Quality</div>
+
+<section class="hero"><div><div class="eyebrow">Topic 02 · Lesson 05</div><h1>Short-Term vs. Long-Term Quality</h1><p class="lead">A system can look successful today and still become expensive, fragile, and difficult tomorrow. Software quality has a visible present—and a hidden future.</p></div>
+<div class="mentor"><div class="pic"><img src="../../assets/images/mentor-10-concerned.png" alt="Software engineer thinking about long-term quality"></div><p>“Shipping is a moment. Maintaining software is a journey.”</p></div></section>
+
+<section class="section"><div class="kicker">Visual Hook</div><h2>The Quality Iceberg</h2><p>What users experience today is only the visible tip. Much of long-term software quality lives below the surface.</p>
+<div class="iceberg">
+<div class="waterline"></div><div class="waterlabel">TODAY / TOMORROW</div>
+<div class="tip"></div><div class="tiptext"><b>Short-Term Quality</b><span>Does the software satisfy the immediate need?</span></div>
+<div class="deep"><h3>Long-Term Quality</h3><p>What happens when the system must change, grow, survive failures, accept new developers, or support new business needs?</p><div class="deep-tags"><span>Maintainability</span><span>Reliability</span><span>Adaptability</span><span>Reusability</span><span>Cost of Change</span></div></div>
+<div class="ice-caption">A release can satisfy today's requirements while carrying structural problems that become visible only after months or years of evolution.</div>
+</div></section>
+
+<section class="section"><div class="kicker">Two Time Horizons</div><h2>Quality answers two different clocks</h2>
+<div class="clocks">
+<div class="clockside short"><div class="clock"></div><h3>Short Term</h3><p>Can we deliver useful software now? Does it satisfy current requirements and work for today's users?</p></div>
+<div class="vs">VS</div>
+<div class="clockside long"><div class="clock"></div><h3>Long Term</h3><p>Can the software continue to evolve economically and safely as requirements, technologies, and environments change?</p></div>
+</div></section>
+
+<section class="section"><div class="kicker">Example · University Registration System</div><h2>The shortcut that sends a bill to the future</h2><p>The team has a deadline. A new prerequisite rule arrives late. There are two ways to respond.</p>
+<div class="road"><div class="roadline">
+<div class="mile m1"><span><b>Release 1</b>Quick rule added.</span></div><div class="mile m2"><span><b>Release 2</b>Rule duplicated.</span></div><div class="mile m3"><span><b>Release 3</b>Changes touch many modules.</span></div><div class="mile m4"><span><b>Release 4</b>Every change becomes risky.</span></div>
+</div>
+<div class="shortcut"><b>Short-term success can create long-term cost.</b><p>The first release may work perfectly. The problem appears later when duplicated logic, tight coupling, weak structure, or poor documentation make each new change harder.</p></div></div></section>
+
+<section class="section"><div class="kicker">Analogy</div><h2>Software is more like a building than a poster</h2>
+<div class="house">
+<div class="housebox"><div class="roof"></div><div class="building"><b>Looks Finished</b><span>The rooms work. The client can move in.</span></div><div class="housecopy">Short-term quality asks whether the building serves its immediate purpose.</div></div>
+<div class="housebox"><div class="roof"></div><div class="building"><b>Built to Evolve</b><span>Structure, utilities, access, and materials support future changes.</span></div><div class="housecopy">Long-term quality asks what happens when another floor, new wiring, repairs, or a new use is required.</div></div>
+</div></section>
+
+<section class="section"><div class="kicker">Engineering Decisions</div><h2>Today's choice becomes tomorrow's environment</h2>
+<div class="decision">
+<div class="drow dhead"><div>Decision</div><div>Short-Term Effect</div><div>Long-Term Effect</div></div>
+<div class="drow"><div>Duplicate code to meet a deadline</div><div class="good">Feature delivered quickly</div><div class="risk">Multiple places must be changed later</div></div>
+<div class="drow"><div>Clear modular design</div><div>May require more design effort now</div><div class="good">Changes remain localized and safer</div></div>
+<div class="drow"><div>Skip documentation</div><div class="good">Less work before release</div><div class="risk">Future developers spend more time reconstructing intent</div></div>
+<div class="drow"><div>Reusable component</div><div>May require thoughtful generalization</div><div class="good">Future projects can reuse proven capability</div></div>
+</div></section>
+
+<section class="section"><div class="kicker">Illustrated Story</div><h2>The feature that worked perfectly</h2>
+<div class="story">
+<div class="panel"><div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div><span class="no">Panel 1</span><h4>Friday: shipped</h4><p>The new feature works. Tests pass. Everyone celebrates.</p></div>
+<div class="panel"><div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div><span class="no">Panel 2</span><h4>Three months later</h4><p>A similar feature arrives. The old shortcut must now be copied.</p></div>
+<div class="panel"><div class="visual"><img src="../../assets/images/mentor-11-serious.png" alt=""></div><span class="no">Panel 3</span><h4>One year later</h4><p>Five versions of the same rule behave differently. A simple change becomes dangerous.</p></div>
+<div class="panel"><div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div><span class="no">Panel 4</span><h4>The lesson</h4><p>Quality is not only “Does it work now?” It is also “Can we live with it later?”</p></div>
+</div></section>
+
+<div class="note"><div><b>Mentor Insight</b><p>Long-term quality does not mean overengineering everything. The goal is to avoid buying a tiny improvement today with a much larger maintenance cost tomorrow.</p></div><img src="../../assets/images/mentor-02-explaining.png" alt="Mentor explaining long-term quality"></div>
+
+<div class="take"><b>Key Takeaway</b><p>Short-term quality focuses on satisfying immediate needs and delivering working software. Long-term quality considers the software's future life: maintenance, evolution, reliability, reuse, and the cost and risk of change. Strong engineering balances both horizons.</p></div>
+
+<div class="think"><div><span class="tlabel">Think Like a Software Engineer</span><h3>A shortcut saves two days today but adds one day of work to every future change. Would you take it?</h3><p>Your answer should depend on expected system lifetime, frequency of change, risk, deadline pressure, and the cost of improving the design now.</p></div><img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about quality over time"></div>
+
+<div class="nav"><a href="quality-attributes.html">← Quality Attributes</a><a class="next" href="se-vs-cs.html">Next · Software Engineering vs. Computer Science →</a></div>
+</article></main></div>
+<script>if(sessionStorage.getItem("cpcs351_access")!=="granted"){window.location.href="../../access.html";}</script>
+</body></html>
