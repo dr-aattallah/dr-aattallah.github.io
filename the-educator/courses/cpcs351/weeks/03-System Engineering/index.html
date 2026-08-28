@@ -111,6 +111,58 @@ linear-gradient(180deg,#fbfdfe,#f5fafb);overflow:hidden}
 .panel h4{margin:5px 0 6px;font-size:14px}.panel p{margin:0;color:#68768a;font-size:11.5px;line-height:1.55}
 .panel:nth-child(1){border-top:4px solid var(--sky)}.panel:nth-child(2){border-top:4px solid var(--teal)}.panel:nth-child(3){border-top:4px solid var(--coral)}.panel:nth-child(4){border-top:4px solid var(--amber)}
 
+
+/* NESTED SYSTEM BLUEPRINT */
+.blueprint{margin-top:28px;border:1px solid var(--line);border-radius:24px;padding:28px;background:
+linear-gradient(rgba(24,50,74,.035) 1px,transparent 1px),
+linear-gradient(90deg,rgba(24,50,74,.035) 1px,transparent 1px),
+#fbfdfe;background-size:26px 26px}
+.airport-boundary{position:relative;border:2px solid #9fb0bd;border-radius:20px;padding:56px 28px 28px;min-height:410px;background:rgba(255,255,255,.78)}
+.boundary-label{position:absolute;left:18px;top:14px;padding:6px 10px;border-radius:8px;background:var(--navy);color:#fff;font-size:11px;font-weight:900;letter-spacing:.05em}
+.abhs-boundary{position:relative;width:66%;min-height:270px;border:2px solid var(--teal);border-radius:18px;padding:58px 20px 20px;background:var(--teal2)}
+.abhs-label{position:absolute;left:16px;top:14px;padding:6px 10px;border-radius:8px;background:var(--teal);color:#fff;font-size:12px;font-weight:900}
+.bp-modules{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.bp-module{min-height:105px;padding:18px;border:1px solid var(--line);border-radius:15px;background:#fff;display:flex;flex-direction:column;justify-content:center}
+.bp-module b{font-size:14px}.bp-module span{display:block;margin-top:6px;color:#68778b;font-size:11px;line-height:1.5}
+.flight-module{position:absolute;right:28px;bottom:52px;width:27%;min-height:120px;padding:18px;border-radius:15px;border:1px solid #dfc78e;background:var(--amber2)}
+.flight-module b{font-size:14px}.flight-module span{display:block;margin-top:6px;color:#725f3f;font-size:11px;line-height:1.5}
+.bp-note{margin-top:16px;color:#617087;font-size:12px;line-height:1.65}
+
+/* FOUR VISUAL CHARACTERISTICS */
+.visual-characteristics{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.vchar{border:1px solid var(--line);border-radius:20px;padding:18px;background:#fff;overflow:hidden}
+.vchar h3{margin:0 0 6px;font-size:16px}.vchar p{margin:0;color:#68778b;font-size:11.5px;line-height:1.55}
+.mini-art{height:185px;margin-bottom:14px;border-radius:14px;background:#f8fbfc;position:relative;overflow:hidden}
+
+/* components */
+.comp-center,.comp-node{position:absolute;border-radius:14px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;text-align:center;font-size:10px;font-weight:850}
+.comp-center{width:88px;height:88px;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--sky2);color:#2d648d}
+.comp-node{width:70px;height:42px}
+.cn1{left:16px;top:20px}.cn2{right:16px;top:20px}.cn3{left:16px;bottom:20px}.cn4{right:16px;bottom:20px}
+.mini-line{position:absolute;height:2px;background:#b8c6d0;transform-origin:left center}
+.ml1{width:95px;left:78px;top:57px;transform:rotate(28deg)}.ml2{width:95px;right:78px;top:57px;transform:rotate(152deg)}
+.ml3{width:95px;left:78px;bottom:57px;transform:rotate(-28deg)}.ml4{width:95px;right:78px;bottom:57px;transform:rotate(208deg)}
+
+/* hierarchy */
+.hierarchy-art{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.hbox{padding:10px 16px;border-radius:11px;border:1px solid var(--line);font-size:10.5px;font-weight:850;background:#fff;min-width:150px;text-align:center}
+.h1{background:#eef5f6}.h2{background:var(--teal2)}.h3{background:var(--sky2);min-width:110px}
+.harrow{color:#91a1af;font-size:18px;font-weight:900}
+
+/* environment */
+.env-art{display:grid;place-items:center}
+.env-ring{position:absolute;border-radius:50%;border:2px dashed #abc4c6;width:150px;height:150px}
+.env-core{position:absolute;width:88px;height:88px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;text-align:center;font-size:10px;font-weight:850}
+.env-tag{position:absolute;padding:7px 9px;border-radius:9px;background:#fff;border:1px solid var(--line);font-size:9.5px;font-weight:800}
+.et1{top:14px;left:18px}.et2{top:14px;right:18px}.et3{bottom:14px;left:18px}.et4{bottom:14px;right:18px}
+
+/* evolution */
+.evo-art{display:flex;align-items:center;justify-content:center;gap:10px}
+.device{width:52px;border-radius:10px;border:2px solid #334155;background:#fff;position:relative}
+.d1{height:85px}.d2{height:105px}.d3{height:125px}.d4{height:145px}
+.device:before{content:"";position:absolute;left:8px;right:8px;top:10px;bottom:16px;border-radius:5px;background:linear-gradient(180deg,#edf7fe,#e8f5f5)}
+.evo-arrow{font-size:19px;color:#9aa7b4;font-weight:900}
+
 /* closure */
 .note{margin-top:30px;border-radius:16px;padding:22px;background:#eef5f6;border:1px solid #d5e5e7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}
 .note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
@@ -121,7 +173,7 @@ linear-gradient(180deg,#fbfdfe,#f5fafb);overflow:hidden}
 .mobile{display:none}
 @media(max-width:900px){.story{grid-template-columns:1fr 1fr}.tower-stage{grid-template-columns:1fr}.control{height:auto;min-height:150px}}
 @media(max-width:850px){.layout{display:block}.side{display:none}.mobile{display:block;padding:10px 14px;border-bottom:1px solid var(--line)}.content{width:min(100% - 28px,930px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
-@media(max-width:720px){.radar{display:grid;gap:10px;min-height:0}.ring{display:none}.mission-core,.node{position:static;width:auto;transform:none}.mission-core{height:auto;border-radius:18px;padding:22px}.window-body{grid-template-columns:1fr}.char:nth-child(odd){border-right:0}.story{grid-template-columns:1fr}.scale-line{height:auto;background:none;margin:0;display:grid;gap:12px}.scale-item{position:static;width:auto;height:auto;transform:none;border:0;border-radius:14px;padding:15px;background:#fff}.scale-item span{position:static;transform:none;width:auto}}
+@media(max-width:720px){.abhs-boundary{width:100%}.flight-module{position:static;width:100%;margin-top:16px}.bp-modules{grid-template-columns:1fr}.visual-characteristics{grid-template-columns:1fr}.radar{display:grid;gap:10px;min-height:0}.ring{display:none}.mission-core,.node{position:static;width:auto;transform:none}.mission-core{height:auto;border-radius:18px;padding:22px}.window-body{grid-template-columns:1fr}.char:nth-child(odd){border-right:0}.story{grid-template-columns:1fr}.scale-line{height:auto;background:none;margin:0;display:grid;gap:12px}.scale-item{position:static;width:auto;height:auto;transform:none;border:0;border-radius:14px;padding:15px;background:#fff}.scale-item span{position:static;transform:none;width:auto}}
 @media(max-width:520px){.links a:nth-child(2){display:none}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}}
 </style>
 </head>
@@ -178,39 +230,96 @@ linear-gradient(180deg,#fbfdfe,#f5fafb);overflow:hidden}
 </div>
 </section>
 
+
 <section class="section">
 <div class="kicker">Visual Hook</div>
-<h2>The System Radar</h2>
-<p>System thinking begins with the mission in the center. Around it are components that must cooperate—not merely coexist.</p>
+<h2>A System Inside a System</h2>
+<p>The Airport Baggage Handling System (ABHS) is itself a system, but it also exists inside the larger Airport System. Inside ABHS are smaller subsystems such as the luggage check-in software and the conveyor system.</p>
 
-<div class="radar-wrap">
-<div class="radar">
-<div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+<div class="blueprint">
+  <div class="airport-boundary">
+    <div class="boundary-label">AIRPORT SYSTEM</div>
 
-<div class="mission-core"><div><b>ABHS MISSION</b><span>Move the correct luggage to the correct destination safely and on time.</span></div></div>
+    <div class="abhs-boundary">
+      <div class="abhs-label">ABHS</div>
+      <div class="bp-modules">
+        <div class="bp-module">
+          <b>Luggage Check-In Software System</b>
+          <span>Captures passenger, luggage, destination, and tracking information.</span>
+        </div>
+        <div class="bp-module">
+          <b>Conveyor System</b>
+          <span>Physically transports baggage through terminals and transfer points.</span>
+        </div>
+      </div>
+    </div>
 
-<div class="node n1"><b>Luggage Check-In Software</b><span>Captures luggage, passenger, destination, and tracking data.</span></div>
-<div class="node n2"><b>Conveyor System</b><span>Moves baggage physically through terminals and transfer points.</span></div>
-<div class="node n3"><b>Flight Information System</b><span>Supplies destination and flight information needed for routing.</span></div>
-<div class="node n4"><b>Human Operators</b><span>Airline agents, maintenance staff, handlers, and passengers interact with the system.</span></div>
-<div class="node n5"><b>Airport System</b><span>ABHS itself exists inside a larger system hierarchy.</span></div>
-</div>
-<div class="radar-caption">A subsystem can be individually correct while the system mission still fails. The interfaces and interactions are part of the engineering problem.</div>
+    <div class="flight-module">
+      <b>Flight Information System</b>
+      <span>Another airport subsystem that interacts with ABHS by providing flight and destination data.</span>
+    </div>
+  </div>
+
+  <div class="bp-note"><strong>Visual memory:</strong> System ⟶ Subsystem ⟶ Component. ABHS is inside the Airport System, while its own software and conveyor components live inside ABHS.</div>
 </div>
 </section>
 
 <section class="section">
 <div class="kicker">Main Characteristics</div>
-<h2>Four windows into every system</h2>
+<h2>Four ways to recognize a system</h2>
+<p>A system is more than a collection of parts. Its components interact, it exists within a hierarchy, it responds to an environment, and it evolves over time.</p>
 
-<div class="window">
-<div class="window-top">SYSTEM CHARACTERISTICS</div>
-<div class="window-body">
-<div class="char"><div class="icon">↔</div><b>Interacting Components</b><p>Components exchange material, information, control, or services.</p></div>
-<div class="char"><div class="icon">◉</div><b>Hierarchy</b><p>A system can contain subsystems and can itself belong to a larger system.</p></div>
-<div class="char"><div class="icon">◎</div><b>Environment</b><p>Every system operates within a context and interacts with its environment.</p></div>
-<div class="char"><div class="icon">↻</div><b>Evolution</b><p>Systems change as missions, technologies, users, and constraints change.</p></div>
-</div>
+<div class="visual-characteristics">
+
+  <div class="vchar">
+    <div class="mini-art">
+      <div class="mini-line ml1"></div><div class="mini-line ml2"></div><div class="mini-line ml3"></div><div class="mini-line ml4"></div>
+      <div class="comp-center">SYSTEM</div>
+      <div class="comp-node cn1">Input</div>
+      <div class="comp-node cn2">Control</div>
+      <div class="comp-node cn3">Hardware</div>
+      <div class="comp-node cn4">Software</div>
+    </div>
+    <h3>1. Interacting Components</h3>
+    <p>Components exchange information, material, control, or services. The value comes from the interaction—not merely from having the parts.</p>
+  </div>
+
+  <div class="vchar">
+    <div class="mini-art hierarchy-art">
+      <div class="hbox h1">Airport System</div>
+      <div class="harrow">↓</div>
+      <div class="hbox h2">ABHS</div>
+      <div class="harrow">↓</div>
+      <div class="hbox h3">Check-In SW / Conveyor</div>
+    </div>
+    <h3>2. Hierarchy of Systems</h3>
+    <p>A system may contain subsystems and may itself be a subsystem of something larger.</p>
+  </div>
+
+  <div class="vchar">
+    <div class="mini-art env-art">
+      <div class="env-ring"></div>
+      <div class="env-core">SYSTEM</div>
+      <div class="env-tag et1">Users</div>
+      <div class="env-tag et2">Rules</div>
+      <div class="env-tag et3">Physical World</div>
+      <div class="env-tag et4">Other Systems</div>
+    </div>
+    <h3>3. Environment</h3>
+    <p>Every system operates within a context and interacts with external people, conditions, rules, and neighboring systems.</p>
+  </div>
+
+  <div class="vchar">
+    <div class="mini-art evo-art">
+      <div class="device d1"></div><div class="evo-arrow">→</div>
+      <div class="device d2"></div><div class="evo-arrow">→</div>
+      <div class="device d3"></div><div class="evo-arrow">→</div>
+      <div class="device d4"></div>
+    </div>
+    <h3>4. Systems Evolve</h3>
+    <p>Systems change as technology, business needs, users, interfaces, and operating environments change.</p>
+  </div>
+
 </div>
 </section>
 
