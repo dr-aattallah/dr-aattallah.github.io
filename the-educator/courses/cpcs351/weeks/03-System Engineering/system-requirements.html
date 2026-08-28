@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>System Requirements | CPCS 351</title>
+<meta name="description" content="CPCS 351 Software Engineering I — System Requirements.">
+<style>
+:root{
+  --ink:#172338;--muted:#63748a;--line:#dfe7ec;
+  --navy:#15334d;--navy2:#edf4f8;
+  --teal:#159a9c;--teal2:#e9f8f7;
+  --amber:#e5a13a;--amber2:#fff6e7;
+  --coral:#df6b50;--coral2:#fff0ea;
+  --sky:#5aa9e6;--sky2:#edf7fe;
+  --violet:#7765c4;--violet2:#f2efff;
+  --green:#5e9d55;--green2:#eef8eb;
+  --side:242px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+.top{height:62px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}.mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--teal),var(--amber));display:grid;place-items:center;color:#fff;font-weight:900}
+.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
+.layout{display:grid;grid-template-columns:var(--side) 1fr}
+.side{height:calc(100vh - 62px);position:sticky;top:62px;overflow:auto;border-right:1px solid var(--line);background:#f9fbfc;padding:24px 14px}
+.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}.course small,.label{font-size:11px;font-weight:850;color:#8d9aab;letter-spacing:.08em;text-transform:uppercase}.course strong{display:block;margin-top:7px;font-size:15px;line-height:1.35}.label{margin:18px 0 8px}
+.side a,.side span{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5d6c80;font-size:13px;font-weight:650;line-height:1.35}.side a.active{background:#e8f5f5;color:#087f80;font-weight:850}.side span.future{color:#a4adb8}
+.content{width:min(950px,calc(100% - 48px));margin:auto;padding:58px 0 90px}
+.crumb{color:#8a97a7;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}
+.hero{display:grid;grid-template-columns:1fr 275px;gap:34px;align-items:center}
+.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}.eyebrow{color:#0f7f81}.eyebrow:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--amber);margin-right:7px}
+h1{font-size:clamp(44px,6vw,64px);line-height:1;letter-spacing:-.045em;margin:14px 0 20px}.lead{color:var(--muted);font-size:18px;line-height:1.75}
+.mentor{border:1px solid var(--line);border-radius:20px;overflow:hidden}.mentor .pic{height:220px;background:linear-gradient(180deg,#f7fbfc,#edf5f7)}.mentor img{width:100%;height:100%;object-fit:contain;object-position:center bottom}.mentor p{margin:0;padding:16px;border-top:1px solid var(--line);font-size:13px;line-height:1.65;font-weight:650;color:#46566b}
+.section{margin-top:68px}.kicker{color:#95a1b0;margin-bottom:7px}h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c;line-height:1.8;font-size:16px}
+
+/* REQUIREMENTS FUNNEL */
+.funnel-wrap{margin-top:28px;border:1px solid var(--line);border-radius:26px;padding:30px;background:linear-gradient(180deg,#fbfdfe,#f6fafb)}
+.funnel{display:grid;justify-items:center;gap:10px}
+.flevel{min-height:74px;border-radius:16px;display:flex;align-items:center;justify-content:center;text-align:center;padding:14px 22px;font-weight:850;border:1px solid var(--line);box-shadow:0 8px 20px rgba(24,50,74,.04)}
+.f1{width:100%;background:var(--navy2)}.f2{width:84%;background:var(--sky2)}.f3{width:68%;background:var(--teal2)}.f4{width:52%;background:var(--amber2)}.f5{width:38%;background:var(--coral2)}
+.flevel small{display:block;margin-top:4px;font-size:10px;font-weight:650;opacity:.76}
+.farrow{font-size:22px;color:#91a1af;font-weight:900}
+.funnel-note{margin-top:18px;padding-top:15px;border-top:1px solid var(--line);color:#617087;font-size:12px;line-height:1.65}
+
+/* BUSINESS NEEDS */
+.needs-lab{margin-top:26px;border:1px solid var(--line);border-radius:22px;padding:24px;background:#fbfcfd}
+.needs-flow{display:grid;grid-template-columns:1fr 70px 1fr 70px 1fr;align-items:center;gap:10px}
+.needbox{border:1px solid var(--line);border-radius:16px;padding:20px;background:#fff;text-align:center;min-height:140px;display:flex;flex-direction:column;justify-content:center}
+.needbox b{font-size:15px}.needbox span{display:block;margin-top:7px;color:#68778c;font-size:11.5px;line-height:1.55}
+.current{background:var(--coral2)}.gap{background:var(--amber2)}.goal{background:var(--green2)}
+.narrow{text-align:center;color:#91a1af;font-size:26px;font-weight:900}
+
+/* REQUIREMENTS CARD */
+.req-board{margin-top:26px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#fff}
+.req-head{background:var(--navy);color:#fff;padding:14px 18px;font-size:12px;font-weight:850;letter-spacing:.06em}
+.req-row{display:grid;grid-template-columns:70px 1fr;border-bottom:1px solid var(--line)}.req-row:last-child{border-bottom:0}
+.req-id{display:grid;place-items:center;font-weight:900;background:#f7fafb;color:#536a7d}
+.req-text{padding:17px 18px;color:#5f7086;font-size:13px;line-height:1.65}
+.req-row:nth-child(2) .req-id{background:var(--sky2)}.req-row:nth-child(3) .req-id{background:var(--teal2)}.req-row:nth-child(4) .req-id{background:var(--amber2)}.req-row:nth-child(5) .req-id{background:var(--violet2)}
+
+/* CONSTRAINTS SCALE */
+.constraint{margin-top:25px;display:grid;grid-template-columns:1fr 110px 1fr;align-items:center;gap:14px}
+.pool{padding:22px;border-radius:17px;border:1px solid var(--line);background:#fff}.pool h3{margin:0 0 9px;font-size:17px}.pool p{margin:0;color:#66758a;font-size:12px;line-height:1.65}
+.pool.all{background:var(--sky2)}.pool.selected{background:var(--teal2)}
+.filter{display:grid;place-items:center;text-align:center;font-size:11px;font-weight:900;color:#846126}
+.filter .shape{width:90px;height:75px;clip-path:polygon(0 0,100% 0,65% 55%,65% 100%,35% 100%,35% 55%);background:var(--amber);margin-bottom:8px}
+
+/* COLLECTION TECHNIQUES */
+.techniques{margin-top:26px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.tech{border:1px solid var(--line);border-radius:16px;padding:16px 12px;text-align:center;background:#fff}
+.tech .icon{font-size:27px;margin-bottom:9px}.tech b{display:block;font-size:12px}.tech span{display:block;margin-top:5px;color:#6d7a8e;font-size:10.5px;line-height:1.5}
+.tech:nth-child(1){background:var(--violet2)}.tech:nth-child(2){background:var(--sky2)}.tech:nth-child(3){background:var(--teal2)}.tech:nth-child(4){background:var(--amber2)}.tech:nth-child(5){background:var(--coral2)}
+
+/* NINE QUESTIONS */
+.questions{margin-top:26px;border:1px solid var(--line);border-radius:22px;padding:24px;background:#fbfcfd;counter-reset:q}
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.qitem{position:relative;padding:16px 16px 16px 50px;border-radius:14px;border:1px solid var(--line);background:#fff;color:#607087;font-size:12px;line-height:1.58}
+.qitem:before{counter-increment:q;content:counter(q);position:absolute;left:14px;top:14px;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:10px;font-weight:900}
+
+/* EXAMPLE STORY */
+.story{margin-top:25px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.panel{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fff;overflow:hidden}
+.visual{height:120px;border-radius:11px;background:linear-gradient(135deg,#f5f9fb,#f7fbfa);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;margin-bottom:11px}
+.visual img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.panel .no{font-size:10px;font-weight:900;color:#8794a6;text-transform:uppercase}.panel h4{margin:5px 0 6px;font-size:14px}.panel p{margin:0;color:#68768a;font-size:11.5px;line-height:1.55}
+.panel:nth-child(1){border-top:4px solid var(--coral)}.panel:nth-child(2){border-top:4px solid var(--sky)}.panel:nth-child(3){border-top:4px solid var(--teal)}.panel:nth-child(4){border-top:4px solid var(--amber)}
+
+/* closure */
+.note{margin-top:30px;border-radius:16px;padding:22px;background:#eef5f6;border:1px solid #d5e5e7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}.note b{color:#2f6b70}.note p{margin:0 0 20px;color:#536d72;line-height:1.7;font-size:14px}.note img{width:100%;max-height:150px;object-fit:contain}
+.take{margin-top:28px;padding:22px;border-left:4px solid var(--amber);border-radius:15px;background:var(--amber2)}.take b{color:#9a642b}.take p{margin:0;color:#68563d;line-height:1.7;font-weight:650;font-size:14px}
+.think{margin-top:30px;border:1px solid #cfe7ed;background:#eef8fa;border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end}.think .tlabel{color:#197a82}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#4f6f75;line-height:1.7;font-size:14px}.think img{width:100%;max-height:155px;object-fit:contain}
+.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+@media(max-width:900px){.techniques{grid-template-columns:repeat(3,1fr)}.story{grid-template-columns:1fr 1fr}}
+@media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,950px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
+@media(max-width:680px){.needs-flow,.constraint{grid-template-columns:1fr}.narrow{transform:rotate(90deg);padding:8px}.techniques,.qgrid,.story{grid-template-columns:1fr}.filter .shape{margin:auto}.flevel{width:100%}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+  <a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
+  <nav class="links">
+    <a href="../../index.html">CPCS 351</a>
+    <a href="../../resources/">Resources</a>
+    <a href="../../../../index.html">All Courses</a>
+  </nav>
+</header>
+
+<div class="layout">
+
+<aside class="side">
+  <div class="course">
+    <small>CPCS 351 · TOPIC 03</small>
+    <strong>System Engineering</strong>
+  </div>
+
+  <div class="label">Topic 03</div>
+  <a href="index.html">1. Systems &amp; System Engineering</a>
+  <a href="system-engineering-process.html">2. System Engineering Process</a>
+  <a class="active" href="system-requirements.html">3. System Requirements</a>
+  <span class="future">4. System Architecture</span>
+  <span class="future">5. Requirements Allocation</span>
+  <span class="future">6. Architecture Diagrams</span>
+  <span class="future">7. Integration &amp; Deployment</span>
+  <span class="future">8. Configuration Management</span>
+
+  <div class="label">Course</div>
+  <a href="../../index.html">Course Home</a>
+</aside>
+
+<main>
+<article class="content">
+
+<div class="crumb">
+  <a href="../../index.html">CPCS 351</a> › Topic 03 › System Requirements
+</div>
+
+<section class="hero">
+  <div>
+    <div class="eyebrow">Topic 03 · Lesson 03</div>
+    <h1>System Requirements</h1>
+    <p class="lead">
+      Requirements begin before anyone writes “shall.” Engineers first understand the business,
+      the current situation, the goals, and the gap between them—then translate that understanding
+      into capabilities the system must deliver.
+    </p>
+  </div>
+
+  <div class="mentor">
+    <div class="pic">
+      <img src="../../assets/images/mentor-03-thinking.png" alt="Software Engineering Mentor thinking about system requirements">
+    </div>
+    <p>“A requirement is not a guess about a feature. It is a capability justified by a real need.”</p>
+  </div>
+</section>
+
+<!-- REQUIREMENTS FUNNEL -->
+<section class="section">
+  <div class="kicker">Visual Hook</div>
+  <h2>The Requirements Funnel</h2>
+  <p>
+    Information starts broad. Engineers collect facts about the business and its environment,
+    identify needs, then narrow those needs into system requirements that can realistically be delivered.
+  </p>
+
+  <div class="funnel-wrap">
+    <div class="funnel">
+
+      <div class="flevel f1">
+        <div>
+          BUSINESS CONTEXT
+          <small>Goals · environment · current operation · processes · users · problems</small>
+        </div>
+      </div>
+
+      <div class="farrow">↓</div>
+
+      <div class="flevel f2">
+        <div>
+          COLLECT INFORMATION
+          <small>Presentations · observation · surveys · interviews · literature</small>
+        </div>
+      </div>
+
+      <div class="farrow">↓</div>
+
+      <div class="flevel f3">
+        <div>
+          IDENTIFY BUSINESS NEEDS
+          <small>Find the discrepancy between current situation and desired goals</small>
+        </div>
+      </div>
+
+      <div class="farrow">↓</div>
+
+      <div class="flevel f4">
+        <div>
+          DEFINE SYSTEM REQUIREMENTS
+          <small>Capabilities the system must deliver</small>
+        </div>
+      </div>
+
+      <div class="farrow">↓</div>
+
+      <div class="flevel f5">
+        <div>
+          FEASIBLE SCOPE
+          <small>A subset of needs selected under budget and schedule constraints</small>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="funnel-note">
+      Requirements engineering narrows understanding into a deliverable scope. Not every desirable need can always be implemented in the current project.
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS NEED -->
+<section class="section">
+  <div class="kicker">Business Needs</div>
+  <h2>A need is the gap between “now” and “goal”</h2>
+
+  <div class="needs-lab">
+    <div class="needs-flow">
+
+      <div class="needbox current">
+        <b>Current Situation</b>
+        <span>Bags are difficult to locate during transfers and passengers experience delays.</span>
+      </div>
+
+      <div class="narrow">→</div>
+
+      <div class="needbox gap">
+        <b>Business Need</b>
+        <span>Improve baggage tracking, routing, and operational visibility.</span>
+      </div>
+
+      <div class="narrow">→</div>
+
+      <div class="needbox goal">
+        <b>Business Goal</b>
+        <span>Move baggage accurately and efficiently while giving staff reliable status information.</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS EXAMPLES -->
+<section class="section">
+  <div class="kicker">ABHS Requirements</div>
+  <h2>From business need to system capability</h2>
+
+  <div class="req-board">
+    <div class="req-head">AIRPORT BAGGAGE HANDLING SYSTEM · SYSTEM REQUIREMENTS</div>
+
+    <div class="req-row">
+      <div class="req-id">R1</div>
+      <div class="req-text">
+        ABHS shall check in and transport luggage to departure gates and baggage claim areas according to the destinations of the passengers.
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-id">R2</div>
+      <div class="req-text">
+        ABHS shall allow airline agents to inquire about luggage status and to locate luggage.
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-id">R3</div>
+      <div class="req-text">
+        ABHS shall check all baggage and detect items that are prohibited.
+      </div>
+    </div>
+
+    <div class="req-row">
+      <div class="req-id">R4</div>
+      <div class="req-text">
+        ABHS shall be able to serve 20,000 passengers per day.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSTRAINTS -->
+<section class="section">
+  <div class="kicker">Scope Reality</div>
+  <h2>Needs are filtered by constraints</h2>
+  <p>
+    Business needs can be broader than what one project can deliver. Budget and schedule constraints
+    determine which subset becomes part of the current system scope.
+  </p>
+
+  <div class="constraint">
+    <div class="pool all">
+      <h3>All Business Needs</h3>
+      <p>Everything stakeholders would like the future system to solve or improve.</p>
+    </div>
+
+    <div class="filter">
+      <div class="shape"></div>
+      BUDGET + SCHEDULE
+    </div>
+
+    <div class="pool selected">
+      <h3>Selected System Requirements</h3>
+      <p>The capabilities chosen for the current system release or project.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTION TECHNIQUES -->
+<section class="section">
+  <div class="kicker">Information Collection</div>
+  <h2>Five ways to understand the real problem</h2>
+
+  <div class="techniques">
+    <div class="tech">
+      <div class="icon">🎤</div>
+      <b>Customer Presentation</b>
+      <span>Let the customer explain the business, goals, and expectations.</span>
+    </div>
+
+    <div class="tech">
+      <div class="icon">👀</div>
+      <b>Study Current Operation</b>
+      <span>Observe how the current business actually works.</span>
+    </div>
+
+    <div class="tech">
+      <div class="icon">📝</div>
+      <b>User Survey</b>
+      <span>Collect structured input from many users.</span>
+    </div>
+
+    <div class="tech">
+      <div class="icon">💬</div>
+      <b>User Interview</b>
+      <span>Explore problems, priorities, and expectations in depth.</span>
+    </div>
+
+    <div class="tech">
+      <div class="icon">📚</div>
+      <b>Literature Survey</b>
+      <span>Study existing knowledge, systems, standards, and prior solutions.</span>
+    </div>
+  </div>
+</section>
+
+<!-- NINE QUESTIONS -->
+<section class="section">
+  <div class="kicker">Focus of Information Collection</div>
+  <h2>Nine questions that prevent shallow requirements</h2>
+
+  <div class="questions">
+    <div class="qgrid">
+      <div class="qitem">What is the business that the system will automate?</div>
+      <div class="qitem">What is the system’s environment or context?</div>
+      <div class="qitem">What are the business goals or product goals?</div>
+      <div class="qitem">What is the current business situation, and how does it operate?</div>
+      <div class="qitem">What are the existing business processes, and how do they relate to each other?</div>
+      <div class="qitem">What are the problems with the current system?</div>
+      <div class="qitem">Who are the users of the current system and the future system?</div>
+      <div class="qitem">What do the customer and users want from the future system, and what are their business priorities?</div>
+      <div class="qitem">What are the quality, performance, and security considerations?</div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="section">
+  <div class="kicker">Illustrated Story</div>
+  <h2>The team that wrote requirements too early</h2>
+
+  <div class="story">
+
+    <div class="panel">
+      <div class="visual">
+        <img src="../../assets/images/mentor-07-working-laptop.png" alt="">
+      </div>
+      <span class="no">Panel 1</span>
+      <h4>Jump to features</h4>
+      <p>The team immediately writes: “The system shall have a tracking dashboard.”</p>
+    </div>
+
+    <div class="panel">
+      <div class="visual">
+        <img src="../../assets/images/mentor-03-thinking.png" alt="">
+      </div>
+      <span class="no">Panel 2</span>
+      <h4>Ask why</h4>
+      <p>Interviews reveal the real problem: agents cannot reliably locate luggage during transfers.</p>
+    </div>
+
+    <div class="panel">
+      <div class="visual">
+        <img src="../../assets/images/mentor-06-pointing.png" alt="">
+      </div>
+      <span class="no">Panel 3</span>
+      <h4>Define the need</h4>
+      <p>The team identifies the business need: improve baggage visibility and location accuracy.</p>
+    </div>
+
+    <div class="panel">
+      <div class="visual">
+        <img src="../../assets/images/mentor-09-idea.png" alt="">
+      </div>
+      <span class="no">Panel 4</span>
+      <h4>Write the capability</h4>
+      <p>Now the requirement is grounded: airline agents must be able to inquire about baggage status and locate luggage.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="note">
+  <div>
+    <b>Mentor Insight</b>
+    <p>
+      Weak requirements often begin with premature solutions. Strong requirements begin by understanding
+      the business, the current situation, the users, the environment, and the problem that must be solved.
+    </p>
+  </div>
+  <img src="../../assets/images/mentor-11-serious.png" alt="Mentor explaining requirements discipline">
+</div>
+
+<div class="take">
+  <b>Key Takeaway</b>
+  <p>
+    System Requirements Definition begins by collecting information about business goals and the current situation,
+    deriving business needs from the gap between them, and translating selected needs into capabilities the system must deliver.
+    Budget and schedule constraints mean that only a subset of needs may be included in the current system.
+  </p>
+</div>
+
+<div class="think">
+  <div>
+    <span class="tlabel">Think Like a Software Engineer</span>
+    <h3>A customer asks for “an AI dashboard.” Is that a system requirement yet?</h3>
+    <p>
+      What business problem, user need, operating context, quality concern, and measurable capability would you investigate before accepting that request?
+    </p>
+  </div>
+  <img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about a customer request">
+</div>
+
+<div class="nav">
+  <a href="system-engineering-process.html">← System Engineering Process</a>
+  <a class="next" href="system-architecture.html">Next · System Architecture →</a>
+</div>
+
+</article>
+</main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access") !== "granted"){
+  window.location.href="../../access.html";
+}
+</script>
+
+</body>
+</html>
