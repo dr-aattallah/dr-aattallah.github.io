@@ -1,438 +1,95 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>The Educator | Academic Course Platform</title>
-
-  <meta
-    name="description"
-    content="The Educator is an academic course platform by Dr. Abdulaziz Attaallah for organized course materials, resources, assignments, and learning content."
-  />
-
-<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
-
-<link rel="stylesheet" href="assets/css/style.css" />
-<link rel="stylesheet" href="assets/css/landing.css" />
+  <title>The Educator | Courses</title>
+  <meta name="description" content="The Educator provides organized academic course materials by Dr. Abdulaziz Attaallah." />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/landing.css" />
 </head>
-
 <body class="page-index">
 
-  <!-- =========================
-       Navigation
-  ========================== -->
-  <nav class="site-nav" aria-label="Primary navigation">
-    <div class="nav-container">
-
+  <header class="site-header">
+    <div class="header-inner">
       <a class="brand" href="index.html" aria-label="The Educator home">
-        <div class="brand-symbol" aria-hidden="true">
-          <span class="brand-dot dot-blue"></span>
-          <span class="brand-dot dot-green"></span>
-          <span class="brand-dot dot-gold"></span>
-        </div>
-
-        <span class="brand-name">The Educator</span>
+        <div class="brand-symbol" aria-hidden="true"></div>
+        <span>The Educator</span>
       </a>
 
-      <div class="nav-links">
-        <a href="#about">About</a>
+      <nav class="simple-nav" aria-label="Primary navigation">
         <a href="#courses">Courses</a>
-        <a href="#how-it-works">How It Works</a>
         <a href="../">Portfolio</a>
-      </div>
-
+        <a href="help.html">Help</a>
+      </nav>
     </div>
-  </nav>
-
+  </header>
 
   <main>
-
-    <!-- =========================
-         Hero
-    ========================== -->
-    <section
-      class="hero"
-      id="about"
-      aria-labelledby="hero-title"
-    >
-
-      <div class="hero-decoration decoration-left" aria-hidden="true"></div>
-      <div class="hero-decoration decoration-right" aria-hidden="true"></div>
-
-      <div class="hero-content">
-
-        <div class="hero-label">
-          <span class="label-dot"></span>
-          Academic Course Platform
-        </div>
-
-        <h1 id="hero-title">
-          The Educator
-        </h1>
-
-        <p class="tagline">
-          Your course,
-          <span>beautifully organized.</span>
-        </p>
-
-        <p class="hero-description">
-          A simple academic space where course materials,
-          resources, assignments, and learning content are
-          organized in one clear place.
-        </p>
-
-        <p class="hero-arabic" lang="ar" dir="rtl">
-          منصة أكاديمية بسيطة تجمع كل ما يخص المادة في مكان واحد:
-          المحتوى التعليمي، الملفات، الروابط، الواجبات، والتحديثات.
-        </p>
-
-
-        <!-- Platform Features -->
-        <div class="feature-row">
-
-          <div class="feature">
-            <div class="feature-icon" aria-hidden="true">✓</div>
-            <div>
-              <strong>Organized</strong>
-              <span>Everything in one place</span>
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon" aria-hidden="true">↗</div>
-            <div>
-              <strong>Accessible</strong>
-              <span>Learn anytime, anywhere</span>
-            </div>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon" aria-hidden="true">◇</div>
-            <div>
-              <strong>Protected</strong>
-              <span>Course access by password</span>
-            </div>
-          </div>
-
-        </div>
-
+    <section class="intro">
+      <div class="content-width">
+        <p class="eyebrow">Academic Course Platform</p>
+        <h1>The Educator</h1>
+        <p class="intro-line">Courses. Clear and organized.</p>
+        <p class="intro-ar" lang="ar" dir="rtl">محتوى مقرراتي التعليمية في مكان واحد.</p>
       </div>
     </section>
 
+    <section class="courses" id="courses">
+      <div class="content-width">
 
-    <!-- =========================
-         Courses
-    ========================== -->
-    <section class="courses-section" id="courses">
-
-      <div class="section-container">
-
-        <div class="section-heading">
-
+        <div class="section-head">
           <div>
-            <div class="section-label">
-              Courses
-            </div>
-
+            <p class="eyebrow">Courses</p>
             <h2>Available Courses</h2>
-
-            <p>
-              Select your course to access its learning materials.
-            </p>
+            <p class="section-text">Select a course to access its learning materials.</p>
           </div>
-
-          <div class="course-count">
-            <span></span>
-            1 Course Available
-          </div>
-
+          <div class="count-badge">1 course</div>
         </div>
 
-
-        <!-- CPCS 351 -->
         <article class="course-card">
-
-          <div class="course-visual" aria-hidden="true">
-
-            <div class="course-code-symbol">
-              <span>&lt;</span>
-              <span>/</span>
-              <span>&gt;</span>
+          <div class="course-main">
+            <div class="course-topline">
+              <span class="course-code">CPCS 351</span>
+              <span class="course-term">Current Course</span>
             </div>
 
-          </div>
-
-
-          <div class="course-content">
-
-            <div class="course-status">
-              Current Course
-            </div>
-
-            <div class="course-code">
-              CPCS 351
-            </div>
-
-            <h3>
-              Software Engineering I
-            </h3>
+            <h3>Software Engineering I</h3>
 
             <p class="course-description">
-              An introduction to software engineering principles,
-              development processes, requirements engineering,
-              software design, modeling, architecture, and testing.
+              Software processes, requirements engineering, UML,
+              software design, architecture, testing, and project work.
             </p>
-
 
             <div class="course-meta">
-
-              <div class="meta-item">
-                <span class="meta-label">Instructor</span>
-                <strong>Dr. Abdulaziz Attaallah</strong>
-              </div>
-
-              <div class="meta-item">
-                <span class="meta-label">Level</span>
-                <strong>Undergraduate</strong>
-              </div>
-
-              <div class="meta-item">
-                <span class="meta-label">Access</span>
-                <strong>Password Protected</strong>
-              </div>
-
+              <span>Undergraduate</span>
+              <span>Password Protected</span>
             </div>
-
           </div>
 
+          <div class="course-side">
+            <span class="instructor-label">Instructor</span>
+            <strong>Dr. Abdulaziz Attaallah</strong>
 
-          <div class="course-action">
-
-            <!--
-              IMPORTANT:
-              Change course-access.html later if we choose
-              another filename for the password page.
-            -->
-
-            <a
-              href="course-access.html?course=cpcs351"
-              class="course-open-button"
-              aria-label="Open CPCS 351 Software Engineering I"
-            >
-              <span>Open Course</span>
-              <span aria-hidden="true">→</span>
+            <a class="open-course" href="courses/cpcs351/access.html">
+              Open Course →
             </a>
-
           </div>
-
         </article>
 
-
-        <!-- Future Courses -->
-        <div class="future-courses-note">
-
-          <span class="future-icon" aria-hidden="true">+</span>
-
-          <div>
-            <strong>More courses will be added here.</strong>
-
-            <p>
-              Each course will have its own organized learning space,
-              resources, materials, and protected access.
-            </p>
-          </div>
-
-        </div>
-
+        <div class="more-note">More courses will be added here.</div>
       </div>
     </section>
-
-
-    <!-- =========================
-         How It Works
-    ========================== -->
-    <section class="how-section" id="how-it-works">
-
-      <div class="section-container">
-
-        <div class="how-header">
-          <span class="section-label">Simple Access</span>
-          <h2>How It Works</h2>
-
-          <p>
-            Three simple steps from the course list to your learning materials.
-          </p>
-        </div>
-
-
-        <div class="steps">
-
-          <!-- Step 1 -->
-          <div class="step">
-
-            <div class="step-number">
-              01
-            </div>
-
-            <div class="step-icon" aria-hidden="true">
-              ▣
-            </div>
-
-            <h3>Choose a Course</h3>
-
-            <p>
-              Browse the available courses and select
-              the course you are enrolled in.
-            </p>
-
-          </div>
-
-
-          <div class="step-connector" aria-hidden="true">
-            →
-          </div>
-
-
-          <!-- Step 2 -->
-          <div class="step">
-
-            <div class="step-number">
-              02
-            </div>
-
-            <div class="step-icon" aria-hidden="true">
-              🔒
-            </div>
-
-            <h3>Enter Password</h3>
-
-            <p>
-              Enter the course password provided
-              by your instructor at the beginning
-              of the semester.
-            </p>
-
-          </div>
-
-
-          <div class="step-connector" aria-hidden="true">
-            →
-          </div>
-
-
-          <!-- Step 3 -->
-          <div class="step">
-
-            <div class="step-number">
-              03
-            </div>
-
-            <div class="step-icon" aria-hidden="true">
-              ✓
-            </div>
-
-            <h3>Access &amp; Learn</h3>
-
-            <p>
-              Explore the course materials through
-              a clear, structured, web-based learning
-              environment.
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- =========================
-         Philosophy
-    ========================== -->
-    <section class="platform-philosophy">
-
-      <div class="section-container">
-
-        <div class="philosophy-card">
-
-          <div class="philosophy-label">
-            The idea is simple.
-          </div>
-
-          <h2>
-            Less searching.<br />
-            More learning.
-          </h2>
-
-          <p>
-            Course content should not be scattered across files,
-            folders, messages, and disconnected links.
-            The Educator brings the learning experience together
-            in one structured academic space.
-          </p>
-
-          <p class="philosophy-arabic" lang="ar" dir="rtl">
-            الهدف هو تقليل الوقت الذي يقضيه الطالب في البحث عن المحتوى،
-            وزيادة الوقت الذي يقضيه في فهمه وتعلّمه.
-          </p>
-
-        </div>
-
-      </div>
-    </section>
-
   </main>
 
-
-  <!-- =========================
-       Footer
-  ========================== -->
   <footer class="site-footer">
-
-    <div class="footer-container">
-
-      <div class="footer-brand">
-
-        <div class="brand">
-          <div class="brand-symbol" aria-hidden="true"></div>
-          <span class="brand-name">The Educator</span>
-        </div>
-
-        <p>
-          Simple. Organized. Course-centered.
-        </p>
-
-      </div>
-
-
-      <div class="footer-links">
-
-        <a href="#about">About</a>
-        <a href="#courses">Courses</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="../">Academic Portfolio</a>
-
-      </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
+    <div class="content-width footer-inner">
       <span>© 2026 The Educator</span>
-
-      <span>
-        Created by Dr. Abdulaziz Attaallah
-      </span>
+      <a href="../">Academic Portfolio</a>
     </div>
-
   </footer>
-
-
-  <script
-    src="/the-educator/assets/js/iso-accessibility.js?v=20260724-iso-ux"
-  ></script>
 
 </body>
 </html>
