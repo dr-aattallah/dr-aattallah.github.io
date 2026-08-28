@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agile Process Models | CPCS 351</title>
+<style>
+:root{
+ --ink:#172036;--muted:#65718a;--line:#e1e6ef;
+ --indigo:#2d2a78;--indigo2:#efefff;
+ --cyan:#27b8c5;--cyan2:#e9fbfd;
+ --violet:#7666d6;--violet2:#f2efff;
+ --lime:#91bd43;--lime2:#f5fae8;
+ --pink:#d9619e;--pink2:#fff0f8;
+ --orange:#e99e3e;--orange2:#fff5e7;
+ --red:#dc6b6b;--red2:#fff0f0;
+ --side:242px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+.top{height:62px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}
+.mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--indigo),var(--cyan),var(--pink));display:grid;place-items:center;color:#fff;font-weight:900}
+.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
+.layout{display:grid;grid-template-columns:var(--side) 1fr}
+.side{height:calc(100vh - 62px);position:sticky;top:62px;overflow:auto;border-right:1px solid var(--line);background:#fafaff;padding:24px 14px}
+.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}
+.course small,.label{font-size:11px;font-weight:850;color:#9294aa;letter-spacing:.08em;text-transform:uppercase}
+.course strong{display:block;margin-top:7px;font-size:15px}.label{margin:18px 0 8px}
+.side a,.side span{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5f6680;font-size:13px;font-weight:650}
+.side a.active{background:var(--cyan2);color:#147781;font-weight:850}.side span.future{color:#a8a9b9}
+.content{width:min(1000px,calc(100% - 48px));margin:auto;padding:58px 0 90px}
+.crumb{color:#8c93a6;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}
+.hero{display:grid;grid-template-columns:1fr 280px;gap:36px;align-items:center}
+.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+.eyebrow{color:#16818b}.eyebrow:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--pink);margin-right:7px}
+h1{font-size:clamp(46px,6vw,68px);line-height:.98;letter-spacing:-.045em;margin:14px 0 20px}
+.lead{color:var(--muted);font-size:19px;line-height:1.75}
+.mentor{border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.mentor .pic{height:225px;background:linear-gradient(180deg,#f2fdff,#f4f1ff)}
+.mentor img{width:100%;height:100%;object-fit:contain}.mentor p{margin:0;padding:17px;border-top:1px solid var(--line);font-size:14px;line-height:1.65;font-weight:650;color:#4e5871}
+.section{margin-top:72px}.kicker{color:#999db0;margin-bottom:7px}
+h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#59667d;line-height:1.8;font-size:16px}
+
+/* LARGE ACADEMIC IMAGES */
+.reference{margin-top:28px;border:1px solid var(--line);border-radius:26px;padding:22px;background:#fbfdff}
+.refhead{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:14px}
+.refhead span{padding:6px 10px;border-radius:999px;background:var(--indigo2);color:#4c4593;font-size:9px;font-weight:900}
+.refhead a{text-decoration:none;color:#49418e;font-size:10px;font-weight:850}
+.refimg{display:block;width:100%;max-width:900px;max-height:690px;object-fit:contain;margin:auto;border:1px solid var(--line);border-radius:16px;background:#fff;padding:15px}
+.reference figcaption{max-width:900px;margin:14px auto 0;color:#657186;font-size:11px;line-height:1.65}
+.ref2{margin-top:18px;padding-top:17px;border-top:1px solid var(--line)}
+.ref2 .refimg{max-height:360px}
+
+/* VISUAL HOOK */
+.engine{margin-top:30px;border:1px solid var(--line);border-radius:30px;padding:28px;background:radial-gradient(circle at 50% 50%,rgba(39,184,197,.10),transparent 27%),linear-gradient(180deg,#fcfeff,#f8f7ff)}
+.engine-head{display:flex;justify-content:space-between;gap:14px;align-items:center;background:var(--indigo);color:#fff;padding:15px 18px;border-radius:15px}
+.engine-head b{font-size:12px;letter-spacing:.08em}.engine-head span{font-size:10px;color:#dcd9f5}
+.sprint-machine{display:grid;grid-template-columns:170px 1fr 170px;gap:15px;align-items:center;margin-top:24px}
+.backlog,.release{border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff;text-align:center;min-height:210px;display:grid;align-content:center}
+.backlog{background:var(--pink2)}.release{background:var(--lime2)}
+.backlog .icon,.release .icon{font-size:31px}.backlog b,.release b{display:block;margin-top:8px;font-size:12px}.backlog span,.release span{display:block;margin-top:6px;color:#68738a;font-size:10px;line-height:1.5}
+.cyclebox{border-radius:28px;background:linear-gradient(145deg,var(--cyan),#168692);color:#fff;padding:24px;min-height:285px;display:grid;align-content:center;box-shadow:0 16px 36px rgba(39,184,197,.16)}
+.cyclebox h3{margin:0;text-align:center;font-size:19px}.cyclebox p{margin:6px 0 14px;text-align:center;color:#dbf5f7;font-size:10px}
+.inner{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.inner div{padding:10px 7px;border-radius:10px;background:rgba(255,255,255,.14);text-align:center;font-size:9px;font-weight:850}
+.arrow{text-align:center;color:#96a0b2;font-size:25px;font-weight:900}
+.loopnote{margin-top:16px;padding:14px;border:1px dashed #b9dce0;border-radius:13px;background:#fff;text-align:center;color:#5b7176;font-size:11px;line-height:1.6}
+
+/* CORE TRAITS */
+.traits{margin-top:26px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.trait{border:1px solid var(--line);border-radius:17px;padding:17px;background:#fff}
+.trait .ico{font-size:25px}.trait b{display:block;margin-top:7px;font-size:11.5px}.trait p{margin:5px 0 0;color:#697388;font-size:10px;line-height:1.5}
+.trait:nth-child(1){background:var(--cyan2)}.trait:nth-child(2){background:var(--pink2)}.trait:nth-child(3){background:var(--lime2)}.trait:nth-child(4){background:var(--violet2)}.trait:nth-child(5){background:var(--orange2)}
+
+/* ITERATION TIMELINE */
+.timeline{margin-top:28px;border:1px solid var(--line);border-radius:24px;padding:24px;background:#fbfcff}
+.days{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.day{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff;min-height:140px}
+.day b{font-size:10.5px}.day span{display:block;margin-top:5px;color:#697388;font-size:9.3px;line-height:1.45}
+.day:nth-child(1){background:var(--violet2)}.day:nth-child(2){background:var(--cyan2)}.day:nth-child(3){background:var(--lime2)}.day:nth-child(4){background:var(--orange2)}.day:nth-child(5){background:var(--pink2)}
+
+/* WORKED EXAMPLE */
+.walk{margin-top:28px;display:grid;gap:12px}
+.step{border:1px solid var(--line);border-radius:20px;overflow:hidden;display:grid;grid-template-columns:100px 1fr 240px;background:#fff}
+.sid{display:grid;place-items:center;text-align:center;color:#fff;padding:15px;font-size:11px;font-weight:900}
+.smain{padding:20px}.smain h3{margin:0 0 7px;font-size:17px}.smain p{margin:0;color:#667187;font-size:11.5px;line-height:1.6}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.chip{padding:6px 8px;border:1px solid var(--line);border-radius:8px;background:#fafbff;font-size:9px;font-weight:750}
+.sout{padding:17px;border-left:1px solid var(--line);background:#fafbff;display:grid;align-content:center}.sout small{font-size:8.5px;font-weight:900;color:#9499aa}.sout b{margin-top:5px;font-size:11px}.sout span{margin-top:5px;color:#70798d;font-size:9.5px;line-height:1.45}
+.st1 .sid{background:var(--violet)}.st2 .sid{background:var(--pink)}.st3 .sid{background:var(--cyan)}.st4 .sid{background:var(--lime)}.st5 .sid{background:var(--orange)}
+
+/* INCREMENTS */
+.increments{margin-top:28px;border:1px solid var(--line);border-radius:24px;padding:24px;background:#fbfcff}
+.incrow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.inc{border:1px solid var(--line);border-radius:15px;padding:16px;background:#fff;position:relative}
+.inc:not(:last-child):after{content:"→";position:absolute;right:-15px;top:55px;color:#9ca2b2;font-size:20px;font-weight:900}
+.inc b{font-size:11.5px}.inc span{display:block;margin-top:5px;color:#68738a;font-size:9.5px;line-height:1.45}
+.inc:nth-child(1){background:var(--cyan2)}.inc:nth-child(2){background:var(--violet2)}.inc:nth-child(3){background:var(--lime2)}.inc:nth-child(4){background:var(--orange2)}
+
+/* CHANGE */
+.change{margin-top:27px;display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;gap:12px}
+.chbox{border:1px solid var(--line);border-radius:18px;padding:20px}.chbox h3{margin:0 0 7px;font-size:17px}.chbox p{margin:0;color:#667187;font-size:11px;line-height:1.6}.plan{background:#f7f8fb}.adapt{background:var(--cyan2)}
+.charr{text-align:center;font-size:25px;color:#979dac;font-weight:900}
+
+/* PROS CONS */
+.pc{margin-top:27px;display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.box{border:1px solid var(--line);border-radius:20px;padding:22px}.box h3{margin:0 0 12px;font-size:18px}
+.good{background:var(--lime2)}.bad{background:var(--red2)}
+.point{display:grid;grid-template-columns:25px 1fr;gap:8px;margin-top:9px;font-size:11px;line-height:1.5;color:#5f697d}.point i{font-style:normal;font-weight:900}
+
+/* STORY */
+.story{margin-top:25px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.panel{border:1px solid var(--line);border-radius:16px;padding:13px}.visual{height:115px;border-radius:11px;background:#f5fbff;overflow:hidden;margin-bottom:10px}.visual img{width:100%;height:100%;object-fit:contain}
+.panel .no{font-size:9px;font-weight:900;color:#9297aa}.panel h4{margin:5px 0;font-size:13px}.panel p{margin:0;color:#68738a;font-size:10.8px;line-height:1.5}
+.panel:nth-child(1){border-top:4px solid var(--violet)}.panel:nth-child(2){border-top:4px solid var(--cyan)}.panel:nth-child(3){border-top:4px solid var(--pink)}.panel:nth-child(4){border-top:4px solid var(--lime)}
+
+/* CLOSE */
+.note{margin-top:30px;border-radius:16px;padding:22px;background:var(--indigo2);border:1px solid #ddd9fa;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}
+.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}.note p{margin:0 0 20px;color:#5e587c;line-height:1.7;font-size:14px}.note img,.think img{width:100%;max-height:150px;object-fit:contain}
+.take{margin-top:28px;padding:22px;border-left:4px solid var(--cyan);border-radius:15px;background:var(--cyan2)}.take p{margin:0;color:#42666b;line-height:1.7;font-weight:650;font-size:14px}
+.think{margin-top:30px;border:1px solid #e4d4ef;background:var(--pink2);border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#74586d;line-height:1.7;font-size:14px}
+.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+
+@media(max-width:950px){.traits{grid-template-columns:1fr 1fr 1fr}.sprint-machine{grid-template-columns:1fr}.days,.incrow{grid-template-columns:1fr 1fr}.story{grid-template-columns:1fr 1fr}.step{grid-template-columns:80px 1fr}.sout{grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}}
+@media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,1000px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
+@media(max-width:650px){.traits,.days,.incrow,.pc,.story{grid-template-columns:1fr}.inc:not(:last-child):after{display:none}.change{grid-template-columns:1fr}.charr{transform:rotate(90deg)}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}.refhead{flex-direction:column;align-items:flex-start}.inner{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<header class="top"><a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a><nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header>
+
+<div class="layout">
+<aside class="side">
+<div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div>
+<div class="label">Topic 04</div>
+<a href="index.html">1. Process &amp; Methodology</a>
+<a href="development-challenges.html">2. Development Challenges</a>
+<a href="process-models-overview.html">3. Process Models Overview</a>
+<a href="waterfall-model.html">4. Waterfall Model</a>
+<a href="prototyping-model.html">5. Prototyping Model</a>
+<a href="evolutionary-development.html">6. Evolutionary Development</a>
+<a href="spiral-model.html">7. Spiral Model</a>
+<a class="active" href="agile-process-models.html">8. Agile Process Models</a>
+<span class="future">9. Choosing the Right Model</span>
+<span class="future">10. Agile Methods</span>
+<span class="future">11. Software Paradigms</span>
+</aside>
+
+<main><article class="content">
+<div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 04 › Agile Process Models</div>
+
+<section class="hero">
+<div>
+<div class="eyebrow">Topic 04 · Model 05</div>
+<h1>Agile Process Models</h1>
+<p class="lead">
+Agile organizes development around <strong>short iterations, frequent working software, close customer collaboration,
+and rapid response to change</strong>. The plan still matters—but learning during development is expected to change the plan.
+</p>
+</div>
+<div class="mentor">
+<div class="pic"><img src="../../assets/images/mentor-06-pointing.png" alt="Mentor explaining agile iterations"></div>
+<p>“Agile does not mean ‘no plan.’ It means plan a short horizon, build something useful, learn from reality, then plan the next horizon better.”</p>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Academic Reference · Large Image</div>
+<h2>Agile as a short iterative development loop</h2>
+<p>
+San José State University describes Agile as an iterative-incremental approach with short iterations.
+The diagram below comes directly from its teaching material on Agile/Test-Driven Development:
+new requirements become tests, the system is changed until the test suite passes, and the cycle repeats.
+</p>
+
+<figure class="reference">
+<div class="refhead">
+<span>SAN JOSÉ STATE UNIVERSITY · COMPUTER SCIENCE</span>
+<a href="https://www.cs.sjsu.edu/~pearce/modules/lectures/tdd/intro.htm" target="_blank" rel="noopener">Open academic source ↗</a>
+</div>
+<img class="refimg"
+ src="https://www.cs.sjsu.edu/~pearce/modules/lectures/tdd/intro_files/image006.gif"
+ alt="San Jose State University agile test-driven development iterative cycle"
+ loading="lazy">
+<figcaption>
+<strong>How to read it:</strong> a small requirement enters the iteration. Tests make the expected behavior concrete.
+Developers implement or refactor until the new and previous tests pass. Then the team accepts another requirement and repeats.
+This is the opposite of waiting months for one large validation point.
+</figcaption>
+
+<div class="ref2">
+<div class="refhead">
+<span>SAN JOSÉ STATE UNIVERSITY · ADAPTIVE VS PREDICTIVE LIFECYCLES</span>
+<a href="https://www.cs.sjsu.edu/~pearce/modules/lectures/ood2/context/se.htm" target="_blank" rel="noopener">Open lifecycle source ↗</a>
+</div>
+<img class="refimg"
+ src="https://www.cs.sjsu.edu/~pearce/modules/lectures/ood2/context/se_files/image006.png"
+ alt="San Jose State University adaptive to predictive lifecycle spectrum"
+ loading="lazy">
+<figcaption>
+Agile sits toward the <strong>adaptive</strong> end of the lifecycle spectrum: it can react quickly to requirement change,
+while predictive processes emphasize early planning, control, documentation, and long-range predictability.
+</figcaption>
+</div>
+</figure>
+</section>
+
+<section class="section">
+<div class="kicker">Visual Hook</div>
+<h2>The Agile Delivery Engine</h2>
+<p>
+The engine repeatedly pulls a small set of high-value features from the backlog, turns them into a tested working increment,
+shows the result to stakeholders, and uses feedback to decide what enters the next iteration.
+</p>
+
+<div class="engine">
+<div class="engine-head"><b>AGILE DELIVERY ENGINE</b><span>PRIORITIZE → BUILD → TEST → DEMO → ADAPT</span></div>
+
+<div class="sprint-machine">
+<div class="backlog"><div class="icon">📚</div><b>Product Backlog</b><span>Desired features, fixes, improvements, and changes are prioritized by business value and current need.</span></div>
+
+<div class="cyclebox">
+<h3>SHORT ITERATION / SPRINT</h3>
+<p>typically weeks rather than months</p>
+<div class="inner">
+<div>1<br>Plan</div>
+<div>2<br>Design + Build</div>
+<div>3<br>Test</div>
+<div>4<br>Review</div>
+</div>
+</div>
+
+<div class="release"><div class="icon">🚀</div><b>Working Increment</b><span>A usable piece of software is delivered frequently, not only at the end of the entire project.</span></div>
+</div>
+
+<div class="loopnote">
+<strong>↻ Feedback returns to the backlog.</strong>
+New knowledge, customer feedback, defects, and even late requirement changes influence the next iteration.
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Core Agile Behavior</div>
+<h2>Five ideas make the process “agile”</h2>
+
+<div class="traits">
+<div class="trait"><div class="ico">⚡</div><b>Short Iterations</b><p>Sprints/iterations are shorter in duration; the course material gives a broad range from about 2 weeks to 2 months.</p></div>
+<div class="trait"><div class="ico">📦</div><b>Frequent Working Software</b><p>Predetermined features are developed and delivered during an iteration, with working software appearing in weeks rather than months.</p></div>
+<div class="trait"><div class="ico">🤝</div><b>Customer Collaboration</b><p>Business people and developers cooperate closely so priorities and feedback influence development continuously.</p></div>
+<div class="trait"><div class="ico">🔄</div><b>Welcome Change</b><p>Changing circumstances are expected. Even late requirement changes can be incorporated into future iterations.</p></div>
+<div class="trait"><div class="ico">🎯</div><b>Value First</b><p>The team selects a manageable set of useful features rather than trying to implement everything at once.</p></div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">One Iteration</div>
+<h2>What can happen inside a two-week sprint?</h2>
+
+<div class="timeline">
+<div class="days">
+<div class="day"><b>Day 1 · Sprint Planning</b><span>Choose high-priority stories, clarify acceptance criteria, split them into tasks, and agree on a realistic sprint goal.</span></div>
+<div class="day"><b>Days 2–4 · Design + Start Build</b><span>Make just enough design decisions for the selected stories and begin implementation.</span></div>
+<div class="day"><b>Days 5–8 · Build + Integrate</b><span>Code, test, integrate frequently, and keep the working increment healthy rather than postponing integration.</span></div>
+<div class="day"><b>Day 9 · Stabilize</b><span>Finish acceptance testing, correct important defects, refactor where necessary, and prepare the increment for review.</span></div>
+<div class="day"><b>Day 10 · Review + Adapt</b><span>Demonstrate the working software, collect stakeholder feedback, reflect on the sprint, and update priorities for the next iteration.</span></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Worked Example · Sprint by Sprint</div>
+<h2>Build the University Registration System with Agile</h2>
+<p>
+Instead of attempting the complete registration platform in one long pass, the team delivers useful capabilities incrementally.
+Students and advisors can react to real software after every sprint.
+</p>
+
+<div class="walk">
+
+<div class="step st1">
+<div class="sid">SPRINT 1<br>DISCOVER</div>
+<div class="smain"><h3>Goal: students can find sections</h3><p>The team selects the smallest useful journey from the backlog: sign in, search for a course, and see sections. Prerequisite and enrollment logic can wait.</p>
+<div class="chips"><span class="chip">Login</span><span class="chip">Course search</span><span class="chip">Section list</span><span class="chip">Basic UI</span></div></div>
+<div class="sout"><small>WORKING INCREMENT</small><b>Searchable Course Catalog</b><span>Students can already perform one real task and give feedback.</span></div>
+</div>
+
+<div class="step st2">
+<div class="sid">SPRINT 2<br>REGISTER</div>
+<div class="smain"><h3>Goal: add a section safely</h3><p>Feedback from Sprint 1 shows students need seat availability beside every section. The next sprint adds enrollment and seat-capacity validation.</p>
+<div class="chips"><span class="chip">Add course</span><span class="chip">Seat check</span><span class="chip">Enrollment record</span><span class="chip">Confirmation</span></div></div>
+<div class="sout"><small>WORKING INCREMENT</small><b>Basic Registration</b><span>Students can search and enroll when a seat is available.</span></div>
+</div>
+
+<div class="step st3">
+<div class="sid">SPRINT 3<br>RULES</div>
+<div class="smain"><h3>Goal: enforce academic rules</h3><p>Now implement prerequisite checking and schedule-conflict detection. Acceptance criteria are written as concrete examples before work is considered complete.</p>
+<div class="chips"><span class="chip">Prerequisite service</span><span class="chip">Conflict check</span><span class="chip">Clear error messages</span></div></div>
+<div class="sout"><small>WORKING INCREMENT</small><b>Rule-Aware Registration</b><span>Invalid enrollments are rejected with understandable explanations.</span></div>
+</div>
+
+<div class="step st4">
+<div class="sid">SPRINT 4<br>CHANGE</div>
+<div class="smain"><h3>Goal changes: university requests wait-listing</h3><p>This requirement did not exist in the original backlog. Agile does not require pretending the old plan is sacred. The product owner reprioritizes; lower-value work moves later and wait-listing enters this sprint.</p>
+<div class="chips"><span class="chip">Wait list</span><span class="chip">Position</span><span class="chip">Notification</span><span class="chip">Reprioritize backlog</span></div></div>
+<div class="sout"><small>CHANGE ABSORBED</small><b>Wait-List Increment</b><span>Late change is handled by changing future scope, not by restarting the whole project.</span></div>
+</div>
+
+<div class="step st5">
+<div class="sid">SPRINT 5<br>HARDEN</div>
+<div class="smain"><h3>Goal: prepare for peak registration</h3><p>Use production-like workloads to improve performance, reliability, monitoring, and operational readiness while keeping all previous behavior working.</p>
+<div class="chips"><span class="chip">Load test</span><span class="chip">Performance fixes</span><span class="chip">Monitoring</span><span class="chip">Regression suite</span></div></div>
+<div class="sout"><small>RELEASE</small><b>Production Candidate</b><span>The final product is the accumulation of tested increments—not one giant late delivery.</span></div>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Incremental Delivery</div>
+<h2>Every sprint adds visible business value</h2>
+
+<div class="increments">
+<div class="incrow">
+<div class="inc"><b>Increment 1</b><span>Search courses</span></div>
+<div class="inc"><b>Increment 2</b><span>Search + enroll</span></div>
+<div class="inc"><b>Increment 3</b><span>+ prerequisites + conflicts</span></div>
+<div class="inc"><b>Increment 4+</b><span>+ wait-list + performance + future value</span></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Responding to Change</div>
+<h2>Agile changes the next plan—not history</h2>
+
+<div class="change">
+<div class="chbox plan"><h3>Original Plan</h3><p>Sprint 4 was expected to implement advisor approval and reporting.</p></div>
+<div class="charr">→</div>
+<div class="chbox adapt"><h3>Reality Changes</h3><p>A new wait-list policy becomes urgent. The backlog is reprioritized: wait-listing moves into Sprint 4; reporting moves later. The team adapts without discarding completed increments.</p></div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Advantages &amp; Disadvantages</div>
+<h2>Speed and flexibility come with trade-offs</h2>
+
+<div class="pc">
+<div class="box good"><h3>✓ Advantages</h3>
+<div class="point"><i>✓</i><span>Rapid, continuous delivery of useful software can improve customer satisfaction.</span></div>
+<div class="point"><i>✓</i><span>Working software is delivered frequently—weeks rather than months.</span></div>
+<div class="point"><i>✓</i><span>Business people and developers cooperate closely.</span></div>
+<div class="point"><i>✓</i><span>The project regularly adapts to changing circumstances.</span></div>
+<div class="point"><i>✓</i><span>Even late changes in requirements can be welcomed and reprioritized.</span></div>
+</div>
+
+<div class="box bad"><h3>⚠ Disadvantages</h3>
+<div class="point"><i>!</i><span>There may be insufficient emphasis on necessary design and documentation if the team interprets agility carelessly.</span></div>
+<div class="point"><i>!</i><span>New team members can find it harder to integrate when important knowledge exists mainly in team conversations.</span></div>
+<div class="point"><i>!</i><span>Total effort can be difficult to assess accurately at the beginning of the lifecycle.</span></div>
+<div class="point"><i>!</i><span>Frequent customer involvement is valuable, but it requires sustained stakeholder availability and decision-making.</span></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Illustrated Story</div>
+<h2>The requirement that arrived after development started</h2>
+<div class="story">
+<div class="panel"><div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div><span class="no">SPRINT 1–3</span><h4>Useful software already exists</h4><p>Search, enrollment, prerequisites, and conflicts are working.</p></div>
+<div class="panel"><div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div><span class="no">NEW POLICY</span><h4>Wait-listing becomes urgent</h4><p>The requirement appears after the original plan was created.</p></div>
+<div class="panel"><div class="visual"><img src="../../assets/images/mentor-06-pointing.png" alt=""></div><span class="no">REPRIORITIZE</span><h4>Change the next sprint</h4><p>The product owner moves wait-listing ahead of lower-value reporting work.</p></div>
+<div class="panel"><div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div><span class="no">DELIVER</span><h4>Existing value survives</h4><p>No restart is needed. The product grows through another working increment.</p></div>
+</div>
+</section>
+
+<div class="note"><div><b>Mentor Insight</b><p>Agile's strength is not simply that developers work faster. The deeper advantage is shortening the distance between a decision and evidence. Working software appears frequently, so assumptions are corrected while change is still manageable.</p></div><img src="../../assets/images/mentor-11-serious.png" alt=""></div>
+
+<div class="take"><b>Key Takeaway</b><p>Agile process models use short sprints or iterations to develop and deliver predetermined features, repeatedly producing working software and adapting to feedback and changing circumstances. The course material emphasizes rapid delivery, close business/developer cooperation, and welcoming change, while warning about documentation/design discipline, onboarding new team members, and difficulty estimating total effort early.</p></div>
+
+<div class="think"><div><span class="tlabel">Think Like a Software Engineer</span><h3>A customer adds an urgent feature halfway through a sprint. Should the team immediately stop and implement it?</h3><p>“Welcome change” does not mean “accept chaos.” Consider sprint stability, urgency, current work, product-owner priorities, and whether the change belongs in the current sprint or the next prioritized iteration.</p></div><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
+
+<div class="nav"><a href="spiral-model.html">← Spiral Model</a><a class="next" href="choosing-process-model.html">Next · Choosing the Right Model →</a></div>
+</article></main>
+</div>
+<script>if(sessionStorage.getItem("cpcs351_access")!=="granted"){window.location.href="../../access.html";}</script>
+</body>
+</html>
