@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nature of Software | CPCS 351</title>
+  <meta name="description" content="CPCS 351 Software Engineering I — Topic 01: The Nature of Software." />
+
+  <style>
+    :root{
+      --ink:#172033;
+      --muted:#667085;
+      --soft:#f7f9fc;
+      --white:#ffffff;
+      --line:#e7eaf0;
+      --blue:#2f80ed;
+      --blue-soft:#eef6ff;
+      --mint:#69d6ba;
+      --mint-soft:#effbf7;
+      --gold:#f2a45b;
+      --gold-soft:#fff7ee;
+      --violet-soft:#f4f1ff;
+      --sidebar:250px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:#fff;
+    }
+
+    a{color:inherit}
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:0 22px;
+      background:rgba(255,255,255,.94);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(14px);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .brand-mark{
+      width:31px;height:31px;border-radius:10px;
+      background:linear-gradient(135deg,var(--blue),var(--mint),var(--gold));
+      position:relative;flex:0 0 auto;
+    }
+
+    .brand-mark::before,.brand-mark::after{
+      content:"";position:absolute;background:#fff;border-radius:20px;
+    }
+
+    .brand-mark::before{width:16px;height:4px;left:7px;top:13px}
+    .brand-mark::after{width:4px;height:16px;left:13px;top:7px}
+
+    .top-links{display:flex;align-items:center;gap:5px}
+
+    .top-links a{
+      text-decoration:none;color:var(--muted);font-size:14px;font-weight:650;
+      padding:9px 11px;border-radius:9px;
+    }
+
+    .top-links a:hover{background:var(--soft);color:var(--ink)}
+
+    .layout{
+      display:grid;
+      grid-template-columns:var(--sidebar) minmax(0,1fr);
+      min-height:calc(100vh - 64px);
+    }
+
+    .sidebar{
+      position:sticky;
+      top:64px;
+      height:calc(100vh - 64px);
+      overflow:auto;
+      padding:25px 14px 30px;
+      border-right:1px solid var(--line);
+      background:#fafbfc;
+    }
+
+    .sidebar-course{
+      padding:0 12px 18px;
+      margin-bottom:14px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .sidebar-course small{
+      display:block;color:#8d98a8;font-size:11px;font-weight:800;
+      letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;
+    }
+
+    .sidebar-course strong{display:block;font-size:15px;line-height:1.35}
+
+    .side-title{
+      padding:7px 12px;margin-top:10px;color:#98a2b3;font-size:11px;
+      font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    }
+
+    .side-link{
+      display:block;padding:9px 12px;border-radius:8px;text-decoration:none;
+      color:#5f6c80;font-size:13px;font-weight:650;line-height:1.4;
+    }
+
+    .side-link:hover{background:#f0f3f7;color:var(--ink)}
+    .side-link.active{background:#eaf3ff;color:#1768c4;font-weight:800}
+
+    main{min-width:0}
+
+    .content{
+      width:min(850px,calc(100% - 48px));
+      margin:auto;
+      padding:64px 0 90px;
+    }
+
+    .breadcrumb{
+      display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px;
+      color:#8c97a7;font-size:13px;font-weight:650;
+    }
+
+    .breadcrumb a{text-decoration:none}
+
+    .topic-label{
+      display:inline-flex;align-items:center;gap:7px;color:#3175a4;
+      font-size:12px;font-weight:850;letter-spacing:.06em;
+      text-transform:uppercase;margin-bottom:14px;
+    }
+
+    .topic-label::before{
+      content:"";width:8px;height:8px;border-radius:50%;background:var(--mint);
+    }
+
+    h1{
+      margin:0;max-width:760px;font-size:clamp(44px,6vw,68px);
+      line-height:1;letter-spacing:-.045em;
+    }
+
+    .lead{
+      margin:22px 0 0;max-width:720px;color:var(--muted);
+      font-size:19px;line-height:1.75;
+    }
+
+    .section{margin-top:52px}
+
+    .section-kicker{
+      margin:0 0 7px;color:#98a2b3;font-size:12px;font-weight:850;
+      text-transform:uppercase;letter-spacing:.06em;
+    }
+
+    h2{margin:0 0 16px;font-size:31px;letter-spacing:-.03em}
+
+    .section > p{
+      color:#536176;font-size:16px;line-height:1.8;
+    }
+
+    .concept-list{
+      display:grid;
+      gap:14px;
+      margin-top:22px;
+    }
+
+    .concept-card{
+      padding:20px 20px 18px;
+      border:1px solid var(--line);
+      border-radius:15px;
+      background:#fff;
+    }
+
+    .concept-head{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      margin-bottom:8px;
+    }
+
+    .concept-icon{
+      width:38px;height:38px;flex:0 0 auto;
+      display:grid;place-items:center;border-radius:12px;
+      font-weight:900;
+    }
+
+    .concept-card:nth-child(1) .concept-icon{background:var(--blue-soft);color:#276aa4}
+    .concept-card:nth-child(2) .concept-icon{background:var(--mint-soft);color:#247762}
+    .concept-card:nth-child(3) .concept-icon{background:var(--gold-soft);color:#935c2b}
+    .concept-card:nth-child(4) .concept-icon{background:var(--violet-soft);color:#6952a0}
+    .concept-card:nth-child(5) .concept-icon{background:#fff1f1;color:#9f3d3d}
+    .concept-card:nth-child(6) .concept-icon{background:#eef8f1;color:#327c48}
+
+    .concept-card h3{
+      margin:2px 0 0;
+      font-size:20px;
+      letter-spacing:-.02em;
+    }
+
+    .concept-card p{
+      margin:8px 0 0;
+      color:#536176;
+      line-height:1.75;
+      font-size:15px;
+    }
+
+    .source-note{
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:10px;
+      background:#f7f9fc;
+      color:#667085;
+      font-size:13px;
+      line-height:1.6;
+      font-weight:650;
+    }
+
+    .example{
+      margin-top:13px;
+      padding:14px 15px;
+      border-left:3px solid var(--mint);
+      background:var(--mint-soft);
+      border-radius:10px;
+    }
+
+    .example-label{
+      display:block;
+      margin-bottom:5px;
+      color:#2f7867;
+      font-size:11px;
+      font-weight:850;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+
+    .example p{
+      margin:0;
+      color:#45685f;
+      line-height:1.7;
+      font-size:14px;
+    }
+
+    .compare{
+      margin-top:24px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      overflow:hidden;
+    }
+
+    .compare-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      border-bottom:1px solid var(--line);
+    }
+
+    .compare-row:last-child{border-bottom:0}
+
+    .compare-cell{
+      padding:16px;
+      font-size:14px;
+      line-height:1.55;
+    }
+
+    .compare-cell:first-child{background:#fafbfc}
+    .compare-head{font-weight:850;color:var(--ink)}
+    .compare-cell:not(.compare-head){color:#536176}
+
+    .takeaway{
+      margin-top:48px;
+      padding:22px;
+      border-radius:15px;
+      background:var(--blue-soft);
+      border-left:4px solid var(--blue);
+    }
+
+    .takeaway strong{
+      display:block;
+      margin-bottom:7px;
+      color:#2368b3;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+    }
+
+    .takeaway p{
+      margin:0;
+      color:#31475f;
+      line-height:1.7;
+      font-size:15px;
+      font-weight:600;
+    }
+
+    .think{
+      margin-top:26px;
+      padding:22px;
+      border-radius:15px;
+      background:var(--mint-soft);
+      border:1px solid #d8f1e9;
+    }
+
+    .think-label{
+      color:#327867;font-size:12px;font-weight:850;
+      letter-spacing:.06em;text-transform:uppercase;
+    }
+
+    .think h3{margin:8px 0 8px;font-size:20px}
+
+    .think p{
+      margin:0;color:#45685f;line-height:1.7;
+    }
+
+    .lesson-nav{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      margin-top:50px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+    }
+
+    .nav-button{
+      display:inline-flex;align-items:center;gap:9px;padding:13px 16px;
+      border-radius:11px;text-decoration:none;font-size:14px;font-weight:800;
+      border:1px solid var(--line);background:#fff;color:#526176;
+    }
+
+    .nav-button.next{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+    footer{
+      padding:25px 0;border-top:1px solid var(--line);
+      color:#98a2b3;text-align:center;font-size:12px;
+    }
+
+    .mobile-menu{display:none}
+
+    @media(max-width:850px){
+      .layout{grid-template-columns:1fr}
+      .sidebar{display:none}
+      .mobile-menu{
+        display:block;padding:11px 18px;background:#fafbfc;
+        border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;
+      }
+      .mobile-menu a{
+        display:inline-block;margin-right:5px;padding:8px 10px;background:#fff;
+        border:1px solid var(--line);border-radius:8px;color:#59687c;
+        text-decoration:none;font-size:12px;font-weight:700;
+      }
+      .content{width:min(100% - 28px,850px);padding-top:45px}
+    }
+
+    @media(max-width:600px){
+      .topbar{padding:0 13px}
+      .top-links a:nth-child(2){display:none}
+      h1{font-size:44px}
+      .lead{font-size:17px}
+      .compare-row{grid-template-columns:1fr}
+      .compare-cell:first-child{border-bottom:1px solid var(--line)}
+      .lesson-nav{flex-direction:column}
+      .nav-button{justify-content:center}
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>The Educator</span>
+    </a>
+
+    <nav class="top-links">
+      <a href="../../index.html">CPCS 351</a>
+      <a href="../../resources/">Resources</a>
+      <a href="../../../../index.html">All Courses</a>
+    </nav>
+  </header>
+
+  <div class="mobile-menu">
+    <a href="index.html">Overview</a>
+    <a href="nature-of-software.html">Nature of Software</a>
+    <a href="what-is-se.html">What is SE?</a>
+    <a href="why-se.html">Why SE?</a>
+    <a href="life-cycle.html">Life Cycle</a>
+  </div>
+
+  <div class="layout">
+
+    <aside class="sidebar">
+
+      <div class="sidebar-course">
+        <small>CPCS 351 · Topic 01</small>
+        <strong>Introduction to Software Engineering</strong>
+      </div>
+
+      <div class="side-title">Topic 01</div>
+
+      <a class="side-link" href="index.html">Overview</a>
+      <a class="side-link active" href="nature-of-software.html">1. Nature of Software</a>
+      <a class="side-link" href="what-is-se.html">2. What is Software Engineering?</a>
+      <a class="side-link" href="why-se.html">3. Why Software Engineering?</a>
+      <a class="side-link" href="teamwork.html">4. Teamwork Challenges</a>
+      <a class="side-link" href="life-cycle.html">5. Software Life Cycle</a>
+      <a class="side-link" href="development-process.html">6. Development Process</a>
+      <a class="side-link" href="waterfall.html">7. Waterfall Process</a>
+      <a class="side-link" href="sqa.html">8. Software Quality Assurance</a>
+      <a class="side-link" href="project-management.html">9. Project Management</a>
+      <a class="side-link" href="oose.html">10. OO Software Engineering</a>
+
+      <div class="side-title">Course</div>
+      <a class="side-link" href="../../index.html">Course Home</a>
+
+    </aside>
+
+    <main>
+
+      <article class="content">
+
+        <div class="breadcrumb">
+          <a href="../../index.html">CPCS 351</a>
+          <span>›</span>
+          <a href="index.html">Topic 01</a>
+          <span>›</span>
+          <span>Nature of Software</span>
+        </div>
+
+        <div class="topic-label">Topic 01 · Section 1</div>
+
+        <h1>The Nature of Software</h1>
+
+        <p class="lead">
+          Software is fundamentally different from physical engineering products.
+          Understanding these differences helps explain why software needs its own
+          engineering discipline.
+        </p>
+
+        <section class="section">
+
+          <p class="section-kicker">Original Lecture Content</p>
+          <h2>What makes software different?</h2>
+
+          <div class="concept-list">
+
+            <div class="concept-card">
+              <div class="concept-head">
+                <div class="concept-icon">01</div>
+                <h3>Software is intangible</h3>
+              </div>
+
+              <p>
+                Software has no physical form. Unlike a bridge, machine, or building,
+                you cannot directly see the full structure of a software system.
+              </p>
+
+              <div class="source-note">
+                Original lecture point: this makes development effort hard to understand.
+              </div>
+
+              <div class="example">
+                <span class="example-label">Modern Example</span>
+                <p>
+                  A mobile banking app may look simple on the screen, but behind it may
+                  be authentication services, payment systems, fraud detection,
+                  databases, APIs, logging, security controls, and cloud infrastructure.
+                  Most of that complexity is invisible to the user.
+                </p>
+              </div>
+            </div>
+
+
+            <div class="concept-card">
+              <div class="concept-head">
+                <div class="concept-icon">02</div>
+                <h3>Software is easy to reproduce</h3>
+              </div>
+
+              <p>
+                Once software has been developed, creating another copy is inexpensive.
+                The major cost is in designing and developing the original software.
+              </p>
+
+              <div class="source-note">
+                Original lecture comparison: in many traditional engineering products,
+                manufacturing is the costly stage.
+              </div>
+
+              <div class="example">
+                <span class="example-label">Example</span>
+                <p>
+                  Developing the first version of an application can require months of
+                  work. Distributing an additional digital copy to another user may cost
+                  almost nothing compared with manufacturing another physical car,
+                  laptop, or machine.
+                </p>
+              </div>
+            </div>
+
+
+            <div class="concept-card">
+              <div class="concept-head">
+                <div class="concept-icon">03</div>
+                <h3>The software industry is labor-intensive</h3>
+              </div>
+
+              <p>
+                Software development depends heavily on human analysis, design,
+                communication, programming, testing, and decision-making.
+              </p>
+
+              <div class="source-note">
+                Original lecture point: software development is hard to automate completely.
+              </div>
+
+              <div class="example">
+                <span class="example-label">Updated Perspective</span>
+                <p>
+                  Modern tools and AI can automate parts of coding, testing, deployment,
+                  and documentation, but engineers still need to understand the problem,
+                  make architectural decisions, validate requirements, assess risks, and
+                  decide whether the generated solution is correct.
+                </p>
+              </div>
+            </div>
+
+
+            <div class="concept-card">
+              <div class="concept-head">
+                <div class="concept-icon">04</div>
+                <h3>Untrained people can build software</h3>
+              </div>
+
+              <p>
+                It is possible to assemble software without following disciplined
+                engineering practices.
+              </p>
+
+              <div class="source-note">
+                Original lecture point: quality problems may be difficult to notice.
+              </div>
+
+              <div class="example">
+                <span class="example-label">Example</span>
+                <p>
+                  A small web application may appear to work correctly during a demo,
+                  while still containing security weaknesses, poor error handling,
+                  duplicated logic, or architectural problems that only become visible
+                  after real users begin using it.
+                </p>
+              </div>
+            </div>
+
+
+            <div class="concept-card">
+              <div class="concept-head">
+                <div class="concept-icon">05</div>
+                <h3>Software is easy to modify</h3>
+              </div>
+
+              <p>
+                Software can often be changed quickly because there is no need to rebuild
+                a physical product.
+              </p>
+
+              <div class="source-note">
+                Original lecture warning: people may make changes without fully
+                understanding the software.
+              </div>
+
+              <div class="example">
+                <span class="example-label">Realistic Scenario</span>
+                <p>
+                  A request such as “add one field to checkout” may affect validation,
+                  payment processing, database schemas, tax calculations, receipts,
+                  analytics, APIs, and mobile applications. A small visible change can
+                  have a large hidden impact.
+                </p>
+              </div>
+            </div>
+
+
+            <div class="concept-card">
+              <div class="concept-head">
+                <div class="concept-icon">06</div>
+                <h3>Software does not “wear out” physically</h3>
+              </div>
+
+              <p>
+                Software does not deteriorate because physical components become worn.
+                Instead, its design can deteriorate as changes accumulate.
+              </p>
+
+              <div class="source-note">
+                Original lecture: deterioration can result from erroneous changes or
+                changes that were not anticipated, making the software increasingly complex.
+              </div>
+
+              <div class="example">
+                <span class="example-label">Analogy</span>
+                <p>
+                  Imagine repeatedly extending a house without updating its original
+                  architectural plan. The building may still stand, but every new change
+                  becomes harder and riskier. Software can experience the same kind of
+                  structural deterioration.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <section class="section">
+
+          <p class="section-kicker">Concept Comparison</p>
+          <h2>Physical products vs. software</h2>
+
+          <div class="compare">
+
+            <div class="compare-row">
+              <div class="compare-cell compare-head">Physical Engineering Product</div>
+              <div class="compare-cell compare-head">Software</div>
+            </div>
+
+            <div class="compare-row">
+              <div class="compare-cell">Manufacturing another unit has significant cost.</div>
+              <div class="compare-cell">Reproducing another digital copy is inexpensive.</div>
+            </div>
+
+            <div class="compare-row">
+              <div class="compare-cell">Structure can often be physically inspected.</div>
+              <div class="compare-cell">Internal structure is largely intangible.</div>
+            </div>
+
+            <div class="compare-row">
+              <div class="compare-cell">Physical components wear with use.</div>
+              <div class="compare-cell">Software design deteriorates mainly through changes and increasing complexity.</div>
+            </div>
+
+            <div class="compare-row">
+              <div class="compare-cell">Manufacturing may dominate production cost.</div>
+              <div class="compare-cell">Most cost is concentrated in development and maintenance.</div>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <div class="takeaway">
+          <strong>Key Takeaway</strong>
+          <p>
+            Software is easy to copy and modify, but difficult to visualize, estimate,
+            and evolve safely. These characteristics are a major reason why disciplined
+            software engineering processes are necessary.
+          </p>
+        </div>
+
+
+        <div class="think">
+
+          <span class="think-label">Think Like a Software Engineer</span>
+
+          <h3>“It is only a small change.” Is it really?</h3>
+
+          <p>
+            A customer asks you to add one new field to an online checkout page.
+            Before changing the code, what other parts of the system would you investigate?
+            Think about data storage, validation, APIs, payment processing, testing,
+            analytics, and other dependent components.
+          </p>
+
+        </div>
+
+
+        <div class="lesson-nav">
+
+          <a class="nav-button" href="index.html">
+            ← Overview
+          </a>
+
+          <a class="nav-button next" href="what-is-se.html">
+            Next: What is Software Engineering? →
+          </a>
+
+        </div>
+
+      </article>
+
+      <footer>
+        CPCS 351 · Software Engineering I · The Educator
+      </footer>
+
+    </main>
+
+  </div>
+
+
+  <script>
+    if(sessionStorage.getItem("cpcs351_access") !== "granted"){
+      window.location.href = "../../access.html";
+    }
+  </script>
+
+</body>
+</html>
