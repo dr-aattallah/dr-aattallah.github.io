@@ -85,7 +85,7 @@ a{color:inherit}
 <nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
 </header>
 
-<div class="mobile"><a href="index.html">Topic 02</a><a href="quality-attributes.html">Attributes</a><a href="../../index.html">Course Home</a></div>
+<div class="mobile"><a href="index.html">Topic 02</a><a class="active" href="quality-attributes.html">Attributes</a><a href="../../index.html">Course Home</a></div>
 
 <div class="layout">
 <aside class="side">
@@ -95,7 +95,8 @@ a{color:inherit}
 <a href="verification-validation.html">2. Verification &amp; Validation</a>
 <a href="quality-metrics.html">3. Quality Measurements &amp; Metrics</a>
 <a class="active" href="quality-attributes.html">4. Quality Attributes</a>
-<span class="future">5. Short vs. Long Term Quality</span>
+<a href="short-long-term-quality.html">5. Short vs. Long Term Quality</a>
+<a href="se-vs-cs.html">6. Software Engineering vs. Computer Science</a>
 <div class="label">Course</div>
 <a href="../01-introduction/index.html">Topic 01 · Introduction</a>
 <a href="../../index.html">Course Home</a>
@@ -108,7 +109,7 @@ a{color:inherit}
 <div>
 <div class="eyebrow">Topic 02 · Lesson 04</div>
 <h1>Software Quality Attributes</h1>
-<p class="lead">A software system can be excellent in one dimension and weak in another. The lecture identifies five important quality attributes: usability, efficiency, reliability, maintainability, and reusability.</p>
+<p class="lead">A software system can be excellent in one dimension and weak in another. Five important quality attributes are usability, efficiency, reliability, maintainability, and reusability.</p>
 </div>
 <div class="mentor">
 <div class="pic"><img src="../../assets/images/mentor-06-pointing.png" alt="Software Engineering Mentor introducing quality attributes"></div>
@@ -136,12 +137,12 @@ a{color:inherit}
 <div class="viewer v5"><span class="who">The Next Project Sees</span><h3>Reusability</h3><p>Can useful parts be used elsewhere without reprogramming them?</p></div>
 </div>
 
-<div class="five-caption">Source-derived core idea: the lecture lists these five attributes and gives a concise operational meaning for each. The “five observers” metaphor is an added teaching visualization.</div>
+<div class="five-caption">One system can look very different depending on which quality dimension we examine.</div>
 </div>
 </section>
 
 <section class="section">
-<div class="kicker">From the Original Lecture</div>
+<div class="kicker">Five Quality Dimensions</div>
 <h2>The five attributes, preserved</h2>
 
 <div class="attribute-rail">
@@ -154,9 +155,9 @@ a{color:inherit}
 </section>
 
 <section class="section">
-<div class="kicker">Added Example · Mobile Banking</div>
+<div class="kicker">Example · Mobile Banking</div>
 <h2>The User Experience Lab</h2>
-<p>This example is added to clarify how several attributes can appear in one system.</p>
+<p>Several quality attributes can appear simultaneously in the same system.</p>
 
 <div class="exp-lab">
 <div class="phone-scene">
@@ -183,7 +184,7 @@ a{color:inherit}
 <section class="section">
 <div class="kicker">Reliability as a Timeline</div>
 <h2>“Works once” is not reliability</h2>
-<p>The source definition says the system should do what it is required to do without failing. This added timeline turns that idea into a visual memory.</p>
+<p>Reliability means doing what is required without failing across repeated use and time.</p>
 
 <div class="reliability-line">
 <div class="timeline">
@@ -201,7 +202,7 @@ a{color:inherit}
 <section class="section">
 <div class="kicker">Maintainability</div>
 <h2>The Software Workshop</h2>
-<p>The lecture's definition is simple: software should be easy to change. This added visual shows what that feels like for an engineer.</p>
+<p>Maintainable software is easier and safer to change as needs evolve.</p>
 
 <div class="workshop">
 <div class="work-head"><span>CHANGE REQUEST: add concurrent prerequisite approval</span><span>ENGINEER VIEW</span></div>
@@ -227,7 +228,7 @@ a{color:inherit}
 <section class="section">
 <div class="kicker">Reusability</div>
 <h2>The Component Factory</h2>
-<p>The source states that reusable parts can be used in other projects so reprogramming is not needed. This added example visualizes that idea.</p>
+<p>Reusable parts can serve other projects without rebuilding the same capability from scratch.</p>
 
 <div class="reuse-factory">
 <div class="parts">
@@ -244,9 +245,9 @@ a{color:inherit}
 </section>
 
 <section class="section">
-<div class="kicker">Added Engineering Insight</div>
+<div class="kicker">Engineering Trade-offs</div>
 <h2>Quality attributes can compete</h2>
-<p>The lecture lists the attributes but does not explicitly present trade-offs between them. The following is an added engineering interpretation: improving one attribute can sometimes make another harder or more expensive to achieve.</p>
+<p>Improving one quality attribute can sometimes make another harder or more expensive to achieve.</p>
 
 <div class="tradeoff">
 <div class="sliders">

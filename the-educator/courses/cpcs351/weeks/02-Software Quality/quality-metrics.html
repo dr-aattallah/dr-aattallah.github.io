@@ -165,7 +165,7 @@ h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c
 <nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
 </header>
 
-<div class="mobile"><a href="index.html">Topic 02</a><a href="quality-metrics.html">Metrics</a><a href="../../index.html">Course Home</a></div>
+<div class="mobile"><a href="index.html">Topic 02</a><a class="active" href="quality-metrics.html">Metrics</a><a href="../../index.html">Course Home</a></div>
 
 <div class="layout">
 <aside class="side">
@@ -174,8 +174,9 @@ h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c
 <a href="index.html">1. Software Quality Assurance</a>
 <a href="verification-validation.html">2. Verification &amp; Validation</a>
 <a class="active" href="quality-metrics.html">3. Quality Measurements &amp; Metrics</a>
-<span class="future">4. Quality Attributes</span>
-<span class="future">5. Short vs. Long Term Quality</span>
+<a href="quality-attributes.html">4. Quality Attributes</a>
+<a href="short-long-term-quality.html">5. Short vs. Long Term Quality</a>
+<a href="se-vs-cs.html">6. Software Engineering vs. Computer Science</a>
 <div class="label">Course</div>
 <a href="../01-introduction/index.html">Topic 01 · Introduction</a>
 <a href="../../index.html">Course Home</a>
@@ -197,9 +198,9 @@ h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c
 </section>
 
 <section class="section">
-<div class="kicker">From the Original Lecture</div>
+<div class="kicker">Measurement → Metric</div>
 <h2>From measurement to metric</h2>
-<p>The lecture introduces an important progression: first we measure software attributes objectively, then we use standard measurements as metrics, and finally we use quality metrics to assess software quality.</p>
+<p>First we measure software attributes objectively, then standardize useful measurements as metrics, and use quality metrics to assess software quality.</p>
 
 <div class="definition-ribbon">
 <div class="def-block">
@@ -238,14 +239,14 @@ h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c
 <div class="ray r5"><b>OO · Object-Oriented</b><span>methods · inheritance · children · coupling · response · cohesion</span></div>
 </div>
 </div>
-<div class="prism-caption">The lecture explicitly identifies five metric families: Requirements (R), Design (D), Implementation (C), System (S), and Object-Oriented quality metrics.</div>
+<div class="prism-caption">Five useful measurement views are Requirements (R), Design (D), Implementation (C), System (S), and Object-Oriented quality metrics.</div>
 </div>
 </section>
 
 <section class="section">
 <div class="kicker">Requirements Metrics</div>
 <h2>The Requirements Quality Compass</h2>
-<p>Before measuring code, we can measure the quality of what we asked the team to build. The source names four requirements-quality properties.</p>
+<p>Before measuring code, we can measure the quality of what we asked the team to build. Four essential properties are un-ambiguity, completeness, correctness, and consistency.</p>
 
 <div class="req-compass">
 <div class="compass">
@@ -257,7 +258,7 @@ h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c
 </div>
 
 <div class="req-explain">
-<div><b>Examples explicitly listed in the lecture</b><p>Number of user interviews and number of “shall” statements are examples of requirements metrics.</p></div>
+<div><b>Requirements Measures</b><p>Number of user interviews and number of “shall” statements are examples of requirements metrics.</p></div>
 <div><b>Important interpretation</b><p>More requirements do not automatically mean better requirements. The four quality properties help us ask whether the set is actually useful.</p></div>
 </div>
 </div>
@@ -305,7 +306,7 @@ h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c
 <section class="section">
 <div class="kicker">Implementation Metrics</div>
 <h2>The Code Lab</h2>
-<p>At implementation level, the lecture moves to code-oriented measurements. Here the same code can be examined from several quantitative angles.</p>
+<p>At implementation level, the same code can be examined from several quantitative angles.</p>
 
 <div class="code-lab">
 <div class="code-head"><span>registration-service.java</span><span>IMPLEMENTATION METRICS</span></div>
@@ -331,7 +332,7 @@ h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c
 <section class="section">
 <div class="kicker">Object-Oriented Quality Metrics</div>
 <h2>The Class Ecosystem</h2>
-<p>Object-oriented systems introduce another layer of structure. The lecture names six OO quality metrics.</p>
+<p>Object-oriented systems introduce another layer of structure that can be measured through classes, inheritance, coupling, response, and cohesion.</p>
 
 <div class="oo-eco">
 <div class="tree">
@@ -419,7 +420,7 @@ h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c
 
 <div class="take">
 <b>Key Takeaway</b>
-<p>Software measurements objectively quantify attributes. Metrics standardize those measurements. The lecture organizes software-quality metrics across requirements, design, implementation, system, and object-oriented software, with specific measures such as requirement consistency, fan-in/fan-out, cohesion, coupling, defects/KLOC, cyclomatic complexity, inheritance depth, class coupling, response for a class, and lack of cohesion in methods.</p>
+<p>Software measurements objectively quantify attributes. Metrics standardize those measurements across requirements, design, implementation, system, and object-oriented software, using measures such as requirement consistency, fan-in/fan-out, cohesion, coupling, defects/KLOC, cyclomatic complexity, inheritance depth, class coupling, response for a class, and lack of cohesion in methods.</p>
 </div>
 
 <div class="think">

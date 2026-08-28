@@ -71,16 +71,17 @@ a{color:inherit}
 <a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
 <nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
 </header>
-<div class="mobile"><a href="index.html">Topic 02</a><a href="verification-validation.html">V&amp;V</a><a href="../../index.html">Course Home</a></div>
+<div class="mobile"><a href="index.html">Topic 02</a><a class="active" href="verification-validation.html">V&amp;V</a><a href="../../index.html">Course Home</a></div>
 <div class="layout">
 <aside class="side">
 <div class="course"><small>CPCS 351 · TOPIC 02</small><strong>Software Quality</strong></div>
 <div class="label">Topic 02</div>
 <a href="index.html">1. Software Quality Assurance</a>
 <a class="active" href="verification-validation.html">2. Verification &amp; Validation</a>
-<span class="future">3. Quality Metrics</span>
-<span class="future">4. Quality Attributes</span>
-<span class="future">5. Short vs. Long Term Quality</span>
+<a href="quality-metrics.html">3. Quality Measurements &amp; Metrics</a>
+<a href="quality-attributes.html">4. Quality Attributes</a>
+<a href="short-long-term-quality.html">5. Short vs. Long Term Quality</a>
+<a href="se-vs-cs.html">6. Software Engineering vs. Computer Science</a>
 <div class="label">Course</div>
 <a href="../01-introduction/index.html">Topic 01 · Introduction</a>
 <a href="../../index.html">Course Home</a>
@@ -102,9 +103,9 @@ a{color:inherit}
 </section>
 
 <section class="section">
-<div class="kicker">Original Lecture · Verification</div>
+<div class="kicker">Verification</div>
 <h2>Are we building the product right?</h2>
-<p>Verification checks that an <strong>implementation conforms to its specification</strong>. The lecture also emphasizes an abstraction relationship: a lower-level abstraction implements a higher-level abstraction.</p>
+<p>Verification checks that an <strong>implementation conforms to its specification</strong>. A lower-level abstraction implements a higher-level abstraction.</p>
 <div class="ladder">
 <div class="ladder-row">
 <div class="level"><b>Higher-Level Abstraction</b><span>Requirements specification: what the design must satisfy.</span></div>
@@ -116,9 +117,9 @@ a{color:inherit}
 </section>
 
 <section class="section">
-<div class="kicker">Original Lecture · Validation</div>
+<div class="kicker">Validation</div>
 <h2>Are we building the right product?</h2>
-<p>Validation checks the correspondence between a model and the <strong>real world</strong>. For example, a functional specification must correspond to the customer's real needs. The lecture describes validation as a process that seeks to <strong>refute a model</strong>, and identifies functional testing as a validation technique.</p>
+<p>Validation checks the correspondence between a model and the <strong>real world</strong>. A functional specification must correspond to the customer's real needs. Validation seeks to <strong>refute a model</strong>; functional testing is a validation technique.</p>
 </section>
 
 <section class="section">
@@ -159,9 +160,9 @@ a{color:inherit}
 </section>
 
 <section class="section">
-<div class="kicker">Techniques in the Original Slides</div>
+<div class="kicker">V&amp;V Techniques</div>
 <h2>Software V&amp;V uses several techniques</h2>
-<p>The lecture names inspection, walkthrough, testing, peer review, and desk checking.</p>
+<p>Five important techniques are inspection, walkthrough, testing, peer review, and desk checking.</p>
 <div class="techniques">
 <div class="tech"><div class="icon">⌕</div><b>Inspection</b><span>Systematic examination using criteria or checklists.</span></div>
 <div class="tech"><div class="icon">↪</div><b>Walkthrough</b><span>Developer leads a manual step-by-step examination.</span></div>
@@ -191,7 +192,7 @@ a{color:inherit}
 <section class="section">
 <div class="kicker">Static Verification Details</div>
 <h2>Inspection, walkthrough, and desk checking</h2>
-<p>The original slides distinguish these activities rather than treating every review as the same thing.</p>
+<p>These activities serve different purposes and should not be treated as interchangeable reviews.</p>
 
 <div class="compare">
 <div class="cmp walk">
@@ -221,7 +222,7 @@ a{color:inherit}
 </div>
 
 <div class="definition" style="margin-top:16px;background:#fff;border:1px solid var(--line);padding:18px;border-radius:14px;color:#5c6d82;font-size:13px;line-height:1.7">
-<strong style="color:var(--ink)">Desk checking:</strong> code reading performed by a single person. The slide characterizes it as informal and less effective than walkthrough or inspection.
+<strong style="color:var(--ink)">Desk checking:</strong> code reading performed by a single person. It is informal and generally less effective than walkthrough or inspection.
 <br><br>
 <strong style="color:var(--ink)">Program inspection can reveal:</strong> logical errors, anomalies such as an uninitialized variable, and non-compliance with standards.
 </div>
@@ -246,7 +247,7 @@ a{color:inherit}
 <section class="section">
 <div class="kicker">V&amp;V Across the Life Cycle</div>
 <h2>Quality follows every major artifact</h2>
-<p>The original life-cycle diagram connects V&amp;V to requirements, design, code, integrated software, deployment, and operation—not just the final executable.</p>
+<p>V&amp;V applies to requirements, design, code, integrated software, deployment, and operation—not just the final executable.</p>
 
 <div class="lifecycle">
 <div class="lc-grid">
@@ -271,16 +272,16 @@ a{color:inherit}
 <div class="evidence">
 <div class="bubble static"><strong>Static Validation</strong>Check and make sure that the SRS, design, and code are correct.</div>
 <div class="bubble dynamic"><strong>Dynamic Validation &amp; Testing</strong>Ensure that the software executes and produces expected results.</div>
-<div class="artifact-map"><strong>Artifacts shown in the source diagram:</strong><br>SRS → software design → code modules → integrated software → software to deploy → operational system.</div>
+<div class="artifact-map"><strong>Artifacts across the life cycle:</strong><br>SRS → software design → code modules → integrated software → software to deploy → operational system.</div>
 </div>
 </div>
 </div>
 </section>
 
 <section class="section">
-<div class="kicker">Visual Summary from the Lecture</div>
+<div class="kicker">Two Perspectives on V&amp;V</div>
 <h2>Developer point of view vs. customer point of view</h2>
-<p>The final V&amp;V visual in the lecture adds a useful perspective distinction.</p>
+<p>V&amp;V can also be understood through two complementary perspectives.</p>
 <div class="pov">
 <div class="pov-card">
 <h3>Verification</h3>
