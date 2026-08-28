@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software Quality Attributes | CPCS 351</title>
+<meta name="description" content="CPCS 351 Software Engineering I — Software Quality Attributes.">
+<style>
+:root{
+  --ink:#182236;--muted:#617087;--line:#e4e9f0;--soft:#f8fafc;
+  --blue:#2f80ed;--blue2:#edf6ff;--mint:#56ceb1;--mint2:#ecfaf6;
+  --orange:#f2a45f;--orange2:#fff4e9;--purple:#8a75db;--purple2:#f3efff;
+  --red:#dd6262;--red2:#fff0f0;--side:238px
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+.top{height:60px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 14px;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}.mark{width:29px;height:29px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--mint),var(--orange));display:grid;place-items:center;color:#fff;font-size:21px}.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
+.layout{display:grid;grid-template-columns:var(--side) 1fr}.side{height:calc(100vh - 60px);position:sticky;top:60px;overflow:auto;border-right:1px solid var(--line);background:#fafbfc;padding:24px 14px}.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}.course small,.label{font-size:11px;font-weight:850;color:#8e9aad;letter-spacing:.07em;text-transform:uppercase}.course strong{display:block;margin-top:7px;font-size:15px;line-height:1.35}.label{margin:18px 0 8px}.side a,.side span{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5c6d85;font-size:13px;font-weight:650;line-height:1.35}.side a.active{background:#e9f3ff;color:#1269ca;font-weight:850}.side span.future{color:#a3adba}
+.content{width:min(900px,calc(100% - 48px));margin:auto;padding:58px 0 90px}.crumb{color:#8a97a8;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}.hero{display:grid;grid-template-columns:1fr 270px;gap:34px;align-items:center}.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.07em;text-transform:uppercase}.eyebrow{color:#2e76ad}.eyebrow:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mint);margin-right:7px}h1{font-size:clamp(43px,6vw,64px);line-height:1;letter-spacing:-.045em;margin:14px 0 20px}.lead{color:var(--muted);font-size:18px;line-height:1.75}.mentor{border:1px solid var(--line);border-radius:18px;overflow:hidden}.mentor .pic{height:220px;background:radial-gradient(circle at top,#fff,#f1f6fb);display:flex;align-items:flex-end}.mentor img{width:100%;height:100%;object-fit:contain;object-position:center bottom}.mentor p{margin:0;padding:17px;border-top:1px solid var(--line);font-size:14px;line-height:1.65;font-weight:650;color:#46556b}
+.section{margin-top:64px}.kicker{color:#96a1b1;margin-bottom:7px}h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c;line-height:1.8;font-size:16px}
+
+/* MAIN VISUAL: FIVE VIEWS */
+.five-views{margin-top:28px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:linear-gradient(180deg,#fbfcff,#f7f9fc)}
+.view-stage{position:relative;min-height:540px;max-width:820px;margin:auto}
+.system-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:190px;height:190px;border-radius:36px;background:#182236;color:#fff;display:grid;place-items:center;text-align:center;padding:20px;box-shadow:0 20px 50px rgba(24,34,54,.17)}
+.system-core strong{font-size:20px;line-height:1.15}.system-core span{display:block;margin-top:7px;color:#cbd5e1;font-size:11px;line-height:1.45}
+.viewer{position:absolute;width:190px;padding:16px 17px;border-radius:17px;border:1px solid var(--line);background:#fff;box-shadow:0 12px 28px rgba(30,43,65,.06)}
+.viewer .who{font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#8c98aa}.viewer h3{margin:6px 0 7px;font-size:17px}.viewer p{margin:0;color:#69778b;font-size:11.5px;line-height:1.55}
+.v1{left:20px;top:40px;background:var(--blue2)}.v2{right:20px;top:40px;background:var(--mint2)}.v3{right:5px;bottom:50px;background:var(--orange2)}.v4{left:5px;bottom:50px;background:var(--purple2)}.v5{left:50%;bottom:0;transform:translateX(-50%);background:var(--red2)}
+.connector{position:absolute;height:2px;background:#ccd5df;transform-origin:left center}.c1{width:210px;left:196px;top:145px;transform:rotate(25deg)}.c2{width:210px;right:196px;top:145px;transform:rotate(155deg)}.c3{width:205px;right:170px;bottom:154px;transform:rotate(205deg)}.c4{width:205px;left:170px;bottom:154px;transform:rotate(-25deg)}.c5{width:95px;left:50%;bottom:120px;transform:translateX(-50%) rotate(90deg)}
+.five-caption{border-top:1px solid var(--line);padding:18px 22px;background:#fff;color:#647389;font-size:13px;line-height:1.65}
+
+/* SOURCE ATTRIBUTES */
+.attribute-rail{margin-top:25px;display:grid;gap:12px}
+.attr{display:grid;grid-template-columns:190px 1fr;align-items:center;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.attr-name{padding:20px;font-weight:900;font-size:17px}.attr-desc{padding:20px;color:#617087;font-size:13px;line-height:1.65;border-left:1px solid var(--line)}
+.attr:nth-child(1) .attr-name{background:var(--blue2);color:#296da6}.attr:nth-child(2) .attr-name{background:var(--mint2);color:#2c7f6a}.attr:nth-child(3) .attr-name{background:var(--orange2);color:#9a612e}.attr:nth-child(4) .attr-name{background:var(--purple2);color:#68549e}.attr:nth-child(5) .attr-name{background:var(--red2);color:#a45454}
+
+/* EXPERIENCE LAB */
+.exp-lab{margin-top:26px;border:1px solid var(--line);border-radius:22px;padding:25px;background:#fbfcfd}
+.phone-scene{display:grid;grid-template-columns:245px 1fr;gap:28px;align-items:center}
+.phone{width:220px;height:390px;border:10px solid #1e293b;border-radius:34px;background:#fff;margin:auto;box-shadow:0 18px 40px rgba(30,43,65,.13);overflow:hidden}
+.phone-top{height:25px;background:#1e293b;width:90px;border-radius:0 0 12px 12px;margin:auto}.screen{padding:18px}.screen .logo{height:54px;border-radius:14px;background:var(--blue2);display:grid;place-items:center;font-weight:900;color:#2b6fa7;margin-bottom:18px}.fake-field{height:36px;border:1px solid var(--line);border-radius:9px;margin-bottom:9px}.fake-button{height:40px;border-radius:10px;background:var(--blue);margin-top:16px}.exp-notes{display:grid;gap:12px}.exp-note{padding:16px 18px;border-left:4px solid var(--line);background:#fff}.exp-note b{font-size:13px}.exp-note p{margin:5px 0 0;color:#68768a;font-size:12px;line-height:1.6}.exp-note.usable{border-color:var(--blue)}.exp-note.efficient{border-color:var(--mint)}.exp-note.reliable{border-color:var(--orange)}
+
+/* RELIABILITY LINE */
+.reliability-line{margin-top:25px;border:1px solid var(--line);border-radius:20px;padding:24px;background:linear-gradient(180deg,#fff,#fbfcfd)}
+.timeline{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;align-items:center}.moment{text-align:center}.dot{width:20px;height:20px;border-radius:50%;margin:auto;background:var(--mint);box-shadow:0 0 0 7px var(--mint2)}.moment.fail .dot{background:var(--red);box-shadow:0 0 0 7px var(--red2)}.moment b{display:block;margin-top:13px;font-size:11px}.moment span{display:block;margin-top:4px;color:#718095;font-size:10px;line-height:1.4}
+.reliability-msg{margin-top:19px;text-align:center;color:#637287;font-size:13px;line-height:1.65}
+
+/* MAINTAINABILITY WORKSHOP */
+.workshop{margin-top:25px;border:1px solid #27354a;border-radius:20px;overflow:hidden;background:#111a28;color:#d6dfe9}
+.work-head{padding:13px 17px;border-bottom:1px solid #27354a;color:#9fb0c3;font-size:11px;font-weight:850;display:flex;justify-content:space-between}
+.work-body{display:grid;grid-template-columns:1fr 1fr;min-height:270px}.messy,.clean{padding:22px}.messy{border-right:1px solid #27354a}
+.code-title{font-size:12px;font-weight:900;margin-bottom:14px;color:#fff}.code-lines{display:grid;gap:8px}.code-line{height:10px;border-radius:999px;background:#2a3a50}.messy .code-line:nth-child(2),.messy .code-line:nth-child(5){width:95%}.messy .code-line:nth-child(3){width:40%}.clean .code-line{background:#24483f}.clean .code-line:nth-child(2){width:75%}.clean .code-line:nth-child(3){width:58%}.clean .code-line:nth-child(4){width:82%}
+.work-note{margin-top:18px;color:#aeb9c7;font-size:11.5px;line-height:1.55}
+
+/* REUSE FACTORY */
+.reuse-factory{margin-top:26px;border:1px solid var(--line);border-radius:22px;padding:25px;background:linear-gradient(180deg,#fbfcff,#f8f9fd)}
+.parts{display:grid;grid-template-columns:1fr 70px 1fr;gap:10px;align-items:center}
+.library{display:grid;grid-template-columns:1fr 1fr;gap:10px}.piece{padding:16px;border-radius:13px;border:1px solid var(--line);background:#fff;text-align:center;font-size:12px;font-weight:850}.piece:nth-child(1){background:var(--blue2)}.piece:nth-child(2){background:var(--mint2)}.piece:nth-child(3){background:var(--orange2)}.piece:nth-child(4){background:var(--purple2)}
+.factory-arrow{text-align:center;font-size:28px;color:#9ba6b5;font-weight:900}.new-system{padding:25px;border-radius:18px;background:#182236;color:#fff;text-align:center}.new-system b{font-size:18px}.new-system span{display:block;margin-top:8px;color:#cbd5e1;font-size:11.5px;line-height:1.55}
+
+/* TRADEOFF */
+.tradeoff{margin-top:26px;border-radius:22px;padding:25px;border:1px solid var(--line);background:#fff}
+.sliders{display:grid;gap:15px}.slider-row{display:grid;grid-template-columns:150px 1fr 120px;align-items:center;gap:12px}.slider-row b{font-size:12px}.track{height:12px;background:#edf0f4;border-radius:999px;overflow:hidden}.fill{height:100%;border-radius:999px}.f-us{width:82%;background:var(--blue)}.f-eff{width:62%;background:var(--mint)}.f-rel{width:93%;background:var(--orange)}.f-main{width:75%;background:var(--purple)}.f-reuse{width:48%;background:var(--red)}.slider-row span{font-size:10.5px;color:#778396}
+.tradeoff p{margin:18px 0 0;color:#68768a;font-size:12px;line-height:1.65}
+
+/* STORY */
+.story{margin-top:24px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.panel{border:1px solid var(--line);border-radius:15px;padding:12px;background:#fff;overflow:hidden}.visual{height:110px;border-radius:10px;background:linear-gradient(135deg,#f5f9ff,#f7fbfa);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;margin-bottom:10px}.visual img{width:100%;height:100%;object-fit:contain;object-position:center bottom}.panel .no{font-size:9px;font-weight:900;color:#8794a6;text-transform:uppercase}.panel h4{margin:5px 0 6px;font-size:13px}.panel p{margin:0;color:#68768a;font-size:10.8px;line-height:1.5}.panel:nth-child(1){border-top:4px solid var(--blue)}.panel:nth-child(2){border-top:4px solid var(--mint)}.panel:nth-child(3){border-top:4px solid var(--orange)}.panel:nth-child(4){border-top:4px solid var(--purple)}.panel:nth-child(5){border-top:4px solid var(--red)}
+
+/* closure */
+.note{margin-top:30px;border-radius:16px;padding:22px;background:var(--purple2);border:1px solid #e1daf7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}.note b{color:#6955a0}.note p{margin:0 0 20px;color:#5e5678;line-height:1.7;font-size:14px}.note img{width:100%;max-height:150px;object-fit:contain;object-position:bottom}.take{margin-top:28px;padding:22px;border-left:4px solid var(--mint);border-radius:15px;background:var(--mint2)}.take b{color:#317868}.take p{margin:0;color:#45675e;line-height:1.7;font-weight:650;font-size:14px}.think{margin-top:30px;border:1px solid #d5e8ff;background:var(--blue2);border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end;overflow:hidden}.think .tlabel{color:#2d6fa7}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#496681;line-height:1.7;font-size:14px}.think img{width:100%;max-height:155px;object-fit:contain;object-position:bottom}.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:#182236;color:#fff;border-color:#182236}.mobile{display:none}
+
+@media(max-width:940px){.story{grid-template-columns:1fr 1fr}.view-stage{min-height:650px}.v5{bottom:10px}}
+@media(max-width:850px){.layout{display:block}.side{display:none}.mobile{display:block;padding:10px 14px;border-bottom:1px solid var(--line);overflow:auto;white-space:nowrap}.mobile a{display:inline-block;padding:8px 10px;margin-right:5px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-size:12px;font-weight:700}.content{width:min(100% - 28px,900px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
+@media(max-width:720px){.view-stage{display:grid;gap:10px;padding:20px;min-height:0}.system-core,.viewer{position:static;width:auto;transform:none}.system-core{height:auto;border-radius:16px;padding:22px}.connector{display:none}.attr{grid-template-columns:1fr}.attr-desc{border-left:0;border-top:1px solid var(--line)}.phone-scene,.parts,.work-body{grid-template-columns:1fr}.messy{border-right:0;border-bottom:1px solid #27354a}.factory-arrow{transform:rotate(90deg)}.slider-row{grid-template-columns:110px 1fr}.slider-row span{grid-column:2}.story{grid-template-columns:1fr}}
+@media(max-width:520px){.links a:nth-child(2){display:none}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}.timeline{grid-template-columns:repeat(3,1fr);gap:24px 8px}}
+</style>
+</head>
+<body>
+<header class="top">
+<a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
+<nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+
+<div class="mobile"><a href="index.html">Topic 02</a><a href="quality-attributes.html">Attributes</a><a href="../../index.html">Course Home</a></div>
+
+<div class="layout">
+<aside class="side">
+<div class="course"><small>CPCS 351 · TOPIC 02</small><strong>Software Quality</strong></div>
+<div class="label">Topic 02</div>
+<a href="index.html">1. Software Quality Assurance</a>
+<a href="verification-validation.html">2. Verification &amp; Validation</a>
+<a href="quality-metrics.html">3. Quality Measurements &amp; Metrics</a>
+<a class="active" href="quality-attributes.html">4. Quality Attributes</a>
+<span class="future">5. Short vs. Long Term Quality</span>
+<div class="label">Course</div>
+<a href="../01-introduction/index.html">Topic 01 · Introduction</a>
+<a href="../../index.html">Course Home</a>
+</aside>
+
+<main><article class="content">
+<div class="crumb"><a href="../../index.html">CPCS 351</a> › <a href="index.html">Topic 02</a> › Quality Attributes</div>
+
+<section class="hero">
+<div>
+<div class="eyebrow">Topic 02 · Lesson 04</div>
+<h1>Software Quality Attributes</h1>
+<p class="lead">A software system can be excellent in one dimension and weak in another. The lecture identifies five important quality attributes: usability, efficiency, reliability, maintainability, and reusability.</p>
+</div>
+<div class="mentor">
+<div class="pic"><img src="../../assets/images/mentor-06-pointing.png" alt="Software Engineering Mentor introducing quality attributes"></div>
+<p>“Do not ask only ‘Is this good software?’ Ask: good for whom, good in what way, and good for how long?”</p>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Visual Hook</div>
+<h2>Five views of the same software</h2>
+<p>The same application looks different depending on who—or what—is observing it.</p>
+
+<div class="five-views">
+<div class="view-stage">
+<div class="connector c1"></div><div class="connector c2"></div><div class="connector c3"></div><div class="connector c4"></div><div class="connector c5"></div>
+
+<div class="system-core">
+<div><strong>ONE SOFTWARE<br>SYSTEM</strong><span>Five different quality questions</span></div>
+</div>
+
+<div class="viewer v1"><span class="who">The User Sees</span><h3>Usability</h3><p>Can I learn it quickly and get my job done easily?</p></div>
+<div class="viewer v2"><span class="who">The Machine Sees</span><h3>Efficiency</h3><p>Does it avoid wasting CPU time, memory, and other resources?</p></div>
+<div class="viewer v3"><span class="who">Operations Sees</span><h3>Reliability</h3><p>Does it do what it is required to do without failing?</p></div>
+<div class="viewer v4"><span class="who">The Engineer Sees</span><h3>Maintainability</h3><p>Can it be changed easily when needs evolve?</p></div>
+<div class="viewer v5"><span class="who">The Next Project Sees</span><h3>Reusability</h3><p>Can useful parts be used elsewhere without reprogramming them?</p></div>
+</div>
+
+<div class="five-caption">Source-derived core idea: the lecture lists these five attributes and gives a concise operational meaning for each. The “five observers” metaphor is an added teaching visualization.</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">From the Original Lecture</div>
+<h2>The five attributes, preserved</h2>
+
+<div class="attribute-rail">
+<div class="attr"><div class="attr-name">Usability</div><div class="attr-desc">Users can learn it fast and get their job done easily.</div></div>
+<div class="attr"><div class="attr-name">Efficiency</div><div class="attr-desc">It does not waste resources such as CPU time and memory.</div></div>
+<div class="attr"><div class="attr-name">Reliability</div><div class="attr-desc">It does what it is required to do without failing.</div></div>
+<div class="attr"><div class="attr-name">Maintainability</div><div class="attr-desc">It can be easily changed.</div></div>
+<div class="attr"><div class="attr-name">Reusability</div><div class="attr-desc">Its parts can be used in other projects, so reprogramming is not needed.</div></div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Added Example · Mobile Banking</div>
+<h2>The User Experience Lab</h2>
+<p>This example is added to clarify how several attributes can appear in one system.</p>
+
+<div class="exp-lab">
+<div class="phone-scene">
+<div class="phone">
+<div class="phone-top"></div>
+<div class="screen">
+<div class="logo">Mobile Bank</div>
+<div class="fake-field"></div>
+<div class="fake-field"></div>
+<div class="fake-field"></div>
+<div class="fake-button"></div>
+</div>
+</div>
+
+<div class="exp-notes">
+<div class="exp-note usable"><b>Usability</b><p>A transfer can be completed with clear steps and understandable feedback.</p></div>
+<div class="exp-note efficient"><b>Efficiency</b><p>The app responds quickly and does not consume excessive battery, CPU, or memory.</p></div>
+<div class="exp-note reliable"><b>Reliability</b><p>The transfer either completes correctly or reports failure safely—without silently losing the transaction.</p></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Reliability as a Timeline</div>
+<h2>“Works once” is not reliability</h2>
+<p>The source definition says the system should do what it is required to do without failing. This added timeline turns that idea into a visual memory.</p>
+
+<div class="reliability-line">
+<div class="timeline">
+<div class="moment"><div class="dot"></div><b>08:00</b><span>works</span></div>
+<div class="moment"><div class="dot"></div><b>10:00</b><span>works</span></div>
+<div class="moment"><div class="dot"></div><b>12:00</b><span>works</span></div>
+<div class="moment fail"><div class="dot"></div><b>14:00</b><span>fails</span></div>
+<div class="moment"><div class="dot"></div><b>16:00</b><span>works</span></div>
+<div class="moment"><div class="dot"></div><b>18:00</b><span>works</span></div>
+</div>
+<p class="reliability-msg">A single successful execution proves very little about reliability. Reliability concerns dependable behavior over repeated use and time.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Maintainability</div>
+<h2>The Software Workshop</h2>
+<p>The lecture's definition is simple: software should be easy to change. This added visual shows what that feels like for an engineer.</p>
+
+<div class="workshop">
+<div class="work-head"><span>CHANGE REQUEST: add concurrent prerequisite approval</span><span>ENGINEER VIEW</span></div>
+<div class="work-body">
+<div class="messy">
+<div class="code-title">Hard to Maintain</div>
+<div class="code-lines">
+<div class="code-line"></div><div class="code-line"></div><div class="code-line"></div><div class="code-line"></div><div class="code-line"></div><div class="code-line"></div>
+</div>
+<div class="work-note">The rule is duplicated across unrelated modules. One policy change requires risky edits in many places.</div>
+</div>
+<div class="clean">
+<div class="code-title">Easier to Maintain</div>
+<div class="code-lines">
+<div class="code-line"></div><div class="code-line"></div><div class="code-line"></div><div class="code-line"></div><div class="code-line"></div>
+</div>
+<div class="work-note">The rule is localized behind a clear responsibility. The change is easier to understand and safer to implement.</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Reusability</div>
+<h2>The Component Factory</h2>
+<p>The source states that reusable parts can be used in other projects so reprogramming is not needed. This added example visualizes that idea.</p>
+
+<div class="reuse-factory">
+<div class="parts">
+<div class="library">
+<div class="piece">Authentication</div>
+<div class="piece">Notification</div>
+<div class="piece">Logging</div>
+<div class="piece">Payment Adapter</div>
+</div>
+<div class="factory-arrow">→</div>
+<div class="new-system"><b>New Application</b><span>Reuse proven parts instead of rebuilding every capability from scratch.</span></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Added Engineering Insight</div>
+<h2>Quality attributes can compete</h2>
+<p>The lecture lists the attributes but does not explicitly present trade-offs between them. The following is an added engineering interpretation: improving one attribute can sometimes make another harder or more expensive to achieve.</p>
+
+<div class="tradeoff">
+<div class="sliders">
+<div class="slider-row"><b>Usability</b><div class="track"><div class="fill f-us"></div></div><span>clearer interaction</span></div>
+<div class="slider-row"><b>Efficiency</b><div class="track"><div class="fill f-eff"></div></div><span>resource discipline</span></div>
+<div class="slider-row"><b>Reliability</b><div class="track"><div class="fill f-rel"></div></div><span>strong protection</span></div>
+<div class="slider-row"><b>Maintainability</b><div class="track"><div class="fill f-main"></div></div><span>easy evolution</span></div>
+<div class="slider-row"><b>Reusability</b><div class="track"><div class="fill f-reuse"></div></div><span>generalized components</span></div>
+</div>
+<p>Example: generalizing a component for reuse can introduce abstraction and complexity. Heavy reliability mechanisms can consume additional resources. Engineering is about choosing an appropriate balance for the system's context.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Illustrated Story</div>
+<h2>One release, five reactions</h2>
+
+<div class="story">
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-04-happy.png" alt=""></div>
+<span class="no">Panel 1</span><h4>The user smiles</h4>
+<p>“I learned it quickly.” Usability looks strong.</p>
+</div>
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div>
+<span class="no">Panel 2</span><h4>The device struggles</h4>
+<p>CPU and memory usage spike. Efficiency looks weak.</p>
+</div>
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div>
+<span class="no">Panel 3</span><h4>Operations sees failures</h4>
+<p>The system crashes under repeated load. Reliability becomes the concern.</p>
+</div>
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-11-serious.png" alt=""></div>
+<span class="no">Panel 4</span><h4>The engineer opens the code</h4>
+<p>A small change touches twelve modules. Maintainability is poor.</p>
+</div>
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
+<span class="no">Panel 5</span><h4>The next team asks</h4>
+<p>“Can we reuse any of this?” Reusability becomes visible.</p>
+</div>
+</div>
+</section>
+
+<div class="note">
+<div>
+<b>Mentor Insight</b>
+<p>There is no single “quality switch.” A system can be usable but inefficient, reliable but difficult to maintain, or reusable but unnecessarily complex. Quality has dimensions.</p>
+</div>
+<img src="../../assets/images/mentor-02-explaining.png" alt="Mentor explaining software quality dimensions">
+</div>
+
+<div class="take">
+<b>Key Takeaway</b>
+<p>The original lecture identifies five quality attributes: <strong>Usability</strong>, <strong>Efficiency</strong>, <strong>Reliability</strong>, <strong>Maintainability</strong>, and <strong>Reusability</strong>. Together they remind us that software quality is multidimensional rather than one final score.</p>
+</div>
+
+<div class="think">
+<div>
+<span class="tlabel">Think Like a Software Engineer</span>
+<h3>A system is extremely fast and never crashes—but users cannot figure out how to complete their tasks. Is it high-quality software?</h3>
+<p>Which attribute is strong? Which one is weak? Can one excellent attribute compensate for another that prevents users from succeeding?</p>
+</div>
+<img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about quality attributes">
+</div>
+
+<div class="nav">
+<a href="quality-metrics.html">← Quality Measurements &amp; Metrics</a>
+<a class="next" href="short-long-term-quality.html">Next · Short vs. Long Term Quality →</a>
+</div>
+
+</article></main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access") !== "granted"){
+  window.location.href="../../access.html";
+}
+</script>
+</body>
+</html>
