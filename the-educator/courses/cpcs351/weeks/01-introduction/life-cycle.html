@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software Life Cycle | CPCS 351</title>
+<meta name="description" content="CPCS 351 Software Engineering I — Software Life Cycle Activities.">
+<style>
+:root{
+  --ink:#172033;--muted:#657187;--line:#e6eaf0;--soft:#f7f9fc;
+  --blue:#2f80ed;--blue-soft:#eef6ff;--mint:#5fd1b3;--mint-soft:#effbf7;
+  --orange:#f2a45b;--orange-soft:#fff6ed;--purple:#8b74df;--purple-soft:#f4f1ff;
+  --sidebar:250px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:100;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800}
+.brand-mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--mint),var(--orange));position:relative}
+.brand-mark:before,.brand-mark:after{content:"";position:absolute;background:#fff;border-radius:20px}
+.brand-mark:before{width:16px;height:4px;left:7px;top:13px}.brand-mark:after{width:4px;height:16px;left:13px;top:7px}
+.top-links{display:flex;gap:5px}.top-links a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:650;padding:9px 11px;border-radius:9px}.top-links a:hover{background:var(--soft);color:var(--ink)}
+
+.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);min-height:calc(100vh - 64px)}
+.sidebar{position:sticky;top:64px;height:calc(100vh - 64px);overflow:auto;padding:25px 14px 30px;border-right:1px solid var(--line);background:#fafbfc}
+.sidebar-course{padding:0 12px 18px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.sidebar-course small{display:block;color:#8d98a8;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.sidebar-course strong{display:block;font-size:15px;line-height:1.35}
+.side-title{padding:7px 12px;margin-top:10px;color:#98a2b3;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.side-link{display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#5f6c80;font-size:13px;font-weight:650;line-height:1.4}
+.side-link:hover{background:#f0f3f7;color:var(--ink)} .side-link.active{background:#eaf3ff;color:#1768c4;font-weight:800}
+
+main{min-width:0}.content{width:min(900px,calc(100% - 48px));margin:auto;padding:64px 0 90px}
+.breadcrumb{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px;color:#8c97a7;font-size:13px;font-weight:650}.breadcrumb a{text-decoration:none}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:34px;align-items:center}
+.topic-label{display:inline-flex;align-items:center;gap:7px;color:#3175a4;font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}.topic-label:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint)}
+h1{margin:0;font-size:clamp(44px,6vw,68px);line-height:1;letter-spacing:-.045em}
+.lead{margin:22px 0 0;color:var(--muted);font-size:19px;line-height:1.75}
+
+.mentor-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.mentor-image{height:220px;display:flex;align-items:flex-end;justify-content:center;background:radial-gradient(circle at 50% 20%,#fff,#f2f7fb)}
+.mentor-image img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.mentor-message{padding:18px;border-top:1px solid var(--line)}
+.mentor-message blockquote{margin:0;color:#334155;font-size:15px;line-height:1.7;font-weight:650}
+.mentor-name{margin-top:10px;color:#3175a4;font-size:12px;font-weight:800}
+
+.section{margin-top:58px}.section-kicker{margin:0 0 7px;color:#98a2b3;font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.06em}
+h2{margin:0 0 14px;font-size:31px;letter-spacing:-.03em}.section>p{color:#536176;font-size:16px;line-height:1.8}
+
+.lifecycle-map{margin-top:26px;padding:26px;border:1px solid var(--line);border-radius:18px;background:#fbfcfe}
+.lifecycle-center{width:max-content;max-width:100%;margin:0 auto 22px;padding:12px 18px;border-radius:12px;background:var(--ink);color:#fff;font-weight:850}
+.tracks{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.track{padding:20px;border-radius:15px;border:1px solid var(--line);background:#fff}
+.track img{display:block;width:95px;height:95px;object-fit:contain;margin:0 auto 12px}
+.track h3{margin:0 0 8px;text-align:center;font-size:18px}.track p{margin:0;color:#667085;font-size:14px;line-height:1.7;text-align:center}
+.track.dev{background:var(--blue-soft)} .track.qa{background:var(--mint-soft)} .track.pm{background:var(--orange-soft)}
+
+.pqct-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.pqct{padding:14px;border-radius:12px;background:#fff;border:1px solid var(--line);text-align:center}
+.pqct strong{display:block;font-size:18px;margin-bottom:4px}.pqct span{font-size:12px;color:#667085}
+
+.story{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.story-panel{padding:14px;border:1px solid var(--line);border-radius:15px;background:#fff}
+.story-visual{height:120px;display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(135deg,#f6f9ff,#f7fbfa);border-radius:12px;overflow:hidden;margin-bottom:12px}
+.story-visual img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.story-panel strong{display:block;margin-bottom:6px;font-size:15px}.story-panel p{margin:0;color:#667085;font-size:13px;line-height:1.6}
+
+.interaction{margin-top:24px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.interaction-row{display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid var(--line)}
+.interaction-row:last-child{border-bottom:0}
+.interaction-key{padding:16px;background:#fafbfc;font-weight:800}
+.interaction-value{padding:16px;color:#5b677a;line-height:1.7}
+
+.takeaway{margin-top:30px;padding:22px;border-radius:15px;background:var(--blue-soft);border-left:4px solid var(--blue)}
+.takeaway strong{display:block;color:#2368b3;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.takeaway p{margin:0;color:#31475f;line-height:1.7;font-size:15px;font-weight:600}
+
+.think{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:20px;align-items:end;margin-top:35px;padding:24px 24px 0;border-radius:16px;background:var(--mint-soft);border:1px solid #d8f1e9;overflow:hidden}
+.think-label{color:#327867;font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase}.think h3{margin:8px 0;font-size:21px}.think p{margin:0 0 24px;color:#45685f;line-height:1.7}.think img{width:100%;max-height:170px;object-fit:contain;object-position:center bottom}
+
+.lesson-nav{display:flex;justify-content:space-between;gap:12px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+.nav-button{display:inline-flex;align-items:center;gap:9px;padding:13px 16px;border-radius:11px;text-decoration:none;font-size:14px;font-weight:800;border:1px solid var(--line);background:#fff;color:#526176}
+.nav-button.next{background:var(--ink);color:#fff;border-color:var(--ink)}
+footer{padding:25px 0;border-top:1px solid var(--line);color:#98a2b3;text-align:center;font-size:12px}.mobile-menu{display:none}
+
+@media(max-width:900px){.tracks{grid-template-columns:1fr}.story{grid-template-columns:1fr 1fr}.hero{grid-template-columns:1fr}.mentor-card{max-width:360px}.pqct-strip{grid-template-columns:1fr 1fr}}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{display:none}.mobile-menu{display:block;padding:11px 18px;background:#fafbfc;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}.mobile-menu a{display:inline-block;margin-right:5px;padding:8px 10px;background:#fff;border:1px solid var(--line);border-radius:8px;color:#59687c;text-decoration:none;font-size:12px;font-weight:700}.content{width:min(100% - 28px,900px);padding-top:45px}}
+@media(max-width:620px){.topbar{padding:0 13px}.top-links a:nth-child(2){display:none}h1{font-size:43px}.lead{font-size:17px}.story{grid-template-columns:1fr}.pqct-strip{grid-template-columns:1fr}.interaction-row{grid-template-columns:1fr}.interaction-key{border-bottom:1px solid var(--line)}.think{grid-template-columns:1fr}.lesson-nav{flex-direction:column}.nav-button{justify-content:center}}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html"><span class="brand-mark"></span><span>The Educator</span></a>
+  <nav class="top-links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+
+<div class="mobile-menu">
+  <a href="index.html">Overview</a><a href="teamwork.html">Teamwork</a><a href="life-cycle.html">Life Cycle</a>
+</div>
+
+<div class="layout">
+<aside class="sidebar">
+  <div class="sidebar-course"><small>CPCS 351 · Topic 01</small><strong>Introduction to Software Engineering</strong></div>
+  <div class="side-title">Topic 01</div>
+  <a class="side-link" href="index.html">Overview</a>
+  <a class="side-link" href="nature-of-software.html">1. Nature of Software</a>
+  <a class="side-link" href="what-is-se.html">2. What is Software Engineering?</a>
+  <a class="side-link" href="why-se.html">3. Why Software Engineering?</a>
+  <a class="side-link" href="teamwork.html">4. Teamwork Challenges</a>
+  <a class="side-link active" href="life-cycle.html">5. Software Life Cycle</a>
+  <a class="side-link" href="development-process.html">6. Development Process</a>
+  <a class="side-link" href="waterfall.html">7. Waterfall Process</a>
+  <a class="side-link" href="sqa.html">8. Software Quality Assurance</a>
+  <a class="side-link" href="project-management.html">9. Project Management</a>
+  <a class="side-link" href="oose.html">10. OO Software Engineering</a>
+  <div class="side-title">Course</div><a class="side-link" href="../../index.html">Course Home</a>
+</aside>
+
+<main>
+<article class="content">
+  <div class="breadcrumb"><a href="../../index.html">CPCS 351</a><span>›</span><a href="index.html">Topic 01</a><span>›</span><span>Software Life Cycle</span></div>
+
+  <section class="hero">
+    <div>
+      <div class="topic-label">Topic 01 · Section 5</div>
+      <h1>Software Life Cycle Activities</h1>
+      <p class="lead">Software engineering is not one activity. It is a coordinated set of life-cycle activities that move a system from idea to operation while managing quality, cost, time, and productivity.</p>
+    </div>
+
+    <div class="mentor-card">
+      <div class="mentor-image"><img src="../../assets/images/mentor-02-explaining.png" alt="Software Engineering Mentor explaining the life cycle"></div>
+      <div class="mentor-message">
+        <blockquote>“Think of the life cycle as three tracks running together—not three isolated jobs.”</blockquote>
+        <div class="mentor-name">— Your Software Engineering Mentor</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-kicker">From the Original Lecture</p>
+    <h2>Three interacting life-cycle tracks</h2>
+    <p>The original lecture identifies three interacting tracks: the Software Development Process, Software Quality Assurance, and Software Project Management.</p>
+
+    <div class="lifecycle-map">
+      <div class="lifecycle-center">Software Life Cycle</div>
+
+      <div class="tracks">
+        <div class="track dev">
+          <img src="../../assets/images/mentor-07-working-laptop.png" alt="">
+          <h3>Software Development Process</h3>
+          <p>Transforms the initial system concept into an operational software system.</p>
+        </div>
+
+        <div class="track qa">
+          <img src="../../assets/images/mentor-11-serious.png" alt="">
+          <h3>Software Quality Assurance</h3>
+          <p>Checks that development activities are performed properly and that software artifacts satisfy requirements and quality standards.</p>
+        </div>
+
+        <div class="track pm">
+          <img src="../../assets/images/mentor-06-pointing.png" alt="">
+          <h3>Software Project Management</h3>
+          <p>Plans, coordinates, monitors, and controls the development and quality activities.</p>
+        </div>
+      </div>
+
+      <div class="pqct-strip">
+        <div class="pqct"><strong>↓ Cost</strong><span>Use resources responsibly</span></div>
+        <div class="pqct"><strong>↓ Time to Market</strong><span>Deliver useful software sooner</span></div>
+        <div class="pqct"><strong>↑ Quality</strong><span>Meet requirements and standards</span></div>
+        <div class="pqct"><strong>↑ Productivity</strong><span>Deliver more useful value effectively</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-kicker">Visual Story</p>
+    <h2>One project, three tracks</h2>
+
+    <div class="story">
+      <div class="story-panel">
+        <div class="story-visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
+        <strong>1. The idea appears</strong>
+        <p>A business need or system concept is identified.</p>
+      </div>
+
+      <div class="story-panel">
+        <div class="story-visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div>
+        <strong>2. Development creates the solution</strong>
+        <p>The team analyzes, designs, implements, tests, and deploys the software.</p>
+      </div>
+
+      <div class="story-panel">
+        <div class="story-visual"><img src="../../assets/images/mentor-11-serious.png" alt=""></div>
+        <strong>3. Quality checks the work</strong>
+        <p>SQA verifies that the process is followed correctly and the artifacts meet requirements and quality expectations.</p>
+      </div>
+
+      <div class="story-panel">
+        <div class="story-visual"><img src="../../assets/images/mentor-06-pointing.png" alt=""></div>
+        <strong>4. Management keeps the project under control</strong>
+        <p>Plans, schedules, risks, people, cost, and progress are continuously monitored.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-kicker">How They Interact</p>
+    <h2>The tracks are connected</h2>
+
+    <div class="interaction">
+      <div class="interaction-row">
+        <div class="interaction-key">Development ↔ SQA</div>
+        <div class="interaction-value">Developers produce software artifacts; SQA evaluates whether the activities and artifacts satisfy required processes and quality standards.</div>
+      </div>
+
+      <div class="interaction-row">
+        <div class="interaction-key">Development ↔ Management</div>
+        <div class="interaction-value">Development work consumes time and resources; project management plans, schedules, coordinates, and monitors that work.</div>
+      </div>
+
+      <div class="interaction-row">
+        <div class="interaction-key">SQA ↔ Management</div>
+        <div class="interaction-value">Quality findings can reveal defects, risks, rework, or delays that affect project plans and management decisions.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-kicker">Modern Example</p>
+    <h2>University registration system</h2>
+    <p>Development implements course search, registration rules, prerequisites, APIs, and interfaces. SQA checks that requirements are satisfied and important workflows behave correctly. Project management coordinates the teams, deadlines, risks, and release date before registration opens.</p>
+  </section>
+
+  <div class="takeaway">
+    <strong>Key Takeaway</strong>
+    <p>Software engineering succeeds when development, quality assurance, and project management operate as coordinated life-cycle activities. Focusing on only one track creates blind spots.</p>
+  </div>
+
+  <div class="think">
+    <div>
+      <span class="think-label">Think Like a Software Engineer</span>
+      <h3>What happens if one track disappears?</h3>
+      <p>Imagine a team with excellent developers but no quality assurance or project management. What problems might appear? Then imagine a project with excellent planning but weak development. Compare the outcomes.</p>
+    </div>
+    <img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking">
+  </div>
+
+  <div class="lesson-nav">
+    <a class="nav-button" href="teamwork.html">← Teamwork Challenges</a>
+    <a class="nav-button next" href="development-process.html">Next: Development Process →</a>
+  </div>
+</article>
+
+<footer>CPCS 351 · Software Engineering I · The Educator</footer>
+</main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access") !== "granted"){
+  window.location.href="../../access.html";
+}
+</script>
+</body>
+</html>
