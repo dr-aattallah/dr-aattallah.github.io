@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Configuration Management | CPCS 351</title>
+<style>
+:root{
+  --ink:#172338;--muted:#63748a;--line:#dfe7ec;
+  --navy:#15334d;--navy2:#edf4f8;
+  --teal:#159a9c;--teal2:#e9f8f7;
+  --amber:#e5a13a;--amber2:#fff6e7;
+  --coral:#df6b50;--coral2:#fff0ea;
+  --sky:#5aa9e6;--sky2:#edf7fe;
+  --violet:#7765c4;--violet2:#f2efff;
+  --green:#5e9d55;--green2:#eef8eb;
+  --side:242px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+.top{height:62px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}.mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--teal),var(--amber));display:grid;place-items:center;color:#fff;font-weight:900}
+.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
+
+.layout{display:grid;grid-template-columns:var(--side) 1fr}
+.side{height:calc(100vh - 62px);position:sticky;top:62px;overflow:auto;border-right:1px solid var(--line);background:#f9fbfc;padding:24px 14px}
+.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}.course small,.label{font-size:11px;font-weight:850;color:#8d9aab;letter-spacing:.08em;text-transform:uppercase}.course strong{display:block;margin-top:7px;font-size:15px;line-height:1.35}.label{margin:18px 0 8px}
+.side a{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5d6c80;font-size:13px;font-weight:650;line-height:1.35}.side a.active{background:#e8f5f5;color:#087f80;font-weight:850}
+
+.content{width:min(970px,calc(100% - 48px));margin:auto;padding:58px 0 90px}
+.crumb{color:#8a97a7;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}
+.hero{display:grid;grid-template-columns:1fr 275px;gap:34px;align-items:center}
+.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}.eyebrow{color:#0f7f81}.eyebrow:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--amber);margin-right:7px}
+h1{font-size:clamp(44px,6vw,64px);line-height:1;letter-spacing:-.045em;margin:14px 0 20px}
+.lead{color:var(--muted);font-size:18px;line-height:1.75}
+.mentor{border:1px solid var(--line);border-radius:20px;overflow:hidden}.mentor .pic{height:220px;background:linear-gradient(180deg,#f7fbfc,#edf5f7)}.mentor img{width:100%;height:100%;object-fit:contain;object-position:center bottom}.mentor p{margin:0;padding:16px;border-top:1px solid var(--line);font-size:13px;line-height:1.65;font-weight:650;color:#46566b}
+.section{margin-top:70px}.kicker{color:#95a1b0;margin-bottom:7px}h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c;line-height:1.8;font-size:16px}
+
+/* CONTROL TOWER */
+.tower-wrap{margin-top:30px;border:1px solid var(--line);border-radius:28px;padding:28px;background:
+radial-gradient(circle at 50% 35%,rgba(21,154,156,.08),transparent 28%),
+linear-gradient(180deg,#fbfdfe,#f5fafb)}
+.tower-stage{display:grid;grid-template-columns:1fr 190px 1fr;gap:22px;align-items:center}
+.versions,.teams{display:grid;gap:11px}
+.vcard,.tcard{border:1px solid var(--line);border-radius:15px;padding:16px;background:#fff}
+.vcard b,.tcard b{font-size:12px}.vcard span,.tcard span{display:block;margin-top:5px;color:#68778b;font-size:10.5px;line-height:1.5}
+.v1{background:var(--sky2)}.v2{background:var(--violet2)}.v3{background:var(--amber2)}
+.t1{background:var(--teal2)}.t2{background:var(--coral2)}.t3{background:var(--green2)}
+.tower{min-height:320px;border-radius:26px;background:var(--navy);color:#fff;display:grid;align-content:center;text-align:center;padding:22px;box-shadow:0 18px 40px rgba(21,51,77,.18)}
+.tower .icon{font-size:38px}.tower h3{margin:9px 0 6px;font-size:19px}.tower p{margin:0;color:#cad6df;font-size:10.8px;line-height:1.55}
+.tower-gates{display:grid;gap:7px;margin-top:13px}.tower-gates span{padding:8px;border-radius:9px;background:rgba(255,255,255,.10);font-size:9.8px;font-weight:850}
+.tower-note{margin-top:18px;padding:15px;border:1px solid var(--line);border-radius:13px;background:#fff;color:#617087;font-size:11px;line-height:1.6}
+
+/* WHY CM */
+.why-grid{margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.why{border:1px solid var(--line);border-radius:17px;padding:19px;background:#fff}
+.why .icon{font-size:27px}.why b{display:block;margin-top:7px;font-size:13px}.why p{margin:6px 0 0;color:#68778b;font-size:11px;line-height:1.55}
+.why:nth-child(1){background:var(--sky2)}.why:nth-child(2){background:var(--amber2)}.why:nth-child(3){background:var(--teal2)}
+
+/* CM FOUR FUNCTIONS */
+.cm-loop{margin-top:28px;border:1px solid var(--line);border-radius:24px;padding:26px;background:#fbfcfd}
+.loop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.func{position:relative;border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff;min-height:180px}
+.func:not(:last-child):after{content:"→";position:absolute;right:-16px;top:72px;font-size:21px;color:#93a3b2;font-weight:900}
+.func .num{width:29px;height:29px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:10px;font-weight:900;margin-bottom:9px}
+.func b{font-size:12.5px}.func p{margin:6px 0 0;color:#68778b;font-size:10.8px;line-height:1.55}
+.func:nth-child(1){background:var(--sky2)}.func:nth-child(2){background:var(--coral2)}.func:nth-child(3){background:var(--violet2)}.func:nth-child(4){background:var(--green2)}
+.loop-caption{margin-top:15px;text-align:center;font-size:10.8px;color:#657489;line-height:1.55}
+
+/* TIMELINE */
+.timeline{margin-top:27px;border:1px solid var(--line);border-radius:22px;padding:24px;background:#fbfcfd}
+.tline{height:12px;border-radius:999px;background:linear-gradient(90deg,var(--sky),var(--teal),var(--amber),var(--coral),var(--green));position:relative;margin:55px 40px}
+.point{position:absolute;top:50%;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;background:#fff;border:5px solid var(--navy)}
+.p1{left:12%}.p2{left:40%}.p3{left:70%}.p4{left:94%}
+.point span{position:absolute;top:30px;left:50%;transform:translateX(-50%);width:150px;text-align:center;font-size:10px;line-height:1.45;color:#68778b}
+.point b{display:block;color:var(--ink);font-size:10.8px}
+
+/* EXAMPLES */
+.example-map{margin-top:28px;border:1px solid var(--line);border-radius:24px;padding:24px;background:#fbfcfd}
+.exroot{padding:16px;border-radius:14px;background:var(--navy);color:#fff;text-align:center;font-weight:850}
+.exgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.ex{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fff}
+.ex b{font-size:11.5px}.ex p{margin:5px 0 0;color:#69778b;font-size:10.2px;line-height:1.5}
+.ex:nth-child(1){background:var(--sky2)}.ex:nth-child(2){background:var(--coral2)}.ex:nth-child(3){background:var(--violet2)}.ex:nth-child(4){background:var(--green2)}
+
+/* STORY */
+.story{margin-top:25px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.panel{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fff;overflow:hidden}
+.visual{height:120px;border-radius:11px;background:linear-gradient(135deg,#f5f9fb,#f7fbfa);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;margin-bottom:11px}
+.visual img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.panel .no{font-size:10px;font-weight:900;color:#8794a6;text-transform:uppercase}.panel h4{margin:5px 0 6px;font-size:14px}.panel p{margin:0;color:#68768a;font-size:11.5px;line-height:1.55}
+.panel:nth-child(1){border-top:4px solid var(--sky)}.panel:nth-child(2){border-top:4px solid var(--coral)}.panel:nth-child(3){border-top:4px solid var(--violet)}.panel:nth-child(4){border-top:4px solid var(--green)}
+
+/* closure */
+.note{margin-top:30px;border-radius:16px;padding:22px;background:#eef5f6;border:1px solid #d5e5e7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}
+.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.note b{color:#2f6b70}.note p{margin:0 0 20px;color:#536d72;line-height:1.7;font-size:14px}.note img{width:100%;max-height:150px;object-fit:contain}
+.take{margin-top:28px;padding:22px;border-left:4px solid var(--amber);border-radius:15px;background:var(--amber2)}.take b{color:#9a642b}.take p{margin:0;color:#68563d;line-height:1.7;font-weight:650;font-size:14px}
+.think{margin-top:30px;border:1px solid #cfe7ed;background:#eef8fa;border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end}.think .tlabel{color:#197a82}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#4f6f75;line-height:1.7;font-size:14px}.think img{width:100%;max-height:155px;object-fit:contain}
+.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+@media(max-width:930px){.tower-stage{grid-template-columns:1fr}.why-grid,.loop-grid,.exgrid,.story{grid-template-columns:1fr 1fr}.func:not(:last-child):after{display:none}}
+@media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,970px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
+@media(max-width:650px){.why-grid,.loop-grid,.exgrid,.story{grid-template-columns:1fr}.tline{height:auto;background:none;margin:0;display:grid;gap:10px}.point{position:static;width:auto;height:auto;transform:none;border:0;border-radius:12px;padding:14px;background:#fff}.point span{position:static;transform:none;width:auto}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}}
+</style>
+</head>
+
+<body>
+<header class="top">
+<a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
+<nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+
+<div class="layout">
+
+<aside class="side">
+<div class="course"><small>CPCS 351 · TOPIC 03</small><strong>System Engineering</strong></div>
+<div class="label">Topic 03</div>
+<a href="index.html">1. Systems &amp; System Engineering</a>
+<a href="system-engineering-process.html">2. System Engineering Process</a>
+<a href="system-requirements.html">3. System Requirements</a>
+<a href="system-architecture.html">4. System Architecture</a>
+<a href="requirements-allocation.html">5. Requirements Allocation</a>
+<a href="architecture-diagrams.html">6. Architecture Diagrams</a>
+<a href="integration-deployment.html">7. Integration &amp; Deployment</a>
+<a class="active" href="configuration-management.html">8. Configuration Management</a>
+<div class="label">Course</div>
+<a href="../../index.html">Course Home</a>
+</aside>
+
+<main><article class="content">
+
+<div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 03 › Configuration Management</div>
+
+<section class="hero">
+<div>
+<div class="eyebrow">Topic 03 · Lesson 08</div>
+<h1>Configuration Management</h1>
+<p class="lead">
+Large systems evolve through many versions, releases, components, and parallel team updates.
+Configuration Management keeps those changes controlled so the system remains consistent.
+</p>
+</div>
+
+<div class="mentor">
+<div class="pic"><img src="../../assets/images/mentor-11-serious.png" alt="Mentor explaining configuration management"></div>
+<p>“The dangerous question is not only ‘What changed?’ It is ‘Which version of every component belongs together?’”</p>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Visual Hook</div>
+<h2>The Configuration Control Tower</h2>
+<p>
+A complex system may have several releases for different customers while multiple engineering teams update components at the same time.
+The control tower keeps the system configuration synchronized.
+</p>
+
+<div class="tower-wrap">
+
+<div class="tower-stage">
+
+<div class="versions">
+<div class="vcard v1"><b>Release A</b><span>Customer / environment configuration 1</span></div>
+<div class="vcard v2"><b>Release B</b><span>Customer / environment configuration 2</span></div>
+<div class="vcard v3"><b>Release C</b><span>Newer or specialized system configuration</span></div>
+</div>
+
+<div class="tower">
+<div class="icon">⌘</div>
+<h3>CONFIGURATION<br>CONTROL</h3>
+<p>Keep components, versions, changes, records, and releases consistent.</p>
+<div class="tower-gates">
+<span>Identify</span>
+<span>Control Change</span>
+<span>Audit</span>
+<span>Report Status</span>
+</div>
+</div>
+
+<div class="teams">
+<div class="tcard t1"><b>Hardware Team</b><span>updates devices, firmware, components</span></div>
+<div class="tcard t2"><b>Software Team</b><span>updates applications, interfaces, services</span></div>
+<div class="tcard t3"><b>Operations Team</b><span>updates procedures, environment, operating configuration</span></div>
+</div>
+
+</div>
+
+<div class="tower-note">
+<strong>Configuration Management ensures that system components are updated consistently.</strong>
+Without it, individually valid changes can create an invalid system configuration.
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Why It Is Needed</div>
+<h2>Three pressures create configuration risk</h2>
+
+<div class="why-grid">
+
+<div class="why">
+<div class="icon">⑂</div>
+<b>Different Versions &amp; Releases</b>
+<p>A system may need different versions or releases to satisfy the needs of different customers.</p>
+</div>
+
+<div class="why">
+<div class="icon">↔</div>
+<b>Concurrent Team Updates</b>
+<p>Engineering teams may update the system configuration at the same time.</p>
+</div>
+
+<div class="why">
+<div class="icon">↻</div>
+<b>Continuous Evolution</b>
+<p>Configuration Management is needed during both development and maintenance as the system evolves.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Core Functions</div>
+<h2>The four-part control loop</h2>
+
+<div class="cm-loop">
+
+<div class="loop-grid">
+
+<div class="func">
+<div class="num">1</div>
+<b>Configuration Identification</b>
+<p>Identify the configuration items, components, versions, releases, and baselines that make up the system.</p>
+</div>
+
+<div class="func">
+<div class="num">2</div>
+<b>Configuration Change Control</b>
+<p>Control how proposed changes are evaluated, approved, implemented, and incorporated into the system configuration.</p>
+</div>
+
+<div class="func">
+<div class="num">3</div>
+<b>Configuration Auditing</b>
+<p>Check that the actual system configuration is consistent with the approved and documented configuration.</p>
+</div>
+
+<div class="func">
+<div class="num">4</div>
+<b>Configuration Status Reporting</b>
+<p>Report the current status of configuration items, approved changes, versions, releases, and implementation progress.</p>
+</div>
+
+</div>
+
+<div class="loop-caption">
+Identification tells us <strong>what exists</strong> → Change Control governs <strong>what may change</strong> → Auditing verifies <strong>what actually changed</strong> → Status Reporting tells stakeholders <strong>where the configuration stands</strong>.
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Across the Life Cycle</div>
+<h2>Configuration Management does not start after release</h2>
+
+<div class="timeline">
+<div class="tline">
+
+<div class="point p1"><span><b>Development</b>components and interfaces are being created and updated</span></div>
+<div class="point p2"><span><b>Integration</b>compatible versions must come together</span></div>
+<div class="point p3"><span><b>Deployment</b>a known approved configuration is installed</span></div>
+<div class="point p4"><span><b>Maintenance</b>defects and enhancements create new changes and releases</span></div>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">ABHS Example</div>
+<h2>One update can affect the whole baggage system</h2>
+
+<div class="example-map">
+<div class="exroot">CHANGE REQUEST · Upgrade barcode scanners in Terminal 2</div>
+
+<div class="exgrid">
+
+<div class="ex">
+<b>Identify</b>
+<p>Which scanner models, firmware, control software, interfaces, and terminal configurations are affected?</p>
+</div>
+
+<div class="ex">
+<b>Control</b>
+<p>Approve the change and coordinate compatible software/interface updates before deployment.</p>
+</div>
+
+<div class="ex">
+<b>Audit</b>
+<p>Verify that the installed scanners and software match the approved configuration.</p>
+</div>
+
+<div class="ex">
+<b>Report</b>
+<p>Record which terminals, releases, and components now use the new scanner configuration.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Example Closer to Students</div>
+<h2>University Registration System — the “wrong version” problem</h2>
+
+<div class="example-map">
+<div class="exroot">RELEASE 2.4 · NEW PREREQUISITE RULE</div>
+
+<div class="exgrid">
+
+<div class="ex">
+<b>Registration Service</b>
+<p>Updated to enforce the new prerequisite policy.</p>
+</div>
+
+<div class="ex">
+<b>Student Portal</b>
+<p>Must display messages compatible with the updated rule.</p>
+</div>
+
+<div class="ex">
+<b>Academic Records</b>
+<p>Must expose the data needed by the new prerequisite logic.</p>
+</div>
+
+<div class="ex">
+<b>Deployment Baseline</b>
+<p>The release must specify which compatible versions of all three components belong together.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Illustrated Story</div>
+<h2>Everything was updated—just not together</h2>
+
+<div class="story">
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div>
+<span class="no">Panel 1</span>
+<h4>Software update</h4>
+<p>The software team changes the scanner interface and releases a new control-software version.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div>
+<span class="no">Panel 2</span>
+<h4>Hardware update</h4>
+<p>The hardware team installs new scanners, assuming the latest software is already deployed.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div>
+<span class="no">Panel 3</span>
+<h4>Mixed configuration</h4>
+<p>One terminal runs old software with new scanners. Each component works, but they are incompatible.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
+<span class="no">Panel 4</span>
+<h4>Configuration discipline</h4>
+<p>A controlled baseline identifies which hardware, software, and interface versions belong together.</p>
+</div>
+
+</div>
+</section>
+
+<div class="note">
+<div>
+<b>Mentor Insight</b>
+<p>
+Version control for source code is only one part of the problem. System Configuration Management must coordinate the configuration of the complete system—including components created by different engineering teams.
+</p>
+</div>
+<img src="../../assets/images/mentor-02-explaining.png" alt="Mentor explaining configuration consistency">
+</div>
+
+<div class="take">
+<b>Key Takeaway</b>
+<p>
+System Configuration Management ensures that system components are updated consistently. It is required because systems may have different versions and releases for different customers and because engineering teams may update the configuration concurrently. It is performed during development and maintenance and includes configuration identification, change control, auditing, and status reporting.
+</p>
+</div>
+
+<div class="think">
+<div>
+<span class="tlabel">Think Like a Software Engineer</span>
+<h3>A bug fix works perfectly in the developer’s environment but fails after deployment. What configuration questions would you ask first?</h3>
+<p>
+Compare component versions, approved baselines, dependencies, interfaces, environment configuration, deployment records, and whether all related changes were included in the same release.
+</p>
+</div>
+<img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about configuration mismatch">
+</div>
+
+<div class="nav">
+<a href="integration-deployment.html">← Integration &amp; Deployment</a>
+<a class="next" href="../../index.html">Finish Topic 03 · Course Home →</a>
+</div>
+
+</article></main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access")!=="granted"){
+  window.location.href="../../access.html";
+}
+</script>
+</body>
+</html>
