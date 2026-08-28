@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Process Models Overview | CPCS 351</title>
+<meta name="description" content="CPCS 351 Software Engineering I — Software Process Models Overview.">
+<style>
+:root{
+  --ink:#172036;--muted:#65718a;--line:#e1e6ef;
+  --indigo:#2d2a78;--indigo2:#efefff;
+  --cyan:#2cc8d3;--cyan2:#eafcff;
+  --magenta:#d85ca7;--magenta2:#fff0f9;
+  --lime:#99c43d;--lime2:#f5fbe9;
+  --orange:#f0a24c;--orange2:#fff5e8;
+  --violet:#7566df;--violet2:#f3f0ff;
+  --red:#e36969;--red2:#fff0f0;
+  --side:242px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+.top{height:62px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}
+.mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--indigo),var(--cyan),var(--magenta));display:grid;place-items:center;color:#fff;font-weight:900}
+.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
+
+.layout{display:grid;grid-template-columns:var(--side) 1fr}
+.side{height:calc(100vh - 62px);position:sticky;top:62px;overflow:auto;border-right:1px solid var(--line);background:#fafaff;padding:24px 14px}
+.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}
+.course small,.label{font-size:11px;font-weight:850;color:#9294aa;letter-spacing:.08em;text-transform:uppercase}
+.course strong{display:block;margin-top:7px;font-size:15px;line-height:1.35}.label{margin:18px 0 8px}
+.side a,.side span{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5f6680;font-size:13px;font-weight:650;line-height:1.35}
+.side a.active{background:#efefff;color:#39318b;font-weight:850}.side span.future{color:#a8a9b9}
+
+.content{width:min(1000px,calc(100% - 48px));margin:auto;padding:58px 0 90px}
+.crumb{color:#8c93a6;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}
+.hero{display:grid;grid-template-columns:1fr 280px;gap:36px;align-items:center}
+.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+.eyebrow{color:#4a40a3}.eyebrow:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--cyan);margin-right:7px}
+h1{font-size:clamp(46px,6vw,68px);line-height:.98;letter-spacing:-.045em;margin:14px 0 20px}
+.lead{color:var(--muted);font-size:19px;line-height:1.75}
+.mentor{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fff}
+.mentor .pic{height:225px;background:linear-gradient(180deg,#f9f9ff,#f0f0ff)}
+.mentor img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.mentor p{margin:0;padding:17px;border-top:1px solid var(--line);font-size:14px;line-height:1.65;font-weight:650;color:#4e5871}
+.section{margin-top:72px}.kicker{color:#999db0;margin-bottom:7px}
+h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
+.section>p{color:#59667d;line-height:1.8;font-size:16px}
+
+/* =========================================================
+   VISUAL HOOK — DEVELOPMENT ROUTE INTERCHANGE
+========================================================= */
+.interchange{
+  margin-top:30px;border:1px solid var(--line);border-radius:30px;padding:28px;
+  background:
+    radial-gradient(circle at 50% 44%,rgba(44,200,211,.10),transparent 23%),
+    radial-gradient(circle at 20% 80%,rgba(216,92,167,.08),transparent 20%),
+    linear-gradient(180deg,#fcfcff,#f7f7ff);
+  overflow:hidden
+}
+.map-head{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  padding:15px 18px;border-radius:15px;background:var(--indigo);color:#fff
+}
+.map-head b{font-size:12px;letter-spacing:.08em}
+.map-head span{font-size:10px;color:#d8d8f5}
+.route-map{position:relative;min-height:700px;margin-top:18px}
+.project-core{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:185px;height:185px;border-radius:50%;
+  background:linear-gradient(145deg,var(--indigo),#4a3da8);color:#fff;
+  display:grid;place-items:center;text-align:center;padding:20px;
+  box-shadow:0 18px 40px rgba(45,42,120,.20);z-index:3
+}
+.project-core b{font-size:17px}
+.project-core span{display:block;margin-top:7px;font-size:10px;color:#dddaf5;line-height:1.45}
+.route{
+  position:absolute;border-radius:21px;border:1px solid var(--line);padding:18px;
+  width:230px;min-height:145px;background:#fff;box-shadow:0 10px 24px rgba(45,42,120,.05)
+}
+.route .symbol{font-size:30px;margin-bottom:7px}
+.route b{font-size:13px}
+.route p{margin:6px 0 0;color:#68738a;font-size:10.6px;line-height:1.5}
+.waterfall{left:20px;top:35px;background:var(--cyan2)}
+.prototype{right:20px;top:35px;background:var(--magenta2)}
+.evolution{left:20px;bottom:35px;background:var(--lime2)}
+.spiral{right:20px;bottom:35px;background:var(--orange2)}
+.agile{left:50%;top:12px;transform:translateX(-50%);background:var(--violet2)}
+.map-line{position:absolute;height:3px;background:#b3b4c5;transform-origin:left center;z-index:1}
+.ml1{left:235px;top:180px;width:270px;transform:rotate(28deg)}
+.ml2{right:235px;top:180px;width:270px;transform:rotate(152deg)}
+.ml3{left:235px;bottom:180px;width:270px;transform:rotate(-28deg)}
+.ml4{right:235px;bottom:180px;width:270px;transform:rotate(208deg)}
+.ml5{left:50%;top:150px;width:150px;transform:translateX(-50%) rotate(90deg)}
+.route-caption{
+  margin-top:16px;padding:15px;border:1px dashed #c6c8d8;border-radius:13px;background:#fff;
+  text-align:center;color:#606b82;font-size:11px;line-height:1.65
+}
+
+/* MODEL ID CARDS */
+.models{margin-top:28px;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.model{border:1px solid var(--line);border-radius:17px;padding:17px;background:#fff;min-height:190px}
+.model .icon{font-size:29px;margin-bottom:8px}.model b{font-size:12.5px}.model p{margin:6px 0 0;color:#68738a;font-size:10.5px;line-height:1.55}
+.model:nth-child(1){background:var(--cyan2)}
+.model:nth-child(2){background:var(--magenta2)}
+.model:nth-child(3){background:var(--lime2)}
+.model:nth-child(4){background:var(--orange2)}
+.model:nth-child(5){background:var(--violet2)}
+
+/* SAME PROJECT / FIVE SHAPES */
+.same-project{margin-top:28px;border:1px solid var(--line);border-radius:25px;padding:25px;background:#fbfbff}
+.project-title{padding:15px;border-radius:14px;background:var(--indigo);color:#fff;text-align:center;font-weight:900}
+.shapes{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin-top:17px}
+.shape{border:1px solid var(--line);border-radius:15px;padding:15px;background:#fff;text-align:center;min-height:195px}
+.shape b{display:block;font-size:11.5px;margin-top:9px}
+.shape span{display:block;margin-top:5px;color:#68738a;font-size:9.8px;line-height:1.45}
+.shape-vis{height:85px;position:relative;display:flex;align-items:center;justify-content:center}
+/* waterfall icon */
+.steps{display:flex;flex-direction:column;gap:4px;width:80%}
+.steps i{display:block;height:10px;border-radius:5px;background:var(--cyan)}
+.steps i:nth-child(2){width:85%;margin-left:15%}.steps i:nth-child(3){width:70%;margin-left:30%}.steps i:nth-child(4){width:55%;margin-left:45%}
+/* prototype */
+.loop{width:70px;height:70px;border:8px solid var(--magenta);border-right-color:transparent;border-radius:50%;position:relative}
+.loop:after{content:"↻";position:absolute;inset:0;display:grid;place-items:center;font-size:27px;color:#9f3d78}
+/* evolution */
+.grow{display:flex;align-items:flex-end;gap:5px;height:75px}
+.grow i{display:block;width:18px;background:var(--lime);border-radius:5px 5px 0 0}
+.grow i:nth-child(1){height:22px}.grow i:nth-child(2){height:38px}.grow i:nth-child(3){height:56px}.grow i:nth-child(4){height:72px}
+/* spiral */
+.spiralvis{font-size:75px;line-height:1;color:var(--orange);transform:rotate(-18deg)}
+/* agile */
+.sprints{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;width:100%}
+.sprints i{height:55px;border-radius:8px;background:var(--violet)}
+.sprints i:after{content:"↻";color:#fff;font-style:normal;font-size:18px;display:grid;place-items:center;height:100%}
+
+/* DECISION QUESTIONS */
+.questions{margin-top:26px;border:1px solid var(--line);border-radius:23px;padding:24px;background:#fbfcff}
+.qgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.q{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fff}
+.q .icon{font-size:24px}.q b{display:block;margin-top:6px;font-size:11.5px}.q p{margin:5px 0 0;color:#68738a;font-size:10.3px;line-height:1.5}
+.q:nth-child(1){background:var(--cyan2)}.q:nth-child(2){background:var(--magenta2)}.q:nth-child(3){background:var(--orange2)}
+.q:nth-child(4){background:var(--lime2)}.q:nth-child(5){background:var(--violet2)}.q:nth-child(6){background:#f7f8fb}
+
+/* EXAMPLES */
+.example-grid{margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:15px}
+.example-card{border:1px solid var(--line);border-radius:20px;padding:22px;background:#fff}
+.example-card h3{margin:0 0 8px;font-size:18px}.example-card p{margin:0;color:#68738a;font-size:12px;line-height:1.6}
+.case-row{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:14px}
+.case{padding:10px 7px;border-radius:9px;border:1px solid var(--line);font-size:9.5px;text-align:center;font-weight:800}
+.case:nth-child(1){background:var(--cyan2)}.case:nth-child(2){background:var(--magenta2)}.case:nth-child(3){background:var(--lime2)}.case:nth-child(4){background:var(--orange2)}.case:nth-child(5){background:var(--violet2)}
+.example-card:first-child{background:#f8fbff}.example-card:last-child{background:#fbf8ff}
+
+/* STORY */
+.story{margin-top:25px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.panel{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fff;overflow:hidden}
+.visual{height:120px;border-radius:11px;background:linear-gradient(135deg,#f7f7ff,#f2fcfd);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;margin-bottom:11px}
+.visual img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.panel .no{font-size:10px;font-weight:900;color:#8d91a3;text-transform:uppercase}.panel h4{margin:5px 0 6px;font-size:14px}.panel p{margin:0;color:#69738a;font-size:11.5px;line-height:1.55}
+.panel:nth-child(1){border-top:4px solid var(--cyan)}.panel:nth-child(2){border-top:4px solid var(--magenta)}.panel:nth-child(3){border-top:4px solid var(--orange)}.panel:nth-child(4){border-top:4px solid var(--violet)}
+
+/* closure */
+.note{margin-top:30px;border-radius:16px;padding:22px;background:#f1f0ff;border:1px solid #ddd9fa;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}
+.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.note b{color:#51469a}.note p{margin:0 0 20px;color:#5e587c;line-height:1.7;font-size:14px}.note img{width:100%;max-height:150px;object-fit:contain}
+.take{margin-top:28px;padding:22px;border-left:4px solid var(--cyan);border-radius:15px;background:var(--cyan2)}.take b{color:#1a7780}.take p{margin:0;color:#42666b;line-height:1.7;font-weight:650;font-size:14px}
+.think{margin-top:30px;border:1px solid #e4d4ef;background:var(--magenta2);border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end}.think .tlabel{color:#a1457d}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#74586d;line-height:1.7;font-size:14px}.think img{width:100%;max-height:155px;object-fit:contain}
+.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+
+@media(max-width:950px){.models,.shapes{grid-template-columns:1fr 1fr 1fr}.route-map{min-height:900px}.agile{top:10px}.waterfall{top:200px}.prototype{top:200px}.evolution{bottom:120px}.spiral{bottom:120px}.map-line{display:none}.project-core{top:53%}.story{grid-template-columns:1fr 1fr}}
+@media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,1000px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
+@media(max-width:700px){.route-map{display:grid;gap:10px;min-height:0}.project-core,.route{position:static;transform:none;width:auto;height:auto}.project-core{border-radius:18px;padding:18px}.models,.shapes,.qgrid,.example-grid,.story{grid-template-columns:1fr}.case-row{grid-template-columns:1fr 1fr}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}}
+</style>
+</head>
+
+<body>
+<header class="top">
+<a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
+<nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+
+<div class="layout">
+
+<aside class="side">
+<div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div>
+<div class="label">Topic 04</div>
+<a href="index.html">1. Process &amp; Methodology</a>
+<a href="development-challenges.html">2. Development Challenges</a>
+<a class="active" href="process-models-overview.html">3. Process Models Overview</a>
+<span class="future">4. Waterfall Model</span>
+<span class="future">5. Prototyping Model</span>
+<span class="future">6. Evolutionary Development</span>
+<span class="future">7. Spiral Model</span>
+<span class="future">8. Agile Process Models</span>
+<span class="future">9. Choosing the Right Model</span>
+<span class="future">10. Agile Methods</span>
+<span class="future">11. Software Paradigms</span>
+<div class="label">Course</div>
+<a href="../../index.html">Course Home</a>
+</aside>
+
+<main><article class="content">
+
+<div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 04 › Process Models Overview</div>
+
+<section class="hero">
+<div>
+<div class="eyebrow">Topic 04 · Lesson 03</div>
+<h1>Software Process Models</h1>
+<p class="lead">
+A software process defines the activities needed to construct a software system.
+A <strong>process model</strong> organizes those activities into a recognizable development route.
+Different models handle uncertainty, feedback, risk, and change in different ways.
+</p>
+</div>
+
+<div class="mentor">
+<div class="pic"><img src="../../assets/images/mentor-06-pointing.png" alt="Mentor introducing software process models"></div>
+<p>“The destination may be the same—a working system—but the route can be very different.”</p>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Visual Hook</div>
+<h2>The Development Route Interchange</h2>
+<p>
+Imagine the same software project arriving at a major interchange.
+Five routes are available, and each route organizes development differently.
+</p>
+
+<div class="interchange">
+
+<div class="map-head">
+<b>SOFTWARE DEVELOPMENT ROUTE MAP</b>
+<span>SAME PROJECT · DIFFERENT PROCESS LOGIC</span>
+</div>
+
+<div class="route-map">
+
+<div class="map-line ml1"></div><div class="map-line ml2"></div><div class="map-line ml3"></div><div class="map-line ml4"></div><div class="map-line ml5"></div>
+
+<div class="project-core">
+<div>
+<b>PROJECT</b>
+<span>requirements · people · technology · constraints · uncertainty</span>
+</div>
+</div>
+
+<div class="route waterfall">
+<div class="symbol">↘</div>
+<b>Waterfall</b>
+<p>Move through identified phases in a largely sequential direction.</p>
+</div>
+
+<div class="route prototype">
+<div class="symbol">↻</div>
+<b>Prototyping</b>
+<p>Build a working model to understand requirements before committing to the full solution.</p>
+</div>
+
+<div class="route evolution">
+<div class="symbol">▂▅▇</div>
+<b>Evolutionary</b>
+<p>Let the prototype grow and evolve into the production system.</p>
+</div>
+
+<div class="route spiral">
+<div class="symbol">◎</div>
+<b>Spiral</b>
+<p>Iterate with strong emphasis on risk analysis and risk reduction.</p>
+</div>
+
+<div class="route agile">
+<div class="symbol">⟳⟳</div>
+<b>Agile</b>
+<p>Develop and deliver through shorter iterations or sprints, adapting frequently.</p>
+</div>
+
+</div>
+
+<div class="route-caption">
+<strong>Memory hook:</strong> Waterfall = sequence · Prototyping = learn with a model · Evolutionary = grow the model · Spiral = orbit around risk · Agile = short repeated delivery cycles.
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">The Five Models</div>
+<h2>Recognize each model by its dominant idea</h2>
+
+<div class="models">
+
+<div class="model">
+<div class="icon">↘</div>
+<b>Waterfall Model</b>
+<p>Linear sequential progression through separate phases. Easy to understand and manage when requirements are well understood.</p>
+</div>
+
+<div class="model">
+<div class="icon">🧪</div>
+<b>Prototyping Process Model</b>
+<p>Build a throwaway working model based on currently known requirements to understand what users really need.</p>
+</div>
+
+<div class="model">
+<div class="icon">🌱</div>
+<b>Evolutionary Development</b>
+<p>The prototype is not discarded; it evolves into the production system.</p>
+</div>
+
+<div class="model">
+<div class="icon">🎯</div>
+<b>Spiral Process Model</b>
+<p>An iterative model with explicit emphasis on planning, risk analysis, engineering, and evaluation.</p>
+</div>
+
+<div class="model">
+<div class="icon">⚡</div>
+<b>Agile Process Models</b>
+<p>Short sprints or iterations develop and deliver predetermined features while responding rapidly to change.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">One Project · Five Shapes</div>
+<h2>The shape of the process changes the behavior of the team</h2>
+
+<div class="same-project">
+
+<div class="project-title">UNIVERSITY REGISTRATION SYSTEM</div>
+
+<div class="shapes">
+
+<div class="shape">
+<div class="shape-vis"><div class="steps"><i></i><i></i><i></i><i></i></div></div>
+<b>Waterfall</b>
+<span>Finish requirements → design → implementation → testing in identified stages.</span>
+</div>
+
+<div class="shape">
+<div class="shape-vis"><div class="loop"></div></div>
+<b>Prototyping</b>
+<span>Show students and advisors a working mock-up to clarify registration needs.</span>
+</div>
+
+<div class="shape">
+<div class="shape-vis"><div class="grow"><i></i><i></i><i></i><i></i></div></div>
+<b>Evolutionary</b>
+<span>Begin with a small working registration system and keep evolving it toward production.</span>
+</div>
+
+<div class="shape">
+<div class="shape-vis"><div class="spiralvis">◎</div></div>
+<b>Spiral</b>
+<span>Each cycle explicitly examines risks such as peak load, integration, or security.</span>
+</div>
+
+<div class="shape">
+<div class="shape-vis"><div class="sprints"><i></i><i></i><i></i><i></i></div></div>
+<b>Agile</b>
+<span>Deliver registration capabilities over short iterations and adapt based on feedback.</span>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Before Choosing a Model</div>
+<h2>Ask what kind of uncertainty you are facing</h2>
+
+<div class="questions">
+
+<div class="qgrid">
+
+<div class="q">
+<div class="icon">❓</div>
+<b>Are requirements clear?</b>
+<p>Stable requirements favor different process behavior than unclear or rapidly changing requirements.</p>
+</div>
+
+<div class="q">
+<div class="icon">🧭</div>
+<b>How much feedback is needed?</b>
+<p>Some projects need early user feedback before the team can confidently define the final solution.</p>
+</div>
+
+<div class="q">
+<div class="icon">⚠</div>
+<b>How important is risk?</b>
+<p>High uncertainty or technical risk may require explicit analysis and reduction activities.</p>
+</div>
+
+<div class="q">
+<div class="icon">⏱</div>
+<b>How quickly must value appear?</b>
+<p>Some projects cannot wait until near completion before users see working software.</p>
+</div>
+
+<div class="q">
+<div class="icon">🔄</div>
+<b>How likely is change?</b>
+<p>The process must be able to cope with changing requirements and circumstances when change is expected.</p>
+</div>
+
+<div class="q">
+<div class="icon">👥</div>
+<b>How will teams coordinate?</b>
+<p>Plan-driven structure, iteration, documentation, and feedback affect how people coordinate their work.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">More Examples</div>
+<h2>The same model can fit one context and fail another</h2>
+
+<div class="example-grid">
+
+<div class="example-card">
+<h3>Example A · Small Internal Payroll Tool</h3>
+<p>Suppose requirements are stable, the scope is small, and the organization already knows exactly what reports and calculations are required.</p>
+
+<div class="case-row">
+<div class="case">Waterfall<br>possible fit</div>
+<div class="case">Prototype<br>less essential</div>
+<div class="case">Evolutionary<br>possible</div>
+<div class="case">Spiral<br>may be excessive</div>
+<div class="case">Agile<br>possible</div>
+</div>
+</div>
+
+<div class="example-card">
+<h3>Example B · Experimental AI Assistant</h3>
+<p>Suppose user expectations are unclear, interaction design must be discovered, and model behavior is uncertain.</p>
+
+<div class="case-row">
+<div class="case">Waterfall<br>weak fit</div>
+<div class="case">Prototype<br>useful</div>
+<div class="case">Evolutionary<br>useful</div>
+<div class="case">Spiral<br>risk-aware</div>
+<div class="case">Agile<br>feedback-rich</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Illustrated Story</div>
+<h2>The team that chose a process by habit</h2>
+
+<div class="story">
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div>
+<span class="no">Panel 1</span>
+<h4>“We always use this model.”</h4>
+<p>The team chooses its familiar process before analyzing the project.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
+<span class="no">Panel 2</span>
+<h4>The project is different</h4>
+<p>Requirements are unclear, technology is unfamiliar, and users need early feedback.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div>
+<span class="no">Panel 3</span>
+<h4>The route fights reality</h4>
+<p>The process makes feedback and change expensive instead of helping the team learn.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
+<span class="no">Panel 4</span>
+<h4>Choose by context</h4>
+<p>The team compares the models based on uncertainty, risk, feedback, time, and change.</p>
+</div>
+
+</div>
+</section>
+
+<div class="note">
+<div>
+<b>Mentor Insight</b>
+<p>
+A process model is not a badge of maturity. It is an engineering choice about how work, feedback,
+change, risk, and delivery will be organized.
+</p>
+</div>
+<img src="../../assets/images/mentor-11-serious.png" alt="Mentor emphasizing process model selection">
+</div>
+
+<div class="take">
+<b>Key Takeaway</b>
+<p>
+The main process models introduced here are Waterfall, Prototyping, Evolutionary Development,
+Spiral, and Agile. Each organizes software-development activities differently and responds differently
+to uncertainty, feedback, risk, and change.
+</p>
+</div>
+
+<div class="think">
+<div>
+<span class="tlabel">Think Like a Software Engineer</span>
+<h3>Two projects have the same budget and team size. Must they use the same process model?</h3>
+<p>
+Compare their requirement clarity, technology familiarity, system complexity, risk, need for feedback,
+schedule pressure, and expected amount of change before deciding.
+</p>
+</div>
+<img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about selecting a process model">
+</div>
+
+<div class="nav">
+<a href="development-challenges.html">← Development Challenges</a>
+<a class="next" href="waterfall-model.html">Next · Waterfall Model →</a>
+</div>
+
+</article></main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access") !== "granted"){
+  window.location.href="../../access.html";
+}
+</script>
+
+</body>
+</html>
