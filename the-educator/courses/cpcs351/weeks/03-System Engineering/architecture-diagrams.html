@@ -66,11 +66,11 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
   box-shadow:0 18px 40px rgba(21,51,77,.18)
 }
 .atlas-core b{font-size:20px}.atlas-core span{display:block;margin-top:7px;color:#cbd7e0;font-size:11px;line-height:1.45}
-.atlas-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+.atlas-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:24px}
 .atlas-card{border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff;min-height:190px}
 .atlas-card .glyph{font-size:32px;margin-bottom:10px}
 .atlas-card b{font-size:14px}.atlas-card p{margin:7px 0 0;color:#68778b;font-size:11px;line-height:1.55}
-.atlas-card:nth-child(1){background:var(--sky2)}.atlas-card:nth-child(2){background:var(--violet2)}.atlas-card:nth-child(3){background:var(--teal2)}.atlas-card:nth-child(4){background:var(--amber2)}
+.atlas-card:nth-child(1){background:var(--sky2)}.atlas-card:nth-child(2){background:var(--violet2)}.atlas-card:nth-child(3){background:var(--teal2)}.atlas-card:nth-child(4){background:var(--amber2)}.atlas-card:nth-child(5){background:var(--green2)}
 .atlas-note{margin-top:18px;padding-top:15px;border-top:1px solid var(--line);font-size:12px;color:#617087;line-height:1.65;text-align:center}
 
 /* =========================================================
@@ -184,10 +184,10 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
 /* =========================================================
    WHICH DIAGRAM?
 ========================================================= */
-.selector{margin-top:28px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.selector{margin-top:28px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
 .sel{border:1px solid var(--line);border-radius:17px;padding:18px;background:#fff}
 .sel b{font-size:13px}.sel p{margin:7px 0 0;color:#68778b;font-size:11px;line-height:1.55}
-.sel:nth-child(1){background:var(--sky2)}.sel:nth-child(2){background:var(--violet2)}.sel:nth-child(3){background:var(--teal2)}.sel:nth-child(4){background:var(--amber2)}
+.sel:nth-child(1){background:var(--sky2)}.sel:nth-child(2){background:var(--violet2)}.sel:nth-child(3){background:var(--teal2)}.sel:nth-child(4){background:var(--amber2)}.sel:nth-child(5){background:var(--green2)}
 
 /* =========================================================
    STUDENT EXAMPLE
@@ -211,6 +211,99 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
 .panel .no{font-size:10px;font-weight:900;color:#8794a6;text-transform:uppercase}
 .panel h4{margin:5px 0 6px;font-size:14px}.panel p{margin:0;color:#68768a;font-size:11.5px;line-height:1.55}
 .panel:nth-child(1){border-top:4px solid var(--sky)}.panel:nth-child(2){border-top:4px solid var(--violet)}.panel:nth-child(3){border-top:4px solid var(--teal)}.panel:nth-child(4){border-top:4px solid var(--amber)}
+
+
+/* EXTERNAL UML REFERENCE LINKS */
+.refbar{
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 0
+}
+.refbar a{
+  display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:9px;
+  border:1px solid #cfdbe3;background:#fff;color:#335a73;text-decoration:none;
+  font-size:10.5px;font-weight:850
+}
+.refbar a:hover{background:#f3f8fb}
+.refbar .tag{
+  padding:7px 10px;border-radius:9px;background:#f7fafb;border:1px solid var(--line);
+  color:#758397;font-size:10px;font-weight:800
+}
+
+/* UML 2 COMPONENT NOTATION */
+.uml2-stage{
+  position:relative;min-height:570px;border:1px dashed #c9d5dd;border-radius:18px;
+  background:
+   linear-gradient(rgba(21,51,77,.025) 1px,transparent 1px),
+   linear-gradient(90deg,rgba(21,51,77,.025) 1px,transparent 1px),
+   #fff;background-size:24px 24px;overflow:hidden
+}
+.uml-component{
+  position:absolute;width:205px;min-height:105px;border:2px solid #6f8798;
+  border-radius:8px;background:#fff;padding:15px 18px;text-align:center;
+  box-shadow:0 8px 18px rgba(24,50,74,.05)
+}
+.uml-component .stereo{font-size:9.5px;color:#6d7a8d;font-weight:750}
+.uml-component b{display:block;font-size:13px;margin-top:4px}
+.uml-component .comp-icon{
+  position:absolute;right:10px;top:10px;width:24px;height:18px;border:2px solid #6f8798
+}
+.uml-component .comp-icon:before,.uml-component .comp-icon:after{
+  content:"";position:absolute;left:-7px;width:9px;height:6px;border:2px solid #6f8798;background:#fff
+}
+.uml-component .comp-icon:before{top:1px}.uml-component .comp-icon:after{bottom:1px}
+.port{position:absolute;width:11px;height:11px;background:#fff;border:2px solid #6f8798;z-index:4}
+.port.r{right:-7px;top:46px}.port.l{left:-7px;top:46px}.port.b{bottom:-7px;left:50%;transform:translateX(-50%)}
+.lollipop{
+  position:absolute;width:34px;height:2px;background:#6f8798;z-index:3
+}
+.lollipop:after{
+  content:"";position:absolute;right:-11px;top:-5px;width:9px;height:9px;border:2px solid #6f8798;border-radius:50%;background:#fff
+}
+.socket{
+  position:absolute;width:34px;height:2px;background:#6f8798;z-index:3
+}
+.socket:after{
+  content:"";position:absolute;right:-10px;top:-7px;width:10px;height:12px;border:2px solid #6f8798;border-left:0;border-radius:0 12px 12px 0;background:#fff
+}
+.connector-line{position:absolute;height:2px;background:#708797;transform-origin:left center}
+.uc1{left:50%;top:35px;transform:translateX(-50%);background:var(--sky2)}
+.uc2{left:55px;top:225px;background:var(--teal2)}
+.uc3{right:55px;top:225px;background:var(--violet2)}
+.uc4{left:170px;bottom:50px;background:var(--amber2)}
+.uc5{right:170px;bottom:50px;background:var(--coral2)}
+.cl1{left:357px;top:137px;width:190px;transform:rotate(35deg)}
+.cl2{right:357px;top:137px;width:190px;transform:rotate(145deg)}
+.cl3{left:255px;top:330px;width:205px;transform:rotate(27deg)}
+.cl4{right:255px;top:330px;width:205px;transform:rotate(153deg)}
+.iface-label{
+  position:absolute;padding:4px 6px;background:#fff;border:1px solid var(--line);border-radius:6px;
+  font-size:8.8px;color:#68778b;font-weight:750
+}
+.il1{left:210px;top:160px}.il2{right:210px;top:160px}.il3{left:300px;bottom:175px}.il4{right:300px;bottom:175px}
+
+/* UML DEPLOYMENT */
+.deploy-stage{
+  margin-top:18px;display:grid;grid-template-columns:1fr 100px 1fr;gap:14px;align-items:center
+}
+.node-box{
+  border:2px solid #6f8798;border-radius:10px;background:#fff;padding:20px;min-height:230px;
+  position:relative;box-shadow:7px -7px 0 #e6edf2
+}
+.node-box .node-stereo{font-size:9px;color:#718095;font-weight:800}
+.node-box h3{margin:5px 0 15px;font-size:16px}
+.artifact{
+  padding:12px;border:1px solid #91a4b2;border-radius:7px;background:#f8fafb;
+  margin-top:10px;font-size:10.5px;font-weight:800;position:relative
+}
+.artifact:before{
+  content:"«artifact»";display:block;color:#7a8797;font-size:8.5px;margin-bottom:3px;font-weight:750
+}
+.comm{
+  text-align:center;color:#597386;font-size:11px;font-weight:850
+}
+.comm .wire{height:3px;background:#7a92a3;border-radius:999px;margin:8px 0}
+.manifest{
+  margin-top:9px;font-size:9.5px;color:#6b788b;line-height:1.45
+}
 
 /* closure */
 .note{margin-top:30px;border-radius:16px;padding:22px;background:#eef5f6;border:1px solid #d5e5e7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}
@@ -332,10 +425,21 @@ The architecture does not change—the viewpoint does.
 <p>Best for showing how information or material moves through functions, stores, and external entities.</p>
 </div>
 
+<div class="atlas-card">
+<div class="glyph">▧</div>
+<b>UML Deployment Diagram</b>
+<p>Best for showing artifacts, nodes, execution environments, and where software is deployed.</p>
+</div>
+
 </div>
 
 <div class="atlas-note">
 A system architecture can be depicted using block diagrams, UML component diagrams, SysML diagrams, data flow diagrams, and other techniques. The right representation depends on what must be communicated.
+</div>
+
+<div class="refbar" style="justify-content:center">
+  <a href="https://www.uml-diagrams.org/" target="_blank" rel="noopener">↗ UML-Diagrams.org Home</a>
+  <a href="https://www.uml-diagrams.org/uml-25-diagrams.html" target="_blank" rel="noopener">↗ UML 2.5 Diagram Overview</a>
 </div>
 
 </div>
@@ -395,49 +499,79 @@ A block diagram strips away detail and emphasizes the major subsystems and the e
 
 <!-- UML COMPONENT -->
 <section class="section">
-<div class="kicker">Diagram 2</div>
-<h2>UML Component Diagram — see software structure and interfaces</h2>
+<div class="kicker">Diagram 2 · UML</div>
+<h2>UML Component Diagram — components, interfaces, ports &amp; connectors</h2>
 <p>
-Component diagrams emphasize components and subsystems, their interfaces, ports, and the events or instructions exchanged among them.
+A UML Component Diagram shows components and the relationships between them. UML 2.x can show
+components using the <strong>«component»</strong> keyword or component icon, and can expose
+<strong>ports</strong>, <strong>provided interfaces</strong>, <strong>required interfaces</strong>,
+and connectors.
 </p>
 
+<div class="refbar">
+  <a href="https://www.uml-diagrams.org/component-diagrams.html" target="_blank" rel="noopener">↗ UML Component Diagrams</a>
+  <a href="https://www.uml-diagrams.org/component-diagrams-reference.html" target="_blank" rel="noopener">↗ Notation Reference</a>
+  <span class="tag">Primary UML reference: uml-diagrams.org</span>
+</div>
+
 <div class="diagram-frame">
-<div class="diagram-title">Example · Communication System Component View</div>
+<div class="diagram-title">Communication System · UML Component View</div>
 
-<div class="uml-stage">
+<div class="uml2-stage">
 
-<div class="comp cbase">
-<b>&lt;&lt;subsystem&gt;&gt; Base Station</b>
-<span>central communication subsystem</span>
+  <div class="connector-line cl1"></div>
+  <div class="connector-line cl2"></div>
+  <div class="connector-line cl3"></div>
+  <div class="connector-line cl4"></div>
+
+  <div class="uml-component uc1">
+    <span class="stereo">«component»</span>
+    <b>Base Station</b>
+    <span class="comp-icon"></span>
+    <span class="port l"></span>
+    <span class="port r"></span>
+    <span class="port b"></span>
+  </div>
+
+  <div class="uml-component uc2">
+    <span class="stereo">«component»</span>
+    <b>Mobile Units</b>
+    <span class="comp-icon"></span>
+    <span class="port r"></span>
+  </div>
+
+  <div class="uml-component uc3">
+    <span class="stereo">«component»</span>
+    <b>Account Management</b>
+    <span class="comp-icon"></span>
+    <span class="port l"></span>
+  </div>
+
+  <div class="uml-component uc4">
+    <span class="stereo">«component»</span>
+    <b>Controller Hardware</b>
+    <span class="comp-icon"></span>
+    <span class="port r"></span>
+  </div>
+
+  <div class="uml-component uc5">
+    <span class="stereo">«component»</span>
+    <b>Controller Software</b>
+    <span class="comp-icon"></span>
+    <span class="port l"></span>
+  </div>
+
+  <div class="iface-label il1">air link / instructions</div>
+  <div class="iface-label il2">call data</div>
+  <div class="iface-label il3">events</div>
+  <div class="iface-label il4">instructions</div>
+
 </div>
 
-<div class="comp cmobile">
-<b>&lt;&lt;subsystem&gt;&gt; Mobile Units</b>
-<span>mobile-side subsystem</span>
-</div>
-
-<div class="comp caccount">
-<b>Account Management</b>
-<span>service / component</span>
-</div>
-
-<div class="comp chw">
-<b>Controller Hardware</b>
-<span>hardware-side component</span>
-</div>
-
-<div class="comp csw">
-<b>Controller Software</b>
-<span>software-side component</span>
-</div>
-
-<div class="uml-line u1"></div><div class="uml-line u2"></div><div class="uml-line u3"></div><div class="uml-line u4"></div>
-
-<div class="uml-tag ut1">air link / instructions</div>
-<div class="uml-tag ut2">call data</div>
-<div class="uml-tag ut3">events</div>
-<div class="uml-tag ut4">instructions</div>
-
+<div style="margin-top:14px;font-size:10.5px;line-height:1.6;color:#69778b">
+<strong>How to read it:</strong> rectangles are UML components; the small squares on component boundaries are ports;
+connectors represent communication paths between component parts. Provided/required interfaces may also be shown
+with lollipop/socket notation when interface contracts need to be explicit.
 </div>
 </div>
 </section>
@@ -487,7 +621,15 @@ A Block Definition Diagram (BDD) focuses on system composition: which subsystems
 <h2>SysML Internal Block Diagram — see what happens inside</h2>
 <p>
 An Internal Block Diagram (IBD) exposes internal parts, ports, and flows inside a subsystem.
+SysML is not UML, but UML's <strong>Composite Structure Diagram</strong> is the closest UML view for
+showing the internal structure of a classifier using parts, ports, and connectors.
 </p>
+
+<div class="refbar">
+  <a href="https://www.uml-diagrams.org/composite-structure-diagrams.html" target="_blank" rel="noopener">↗ UML Composite Structure Diagrams</a>
+  <a href="https://www.uml-diagrams.org/composite-structure-diagrams-reference.html" target="_blank" rel="noopener">↗ Ports &amp; Connectors Reference</a>
+  <span class="tag">UML counterpart to the SysML internal-structure idea</span>
+</div>
 
 <div class="ibd-shell">
 <div class="ibd-label">ibd [Block] Terminal Subsystem [Nested Flow]</div>
@@ -539,7 +681,14 @@ boarding pass &amp; ID → information/material flow · luggage → material flo
 <h2>Data Flow Diagram — follow what moves</h2>
 <p>
 A DFD focuses on functions and flows. It can represent both information flow and material flow.
+A DFD is not a UML diagram; when the modeling goal is specifically high-level exchange of information
+between UML model elements, UML also provides <strong>Information Flow</strong>.
 </p>
+
+<div class="refbar">
+  <a href="https://www.uml-diagrams.org/information-flow-diagrams.html" target="_blank" rel="noopener">↗ UML Information Flow Diagrams</a>
+  <span class="tag">Related UML view — not a replacement for DFD</span>
+</div>
 
 <div class="diagram-frame">
 <div class="diagram-title">Library / Publication Handling Example · Material + Information Flow</div>
@@ -563,6 +712,54 @@ A DFD focuses on functions and flows. It can represent both information flow and
 <div class="dlabel dl3">publications</div>
 <div class="dlabel dl4">publications w/call numbers</div>
 <div class="dlabel dl5">new titles available</div>
+
+</div>
+</div>
+</section>
+
+
+<!-- UML DEPLOYMENT — ADDED ARCHITECTURE VIEW -->
+<section class="section">
+<div class="kicker">Additional UML Architecture View</div>
+<h2>UML Deployment Diagram — where the software actually runs</h2>
+<p>
+A Deployment Diagram shows the execution architecture of a system: software artifacts are deployed
+to deployment targets such as hardware devices or execution environments. In UML 2.x, artifacts are
+deployed to nodes; components are represented indirectly through the artifacts that manifest them.
+</p>
+
+<div class="refbar">
+  <a href="https://www.uml-diagrams.org/deployment-diagrams.html" target="_blank" rel="noopener">↗ UML Deployment Diagrams</a>
+  <a href="https://www.uml-diagrams.org/deployment-diagrams-reference.html" target="_blank" rel="noopener">↗ Deployment Notation Reference</a>
+  <span class="tag">Added architecture view</span>
+</div>
+
+<div class="diagram-frame">
+<div class="diagram-title">University Registration System · Deployment View</div>
+
+<div class="deploy-stage">
+
+  <div class="node-box">
+    <div class="node-stereo">«device» / «executionEnvironment»</div>
+    <h3>Application Server</h3>
+    <div class="artifact">registration-api.war</div>
+    <div class="artifact">notification-service.jar</div>
+    <div class="manifest">Artifacts execute on this deployment target and manifest software components.</div>
+  </div>
+
+  <div class="comm">
+    communication path
+    <div class="wire"></div>
+    HTTPS / JDBC
+  </div>
+
+  <div class="node-box">
+    <div class="node-stereo">«device»</div>
+    <h3>Database Server</h3>
+    <div class="artifact">registration-schema</div>
+    <div class="artifact">student-records-schema</div>
+    <div class="manifest">Concrete database artifacts are deployed to the database node.</div>
+  </div>
 
 </div>
 </div>
@@ -593,6 +790,11 @@ A DFD focuses on functions and flows. It can represent both information flow and
 <div class="sel">
 <b>“Where does information or material move?”</b>
 <p>Use a <strong>Data Flow Diagram</strong> to follow processes, stores, external entities, and flows.</p>
+</div>
+
+<div class="sel">
+<b>“Where is the software deployed?”</b>
+<p>Use a <strong>UML Deployment Diagram</strong> to show artifacts, nodes, execution environments, and communication paths.</p>
 </div>
 
 </div>
@@ -716,8 +918,9 @@ the structure, interface, composition, or flow that matters to the current audie
 <b>Key Takeaway</b>
 <p>
 Architectural design can be visualized with several diagramming techniques. Block diagrams emphasize high-level structure;
-UML component diagrams emphasize components and interfaces; SysML BDD/IBD diagrams capture multidisciplinary composition,
-internal parts, ports, and flows; Data Flow Diagrams emphasize functions and the movement of information or material.
+UML Component Diagrams emphasize components, ports, interfaces, and connectors; SysML BDD/IBD diagrams capture multidisciplinary composition,
+internal parts, ports, and flows; Data Flow Diagrams emphasize functions and the movement of information or material; and UML Deployment
+Diagrams show artifacts deployed to nodes and execution environments.
 </p>
 </div>
 
