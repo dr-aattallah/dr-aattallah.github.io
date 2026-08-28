@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Software Engineering? | CPCS 351</title>
+<style>
+:root{
+  --ink:#172033;--muted:#657187;--line:#e6eaf0;--soft:#f7f9fc;
+  --blue:#2f80ed;--blue-soft:#eef6ff;--mint:#5fd1b3;--mint-soft:#effbf7;
+  --orange:#f2a45b;--orange-soft:#fff6ed;--purple:#8b74df;--purple-soft:#f4f1ff;
+  --sidebar:250px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+.topbar{position:sticky;top:0;z-index:100;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800}
+.brand-mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--mint),var(--orange));position:relative}
+.brand-mark:before,.brand-mark:after{content:"";position:absolute;background:#fff;border-radius:20px}
+.brand-mark:before{width:16px;height:4px;left:7px;top:13px}.brand-mark:after{width:4px;height:16px;left:13px;top:7px}
+.top-links{display:flex;gap:5px}.top-links a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:650;padding:9px 11px;border-radius:9px}.top-links a:hover{background:var(--soft);color:var(--ink)}
+.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);min-height:calc(100vh - 64px)}
+.sidebar{position:sticky;top:64px;height:calc(100vh - 64px);overflow:auto;padding:25px 14px 30px;border-right:1px solid var(--line);background:#fafbfc}
+.sidebar-course{padding:0 12px 18px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.sidebar-course small{display:block;color:#8d98a8;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.sidebar-course strong{display:block;font-size:15px;line-height:1.35}
+.side-title{padding:7px 12px;margin-top:10px;color:#98a2b3;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.side-link{display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#5f6c80;font-size:13px;font-weight:650;line-height:1.4}
+.side-link:hover{background:#f0f3f7;color:var(--ink)}.side-link.active{background:#eaf3ff;color:#1768c4;font-weight:800}
+main{min-width:0}.content{width:min(850px,calc(100% - 48px));margin:auto;padding:64px 0 90px}
+.breadcrumb{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px;color:#8c97a7;font-size:13px;font-weight:650}.breadcrumb a{text-decoration:none}
+.topic-label{display:inline-flex;align-items:center;gap:7px;color:#3175a4;font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}.topic-label:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint)}
+h1{margin:0;max-width:800px;font-size:clamp(44px,6vw,68px);line-height:1;letter-spacing:-.045em}
+.lead{margin:22px 0 0;max-width:730px;color:var(--muted);font-size:19px;line-height:1.75}
+.section{margin-top:54px}.section-kicker{margin:0 0 7px;color:#98a2b3;font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.06em}
+h2{margin:0 0 16px;font-size:31px;letter-spacing:-.03em}
+.section p{color:#536176;font-size:16px;line-height:1.8}
+.definition{margin-top:22px;padding:25px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.definition p{margin:0;font-size:18px;line-height:1.75;color:#334155}
+.definition strong{color:var(--ink)}
+.source-tag{display:inline-block;margin-top:15px;padding:7px 10px;border-radius:8px;background:var(--soft);color:#68758a;font-size:12px;font-weight:750}
+.pqct-wrap{margin-top:28px;padding:28px 22px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,#fff,#fbfcfe)}
+.pqct-center{width:max-content;max-width:100%;margin:0 auto 24px;padding:12px 20px;border-radius:12px;background:var(--ink);color:#fff;font-weight:850;text-align:center}
+.pqct-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.metric{padding:19px;border-radius:14px;min-height:135px}
+.metric .symbol{font-size:27px;font-weight:900;line-height:1}.metric h3{margin:8px 0 6px;font-size:19px}.metric p{margin:0;font-size:14px;line-height:1.6}
+.productivity{background:var(--mint-soft)}.productivity .symbol,.productivity h3{color:#287765}
+.quality{background:var(--blue-soft)}.quality .symbol,.quality h3{color:#276aa4}
+.cost{background:var(--orange-soft)}.cost .symbol,.cost h3{color:#9a5f2b}
+.time{background:var(--purple-soft)}.time .symbol,.time h3{color:#6952a0}
+.balance{margin:18px auto 0;max-width:650px;text-align:center;color:#69758a;font-size:13px;line-height:1.65}
+.flow{display:flex;align-items:stretch;gap:8px;margin-top:25px}
+.flow-box{flex:1;padding:18px 12px;border:1px solid var(--line);border-radius:13px;text-align:center;background:#fff}
+.flow-box strong{display:block;margin-bottom:6px;font-size:15px}.flow-box span{font-size:12px;color:#7a8799;line-height:1.5}
+.arrow{display:grid;place-items:center;color:#a0a9b6;font-size:21px;font-weight:800}
+.example{margin-top:24px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.example-head{padding:18px 20px;background:#f7f9fc;border-bottom:1px solid var(--line)}
+.example-head small{color:#3175a4;font-weight:850;text-transform:uppercase;letter-spacing:.06em}.example-head h3{margin:5px 0 0;font-size:21px}
+.example-body{padding:20px}.example-body p{margin:0 0 16px}
+.example-list{display:grid;gap:9px}.example-row{display:grid;grid-template-columns:125px 1fr;gap:12px;padding:11px 0;border-top:1px solid var(--line);font-size:14px;line-height:1.55}.example-row strong{color:var(--ink)}.example-row span{color:#5d6a7e}
+.tradeoff{margin-top:25px;padding:22px;border-radius:15px;background:#fff7ed;border-left:4px solid var(--orange)}
+.tradeoff strong{display:block;color:#9a5f2b;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}.tradeoff p{margin:0;color:#6e5843;line-height:1.7;font-size:15px}
+.think{margin-top:26px;padding:22px;border-radius:15px;background:var(--mint-soft);border:1px solid #d8f1e9}.think-label{color:#327867;font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase}.think h3{margin:8px 0;font-size:20px}.think p{margin:0;color:#45685f;line-height:1.7}
+.lesson-nav{display:flex;justify-content:space-between;gap:12px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+.nav-button{display:inline-flex;align-items:center;gap:9px;padding:13px 16px;border-radius:11px;text-decoration:none;font-size:14px;font-weight:800;border:1px solid var(--line);background:#fff;color:#526176}.nav-button.next{background:var(--ink);color:#fff;border-color:var(--ink)}
+footer{padding:25px 0;border-top:1px solid var(--line);color:#98a2b3;text-align:center;font-size:12px}
+.mobile-menu{display:none}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.sidebar{display:none}.mobile-menu{display:block;padding:11px 18px;background:#fafbfc;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}.mobile-menu a{display:inline-block;margin-right:5px;padding:8px 10px;background:#fff;border:1px solid var(--line);border-radius:8px;color:#59687c;text-decoration:none;font-size:12px;font-weight:700}.content{width:min(100% - 28px,850px);padding-top:45px}}
+@media(max-width:620px){.topbar{padding:0 13px}.top-links a:nth-child(2){display:none}h1{font-size:43px}.lead{font-size:17px}.pqct-grid{grid-template-columns:1fr}.flow{flex-direction:column}.arrow{transform:rotate(90deg)}.example-row{grid-template-columns:1fr;gap:3px}.lesson-nav{flex-direction:column}.nav-button{justify-content:center}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html"><span class="brand-mark"></span><span>The Educator</span></a>
+  <nav class="top-links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+
+<div class="mobile-menu">
+  <a href="index.html">Overview</a><a href="nature-of-software.html">Nature of Software</a>
+  <a href="what-is-se.html">What is SE?</a><a href="why-se.html">Why SE?</a>
+</div>
+
+<div class="layout">
+<aside class="sidebar">
+  <div class="sidebar-course"><small>CPCS 351 · Topic 01</small><strong>Introduction to Software Engineering</strong></div>
+  <div class="side-title">Topic 01</div>
+  <a class="side-link" href="index.html">Overview</a>
+  <a class="side-link" href="nature-of-software.html">1. Nature of Software</a>
+  <a class="side-link active" href="what-is-se.html">2. What is Software Engineering?</a>
+  <a class="side-link" href="why-se.html">3. Why Software Engineering?</a>
+  <a class="side-link" href="teamwork.html">4. Teamwork Challenges</a>
+  <a class="side-link" href="life-cycle.html">5. Software Life Cycle</a>
+  <a class="side-link" href="development-process.html">6. Development Process</a>
+  <a class="side-link" href="waterfall.html">7. Waterfall Process</a>
+  <a class="side-link" href="sqa.html">8. Software Quality Assurance</a>
+  <a class="side-link" href="project-management.html">9. Project Management</a>
+  <a class="side-link" href="oose.html">10. OO Software Engineering</a>
+  <div class="side-title">Course</div><a class="side-link" href="../../index.html">Course Home</a>
+</aside>
+
+<main>
+<article class="content">
+  <div class="breadcrumb"><a href="../../index.html">CPCS 351</a><span>›</span><a href="index.html">Topic 01</a><span>›</span><span>What Is Software Engineering?</span></div>
+  <div class="topic-label">Topic 01 · Section 2</div>
+  <h1>What Is Software Engineering?</h1>
+  <p class="lead">Software engineering is not simply programming. It applies engineering processes and methods to the creation and evolution of software—with measurable goals for productivity, quality, cost, and delivery time.</p>
+
+  <section class="section">
+    <p class="section-kicker">From the Original Lecture</p>
+    <h2>The core definition</h2>
+    <div class="definition">
+      <p>Software engineering as a discipline focuses on the <strong>research, education, and application of engineering processes and methods</strong> to significantly increase software <strong>productivity (P)</strong> and <strong>quality (Q)</strong> while reducing software <strong>costs (C)</strong> and <strong>time to market (T)</strong>.</p>
+      <span class="source-tag">The lecture summarizes these four goals as Software PQCT.</span>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-kicker">The Big Idea</p>
+    <h2>Software PQCT</h2>
+    <p>Engineering is about achieving a useful balance. A software team is not successful merely because it produces code; it must produce valuable software effectively and at an acceptable level of quality, cost, and delivery speed.</p>
+
+    <div class="pqct-wrap">
+      <div class="pqct-center">Software Engineering</div>
+      <div class="pqct-grid">
+        <div class="metric productivity"><div class="symbol">↑ P</div><h3>Productivity</h3><p>Increase the useful software value a team can deliver with its available effort and resources.</p></div>
+        <div class="metric quality"><div class="symbol">↑ Q</div><h3>Quality</h3><p>Build software that satisfies requirements and demonstrates the required reliability, security, usability, maintainability, and other relevant qualities.</p></div>
+        <div class="metric cost"><div class="symbol">↓ C</div><h3>Cost</h3><p>Control the effort, people, infrastructure, maintenance, rework, and other costs required to create and operate the software.</p></div>
+        <div class="metric time"><div class="symbol">↓ T</div><h3>Time to Market</h3><p>Reduce the time required to move from an identified need to useful software delivered to its intended users.</p></div>
+      </div>
+      <div class="balance">The objective is not to maximize one metric blindly. Software engineering uses disciplined decisions to improve the overall outcome.</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-kicker">Engineering Mindset</p>
+    <h2>Programming is part of a larger process</h2>
+    <p>Writing code is essential, but software engineering begins before coding and continues after the first version is deployed.</p>
+    <div class="flow">
+      <div class="flow-box"><strong>Need</strong><span>What problem should be solved?</span></div><div class="arrow">→</div>
+      <div class="flow-box"><strong>Understand</strong><span>Requirements, constraints, risks</span></div><div class="arrow">→</div>
+      <div class="flow-box"><strong>Engineer</strong><span>Design, build, test</span></div><div class="arrow">→</div>
+      <div class="flow-box"><strong>Deliver</strong><span>Deploy useful software</span></div><div class="arrow">→</div>
+      <div class="flow-box"><strong>Evolve</strong><span>Maintain and improve</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="section-kicker">Modern Example</p>
+    <h2>A university registration system</h2>
+    <div class="example">
+      <div class="example-head"><small>One system · four engineering goals</small><h3>“It works” is not enough.</h3></div>
+      <div class="example-body">
+        <p>Imagine a university is preparing its online registration system for thousands of students. The team could technically implement the required features, yet the project may still fail if it ignores PQCT.</p>
+        <div class="example-list">
+          <div class="example-row"><strong>Productivity</strong><span>Can the team add and modify registration rules efficiently without repeatedly rebuilding the same functionality?</span></div>
+          <div class="example-row"><strong>Quality</strong><span>Does the system correctly enforce prerequisites, protect student information, remain available under heavy demand, and prevent incorrect registrations?</span></div>
+          <div class="example-row"><strong>Cost</strong><span>Can the institution develop, operate, support, and maintain the system within reasonable resources?</span></div>
+          <div class="example-row"><strong>Time to Market</strong><span>Will the required capabilities be ready before registration opens, when students actually need them?</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="tradeoff">
+    <strong>Important: PQCT involves trade-offs</strong>
+    <p>Trying to reduce delivery time too aggressively may increase defects or future maintenance cost. Pursuing extremely high quality can also require more time and resources. Software engineering helps teams make these trade-offs deliberately rather than accidentally.</p>
+  </div>
+
+  <div class="think">
+    <span class="think-label">Think Like a Software Engineer</span>
+    <h3>A team delivers early and under budget—but the system frequently fails. Was the project successful?</h3>
+    <p>Evaluate the result using all four PQCT dimensions. Then consider the opposite case: a nearly perfect system that arrives one year after the business opportunity has disappeared.</p>
+  </div>
+
+  <div class="lesson-nav">
+    <a class="nav-button" href="nature-of-software.html">← Nature of Software</a>
+    <a class="nav-button next" href="why-se.html">Next: Why Software Engineering? →</a>
+  </div>
+</article>
+<footer>CPCS 351 · Software Engineering I · The Educator</footer>
+</main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access") !== "granted"){
+  window.location.href="../../access.html";
+}
+</script>
+</body>
+</html>
