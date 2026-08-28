@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Topic 01 — Introduction | CPCS 351</title>
+
+  <meta
+    name="description"
+    content="CPCS 351 Software Engineering I — Topic 01: Introduction to Software Engineering."
+  />
+
+  <style>
+    :root{
+      --ink:#172033;
+      --muted:#667085;
+      --soft:#f7f9fc;
+      --white:#ffffff;
+      --line:#e7eaf0;
+      --blue:#2f80ed;
+      --blue-soft:#eef6ff;
+      --mint:#69d6ba;
+      --mint-soft:#effbf7;
+      --gold:#f2a45b;
+      --gold-soft:#fff7ee;
+      --sidebar:250px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      color:var(--ink);
+      background:#fff;
+    }
+
+    a{color:inherit}
+
+    /* =========================
+       Top Navigation
+    ========================= */
+
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      height:64px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:0 22px;
+      background:rgba(255,255,255,.94);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(14px);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .brand-mark{
+      width:31px;
+      height:31px;
+      border-radius:10px;
+      background:linear-gradient(
+        135deg,
+        var(--blue),
+        var(--mint),
+        var(--gold)
+      );
+      position:relative;
+      flex:0 0 auto;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after{
+      content:"";
+      position:absolute;
+      background:#fff;
+      border-radius:20px;
+    }
+
+    .brand-mark::before{
+      width:16px;
+      height:4px;
+      left:7px;
+      top:13px;
+    }
+
+    .brand-mark::after{
+      width:4px;
+      height:16px;
+      left:13px;
+      top:7px;
+    }
+
+    .top-links{
+      display:flex;
+      align-items:center;
+      gap:5px;
+    }
+
+    .top-links a{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:650;
+      padding:9px 11px;
+      border-radius:9px;
+    }
+
+    .top-links a:hover{
+      background:var(--soft);
+      color:var(--ink);
+    }
+
+    /* =========================
+       Main Layout
+    ========================= */
+
+    .layout{
+      display:grid;
+      grid-template-columns:var(--sidebar) minmax(0,1fr);
+      min-height:calc(100vh - 64px);
+    }
+
+    /* =========================
+       Sidebar
+    ========================= */
+
+    .sidebar{
+      position:sticky;
+      top:64px;
+      height:calc(100vh - 64px);
+      overflow:auto;
+      padding:25px 14px 30px;
+      border-right:1px solid var(--line);
+      background:#fafbfc;
+    }
+
+    .sidebar-course{
+      padding:0 12px 18px;
+      margin-bottom:14px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .sidebar-course small{
+      display:block;
+      color:#8d98a8;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:6px;
+    }
+
+    .sidebar-course strong{
+      display:block;
+      font-size:15px;
+      line-height:1.35;
+    }
+
+    .side-title{
+      padding:7px 12px;
+      margin-top:10px;
+      color:#98a2b3;
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .side-link{
+      display:block;
+      padding:9px 12px;
+      border-radius:8px;
+      text-decoration:none;
+      color:#5f6c80;
+      font-size:13px;
+      font-weight:650;
+      line-height:1.4;
+    }
+
+    .side-link:hover{
+      background:#f0f3f7;
+      color:var(--ink);
+    }
+
+    .side-link.active{
+      background:#eaf3ff;
+      color:#1768c4;
+      font-weight:800;
+    }
+
+    .side-link.locked{
+      color:#a5adba;
+    }
+
+    /* =========================
+       Main Reading Area
+    ========================= */
+
+    main{
+      min-width:0;
+    }
+
+    .content{
+      width:min(850px,calc(100% - 48px));
+      margin:auto;
+      padding:64px 0 90px;
+    }
+
+    .breadcrumb{
+      display:flex;
+      flex-wrap:wrap;
+      gap:7px;
+      margin-bottom:28px;
+      color:#8c97a7;
+      font-size:13px;
+      font-weight:650;
+    }
+
+    .breadcrumb a{
+      text-decoration:none;
+    }
+
+    .topic-label{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      color:#3175a4;
+      font-size:12px;
+      font-weight:850;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      margin-bottom:14px;
+    }
+
+    .topic-label::before{
+      content:"";
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--mint);
+    }
+
+    h1{
+      margin:0;
+      max-width:760px;
+      font-size:clamp(44px,6vw,72px);
+      line-height:1;
+      letter-spacing:-.045em;
+    }
+
+    .lead{
+      margin:22px 0 0;
+      max-width:720px;
+      color:var(--muted);
+      font-size:19px;
+      line-height:1.75;
+    }
+
+    /* =========================
+       Learning Objective
+    ========================= */
+
+    .objective{
+      margin:38px 0;
+      padding:23px 25px;
+      border-radius:16px;
+      background:var(--blue-soft);
+      border-left:4px solid var(--blue);
+    }
+
+    .objective-label{
+      display:block;
+      margin-bottom:7px;
+      color:#2368b3;
+      font-size:12px;
+      font-weight:850;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    .objective p{
+      margin:0;
+      color:#31475f;
+      font-size:16px;
+      line-height:1.7;
+      font-weight:600;
+    }
+
+    /* =========================
+       Sections
+    ========================= */
+
+    .section{
+      margin-top:55px;
+    }
+
+    .section-kicker{
+      margin:0 0 7px;
+      color:#98a2b3;
+      font-size:12px;
+      font-weight:850;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+
+    h2{
+      margin:0 0 16px;
+      font-size:31px;
+      letter-spacing:-.03em;
+    }
+
+    .section > p{
+      color:#536176;
+      font-size:16px;
+      line-height:1.8;
+    }
+
+    /* =========================
+       Visual Concept Map
+    ========================= */
+
+    .concept-map{
+      margin-top:25px;
+      padding:28px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fcfdff;
+    }
+
+    .concept-center{
+      width:max-content;
+      max-width:100%;
+      margin:0 auto 24px;
+      padding:13px 20px;
+      border-radius:13px;
+      background:var(--ink);
+      color:#fff;
+      text-align:center;
+      font-weight:850;
+    }
+
+    .concept-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .concept{
+      padding:16px 12px;
+      border-radius:13px;
+      text-align:center;
+      font-size:13px;
+      line-height:1.45;
+      font-weight:750;
+    }
+
+    .concept:nth-child(1){
+      background:var(--mint-soft);
+      color:#247762;
+    }
+
+    .concept:nth-child(2){
+      background:#eef6ff;
+      color:#28699e;
+    }
+
+    .concept:nth-child(3){
+      background:var(--gold-soft);
+      color:#935c2b;
+    }
+
+    .concept:nth-child(4){
+      background:#f4f1ff;
+      color:#6952a0;
+    }
+
+    /* =========================
+       Takeaways
+    ========================= */
+
+    .takeaways{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .takeaway{
+      display:grid;
+      grid-template-columns:34px 1fr;
+      gap:13px;
+      align-items:start;
+      padding:17px 18px;
+      border:1px solid var(--line);
+      border-radius:13px;
+      background:#fff;
+    }
+
+    .takeaway-number{
+      width:32px;
+      height:32px;
+      display:grid;
+      place-items:center;
+      border-radius:10px;
+      background:#f2f6fb;
+      color:#51657e;
+      font-size:12px;
+      font-weight:850;
+    }
+
+    .takeaway p{
+      margin:3px 0 0;
+      color:#536176;
+      line-height:1.65;
+      font-size:15px;
+    }
+
+    /* =========================
+       Course Roadmap
+    ========================= */
+
+    .roadmap{
+      margin-top:22px;
+      border-top:1px solid var(--line);
+    }
+
+    .roadmap-item{
+      display:grid;
+      grid-template-columns:45px 1fr auto;
+      gap:15px;
+      align-items:center;
+      min-height:62px;
+      border-bottom:1px solid var(--line);
+    }
+
+    .roadmap-number{
+      color:#a0a8b5;
+      font-size:12px;
+      font-weight:850;
+    }
+
+    .roadmap-title{
+      font-size:15px;
+      font-weight:750;
+    }
+
+    .roadmap-tag{
+      color:#8490a1;
+      font-size:11px;
+      font-weight:700;
+    }
+
+    /* =========================
+       Think Box
+    ========================= */
+
+    .think{
+      margin-top:52px;
+      padding:25px;
+      border-radius:16px;
+      background:var(--mint-soft);
+      border:1px solid #d8f1e9;
+    }
+
+    .think-label{
+      color:#327867;
+      font-size:12px;
+      font-weight:850;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    .think h3{
+      margin:8px 0 8px;
+      font-size:20px;
+    }
+
+    .think p{
+      margin:0;
+      color:#45685f;
+      line-height:1.7;
+    }
+
+    /* =========================
+       Navigation
+    ========================= */
+
+    .lesson-nav{
+      display:flex;
+      justify-content:flex-end;
+      gap:12px;
+      margin-top:55px;
+      padding-top:24px;
+      border-top:1px solid var(--line);
+    }
+
+    .next-button{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:13px 17px;
+      border-radius:11px;
+      background:var(--ink);
+      color:#fff;
+      text-decoration:none;
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .next-button:hover{
+      opacity:.92;
+    }
+
+    /* =========================
+       Footer
+    ========================= */
+
+    footer{
+      padding:25px 0;
+      border-top:1px solid var(--line);
+      color:#98a2b3;
+      text-align:center;
+      font-size:12px;
+    }
+
+    /* =========================
+       Mobile
+    ========================= */
+
+    .mobile-menu{
+      display:none;
+    }
+
+    @media(max-width:850px){
+
+      .layout{
+        grid-template-columns:1fr;
+      }
+
+      .sidebar{
+        display:none;
+      }
+
+      .mobile-menu{
+        display:block;
+        padding:11px 18px;
+        background:#fafbfc;
+        border-bottom:1px solid var(--line);
+        overflow-x:auto;
+        white-space:nowrap;
+      }
+
+      .mobile-menu a{
+        display:inline-block;
+        margin-right:5px;
+        padding:8px 10px;
+        background:#fff;
+        border:1px solid var(--line);
+        border-radius:8px;
+        color:#59687c;
+        text-decoration:none;
+        font-size:12px;
+        font-weight:700;
+      }
+
+      .content{
+        width:min(100% - 28px,850px);
+        padding-top:45px;
+      }
+
+      .concept-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .topbar{
+        padding:0 13px;
+      }
+
+      .top-links a:nth-child(2){
+        display:none;
+      }
+
+      h1{
+        font-size:44px;
+      }
+
+      .lead{
+        font-size:17px;
+      }
+
+      .concept-grid{
+        grid-template-columns:1fr;
+      }
+
+      .roadmap-item{
+        grid-template-columns:36px 1fr;
+        padding:10px 0;
+      }
+
+      .roadmap-tag{
+        display:none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================================
+       TOP BAR
+  ====================================================== -->
+
+  <header class="topbar">
+
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>The Educator</span>
+    </a>
+
+    <nav class="top-links">
+      <a href="../../index.html">CPCS 351</a>
+      <a href="../../resources/">Resources</a>
+      <a href="../../../../index.html">All Courses</a>
+    </nav>
+
+  </header>
+
+
+  <!-- Mobile Topic Navigation -->
+
+  <div class="mobile-menu">
+    <a href="index.html">Overview</a>
+    <a href="nature-of-software.html">Nature of Software</a>
+    <a href="what-is-se.html">What is SE?</a>
+    <a href="why-se.html">Why SE?</a>
+    <a href="life-cycle.html">Life Cycle</a>
+  </div>
+
+
+  <div class="layout">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+      <div class="sidebar-course">
+        <small>CPCS 351 · Topic 01</small>
+        <strong>Introduction to Software Engineering</strong>
+      </div>
+
+      <div class="side-title">Topic 01</div>
+
+      <a class="side-link active" href="index.html">
+        Overview
+      </a>
+
+      <a class="side-link" href="nature-of-software.html">
+        1. Nature of Software
+      </a>
+
+      <a class="side-link" href="what-is-se.html">
+        2. What is Software Engineering?
+      </a>
+
+      <a class="side-link" href="why-se.html">
+        3. Why Software Engineering?
+      </a>
+
+      <a class="side-link" href="teamwork.html">
+        4. Teamwork Challenges
+      </a>
+
+      <a class="side-link" href="life-cycle.html">
+        5. Software Life Cycle
+      </a>
+
+      <a class="side-link" href="development-process.html">
+        6. Development Process
+      </a>
+
+      <a class="side-link" href="waterfall.html">
+        7. Waterfall Process
+      </a>
+
+      <a class="side-link" href="sqa.html">
+        8. Software Quality Assurance
+      </a>
+
+      <a class="side-link" href="project-management.html">
+        9. Project Management
+      </a>
+
+      <a class="side-link" href="oose.html">
+        10. OO Software Engineering
+      </a>
+
+      <div class="side-title">Course</div>
+
+      <a class="side-link" href="../../index.html">
+        Course Home
+      </a>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main>
+
+      <article class="content">
+
+        <div class="breadcrumb">
+          <a href="../../index.html">CPCS 351</a>
+          <span>›</span>
+          <span>Topic 01</span>
+          <span>›</span>
+          <span>Overview</span>
+        </div>
+
+        <div class="topic-label">
+          Topic 01 · Chapter 1
+        </div>
+
+        <h1>
+          Introduction to Software Engineering
+        </h1>
+
+        <p class="lead">
+          Before learning how to design software systems, we first need
+          to understand what makes software different, why software
+          engineering exists, and how software is developed throughout
+          its life cycle.
+        </p>
+
+
+        <!-- =============================
+             CLO
+        ============================== -->
+
+        <div class="objective">
+
+          <span class="objective-label">
+            Course Learning Outcome · CLO #1
+          </span>
+
+          <p>
+            Explain the concept of a software lifecycle with an example,
+            including the deliverables that are produced from each phase.
+          </p>
+
+        </div>
+
+
+        <!-- =============================
+             Big Picture
+        ============================== -->
+
+        <section class="section">
+
+          <p class="section-kicker">
+            The Big Picture
+          </p>
+
+          <h2>
+            What are we trying to achieve?
+          </h2>
+
+          <p>
+            Software engineering applies engineering processes and
+            methods to software development. Its overall goal is to
+            significantly improve software productivity and software
+            quality while reducing software cost and time to market.
+          </p>
+
+
+          <div class="concept-map">
+
+            <div class="concept-center">
+              Software Engineering
+            </div>
+
+            <div class="concept-grid">
+
+              <div class="concept">
+                ↑ Productivity
+              </div>
+
+              <div class="concept">
+                ↑ Quality
+              </div>
+
+              <div class="concept">
+                ↓ Cost
+              </div>
+
+              <div class="concept">
+                ↓ Time to Market
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =============================
+             Key Takeaways
+        ============================== -->
+
+        <section class="section">
+
+          <p class="section-kicker">
+            From the original lecture
+          </p>
+
+          <h2>
+            Key Takeaway Points
+          </h2>
+
+          <div class="takeaways">
+
+            <div class="takeaway">
+              <div class="takeaway-number">01</div>
+
+              <p>
+                We begin by understanding the
+                <strong>nature of software</strong> and the characteristics
+                that make software engineering different from traditional
+                engineering disciplines.
+              </p>
+            </div>
+
+
+            <div class="takeaway">
+              <div class="takeaway-number">02</div>
+
+              <p>
+                Software engineering aims to significantly improve
+                <strong>productivity</strong> and
+                <strong>quality</strong> while reducing
+                <strong>cost</strong> and
+                <strong>time to market</strong>.
+              </p>
+            </div>
+
+
+            <div class="takeaway">
+              <div class="takeaway-number">03</div>
+
+              <p>
+                Software engineering consists of three interacting
+                tracks of life-cycle activities:
+                <strong>software development process</strong>,
+                <strong>software quality assurance</strong>, and
+                <strong>software project management</strong>.
+              </p>
+            </div>
+
+
+            <div class="takeaway">
+              <div class="takeaway-number">04</div>
+
+              <p>
+                Object-oriented software engineering is a specialization
+                of software engineering that views systems as collections
+                of objects that relate to and interact with one another.
+              </p>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =============================
+             Topic Roadmap
+        ============================== -->
+
+        <section class="section">
+
+          <p class="section-kicker">
+            Topic Roadmap
+          </p>
+
+          <h2>
+            What you will learn
+          </h2>
+
+          <p>
+            Topic 01 is divided into short sections. Each section focuses
+            on one idea so you can move through the material without
+            reading a long continuous page.
+          </p>
+
+
+          <div class="roadmap">
+
+            <div class="roadmap-item">
+              <span class="roadmap-number">01</span>
+              <span class="roadmap-title">The Nature of Software</span>
+              <span class="roadmap-tag">Characteristics</span>
+            </div>
+
+            <div class="roadmap-item">
+              <span class="roadmap-number">02</span>
+              <span class="roadmap-title">What Is Software Engineering?</span>
+              <span class="roadmap-tag">Definition · PQCT</span>
+            </div>
+
+            <div class="roadmap-item">
+              <span class="roadmap-number">03</span>
+              <span class="roadmap-title">Why Software Engineering?</span>
+              <span class="roadmap-tag">Complexity · Scale</span>
+            </div>
+
+            <div class="roadmap-item">
+              <span class="roadmap-number">04</span>
+              <span class="roadmap-title">Teamwork Challenges</span>
+              <span class="roadmap-tag">Communication · Coordination</span>
+            </div>
+
+            <div class="roadmap-item">
+              <span class="roadmap-number">05</span>
+              <span class="roadmap-title">Software Life Cycle Activities</span>
+              <span class="roadmap-tag">Three Tracks</span>
+            </div>
+
+            <div class="roadmap-item">
+              <span class="roadmap-number">06</span>
+              <span class="roadmap-title">Software Development Process</span>
+              <span class="roadmap-tag">Concept → Deployment</span>
+            </div>
+
+            <div class="roadmap-item">
+              <span class="roadmap-number">07</span>
+              <span class="roadmap-title">The Waterfall Process</span>
+              <span class="roadmap-tag">Lifecycle Phases</span>
+            </div>
+
+            <div class="roadmap-item">
+              <span class="roadmap-number">08</span>
+              <span class="roadmap-title">Software Quality Assurance</span>
+              <span class="roadmap-tag">SQA</span>
+            </div>
+
+            <div class="roadmap-item">
+              <span class="roadmap-number">09</span>
+              <span class="roadmap-title">Software Project Management</span>
+              <span class="roadmap-tag">Plan · Risk · Control</span>
+            </div>
+
+            <div class="roadmap-item">
+              <span class="roadmap-number">10</span>
+              <span class="roadmap-title">Object-Oriented Software Engineering</span>
+              <span class="roadmap-tag">OOSE</span>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =============================
+             Modern Teaching Addition
+        ============================== -->
+
+        <div class="think">
+
+          <span class="think-label">
+            Think Like a Software Engineer
+          </span>
+
+          <h3>
+            Why do we need engineering for something that is only code?
+          </h3>
+
+          <p>
+            Imagine a banking application used by millions of customers.
+            Writing code is only one part of the problem. The team must
+            understand requirements, coordinate work, control changes,
+            verify quality, manage risks, and release the system on time.
+            This is where software engineering becomes essential.
+          </p>
+
+        </div>
+
+
+        <!-- =============================
+             Next
+        ============================== -->
+
+        <div class="lesson-nav">
+
+          <a
+            class="next-button"
+            href="nature-of-software.html"
+          >
+            Start Topic
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <footer>
+        CPCS 351 · Software Engineering I · The Educator
+      </footer>
+
+    </main>
+
+  </div>
+
+
+  <!-- =====================================================
+       ACCESS CHECK
+  ====================================================== -->
+
+  <script>
+    if(
+      sessionStorage.getItem("cpcs351_access") !== "granted"
+    ){
+      window.location.href = "../../access.html";
+    }
+  </script>
+
+</body>
+</html>
