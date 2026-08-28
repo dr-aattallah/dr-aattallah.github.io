@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software Project Management | CPCS 351</title>
+<meta name="description" content="CPCS 351 Software Engineering I — Software Project Management.">
+
+<style>
+:root{
+  --ink:#172033;--muted:#657187;--line:#e6eaf0;--soft:#f7f9fc;
+  --blue:#2f80ed;--blue-soft:#eef6ff;--mint:#5fd1b3;--mint-soft:#effbf7;
+  --orange:#f2a45b;--orange-soft:#fff6ed;--purple:#8b74df;--purple-soft:#f4f1ff;
+  --red:#d94d4d;--red-soft:#fff1f1;--sidebar:250px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+
+.topbar{position:sticky;top:0;z-index:100;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800}
+.brand-mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--mint),var(--orange));position:relative}
+.brand-mark:before,.brand-mark:after{content:"";position:absolute;background:#fff;border-radius:20px}
+.brand-mark:before{width:16px;height:4px;left:7px;top:13px}
+.brand-mark:after{width:4px;height:16px;left:13px;top:7px}
+.top-links{display:flex;gap:5px}
+.top-links a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:650;padding:9px 11px;border-radius:9px}
+.top-links a:hover{background:var(--soft);color:var(--ink)}
+
+.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);min-height:calc(100vh - 64px)}
+.sidebar{position:sticky;top:64px;height:calc(100vh - 64px);overflow:auto;padding:25px 14px 30px;border-right:1px solid var(--line);background:#fafbfc}
+.sidebar-course{padding:0 12px 18px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.sidebar-course small{display:block;color:#8d98a8;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.sidebar-course strong{display:block;font-size:15px;line-height:1.35}
+.side-title{padding:7px 12px;margin-top:10px;color:#98a2b3;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.side-link{display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#5f6c80;font-size:13px;font-weight:650;line-height:1.4}
+.side-link:hover{background:#f0f3f7;color:var(--ink)}
+.side-link.active{background:#eaf3ff;color:#1768c4;font-weight:800}
+
+main{min-width:0}
+.content{width:min(900px,calc(100% - 48px));margin:auto;padding:64px 0 90px}
+.breadcrumb{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px;color:#8c97a7;font-size:13px;font-weight:650}
+.breadcrumb a{text-decoration:none}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:34px;align-items:center}
+.topic-label{display:inline-flex;align-items:center;gap:7px;color:#3175a4;font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.topic-label:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint)}
+h1{margin:0;font-size:clamp(44px,6vw,68px);line-height:1;letter-spacing:-.045em}
+.lead{margin:22px 0 0;color:var(--muted);font-size:19px;line-height:1.75}
+
+.mentor-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.mentor-image{height:220px;display:flex;align-items:flex-end;justify-content:center;background:radial-gradient(circle at 50% 20%,#fff,#f2f7fb)}
+.mentor-image img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.mentor-message{padding:18px;border-top:1px solid var(--line)}
+.mentor-message blockquote{margin:0;color:#334155;font-size:15px;line-height:1.7;font-weight:650}
+.mentor-name{margin-top:10px;color:#3175a4;font-size:12px;font-weight:800}
+
+.section{margin-top:58px}
+.section-kicker{margin:0 0 7px;color:#98a2b3;font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.06em}
+h2{margin:0 0 14px;font-size:31px;letter-spacing:-.03em}
+.section>p{color:#536176;font-size:16px;line-height:1.8}
+
+/* DISTINCT VISUAL HOOK: MISSION CONTROL */
+.mission-control{
+  margin-top:26px;
+  padding:26px;
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 50% 0,rgba(47,128,237,.18),transparent 34%),
+    linear-gradient(180deg,#142033,#0f1826);
+  color:#fff;
+  border:1px solid #233349;
+  box-shadow:0 24px 70px rgba(17,31,48,.14);
+}
+.mc-top{
+  display:flex;justify-content:space-between;gap:20px;align-items:center;
+  margin-bottom:18px
+}
+.mc-title small{display:block;color:#8fc5f5;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+.mc-title strong{display:block;margin-top:4px;font-size:22px}
+.mc-status{
+  display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border-radius:999px;
+  background:rgba(95,209,179,.10);border:1px solid rgba(95,209,179,.18);color:#8ce6ce;
+  font-size:12px;font-weight:850
+}
+.mc-status:before{content:"";width:8px;height:8px;border-radius:50%;background:#5fd1b3;box-shadow:0 0 12px #5fd1b3}
+
+.dashboard{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:14px
+}
+.radar{
+  min-height:310px;border-radius:17px;padding:20px;
+  background:linear-gradient(180deg,#1a2b41,#162538);
+  border:1px solid rgba(255,255,255,.08);
+}
+.radar-screen{
+  width:220px;height:220px;border-radius:50%;margin:12px auto 0;position:relative;
+  border:1px solid rgba(101,199,247,.30);
+  background:
+    radial-gradient(circle,transparent 0 24%,rgba(101,199,247,.12) 25% 26%,transparent 27% 49%,rgba(101,199,247,.10) 50% 51%,transparent 52%),
+    linear-gradient(rgba(101,199,247,.07) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(101,199,247,.07) 1px,transparent 1px);
+  background-size:auto,28px 28px,28px 28px;
+  overflow:hidden
+}
+.radar-screen:before{
+  content:"";position:absolute;inset:50% 50% auto auto;width:50%;height:2px;background:linear-gradient(90deg,#65c7f7,transparent);
+  transform-origin:left center;animation:sweep 5s linear infinite
+}
+@keyframes sweep{to{transform:rotate(360deg)}}
+.blip{position:absolute;width:9px;height:9px;border-radius:50%;background:#ffb86b;box-shadow:0 0 14px #ffb86b}
+.blip.one{left:52%;top:29%}.blip.two{left:31%;top:58%;background:#5fd1b3;box-shadow:0 0 14px #5fd1b3}.blip.three{left:67%;top:67%;background:#8b74df;box-shadow:0 0 14px #8b74df}
+.radar-caption{text-align:center;color:#9bb0c5;font-size:12px;margin-top:10px}
+
+.panel-stack{display:grid;gap:10px}
+.control-panel{
+  padding:14px;border-radius:13px;background:#17283c;border:1px solid rgba(255,255,255,.08)
+}
+.control-panel strong{display:block;font-size:13px;margin-bottom:8px}
+.gauge{
+  height:8px;background:#0f1c2a;border-radius:999px;overflow:hidden;margin-bottom:7px
+}
+.gauge span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#65c7f7,#5fd1b3)}
+.gauge.risk span{width:42%;background:linear-gradient(90deg,#ffb86b,#d94d4d)}
+.gauge.schedule span{width:73%}
+.gauge.budget span{width:61%;background:linear-gradient(90deg,#8b74df,#65c7f7)}
+.control-panel em{font-style:normal;color:#8fa3b8;font-size:11px}
+
+/* management functions */
+.function-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:24px}
+.function{padding:20px;border:1px solid var(--line);border-radius:15px;background:#fff}
+.function-head{display:flex;align-items:center;gap:11px;margin-bottom:9px}
+.function-icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px}
+.function:nth-child(1) .function-icon{background:var(--blue-soft)}
+.function:nth-child(2) .function-icon{background:var(--mint-soft)}
+.function:nth-child(3) .function-icon{background:var(--orange-soft)}
+.function:nth-child(4) .function-icon{background:var(--purple-soft)}
+.function h3{margin:0;font-size:17px}
+.function p{margin:0;color:#667085;font-size:14px;line-height:1.7}
+
+/* triangle constraints */
+.constraint-map{
+  margin-top:26px;padding:24px;border:1px solid var(--line);border-radius:18px;background:#fbfcfe
+}
+.triangle{
+  width:360px;height:310px;margin:0 auto;position:relative
+}
+.point{
+  position:absolute;width:118px;height:70px;border-radius:15px;display:grid;place-items:center;text-align:center;
+  padding:10px;font-size:13px;font-weight:850;border:1px solid var(--line);background:#fff
+}
+.point.time{top:0;left:121px;background:var(--blue-soft);color:#2b6da5}
+.point.cost{left:0;bottom:0;background:var(--orange-soft);color:#925b2e}
+.point.scope{right:0;bottom:0;background:var(--purple-soft);color:#6952a0}
+.center-goal{
+  position:absolute;width:126px;height:126px;border-radius:50%;left:117px;top:103px;
+  display:grid;place-items:center;text-align:center;background:var(--ink);color:#fff;font-weight:850;
+  box-shadow:0 12px 35px rgba(23,32,51,.14)
+}
+.line{
+  position:absolute;height:2px;background:#ccd5df;transform-origin:left center
+}
+.l1{width:151px;left:180px;top:69px;transform:rotate(119deg)}
+.l2{width:151px;left:180px;top:69px;transform:rotate(61deg)}
+.l3{width:210px;left:76px;bottom:34px}
+.constraint-caption{text-align:center;color:#6e7b8f;font-size:13px;line-height:1.6;max-width:630px;margin:4px auto 0}
+
+/* case */
+.case{margin-top:24px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.case-head{padding:18px 20px;background:var(--blue-soft);border-bottom:1px solid var(--line)}
+.case-head small{color:#3175a4;font-weight:850;text-transform:uppercase;letter-spacing:.06em}
+.case-head h3{margin:5px 0 0;font-size:21px}
+.case-row{display:grid;grid-template-columns:170px 1fr;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line)}
+.case-row:last-child{border-bottom:0}
+.case-row strong{color:var(--ink)}
+.case-row span{color:#5d6a7e;line-height:1.6}
+
+.mentor-note{display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end;margin-top:28px;padding:22px 22px 0;border-radius:15px;background:var(--orange-soft);border:1px solid #f5e5d4;overflow:hidden}
+.mentor-note strong{display:block;color:#9a5f2b;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.mentor-note p{margin:0 0 22px;color:#6e5843;line-height:1.7;font-size:15px}
+.mentor-note img{width:100%;max-height:160px;object-fit:contain;object-position:center bottom}
+
+.takeaway{margin-top:30px;padding:22px;border-radius:15px;background:var(--mint-soft);border-left:4px solid var(--mint)}
+.takeaway strong{display:block;color:#327867;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.takeaway p{margin:0;color:#45685f;line-height:1.7;font-size:15px;font-weight:600}
+
+.think{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:20px;align-items:end;margin-top:35px;padding:24px 24px 0;border-radius:16px;background:var(--purple-soft);border:1px solid #e2dcfb;overflow:hidden}
+.think-label{color:#6952a0;font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase}
+.think h3{margin:8px 0;font-size:21px}
+.think p{margin:0 0 24px;color:#5e5678;line-height:1.7}
+.think img{width:100%;max-height:170px;object-fit:contain;object-position:center bottom}
+
+.lesson-nav{display:flex;justify-content:space-between;gap:12px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+.nav-button{display:inline-flex;align-items:center;gap:9px;padding:13px 16px;border-radius:11px;text-decoration:none;font-size:14px;font-weight:800;border:1px solid var(--line);background:#fff;color:#526176}
+.nav-button.next{background:var(--ink);color:#fff;border-color:var(--ink)}
+footer{padding:25px 0;border-top:1px solid var(--line);color:#98a2b3;text-align:center;font-size:12px}
+.mobile-menu{display:none}
+
+@media(max-width:950px){
+  .hero{grid-template-columns:1fr}.mentor-card{max-width:360px}
+  .dashboard{grid-template-columns:1fr}
+  .function-grid{grid-template-columns:1fr}
+}
+@media(max-width:850px){
+  .layout{grid-template-columns:1fr}.sidebar{display:none}
+  .mobile-menu{display:block;padding:11px 18px;background:#fafbfc;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+  .mobile-menu a{display:inline-block;margin-right:5px;padding:8px 10px;background:#fff;border:1px solid var(--line);border-radius:8px;color:#59687c;text-decoration:none;font-size:12px;font-weight:700}
+  .content{width:min(100% - 28px,900px);padding-top:45px}
+}
+@media(max-width:620px){
+  .topbar{padding:0 13px}.top-links a:nth-child(2){display:none}
+  h1{font-size:43px}.lead{font-size:17px}
+  .triangle{transform:scale(.82);transform-origin:top left;width:295px;height:255px}
+  .case-row{grid-template-columns:1fr;gap:5px}
+  .mentor-note,.think{grid-template-columns:1fr}
+  .lesson-nav{flex-direction:column}.nav-button{justify-content:center}
+}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+  <a class="brand" href="../../index.html"><span class="brand-mark"></span><span>The Educator</span></a>
+  <nav class="top-links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+
+<div class="mobile-menu">
+  <a href="sqa.html">SQA</a>
+  <a href="project-management.html">Project Management</a>
+  <a href="oose.html">OOSE</a>
+</div>
+
+<div class="layout">
+
+<aside class="sidebar">
+  <div class="sidebar-course"><small>CPCS 351 · Topic 01</small><strong>Introduction to Software Engineering</strong></div>
+  <div class="side-title">Topic 01</div>
+  <a class="side-link" href="index.html">Overview</a>
+  <a class="side-link" href="nature-of-software.html">1. Nature of Software</a>
+  <a class="side-link" href="what-is-se.html">2. What is Software Engineering?</a>
+  <a class="side-link" href="why-se.html">3. Why Software Engineering?</a>
+  <a class="side-link" href="teamwork.html">4. Teamwork Challenges</a>
+  <a class="side-link" href="life-cycle.html">5. Software Life Cycle</a>
+  <a class="side-link" href="development-process.html">6. Development Process</a>
+  <a class="side-link" href="waterfall.html">7. Waterfall Process</a>
+  <a class="side-link" href="sqa.html">8. Software Quality Assurance</a>
+  <a class="side-link active" href="project-management.html">9. Project Management</a>
+  <a class="side-link" href="oose.html">10. OO Software Engineering</a>
+  <div class="side-title">Course</div><a class="side-link" href="../../index.html">Course Home</a>
+</aside>
+
+<main>
+<article class="content">
+
+<div class="breadcrumb">
+  <a href="../../index.html">CPCS 351</a><span>›</span>
+  <a href="index.html">Topic 01</a><span>›</span>
+  <span>Software Project Management</span>
+</div>
+
+<section class="hero">
+  <div>
+    <div class="topic-label">Topic 01 · Section 9</div>
+    <h1>Software Project Management</h1>
+    <p class="lead">
+      Software project management oversees the control and administration of development
+      and quality-assurance activities so the software can be delivered on time and within budget.
+    </p>
+  </div>
+
+  <div class="mentor-card">
+    <div class="mentor-image">
+      <img src="../../assets/images/mentor-06-pointing.png" alt="Software Engineering Mentor discussing project management">
+    </div>
+    <div class="mentor-message">
+      <blockquote>“Project management is the cockpit: you need visibility before you can steer.”</blockquote>
+      <div class="mentor-name">— Your Software Engineering Mentor</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-kicker">From the Original Lecture</p>
+  <h2>What does project management do?</h2>
+  <p>
+    The lecture states that software project management oversees the control and administration
+    of the development and SQA activities. It includes effort estimation, project planning and scheduling,
+    risk management, project administration, and other management activities.
+  </p>
+</section>
+
+<section class="section">
+  <p class="section-kicker">Visual Hook</p>
+  <h2>The Project Mission Control</h2>
+  <p>
+    Think of project management as a mission-control room that continuously watches progress,
+    schedule, cost, workload, and risk while the engineering work is happening.
+  </p>
+
+  <div class="mission-control">
+    <div class="mc-top">
+      <div class="mc-title">
+        <small>CPCS 351 · Project Mission Control</small>
+        <strong>Registration System Release</strong>
+      </div>
+      <div class="mc-status">Project Active</div>
+    </div>
+
+    <div class="dashboard">
+      <div class="radar">
+        <strong>Project Risk Radar</strong>
+        <div class="radar-screen">
+          <span class="blip one"></span>
+          <span class="blip two"></span>
+          <span class="blip three"></span>
+        </div>
+        <div class="radar-caption">Risks must be identified before they become project surprises.</div>
+      </div>
+
+      <div class="panel-stack">
+        <div class="control-panel">
+          <strong>Schedule Progress</strong>
+          <div class="gauge schedule"><span></span></div>
+          <em>73% of planned milestone progress</em>
+        </div>
+
+        <div class="control-panel">
+          <strong>Budget Consumption</strong>
+          <div class="gauge budget"><span></span></div>
+          <em>61% of allocated project resources used</em>
+        </div>
+
+        <div class="control-panel">
+          <strong>Risk Exposure</strong>
+          <div class="gauge risk"><span></span></div>
+          <em>Several risks still require mitigation</em>
+        </div>
+
+        <div class="control-panel">
+          <strong>Quality / SQA Status</strong>
+          <div class="gauge"><span style="width:82%"></span></div>
+          <em>Quality evidence is progressing with development</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-kicker">Core Management Activities</p>
+  <h2>The original management responsibilities</h2>
+
+  <div class="function-grid">
+    <div class="function">
+      <div class="function-head"><div class="function-icon">⏱</div><h3>Effort Estimation</h3></div>
+      <p>Estimate how much human effort, time, expertise, and other resources are likely to be required.</p>
+    </div>
+
+    <div class="function">
+      <div class="function-head"><div class="function-icon">📅</div><h3>Planning & Scheduling</h3></div>
+      <p>Organize tasks, milestones, dependencies, responsibilities, and expected delivery dates.</p>
+    </div>
+
+    <div class="function">
+      <div class="function-head"><div class="function-icon">⚠</div><h3>Risk Management</h3></div>
+      <p>Identify uncertain events that may harm the project, evaluate their impact, and plan responses.</p>
+    </div>
+
+    <div class="function">
+      <div class="function-head"><div class="function-icon">🗂</div><h3>Project Administration</h3></div>
+      <p>Coordinate people, decisions, communication, reporting, documentation, changes, meetings, and project records.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-kicker">The Balancing Act</p>
+  <h2>Every project operates under constraints</h2>
+
+  <div class="constraint-map">
+    <div class="triangle">
+      <div class="point time">TIME<br>When must it be ready?</div>
+      <div class="point cost">COST<br>What resources can we spend?</div>
+      <div class="point scope">SCOPE<br>What must we deliver?</div>
+
+      <div class="line l1"></div>
+      <div class="line l2"></div>
+      <div class="line l3"></div>
+
+      <div class="center-goal">PROJECT<br>CONTROL</div>
+    </div>
+
+    <p class="constraint-caption">
+      These constraints influence one another. Adding major scope late in the project may require
+      more time, more resources, reduced scope elsewhere, or acceptance of additional risk.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-kicker">Modern Example</p>
+  <h2>Managing a university registration system</h2>
+
+  <div class="case">
+    <div class="case-head">
+      <small>One project · many management decisions</small>
+      <h3>The release must be ready before registration opens</h3>
+    </div>
+
+    <div class="case-row">
+      <strong>Effort Estimation</strong>
+      <span>Estimate the effort required for prerequisite logic, integrations, authentication, UI work, performance testing, migration, and support.</span>
+    </div>
+
+    <div class="case-row">
+      <strong>Scheduling</strong>
+      <span>Sequence requirements, design, development, integration, testing, security review, acceptance, and production preparation around the academic calendar.</span>
+    </div>
+
+    <div class="case-row">
+      <strong>Risk Management</strong>
+      <span>Track risks such as delayed SIS integration, performance bottlenecks, security defects, incomplete requirements, or unavailable infrastructure.</span>
+    </div>
+
+    <div class="case-row">
+      <strong>Administration</strong>
+      <span>Coordinate developers, testers, university stakeholders, infrastructure teams, meetings, approvals, change requests, and status reporting.</span>
+    </div>
+  </div>
+</section>
+
+<div class="mentor-note">
+  <div>
+    <strong>Mentor Insight</strong>
+    <p>
+      Project management does not replace technical engineering. It makes technical work visible,
+      coordinated, prioritized, and controllable so development and SQA can reach the project objective.
+    </p>
+  </div>
+  <img src="../../assets/images/mentor-01-confident-smile.png" alt="Confident Software Engineering Mentor">
+</div>
+
+<div class="takeaway">
+  <strong>Key Takeaway</strong>
+  <p>
+    Software project management oversees development and SQA through estimation,
+    planning and scheduling, risk management, administration, and related control activities
+    to help deliver the software on time and within budget.
+  </p>
+</div>
+
+<div class="think">
+  <div>
+    <span class="think-label">Think Like a Software Engineer</span>
+    <h3>The deadline cannot move, but a major feature is added late. What should the project manager do?</h3>
+    <p>
+      Identify at least three possible responses involving scope, cost, staffing, schedule, quality, or risk.
+      Explain the trade-off behind each response.
+    </p>
+  </div>
+  <img src="../../assets/images/mentor-03-thinking.png" alt="Software Engineering Mentor thinking">
+</div>
+
+<div class="lesson-nav">
+  <a class="nav-button" href="sqa.html">← Software Quality Assurance</a>
+  <a class="nav-button next" href="oose.html">Next: OO Software Engineering →</a>
+</div>
+
+</article>
+<footer>CPCS 351 · Software Engineering I · The Educator</footer>
+</main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access") !== "granted"){
+  window.location.href="../../access.html";
+}
+</script>
+
+</body>
+</html>
