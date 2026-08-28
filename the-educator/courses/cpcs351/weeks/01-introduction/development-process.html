@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software Development Process | CPCS 351</title>
+<meta name="description" content="CPCS 351 Software Engineering I — Software Development Process.">
+
+<style>
+:root{
+  --ink:#172033;--muted:#657187;--line:#e6eaf0;--soft:#f7f9fc;
+  --blue:#2f80ed;--blue-soft:#eef6ff;--mint:#5fd1b3;--mint-soft:#effbf7;
+  --orange:#f2a45b;--orange-soft:#fff6ed;--purple:#8b74df;--purple-soft:#f4f1ff;
+  --sidebar:250px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+
+.topbar{position:sticky;top:0;z-index:100;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 22px;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);backdrop-filter:blur(14px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800}
+.brand-mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--mint),var(--orange));position:relative}
+.brand-mark:before,.brand-mark:after{content:"";position:absolute;background:#fff;border-radius:20px}
+.brand-mark:before{width:16px;height:4px;left:7px;top:13px}
+.brand-mark:after{width:4px;height:16px;left:13px;top:7px}
+.top-links{display:flex;gap:5px}
+.top-links a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:650;padding:9px 11px;border-radius:9px}
+.top-links a:hover{background:var(--soft);color:var(--ink)}
+
+.layout{display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr);min-height:calc(100vh - 64px)}
+.sidebar{position:sticky;top:64px;height:calc(100vh - 64px);overflow:auto;padding:25px 14px 30px;border-right:1px solid var(--line);background:#fafbfc}
+.sidebar-course{padding:0 12px 18px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.sidebar-course small{display:block;color:#8d98a8;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.sidebar-course strong{display:block;font-size:15px;line-height:1.35}
+.side-title{padding:7px 12px;margin-top:10px;color:#98a2b3;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.side-link{display:block;padding:9px 12px;border-radius:8px;text-decoration:none;color:#5f6c80;font-size:13px;font-weight:650;line-height:1.4}
+.side-link:hover{background:#f0f3f7;color:var(--ink)}
+.side-link.active{background:#eaf3ff;color:#1768c4;font-weight:800}
+
+main{min-width:0}
+.content{width:min(900px,calc(100% - 48px));margin:auto;padding:64px 0 90px}
+.breadcrumb{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:28px;color:#8c97a7;font-size:13px;font-weight:650}
+.breadcrumb a{text-decoration:none}
+
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:34px;align-items:center}
+.topic-label{display:inline-flex;align-items:center;gap:7px;color:#3175a4;font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px}
+.topic-label:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint)}
+h1{margin:0;font-size:clamp(44px,6vw,68px);line-height:1;letter-spacing:-.045em}
+.lead{margin:22px 0 0;color:var(--muted);font-size:19px;line-height:1.75}
+
+.mentor-card{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff}
+.mentor-image{height:220px;display:flex;align-items:flex-end;justify-content:center;background:radial-gradient(circle at 50% 20%,#fff,#f2f7fb)}
+.mentor-image img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.mentor-message{padding:18px;border-top:1px solid var(--line)}
+.mentor-message blockquote{margin:0;color:#334155;font-size:15px;line-height:1.7;font-weight:650}
+.mentor-name{margin-top:10px;color:#3175a4;font-size:12px;font-weight:800}
+
+.section{margin-top:58px}
+.section-kicker{margin:0 0 7px;color:#98a2b3;font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.06em}
+h2{margin:0 0 14px;font-size:31px;letter-spacing:-.03em}
+.section>p{color:#536176;font-size:16px;line-height:1.8}
+
+.definition{margin-top:22px;padding:24px;border:1px solid var(--line);border-radius:16px;background:#fff}
+.definition p{margin:0;color:#334155;font-size:17px;line-height:1.75}
+
+.process-flow{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:26px}
+.phase{padding:16px 10px;border:1px solid var(--line);border-radius:14px;background:#fff;text-align:center}
+.phase img{width:78px;height:78px;object-fit:contain;margin-bottom:8px}
+.phase strong{display:block;font-size:14px;margin-bottom:5px}
+.phase span{display:block;font-size:12px;color:#6c7789;line-height:1.45}
+
+.deliverables{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+.deliverable{padding:18px;border:1px solid var(--line);border-radius:14px;background:#fff}
+.deliverable h3{margin:0 0 8px;font-size:17px}
+.deliverable ul{margin:0;padding-left:18px;color:#667085;font-size:13px;line-height:1.65}
+
+.case{margin-top:24px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.case-head{padding:18px 20px;background:var(--blue-soft);border-bottom:1px solid var(--line)}
+.case-head small{color:#3175a4;font-weight:850;text-transform:uppercase;letter-spacing:.06em}
+.case-head h3{margin:5px 0 0;font-size:21px}
+.case-row{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:14px 20px;border-bottom:1px solid var(--line)}
+.case-row:last-child{border-bottom:0}
+.case-row strong{color:var(--ink)}
+.case-row span{color:#5d6a7e;line-height:1.6}
+
+.mentor-note{display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end;margin-top:28px;padding:22px 22px 0;border-radius:15px;background:var(--orange-soft);border:1px solid #f5e5d4;overflow:hidden}
+.mentor-note strong{display:block;color:#9a5f2b;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.mentor-note p{margin:0 0 22px;color:#6e5843;line-height:1.7;font-size:15px}
+.mentor-note img{width:100%;max-height:160px;object-fit:contain;object-position:center bottom}
+
+.takeaway{margin-top:30px;padding:22px;border-radius:15px;background:var(--mint-soft);border-left:4px solid var(--mint)}
+.takeaway strong{display:block;color:#327867;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.takeaway p{margin:0;color:#45685f;line-height:1.7;font-size:15px;font-weight:600}
+
+.think{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:20px;align-items:end;margin-top:35px;padding:24px 24px 0;border-radius:16px;background:var(--blue-soft);border:1px solid #dcecff;overflow:hidden}
+.think-label{color:#2c6ea5;font-size:12px;font-weight:850;letter-spacing:.06em;text-transform:uppercase}
+.think h3{margin:8px 0;font-size:21px}
+.think p{margin:0 0 24px;color:#49647f;line-height:1.7}
+.think img{width:100%;max-height:170px;object-fit:contain;object-position:center bottom}
+
+.lesson-nav{display:flex;justify-content:space-between;gap:12px;margin-top:50px;padding-top:24px;border-top:1px solid var(--line)}
+.nav-button{display:inline-flex;align-items:center;gap:9px;padding:13px 16px;border-radius:11px;text-decoration:none;font-size:14px;font-weight:800;border:1px solid var(--line);background:#fff;color:#526176}
+.nav-button.next{background:var(--ink);color:#fff;border-color:var(--ink)}
+footer{padding:25px 0;border-top:1px solid var(--line);color:#98a2b3;text-align:center;font-size:12px}
+.mobile-menu{display:none}
+
+@media(max-width:950px){
+  .process-flow{grid-template-columns:repeat(3,1fr)}
+  .deliverables{grid-template-columns:1fr 1fr}
+  .hero{grid-template-columns:1fr}
+  .mentor-card{max-width:360px}
+}
+@media(max-width:850px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{display:none}
+  .mobile-menu{display:block;padding:11px 18px;background:#fafbfc;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+  .mobile-menu a{display:inline-block;margin-right:5px;padding:8px 10px;background:#fff;border:1px solid var(--line);border-radius:8px;color:#59687c;text-decoration:none;font-size:12px;font-weight:700}
+  .content{width:min(100% - 28px,900px);padding-top:45px}
+}
+@media(max-width:620px){
+  .topbar{padding:0 13px}.top-links a:nth-child(2){display:none}
+  h1{font-size:43px}.lead{font-size:17px}
+  .process-flow,.deliverables{grid-template-columns:1fr}
+  .case-row{grid-template-columns:1fr;gap:5px}
+  .mentor-note,.think{grid-template-columns:1fr}
+  .lesson-nav{flex-direction:column}.nav-button{justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="brand" href="../../index.html"><span class="brand-mark"></span><span>The Educator</span></a>
+  <nav class="top-links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+
+<div class="mobile-menu">
+  <a href="life-cycle.html">Life Cycle</a>
+  <a href="development-process.html">Development Process</a>
+  <a href="waterfall.html">Waterfall</a>
+</div>
+
+<div class="layout">
+<aside class="sidebar">
+  <div class="sidebar-course"><small>CPCS 351 · Topic 01</small><strong>Introduction to Software Engineering</strong></div>
+  <div class="side-title">Topic 01</div>
+  <a class="side-link" href="index.html">Overview</a>
+  <a class="side-link" href="nature-of-software.html">1. Nature of Software</a>
+  <a class="side-link" href="what-is-se.html">2. What is Software Engineering?</a>
+  <a class="side-link" href="why-se.html">3. Why Software Engineering?</a>
+  <a class="side-link" href="teamwork.html">4. Teamwork Challenges</a>
+  <a class="side-link" href="life-cycle.html">5. Software Life Cycle</a>
+  <a class="side-link active" href="development-process.html">6. Development Process</a>
+  <a class="side-link" href="waterfall.html">7. Waterfall Process</a>
+  <a class="side-link" href="sqa.html">8. Software Quality Assurance</a>
+  <a class="side-link" href="project-management.html">9. Project Management</a>
+  <a class="side-link" href="oose.html">10. OO Software Engineering</a>
+  <div class="side-title">Course</div><a class="side-link" href="../../index.html">Course Home</a>
+</aside>
+
+<main>
+<article class="content">
+
+<div class="breadcrumb">
+  <a href="../../index.html">CPCS 351</a><span>›</span>
+  <a href="index.html">Topic 01</a><span>›</span>
+  <span>Software Development Process</span>
+</div>
+
+<section class="hero">
+  <div>
+    <div class="topic-label">Topic 01 · Section 6</div>
+    <h1>Software Development Process</h1>
+    <p class="lead">
+      A software development process transforms an initial system concept into an operational system running in its target environment.
+    </p>
+  </div>
+
+  <div class="mentor-card">
+    <div class="mentor-image">
+      <img src="../../assets/images/mentor-07-working-laptop.png" alt="Software Engineering Mentor working on a development process">
+    </div>
+    <div class="mentor-message">
+      <blockquote>“Development is a transformation: idea → requirements → design → software → working system.”</blockquote>
+      <div class="mentor-name">— Your Software Engineering Mentor</div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-kicker">From the Original Lecture</p>
+  <h2>The core definition</h2>
+
+  <div class="definition">
+    <p>
+      A software development process transforms the <strong>initial system concept</strong> into the
+      <strong>operational system</strong> running in the target environment. It identifies business needs,
+      conducts a feasibility study, formulates requirements or capabilities, and then designs, implements,
+      tests, and deploys the system.
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-kicker">Visual Process</p>
+  <h2>From concept to operation</h2>
+
+  <div class="process-flow">
+    <div class="phase">
+      <img src="../../assets/images/mentor-09-idea.png" alt="">
+      <strong>1. System Concept</strong>
+      <span>What problem or opportunity are we addressing?</span>
+    </div>
+
+    <div class="phase">
+      <img src="../../assets/images/mentor-03-thinking.png" alt="">
+      <strong>2. Business Need & Feasibility</strong>
+      <span>Is the system useful, realistic, and worth building?</span>
+    </div>
+
+    <div class="phase">
+      <img src="../../assets/images/mentor-02-explaining.png" alt="">
+      <strong>3. Requirements</strong>
+      <span>What capabilities and constraints must the system satisfy?</span>
+    </div>
+
+    <div class="phase">
+      <img src="../../assets/images/mentor-06-pointing.png" alt="">
+      <strong>4. Design</strong>
+      <span>How will the system be structured and how will its parts interact?</span>
+    </div>
+
+    <div class="phase">
+      <img src="../../assets/images/mentor-07-working-laptop.png" alt="">
+      <strong>5. Implement & Test</strong>
+      <span>Build the software and verify that it behaves as expected.</span>
+    </div>
+
+    <div class="phase">
+      <img src="../../assets/images/mentor-05-encouraging.png" alt="">
+      <strong>6. Deploy</strong>
+      <span>Release the operational system into its target environment.</span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-kicker">Deliverables</p>
+  <h2>What does each part produce?</h2>
+  <p>
+    Your CLO asks you to understand the life cycle with examples of the deliverables produced by each phase.
+    The exact artifacts vary by methodology, but these are typical examples.
+  </p>
+
+  <div class="deliverables">
+    <div class="deliverable">
+      <h3>Concept / Feasibility</h3>
+      <ul>
+        <li>Problem statement</li>
+        <li>Business case</li>
+        <li>Feasibility assessment</li>
+        <li>Initial scope</li>
+      </ul>
+    </div>
+
+    <div class="deliverable">
+      <h3>Requirements</h3>
+      <ul>
+        <li>Requirements specification</li>
+        <li>User stories / use cases</li>
+        <li>Constraints</li>
+        <li>Acceptance criteria</li>
+      </ul>
+    </div>
+
+    <div class="deliverable">
+      <h3>Design</h3>
+      <ul>
+        <li>Architecture</li>
+        <li>UML models</li>
+        <li>Database design</li>
+        <li>Interface design</li>
+      </ul>
+    </div>
+
+    <div class="deliverable">
+      <h3>Implementation</h3>
+      <ul>
+        <li>Source code</li>
+        <li>Configuration</li>
+        <li>Build artifacts</li>
+        <li>Technical documentation</li>
+      </ul>
+    </div>
+
+    <div class="deliverable">
+      <h3>Testing</h3>
+      <ul>
+        <li>Test cases</li>
+        <li>Test results</li>
+        <li>Defect reports</li>
+        <li>Quality evidence</li>
+      </ul>
+    </div>
+
+    <div class="deliverable">
+      <h3>Deployment</h3>
+      <ul>
+        <li>Operational release</li>
+        <li>Deployment package</li>
+        <li>Release notes</li>
+        <li>Operational documentation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <p class="section-kicker">Modern Example</p>
+  <h2>University registration system</h2>
+
+  <div class="case">
+    <div class="case-head">
+      <small>Concept → Operational System</small>
+      <h3>Following one idea through the development process</h3>
+    </div>
+
+    <div class="case-row">
+      <strong>Concept</strong>
+      <span>Students need a faster and clearer way to register for courses online.</span>
+    </div>
+
+    <div class="case-row">
+      <strong>Feasibility</strong>
+      <span>The university evaluates cost, integration with existing systems, schedule, infrastructure, security, and available expertise.</span>
+    </div>
+
+    <div class="case-row">
+      <strong>Requirements</strong>
+      <span>The system must search courses, enforce prerequisites, detect schedule conflicts, manage seat capacity, and protect student data.</span>
+    </div>
+
+    <div class="case-row">
+      <strong>Design</strong>
+      <span>The team designs the architecture, database, interfaces, services, APIs, and interaction flows.</span>
+    </div>
+
+    <div class="case-row">
+      <strong>Implementation & Testing</strong>
+      <span>Developers build the system while tests verify rules, integration, security, performance, and expected behavior.</span>
+    </div>
+
+    <div class="case-row">
+      <strong>Deployment</strong>
+      <span>The tested release is deployed to the production environment before registration opens.</span>
+    </div>
+  </div>
+</section>
+
+<div class="mentor-note">
+  <div>
+    <strong>Mentor Insight</strong>
+    <p>
+      A development process is not necessarily a rigid one-way sequence. Different methodologies may organize,
+      repeat, or overlap these activities differently. The key idea here is the transformation from concept to operational software.
+    </p>
+  </div>
+  <img src="../../assets/images/mentor-02-explaining.png" alt="Mentor explaining">
+</div>
+
+<div class="takeaway">
+  <strong>Key Takeaway</strong>
+  <p>
+    The development process turns a business need into working software through a connected set of activities:
+    understand the need, determine feasibility, define requirements, design, implement, test, and deploy.
+  </p>
+</div>
+
+<div class="think">
+  <div>
+    <span class="think-label">Think Like a Software Engineer</span>
+    <h3>What if we skip requirements and start coding immediately?</h3>
+    <p>
+      Identify at least three risks. Then explain which later activities might become more expensive because the team skipped requirements work.
+    </p>
+  </div>
+  <img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking">
+</div>
+
+<div class="lesson-nav">
+  <a class="nav-button" href="life-cycle.html">← Software Life Cycle</a>
+  <a class="nav-button next" href="waterfall.html">Next: Waterfall Process →</a>
+</div>
+
+</article>
+<footer>CPCS 351 · Software Engineering I · The Educator</footer>
+</main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access") !== "granted"){
+  window.location.href="../../access.html";
+}
+</script>
+
+</body>
+</html>
