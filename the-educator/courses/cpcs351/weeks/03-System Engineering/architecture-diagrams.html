@@ -334,6 +334,73 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
   border-radius:12px;color:#755a2d;font-size:11px;line-height:1.6
 }
 
+
+/* DENSITY & READING-FLOW REFINEMENTS */
+.section{margin-top:58px}
+.section.compact{margin-top:46px}
+.refbar{margin-top:10px}
+.reference-figure{
+  margin:16px 0 22px;padding:15px;border-radius:18px;
+}
+.reference-figure .rf-head{margin-bottom:12px;padding-bottom:10px}
+.reference-figure .rf-img{
+  max-height:540px;
+}
+.diagram-frame{margin-top:18px;padding:20px}
+.atlas{padding:22px}
+.atlas-core{width:170px;height:170px}
+.atlas-grid{margin-top:18px;gap:10px}
+.atlas-card{min-height:155px;padding:15px}
+.atlas-card .glyph{font-size:27px;margin-bottom:7px}
+.atlas-card p{font-size:10.5px}
+.selector{margin-top:18px;gap:9px}
+.sel{padding:15px}
+.sel p{font-size:10.5px}
+.learning-path{
+  margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:9px
+}
+.lp{
+  padding:13px 14px;border-radius:13px;border:1px solid var(--line);background:#fff;
+  font-size:10.5px;color:#657489;line-height:1.55
+}
+.lp b{display:block;color:var(--ink);font-size:11.5px;margin-bottom:4px}
+.lp:nth-child(1){background:var(--navy2)}
+.lp:nth-child(2){background:var(--sky2)}
+.lp:nth-child(3){background:var(--teal2)}
+.how-read{
+  margin-top:12px;padding:12px 14px;border-radius:12px;background:#f8fafb;border:1px solid var(--line);
+  color:#637287;font-size:10.5px;line-height:1.55
+}
+.how-read b{color:var(--ink)}
+.sysml-pair{
+  display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px
+}
+.sysml-card{
+  border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff
+}
+.sysml-card h3{margin:0 0 7px;font-size:17px}
+.sysml-card p{margin:0;color:#66758a;font-size:11px;line-height:1.55}
+.sysml-card.bdd{background:var(--sky2)}
+.sysml-card.ibd{background:var(--teal2)}
+.example-strip{
+  margin-top:18px;display:grid;grid-template-columns:repeat(4,1fr);gap:9px
+}
+.exview{
+  padding:14px;border-radius:13px;border:1px solid var(--line);background:#fff
+}
+.exview b{font-size:11.5px}
+.exview p{margin:5px 0 0;color:#69778b;font-size:10.3px;line-height:1.5}
+.exview:nth-child(1){background:var(--sky2)}
+.exview:nth-child(2){background:var(--violet2)}
+.exview:nth-child(3){background:var(--amber2)}
+.exview:nth-child(4){background:var(--green2)}
+@media(max-width:850px){
+  .learning-path,.sysml-pair,.example-strip{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+  .learning-path,.sysml-pair,.example-strip{grid-template-columns:1fr}
+}
+
 /* closure */
 .note{margin-top:30px;border-radius:16px;padding:22px;background:#eef5f6;border:1px solid #d5e5e7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}
 .note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
@@ -415,8 +482,7 @@ Each diagram emphasizes a different question: <strong>What exists? How is it con
 <div class="kicker">Visual Hook</div>
 <h2>The Architecture Diagram Atlas</h2>
 <p>
-Imagine one system in the center and four different lenses around it.
-The architecture does not change—the viewpoint does.
+One architecture can be viewed through different lenses. Choose the view based on the question you need to answer.
 </p>
 
 <div class="atlas">
@@ -477,6 +543,41 @@ A system architecture can be depicted using block diagrams, UML component diagra
 reference figure from <strong>uml-diagrams.org</strong> is shown first, followed by our simplified
 teaching/example diagram. Reference figures are clickable and open their original source page.
 </div>
+</div>
+</section>
+
+<!-- CHOOSING DIAGRAM -->
+<section class="section">
+<div class="kicker">Choosing the View</div>
+<h2>Choose the diagram by the question</h2>
+
+<div class="selector">
+
+<div class="sel">
+<b>“What are the major parts?”</b>
+<p>Use a <strong>Block Diagram</strong> for a fast structural overview.</p>
+</div>
+
+<div class="sel">
+<b>“How do software components connect?”</b>
+<p>Use a <strong>UML Component Diagram</strong> to emphasize components, interfaces, and dependencies.</p>
+</div>
+
+<div class="sel">
+<b>“What is the system made of internally?”</b>
+<p>Use <strong>SysML BDD / IBD</strong> to show composition, nested blocks, ports, and multidisciplinary flows.</p>
+</div>
+
+<div class="sel">
+<b>“Where does information or material move?”</b>
+<p>Use a <strong>Data Flow Diagram</strong> to follow processes, stores, external entities, and flows.</p>
+</div>
+
+<div class="sel">
+<b>“Where is the software deployed?”</b>
+<p>Use a <strong>UML Deployment Diagram</strong> to show artifacts, nodes, execution environments, and communication paths.</p>
+</div>
+
 </div>
 </section>
 
@@ -565,9 +666,7 @@ and connectors.
 </a>
   <div class="fallback">The external reference image could not be loaded. Use the source link below to open the original figure.</div>
   <div class="rf-caption">
-    This reference map shows the notation students should recognize: subsystem/component,
-    internal structure, ports, provided and required interfaces, delegation connectors,
-    assembly connectors, dependencies, and ball-and-socket notation.
+    Use this as the notation map: component/subsystem, internal structure, ports, provided/required interfaces, delegation and assembly connectors, dependencies, and ball-and-socket notation.
     <a href="https://www.uml-diagrams.org/component-diagrams.html" target="_blank" rel="noopener">Open original UML Component Diagram reference ↗</a>
   </div>
 </div>
@@ -626,8 +725,7 @@ and connectors.
 
 </div>
 
-<div style="margin-top:14px;font-size:10.5px;line-height:1.6;color:#69778b">
-<strong>How to read it:</strong> rectangles are UML components; the small squares on component boundaries are ports;
+<div class="how-read"><b>How to read it:</b> rectangles are UML components; the small squares on component boundaries are ports;
 connectors represent communication paths between component parts. Provided/required interfaces may also be shown
 with lollipop/socket notation when interface contracts need to be explicit.
 </div>
@@ -636,11 +734,12 @@ with lollipop/socket notation when interface contracts need to be explicit.
 
 <!-- SYSML BDD -->
 <section class="section">
-<div class="kicker">Diagram 3</div>
-<h2>SysML Block Definition Diagram — see what the system consists of</h2>
-<p>
-A Block Definition Diagram (BDD) focuses on system composition: which subsystems or components make up the larger system.
-</p>
+<div class="kicker">Diagrams 3–4 · SysML</div>
+<h2>SysML — first see what exists, then see what happens inside</h2>
+<div class="sysml-pair">
+  <div class="sysml-card bdd"><h3>BDD · What exists?</h3><p>Shows blocks and composition: which subsystems or components make up the larger system.</p></div>
+  <div class="sysml-card ibd"><h3>IBD · How do internal parts interact?</h3><p>Shows internal parts, ports, connections, and flows inside a block or subsystem.</p></div>
+</div>
 
 <div class="diagram-frame">
 <div class="diagram-title">bdd [package] Structure · ABHS</div>
@@ -675,8 +774,8 @@ A Block Definition Diagram (BDD) focuses on system composition: which subsystems
 
 <!-- SYSML IBD -->
 <section class="section">
-<div class="kicker">Diagram 4</div>
-<h2>SysML Internal Block Diagram — see what happens inside</h2>
+<div class="kicker">SysML · Internal View</div>
+<h2>Internal Block Diagram (IBD)</h2>
 <p>
 An Internal Block Diagram (IBD) exposes internal parts, ports, and flows inside a subsystem.
 SysML is not UML, but UML's <strong>Composite Structure Diagram</strong> is the closest UML view for
@@ -705,9 +804,7 @@ showing the internal structure of a classifier using parts, ports, and connector
 </a>
   <div class="fallback">The external reference image could not be loaded. Use the source link below to open the original figure.</div>
   <div class="rf-caption">
-    The UML reference emphasizes internal structure: structured classifier, parts, roles,
-    ports and connectors. This is the closest UML counterpart to the internal-structure idea
-    students see in the SysML IBD below.
+    Focus on structured classifier, parts, roles, ports, and connectors—the closest UML counterpart to the SysML internal view below.
     <a href="https://www.uml-diagrams.org/composite-structure-diagrams.html" target="_blank" rel="noopener">Open original Composite Structure reference ↗</a>
   </div>
 </div>
@@ -787,8 +884,7 @@ between UML model elements, UML also provides <strong>Information Flow</strong>.
 </a>
   <div class="fallback">The external reference image could not be loaded. Use the source link below to open the original figure.</div>
   <div class="rf-caption">
-    UML Information Flow represents high-level exchange of information between model elements.
-    Keep it conceptually separate from the DFD example below: they answer related questions but use different notation.
+    UML Information Flow shows high-level information exchange. Keep it separate from DFD: the questions overlap, but the notation is different.
     <a href="https://www.uml-diagrams.org/information-flow-diagrams.html" target="_blank" rel="noopener">Open original UML Information Flow reference ↗</a>
   </div>
 </div>
@@ -823,7 +919,7 @@ between UML model elements, UML also provides <strong>Information Flow</strong>.
 
 <!-- UML DEPLOYMENT — ADDED ARCHITECTURE VIEW -->
 <section class="section">
-<div class="kicker">Additional UML Architecture View</div>
+<div class="kicker">Diagram 6 · UML</div>
 <h2>UML Deployment Diagram — where the software actually runs</h2>
 <p>
 A Deployment Diagram shows the execution architecture of a system: software artifacts are deployed
@@ -853,8 +949,7 @@ deployed to nodes; components are represented indirectly through the artifacts t
 </a>
   <div class="fallback">The external reference image could not be loaded. Use the source link below to open the original figure.</div>
   <div class="rf-caption">
-    This official example connects the core deployment concepts: devices/nodes, execution environments,
-    artifacts, manifestation and communication paths.
+    Focus on nodes/devices, execution environments, artifacts, manifestation, and communication paths.
     <a href="https://www.uml-diagrams.org/web-application-uml-deployment-diagram-example.html" target="_blank" rel="noopener">Open original Deployment Diagram example ↗</a>
   </div>
 </div>
@@ -890,110 +985,25 @@ deployed to nodes; components are represented indirectly through the artifacts t
 </div>
 </section>
 
-<!-- CHOOSING DIAGRAM -->
-<section class="section">
-<div class="kicker">Choosing the View</div>
-<h2>Ask the question first, then choose the diagram</h2>
 
-<div class="selector">
-
-<div class="sel">
-<b>“What are the major parts?”</b>
-<p>Use a <strong>Block Diagram</strong> for a fast structural overview.</p>
-</div>
-
-<div class="sel">
-<b>“How do software components connect?”</b>
-<p>Use a <strong>UML Component Diagram</strong> to emphasize components, interfaces, and dependencies.</p>
-</div>
-
-<div class="sel">
-<b>“What is the system made of internally?”</b>
-<p>Use <strong>SysML BDD / IBD</strong> to show composition, nested blocks, ports, and multidisciplinary flows.</p>
-</div>
-
-<div class="sel">
-<b>“Where does information or material move?”</b>
-<p>Use a <strong>Data Flow Diagram</strong> to follow processes, stores, external entities, and flows.</p>
-</div>
-
-<div class="sel">
-<b>“Where is the software deployed?”</b>
-<p>Use a <strong>UML Deployment Diagram</strong> to show artifacts, nodes, execution environments, and communication paths.</p>
-</div>
-
-</div>
-</section>
 
 <!-- STUDENT-NEAR EXAMPLE -->
-<section class="section">
+<section class="section compact">
 <div class="kicker">Example Closer to Students</div>
-<h2>University Registration System — same system, two diagrams</h2>
+<h2>University Registration System — four views of one system</h2>
+<p>Use the same familiar system to see how the question changes the diagram you choose.</p>
 
-<div class="student-demo">
-
-<h3>One system, different questions</h3>
-
-<div class="demo-row">
-
-<div class="demo-card">
-<b>Block Diagram View</b>
-<p>Useful when explaining the main subsystems to a non-technical stakeholder.</p>
-
-<div class="demo-visual">
-<div class="demo-node">University Registration System</div>
-<div class="demo-arrow">↓</div>
-<div class="demo-node">Student Portal</div>
-<div class="demo-node">Registration Service</div>
-<div class="demo-node">Academic Records</div>
-<div class="demo-node">Notification Service</div>
-</div>
-</div>
-
-<div class="demo-card">
-<b>Data Flow View</b>
-<p>Useful when explaining how a registration request moves through the system.</p>
-
-<div class="demo-visual">
-<div class="demo-node">Student</div>
-<div class="demo-arrow">↓ registration request</div>
-<div class="demo-node">Check Prerequisites</div>
-<div class="demo-arrow">↓ valid request</div>
-<div class="demo-node">Reserve Seat</div>
-<div class="demo-arrow">↓ confirmation</div>
-<div class="demo-node">Student</div>
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- ANOTHER EXAMPLE -->
-<section class="section">
-<div class="kicker">Another Example</div>
-<h2>Ride-Sharing System — choose the right lens</h2>
-
-<div class="student-demo">
-<div class="demo-row">
-
-<div class="demo-card">
-<b>Component View</b>
-<p>Passenger App ↔ Driver App ↔ Trip Service ↔ Payment Service ↔ Map Service. Best when discussing software dependencies and interfaces.</p>
-</div>
-
-<div class="demo-card">
-<b>System / SysML View</b>
-<p>Passenger + driver + mobile devices + GPS + backend + payment provider + cellular network. Better when the complete socio-technical system matters.</p>
-</div>
-
-</div>
+<div class="example-strip">
+  <div class="exview"><b>Block View</b><p>Student Portal · Registration Service · Academic Records · Notification Service.</p></div>
+  <div class="exview"><b>Component View</b><p>Which software components depend on which interfaces and services?</p></div>
+  <div class="exview"><b>Flow View</b><p>Student → check prerequisites → reserve seat → confirmation.</p></div>
+  <div class="exview"><b>Deployment View</b><p>Which artifacts run on the application server and database server?</p></div>
 </div>
 </section>
 
 <section class="section">
-<div class="kicker">Illustrated Story</div>
-<h2>The diagram that answered the wrong question</h2>
+<div class="kicker">Final Visual Story</div>
+<h2>Correct diagram, wrong audience</h2>
 
 <div class="story">
 
