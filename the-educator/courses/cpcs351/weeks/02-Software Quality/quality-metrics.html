@@ -16,48 +16,147 @@
 body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
 a{color:inherit}
 .top{height:60px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 14px;backdrop-filter:blur(12px)}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}.mark{width:29px;height:29px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--mint),var(--orange));display:grid;place-items:center;color:#fff;font-size:21px}.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
-.layout{display:grid;grid-template-columns:var(--side) 1fr}.side{height:calc(100vh - 60px);position:sticky;top:60px;overflow:auto;border-right:1px solid var(--line);background:#fafbfc;padding:24px 14px}.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}.course small,.label{font-size:11px;font-weight:850;color:#8e9aad;letter-spacing:.07em;text-transform:uppercase}.course strong{display:block;margin-top:7px;font-size:15px;line-height:1.35}.label{margin:18px 0 8px}.side a,.side span{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5c6d85;font-size:13px;font-weight:650;line-height:1.35}.side a.active{background:#e9f3ff;color:#1269ca;font-weight:850}.side span.future{color:#a3adba}
-.content{width:min(900px,calc(100% - 48px));margin:auto;padding:58px 0 90px}.crumb{color:#8a97a8;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}.hero{display:grid;grid-template-columns:1fr 270px;gap:34px;align-items:center}.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.07em;text-transform:uppercase}.eyebrow{color:#2e76ad}.eyebrow:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mint);margin-right:7px}h1{font-size:clamp(43px,6vw,64px);line-height:1;letter-spacing:-.045em;margin:14px 0 20px}.lead{color:var(--muted);font-size:18px;line-height:1.75}.mentor{border:1px solid var(--line);border-radius:18px;overflow:hidden}.mentor .pic{height:220px;background:radial-gradient(circle at top,#fff,#f1f6fb);display:flex;align-items:flex-end}.mentor img{width:100%;height:100%;object-fit:contain;object-position:center bottom}.mentor p{margin:0;padding:17px;border-top:1px solid var(--line);font-size:14px;line-height:1.65;font-weight:650;color:#46556b}
-.section{margin-top:58px}.kicker{color:#96a1b1;margin-bottom:7px}h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c;line-height:1.8;font-size:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}
+.mark{width:29px;height:29px;border-radius:9px;background:linear-gradient(135deg,var(--blue),var(--mint),var(--orange));display:grid;place-items:center;color:#fff;font-size:21px}
+.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
+.layout{display:grid;grid-template-columns:var(--side) 1fr}
+.side{height:calc(100vh - 60px);position:sticky;top:60px;overflow:auto;border-right:1px solid var(--line);background:#fafbfc;padding:24px 14px}
+.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}
+.course small,.label{font-size:11px;font-weight:850;color:#8e9aad;letter-spacing:.07em;text-transform:uppercase}
+.course strong{display:block;margin-top:7px;font-size:15px;line-height:1.35}.label{margin:18px 0 8px}
+.side a,.side span{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5c6d85;font-size:13px;font-weight:650;line-height:1.35}
+.side a.active{background:#e9f3ff;color:#1269ca;font-weight:850}.side span.future{color:#a3adba}
+.content{width:min(900px,calc(100% - 48px));margin:auto;padding:58px 0 90px}
+.crumb{color:#8a97a8;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}
+.hero{display:grid;grid-template-columns:1fr 270px;gap:34px;align-items:center}
+.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.07em;text-transform:uppercase}.eyebrow{color:#2e76ad}
+.eyebrow:before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mint);margin-right:7px}
+h1{font-size:clamp(43px,6vw,64px);line-height:1;letter-spacing:-.045em;margin:14px 0 20px}
+.lead{color:var(--muted);font-size:18px;line-height:1.75}
+.mentor{border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.mentor .pic{height:220px;background:radial-gradient(circle at top,#fff,#f1f6fb);display:flex;align-items:flex-end}
+.mentor img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.mentor p{margin:0;padding:17px;border-top:1px solid var(--line);font-size:14px;line-height:1.65;font-weight:650;color:#46556b}
+.section{margin-top:64px}.kicker{color:#96a1b1;margin-bottom:7px}
+h2{font-size:30px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c;line-height:1.8;font-size:16px}
 
-/* visual hook */
-.instrument{margin-top:25px;border:1px solid var(--line);border-radius:22px;padding:26px;background:linear-gradient(180deg,#fbfcff,#f6f9fc)}
-.dashboard{border:1px solid #dce3ec;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 18px 45px rgba(30,43,65,.07)}
-.dash-head{background:#202b3e;color:#fff;padding:14px 18px;font-size:12px;font-weight:850;letter-spacing:.05em;display:flex;justify-content:space-between}
-.gauges{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;padding:22px}.gauge{padding:17px 12px;border:1px solid var(--line);border-radius:14px;text-align:center;background:#fff}.dial{width:68px;height:68px;border-radius:50%;margin:0 auto 10px;border:8px solid #e9edf2;display:grid;place-items:center;font-size:18px;font-weight:900}.gauge:nth-child(1) .dial{border-top-color:var(--blue)}.gauge:nth-child(2) .dial{border-right-color:var(--mint)}.gauge:nth-child(3) .dial{border-bottom-color:var(--orange)}.gauge:nth-child(4) .dial{border-left-color:var(--purple)}.gauge:nth-child(5) .dial{border-top-color:var(--red)}.gauge b{display:block;font-size:12px}.gauge span{display:block;margin-top:5px;color:#718095;font-size:10.5px;line-height:1.4}.dash-note{padding:0 22px 22px;color:#617188;font-size:12px;line-height:1.65}
+/* QUALITY PRISM */
+.prism-wrap{margin-top:28px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:linear-gradient(180deg,#fbfcff,#f7f9fc)}
+.prism-stage{position:relative;min-height:420px;padding:30px}
+.prism-input{position:absolute;left:34px;top:165px;width:160px}
+.prism-input .beam{height:8px;background:#273348;border-radius:999px}
+.prism-input b{display:block;margin-bottom:10px;font-size:18px}.prism-input span{font-size:12px;color:#6b788c;line-height:1.5}
+.prism-shape{position:absolute;left:255px;top:96px;width:0;height:0;border-top:110px solid transparent;border-bottom:110px solid transparent;border-left:190px solid rgba(120,130,255,.16);filter:drop-shadow(0 18px 24px rgba(55,67,92,.10))}
+.prism-label{position:absolute;left:290px;top:188px;width:125px;text-align:center;font-size:14px;font-weight:900;color:#4e5d78}
+.rays{position:absolute;left:420px;top:75px;right:28px;display:grid;gap:14px}
+.ray{height:50px;border-radius:12px;padding:0 15px;display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:850;border:1px solid rgba(0,0,0,.04)}
+.ray span{font-size:11px;font-weight:700;color:#596a80}
+.r1{background:linear-gradient(90deg,var(--blue2),#fff)}.r2{background:linear-gradient(90deg,var(--mint2),#fff)}
+.r3{background:linear-gradient(90deg,var(--orange2),#fff)}.r4{background:linear-gradient(90deg,var(--purple2),#fff)}.r5{background:linear-gradient(90deg,var(--red2),#fff)}
+.prism-caption{border-top:1px solid var(--line);padding:17px 22px;color:#647389;font-size:13px;line-height:1.65;background:#fff}
 
-/* definitions */
-.defs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}.def{border:1px solid var(--line);border-radius:16px;padding:21px}.def:first-child{background:var(--blue2)}.def:last-child{background:var(--mint2)}.def h3{margin:0 0 8px;font-size:18px}.def p{margin:0;color:#5f7086;font-size:13px;line-height:1.7}
+/* definitions ribbon */
+.definition-ribbon{margin-top:24px;display:grid;grid-template-columns:1fr 70px 1fr;align-items:center}
+.def-block{padding:22px;border-radius:18px;border:1px solid var(--line);background:#fff}
+.def-block strong{font-size:18px}.def-block p{margin:8px 0 0;color:#617087;line-height:1.7;font-size:13px}
+.def-arrow{text-align:center;color:#9ca7b5;font-size:24px;font-weight:900}
 
-/* metrics map */
-.metric-map{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:24px}.mcard{border:1px solid var(--line);border-radius:15px;padding:18px 13px;background:#fff}.mcard .code{font-size:11px;font-weight:900;color:#8a96a7}.mcard h3{font-size:15px;margin:7px 0}.mcard p{margin:0;color:#69778b;font-size:11.5px;line-height:1.55}.mcard:nth-child(1){border-top:4px solid var(--blue)}.mcard:nth-child(2){border-top:4px solid var(--mint)}.mcard:nth-child(3){border-top:4px solid var(--orange)}.mcard:nth-child(4){border-top:4px solid var(--purple)}.mcard:nth-child(5){border-top:4px solid var(--red)}
+/* REQUIREMENTS COMPASS */
+.req-compass{margin-top:25px;display:grid;grid-template-columns:300px 1fr;gap:28px;align-items:center}
+.compass{position:relative;width:280px;height:280px;margin:auto;border-radius:50%;background:radial-gradient(circle,#fff 0 31%,#f7f9fc 32% 100%);border:1px solid var(--line)}
+.compass-core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:104px;height:104px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;text-align:center;font-size:13px;font-weight:900}
+.point{position:absolute;width:110px;padding:12px;border-radius:13px;background:#fff;border:1px solid var(--line);box-shadow:0 10px 22px rgba(30,43,65,.06);text-align:center}
+.point b{font-size:12px}.point span{display:block;margin-top:5px;color:#6f7c8f;font-size:10.5px;line-height:1.4}
+.north{top:-7px;left:85px;background:var(--blue2)}.east{right:-24px;top:93px;background:var(--mint2)}
+.south{bottom:-7px;left:85px;background:var(--orange2)}.west{left:-24px;top:93px;background:var(--purple2)}
+.req-explain{display:grid;gap:13px}.req-explain div{padding:16px 18px;border-left:3px solid var(--line);background:#fff}
+.req-explain b{font-size:13px}.req-explain p{margin:5px 0 0;color:#69788b;font-size:12px;line-height:1.6}
 
-/* requirement metrics */
-.require-box{margin-top:22px;border:1px solid var(--line);border-radius:17px;overflow:hidden}.req-grid{display:grid;grid-template-columns:repeat(4,1fr)}.req{padding:20px;border-right:1px solid var(--line);background:#fff}.req:last-child{border-right:0}.req b{display:block;font-size:14px;margin-bottom:7px}.req span{font-size:12px;color:#69788c;line-height:1.55}.req:nth-child(1){background:var(--blue2)}.req:nth-child(2){background:var(--mint2)}.req:nth-child(3){background:var(--orange2)}.req:nth-child(4){background:var(--purple2)}
+/* DESIGN NETWORK */
+.design-lab{margin-top:28px;border:1px solid var(--line);border-radius:22px;padding:25px;background:linear-gradient(180deg,#fcfdff,#f7f9fc)}
+.network{position:relative;height:360px;max-width:780px;margin:auto}
+.mod{position:absolute;width:128px;min-height:74px;border-radius:14px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;text-align:center;padding:10px;font-size:12px;font-weight:850;box-shadow:0 10px 24px rgba(30,43,65,.06)}
+.central{left:326px;top:135px;background:var(--blue2);border-color:#d3e8ff}
+.a{left:40px;top:35px}.b{left:40px;top:145px}.c{left:40px;top:255px}
+.d{right:40px;top:55px}.e{right:40px;top:180px}.f{right:205px;top:270px;background:var(--mint2)}
+.line{position:absolute;height:2px;background:#cbd4df;transform-origin:left center}.l1{width:240px;left:164px;top:82px;transform:rotate(20deg)}
+.l2{width:170px;left:164px;top:182px;transform:rotate(0)}.l3{width:220px;left:164px;top:292px;transform:rotate(-27deg)}
+.l4{width:210px;left:455px;top:169px;transform:rotate(-24deg)}.l5{width:210px;left:455px;top:169px;transform:rotate(18deg)}
+.l6{width:150px;left:455px;top:190px;transform:rotate(55deg)}
+.callout{position:absolute;padding:9px 11px;border-radius:10px;font-size:10px;font-weight:900;border:1px solid var(--line);background:#fff}
+.fanin{left:205px;top:70px;color:#2e6da4}.fanout{right:195px;top:90px;color:#2b826d}.cohesion{left:315px;top:225px;color:#94602d;background:var(--orange2)}
+.coupling{right:75px;bottom:15px;color:#6a58a0;background:var(--purple2)}
+.design-legend{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin-top:12px}.legend-item{padding:15px;border-radius:13px;border:1px solid var(--line);background:#fff}
+.legend-item b{font-size:12px}.legend-item span{display:block;margin-top:5px;color:#68778c;font-size:11px;line-height:1.55}
+.extra-metrics{margin-top:18px;border-top:1px dashed #d8dee7;padding-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.extra-metrics div{padding:14px;border-radius:12px;background:#fff;border:1px solid var(--line);font-size:11.5px;color:#657389;line-height:1.55}.extra-metrics b{display:block;color:var(--ink);margin-bottom:5px}
 
-/* design metrics */
-.design-table{margin-top:22px;border:1px solid var(--line);border-radius:17px;overflow:hidden}.drow{display:grid;grid-template-columns:180px 1fr;border-bottom:1px solid var(--line)}.drow:last-child{border-bottom:0}.dname{padding:16px 18px;background:#fafbfc;font-weight:850;font-size:13px}.dtext{padding:16px 18px;color:#627187;font-size:13px;line-height:1.6}
+/* CODE LAB */
+.code-lab{margin-top:26px;border-radius:20px;overflow:hidden;border:1px solid #27354a;background:#111a28;color:#d8e0ea}
+.code-head{padding:13px 16px;border-bottom:1px solid #27354a;display:flex;justify-content:space-between;font-size:11px;font-weight:850;color:#99a9bc}
+.code-body{display:grid;grid-template-columns:1.1fr .9fr;min-height:315px}
+.code-sample{padding:24px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;line-height:1.75;border-right:1px solid #27354a;white-space:pre-wrap}
+.code-sample .kw{color:#8cc8ff}.code-sample .fn{color:#9be3c8}.code-sample .warn{background:rgba(242,164,95,.16);padding:2px 4px;border-radius:4px}
+.code-metrics{padding:22px;display:grid;gap:10px;align-content:start}
+.metric-pill{padding:14px;border-radius:12px;background:#18263a;border:1px solid #2b3d55}.metric-pill b{display:block;color:#fff;font-size:12px}.metric-pill span{display:block;margin-top:5px;color:#aeb9c7;font-size:11px;line-height:1.5}
 
-/* implementation */
-.impl{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:22px}.ibox{border:1px solid var(--line);border-radius:15px;padding:18px;background:#fff}.ibox b{display:block;font-size:14px;margin-bottom:7px}.ibox p{margin:0;color:#69788d;font-size:12px;line-height:1.55}.ibox:nth-child(1){background:var(--red2)}.ibox:nth-child(2){background:var(--blue2)}.ibox:nth-child(3){background:var(--mint2)}.ibox:nth-child(4){background:var(--orange2)}
+/* OO ECOSYSTEM */
+.oo-eco{margin-top:26px;border:1px solid var(--line);border-radius:22px;padding:26px;background:linear-gradient(180deg,#fbfcff,#f8f9fd)}
+.tree{position:relative;min-height:390px}
+.cls{position:absolute;width:155px;border:1px solid var(--line);border-radius:14px;background:#fff;padding:13px;box-shadow:0 10px 24px rgba(30,43,65,.05)}
+.cls b{font-size:12px}.cls span{display:block;margin-top:5px;color:#6b788c;font-size:10.5px;line-height:1.4}
+.root{left:355px;top:15px;background:var(--blue2)}.child1{left:160px;top:140px}.child2{left:355px;top:140px;background:var(--mint2)}.child3{left:550px;top:140px}.leaf1{left:65px;top:275px}.leaf2{left:255px;top:275px}.leaf3{left:500px;top:275px;background:var(--orange2)}
+.tline{position:absolute;height:2px;background:#cfd8e4;transform-origin:left center}
+.t1{width:220px;left:430px;top:105px;transform:rotate(150deg)}.t2{width:110px;left:430px;top:105px;transform:rotate(90deg)}.t3{width:220px;left:430px;top:105px;transform:rotate(30deg)}
+.t4{width:175px;left:235px;top:220px;transform:rotate(150deg)}.t5{width:145px;left:235px;top:220px;transform:rotate(45deg)}.t6{width:155px;left:625px;top:220px;transform:rotate(135deg)}
+.oo-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.oo-tags span{padding:8px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:11px;font-weight:750;color:#607087}
 
-/* OO metrics constellation */
-.constellation{margin-top:24px;border:1px solid var(--line);border-radius:20px;padding:25px;background:linear-gradient(180deg,#fbfcff,#f8f9fd)}.const-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.star{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff}.star b{font-size:13px}.star span{display:block;margin-top:6px;color:#6b788b;font-size:11.5px;line-height:1.5}
-
-/* examples */
-.examples{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}.example{border:1px solid var(--line);border-radius:16px;padding:20px}.example h3{margin:0 0 9px;font-size:18px}.example p{margin:0;color:#66758a;font-size:13px;line-height:1.7}.example .calc{margin-top:14px;padding:12px;border-radius:11px;background:var(--soft);font-size:12px;font-weight:750;line-height:1.6;color:#516176}
+/* EXAMPLES */
+.example-strip{margin-top:26px;display:grid;grid-template-columns:1fr 36px 1fr;align-items:stretch}
+.example-side{padding:21px;border:1px solid var(--line);border-radius:16px;background:#fff}.example-side h3{margin:0 0 9px;font-size:18px}.example-side p{margin:0;color:#66758a;font-size:13px;line-height:1.7}
+.example-side .result{margin-top:15px;padding:12px;border-radius:11px;background:var(--soft);font-size:12px;font-weight:750;color:#516176;line-height:1.55}
+.example-arrow{display:grid;place-items:center;color:#9da7b4;font-size:22px;font-weight:900}
 
 /* story */
-.story{margin-top:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.panel{border:1px solid var(--line);border-radius:15px;padding:13px;background:#fff;overflow:hidden}.visual{height:118px;border-radius:11px;background:linear-gradient(135deg,#f5f9ff,#f7fbfa);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;margin-bottom:11px}.visual img{width:100%;height:100%;object-fit:contain;object-position:center bottom}.panel .no{font-size:10px;font-weight:900;color:#8794a6;text-transform:uppercase}.panel h4{margin:5px 0 6px;font-size:14px}.panel p{margin:0;color:#68768a;font-size:11.5px;line-height:1.55}.panel:nth-child(1){border-top:4px solid var(--blue)}.panel:nth-child(2){border-top:4px solid var(--mint)}.panel:nth-child(3){border-top:4px solid var(--orange)}.panel:nth-child(4){border-top:4px solid var(--purple)}
+.story{margin-top:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}.panel{border:1px solid var(--line);border-radius:15px;padding:13px;background:#fff;overflow:hidden}
+.visual{height:118px;border-radius:11px;background:linear-gradient(135deg,#f5f9ff,#f7fbfa);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;margin-bottom:11px}
+.visual img{width:100%;height:100%;object-fit:contain;object-position:center bottom}.panel .no{font-size:10px;font-weight:900;color:#8794a6;text-transform:uppercase}
+.panel h4{margin:5px 0 6px;font-size:14px}.panel p{margin:0;color:#68768a;font-size:11.5px;line-height:1.55}
+.panel:nth-child(1){border-top:4px solid var(--blue)}.panel:nth-child(2){border-top:4px solid var(--mint)}.panel:nth-child(3){border-top:4px solid var(--orange)}.panel:nth-child(4){border-top:4px solid var(--purple)}
 
 /* closure */
-.note{margin-top:30px;border-radius:16px;padding:22px;background:var(--purple2);border:1px solid #e1daf7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}.note b{color:#6955a0}.note p{margin:0 0 20px;color:#5e5678;line-height:1.7;font-size:14px}.note img{width:100%;max-height:150px;object-fit:contain;object-position:bottom}.take{margin-top:28px;padding:22px;border-left:4px solid var(--mint);border-radius:15px;background:var(--mint2)}.take b{color:#317868}.take p{margin:0;color:#45675e;line-height:1.7;font-weight:650;font-size:14px}.think{margin-top:30px;border:1px solid #d5e8ff;background:var(--blue2);border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end;overflow:hidden}.think .tlabel{color:#2d6fa7}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#496681;line-height:1.7;font-size:14px}.think img{width:100%;max-height:155px;object-fit:contain;object-position:bottom}.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:#182236;color:#fff;border-color:#182236}.mobile{display:none}
+.note{margin-top:30px;border-radius:16px;padding:22px;background:var(--purple2);border:1px solid #e1daf7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}
+.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}.note b{color:#6955a0}
+.note p{margin:0 0 20px;color:#5e5678;line-height:1.7;font-size:14px}.note img{width:100%;max-height:150px;object-fit:contain;object-position:bottom}
+.take{margin-top:28px;padding:22px;border-left:4px solid var(--mint);border-radius:15px;background:var(--mint2)}.take b{color:#317868}
+.take p{margin:0;color:#45675e;line-height:1.7;font-weight:650;font-size:14px}
+.think{margin-top:30px;border:1px solid #d5e8ff;background:var(--blue2);border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end;overflow:hidden}
+.think .tlabel{color:#2d6fa7}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#496681;line-height:1.7;font-size:14px}
+.think img{width:100%;max-height:155px;object-fit:contain;object-position:bottom}
+.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}
+.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:#182236;color:#fff;border-color:#182236}
+.mobile{display:none}
 
-@media(max-width:900px){.gauges,.metric-map{grid-template-columns:repeat(3,1fr)}.impl{grid-template-columns:1fr 1fr}.const-grid{grid-template-columns:1fr 1fr}.story{grid-template-columns:1fr 1fr}}
-@media(max-width:850px){.layout{display:block}.side{display:none}.mobile{display:block;padding:10px 14px;border-bottom:1px solid var(--line);overflow:auto;white-space:nowrap}.mobile a{display:inline-block;padding:8px 10px;margin-right:5px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-size:12px;font-weight:700}.content{width:min(100% - 28px,900px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
-@media(max-width:690px){.defs,.examples{grid-template-columns:1fr}.req-grid{grid-template-columns:1fr 1fr}.drow{grid-template-columns:1fr}.dname{border-bottom:1px solid var(--line)}.gauges,.metric-map{grid-template-columns:1fr 1fr}.const-grid{grid-template-columns:1fr}.story{grid-template-columns:1fr}}
-@media(max-width:520px){.links a:nth-child(2){display:none}.gauges,.metric-map,.impl,.req-grid{grid-template-columns:1fr}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}}
+@media(max-width:900px){
+  .prism-stage{min-height:510px}.prism-input{left:25px;top:35px;width:180px}.prism-shape{left:250px;top:35px;transform:scale(.8)}.prism-label{left:285px;top:125px}
+  .rays{left:25px;right:25px;top:260px}.req-compass{grid-template-columns:1fr}.network{transform:scale(.9);transform-origin:center top}.tree{transform:scale(.9);transform-origin:center top}
+  .story{grid-template-columns:1fr 1fr}
+}
+@media(max-width:850px){
+  .layout{display:block}.side{display:none}.mobile{display:block;padding:10px 14px;border-bottom:1px solid var(--line);overflow:auto;white-space:nowrap}
+  .mobile a{display:inline-block;padding:8px 10px;margin-right:5px;border:1px solid var(--line);border-radius:8px;text-decoration:none;font-size:12px;font-weight:700}
+  .content{width:min(100% - 28px,900px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}
+}
+@media(max-width:720px){
+  .definition-ribbon,.example-strip{grid-template-columns:1fr}.def-arrow,.example-arrow{transform:rotate(90deg);padding:8px}
+  .design-legend,.extra-metrics{grid-template-columns:1fr}.code-body{grid-template-columns:1fr}.code-sample{border-right:0;border-bottom:1px solid #27354a}
+  .network,.tree{height:auto;min-height:0;transform:none;display:grid;gap:9px}.mod,.cls{position:static;width:auto}.line,.tline,.callout{display:none}
+  .story{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .links a:nth-child(2){display:none}.prism-stage{min-height:630px}.prism-shape,.prism-label{display:none}.rays{top:170px}.prism-input{top:30px;right:25px;width:auto}
+  .note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}
+}
 </style>
 </head>
 <body>
@@ -65,7 +164,9 @@ a{color:inherit}
 <a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
 <nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
 </header>
+
 <div class="mobile"><a href="index.html">Topic 02</a><a href="quality-metrics.html">Metrics</a><a href="../../index.html">Course Home</a></div>
+
 <div class="layout">
 <aside class="side">
 <div class="course"><small>CPCS 351 · TOPIC 02</small><strong>Software Quality</strong></div>
@@ -87,175 +188,223 @@ a{color:inherit}
 <div>
 <div class="eyebrow">Topic 02 · Lesson 03</div>
 <h1>Quality Measurements &amp; Metrics</h1>
-<p class="lead">Software quality becomes easier to manage when we move from impressions to evidence. Measurements and metrics give engineers objective ways to observe software attributes.</p>
+<p class="lead">“Good quality” is an opinion until we decide what evidence to observe. Metrics turn software characteristics into measurable signals that engineers can compare, question, and improve.</p>
 </div>
 <div class="mentor">
-<div class="pic"><img src="../../assets/images/mentor-07-working-laptop.png" alt="Software Engineering Mentor working with software metrics"></div>
-<p>“If quality is important, we need evidence. Metrics turn software characteristics into something we can observe, compare, and discuss.”</p>
+<div class="pic"><img src="../../assets/images/mentor-09-idea.png" alt="Software Engineering Mentor introducing software metrics"></div>
+<p>“Do not ask for one magic quality number. Ask which part of the software you are trying to understand.”</p>
 </div>
 </section>
 
 <section class="section">
-<div class="kicker">Original Lecture Definitions</div>
-<h2>Measurement is evidence</h2>
-<p>The lecture distinguishes measurement from metrics and then specializes the idea toward software quality.</p>
-<div class="defs">
-<div class="def">
-<h3>Software Measurement</h3>
-<p>An <strong>objective, quantitative assessment</strong> of a software attribute.</p>
+<div class="kicker">From the Original Lecture</div>
+<h2>From measurement to metric</h2>
+<p>The lecture introduces an important progression: first we measure software attributes objectively, then we use standard measurements as metrics, and finally we use quality metrics to assess software quality.</p>
+
+<div class="definition-ribbon">
+<div class="def-block">
+<strong>Software Measurement</strong>
+<p>An objective, quantitative assessment of a software attribute.</p>
 </div>
-<div class="def">
-<h3>Software Quality Metric</h3>
-<p>A <strong>standard measurement</strong> used to assess software quality.</p>
+<div class="def-arrow">→</div>
+<div class="def-block">
+<strong>Software Quality Metric</strong>
+<p>A standard measurement of software quality.</p>
 </div>
 </div>
 </section>
 
 <section class="section">
 <div class="kicker">Visual Hook</div>
-<h2>The Software Quality Instrument Panel</h2>
-<p>Think of a software project like a cockpit. No single gauge can describe the whole system. Engineers observe different instruments at requirements, design, implementation, system, and object-oriented levels.</p>
+<h2>The Quality Prism</h2>
+<p>“Quality” enters as one broad idea. The prism splits it into different measurable views. Each view exposes a different part of the software.</p>
 
-<div class="instrument">
-<div class="dashboard">
-<div class="dash-head"><span>SOFTWARE QUALITY INSTRUMENT PANEL</span><span>MEASURE → COMPARE → REASON</span></div>
-<div class="gauges">
-<div class="gauge"><div class="dial">R</div><b>Requirements</b><span>Interviews, “shall” statements, quality of requirements.</span></div>
-<div class="gauge"><div class="dial">D</div><b>Design</b><span>Size, fan-in/out, cohesion, coupling, modularity.</span></div>
-<div class="gauge"><div class="dial">C</div><b>Implementation</b><span>LOC, defects/KLOC, comments, complexity.</span></div>
-<div class="gauge"><div class="dial">S</div><b>System</b><span>System-level measurements and observed properties.</span></div>
-<div class="gauge"><div class="dial">OO</div><b>Object-Oriented</b><span>Class, inheritance, coupling, response, cohesion metrics.</span></div>
+<div class="prism-wrap">
+<div class="prism-stage">
+<div class="prism-input">
+<b>QUALITY?</b>
+<span>One vague question enters.</span>
+<div class="beam"></div>
 </div>
-<div class="dash-note">The lecture groups software quality metrics across the software life cycle rather than treating “quality” as one number.</div>
-</div>
-</div>
-</section>
 
-<section class="section">
-<div class="kicker">Metric Families Named in the Lecture</div>
-<h2>Five places where we can measure</h2>
-<div class="metric-map">
-<div class="mcard"><span class="code">R</span><h3>Requirements Metrics</h3><p>Examples include number of user interviews and number of “shall” statements.</p></div>
-<div class="mcard"><span class="code">D</span><h3>Design Metrics</h3><p>Examples include software size and structural measures such as coupling and cohesion.</p></div>
-<div class="mcard"><span class="code">C</span><h3>Implementation Metrics</h3><p>Examples include lines of code and defect density.</p></div>
-<div class="mcard"><span class="code">S</span><h3>System Metrics</h3><p>The lecture identifies system metrics as another metric family.</p></div>
-<div class="mcard"><span class="code">OO</span><h3>OO Quality Metrics</h3><p>Metrics focused on classes, inheritance, coupling, response, and cohesion.</p></div>
+<div class="prism-shape"></div>
+<div class="prism-label">METRIC<br>PRISM</div>
+
+<div class="rays">
+<div class="ray r1"><b>R · Requirements</b><span>interviews · “shall” statements · requirement quality</span></div>
+<div class="ray r2"><b>D · Design</b><span>size · fan-in/out · cohesion · coupling · complexity</span></div>
+<div class="ray r3"><b>C · Implementation</b><span>LOC · defects/KLOC · comments · cyclomatic complexity</span></div>
+<div class="ray r4"><b>S · System</b><span>system-level measurements</span></div>
+<div class="ray r5"><b>OO · Object-Oriented</b><span>methods · inheritance · children · coupling · response · cohesion</span></div>
+</div>
+</div>
+<div class="prism-caption">The lecture explicitly identifies five metric families: Requirements (R), Design (D), Implementation (C), System (S), and Object-Oriented quality metrics.</div>
 </div>
 </section>
 
 <section class="section">
 <div class="kicker">Requirements Metrics</div>
-<h2>Measure the quality of what we ask for</h2>
-<p>The lecture explicitly names four requirements-quality properties.</p>
-<div class="require-box">
-<div class="req-grid">
-<div class="req"><b>Un-ambiguity</b><span>Can the requirement be interpreted in only one clear way?</span></div>
-<div class="req"><b>Completeness</b><span>Does the requirements set include everything necessary?</span></div>
-<div class="req"><b>Correctness</b><span>Does it accurately represent the intended need or rule?</span></div>
-<div class="req"><b>Consistency</b><span>Do requirements avoid contradicting one another?</span></div>
+<h2>The Requirements Quality Compass</h2>
+<p>Before measuring code, we can measure the quality of what we asked the team to build. The source names four requirements-quality properties.</p>
+
+<div class="req-compass">
+<div class="compass">
+<div class="compass-core">GOOD<br>REQUIREMENT</div>
+<div class="point north"><b>Un-ambiguity</b><span>One clear interpretation.</span></div>
+<div class="point east"><b>Completeness</b><span>Nothing essential missing.</span></div>
+<div class="point south"><b>Correctness</b><span>Represents the intended need.</span></div>
+<div class="point west"><b>Consistency</b><span>No contradictions.</span></div>
+</div>
+
+<div class="req-explain">
+<div><b>Examples explicitly listed in the lecture</b><p>Number of user interviews and number of “shall” statements are examples of requirements metrics.</p></div>
+<div><b>Important interpretation</b><p>More requirements do not automatically mean better requirements. The four quality properties help us ask whether the set is actually useful.</p></div>
 </div>
 </div>
 </section>
 
 <section class="section">
 <div class="kicker">Design Metrics</div>
-<h2>Measure structure before it becomes expensive</h2>
-<p>The original lecture lists the following design metrics and definitions.</p>
+<h2>See the architecture as a network</h2>
+<p>This is where the metrics become structurally meaningful. Instead of memorizing definitions, watch what happens around one central module.</p>
 
-<div class="design-table">
-<div class="drow"><div class="dname">Fan-In</div><div class="dtext">The number of modules that call a given module.</div></div>
-<div class="drow"><div class="dname">Fan-Out</div><div class="dtext">The number of modules called by a given module.</div></div>
-<div class="drow"><div class="dname">Cohesion</div><div class="dtext">The relevance of the functions in a module to the module's core functionality.</div></div>
-<div class="drow"><div class="dname">Coupling</div><div class="dtext">Data dependencies among modules.</div></div>
-<div class="drow"><div class="dname">Modularity</div><div class="dtext">High cohesion and low coupling lead to high modularity.</div></div>
-<div class="drow"><div class="dname">Module Design Complexity</div><div class="dtext">Integration tests required to integrate a module with its subordinate modules.</div></div>
-<div class="drow"><div class="dname">Design Complexity</div><div class="dtext">Number of subtrees in structure charts with module M as a root.</div></div>
+<div class="design-lab">
+<div class="network">
+<div class="line l1"></div><div class="line l2"></div><div class="line l3"></div>
+<div class="line l4"></div><div class="line l5"></div><div class="line l6"></div>
+
+<div class="mod central">Registration<br>Module</div>
+<div class="mod a">Student UI</div>
+<div class="mod b">Advisor UI</div>
+<div class="mod c">Batch Import</div>
+<div class="mod d">Schedule</div>
+<div class="mod e">Notification</div>
+<div class="mod f">Prerequisite</div>
+
+<div class="callout fanin">FAN-IN</div>
+<div class="callout fanout">FAN-OUT</div>
+<div class="callout cohesion">COHESION</div>
+<div class="callout coupling">COUPLING</div>
+</div>
+
+<div class="design-legend">
+<div class="legend-item"><b>Fan-In</b><span>The number of modules that call a given module. Here, several components call Registration.</span></div>
+<div class="legend-item"><b>Fan-Out</b><span>The number of modules called by a given module. Registration depends on several other modules.</span></div>
+<div class="legend-item"><b>Cohesion</b><span>The relevance of functions in a module to its core functionality.</span></div>
+<div class="legend-item"><b>Coupling</b><span>Data dependencies among modules.</span></div>
+</div>
+
+<div class="extra-metrics">
+<div><b>Modularity</b>High cohesion + low coupling leads to high modularity.</div>
+<div><b>Module Design Complexity</b>Integration tests required to integrate a module with its subordinate modules.</div>
+<div><b>Design Complexity</b>Number of subtrees in structure charts with module M as a root.</div>
+</div>
 </div>
 </section>
 
 <section class="section">
 <div class="kicker">Implementation Metrics</div>
-<h2>Measure the code we actually produce</h2>
-<div class="impl">
-<div class="ibox"><b>Defects / KLOC</b><p>Defects normalized per thousand lines of code.</p></div>
-<div class="ibox"><b>Documentation / KLOC</b><p>Pages of documentation per thousand lines of code.</p></div>
-<div class="ibox"><b>Comment Lines / LOC</b><p>Relationship between comment lines and source lines of code.</p></div>
-<div class="ibox"><b>Cyclomatic Complexity</b><p>Number of independent control-flow paths in a function, as referenced to McCabe (1979).</p></div>
+<h2>The Code Lab</h2>
+<p>At implementation level, the lecture moves to code-oriented measurements. Here the same code can be examined from several quantitative angles.</p>
+
+<div class="code-lab">
+<div class="code-head"><span>registration-service.java</span><span>IMPLEMENTATION METRICS</span></div>
+<div class="code-body">
+<div class="code-sample"><span class="kw">public boolean</span> <span class="fn">canRegister</span>(Student s, Course c) {
+  if (s == null || c == null) return false;
+  if (!hasPrerequisite(s,c)) return false;
+  if (isFull(c)) return false;
+  <span class="warn">if (hasScheduleConflict(s,c)) return false;</span>
+  return true;
+}</div>
+
+<div class="code-metrics">
+<div class="metric-pill"><b>Defects / KLOC</b><span>Defects normalized per thousand lines of code.</span></div>
+<div class="metric-pill"><b>Pages of Documentation / KLOC</b><span>Documentation volume relative to code size.</span></div>
+<div class="metric-pill"><b>Comment Lines / LOC</b><span>Comment lines relative to source lines.</span></div>
+<div class="metric-pill"><b>Cyclomatic Complexity</b><span>Number of independent control-flow paths in a function (McCabe, 1979).</span></div>
+</div>
+</div>
 </div>
 </section>
 
 <section class="section">
 <div class="kicker">Object-Oriented Quality Metrics</div>
-<h2>Measure the class structure</h2>
-<div class="constellation">
-<div class="const-grid">
-<div class="star"><b>Weighted Methods per Class</b><span>Metric related to methods contained in a class.</span></div>
-<div class="star"><b>Depth of Inheritance Tree</b><span>How deep a class sits within an inheritance hierarchy.</span></div>
-<div class="star"><b>Number of Children</b><span>How many immediate subclasses inherit from a class.</span></div>
-<div class="star"><b>Coupling Between Object Classes</b><span>Dependencies and connections among object classes.</span></div>
-<div class="star"><b>Response for a Class</b><span>Metric concerned with the response set associated with a class.</span></div>
-<div class="star"><b>Lack of Cohesion in Methods</b><span>Metric concerned with how closely related a class's methods are.</span></div>
+<h2>The Class Ecosystem</h2>
+<p>Object-oriented systems introduce another layer of structure. The lecture names six OO quality metrics.</p>
+
+<div class="oo-eco">
+<div class="tree">
+<div class="tline t1"></div><div class="tline t2"></div><div class="tline t3"></div><div class="tline t4"></div><div class="tline t5"></div><div class="tline t6"></div>
+
+<div class="cls root"><b>Account</b><span>Base class at the top of an inheritance hierarchy.</span></div>
+<div class="cls child1"><b>StudentAccount</b><span>Subclass.</span></div>
+<div class="cls child2"><b>StaffAccount</b><span>Subclass.</span></div>
+<div class="cls child3"><b>GuestAccount</b><span>Subclass.</span></div>
+<div class="cls leaf1"><b>GraduateStudent</b><span>Deeper inheritance.</span></div>
+<div class="cls leaf2"><b>Undergraduate</b><span>Another child class.</span></div>
+<div class="cls leaf3"><b>Advisor</b><span>Collaborates with other classes.</span></div>
+</div>
+
+<div class="oo-tags">
+<span>Weighted Methods per Class</span>
+<span>Depth of Inheritance Tree</span>
+<span>Number of Children</span>
+<span>Coupling Between Object Classes</span>
+<span>Response for a Class</span>
+<span>Lack of Cohesion in Methods</span>
 </div>
 </div>
 </section>
 
 <section class="section">
-<div class="kicker">Example 1 · University Registration System</div>
-<h2>Metrics across one familiar system</h2>
-<div class="examples">
-<div class="example">
-<h3>Requirements side</h3>
-<p>The team interviews students, advisors, and the registrar. Suppose the SRS contains many “shall” statements but several contradict each other about prerequisites.</p>
-<div class="calc">A high number of requirements does not prove high quality. Consistency and correctness still matter.</div>
-</div>
-<div class="example">
-<h3>Implementation side</h3>
-<p>The registration service has 8 defects in 4 KLOC. Another service has 4 defects in 1 KLOC.</p>
-<div class="calc">Service A: 2 defects/KLOC. Service B: 4 defects/KLOC. Normalizing by size changes the comparison.</div>
-</div>
-</div>
-</section>
+<div class="kicker">Example · Defect Density</div>
+<h2>Why normalization changes the story</h2>
 
-<section class="section">
-<div class="kicker">Example 2 · Design Quality</div>
-<h2>Why coupling and cohesion matter</h2>
-<div class="examples">
-<div class="example">
-<h3>High cohesion</h3>
-<p>A <strong>RegistrationService</strong> handles registration-specific responsibilities: checking prerequisites, validating capacity, and creating enrollment.</p>
-<div class="calc">Its responsibilities are closely related to one core purpose.</div>
+<div class="example-strip">
+<div class="example-side">
+<h3>Service A</h3>
+<p>8 defects found in 4 KLOC.</p>
+<div class="result">8 ÷ 4 = <strong>2 defects/KLOC</strong></div>
 </div>
-<div class="example">
-<h3>High coupling</h3>
-<p>The same service directly depends on payment, messaging, reporting, identity, scheduling, and five unrelated database modules.</p>
-<div class="calc">Changes in many other modules can now affect RegistrationService. Modularity becomes weaker.</div>
+<div class="example-arrow">↔</div>
+<div class="example-side">
+<h3>Service B</h3>
+<p>4 defects found in 1 KLOC.</p>
+<div class="result">4 ÷ 1 = <strong>4 defects/KLOC</strong></div>
 </div>
 </div>
+
+<p style="color:#66758a;font-size:13px;line-height:1.7;margin-top:15px">Service B has fewer total defects, but its defect density is twice as high. A raw count and a normalized metric can tell different stories.</p>
 </section>
 
 <section class="section">
 <div class="kicker">Illustrated Story</div>
-<h2>The team that said “quality looks good”</h2>
+<h2>From “looks good” to measurable evidence</h2>
+
 <div class="story">
 <div class="panel">
 <div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div>
-<span class="no">Panel 1</span><h4>Everything feels fine</h4>
-<p>The team says the system “looks clean” and “seems reliable,” but nobody has agreed on measurable evidence.</p>
+<span class="no">Panel 1</span><h4>Everything looks clean</h4>
+<p>The team says the system “looks good.” No one can explain what “good” means.</p>
 </div>
+
 <div class="panel">
 <div class="visual"><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
-<span class="no">Panel 2</span><h4>Ask what can be measured</h4>
-<p>They identify requirement consistency, fan-out, defects/KLOC, cyclomatic complexity, and class coupling.</p>
+<span class="no">Panel 2</span><h4>Choose the lens</h4>
+<p>Are we worried about requirements, architecture, code, system behavior, or class design?</p>
 </div>
+
 <div class="panel">
 <div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div>
-<span class="no">Panel 3</span><h4>Evidence appears</h4>
-<p>One module has unusually high fan-out and complexity. Another has twice the defect density of the rest.</p>
+<span class="no">Panel 3</span><h4>Measure</h4>
+<p>The team collects consistency, fan-out, defect density, complexity, and class-coupling evidence.</p>
 </div>
+
 <div class="panel">
 <div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
-<span class="no">Panel 4</span><h4>Quality becomes discussable</h4>
-<p>The team now has evidence to investigate, compare, and improve—not just opinions.</p>
+<span class="no">Panel 4</span><h4>Reason, don’t worship numbers</h4>
+<p>The metrics reveal where to investigate. Engineers still interpret the evidence in context.</p>
 </div>
 </div>
 </section>
@@ -263,23 +412,23 @@ a{color:inherit}
 <div class="note">
 <div>
 <b>Mentor Insight</b>
-<p>A metric is evidence, not a verdict. A large number can signal a problem, but engineers still need context to interpret why it matters and what action—if any—should follow.</p>
+<p>A metric is a signal, not a verdict. High fan-out, deep inheritance, or high complexity may indicate risk—but context determines whether that risk matters.</p>
 </div>
-<img src="../../assets/images/mentor-02-explaining.png" alt="Mentor explaining software metrics">
+<img src="../../assets/images/mentor-02-explaining.png" alt="Mentor explaining how to interpret software metrics">
 </div>
 
 <div class="take">
 <b>Key Takeaway</b>
-<p>Software measurements are objective quantitative assessments of attributes. Metrics are standard measurements. The lecture organizes quality metrics across requirements, design, implementation, system, and object-oriented software, with specific measures such as requirement consistency, fan-in/fan-out, cohesion, coupling, defects/KLOC, cyclomatic complexity, inheritance depth, and class coupling.</p>
+<p>Software measurements objectively quantify attributes. Metrics standardize those measurements. The lecture organizes software-quality metrics across requirements, design, implementation, system, and object-oriented software, with specific measures such as requirement consistency, fan-in/fan-out, cohesion, coupling, defects/KLOC, cyclomatic complexity, inheritance depth, class coupling, response for a class, and lack of cohesion in methods.</p>
 </div>
 
 <div class="think">
 <div>
 <span class="tlabel">Think Like a Software Engineer</span>
-<h3>A module has 0 defects reported. Does that prove it has high quality?</h3>
-<p>Consider whether it was tested enough, how complex it is, how maintainable it is, whether users exercise it, and what other metrics would be needed before drawing a conclusion.</p>
+<h3>A module has zero reported defects. Does that prove it is high quality?</h3>
+<p>What other lenses from the Quality Prism would you inspect before making that claim?</p>
 </div>
-<img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about metrics">
+<img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about software metrics">
 </div>
 
 <div class="nav">
@@ -289,6 +438,7 @@ a{color:inherit}
 
 </article></main>
 </div>
+
 <script>
 if(sessionStorage.getItem("cpcs351_access") !== "granted"){
   window.location.href="../../access.html";
