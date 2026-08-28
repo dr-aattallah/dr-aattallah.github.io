@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CPCS 351 Access | The Educator</title>
+  <meta name="description" content="Access page for CPCS 351 Software Engineering I." />
+
+  <style>
+    :root{
+      --ink:#152033;
+      --muted:#667085;
+      --border:rgba(21,32,51,.10);
+      --mint:#8ee6c8;
+      --sky:#65c7f7;
+      --sun:#ffb86b;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 12% 10%,rgba(142,230,200,.16),transparent 26%),
+        radial-gradient(circle at 90% 15%,rgba(101,199,247,.13),transparent 28%),
+        linear-gradient(180deg,#fffdf9,#f8fafc);
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+    }
+
+    a{color:inherit}
+
+    .topbar{
+      width:min(980px,calc(100% - 28px));
+      margin:18px auto 0;
+      padding:13px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      border:1px solid var(--border);
+      border-radius:20px;
+      background:rgba(255,255,255,.82);
+      box-shadow:0 10px 28px rgba(35,48,70,.05);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      font-weight:800;
+    }
+
+    .brand-mark{
+      width:31px;
+      height:31px;
+      border-radius:11px;
+      background:linear-gradient(135deg,var(--sky),var(--mint),var(--sun));
+      position:relative;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after{
+      content:"";
+      position:absolute;
+      background:#fff;
+      border-radius:999px;
+    }
+
+    .brand-mark::before{
+      width:16px;height:4px;left:7px;top:13px;
+    }
+
+    .brand-mark::after{
+      width:4px;height:16px;left:13px;top:7px;
+    }
+
+    .back{
+      text-decoration:none;
+      color:var(--muted);
+      font-size:14px;
+      font-weight:700;
+    }
+
+    main{
+      display:grid;
+      place-items:center;
+      padding:44px 16px;
+    }
+
+    .access-card{
+      width:min(520px,100%);
+      padding:34px;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:28px;
+      box-shadow:0 24px 70px rgba(35,48,70,.08);
+    }
+
+    .course-code{
+      margin:0 0 8px;
+      color:#3d6d8c;
+      font-size:14px;
+      font-weight:800;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(32px,6vw,46px);
+      line-height:1.05;
+      letter-spacing:-.04em;
+    }
+
+    .subtitle{
+      margin:10px 0 0;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .divider{
+      height:1px;
+      background:var(--border);
+      margin:26px 0;
+    }
+
+    label{
+      display:block;
+      margin-bottom:8px;
+      font-size:14px;
+      font-weight:800;
+    }
+
+    .password-wrap{
+      display:flex;
+      gap:10px;
+    }
+
+    input{
+      width:100%;
+      min-height:50px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:0 14px;
+      font-size:16px;
+      outline:none;
+    }
+
+    input:focus{
+      border-color:#65a9dc;
+      box-shadow:0 0 0 4px rgba(101,199,247,.12);
+    }
+
+    button{
+      flex:0 0 auto;
+      min-height:50px;
+      border:0;
+      border-radius:14px;
+      background:var(--ink);
+      color:#fff;
+      padding:0 18px;
+      font-size:14px;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .hint{
+      margin:12px 0 0;
+      color:#98a2b3;
+      font-size:13px;
+      line-height:1.6;
+    }
+
+    .error{
+      display:none;
+      margin-top:14px;
+      padding:11px 12px;
+      border-radius:12px;
+      background:#fff2f0;
+      color:#a43a2b;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    footer{
+      width:min(980px,calc(100% - 28px));
+      margin:auto;
+      padding:0 0 24px;
+      color:#98a2b3;
+      font-size:12px;
+      text-align:center;
+    }
+
+    @media(max-width:520px){
+      .access-card{padding:24px;border-radius:22px}
+      .password-wrap{flex-direction:column}
+      button{width:100%}
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="../../index.html">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>The Educator</span>
+    </a>
+
+    <a class="back" href="../../index.html">← All Courses</a>
+  </header>
+
+  <main>
+    <section class="access-card" aria-labelledby="course-title">
+
+      <p class="course-code">CPCS 351</p>
+
+      <h1 id="course-title">Software Engineering I</h1>
+
+      <p class="subtitle">
+        Enter the course password provided by your instructor.
+      </p>
+
+      <div class="divider"></div>
+
+      <form id="accessForm">
+        <label for="coursePassword">Course Password</label>
+
+        <div class="password-wrap">
+          <input
+            id="coursePassword"
+            type="password"
+            autocomplete="current-password"
+            placeholder="Enter password"
+            required
+          />
+
+          <button type="submit">Enter Course</button>
+        </div>
+
+        <p class="hint">
+          The password is shared with enrolled students at the beginning of the semester.
+        </p>
+
+        <div class="error" id="errorMessage" role="alert">
+          Incorrect password. Please try again.
+        </div>
+      </form>
+
+    </section>
+  </main>
+
+  <footer>
+    © 2026 The Educator · CPCS 351
+  </footer>
+
+  <script>
+    /*
+      IMPORTANT:
+      Replace CHANGE_ME with the semester password before publishing.
+
+      This is only a simple front-end gate.
+      It is NOT secure authentication because the password exists
+      in the page source. Real protection will be moved to the backend later.
+    */
+
+    const COURSE_PASSWORD = "az351";
+
+    const form = document.getElementById("accessForm");
+    const passwordInput = document.getElementById("coursePassword");
+    const errorMessage = document.getElementById("errorMessage");
+
+    form.addEventListener("submit", function(event){
+      event.preventDefault();
+
+      if(passwordInput.value === COURSE_PASSWORD){
+        sessionStorage.setItem("cpcs351_access", "granted");
+        window.location.href = "index.html";
+      }else{
+        errorMessage.style.display = "block";
+        passwordInput.value = "";
+        passwordInput.focus();
+      }
+    });
+  </script>
+
+</body>
+</html>
