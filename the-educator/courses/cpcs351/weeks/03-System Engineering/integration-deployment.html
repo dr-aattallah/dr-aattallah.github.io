@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Integration & Deployment | CPCS 351</title>
+<style>
+:root{
+  --ink:#172338;--muted:#63748a;--line:#dfe7ec;
+  --navy:#15334d;--navy2:#edf4f8;
+  --teal:#159a9c;--teal2:#e9f8f7;
+  --amber:#e5a13a;--amber2:#fff6e7;
+  --coral:#df6b50;--coral2:#fff0ea;
+  --sky:#5aa9e6;--sky2:#edf7fe;
+  --violet:#7765c4;--violet2:#f2efff;
+  --green:#5e9d55;--green2:#eef8eb;
+  --side:242px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+.top{height:62px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}.mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--teal),var(--amber));display:grid;place-items:center;color:#fff;font-weight:900}
+.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
+.layout{display:grid;grid-template-columns:var(--side) 1fr}
+.side{height:calc(100vh - 62px);position:sticky;top:62px;overflow:auto;border-right:1px solid var(--line);background:#f9fbfc;padding:24px 14px}
+.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}.course small,.label{font-size:11px;font-weight:850;color:#8d9aab;letter-spacing:.08em;text-transform:uppercase}.course strong{display:block;margin-top:7px;font-size:15px;line-height:1.35}.label{margin:18px 0 8px}
+.side a,.side span{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5d6c80;font-size:13px;font-weight:650;line-height:1.35}.side a.active{background:#e8f5f5;color:#087f80;font-weight:850}.side span.future{color:#a4adb8}
+.content{width:min(970px,calc(100% - 48px));margin:auto;padding:58px 0 90px}.crumb{color:#8a97a7;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}
+.hero{display:grid;grid-template-columns:1fr 275px;gap:34px;align-items:center}
+.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}.eyebrow{color:#0f7f81}.eyebrow:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--amber);margin-right:7px}
+h1{font-size:clamp(44px,6vw,64px);line-height:1;letter-spacing:-.045em;margin:14px 0 20px}.lead{color:var(--muted);font-size:18px;line-height:1.75}
+.mentor{border:1px solid var(--line);border-radius:20px;overflow:hidden}.mentor .pic{height:220px;background:linear-gradient(180deg,#f7fbfc,#edf5f7)}.mentor img{width:100%;height:100%;object-fit:contain;object-position:center bottom}.mentor p{margin:0;padding:16px;border-top:1px solid var(--line);font-size:13px;line-height:1.65;font-weight:650;color:#46566b}
+.section{margin-top:70px}.kicker{color:#95a1b0;margin-bottom:7px}h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#56667c;line-height:1.8;font-size:16px}
+
+/* =========================================================
+   VISUAL HOOK — SYSTEM ASSEMBLY HANGAR
+========================================================= */
+.hangar{
+  margin-top:30px;border:1px solid var(--line);border-radius:28px;padding:28px;
+  background:
+    linear-gradient(rgba(21,51,77,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(21,51,77,.025) 1px,transparent 1px),
+    #fbfdfe;background-size:26px 26px
+}
+.hangar-head{
+  background:var(--navy);color:#fff;border-radius:16px;padding:15px 18px;
+  display:flex;justify-content:space-between;align-items:center;gap:15px
+}
+.hangar-head b{font-size:12px;letter-spacing:.08em}.hangar-head span{font-size:10px;color:#c6d3dc}
+.assembly{
+  margin-top:22px;display:grid;grid-template-columns:1fr 85px 1.1fr 85px 1fr;
+  align-items:center;gap:10px
+}
+.incoming-parts{display:grid;gap:10px}
+.part{border:1px solid var(--line);border-radius:15px;padding:16px;background:#fff}
+.part b{font-size:12px}.part span{display:block;margin-top:5px;color:#69778b;font-size:10.5px;line-height:1.5}
+.part.hw{background:var(--amber2)}.part.sw{background:var(--sky2)}.part.hm{background:var(--teal2)}
+.big-arrow{text-align:center;font-size:30px;color:#91a1af;font-weight:900}
+.integration-bay{
+  min-height:300px;border-radius:26px;background:linear-gradient(145deg,var(--teal),#0f7477);
+  color:#fff;padding:24px;display:grid;align-content:center;gap:12px;text-align:center;
+  box-shadow:0 18px 40px rgba(21,154,156,.18)
+}
+.integration-bay h3{margin:0;font-size:22px}
+.integration-bay p{margin:0;color:#d7eeee;font-size:11px;line-height:1.55}
+.gates{display:grid;gap:8px;margin-top:8px}
+.gate{padding:10px;border-radius:10px;background:rgba(255,255,255,.13);font-size:10.5px;font-weight:850}
+.operational{
+  min-height:300px;border:1px solid var(--line);border-radius:24px;padding:22px;background:var(--green2);
+  display:grid;align-content:center;text-align:center
+}
+.operational .icon{font-size:42px}.operational b{font-size:16px}.operational span{display:block;margin-top:8px;color:#5d735b;font-size:11px;line-height:1.55}
+.hangar-note{margin-top:20px;padding:15px 17px;border-radius:13px;background:#fff;border:1px solid var(--line);color:#627287;font-size:11px;line-height:1.65}
+
+/* INTEGRATION GATES */
+.test-gates{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.tgate{border:1px solid var(--line);border-radius:17px;padding:19px;background:#fff}
+.tgate .num{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:11px;font-weight:900;margin-bottom:10px}
+.tgate b{font-size:13px}.tgate p{margin:6px 0 0;color:#68778b;font-size:11.2px;line-height:1.55}
+.tgate:nth-child(1){background:var(--sky2)}.tgate:nth-child(2){background:var(--teal2)}.tgate:nth-child(3){background:var(--violet2)}.tgate:nth-child(4){background:var(--amber2)}
+
+/* ABHS INTEGRATION MAP */
+.abhs-map{margin-top:28px;border:1px solid var(--line);border-radius:24px;padding:25px;background:#fbfcfd}
+.map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.mapbox{border:1px solid var(--line);border-radius:16px;padding:18px;text-align:center;background:#fff;min-height:145px}
+.mapbox b{font-size:13px}.mapbox span{display:block;margin-top:6px;color:#6a788c;font-size:10.8px;line-height:1.5}
+.mapbox:nth-child(1){background:var(--amber2)}.mapbox:nth-child(2){background:var(--sky2)}.mapbox:nth-child(3){background:var(--teal2)}
+.mapmerge{text-align:center;font-size:27px;color:#91a1af;margin:10px 0;font-weight:900}
+.systembox{max-width:680px;margin:auto;border-radius:18px;background:var(--navy);color:#fff;padding:20px;text-align:center}
+.systembox b{font-size:16px}.systembox span{display:block;margin-top:6px;color:#c7d4de;font-size:11px}
+.testlane{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.lane{padding:13px;border-radius:12px;border:1px solid var(--line);background:#fff;text-align:center;font-size:10.5px;font-weight:850}
+.lane:nth-child(1){background:var(--teal2)}.lane:nth-child(2){background:var(--violet2)}.lane:nth-child(3){background:var(--amber2)}
+
+/* DEPLOYMENT RUNWAY */
+.runway{
+  margin-top:28px;border:1px solid var(--line);border-radius:24px;padding:26px;background:
+  linear-gradient(180deg,#fbfdfe,#f7fafb)
+}
+.runway-line{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.rstep{position:relative;border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff;min-height:160px;text-align:center}
+.rstep:not(:last-child):after{content:"→";position:absolute;right:-16px;top:62px;font-size:20px;color:#92a2b1;font-weight:900}
+.rstep .icon{font-size:29px}.rstep b{display:block;margin-top:8px;font-size:12px}.rstep span{display:block;margin-top:6px;color:#69778b;font-size:10.5px;line-height:1.5}
+.rstep:nth-child(1){background:var(--violet2)}.rstep:nth-child(2){background:var(--coral2)}.rstep:nth-child(3){background:var(--teal2)}.rstep:nth-child(4){background:var(--green2)}
+
+/* TARGET ENVIRONMENT */
+.target{margin-top:27px;display:grid;grid-template-columns:1fr 80px 1fr;align-items:center;gap:12px}
+.lab,.real{border:1px solid var(--line);border-radius:20px;padding:22px;min-height:205px}
+.lab{background:var(--sky2)}.real{background:var(--green2)}
+.lab h3,.real h3{margin:0 0 9px;font-size:17px}.lab p,.real p{margin:0;color:#617087;font-size:12px;line-height:1.65}
+.env-arrow{text-align:center;font-size:29px;color:#91a1af;font-weight:900}
+
+/* UNIVERSITY EXAMPLE */
+.uni-example{margin-top:28px;border:1px solid var(--line);border-radius:24px;padding:25px;background:#fbfcfd}
+.uni-top{padding:16px;border-radius:14px;background:var(--navy);color:#fff;text-align:center;font-weight:850}
+.uni-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:16px}
+.uni-step{border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center;background:#fff}
+.uni-step b{font-size:11.5px}.uni-step span{display:block;margin-top:5px;color:#69778b;font-size:10px;line-height:1.45}
+.uni-step:nth-child(1){background:var(--sky2)}.uni-step:nth-child(2){background:var(--violet2)}.uni-step:nth-child(3){background:var(--teal2)}.uni-step:nth-child(4){background:var(--amber2)}.uni-step:nth-child(5){background:var(--green2)}
+
+/* STORY */
+.story{margin-top:25px;display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+.panel{border:1px solid var(--line);border-radius:16px;padding:13px;background:#fff;overflow:hidden}
+.visual{height:120px;border-radius:11px;background:linear-gradient(135deg,#f5f9fb,#f7fbfa);display:flex;align-items:flex-end;justify-content:center;overflow:hidden;margin-bottom:11px}
+.visual img{width:100%;height:100%;object-fit:contain;object-position:center bottom}
+.panel .no{font-size:10px;font-weight:900;color:#8794a6;text-transform:uppercase}.panel h4{margin:5px 0 6px;font-size:14px}.panel p{margin:0;color:#68768a;font-size:11.5px;line-height:1.55}
+.panel:nth-child(1){border-top:4px solid var(--sky)}.panel:nth-child(2){border-top:4px solid var(--teal)}.panel:nth-child(3){border-top:4px solid var(--coral)}.panel:nth-child(4){border-top:4px solid var(--green)}
+
+/* closure */
+.note{margin-top:30px;border-radius:16px;padding:22px;background:#eef5f6;border:1px solid #d5e5e7;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}
+.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.note b{color:#2f6b70}.note p{margin:0 0 20px;color:#536d72;line-height:1.7;font-size:14px}.note img{width:100%;max-height:150px;object-fit:contain}
+.take{margin-top:28px;padding:22px;border-left:4px solid var(--amber);border-radius:15px;background:var(--amber2)}.take b{color:#9a642b}.take p{margin:0;color:#68563d;line-height:1.7;font-weight:650;font-size:14px}
+.think{margin-top:30px;border:1px solid #cfe7ed;background:#eef8fa;border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end}.think .tlabel{color:#197a82}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#4f6f75;line-height:1.7;font-size:14px}.think img{width:100%;max-height:155px;object-fit:contain}
+.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+@media(max-width:950px){
+  .assembly{grid-template-columns:1fr}.big-arrow{transform:rotate(90deg)}
+  .test-gates,.story{grid-template-columns:1fr 1fr}
+  .runway-line,.uni-flow{grid-template-columns:1fr 1fr}
+  .rstep:not(:last-child):after{display:none}
+}
+@media(max-width:850px){
+  .layout{display:block}.side{display:none}.content{width:min(100% - 28px,970px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}
+}
+@media(max-width:680px){
+  .test-gates,.map-grid,.testlane,.runway-line,.uni-flow,.story{grid-template-columns:1fr}
+  .target{grid-template-columns:1fr}.env-arrow{transform:rotate(90deg)}
+  .note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+<a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
+<nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+
+<div class="layout">
+<aside class="side">
+<div class="course"><small>CPCS 351 · TOPIC 03</small><strong>System Engineering</strong></div>
+<div class="label">Topic 03</div>
+<a href="index.html">1. Systems &amp; System Engineering</a>
+<a href="system-engineering-process.html">2. System Engineering Process</a>
+<a href="system-requirements.html">3. System Requirements</a>
+<a href="system-architecture.html">4. System Architecture</a>
+<a href="requirements-allocation.html">5. Requirements Allocation</a>
+<a href="architecture-diagrams.html">6. Architecture Diagrams</a>
+<a class="active" href="integration-deployment.html">7. Integration &amp; Deployment</a>
+<span class="future">8. Configuration Management</span>
+<div class="label">Course</div><a href="../../index.html">Course Home</a>
+</aside>
+
+<main><article class="content">
+
+<div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 03 › Integration &amp; Deployment</div>
+
+<section class="hero">
+<div>
+<div class="eyebrow">Topic 03 · Lesson 07</div>
+<h1>Integration &amp; Deployment</h1>
+<p class="lead">
+Subsystems can be correct on their own and still fail when connected.
+Integration proves that independently developed parts can interoperate as one system;
+deployment proves that the system can operate in its real target environment.
+</p>
+</div>
+
+<div class="mentor">
+<div class="pic"><img src="../../assets/images/mentor-11-serious.png" alt="Mentor discussing system integration"></div>
+<p>“Integration is where assumptions meet reality. Deployment is where the system meets its environment.”</p>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Visual Hook</div>
+<h2>The System Assembly Hangar</h2>
+<p>
+Hardware, software, and human/operational subsystems may be developed by different engineering teams.
+They must then be integrated and tested for interoperability before the complete system moves into its target environment.
+</p>
+
+<div class="hangar">
+
+<div class="hangar-head">
+<b>SYSTEM ASSEMBLY HANGAR</b>
+<span>SEPARATE SUBSYSTEMS → ONE OPERATIONAL SYSTEM</span>
+</div>
+
+<div class="assembly">
+
+<div class="incoming-parts">
+<div class="part hw"><b>Hardware Subsystems</b><span>devices · conveyors · scanners · tracks · sensors</span></div>
+<div class="part sw"><b>Software Subsystems</b><span>control logic · applications · services · interfaces</span></div>
+<div class="part hm"><b>Human / Operational Subsystems</b><span>operators · procedures · training · responsibilities</span></div>
+</div>
+
+<div class="big-arrow">→</div>
+
+<div class="integration-bay">
+<h3>INTEGRATION BAY</h3>
+<p>Connect the pieces and test the complete system—not merely each individual subsystem.</p>
+<div class="gates">
+<div class="gate">Gate 1 · Interoperability</div>
+<div class="gate">Gate 2 · System Requirements &amp; Constraints</div>
+<div class="gate">Gate 3 · Acceptance</div>
+<div class="gate">Gate 4 · Performance</div>
+</div>
+</div>
+
+<div class="big-arrow">→</div>
+
+<div class="operational">
+<div class="icon">◎</div>
+<b>TARGET ENVIRONMENT</b>
+<span>Install the system, expose it to real environmental conditions, and let users test the operational system.</span>
+</div>
+
+</div>
+
+<div class="hangar-note">
+The key shift is from <strong>“Does each subsystem work?”</strong> to <strong>“Do all subsystems work together and satisfy the system mission under real conditions?”</strong>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">System Integration &amp; Testing</div>
+<h2>Four gates before deployment</h2>
+
+<div class="test-gates">
+
+<div class="tgate">
+<div class="num">1</div>
+<b>Integrate Subsystems</b>
+<p>Bring hardware, software, and human/operational components together through their defined interfaces.</p>
+</div>
+
+<div class="tgate">
+<div class="num">2</div>
+<b>Integration Testing</b>
+<p>Check interoperability: data formats, signals, protocols, timing, control, responsibilities, and interface behavior.</p>
+</div>
+
+<div class="tgate">
+<div class="num">3</div>
+<b>Acceptance Testing</b>
+<p>Test the complete system to ensure that it satisfies the system requirements and constraints.</p>
+</div>
+
+<div class="tgate">
+<div class="num">4</div>
+<b>Performance Testing</b>
+<p>Verify that the integrated system can meet required workloads, capacities, response expectations, and operating limits.</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">ABHS Example</div>
+<h2>Three development streams become one baggage system</h2>
+
+<div class="abhs-map">
+
+<div class="map-grid">
+
+<div class="mapbox">
+<b>Hardware</b>
+<span>Conveyors, bar-code scanners, bag pushers, DCVs, high-speed tracks.</span>
+</div>
+
+<div class="mapbox">
+<b>Software</b>
+<span>ABHS control software, routing logic, baggage records, subsystem interfaces.</span>
+</div>
+
+<div class="mapbox">
+<b>Human / Operations</b>
+<span>Airline agents, workers, operating procedures, responsibilities, training.</span>
+</div>
+
+</div>
+
+<div class="mapmerge">↓ integrate ↓</div>
+
+<div class="systembox">
+<b>AIRPORT BAGGAGE HANDLING SYSTEM</b>
+<span>The interfaces between the parts now matter as much as the parts themselves.</span>
+</div>
+
+<div class="testlane">
+<div class="lane">Interoperability: scanner → control software → conveyor</div>
+<div class="lane">Acceptance: R1–R4 and system constraints</div>
+<div class="lane">Performance: passenger &amp; baggage capacity</div>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">System Deployment</div>
+<h2>Deployment is more than copying files</h2>
+<p>
+At system level, deployment means installing the integrated system in its target environment
+and testing the system by its users.
+</p>
+
+<div class="runway">
+<div class="runway-line">
+
+<div class="rstep">
+<div class="icon">▣</div>
+<b>Integrated System</b>
+<span>The system has passed system-level integration and testing.</span>
+</div>
+
+<div class="rstep">
+<div class="icon">⇣</div>
+<b>Install</b>
+<span>Move and configure the complete system in the target environment.</span>
+</div>
+
+<div class="rstep">
+<div class="icon">👥</div>
+<b>User Testing</b>
+<span>Real users operate the system through realistic workflows and procedures.</span>
+</div>
+
+<div class="rstep">
+<div class="icon">✓</div>
+<b>Operational System</b>
+<span>The system is ready to perform its mission in its real environment.</span>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Why the Environment Matters</div>
+<h2>Lab success does not guarantee field success</h2>
+
+<div class="target">
+
+<div class="lab">
+<h3>Controlled Test Environment</h3>
+<p>
+Known hardware, stable network, predictable test data, trained test team, controlled timing, and repeatable conditions.
+</p>
+</div>
+
+<div class="env-arrow">→</div>
+
+<div class="real">
+<h3>Target Environment</h3>
+<p>
+Real users, real workload, physical constraints, existing systems, imperfect inputs, operational procedures, and unexpected conditions.
+</p>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Example Closer to Students</div>
+<h2>University Registration System — from services to registration day</h2>
+
+<div class="uni-example">
+
+<div class="uni-top">
+SYSTEM MISSION · LET THOUSANDS OF STUDENTS REGISTER RELIABLY
+</div>
+
+<div class="uni-flow">
+
+<div class="uni-step">
+<b>Integrate</b>
+<span>Portal + prerequisite service + seat service + records + notifications.</span>
+</div>
+
+<div class="uni-step">
+<b>Interoperability Test</b>
+<span>Can one registration request cross all services correctly?</span>
+</div>
+
+<div class="uni-step">
+<b>Acceptance Test</b>
+<span>Do prerequisite, conflict, capacity, and enrollment rules satisfy requirements?</span>
+</div>
+
+<div class="uni-step">
+<b>Performance Test</b>
+<span>Can the system support the expected peak registration load?</span>
+</div>
+
+<div class="uni-step">
+<b>Deploy &amp; User Test</b>
+<span>Run it with university infrastructure, students, advisors, and real operating procedures.</span>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Illustrated Story</div>
+<h2>Everything passed—until the parts met</h2>
+
+<div class="story">
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div>
+<span class="no">Panel 1</span>
+<h4>Three successful teams</h4>
+<p>Hardware, software, and operations each report that their subsystem is ready.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div>
+<span class="no">Panel 2</span>
+<h4>Connect everything</h4>
+<p>The scanner reads a tag, but the software expects a different data format.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div>
+<span class="no">Panel 3</span>
+<h4>The interface fails</h4>
+<p>Every individual component works—yet the system cannot complete the baggage-routing workflow.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
+<span class="no">Panel 4</span>
+<h4>System-level thinking</h4>
+<p>Interoperability is corrected, the complete system is tested, then installed and tested in the real airport.</p>
+</div>
+
+</div>
+</section>
+
+<div class="note">
+<div>
+<b>Mentor Insight</b>
+<p>
+Independent subsystem success is necessary but not sufficient. Integration discovers problems at boundaries:
+interfaces, timing, assumptions, ownership, data, physical interaction, and interdisciplinary coordination.
+</p>
+</div>
+<img src="../../assets/images/mentor-02-explaining.png" alt="Mentor explaining subsystem interoperability">
+</div>
+
+<div class="take">
+<b>Key Takeaway</b>
+<p>
+Subsystems and components are integrated and tested for interoperability. The complete system is then tested
+to ensure that it satisfies system requirements and constraints. After that, it is installed and tested in the
+target environment. System-level integration can reveal failures that no isolated subsystem test can expose.
+</p>
+</div>
+
+<div class="think">
+<div>
+<span class="tlabel">Think Like a Software Engineer</span>
+<h3>Every subsystem passes its own tests. What should you test first after connecting them?</h3>
+<p>
+Identify the highest-risk interfaces and end-to-end workflows. Which assumptions cross team boundaries, and which system requirement would fail if one interface behaves differently than expected?
+</p>
+</div>
+<img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about integration testing">
+</div>
+
+<div class="nav">
+<a href="architecture-diagrams.html">← Architecture Diagrams</a>
+<a class="next" href="configuration-management.html">Next · Configuration Management →</a>
+</div>
+
+</article></main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access")!=="granted"){
+  window.location.href="../../access.html";
+}
+</script>
+
+</body>
+</html>
