@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Software Paradigms | CPCS 351</title>
+<style>
+:root{
+  --ink:#172036;--muted:#65718a;--line:#e1e6ef;
+  --indigo:#2d2a78;--indigo2:#efefff;
+  --cyan:#2db9c7;--cyan2:#eafafd;
+  --amber:#e5a042;--amber2:#fff5e7;
+  --green:#6aaa68;--green2:#edf8ef;
+  --pink:#d5659f;--pink2:#fff0f7;
+  --blue:#579ad2;--blue2:#eef7ff;
+  --side:242px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}
+.top{height:62px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}
+.mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--indigo),var(--cyan),var(--amber));display:grid;place-items:center;color:#fff;font-weight:900}
+.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
+.layout{display:grid;grid-template-columns:var(--side) 1fr}
+.side{height:calc(100vh - 62px);position:sticky;top:62px;overflow:auto;border-right:1px solid var(--line);background:#fafaff;padding:24px 14px}
+.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}
+.course small,.label{font-size:11px;font-weight:850;color:#9294aa;letter-spacing:.08em;text-transform:uppercase}
+.course strong{display:block;margin-top:7px;font-size:15px}.label{margin:18px 0 8px}
+.side a{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5f6680;font-size:13px;font-weight:650}
+.side a.active{background:var(--indigo2);color:#40358f;font-weight:850}
+.content{width:min(1040px,calc(100% - 48px));margin:auto;padding:58px 0 90px}
+.crumb{color:#8c93a6;font-size:13px;font-weight:650;margin-bottom:28px}
+.hero{display:grid;grid-template-columns:1fr 280px;gap:36px;align-items:center}
+.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+.eyebrow{color:#4c43a0}.eyebrow:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--amber);margin-right:7px}
+h1{font-size:clamp(46px,6vw,68px);line-height:.98;letter-spacing:-.045em;margin:14px 0 20px}
+.lead{color:var(--muted);font-size:19px;line-height:1.75}
+.mentor{border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.mentor .pic{height:225px;background:linear-gradient(180deg,#f6f3ff,#eefcff)}
+.mentor img{width:100%;height:100%;object-fit:contain}
+.mentor p{margin:0;padding:17px;border-top:1px solid var(--line);font-size:14px;line-height:1.65;font-weight:650;color:#4e5871}
+.section{margin-top:72px}.kicker{color:#999db0;margin-bottom:7px}
+h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
+.section>p{color:#59667d;line-height:1.8;font-size:16px}
+
+/* THREE LENSES */
+.lenses{margin-top:30px;border:1px solid var(--line);border-radius:30px;padding:28px;background:
+radial-gradient(circle at 50% 42%,rgba(45,185,199,.10),transparent 24%),
+linear-gradient(180deg,#fcfcff,#f8fbff)}
+.lens-head{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--indigo);color:#fff;padding:15px 18px;border-radius:15px}
+.lens-head b{font-size:12px;letter-spacing:.08em}.lens-head span{font-size:10px;color:#dddaf5}
+.reality{width:210px;height:120px;border-radius:26px;margin:28px auto 20px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;text-align:center;padding:15px;box-shadow:0 15px 30px rgba(45,42,120,.08)}
+.reality b{font-size:16px}.reality span{display:block;margin-top:5px;color:#6c7588;font-size:9.5px}
+.lens-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.lens{border:1px solid var(--line);border-radius:20px;padding:20px;background:#fff}
+.lens .icon{font-size:32px}.lens h3{margin:8px 0 6px;font-size:16px}.lens p{margin:0;color:#667187;font-size:10.8px;line-height:1.6}
+.lens .focus{margin-top:12px;padding:10px;border-radius:10px;background:#fff;border:1px dashed #c9ceda;font-size:9px;font-weight:800}
+.lens.proc{background:var(--amber2)}.lens.oo{background:var(--cyan2)}.lens.data{background:var(--green2)}
+.memory{margin-top:16px;border:1px dashed #c9cfdb;border-radius:13px;background:#fff;padding:14px;text-align:center;color:#616b82;font-size:11px;line-height:1.6}
+
+/* SAME SYSTEM */
+.same{margin-top:27px;border:1px solid var(--line);border-radius:25px;padding:24px;background:#fbfcff}
+.same-title{padding:15px;border-radius:14px;background:var(--indigo);color:#fff;text-align:center;font-weight:900}
+.views{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.view{border:1px solid var(--line);border-radius:18px;padding:18px;background:#fff}
+.view h3{font-size:14px;margin:0 0 10px}.view small{display:block;color:#8c94a5;font-size:8.5px;font-weight:900;margin-bottom:10px}
+.flow{display:grid;gap:7px}.node{padding:9px;border:1px solid var(--line);border-radius:9px;background:#fff;text-align:center;font-size:9px;font-weight:800}
+.arr{text-align:center;color:#969eae;font-weight:900;font-size:16px}
+.objectworld{display:grid;grid-template-columns:1fr 1fr;gap:7px}.obj{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff;text-align:center}.obj b{font-size:9.5px}.obj span{display:block;margin-top:3px;font-size:8px;color:#70798c}
+.dataworld{display:grid;gap:7px}.entity{padding:9px;border:1px solid var(--line);border-radius:9px;background:#fff;font-size:9px}.entity b{display:block}.entity span{font-size:8px;color:#727b8d}
+.view:nth-child(1){background:var(--amber2)}.view:nth-child(2){background:var(--cyan2)}.view:nth-child(3){background:var(--green2)}
+
+/* PARADIGM TO METHODOLOGY */
+.pipeline{margin-top:28px;border:1px solid var(--line);border-radius:25px;padding:25px;background:#fafbff}
+.row{display:grid;grid-template-columns:180px 1fr 45px 1fr 45px 1fr;gap:8px;align-items:center;margin-top:11px}
+.row:first-child{margin-top:0}
+.par{border-radius:14px;padding:17px;color:#fff;font-size:11px;font-weight:900;text-align:center}
+.box{border:1px solid var(--line);border-radius:13px;padding:14px;background:#fff;text-align:center;font-size:10px;font-weight:800}
+.arrow{text-align:center;font-size:20px;color:#969eae;font-weight:900}
+.row.proc .par{background:#c6852f}.row.oo .par{background:#278e99}.row.data .par{background:#588b56}
+.row.proc .box{background:var(--amber2)}.row.oo .box{background:var(--cyan2)}.row.data .box{background:var(--green2)}
+
+/* DETAILED EXAMPLES */
+.examples{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:27px}
+.ex{border:1px solid var(--line);border-radius:19px;padding:19px}
+.ex .tag{font-size:9px;font-weight:900;color:#544b96}.ex h3{font-size:15px;margin:7px 0}.ex p{font-size:10.5px;line-height:1.55;color:#657087}
+.ex ul{padding-left:18px}.ex li{font-size:9.5px;line-height:1.5;color:#5e687d;margin:5px 0}
+.ex:nth-child(1){background:var(--amber2)}.ex:nth-child(2){background:var(--cyan2)}.ex:nth-child(3){background:var(--green2)}
+
+/* CODE-LIKE REPRESENTATIONS */
+.rep{margin-top:27px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.code{border-radius:18px;border:1px solid var(--line);overflow:hidden;background:#fff}
+.codehead{padding:10px 12px;font-size:9px;font-weight:900;border-bottom:1px solid var(--line)}
+.code pre{margin:0;padding:15px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:9px;line-height:1.55;white-space:pre-wrap;color:#3d485f}
+.code:nth-child(1) .codehead{background:var(--amber2)}.code:nth-child(2) .codehead{background:var(--cyan2)}.code:nth-child(3) .codehead{background:var(--green2)}
+
+/* STORY */
+.story{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:25px}
+.panel{border:1px solid var(--line);border-radius:16px;padding:13px}
+.visual{height:112px;border-radius:10px;background:#f8f7ff;overflow:hidden}.visual img{width:100%;height:100%;object-fit:contain}
+.panel small{display:block;margin-top:9px;font-size:8px;font-weight:900;color:#969dae}
+.panel h4{font-size:12px;margin:5px 0}.panel p{font-size:9.5px;line-height:1.5;color:#687389;margin:0}
+.panel:nth-child(1){border-top:4px solid var(--amber)}.panel:nth-child(2){border-top:4px solid var(--cyan)}.panel:nth-child(3){border-top:4px solid var(--green)}.panel:nth-child(4){border-top:4px solid var(--indigo)}
+
+/* CLOSE */
+.note{margin-top:30px;border-radius:16px;padding:22px;background:var(--indigo2);border:1px solid #ddd9fa;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}
+.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+.note p{margin:0 0 20px;color:#5e587c;line-height:1.7;font-size:14px}.note img,.think img{width:100%;max-height:150px;object-fit:contain}
+.take{margin-top:28px;padding:22px;border-left:4px solid var(--indigo);border-radius:15px;background:#f5f3ff}.take p{margin:0;color:#5b5675;line-height:1.7;font-weight:650;font-size:14px}
+.think{margin-top:30px;border:1px solid #d5e7ea;background:#effbfc;border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#527176;line-height:1.7;font-size:14px}
+.topic-close{margin-top:32px;border:1px solid var(--line);border-radius:20px;padding:25px;background:linear-gradient(135deg,#f5f4ff,#eefafb)}
+.topic-close h3{margin:0 0 8px;font-size:23px}.topic-close>p{margin:0;color:#5e6b81;line-height:1.7;font-size:13px}
+.topic-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:17px}
+.summary-chip{padding:11px 9px;border:1px solid var(--line);border-radius:11px;background:#fff;text-align:center;font-size:10px;font-weight:800;color:#59677a}
+.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}
+.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+
+@media(max-width:950px){.lens-grid,.views,.examples,.rep{grid-template-columns:1fr 1fr}.story{grid-template-columns:1fr 1fr}.row{grid-template-columns:150px 1fr 35px 1fr 35px 1fr}}
+@media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,1040px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
+@media(max-width:680px){.lens-grid,.views,.examples,.rep,.story{grid-template-columns:1fr}.row{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.note,.think{grid-template-columns:1fr}.topic-summary{grid-template-columns:1fr 1fr}.nav{flex-direction:column}.nav a{text-align:center}.lens-head{flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="top">
+<a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
+<nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
+</header>
+
+<div class="layout">
+<aside class="side">
+<div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div>
+<div class="label">Topic 04</div>
+<a href="index.html">1. Process &amp; Methodology</a>
+<a href="development-challenges.html">2. Development Challenges</a>
+<a href="process-models-overview.html">3. Process Models Overview</a>
+<a href="waterfall-model.html">4. Waterfall Model</a>
+<a href="prototyping-model.html">5. Prototyping Model</a>
+<a href="evolutionary-development.html">6. Evolutionary Development</a>
+<a href="spiral-model.html">7. Spiral Model</a>
+<a href="agile-process-models.html">8. Agile Process Models</a>
+<a href="choosing-process-model.html">9. Choosing the Right Model</a>
+<a href="agile-methods.html">10. Agile Methods</a>
+<a class="active" href="software-paradigms.html">11. Software Paradigms</a>
+</aside>
+
+<main><article class="content">
+<div class="crumb">CPCS 351 › Topic 04 › Software Paradigms</div>
+
+<section class="hero">
+<div>
+<div class="eyebrow">Topic 04 · Lesson 11</div>
+<h1>Software Paradigms</h1>
+<p class="lead">
+A software paradigm is a <strong>style of software development—a way of viewing reality</strong>.
+The same problem can therefore be analyzed, designed, and programmed differently depending on the paradigm through which the team sees it.
+</p>
+</div>
+
+<div class="mentor">
+<div class="pic"><img src="../../assets/images/mentor-06-pointing.png" alt="Mentor explaining software paradigms"></div>
+<p>“A paradigm changes what you notice first. One engineer sees actions, another sees collaborating objects, and another sees data and relationships.”</p>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Visual Hook</div>
+<h2>Three lenses on the same reality</h2>
+<p>
+The system does not change—the <strong>view of the system</strong> changes.
+That viewpoint then shapes the analysis technique, the design representation, and even the programming style.
+</p>
+
+<div class="lenses">
+<div class="lens-head"><b>ONE REALITY · THREE SOFTWARE PARADIGMS</b><span>VIEWPOINT → ANALYSIS → DESIGN → IMPLEMENTATION</span></div>
+
+<div class="reality"><div><b>University Registration System</b><span>students · courses · enrollment · rules · data</span></div></div>
+
+<div class="lens-grid">
+<div class="lens proc">
+<div class="icon">⚙</div>
+<h3>Procedural Paradigm</h3>
+<p>View the system mainly as a collection of <strong>processes and actions</strong> that transform inputs into outputs.</p>
+<div class="focus">FOCUS: What process happens next?</div>
+</div>
+
+<div class="lens oo">
+<div class="icon">◉◉◉</div>
+<h3>Object-Oriented Paradigm</h3>
+<p>View the system as <strong>objects that own state, behavior, responsibilities, and relationships</strong> and collaborate with one another.</p>
+<div class="focus">FOCUS: Who is responsible for this behavior?</div>
+</div>
+
+<div class="lens data">
+<div class="icon">▦</div>
+<h3>Data-Oriented Paradigm</h3>
+<p>View the system through <strong>data entities, structures, relationships, storage, and manipulation of information</strong>.</p>
+<div class="focus">FOCUS: What data exists and how is it related?</div>
+</div>
+</div>
+
+<div class="memory">
+<strong>Memory hook:</strong> Procedural = follow the actions · OO = follow the objects · Data-oriented = follow the data.
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Same System · Different Mental Model</div>
+<h2>How would each paradigm “see” registration?</h2>
+
+<div class="same">
+<div class="same-title">UNIVERSITY REGISTRATION SYSTEM · THREE REPRESENTATIONS</div>
+
+<div class="views">
+<div class="view">
+<small>PROCEDURAL VIEW</small>
+<h3>Follow the Process</h3>
+<div class="flow">
+<div class="node">Receive registration request</div><div class="arr">↓</div>
+<div class="node">Check prerequisite</div><div class="arr">↓</div>
+<div class="node">Check schedule conflict</div><div class="arr">↓</div>
+<div class="node">Check seat capacity</div><div class="arr">↓</div>
+<div class="node">Create enrollment</div>
+</div>
+</div>
+
+<div class="view">
+<small>OBJECT-ORIENTED VIEW</small>
+<h3>Follow the Collaborators</h3>
+<div class="objectworld">
+<div class="obj"><b>Student</b><span>academic state</span></div>
+<div class="obj"><b>CourseSection</b><span>capacity + time</span></div>
+<div class="obj"><b>PrerequisiteRule</b><span>eligibility behavior</span></div>
+<div class="obj"><b>Registration</b><span>coordinates enrollment</span></div>
+</div>
+<div class="arr" style="margin-top:12px">objects exchange messages → behavior emerges</div>
+</div>
+
+<div class="view">
+<small>DATA-ORIENTED VIEW</small>
+<h3>Follow the Information</h3>
+<div class="dataworld">
+<div class="entity"><b>STUDENT</b><span>student_id · name · program</span></div>
+<div class="arr">↕</div>
+<div class="entity"><b>ENROLLMENT</b><span>student_id · section_id · status</span></div>
+<div class="arr">↕</div>
+<div class="entity"><b>COURSE_SECTION</b><span>section_id · capacity · schedule</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Paradigm &amp; Methodology</div>
+<h2>The viewpoint flows through analysis, design, and programming</h2>
+<p>
+A paradigm is not only a coding-language preference. It shapes the methodology used to understand the problem,
+represent the solution, and implement the system.
+</p>
+
+<div class="pipeline">
+
+<div class="row proc">
+<div class="par">PROCEDURAL PARADIGM</div>
+<div class="box">Structured Analysis</div><div class="arrow">→</div>
+<div class="box">Structured Design</div><div class="arrow">→</div>
+<div class="box">Structured Programming</div>
+</div>
+
+<div class="row oo">
+<div class="par">OO PARADIGM</div>
+<div class="box">Object-Oriented Analysis</div><div class="arrow">→</div>
+<div class="box">Object-Oriented Design</div><div class="arrow">→</div>
+<div class="box">Object-Oriented Programming</div>
+</div>
+
+<div class="row data">
+<div class="par">DATA-ORIENTED PARADIGM</div>
+<div class="box">Data-Oriented Analysis</div><div class="arrow">→</div>
+<div class="box">Data-Oriented Design</div><div class="arrow">→</div>
+<div class="box">Programming in 4GL<br>(e.g., SQL)</div>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Detailed Examples</div>
+<h2>One business rule, three ways to think</h2>
+
+<div class="examples">
+
+<div class="ex">
+<span class="tag">PROCEDURAL</span>
+<h3>“Register a Student” as a sequence of actions</h3>
+<p>The mental model starts from the procedure.</p>
+<ul>
+<li>Read student and section identifiers.</li>
+<li>Check prerequisites.</li>
+<li>Check timetable conflict.</li>
+<li>Check seat availability.</li>
+<li>Insert enrollment.</li>
+<li>Return success or error.</li>
+</ul>
+</div>
+
+<div class="ex">
+<span class="tag">OBJECT-ORIENTED</span>
+<h3>“Register a Student” as collaboration</h3>
+<p>The mental model distributes responsibility among objects.</p>
+<ul>
+<li>Student exposes academic history.</li>
+<li>PrerequisiteRule evaluates eligibility.</li>
+<li>CourseSection knows capacity and schedule.</li>
+<li>Registration coordinates the interaction.</li>
+<li>Objects retain state and behavior together.</li>
+</ul>
+</div>
+
+<div class="ex">
+<span class="tag">DATA-ORIENTED</span>
+<h3>“Register a Student” as data relationships</h3>
+<p>The mental model begins with entities and relations.</p>
+<ul>
+<li>Student table identifies the learner.</li>
+<li>CompletedCourse supports prerequisite queries.</li>
+<li>CourseSection stores capacity and schedule.</li>
+<li>Enrollment represents the Student↔Section relationship.</li>
+<li>Queries and constraints manipulate and protect the data.</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Implementation Flavor</div>
+<h2>The same intent can look very different in code</h2>
+
+<div class="rep">
+
+<div class="code">
+<div class="codehead">PROCEDURAL THINKING</div>
+<pre>registerStudent(studentId, sectionId)
+
+checkPrerequisite(...)
+checkConflict(...)
+checkCapacity(...)
+
+createEnrollment(...)</pre>
+</div>
+
+<div class="code">
+<div class="codehead">OBJECT-ORIENTED THINKING</div>
+<pre>student.canEnroll(section)
+
+section.hasSeat()
+section.conflictsWith(student)
+
+registration.confirm(
+  student, section
+)</pre>
+</div>
+
+<div class="code">
+<div class="codehead">DATA-ORIENTED THINKING</div>
+<pre>SELECT ...
+FROM student
+JOIN enrollment ...
+JOIN course_section ...
+
+INSERT INTO enrollment (...)</pre>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<div class="kicker">Illustrated Story</div>
+<h2>Three engineers enter the same meeting</h2>
+
+<div class="story">
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
+<small>THE PROBLEM</small>
+<h4>Students cannot register correctly</h4>
+<p>Everyone agrees on the business problem—but not yet on how to conceptualize the solution.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-06-pointing.png" alt=""></div>
+<small>PROCEDURAL LENS</small>
+<h4>“Show me the workflow.”</h4>
+<p>One engineer begins by decomposing the registration process into transformations and steps.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-02-explaining.png" alt=""></div>
+<small>OO LENS</small>
+<h4>“Who owns each responsibility?”</h4>
+<p>Another identifies Student, CourseSection, Rule, and Registration objects and their collaborations.</p>
+</div>
+
+<div class="panel">
+<div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
+<small>DATA LENS</small>
+<h4>“What information must remain consistent?”</h4>
+<p>A third begins with entities, relationships, constraints, and queries. Same reality—different organizing idea.</p>
+</div>
+
+</div>
+</section>
+
+<div class="note">
+<div>
+<b>Mentor Insight</b>
+<p>
+A paradigm is deeper than syntax. Writing Java does not automatically mean the analysis and design are object-oriented,
+just as using SQL does not mean the entire system must be conceived only as data. The important question is:
+<strong>what conceptual lens is organizing the engineering work?</strong>
+</p>
+</div>
+<img src="../../assets/images/mentor-11-serious.png" alt="">
+</div>
+
+<div class="take">
+<b>Key Takeaway</b>
+<p>
+A software paradigm is a style of software development—a way of viewing reality.
+The three paradigms introduced here are procedural, object-oriented, and data-oriented.
+Each viewpoint aligns with different analysis, design, and programming methodologies:
+Structured Analysis/Design/Programming; Object-Oriented Analysis/Design/Programming; and
+Data-Oriented Analysis/Design with 4GL programming such as SQL.
+</p>
+</div>
+
+<div class="think">
+<div>
+<span class="tlabel">Think Like a Software Engineer</span>
+<h3>Can the same real system contain procedural, object-oriented, and data-oriented thinking at the same time?</h3>
+<p>
+Yes. A large system may use objects to organize domain responsibilities, procedural algorithms inside operations,
+and relational/data-oriented models for persistent information. The paradigm tells you what viewpoint dominates a particular engineering decision.
+</p>
+</div>
+<img src="../../assets/images/mentor-03-thinking.png" alt="">
+</div>
+
+<div class="topic-close">
+<h3>Topic 04 Complete</h3>
+<p>
+You began by separating <strong>process</strong> from <strong>methodology</strong>, examined the realities that make development difficult,
+compared major process models, learned how to choose among them, explored Agile methods, and finished by seeing how a
+software paradigm changes the way engineers conceptualize the system itself.
+</p>
+<div class="topic-summary">
+<div class="summary-chip">Process &amp; Methodology</div>
+<div class="summary-chip">Development Challenges</div>
+<div class="summary-chip">Process Models</div>
+<div class="summary-chip">Waterfall</div>
+<div class="summary-chip">Prototyping</div>
+<div class="summary-chip">Evolutionary</div>
+<div class="summary-chip">Spiral</div>
+<div class="summary-chip">Agile</div>
+<div class="summary-chip">Model Selection</div>
+<div class="summary-chip">Agile Methods</div>
+<div class="summary-chip">Software Paradigms</div>
+</div>
+</div>
+
+<div class="nav">
+<a href="agile-methods.html">← Agile Methods</a>
+<a class="next" href="../../index.html">Finish Topic 04 · Course Home →</a>
+</div>
+
+</article></main>
+</div>
+
+<script>
+if(sessionStorage.getItem("cpcs351_access")!=="granted"){
+  window.location.href="../../access.html";
+}
+</script>
+</body>
+</html>
