@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Choosing the Right Process Model | CPCS 351</title>
+<style>
+:root{
+ --ink:#172036;--muted:#65718a;--line:#e1e6ef;
+ --indigo:#2d2a78;--indigo2:#efefff;--cyan:#27b8c5;--cyan2:#e9fbfd;
+ --violet:#7666d6;--violet2:#f2efff;--lime:#91bd43;--lime2:#f5fae8;
+ --pink:#d9619e;--pink2:#fff0f8;--orange:#e99e3e;--orange2:#fff5e7;
+ --red:#dc6b6b;--red2:#fff0f0;--side:242px
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff}
+a{color:inherit}.top{height:62px;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 16px;backdrop-filter:blur(12px)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:850}.mark{width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,var(--indigo),var(--cyan),var(--pink));display:grid;place-items:center;color:#fff;font-weight:900}
+.links{display:flex;gap:8px}.links a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:700;padding:8px}
+.layout{display:grid;grid-template-columns:var(--side) 1fr}.side{height:calc(100vh - 62px);position:sticky;top:62px;overflow:auto;border-right:1px solid var(--line);background:#fafaff;padding:24px 14px}
+.course{border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:15px}.course small,.label{font-size:11px;font-weight:850;color:#9294aa;letter-spacing:.08em;text-transform:uppercase}.course strong{display:block;margin-top:7px;font-size:15px}.label{margin:18px 0 8px}
+.side a,.side span{display:block;text-decoration:none;padding:9px 10px;border-radius:8px;color:#5f6680;font-size:13px;font-weight:650}.side a.active{background:var(--orange2);color:#9b641e;font-weight:850}.side span.future{color:#a8a9b9}
+.content{width:min(1060px,calc(100% - 48px));margin:auto;padding:58px 0 90px}.crumb{color:#8c93a6;font-size:13px;font-weight:650;margin-bottom:28px}.crumb a{text-decoration:none}
+.hero{display:grid;grid-template-columns:1fr 280px;gap:36px;align-items:center}.eyebrow,.kicker{font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}.eyebrow{color:#b66d16}.eyebrow:before{content:"";display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--orange);margin-right:7px}
+h1{font-size:clamp(44px,5.8vw,66px);line-height:.98;letter-spacing:-.045em;margin:14px 0 20px}.lead{color:var(--muted);font-size:19px;line-height:1.75}
+.mentor{border:1px solid var(--line);border-radius:20px;overflow:hidden}.mentor .pic{height:225px;background:linear-gradient(180deg,#fff9ed,#f4f1ff)}.mentor img{width:100%;height:100%;object-fit:contain}.mentor p{margin:0;padding:17px;border-top:1px solid var(--line);font-size:14px;line-height:1.65;font-weight:650;color:#4e5871}
+.section{margin-top:72px}.kicker{color:#999db0;margin-bottom:7px}h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#59667d;line-height:1.8;font-size:16px}
+
+/* VISUAL HOOK */
+.console{margin-top:30px;border:1px solid var(--line);border-radius:30px;padding:27px;background:radial-gradient(circle at 50% 45%,rgba(233,158,62,.12),transparent 27%),linear-gradient(180deg,#fffdf9,#fafaff)}
+.console-head{background:var(--indigo);color:#fff;border-radius:15px;padding:15px 18px;display:flex;justify-content:space-between;gap:12px}.console-head b{font-size:12px;letter-spacing:.08em}.console-head span{font-size:10px;color:#dedbf7}
+.project{width:190px;height:190px;border-radius:50%;margin:30px auto 24px;background:linear-gradient(145deg,#37328d,#6b5dd1);color:#fff;display:grid;place-items:center;text-align:center;box-shadow:0 20px 45px rgba(45,42,120,.2);position:relative}.project b{font-size:18px}.project small{display:block;font-size:9px;line-height:1.5;margin-top:6px;color:#e7e4ff}
+.signals{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.signal{border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}.signal .ico{font-size:24px}.signal b{display:block;margin-top:6px;font-size:11px}.signal span{display:block;margin-top:4px;color:#6b7488;font-size:9.5px;line-height:1.45}
+.signal:nth-child(1){background:var(--pink2)}.signal:nth-child(2){background:var(--cyan2)}.signal:nth-child(3){background:var(--orange2)}.signal:nth-child(4){background:var(--violet2)}.signal:nth-child(5){background:var(--lime2)}.signal:nth-child(6){background:#f4f7fb}
+.models{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:22px}.model{border:1px solid var(--line);border-radius:14px;padding:13px 8px;text-align:center;background:#fff;font-size:10px;font-weight:850}.model:nth-child(1){border-top:4px solid #5aa4c8}.model:nth-child(2){border-top:4px solid var(--pink)}.model:nth-child(3){border-top:4px solid var(--orange)}.model:nth-child(4){border-top:4px solid var(--lime)}.model:nth-child(5){border-top:4px solid var(--violet)}
+.memory{margin-top:15px;border:1px dashed #d9c59e;border-radius:13px;background:#fff;padding:13px;text-align:center;color:#6c665d;font-size:11px;line-height:1.6}
+
+/* MATRIX */
+.matrix-wrap{margin-top:28px;border:1px solid var(--line);border-radius:25px;padding:20px;background:#fbfcff;overflow:auto}
+.matrix{width:100%;border-collapse:separate;border-spacing:0;min-width:900px;font-size:10.5px}.matrix th,.matrix td{padding:12px 9px;border-right:1px solid #e5e8ef;border-bottom:1px solid #e5e8ef;text-align:center}.matrix th{background:var(--indigo);color:#fff;font-size:10px;position:sticky;top:0}.matrix th:first-child{border-radius:12px 0 0 0;text-align:left}.matrix th:last-child{border-radius:0 12px 0 0}.matrix td:first-child{text-align:left;font-weight:800;background:#f6f7fb;min-width:180px}
+.matrix tr:last-child td:first-child{border-radius:0 0 0 12px}.matrix tr:last-child td:last-child{border-radius:0 0 12px 0}
+.ex{background:#e9f8e8;color:#36713a;font-weight:850}.gd{background:#f3f8e9;color:#607d2b;font-weight:800}.pr{background:#fff0f0;color:#a44c4c;font-weight:850}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.legend span{padding:6px 9px;border-radius:999px;font-size:9px;font-weight:800}.legend .e{background:#e9f8e8;color:#36713a}.legend .g{background:#f3f8e9;color:#607d2b}.legend .p{background:#fff0f0;color:#a44c4c}
+
+/* MODEL PERSONALITIES */
+.personalities{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:26px}.person{border:1px solid var(--line);border-radius:18px;padding:17px;background:#fff}.person .sym{font-size:29px}.person h3{font-size:13px;margin:8px 0 5px}.person p{font-size:9.8px;line-height:1.5;color:#68738a;margin:0}.person b{display:block;margin-top:9px;font-size:9px;color:#414a61}.person:nth-child(1){background:#eef8fc}.person:nth-child(2){background:var(--pink2)}.person:nth-child(3){background:var(--orange2)}.person:nth-child(4){background:var(--lime2)}.person:nth-child(5){background:var(--violet2)}
+
+/* DECISION PATH */
+.path{margin-top:27px;border:1px solid var(--line);border-radius:25px;padding:25px;background:#fbfcff}.qrow{display:grid;grid-template-columns:1fr 55px 1fr;gap:10px;align-items:center;margin-top:12px}.q{border:1px solid var(--line);border-radius:15px;padding:15px;background:#fff}.q b{font-size:11px}.q span{display:block;margin-top:4px;color:#68738a;font-size:9.5px;line-height:1.45}.arr{text-align:center;color:#a0a6b6;font-size:20px;font-weight:900}.answer{border:1px solid var(--line);border-radius:15px;padding:15px;background:var(--cyan2)}.answer b{font-size:11px}.answer span{display:block;margin-top:4px;color:#577278;font-size:9.5px;line-height:1.45}
+
+/* SCENARIOS */
+.scenarios{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:27px}.scenario{border:1px solid var(--line);border-radius:20px;padding:20px;background:#fff}.scenario .topline{display:flex;justify-content:space-between;gap:10px}.scenario h3{font-size:16px;margin:0}.badge{font-size:9px;font-weight:900;padding:6px 9px;border-radius:999px;background:var(--indigo2);color:#4d4595}.scenario p{color:#667187;font-size:10.5px;line-height:1.55}.facts{display:flex;flex-wrap:wrap;gap:6px}.facts span{font-size:8.7px;border:1px solid var(--line);padding:5px 7px;border-radius:7px;background:#fafbff}.why{margin-top:11px;padding-top:11px;border-top:1px solid var(--line);font-size:10px;line-height:1.5;color:#4f596f}
+
+/* STORY */
+.story{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:25px}.panel{border:1px solid var(--line);border-radius:16px;padding:13px}.visual{height:115px;border-radius:11px;background:#fff9ef;overflow:hidden;margin-bottom:10px}.visual img{width:100%;height:100%;object-fit:contain}.panel small{font-size:8px;font-weight:900;color:#999eae}.panel h4{font-size:13px;margin:5px 0}.panel p{font-size:10px;line-height:1.5;color:#68738a;margin:0}.panel:nth-child(1){border-top:4px solid var(--pink)}.panel:nth-child(2){border-top:4px solid var(--orange)}.panel:nth-child(3){border-top:4px solid var(--violet)}.panel:nth-child(4){border-top:4px solid var(--lime)}
+.note{margin-top:30px;border-radius:16px;padding:22px;background:var(--orange2);border:1px solid #f0d9b8;display:grid;grid-template-columns:1fr 135px;align-items:end;gap:18px}.note b,.take b,.think .tlabel{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}.note p{margin:0 0 20px;color:#755f42;line-height:1.7;font-size:14px}.note img,.think img{width:100%;max-height:150px;object-fit:contain}
+.take{margin-top:28px;padding:22px;border-left:4px solid var(--orange);border-radius:15px;background:#fff9ee}.take p{margin:0;color:#675b48;line-height:1.7;font-weight:650;font-size:14px}.think{margin-top:30px;border:1px solid #d8e3ef;background:#f2f8ff;border-radius:16px;padding:23px;display:grid;grid-template-columns:1fr 140px;gap:18px;align-items:end}.think h3{margin:7px 0;font-size:20px}.think p{margin:0 0 20px;color:#536b85;line-height:1.7;font-size:14px}
+.nav{display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:24px;margin-top:50px}.nav a{padding:13px 16px;border:1px solid var(--line);border-radius:11px;text-decoration:none;font-size:13px;font-weight:800}.nav a.next{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+@media(max-width:950px){.signals{grid-template-columns:1fr 1fr 1fr}.personalities{grid-template-columns:1fr 1fr 1fr}.story{grid-template-columns:1fr 1fr}}
+@media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,1060px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
+@media(max-width:650px){.signals,.personalities,.scenarios,.story{grid-template-columns:1fr}.models{grid-template-columns:1fr}.qrow{grid-template-columns:1fr}.arr{transform:rotate(90deg)}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}.console-head{flex-direction:column}}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a><nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header>
+<div class="layout">
+<aside class="side">
+<div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div>
+<div class="label">Topic 04</div>
+<a href="index.html">1. Process &amp; Methodology</a><a href="development-challenges.html">2. Development Challenges</a><a href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a href="prototyping-model.html">5. Prototyping Model</a><a href="evolutionary-development.html">6. Evolutionary Development</a><a href="spiral-model.html">7. Spiral Model</a><a href="agile-process-models.html">8. Agile Process Models</a><a class="active" href="choosing-process-model.html">9. Choosing the Right Model</a><span class="future">10. Agile Methods</span><span class="future">11. Software Paradigms</span>
+</aside>
+<main><article class="content">
+<div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 04 › Choosing the Right Process Model</div>
+
+<section class="hero"><div><div class="eyebrow">Topic 04 · Decision Point</div><h1>Choosing the Right Process Model</h1>
+<p class="lead">There is no universally “best” SDLC model. The engineering question is: <strong>which process behavior fits this project's uncertainty, technology, constraints, people, and business context?</strong></p></div>
+<div class="mentor"><div class="pic"><img src="../../assets/images/mentor-03-thinking.png" alt="Mentor comparing process models"></div><p>“Do not choose a model because it is fashionable. Choose it because its strengths match the risks and constraints of the project.”</p></div></section>
+
+<section class="section"><div class="kicker">Visual Hook</div><h2>The Process Model Selection Console</h2>
+<p>Imagine every project entering a selection console. The console reads its strongest signals—requirements, technology, complexity, time, cost, people, and stakeholder involvement—before recommending a development route.</p>
+<div class="console">
+<div class="console-head"><b>PROCESS MODEL SELECTION CONSOLE</b><span>PROJECT CHARACTERISTICS → MODEL FIT</span></div>
+<div class="project"><div><b>YOUR PROJECT</b><small>requirements · technology<br>complexity · time · budget<br>people · business</small></div></div>
+<div class="signals">
+<div class="signal"><div class="ico">❓</div><b>Requirement Clarity</b><span>Are user needs stable, or are important requirements still unclear?</span></div>
+<div class="signal"><div class="ico">🧪</div><b>Technology Familiarity</b><span>Is the technology proven, or must the team explore unfamiliar technical territory?</span></div>
+<div class="signal"><div class="ico">🧩</div><b>System Complexity</b><span>How difficult are the interactions, architecture, behavior, and integration?</span></div>
+<div class="signal"><div class="ico">⏱</div><b>Time &amp; Budget</b><span>Is the schedule short? Is cost tightly limited?</span></div>
+<div class="signal"><div class="ico">👥</div><b>People &amp; Skills</b><span>What skills and project-management capability are available?</span></div>
+<div class="signal"><div class="ico">🤝</div><b>Stakeholder Visibility</b><span>Can stakeholders see, review, and influence the product throughout development?</span></div>
+</div>
+<div class="models"><div class="model">↓ Waterfall</div><div class="model">↻ Evolutionary Prototyping</div><div class="model">◎ Spiral</div><div class="model">▰ Iterative &amp; Incremental</div><div class="model">⚡ Agile</div></div>
+<div class="memory"><strong>Memory hook:</strong> do not ask “Which model is best?” Ask “Which model's strengths fit the dominant characteristics of this project?”</div>
+</div></section>
+
+<section class="section"><div class="kicker">Selection Factors</div><h2>What should influence the choice?</h2>
+<p>Model selection depends on several project conditions. Important high-level considerations include <strong>resources—time, people, and budget—project type, and business type</strong>. The matrix below expands the decision into specific engineering factors.</p>
+</section>
+
+<section class="section"><div class="kicker">Complete Comparison Matrix</div><h2>Compare the five process choices factor by factor</h2>
+<p>This matrix preserves the comparative ratings used in the course material. Read across a row: first identify a characteristic that strongly describes your project, then compare which models receive stronger ratings for that characteristic.</p>
+
+<div class="matrix-wrap"><table class="matrix">
+<thead><tr><th>Factor</th><th>Waterfall</th><th>Evolutionary<br>Prototyping</th><th>Spiral</th><th>Iterative &amp;<br>Incremental</th><th>Agile</th></tr></thead>
+<tbody>
+<tr><td>Unclear User Requirement</td><td class="pr">Poor</td><td class="gd">Good</td><td class="ex">Excellent</td><td class="gd">Good</td><td class="ex">Excellent</td></tr>
+<tr><td>Unfamiliar Technology</td><td class="pr">Poor</td><td class="ex">Excellent</td><td class="ex">Excellent</td><td class="gd">Good</td><td class="pr">Poor</td></tr>
+<tr><td>Complex System</td><td class="gd">Good</td><td class="ex">Excellent</td><td class="ex">Excellent</td><td class="gd">Good</td><td class="pr">Poor</td></tr>
+<tr><td>Reliable System</td><td class="gd">Good</td><td class="pr">Poor</td><td class="ex">Excellent</td><td class="gd">Good</td><td class="gd">Good</td></tr>
+<tr><td>Short Time Schedule</td><td class="pr">Poor</td><td class="gd">Good</td><td class="pr">Poor</td><td class="ex">Excellent</td><td class="ex">Excellent</td></tr>
+<tr><td>Strong Project Management</td><td class="ex">Excellent</td><td class="ex">Excellent</td><td class="ex">Excellent</td><td class="ex">Excellent</td><td class="ex">Excellent</td></tr>
+<tr><td>Cost Limitation</td><td class="pr">Poor</td><td class="pr">Poor</td><td class="pr">Poor</td><td class="ex">Excellent</td><td class="ex">Excellent</td></tr>
+<tr><td>Visibility of Stakeholders</td><td class="gd">Good</td><td class="ex">Excellent</td><td class="ex">Excellent</td><td class="gd">Good</td><td class="ex">Excellent</td></tr>
+<tr><td>Skills Limitation</td><td class="gd">Good</td><td class="pr">Poor</td><td class="pr">Poor</td><td class="gd">Good</td><td class="pr">Poor</td></tr>
+<tr><td>Documentations</td><td class="ex">Excellent</td><td class="gd">Good</td><td class="gd">Good</td><td class="ex">Excellent</td><td class="pr">Poor</td></tr>
+<tr><td>Component Reusability</td><td class="ex">Excellent</td><td class="pr">Poor</td><td class="pr">Poor</td><td class="ex">Excellent</td><td class="pr">Poor</td></tr>
+</tbody></table>
+<div class="legend"><span class="e">Excellent = strong fit in this matrix</span><span class="g">Good = reasonable fit</span><span class="p">Poor = weak fit</span></div></div>
+</section>
+
+<section class="section"><div class="kicker">Model Personalities</div><h2>Remember each model by the problem it handles well</h2>
+<div class="personalities">
+<div class="person"><div class="sym">↓</div><h3>Waterfall</h3><p>Sequential and documentation-friendly. Better when predictability and structured artifacts matter.</p><b>Memory: PLAN THE ROUTE</b></div>
+<div class="person"><div class="sym">↻</div><h3>Evolutionary</h3><p>Useful when understanding grows by showing a visible prototype and evolving it.</p><b>Memory: GROW THE PRODUCT</b></div>
+<div class="person"><div class="sym">◎</div><h3>Spiral</h3><p>Risk-driven iteration; especially strong in the matrix for uncertainty, unfamiliar technology, complexity, and reliability.</p><b>Memory: ATTACK THE RISK</b></div>
+<div class="person"><div class="sym">▰</div><h3>Iterative &amp; Incremental</h3><p>Build through manageable increments; rated strongly for short schedules, cost limits, documentation, and reuse.</p><b>Memory: BUILD IN PIECES</b></div>
+<div class="person"><div class="sym">⚡</div><h3>Agile</h3><p>Adaptive, fast, stakeholder-visible delivery; rated strongly for unclear requirements and short schedules.</p><b>Memory: DELIVER &amp; ADAPT</b></div>
+</div></section>
+
+<section class="section"><div class="kicker">Reasoning Path</div><h2>Turn project facts into process decisions</h2>
+<div class="path">
+<div class="qrow"><div class="q"><b>Requirements are unclear and users can collaborate frequently?</b><span>The team needs repeated feedback rather than one frozen specification.</span></div><div class="arr">→</div><div class="answer"><b>Consider Agile or Spiral</b><span>Both receive Excellent for unclear user requirements in the comparison matrix.</span></div></div>
+<div class="qrow"><div class="q"><b>Technology is unfamiliar and technical uncertainty is high?</b><span>Learning and risk reduction must happen before large commitments.</span></div><div class="arr">→</div><div class="answer"><b>Consider Spiral or Evolutionary Prototyping</b><span>Both receive Excellent for unfamiliar technology.</span></div></div>
+<div class="qrow"><div class="q"><b>The schedule is short and cost is tightly constrained?</b><span>The project needs useful progress under strong delivery constraints.</span></div><div class="arr">→</div><div class="answer"><b>Consider Iterative &amp; Incremental or Agile</b><span>Both receive Excellent for short schedules and cost limitation in the matrix.</span></div></div>
+<div class="qrow"><div class="q"><b>Documentation and component reuse are major priorities?</b><span>Formal artifacts and reusable components carry high value.</span></div><div class="arr">→</div><div class="answer"><b>Waterfall or Iterative &amp; Incremental score strongly</b><span>Both receive Excellent for documentation and component reusability in the provided comparison.</span></div></div>
+</div></section>
+
+<section class="section"><div class="kicker">Worked Scenarios</div><h2>Same question. Different projects. Different answers.</h2>
+<div class="scenarios">
+<div class="scenario"><div class="topline"><h3>University Mobile App</h3><span class="badge">AGILE</span></div><p>Students are available for feedback; UI needs will evolve; a useful subset must appear quickly.</p><div class="facts"><span>Unclear requirements</span><span>Short schedule</span><span>High stakeholder visibility</span></div><div class="why"><strong>Why:</strong> Agile is rated Excellent for all three of these factors in the matrix.</div></div>
+
+<div class="scenario"><div class="topline"><h3>Experimental AI Research System</h3><span class="badge">EVOLUTIONARY</span></div><p>The team is exploring behavior that cannot be specified confidently before experiments and prototypes exist.</p><div class="facts"><span>Unfamiliar technology</span><span>Exploratory work</span><span>Visible prototypes</span></div><div class="why"><strong>Why:</strong> Evolutionary prototyping is rated Excellent for unfamiliar technology and stakeholder visibility, and the model naturally grows a prototype toward the production system.</div></div>
+
+<div class="scenario"><div class="topline"><h3>Safety-Critical Control Platform</h3><span class="badge">SPIRAL</span></div><p>The system is complex and reliability matters strongly; uncertainty must be analyzed before increasing commitment.</p><div class="facts"><span>Complex</span><span>Reliable system</span><span>Risk analysis</span></div><div class="why"><strong>Why:</strong> Spiral is rated Excellent for complex and reliable systems, while its process explicitly emphasizes risk assessment and reduction.</div></div>
+
+<div class="scenario"><div class="topline"><h3>Reusable Enterprise Platform</h3><span class="badge">ITERATIVE + INCREMENTAL</span></div><p>The organization wants documented increments and reusable components while delivering progressively.</p><div class="facts"><span>Documentation</span><span>Reuse</span><span>Incremental delivery</span></div><div class="why"><strong>Why:</strong> Iterative &amp; Incremental is rated Excellent for documentation and component reusability in the matrix.</div></div>
+</div></section>
+
+<section class="section"><div class="kicker">Illustrated Story</div><h2>The team that chose a model before understanding the project</h2>
+<div class="story">
+<div class="panel"><div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div><small>1 · HABIT</small><h4>“We always use Agile.”</h4><p>The team selects its familiar process before examining project conditions.</p></div>
+<div class="panel"><div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div><small>2 · CONFLICT</small><h4>The project disagrees</h4><p>Technology is unfamiliar, reliability is critical, and major technical risks are unresolved.</p></div>
+<div class="panel"><div class="visual"><img src="../../assets/images/mentor-03-thinking.png" alt=""></div><small>3 · ENGINEERING</small><h4>Read the signals</h4><p>The team compares uncertainty, complexity, risk, time, people, budget, and stakeholder needs.</p></div>
+<div class="panel"><div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div><small>4 · FIT</small><h4>Choose deliberately</h4><p>The process is selected because it fits the project—not because its name is popular.</p></div>
+</div></section>
+
+<div class="note"><div><b>Mentor Insight</b><p>A process model is an engineering decision. Real projects may also tailor or combine practices, but the first discipline is understanding what each model is good and poor at before making that choice.</p></div><img src="../../assets/images/mentor-11-serious.png" alt=""></div>
+
+<div class="take"><b>Key Takeaway</b><p>Choose an SDLC model by matching project characteristics to model strengths. Resources such as time, people, and budget matter, as do project and business type. The comparison matrix highlights requirement uncertainty, unfamiliar technology, complexity, reliability, schedule, cost, management, stakeholder visibility, skills, documentation, and component reuse as important selection factors.</p></div>
+
+<div class="think"><div><span class="tlabel">Think Like a Software Engineer</span><h3>Your requirements are unclear, the technology is unfamiliar, and the deadline is very short. Which model wins?</h3><p>There may be no perfect winner. The factors pull in different directions. Use the matrix to expose the trade-off, identify the project's dominant risk, and justify which weakness you are willing to manage.</p></div><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
+
+<div class="nav"><a href="agile-process-models.html">← Agile Process Models</a><a class="next" href="agile-methods.html">Next · Agile Methods →</a></div>
+</article></main></div>
+<script>if(sessionStorage.getItem("cpcs351_access")!=="granted"){window.location.href="../../access.html";}</script>
+</body></html>
