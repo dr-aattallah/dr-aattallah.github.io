@@ -1,7 +1,8 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Evolutionary Development | CPCS 351</title>
 <style>
 :root{--ink:#172036;--muted:#65718a;--line:#e1e6ef;--indigo:#2d2a78;--indigo2:#efefff;--green:#61aa67;--green2:#edf9ef;--lime:#a6cb4b;--lime2:#f6fbe9;--cyan:#3bbbc6;--cyan2:#eafafd;--amber:#e9a543;--amber2:#fff5e5;--red:#db6c6c;--red2:#fff0f0;--side:242px}
@@ -45,23 +46,26 @@
 @media(max-width:900px){.growth,.versions,.story,.suited{grid-template-columns:1fr 1fr}.cycle{grid-template-columns:80px 1fr}.cout{grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}}
 @media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,1000px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
 @media(max-width:650px){.growth,.versions,.story,.suited,.pc{grid-template-columns:1fr}.compare,.rescue-row{grid-template-columns:1fr}.vs,.ra{transform:rotate(90deg)}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}.growhead,.refhead{align-items:flex-start;flex-direction:column}}
+
+/* Topic 04 navigation consistency */
+.mobile-topic-nav{display:none}
+@media(max-width:850px){
+  .mobile-topic-nav{display:flex;gap:7px;overflow-x:auto;white-space:nowrap;padding:9px 12px;position:sticky;top:62px;z-index:45;background:rgba(250,250,255,.97);border-bottom:1px solid var(--line,#e1e6ef);scrollbar-width:thin}
+  .mobile-topic-nav a{flex:0 0 auto;text-decoration:none;padding:7px 10px;border:1px solid var(--line,#e1e6ef);border-radius:999px;background:#fff;color:var(--muted,#65718a);font-size:11px;font-weight:800}
+  .mobile-topic-nav a.active{background:var(--indigo,#2d2a78);border-color:var(--indigo,#2d2a78);color:#fff}
+}
 </style>
 </head>
 <body>
-<header class="top"><a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a><nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header>
+<header class="top"><a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a><nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header><nav aria-label="Topic 04 lesson navigation" class="mobile-topic-nav"><a href="index.html">01 Process</a><a href="development-challenges.html">02 Challenges</a><a href="process-models-overview.html">03 Models</a><a href="waterfall-model.html">04 Waterfall</a><a href="prototyping-model.html">05 Prototype</a><a aria-current="page" class="active" href="evolutionary-development.html">06 Evolutionary</a><a href="spiral-model.html">07 Spiral</a><a href="agile-process-models.html">08 Agile Process</a><a href="choosing-process-model.html">09 Choose Model</a><a href="agile-methods.html">10 Agile Methods</a><a href="software-paradigms.html">11 Paradigms</a></nav>
 <div class="layout">
-<aside class="side">
-<div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div><div class="label">Topic 04</div>
-<a href="index.html">1. Process &amp; Methodology</a><a href="development-challenges.html">2. Development Challenges</a><a href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a href="prototyping-model.html">5. Prototyping Model</a><a class="active" href="evolutionary-development.html">6. Evolutionary Development</a><span class="future">7. Spiral Model</span><span class="future">8. Agile Process Models</span><span class="future">9. Choosing the Right Model</span><span class="future">10. Agile Methods</span><span class="future">11. Software Paradigms</span>
-</aside>
+<aside class="side"><div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div><div class="label">Topic 04</div><a href="index.html">1. Process &amp; Methodology</a><a href="development-challenges.html">2. Development Challenges</a><a href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a href="prototyping-model.html">5. Prototyping Model</a><a class="active" href="evolutionary-development.html">6. Evolutionary Development</a><a href="spiral-model.html">7. Spiral Model</a><a href="agile-process-models.html">8. Agile Process Models</a><a href="choosing-process-model.html">9. Choosing the Right Model</a><a href="agile-methods.html">10. Agile Methods</a><a href="software-paradigms.html">11. Software Paradigms</a><div class="label">Course</div><a href="../../index.html">Course Home</a></aside>
 <main><article class="content">
 <div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 04 › Evolutionary Development</div>
-
 <section class="hero">
 <div><div class="eyebrow">Topic 04 · Model 03</div><h1>Evolutionary Development</h1><p class="lead">Build a small working system, learn from real use, and <strong>keep evolving that same system</strong> until it becomes the production system. The product does not get thrown away—it grows.</p></div>
-<div class="mentor"><div class="pic"><img src="../../assets/images/mentor-02-explaining.png" alt="Mentor explaining evolutionary development"></div><p>“The first version is not a disposable sketch. It is the beginning of the real product—so every cycle must make it more useful and more mature.”</p></div>
+<div class="mentor"><div class="pic"><img alt="Mentor explaining evolutionary development" src="../../assets/images/mentor-02-explaining.png"/></div><p>“The first version is not a disposable sketch. It is the beginning of the real product—so every cycle must make it more useful and more mature.”</p></div>
 </section>
-
 <section class="section">
 <div class="kicker">Visual Hook</div><h2>The Living Software System</h2>
 <p>Think of evolutionary development as growing a living system. Start with the smallest useful core, expose it to users and its environment, then repeatedly add capabilities and refine what already exists.</p>
@@ -77,18 +81,16 @@
 <div class="memory"><strong>Memory hook:</strong> Prototyping asks “What should we build?” Evolutionary development asks “How can this working system become the system we need?”</div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Academic Reference</div><h2>Evolutionary prototyping as a real development path</h2>
 <p>Carnegie Mellon describes evolutionary development as repeated changes and refinements throughout the software lifecycle, especially when desired behavior cannot be completely specified before coding begins.</p>
 <figure class="reference">
-<div class="refhead"><span>CARNEGIE MELLON UNIVERSITY · SCHOOL OF COMPUTER SCIENCE</span><a href="https://www.cs.cmu.edu/~gwydion/gwydion-overview.html" target="_blank" rel="noopener">Open CMU source ↗</a></div>
-<img src="https://www.cs.cmu.edu/afs/cs/project/gwydion/docs/htdocs/gwydion/gwydion.gif" alt="Gwydion evolutionary development project graphic from Carnegie Mellon University" loading="lazy">
+<div class="refhead"><span>CARNEGIE MELLON UNIVERSITY · SCHOOL OF COMPUTER SCIENCE</span><a href="https://www.cs.cmu.edu/~gwydion/gwydion-overview.html" rel="noopener" target="_blank">Open CMU source ↗</a></div>
+<img alt="Gwydion evolutionary development project graphic from Carnegie Mellon University" loading="lazy" src="https://www.cs.cmu.edu/afs/cs/project/gwydion/docs/htdocs/gwydion/gwydion.gif"/>
 <figcaption><strong>What matters here:</strong> evolutionary development treats modification as normal rather than exceptional. A working implementation is repeatedly tested and refined as the user learns more and as the software's mission and environment change.</figcaption>
-<div class="backup">A second academic example is the University of Washington CSE 403 lecture on <strong>Evolutionary Prototyping</strong>, which explicitly depicts: initial concept → design/implement initial prototype → refine until acceptable → complete and release. <a href="https://courses.cs.washington.edu/courses/cse403/16wi/lectures/L2.pdf#page=23" target="_blank" rel="noopener">Open University of Washington diagram ↗</a></div>
+<div class="backup">A second academic example is the University of Washington CSE 403 lecture on <strong>Evolutionary Prototyping</strong>, which explicitly depicts: initial concept → design/implement initial prototype → refine until acceptable → complete and release. <a href="https://courses.cs.washington.edu/courses/cse403/16wi/lectures/L2.pdf#page=23" rel="noopener" target="_blank">Open University of Washington diagram ↗</a></div>
 </figure>
 </section>
-
 <section class="section">
 <div class="kicker">Critical Distinction</div><h2>Throwaway Prototype ≠ Evolutionary Prototype</h2>
 <div class="compare">
@@ -97,7 +99,6 @@
 <div class="comparebox evo"><h3>🌱 Evolutionary Development</h3><p>The early working implementation is retained. Each cycle improves and extends it until that evolving implementation becomes the operational system.</p><div class="mini-flow"><span>V1</span><i>→</i><span>V2</span><i>→</i><span>V3</span><i>→</i><span>Production</span></div></div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Where It Fits</div><h2>Best suited to exploratory systems</h2>
 <p>Evolutionary development is particularly useful when important behavior will only become clear through experimentation, use, or interaction with a changing environment.</p>
@@ -107,19 +108,17 @@
 <div class="suit"><div class="icon">🤖</div><b>Environment-Control Systems</b><p>Robotics and interactive control systems learn from real environmental behavior, sensors, constraints, and operational feedback.</p></div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Worked Example · Step by Step</div><h2>Evolve an Experimental AI Study Assistant</h2>
 <p>A university research team wants an AI study assistant, but the final interaction model, explanation style, useful tools, and acceptable behavior cannot all be known at the beginning.</p>
 <div class="walk">
-<div class="cycle c1"><div class="cid">01<br>CORE</div><div class="cmain"><h3>Build the smallest useful system</h3><p>Start only with well-understood functionality: a student enters a course question and receives an answer grounded in approved course notes.</p><div class="chips"><span class="chip">Course-note retrieval</span><span class="chip">Question input</span><span class="chip">Answer generation</span><span class="chip">Basic logging</span></div></div><div class="cout"><small>WORKING VERSION</small><b>V1 · Course Q&amp;A</b><span>Real students can already use the core product.</span></div></div>
-<div class="cycle c2"><div class="cid">02<br>OBSERVE</div><div class="cmain"><h3>Learn from actual use</h3><p>Students repeatedly ask “Why?” and “Give me an example.” The team discovers that a correct answer alone is not enough; students need adjustable explanation depth.</p><div class="chips"><span class="chip">Usage logs</span><span class="chip">Student interviews</span><span class="chip">Failure cases</span><span class="chip">New requirement</span></div></div><div class="cout"><small>DISCOVERY</small><b>Need: explanation modes</b><span>Feedback changes the understanding of the product.</span></div></div>
-<div class="cycle c3"><div class="cid">03<br>EVOLVE</div><div class="cmain"><h3>Modify the same system</h3><p>Add “Explain Simply,” “Show Example,” and “Go Deeper.” Refactor the response pipeline so these modes are proper capabilities rather than quick patches.</p><div class="chips"><span class="chip">New feature</span><span class="chip">Refactor</span><span class="chip">Regression tests</span><span class="chip">Deploy V2</span></div></div><div class="cout"><small>WORKING VERSION</small><b>V2 · Adaptive Explanation</b><span>The original product has grown rather than being replaced.</span></div></div>
-<div class="cycle c4"><div class="cid">04<br>EXPAND</div><div class="cmain"><h3>Add capabilities revealed by research</h3><p>Later studies show that students benefit from self-testing. Add question generation, answer checking, and targeted revision suggestions while preserving the existing Q&amp;A capabilities.</p><div class="chips"><span class="chip">Quiz generation</span><span class="chip">Feedback</span><span class="chip">Progress context</span><span class="chip">Integration testing</span></div></div><div class="cout"><small>WORKING VERSION</small><b>V3 · Study Coach</b><span>The system now serves a broader learning workflow.</span></div></div>
-<div class="cycle c5"><div class="cid">05<br>MATURE</div><div class="cmain"><h3>Engineer the evolving system for production</h3><p>As usage grows, strengthen architecture, security, observability, performance, documentation, and maintainability. Evolution must not become uncontrolled patching.</p><div class="chips"><span class="chip">Architecture cleanup</span><span class="chip">Security</span><span class="chip">Monitoring</span><span class="chip">Documentation</span><span class="chip">Production release</span></div></div><div class="cout"><small>DESTINATION</small><b>Production AI Assistant</b><span>The mature product still contains the evolutionary lineage of V1.</span></div></div>
+<div class="cycle c1"><div class="cid">01<br/>CORE</div><div class="cmain"><h3>Build the smallest useful system</h3><p>Start only with well-understood functionality: a student enters a course question and receives an answer grounded in approved course notes.</p><div class="chips"><span class="chip">Course-note retrieval</span><span class="chip">Question input</span><span class="chip">Answer generation</span><span class="chip">Basic logging</span></div></div><div class="cout"><small>WORKING VERSION</small><b>V1 · Course Q&amp;A</b><span>Real students can already use the core product.</span></div></div>
+<div class="cycle c2"><div class="cid">02<br/>OBSERVE</div><div class="cmain"><h3>Learn from actual use</h3><p>Students repeatedly ask “Why?” and “Give me an example.” The team discovers that a correct answer alone is not enough; students need adjustable explanation depth.</p><div class="chips"><span class="chip">Usage logs</span><span class="chip">Student interviews</span><span class="chip">Failure cases</span><span class="chip">New requirement</span></div></div><div class="cout"><small>DISCOVERY</small><b>Need: explanation modes</b><span>Feedback changes the understanding of the product.</span></div></div>
+<div class="cycle c3"><div class="cid">03<br/>EVOLVE</div><div class="cmain"><h3>Modify the same system</h3><p>Add “Explain Simply,” “Show Example,” and “Go Deeper.” Refactor the response pipeline so these modes are proper capabilities rather than quick patches.</p><div class="chips"><span class="chip">New feature</span><span class="chip">Refactor</span><span class="chip">Regression tests</span><span class="chip">Deploy V2</span></div></div><div class="cout"><small>WORKING VERSION</small><b>V2 · Adaptive Explanation</b><span>The original product has grown rather than being replaced.</span></div></div>
+<div class="cycle c4"><div class="cid">04<br/>EXPAND</div><div class="cmain"><h3>Add capabilities revealed by research</h3><p>Later studies show that students benefit from self-testing. Add question generation, answer checking, and targeted revision suggestions while preserving the existing Q&amp;A capabilities.</p><div class="chips"><span class="chip">Quiz generation</span><span class="chip">Feedback</span><span class="chip">Progress context</span><span class="chip">Integration testing</span></div></div><div class="cout"><small>WORKING VERSION</small><b>V3 · Study Coach</b><span>The system now serves a broader learning workflow.</span></div></div>
+<div class="cycle c5"><div class="cid">05<br/>MATURE</div><div class="cmain"><h3>Engineer the evolving system for production</h3><p>As usage grows, strengthen architecture, security, observability, performance, documentation, and maintainability. Evolution must not become uncontrolled patching.</p><div class="chips"><span class="chip">Architecture cleanup</span><span class="chip">Security</span><span class="chip">Monitoring</span><span class="chip">Documentation</span><span class="chip">Production release</span></div></div><div class="cout"><small>DESTINATION</small><b>Production AI Assistant</b><span>The mature product still contains the evolutionary lineage of V1.</span></div></div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">See the Product Grow</div><h2>One codebase, increasing capability</h2>
 <div class="ai-evolution"><div class="versions">
@@ -129,15 +128,13 @@
 <div class="ver"><div class="ver-top">Production · Mature</div><div class="ver-body"><div class="module">Study Capabilities</div><div class="module">Security + Monitoring</div><div class="module new">Scalable Architecture +</div></div><label>Operational and maintainable</label></div>
 </div></div>
 </section>
-
 <section class="section">
 <div class="kicker">Advantages &amp; Disadvantages</div><h2>Flexibility is powerful—but it creates engineering debt if unmanaged</h2>
 <div class="pc">
 <div class="box good"><h3>✓ Advantages</h3><div class="point"><i>✓</i><span>Customers can be happier because they participate in defining and refining requirements.</span></div><div class="point"><i>✓</i><span>Requirements can be modified flexibly as understanding changes.</span></div><div class="point"><i>✓</i><span>Working visual versions reduce ambiguity because users react to something concrete.</span></div></div>
-<div class="box bad"><h3>⚠ Disadvantages</h3><div class="point"><i>!</i><span>The process can be difficult to trace because evolution may become ad hoc.</span></div><div class="point"><i>!</i><span>Continuous modification can leave the system poorly structured.</span></div><div class="point"><i>!</i><span>Rapid-development tools and techniques may later be incompatible with production needs.</span></div><div class="point"><i>!</i><span>Producing documentation for every rapidly changing version may not be cost-effective.</span></div></div>
+<div class="box bad"><h3>⚠ Disadvantages</h3><div class="point"><i>!</i><span>The process can be difficult to trace because evolution may become ad-hoc and difficult to trace.</span></div><div class="point"><i>!</i><span>Continuous modification can leave the system poorly structured.</span></div><div class="point"><i>!</i><span>Rapid-development tools and techniques may later be incompatible with production needs.</span></div><div class="point"><i>!</i><span>Producing documentation for every rapidly changing version may not be cost-effective.</span></div></div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Engineering Discipline</div><h2>Evolution must not become “keep adding patches”</h2>
 <p>The model's biggest danger is structural decay. A team must periodically stop feature growth long enough to restore architecture and record what the system has become.</p>
@@ -147,20 +144,18 @@
 <div class="rbox"><b>✓ Sustainable Evolution</b><span>The product remains changeable without sacrificing structure and maintainability.</span></div>
 </div></div>
 </section>
-
 <section class="section">
 <div class="kicker">Illustrated Story</div><h2>The prototype that was never thrown away</h2>
 <div class="story">
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div><span class="no">GENERATION 1</span><h4>A small useful core</h4><p>The research team releases only course-grounded Q&amp;A.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-03-thinking.png" alt=""></div><span class="no">GENERATION 2</span><h4>Users teach the team</h4><p>Students reveal that explanation depth matters as much as correctness.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div><span class="no">GENERATION 3</span><h4>The product grows</h4><p>Explanation modes and self-testing become real capabilities.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div><span class="no">MATURE SYSTEM</span><h4>Evolution becomes production</h4><p>The original working core survives inside a much richer engineered product.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-07-working-laptop.png"/></div><span class="no">GENERATION 1</span><h4>A small useful core</h4><p>The research team releases only course-grounded Q&amp;A.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-03-thinking.png"/></div><span class="no">GENERATION 2</span><h4>Users teach the team</h4><p>Students reveal that explanation depth matters as much as correctness.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-09-idea.png"/></div><span class="no">GENERATION 3</span><h4>The product grows</h4><p>Explanation modes and self-testing become real capabilities.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-01-confident-smile.png"/></div><span class="no">MATURE SYSTEM</span><h4>Evolution becomes production</h4><p>The original working core survives inside a much richer engineered product.</p></div>
 </div>
 </section>
-
-<div class="note"><div><b>Mentor Warning</b><p>Evolutionary development does not mean “code first, think later.” If every new request becomes another patch, the flexibility that made the model attractive will eventually make the system too fragile to evolve.</p></div><img src="../../assets/images/mentor-11-serious.png" alt=""></div>
+<div class="note"><div><b>Mentor Warning</b><p>Evolutionary development does not mean “code first, think later.” If every new request becomes another patch, the flexibility that made the model attractive will eventually make the system too fragile to evolve.</p></div><img alt="" src="../../assets/images/mentor-11-serious.png"/></div>
 <div class="take"><b>Key Takeaway</b><p>Evolutionary prototyping lets the prototype evolve into the production system. It is especially suited to exploratory systems such as intelligent systems, research software, and systems that actively interact with or control their environment. Its strength is flexible learning; its danger is losing process visibility, structure, tool compatibility, and documentation discipline.</p></div>
-<div class="think"><div><span class="tlabel">Think Like a Software Engineer</span><h3>Version 1 works and users keep requesting features. At what point should the team stop adding features and refactor?</h3><p>Look for architectural erosion: duplicated logic, fragile dependencies, slow tests, unclear interfaces, difficult changes, and missing documentation. Evolution is sustainable only while the system remains understandable and changeable.</p></div><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
+<div class="think"><div><span class="tlabel">Think Like a Software Engineer</span><h3>Version 1 works and users keep requesting features. At what point should the team stop adding features and refactor?</h3><p>Look for architectural erosion: duplicated logic, fragile dependencies, slow tests, unclear interfaces, difficult changes, and missing documentation. Evolution is sustainable only while the system remains understandable and changeable.</p></div><img alt="" src="../../assets/images/mentor-03-thinking.png"/></div>
 <div class="nav"><a href="prototyping-model.html">← Prototyping Model</a><a class="next" href="spiral-model.html">Next · Spiral Model →</a></div>
 </article></main></div>
 <script>if(sessionStorage.getItem("cpcs351_access")!=="granted"){window.location.href="../../access.html";}</script>

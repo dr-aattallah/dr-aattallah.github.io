@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
 <title>Process Models Overview | CPCS 351</title>
-<meta name="description" content="CPCS 351 Software Engineering I — Software Process Models Overview.">
+<meta content="CPCS 351 Software Engineering I — Software Process Models Overview." name="description"/>
 <style>
 :root{
   --ink:#172036;--muted:#65718a;--line:#e1e6ef;
@@ -206,39 +207,25 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
 @media(max-width:950px){.models,.shapes{grid-template-columns:1fr 1fr 1fr}.track{grid-template-columns:135px 1fr 150px}.story{grid-template-columns:1fr 1fr}}
 @media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,1000px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
 @media(max-width:700px){.track{grid-template-columns:1fr}.track-end{text-align:center}.models,.shapes,.qgrid,.example-grid,.story{grid-template-columns:1fr}.case-row{grid-template-columns:1fr 1fr}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}}
+
+/* Topic 04 navigation consistency */
+.mobile-topic-nav{display:none}
+@media(max-width:850px){
+  .mobile-topic-nav{display:flex;gap:7px;overflow-x:auto;white-space:nowrap;padding:9px 12px;position:sticky;top:62px;z-index:45;background:rgba(250,250,255,.97);border-bottom:1px solid var(--line,#e1e6ef);scrollbar-width:thin}
+  .mobile-topic-nav a{flex:0 0 auto;text-decoration:none;padding:7px 10px;border:1px solid var(--line,#e1e6ef);border-radius:999px;background:#fff;color:var(--muted,#65718a);font-size:11px;font-weight:800}
+  .mobile-topic-nav a.active{background:var(--indigo,#2d2a78);border-color:var(--indigo,#2d2a78);color:#fff}
+}
 </style>
 </head>
-
 <body>
 <header class="top">
 <a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
 <nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
-</header>
-
+</header><nav aria-label="Topic 04 lesson navigation" class="mobile-topic-nav"><a href="index.html">01 Process</a><a href="development-challenges.html">02 Challenges</a><a aria-current="page" class="active" href="process-models-overview.html">03 Models</a><a href="waterfall-model.html">04 Waterfall</a><a href="prototyping-model.html">05 Prototype</a><a href="evolutionary-development.html">06 Evolutionary</a><a href="spiral-model.html">07 Spiral</a><a href="agile-process-models.html">08 Agile Process</a><a href="choosing-process-model.html">09 Choose Model</a><a href="agile-methods.html">10 Agile Methods</a><a href="software-paradigms.html">11 Paradigms</a></nav>
 <div class="layout">
-
-<aside class="side">
-<div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div>
-<div class="label">Topic 04</div>
-<a href="index.html">1. Process &amp; Methodology</a>
-<a href="development-challenges.html">2. Development Challenges</a>
-<a class="active" href="process-models-overview.html">3. Process Models Overview</a>
-<span class="future">4. Waterfall Model</span>
-<span class="future">5. Prototyping Model</span>
-<span class="future">6. Evolutionary Development</span>
-<span class="future">7. Spiral Model</span>
-<span class="future">8. Agile Process Models</span>
-<span class="future">9. Choosing the Right Model</span>
-<span class="future">10. Agile Methods</span>
-<span class="future">11. Software Paradigms</span>
-<div class="label">Course</div>
-<a href="../../index.html">Course Home</a>
-</aside>
-
+<aside class="side"><div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div><div class="label">Topic 04</div><a href="index.html">1. Process &amp; Methodology</a><a href="development-challenges.html">2. Development Challenges</a><a class="active" href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a href="prototyping-model.html">5. Prototyping Model</a><a href="evolutionary-development.html">6. Evolutionary Development</a><a href="spiral-model.html">7. Spiral Model</a><a href="agile-process-models.html">8. Agile Process Models</a><a href="choosing-process-model.html">9. Choosing the Right Model</a><a href="agile-methods.html">10. Agile Methods</a><a href="software-paradigms.html">11. Software Paradigms</a><div class="label">Course</div><a href="../../index.html">Course Home</a></aside>
 <main><article class="content">
-
 <div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 04 › Process Models Overview</div>
-
 <section class="hero">
 <div>
 <div class="eyebrow">Topic 04 · Lesson 03</div>
@@ -249,13 +236,11 @@ A <strong>process model</strong> organizes those activities into a recognizable 
 Different models handle uncertainty, feedback, risk, and change in different ways.
 </p>
 </div>
-
 <div class="mentor">
-<div class="pic"><img src="../../assets/images/mentor-06-pointing.png" alt="Mentor introducing software process models"></div>
+<div class="pic"><img alt="Mentor introducing software process models" src="../../assets/images/mentor-06-pointing.png"/></div>
 <p>“The destination may be the same—a working system—but the route can be very different.”</p>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Visual Hook</div>
 <h2>Five Process Tracks</h2>
@@ -263,293 +248,237 @@ Different models handle uncertainty, feedback, risk, and change in different way
 All five models start with a software-development problem and aim at the same destination: a useful software system.
 What changes is the <strong>shape of the journey</strong>—how work, feedback, risk, and delivery are organized.
 </p>
-
 <div class="track-map">
-
 <div class="track-head">
 <b>SOFTWARE DEVELOPMENT · FIVE PROCESS TRACKS</b>
 <span>SAME START · DIFFERENT JOURNEY · SAME GOAL</span>
 </div>
-
 <div class="track-start">
 START · Project Need + Requirements + Constraints + Team + Technology
 </div>
-
 <div class="tracks">
-
 <div class="track waterfall">
-  <div class="track-name">Waterfall<span>Move phase by phase</span></div>
-  <div class="track-visual">
-    <div class="wf-line">
-      <i class="wf-step"></i><i class="wf-step"></i><i class="wf-step"></i><i class="wf-step"></i><i class="wf-step"></i>
-    </div>
-  </div>
-  <div class="track-end">Sequence dominates. Each stage hands its output to the next.</div>
+<div class="track-name">Waterfall<span>Move phase by phase</span></div>
+<div class="track-visual">
+<div class="wf-line">
+<i class="wf-step"></i><i class="wf-step"></i><i class="wf-step"></i><i class="wf-step"></i><i class="wf-step"></i>
 </div>
-
+</div>
+<div class="track-end">Sequence dominates. Each stage hands its output to the next.</div>
+</div>
 <div class="track prototype">
-  <div class="track-name">Prototyping<span>Learn before committing</span></div>
-  <div class="track-visual">
-    <div class="proto-loop"></div>
-    <div class="proto-note">Build → Show → Learn → Revise</div>
-  </div>
-  <div class="track-end">A temporary model helps users and developers discover the real requirements.</div>
+<div class="track-name">Prototyping<span>Learn before committing</span></div>
+<div class="track-visual">
+<div class="proto-loop"></div>
+<div class="proto-note">Build → Show → Learn → Revise</div>
 </div>
-
+<div class="track-end">A temporary model helps users and developers discover the real requirements.</div>
+</div>
 <div class="track evolution">
-  <div class="track-name">Evolutionary<span>Grow the working system</span></div>
-  <div class="track-visual">
-    <div class="evo-bars"><i></i><i></i><i></i><i></i></div>
-    <div class="evo-arrow">→</div>
-  </div>
-  <div class="track-end">The early working version is repeatedly expanded until it becomes the production system.</div>
+<div class="track-name">Evolutionary<span>Grow the working system</span></div>
+<div class="track-visual">
+<div class="evo-bars"><i></i><i></i><i></i><i></i></div>
+<div class="evo-arrow">→</div>
 </div>
-
+<div class="track-end">The early working version is repeatedly expanded until it becomes the production system.</div>
+</div>
 <div class="track spiral">
-  <div class="track-name">Spiral<span>Advance by reducing risk</span></div>
-  <div class="track-visual">
-    <svg class="spiral-svg" viewBox="0 0 230 72" aria-label="Spiral process path">
-      <path d="M18,38 C18,14 58,8 82,20 C108,33 99,61 69,60 C37,58 34,29 61,22 C94,14 132,34 125,55 C118,73 159,70 178,53 C195,39 194,19 212,17"/>
-      <circle cx="18" cy="38" r="5"/>
-      <circle cx="212" cy="17" r="5"/>
-      <text x="5" y="64" class="spiral-label">start</text>
-      <text x="190" y="33" class="spiral-label">progress</text>
-    </svg>
-  </div>
-  <div class="track-end">Each cycle plans, examines risks, engineers a solution, and evaluates the result.</div>
+<div class="track-name">Spiral<span>Advance by reducing risk</span></div>
+<div class="track-visual">
+<svg aria-label="Spiral process path" class="spiral-svg" viewbox="0 0 230 72">
+<path d="M18,38 C18,14 58,8 82,20 C108,33 99,61 69,60 C37,58 34,29 61,22 C94,14 132,34 125,55 C118,73 159,70 178,53 C195,39 194,19 212,17"></path>
+<circle cx="18" cy="38" r="5"></circle>
+<circle cx="212" cy="17" r="5"></circle>
+<text class="spiral-label" x="5" y="64">start</text>
+<text class="spiral-label" x="190" y="33">progress</text>
+</svg>
 </div>
-
+<div class="track-end">Each cycle plans, examines risks, engineers a solution, and evaluates the result.</div>
+</div>
 <div class="track agile">
-  <div class="track-name">Agile<span>Deliver in short cycles</span></div>
-  <div class="track-visual">
-    <div class="sprint-row">
-      <div class="sprint">Sprint 1</div>
-      <div class="sprint">Sprint 2</div>
-      <div class="sprint">Sprint 3</div>
-      <div class="sprint">Sprint 4</div>
-    </div>
-  </div>
-  <div class="track-end">Short iterations repeatedly deliver working features and incorporate feedback.</div>
+<div class="track-name">Agile<span>Deliver in short cycles</span></div>
+<div class="track-visual">
+<div class="sprint-row">
+<div class="sprint">Sprint 1</div>
+<div class="sprint">Sprint 2</div>
+<div class="sprint">Sprint 3</div>
+<div class="sprint">Sprint 4</div>
 </div>
-
 </div>
-
+<div class="track-end">Short iterations repeatedly deliver working features and incorporate feedback.</div>
+</div>
+</div>
 <div class="track-finish">
 FINISH · Operational Software Delivering Business Value
 </div>
-
 <div class="track-caption">
 <strong>Memory hook:</strong>
 Waterfall = descend through phases · Prototyping = loop to learn · Evolutionary = grow the product ·
 Spiral = expand through risk-driven cycles · Agile = deliver through short repeated sprints.
 </div>
-
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">The Five Models</div>
 <h2>Recognize each model by its dominant idea</h2>
-
 <div class="models">
-
 <div class="model">
 <div class="icon">↘</div>
 <b>Waterfall Model</b>
 <p>Linear sequential progression through separate phases. Easy to understand and manage when requirements are well understood.</p>
 </div>
-
 <div class="model">
 <div class="icon">🧪</div>
 <b>Prototyping Process Model</b>
 <p>Build a throwaway working model based on currently known requirements to understand what users really need.</p>
 </div>
-
 <div class="model">
 <div class="icon">🌱</div>
 <b>Evolutionary Development</b>
 <p>The prototype is not discarded; it evolves into the production system.</p>
 </div>
-
 <div class="model">
 <div class="icon">🎯</div>
 <b>Spiral Process Model</b>
 <p>An iterative model with explicit emphasis on planning, risk analysis, engineering, and evaluation.</p>
 </div>
-
 <div class="model">
 <div class="icon">⚡</div>
 <b>Agile Process Models</b>
 <p>Short sprints or iterations develop and deliver predetermined features while responding rapidly to change.</p>
 </div>
-
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">One Project · Five Shapes</div>
 <h2>The shape of the process changes the behavior of the team</h2>
-
 <div class="same-project">
-
 <div class="project-title">UNIVERSITY REGISTRATION SYSTEM</div>
-
 <div class="shapes">
-
 <div class="shape">
 <div class="shape-vis"><div class="steps"><i></i><i></i><i></i><i></i></div></div>
 <b>Waterfall</b>
 <span>Finish requirements → design → implementation → testing in identified stages.</span>
 </div>
-
 <div class="shape">
 <div class="shape-vis"><div class="loop"></div></div>
 <b>Prototyping</b>
 <span>Show students and advisors a working mock-up to clarify registration needs.</span>
 </div>
-
 <div class="shape">
 <div class="shape-vis"><div class="grow"><i></i><i></i><i></i><i></i></div></div>
 <b>Evolutionary</b>
 <span>Begin with a small working registration system and keep evolving it toward production.</span>
 </div>
-
 <div class="shape">
 <div class="shape-vis"><div class="spiralvis">◎</div></div>
 <b>Spiral</b>
 <span>Each cycle explicitly examines risks such as peak load, integration, or security.</span>
 </div>
-
 <div class="shape">
 <div class="shape-vis"><div class="sprints"><i></i><i></i><i></i><i></i></div></div>
 <b>Agile</b>
 <span>Deliver registration capabilities over short iterations and adapt based on feedback.</span>
 </div>
-
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Before Choosing a Model</div>
 <h2>Ask what kind of uncertainty you are facing</h2>
-
 <div class="questions">
-
 <div class="qgrid">
-
 <div class="q">
 <div class="icon">❓</div>
 <b>Are requirements clear?</b>
 <p>Stable requirements favor different process behavior than unclear or rapidly changing requirements.</p>
 </div>
-
 <div class="q">
 <div class="icon">🧭</div>
 <b>How much feedback is needed?</b>
 <p>Some projects need early user feedback before the team can confidently define the final solution.</p>
 </div>
-
 <div class="q">
 <div class="icon">⚠</div>
 <b>How important is risk?</b>
 <p>High uncertainty or technical risk may require explicit analysis and reduction activities.</p>
 </div>
-
 <div class="q">
 <div class="icon">⏱</div>
 <b>How quickly must value appear?</b>
 <p>Some projects cannot wait until near completion before users see working software.</p>
 </div>
-
 <div class="q">
 <div class="icon">🔄</div>
 <b>How likely is change?</b>
 <p>The process must be able to cope with changing requirements and circumstances when change is expected.</p>
 </div>
-
 <div class="q">
 <div class="icon">👥</div>
 <b>How will teams coordinate?</b>
 <p>Plan-driven structure, iteration, documentation, and feedback affect how people coordinate their work.</p>
 </div>
-
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">More Examples</div>
 <h2>The same model can fit one context and fail another</h2>
-
 <div class="example-grid">
-
 <div class="example-card">
 <h3>Example A · Small Internal Payroll Tool</h3>
 <p>Suppose requirements are stable, the scope is small, and the organization already knows exactly what reports and calculations are required.</p>
-
 <div class="case-row">
-<div class="case">Waterfall<br>possible fit</div>
-<div class="case">Prototype<br>less essential</div>
-<div class="case">Evolutionary<br>possible</div>
-<div class="case">Spiral<br>may be excessive</div>
-<div class="case">Agile<br>possible</div>
+<div class="case">Waterfall<br/>possible fit</div>
+<div class="case">Prototype<br/>less essential</div>
+<div class="case">Evolutionary<br/>possible</div>
+<div class="case">Spiral<br/>may be excessive</div>
+<div class="case">Agile<br/>possible</div>
 </div>
 </div>
-
 <div class="example-card">
 <h3>Example B · Experimental AI Assistant</h3>
 <p>Suppose user expectations are unclear, interaction design must be discovered, and model behavior is uncertain.</p>
-
 <div class="case-row">
-<div class="case">Waterfall<br>weak fit</div>
-<div class="case">Prototype<br>useful</div>
-<div class="case">Evolutionary<br>useful</div>
-<div class="case">Spiral<br>risk-aware</div>
-<div class="case">Agile<br>feedback-rich</div>
+<div class="case">Waterfall<br/>weak fit</div>
+<div class="case">Prototype<br/>useful</div>
+<div class="case">Evolutionary<br/>useful</div>
+<div class="case">Spiral<br/>risk-aware</div>
+<div class="case">Agile<br/>feedback-rich</div>
 </div>
 </div>
-
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Illustrated Story</div>
 <h2>The team that chose a process by habit</h2>
-
 <div class="story">
-
 <div class="panel">
-<div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div>
+<div class="visual"><img alt="" src="../../assets/images/mentor-01-confident-smile.png"/></div>
 <span class="no">Panel 1</span>
 <h4>“We always use this model.”</h4>
 <p>The team chooses its familiar process before analyzing the project.</p>
 </div>
-
 <div class="panel">
-<div class="visual"><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
+<div class="visual"><img alt="" src="../../assets/images/mentor-03-thinking.png"/></div>
 <span class="no">Panel 2</span>
 <h4>The project is different</h4>
 <p>Requirements are unclear, technology is unfamiliar, and users need early feedback.</p>
 </div>
-
 <div class="panel">
-<div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div>
+<div class="visual"><img alt="" src="../../assets/images/mentor-10-concerned.png"/></div>
 <span class="no">Panel 3</span>
 <h4>The route fights reality</h4>
 <p>The process makes feedback and change expensive instead of helping the team learn.</p>
 </div>
-
 <div class="panel">
-<div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
+<div class="visual"><img alt="" src="../../assets/images/mentor-09-idea.png"/></div>
 <span class="no">Panel 4</span>
 <h4>Choose by context</h4>
 <p>The team compares the models based on uncertainty, risk, feedback, time, and change.</p>
 </div>
-
 </div>
 </section>
-
 <div class="note">
 <div>
 <b>Mentor Insight</b>
@@ -558,9 +487,8 @@ A process model is not a badge of maturity. It is an engineering choice about ho
 change, risk, and delivery will be organized.
 </p>
 </div>
-<img src="../../assets/images/mentor-11-serious.png" alt="Mentor emphasizing process model selection">
+<img alt="Mentor emphasizing process model selection" src="../../assets/images/mentor-11-serious.png"/>
 </div>
-
 <div class="take">
 <b>Key Takeaway</b>
 <p>
@@ -569,7 +497,6 @@ Spiral, and Agile. Each organizes software-development activities differently an
 to uncertainty, feedback, risk, and change.
 </p>
 </div>
-
 <div class="think">
 <div>
 <span class="tlabel">Think Like a Software Engineer</span>
@@ -579,22 +506,18 @@ Compare their requirement clarity, technology familiarity, system complexity, ri
 schedule pressure, and expected amount of change before deciding.
 </p>
 </div>
-<img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about selecting a process model">
+<img alt="Mentor thinking about selecting a process model" src="../../assets/images/mentor-03-thinking.png"/>
 </div>
-
 <div class="nav">
 <a href="development-challenges.html">← Development Challenges</a>
 <a class="next" href="waterfall-model.html">Next · Waterfall Model →</a>
 </div>
-
 </article></main>
 </div>
-
 <script>
 if(sessionStorage.getItem("cpcs351_access") !== "granted"){
   window.location.href="../../access.html";
 }
 </script>
-
 </body>
 </html>

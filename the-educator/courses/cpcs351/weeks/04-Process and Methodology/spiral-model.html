@@ -1,7 +1,8 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Spiral Model | CPCS 351</title>
 <style>
 :root{
@@ -205,31 +206,22 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
 @media(max-width:950px){.four,.story{grid-template-columns:1fr 1fr}.iterations{grid-template-columns:1fr}.cycle{grid-template-columns:85px 1fr}.cout{grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}}
 @media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,1000px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
 @media(max-width:700px){.radar{display:grid;gap:10px;min-height:0}.ring,.spiral-path{display:none}.core,.quad{position:static;transform:none;width:auto;height:auto;border-radius:16px}.core{padding:18px}.four,.pc,.story{grid-template-columns:1fr}.riskrow{grid-template-columns:1fr}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}.refhead{flex-direction:column;align-items:flex-start}}
+
+/* Topic 04 navigation consistency */
+.mobile-topic-nav{display:none}
+@media(max-width:850px){
+  .mobile-topic-nav{display:flex;gap:7px;overflow-x:auto;white-space:nowrap;padding:9px 12px;position:sticky;top:62px;z-index:45;background:rgba(250,250,255,.97);border-bottom:1px solid var(--line,#e1e6ef);scrollbar-width:thin}
+  .mobile-topic-nav a{flex:0 0 auto;text-decoration:none;padding:7px 10px;border:1px solid var(--line,#e1e6ef);border-radius:999px;background:#fff;color:var(--muted,#65718a);font-size:11px;font-weight:800}
+  .mobile-topic-nav a.active{background:var(--indigo,#2d2a78);border-color:var(--indigo,#2d2a78);color:#fff}
+}
 </style>
 </head>
 <body>
-<header class="top"><a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a><nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header>
-
+<header class="top"><a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a><nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header><nav aria-label="Topic 04 lesson navigation" class="mobile-topic-nav"><a href="index.html">01 Process</a><a href="development-challenges.html">02 Challenges</a><a href="process-models-overview.html">03 Models</a><a href="waterfall-model.html">04 Waterfall</a><a href="prototyping-model.html">05 Prototype</a><a href="evolutionary-development.html">06 Evolutionary</a><a aria-current="page" class="active" href="spiral-model.html">07 Spiral</a><a href="agile-process-models.html">08 Agile Process</a><a href="choosing-process-model.html">09 Choose Model</a><a href="agile-methods.html">10 Agile Methods</a><a href="software-paradigms.html">11 Paradigms</a></nav>
 <div class="layout">
-<aside class="side">
-<div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div>
-<div class="label">Topic 04</div>
-<a href="index.html">1. Process &amp; Methodology</a>
-<a href="development-challenges.html">2. Development Challenges</a>
-<a href="process-models-overview.html">3. Process Models Overview</a>
-<a href="waterfall-model.html">4. Waterfall Model</a>
-<a href="prototyping-model.html">5. Prototyping Model</a>
-<a href="evolutionary-development.html">6. Evolutionary Development</a>
-<a class="active" href="spiral-model.html">7. Spiral Model</a>
-<span class="future">8. Agile Process Models</span>
-<span class="future">9. Choosing the Right Model</span>
-<span class="future">10. Agile Methods</span>
-<span class="future">11. Software Paradigms</span>
-</aside>
-
+<aside class="side"><div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div><div class="label">Topic 04</div><a href="index.html">1. Process &amp; Methodology</a><a href="development-challenges.html">2. Development Challenges</a><a href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a href="prototyping-model.html">5. Prototyping Model</a><a href="evolutionary-development.html">6. Evolutionary Development</a><a class="active" href="spiral-model.html">7. Spiral Model</a><a href="agile-process-models.html">8. Agile Process Models</a><a href="choosing-process-model.html">9. Choosing the Right Model</a><a href="agile-methods.html">10. Agile Methods</a><a href="software-paradigms.html">11. Software Paradigms</a><div class="label">Course</div><a href="../../index.html">Course Home</a></aside>
 <main><article class="content">
 <div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 04 › Spiral Model</div>
-
 <section class="hero">
 <div>
 <div class="eyebrow">Topic 04 · Model 04</div>
@@ -240,11 +232,10 @@ A <strong>risk-driven iterative</strong> process model in which each outward cyc
 </p>
 </div>
 <div class="mentor">
-<div class="pic"><img src="../../assets/images/mentor-11-serious.png" alt="Mentor explaining risk-driven spiral development"></div>
+<div class="pic"><img alt="Mentor explaining risk-driven spiral development" src="../../assets/images/mentor-11-serious.png"/></div>
 <p>“The spiral does not rotate because iteration looks elegant. It rotates because each cycle buys more knowledge and reduces risk before the next commitment.”</p>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">The Model · Large Reference Image</div>
 <h2>NASA's Schematic of the Standard Spiral Model</h2>
@@ -254,23 +245,14 @@ each loop represents another development iteration, while the project repeatedly
 <strong>objectives → risk reduction → development &amp; test → planning</strong>.
 The radial movement represents increasing time/cost, and the angular movement represents progress.
 </p>
-
 <figure class="reference nasa-reference">
 <div class="refhead">
 <span>NASA · SOFTWARE ENGINEERING HANDBOOK</span>
-<a href="https://swehb.nasa.gov/spaces/7150/pages/16449735/SWE-019+-+Software+Life+Cycle"
-   target="_blank" rel="noopener">Open NASA source ↗</a>
+<a href="https://swehb.nasa.gov/spaces/7150/pages/16449735/SWE-019+-+Software+Life+Cycle" rel="noopener" target="_blank">Open NASA source ↗</a>
 </div>
-
-<a class="nasa-image-link"
-   href="https://swehb.nasa.gov/download/attachments/16449735/SWE-019%20Spiral_model_BoehC_1988.png?api=v2&modificationDate=1342193830000&version=1"
-   target="_blank" rel="noopener">
-<img
- src="https://swehb.nasa.gov/download/attachments/16449735/SWE-019%20Spiral_model_BoehC_1988.png?api=v2&modificationDate=1342193830000&version=1"
- alt="NASA schematic of the standard Spiral Model showing objectives, risk resolution, development and test, planning, cumulative cost and outward progress"
- loading="lazy">
+<a class="nasa-image-link" href="https://swehb.nasa.gov/download/attachments/16449735/SWE-019%20Spiral_model_BoehC_1988.png?api=v2&amp;modificationDate=1342193830000&amp;version=1" rel="noopener" target="_blank">
+<img alt="NASA schematic of the standard Spiral Model showing objectives, risk resolution, development and test, planning, cumulative cost and outward progress" loading="lazy" src="https://swehb.nasa.gov/download/attachments/16449735/SWE-019%20Spiral_model_BoehC_1988.png?api=v2&amp;modificationDate=1342193830000&amp;version=1"/>
 </a>
-
 <figcaption>
 <strong>How to read the NASA diagram:</strong>
 start near the center with the concept of operation and initial requirements.
@@ -278,7 +260,6 @@ Move clockwise through the four sectors. Risk-analysis activities appear early i
 prototypes progressively mature; requirements and plans become more concrete; then design, code,
 integration, testing, implementation, and release appear as the project makes larger commitments.
 </figcaption>
-
 <div class="nasa-read">
 <div class="nr">
 <span>1</span>
@@ -297,27 +278,23 @@ integration, testing, implementation, and release appear as the project makes la
 <div><b>Plan the Next Iteration</b><small>Review what was learned and decide what the next outward loop should accomplish.</small></div>
 </div>
 </div>
-
 <div class="nasa-caption">
 <strong>Why the spiral gets larger:</strong>
 later loops represent greater commitment. The project should not spend heavily while critical risks remain unexplored.
 </div>
 </figure>
 </section>
-
 <section class="section">
 <div class="kicker">Visual Hook</div>
 <h2>Translate the NASA model into one memory image: Risk Radar</h2>
 <p>
 The easiest way to remember Spiral is to imagine a radar screen. Every orbit scans for risk before the project moves farther from the center and commits more cost.
 </p>
-
 <div class="risk-radar">
 <div class="radar">
 <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="ring r4"></div>
-
 <div class="spiral-path">
-<svg viewBox="0 0 420 420" aria-label="Risk-driven spiral path">
+<svg aria-label="Risk-driven spiral path" viewbox="0 0 420 420">
 <path d="M212 210
  C230 188 260 195 268 216
  C279 245 244 267 214 260
@@ -325,30 +302,25 @@ The easiest way to remember Spiral is to imagine a radar screen. Every orbit sca
  C221 112 300 130 325 184
  C359 257 303 337 225 342
  C128 348 64 257 91 170
- C123 67 248 33 339 93"/>
-<circle cx="212" cy="210" r="6"/><circle cx="339" cy="93" r="6"/>
+ C123 67 248 33 339 93"></path>
+<circle cx="212" cy="210" r="6"></circle><circle cx="339" cy="93" r="6"></circle>
 </svg>
 </div>
-
-<div class="core">START<br>SMALL</div>
-
+<div class="core">START<br/>SMALL</div>
 <div class="quad q1"><b>1 · Objectives, Alternatives &amp; Constraints</b><p>What are we trying to achieve? What solution alternatives exist? What limits the choices?</p></div>
 <div class="quad q2"><b>2 · Risk Assessment &amp; Reduction</b><p>Which uncertainties threaten the project? Evaluate alternatives, prototype risky ideas, and reduce the most important risks.</p></div>
 <div class="quad q3"><b>3 · Development &amp; Validation</b><p>Choose an appropriate development approach, engineer the next level of the product, and verify that it works.</p></div>
 <div class="quad q4"><b>4 · Review &amp; Plan Next Cycle</b><p>Evaluate what was learned, review the project, decide whether to continue, and plan the next outward loop.</p></div>
 </div>
-
 <div class="radarnote">
 <strong>Memory hook:</strong> OBJECTIVE → RISK → BUILD → REVIEW → outward again.
 The project earns the right to make a larger commitment only after reducing the risks of that commitment.
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Four Phases</div>
 <h2>What happens during one complete orbit?</h2>
-
 <div class="four">
 <div class="phase"><div class="num">1</div><b>Planning / Objective Setting</b><p>Identify goals for the cycle, alternatives for achieving them, requirements, and constraints.</p></div>
 <div class="phase"><div class="num">2</div><b>Risk Analysis</b><p>Assess alternatives, identify significant risks, and perform activities—often prototypes or experiments—to reduce those risks.</p></div>
@@ -356,7 +328,6 @@ The project earns the right to make a larger commitment only after reducing the 
 <div class="phase"><div class="num">4</div><b>Evaluation &amp; Next Planning</b><p>Review results with stakeholders, assess the current product, and plan the next spiral cycle.</p></div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Worked Example · Step by Step</div>
 <h2>Use Spiral to build a University AI Exam Proctoring System</h2>
@@ -364,50 +335,43 @@ The project earns the right to make a larger commitment only after reducing the 
 This project is intentionally risky: AI accuracy, privacy, fairness, integration, network reliability, user acceptance,
 and false accusations can all damage the project. Spiral is useful because those uncertainties must be reduced before large commitments.
 </p>
-
 <div class="walk">
 <div class="cycle c1">
-<div class="cid">CYCLE 1<br>FEASIBILITY</div>
+<div class="cid">CYCLE 1<br/>FEASIBILITY</div>
 <div class="cmain"><h3>Objective: can AI proctoring work at all?</h3><p>Do not begin by building the whole platform. The first cycle has a narrow objective: determine whether webcam-based behavior detection is technically feasible and accurate enough to justify further investment.</p>
 <div class="tasks"><span class="task">Alternative A: commercial AI API</span><span class="task">Alternative B: local model</span><span class="task">Constraint: student privacy</span><span class="task">Constraint: ordinary laptops</span></div></div>
 <div class="cout"><small>MAIN RISK</small><b>AI false positives</b><span>Experiment on recorded mock exams before committing to production architecture.</span></div>
 </div>
-
 <div class="cycle c2">
-<div class="cid">CYCLE 2<br>PRIVACY</div>
+<div class="cid">CYCLE 2<br/>PRIVACY</div>
 <div class="cmain"><h3>Objective: reduce privacy and fairness risk</h3><p>The technical experiment works, but stakeholders worry about video retention and biased detection. Compare on-device processing, temporary cloud processing, and human-review alternatives.</p>
 <div class="tasks"><span class="task">Privacy prototype</span><span class="task">Bias evaluation</span><span class="task">Consent workflow</span><span class="task">Human review policy</span></div></div>
 <div class="cout"><small>DECISION</small><b>Never auto-accuse</b><span>AI flags suspicious events; trained staff review evidence before any academic decision.</span></div>
 </div>
-
 <div class="cycle c3">
-<div class="cid">CYCLE 3<br>INTEGRATION</div>
+<div class="cid">CYCLE 3<br/>INTEGRATION</div>
 <div class="cmain"><h3>Objective: integrate with the university exam environment</h3><p>Now connect identity management, Blackboard/LMS exam launch, camera permissions, network monitoring, event logging, and reviewer dashboards.</p>
 <div class="tasks"><span class="task">LMS integration</span><span class="task">Identity API</span><span class="task">Offline recovery</span><span class="task">Security testing</span></div></div>
 <div class="cout"><small>MAIN RISK</small><b>Network failure during exams</b><span>Prototype local buffering and reconnection before full rollout.</span></div>
 </div>
-
 <div class="cycle c4">
-<div class="cid">CYCLE 4<br>PILOT</div>
+<div class="cid">CYCLE 4<br/>PILOT</div>
 <div class="cmain"><h3>Objective: validate the complete operational concept</h3><p>Run a controlled pilot with volunteer students and instructors. Measure accuracy, user stress, technical failures, review workload, and whether the system actually supports academic integrity.</p>
 <div class="tasks"><span class="task">Pilot exams</span><span class="task">Acceptance criteria</span><span class="task">Performance data</span><span class="task">User feedback</span></div></div>
 <div class="cout"><small>GO / NO-GO</small><b>Commit to deployment?</b><span>The next investment is justified only if remaining risks are acceptable.</span></div>
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Risk Is the Steering Wheel</div>
 <h2>Examples of risks and how Spiral responds</h2>
-
 <div class="risks">
-<div class="riskrow"><div class="rcell riskname"><b>Risk · AI accuracy</b><br>Too many innocent students flagged.</div><div class="rcell response"><b>Reduce it</b><br>Run benchmark experiments and compare model alternatives.</div><div class="rcell evidence"><b>Evidence before commitment</b><br>Measured false-positive/false-negative rates.</div></div>
-<div class="riskrow"><div class="rcell riskname"><b>Risk · Privacy</b><br>Video collection violates expectations or policy.</div><div class="rcell response"><b>Reduce it</b><br>Prototype minimal retention and on-device processing.</div><div class="rcell evidence"><b>Evidence before commitment</b><br>Approved privacy design and retention policy.</div></div>
-<div class="riskrow"><div class="rcell riskname"><b>Risk · Network</b><br>Exam fails when connectivity drops.</div><div class="rcell response"><b>Reduce it</b><br>Build offline buffering and failure-recovery prototype.</div><div class="rcell evidence"><b>Evidence before commitment</b><br>Recovery tests under simulated outages.</div></div>
-<div class="riskrow"><div class="rcell riskname"><b>Risk · User rejection</b><br>Students/instructors refuse the workflow.</div><div class="rcell response"><b>Reduce it</b><br>Run pilot studies before institution-wide rollout.</div><div class="rcell evidence"><b>Evidence before commitment</b><br>User feedback, support load, and acceptance metrics.</div></div>
+<div class="riskrow"><div class="rcell riskname"><b>Risk · AI accuracy</b><br/>Too many innocent students flagged.</div><div class="rcell response"><b>Reduce it</b><br/>Run benchmark experiments and compare model alternatives.</div><div class="rcell evidence"><b>Evidence before commitment</b><br/>Measured false-positive/false-negative rates.</div></div>
+<div class="riskrow"><div class="rcell riskname"><b>Risk · Privacy</b><br/>Video collection violates expectations or policy.</div><div class="rcell response"><b>Reduce it</b><br/>Prototype minimal retention and on-device processing.</div><div class="rcell evidence"><b>Evidence before commitment</b><br/>Approved privacy design and retention policy.</div></div>
+<div class="riskrow"><div class="rcell riskname"><b>Risk · Network</b><br/>Exam fails when connectivity drops.</div><div class="rcell response"><b>Reduce it</b><br/>Build offline buffering and failure-recovery prototype.</div><div class="rcell evidence"><b>Evidence before commitment</b><br/>Recovery tests under simulated outages.</div></div>
+<div class="riskrow"><div class="rcell riskname"><b>Risk · User rejection</b><br/>Students/instructors refuse the workflow.</div><div class="rcell response"><b>Reduce it</b><br/>Run pilot studies before institution-wide rollout.</div><div class="rcell evidence"><b>Evidence before commitment</b><br/>User feedback, support load, and acceptance metrics.</div></div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Three Outward Loops</div>
 <h2>Each cycle should buy more confidence</h2>
@@ -417,7 +381,6 @@ and false accusations can all damage the project. Spiral is useful because those
 <div class="iter"><div class="label">OUTER LOOP</div><h3>Larger commitment</h3><p>Full engineering, operational validation, deployment decisions—after major risks have been reduced.</p></div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Advantages &amp; Limitations</div>
 <h2>Risk-driven does not mean risk-free</h2>
@@ -436,24 +399,19 @@ and false accusations can all damage the project. Spiral is useful because those
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Illustrated Story</div>
 <h2>The expensive feature that never reached production</h2>
 <div class="story">
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div><span class="no">LOOP 1</span><h4>A promising idea</h4><p>The team proposes automatic AI misconduct detection.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-03-thinking.png" alt=""></div><span class="no">LOOP 1 · RISK</span><h4>Test the dangerous assumption</h4><p>A small experiment reveals unacceptable false-positive rates.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div><span class="no">DECISION</span><h4>Do not scale the wrong idea</h4><p>The team rejects automatic accusations before spending heavily on full integration.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div><span class="no">NEXT LOOP</span><h4>Change the solution</h4><p>The next cycle explores AI-assisted human review instead. Risk changed the development path.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-01-confident-smile.png"/></div><span class="no">LOOP 1</span><h4>A promising idea</h4><p>The team proposes automatic AI misconduct detection.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-03-thinking.png"/></div><span class="no">LOOP 1 · RISK</span><h4>Test the dangerous assumption</h4><p>A small experiment reveals unacceptable false-positive rates.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-10-concerned.png"/></div><span class="no">DECISION</span><h4>Do not scale the wrong idea</h4><p>The team rejects automatic accusations before spending heavily on full integration.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-09-idea.png"/></div><span class="no">NEXT LOOP</span><h4>Change the solution</h4><p>The next cycle explores AI-assisted human review instead. Risk changed the development path.</p></div>
 </div>
 </section>
-
-<div class="note"><div><b>Mentor Insight</b><p>The Spiral Model is not merely “repeat development four times.” Its defining idea is <strong>risk-driven commitment</strong>: identify what could cause the next investment to fail, reduce that uncertainty, then decide how much to commit next.</p></div><img src="../../assets/images/mentor-11-serious.png" alt=""></div>
-
+<div class="note"><div><b>Mentor Insight</b><p>The Spiral Model is not merely “repeat development four times.” Its defining idea is <strong>risk-driven commitment</strong>: identify what could cause the next investment to fail, reduce that uncertainty, then decide how much to commit next.</p></div><img alt="" src="../../assets/images/mentor-11-serious.png"/></div>
 <div class="take"><b>Key Takeaway</b><p>The Spiral Model combines iteration with explicit risk analysis. Each cycle sets objectives, evaluates alternatives and risks, develops and validates the next product level, then reviews and plans the next cycle. It has strongly influenced risk-driven thinking in software processes, even though the published model is rarely used exactly as drawn.</p></div>
-
-<div class="think"><div><span class="tlabel">Think Like a Software Engineer</span><h3>Your next feature costs six months to build, but its biggest technical assumption has never been tested. What should happen before full implementation?</h3><p>Turn that assumption into the next cycle's risk-reduction objective. Build the smallest experiment or prototype that can produce evidence, then use the result to decide whether—and how—to make the larger commitment.</p></div><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
-
+<div class="think"><div><span class="tlabel">Think Like a Software Engineer</span><h3>Your next feature costs six months to build, but its biggest technical assumption has never been tested. What should happen before full implementation?</h3><p>Turn that assumption into the next cycle's risk-reduction objective. Build the smallest experiment or prototype that can produce evidence, then use the result to decide whether—and how—to make the larger commitment.</p></div><img alt="" src="../../assets/images/mentor-03-thinking.png"/></div>
 <div class="nav"><a href="evolutionary-development.html">← Evolutionary Development</a><a class="next" href="agile-process-models.html">Next · Agile Process Models →</a></div>
 </article></main>
 </div>

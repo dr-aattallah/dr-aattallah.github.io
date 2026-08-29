@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Process & Methodology | CPCS 351</title>
-<meta name="description" content="CPCS 351 Software Engineering I — Topic 04: Process and Methodology.">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<title>Process &amp; Methodology | CPCS 351</title>
+<meta content="CPCS 351 Software Engineering I — Topic 04: Process and Methodology." name="description"/>
 <style>
 :root{
   --ink:#172036;--muted:#65718a;--line:#e1e6ef;--soft:#fafbff;
@@ -269,406 +270,321 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
   .note,.think{grid-template-columns:1fr}
   .nav{flex-direction:column}.nav a{text-align:center}
 }
+
+/* Topic 04 navigation consistency */
+.mobile-topic-nav{display:none}
+@media(max-width:850px){
+  .mobile-topic-nav{display:flex;gap:7px;overflow-x:auto;white-space:nowrap;padding:9px 12px;position:sticky;top:62px;z-index:45;background:rgba(250,250,255,.97);border-bottom:1px solid var(--line,#e1e6ef);scrollbar-width:thin}
+  .mobile-topic-nav a{flex:0 0 auto;text-decoration:none;padding:7px 10px;border:1px solid var(--line,#e1e6ef);border-radius:999px;background:#fff;color:var(--muted,#65718a);font-size:11px;font-weight:800}
+  .mobile-topic-nav a.active{background:var(--indigo,#2d2a78);border-color:var(--indigo,#2d2a78);color:#fff}
+}
 </style>
 </head>
-
 <body>
-
 <header class="top">
-  <a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
-  <nav class="links">
-    <a href="../../index.html">CPCS 351</a>
-    <a href="../../resources/">Resources</a>
-    <a href="../../../../index.html">All Courses</a>
-  </nav>
-</header>
-
+<a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
+<nav class="links">
+<a href="../../index.html">CPCS 351</a>
+<a href="../../resources/">Resources</a>
+<a href="../../../../index.html">All Courses</a>
+</nav>
+</header><nav aria-label="Topic 04 lesson navigation" class="mobile-topic-nav"><a aria-current="page" class="active" href="index.html">01 Process</a><a href="development-challenges.html">02 Challenges</a><a href="process-models-overview.html">03 Models</a><a href="waterfall-model.html">04 Waterfall</a><a href="prototyping-model.html">05 Prototype</a><a href="evolutionary-development.html">06 Evolutionary</a><a href="spiral-model.html">07 Spiral</a><a href="agile-process-models.html">08 Agile Process</a><a href="choosing-process-model.html">09 Choose Model</a><a href="agile-methods.html">10 Agile Methods</a><a href="software-paradigms.html">11 Paradigms</a></nav>
 <div class="layout">
-
-<aside class="side">
-  <div class="course">
-    <small>CPCS 351 · TOPIC 04</small>
-    <strong>Process &amp; Methodology</strong>
-  </div>
-
-  <div class="label">Topic 04</div>
-  <a class="active" href="index.html">1. Process &amp; Methodology</a>
-  <span class="future">2. Development Challenges</span>
-  <span class="future">3. Process Models Overview</span>
-  <span class="future">4. Waterfall Model</span>
-  <span class="future">5. Prototyping Model</span>
-  <span class="future">6. Evolutionary Development</span>
-  <span class="future">7. Spiral Model</span>
-  <span class="future">8. Agile Process Models</span>
-  <span class="future">9. Choosing the Right Model</span>
-  <span class="future">10. Agile Methods</span>
-  <span class="future">11. Software Paradigms</span>
-
-  <div class="label">Course</div>
-  <a href="../03-System Engineering/index.html">Topic 03 · System Engineering</a>
-  <a href="../../index.html">Course Home</a>
-</aside>
-
+<aside class="side"><div class="course">
+<small>CPCS 351 · TOPIC 04</small>
+<strong>Process &amp; Methodology</strong>
+</div><div class="label">Topic 04</div><a class="active" href="index.html">1. Process &amp; Methodology</a><a href="development-challenges.html">2. Development Challenges</a><a href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a href="prototyping-model.html">5. Prototyping Model</a><a href="evolutionary-development.html">6. Evolutionary Development</a><a href="spiral-model.html">7. Spiral Model</a><a href="agile-process-models.html">8. Agile Process Models</a><a href="choosing-process-model.html">9. Choosing the Right Model</a><a href="agile-methods.html">10. Agile Methods</a><a href="software-paradigms.html">11. Software Paradigms</a><div class="label">Course</div><a href="../../index.html">Course Home</a></aside>
 <main>
 <article class="content">
-
 <div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 04 › Process &amp; Methodology</div>
-
 <section class="hero">
-  <div>
-    <div class="eyebrow">Topic 04 · Lesson 01</div>
-    <h1>Process &amp; Methodology</h1>
-    <p class="lead">
+<div>
+<div class="eyebrow">Topic 04 · Lesson 01</div>
+<h1>Process &amp; Methodology</h1>
+<p class="lead">
       Software development needs both a <strong>process</strong> and a <strong>methodology</strong>.
       The process defines the phases and activities that must happen; the methodology explains how those activities are actually performed.
     </p>
-  </div>
-
-  <div class="mentor">
-    <div class="pic">
-      <img src="../../assets/images/mentor-02-explaining.png" alt="Software engineering mentor explaining process and methodology">
-    </div>
-    <p>“Process tells the team where the journey goes. Methodology tells them how to travel each part of the route.”</p>
-  </div>
+</div>
+<div class="mentor">
+<div class="pic">
+<img alt="Software engineering mentor explaining process and methodology" src="../../assets/images/mentor-02-explaining.png"/>
+</div>
+<p>“Process tells the team where the journey goes. Methodology tells them how to travel each part of the route.”</p>
+</div>
 </section>
-
 <!-- VISUAL HOOK -->
 <section class="section">
-  <div class="kicker">Visual Hook</div>
-  <h2>Route vs. Playbook</h2>
-  <p>
+<div class="kicker">Visual Hook</div>
+<h2>Route vs. Playbook</h2>
+<p>
     A process gives the overall route: phases, products, dependencies, and milestones.
     A methodology zooms into a phase and gives the operational playbook for doing the work.
   </p>
-
-  <div class="routeplay">
-
-    <div class="rp-head">
-      <div class="rp-title process">PROCESS · WHAT MUST HAPPEN?</div>
-      <div class="rp-title method">METHODOLOGY · HOW DO WE DO IT?</div>
+<div class="routeplay">
+<div class="rp-head">
+<div class="rp-title process">PROCESS · WHAT MUST HAPPEN?</div>
+<div class="rp-title method">METHODOLOGY · HOW DO WE DO IT?</div>
+</div>
+<div class="process-road">
+<div class="road">
+<div class="phase-dot pd1">
+<div class="milestone">Milestone 1</div>
+<span><b>Phase A</b>Activity produces a product/artifact.</span>
+</div>
+<div class="phase-dot pd2">
+<div class="milestone">Milestone 2</div>
+<span><b>Phase B</b>Uses previous outputs as inputs.</span>
+</div>
+<div class="phase-dot pd3">
+<div class="milestone">Milestone 3</div>
+<span><b>Phase C</b>Continues the development sequence.</span>
+</div>
+<div class="phase-dot pd4">
+<div class="milestone">Milestone 4</div>
+<span><b>Phase D</b>Completion establishes another milestone.</span>
+</div>
+</div>
+</div>
+<div class="playbook">
+<div class="zoom-phase">
+<div>
+<b>ZOOM INTO<br/>ONE PHASE</b>
+<span>The methodology explains how to perform it.</span>
+</div>
+</div>
+<div class="recipe">
+<div class="stepbox"><b>Steps</b><span>What subtasks are carried out, and in what order?</span></div>
+<div class="stepbox"><b>Inputs &amp; Outputs</b><span>What enters each step, and what does it produce?</span></div>
+<div class="stepbox"><b>Representations</b><span>How are the inputs and outputs expressed or documented?</span></div>
+<div class="stepbox"><b>Entrance / Exit Conditions</b><span>When is a step allowed to start, and when is it complete?</span></div>
+<div class="stepbox"><b>Procedures</b><span>What procedure is followed to carry out the step?</span></div>
+<div class="stepbox"><b>Methods, Techniques &amp; Flows</b><span>What techniques are used, and how do control/data move between steps?</span></div>
+</div>
+</div>
+<div class="rp-caption">
+<strong>Memory hook:</strong> Process = the route map. Methodology = the detailed playbook used while traveling the route.
     </div>
-
-    <div class="process-road">
-      <div class="road">
-
-        <div class="phase-dot pd1">
-          <div class="milestone">Milestone 1</div>
-          <span><b>Phase A</b>Activity produces a product/artifact.</span>
-        </div>
-
-        <div class="phase-dot pd2">
-          <div class="milestone">Milestone 2</div>
-          <span><b>Phase B</b>Uses previous outputs as inputs.</span>
-        </div>
-
-        <div class="phase-dot pd3">
-          <div class="milestone">Milestone 3</div>
-          <span><b>Phase C</b>Continues the development sequence.</span>
-        </div>
-
-        <div class="phase-dot pd4">
-          <div class="milestone">Milestone 4</div>
-          <span><b>Phase D</b>Completion establishes another milestone.</span>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="playbook">
-
-      <div class="zoom-phase">
-        <div>
-          <b>ZOOM INTO<br>ONE PHASE</b>
-          <span>The methodology explains how to perform it.</span>
-        </div>
-      </div>
-
-      <div class="recipe">
-        <div class="stepbox"><b>Steps</b><span>What subtasks are carried out, and in what order?</span></div>
-        <div class="stepbox"><b>Inputs &amp; Outputs</b><span>What enters each step, and what does it produce?</span></div>
-        <div class="stepbox"><b>Representations</b><span>How are the inputs and outputs expressed or documented?</span></div>
-        <div class="stepbox"><b>Entrance / Exit Conditions</b><span>When is a step allowed to start, and when is it complete?</span></div>
-        <div class="stepbox"><b>Procedures</b><span>What procedure is followed to carry out the step?</span></div>
-        <div class="stepbox"><b>Methods, Techniques &amp; Flows</b><span>What techniques are used, and how do control/data move between steps?</span></div>
-      </div>
-
-    </div>
-
-    <div class="rp-caption">
-      <strong>Memory hook:</strong> Process = the route map. Methodology = the detailed playbook used while traveling the route.
-    </div>
-
-  </div>
+</div>
 </section>
-
 <!-- WHY NEEDED -->
 <section class="section">
-  <div class="kicker">Why Engineering Needs Both</div>
-  <h2>Real projects create coordination pressure</h2>
-  <p>
+<div class="kicker">Why Engineering Needs Both</div>
+<h2>Real projects create coordination pressure</h2>
+<p>
     Large development efforts can span years, involve multiple departments and teams, use different tools and processes,
     and operate across different locations. Requirements, constraints, platforms, and technologies can also change.
   </p>
-
-  <div class="challenge-radar">
-
-    <div class="radar-stage">
-      <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
-
-      <div class="radar-core">DEVELOPMENT<br>REALITY</div>
-
-      <div class="rnode n1">
-        <b>Long Development Duration</b>
-        <span>How do we schedule and manage work when customer needs and the future are not fully known?</span>
-      </div>
-
-      <div class="rnode n2">
-        <b>Many Departments &amp; Teams</b>
-        <span>How do we divide work and later integrate what different groups produce?</span>
-      </div>
-
-      <div class="rnode n3">
-        <b>Different Processes, Methods &amp; Tools</b>
-        <span>How do distributed teams communicate and coordinate correctly?</span>
-      </div>
-
-      <div class="rnode n4">
-        <b>Changing Requirements &amp; Constraints</b>
-        <span>How should the process and product be designed so they can cope with change?</span>
-      </div>
-
-      <div class="rnode n5">
-        <b>Heterogeneous Systems</b>
-        <span>Hardware, software, third-party components, languages, platforms, machines, and locations may all differ.</span>
-      </div>
-
-    </div>
-
-  </div>
+<div class="challenge-radar">
+<div class="radar-stage">
+<div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+<div class="radar-core">DEVELOPMENT<br/>REALITY</div>
+<div class="rnode n1">
+<b>Long Development Duration</b>
+<span>How do we schedule and manage work when customer needs and the future are not fully known?</span>
+</div>
+<div class="rnode n2">
+<b>Many Departments &amp; Teams</b>
+<span>How do we divide work and later integrate what different groups produce?</span>
+</div>
+<div class="rnode n3">
+<b>Different Processes, Methods &amp; Tools</b>
+<span>How do distributed teams communicate and coordinate correctly?</span>
+</div>
+<div class="rnode n4">
+<b>Changing Requirements &amp; Constraints</b>
+<span>How should the process and product be designed so they can cope with change?</span>
+</div>
+<div class="rnode n5">
+<b>Heterogeneous Systems</b>
+<span>Hardware, software, third-party components, languages, platforms, machines, and locations may all differ.</span>
+</div>
+</div>
+</div>
 </section>
-
 <!-- DEFINITIONS -->
 <section class="section">
-  <div class="kicker">Core Definitions</div>
-  <h2>Do not confuse the two</h2>
-
-  <div class="dual">
-
-    <div class="dual-card process">
-      <h3>Software Process</h3>
-      <p>
+<div class="kicker">Core Definitions</div>
+<h2>Do not confuse the two</h2>
+<div class="dual">
+<div class="dual-card process">
+<h3>Software Process</h3>
+<p>
         A software process defines a series of activities performed to construct a software system.
         Each activity produces artifacts that become input to other phases, and each phase has entrance and exit criteria.
       </p>
-
-      <div class="mini-list">
-        <div class="mini-item">Defines the phases / activities.</div>
-        <div class="mini-item">Each phase produces products or artifacts.</div>
-        <div class="mini-item">Outputs feed later phases.</div>
-        <div class="mini-item">Phase completion establishes milestones.</div>
-      </div>
-    </div>
-
-    <div class="dual-card method">
-      <h3>Methodology</h3>
-      <p>
+<div class="mini-list">
+<div class="mini-item">Defines the phases / activities.</div>
+<div class="mini-item">Each phase produces products or artifacts.</div>
+<div class="mini-item">Outputs feed later phases.</div>
+<div class="mini-item">Phase completion establishes milestones.</div>
+</div>
+</div>
+<div class="dual-card method">
+<h3>Methodology</h3>
+<p>
         A methodology implements a process—or a phase of a process—by detailing how the work is performed.
       </p>
-
-      <div class="mini-list">
-        <div class="mini-item">Describes detailed steps and subtasks.</div>
-        <div class="mini-item">Defines inputs, outputs, and representations.</div>
-        <div class="mini-item">Defines entrance and exit conditions.</div>
-        <div class="mini-item">Provides procedures, methods, techniques, and flow relationships.</div>
-      </div>
-    </div>
-
-  </div>
+<div class="mini-list">
+<div class="mini-item">Describes detailed steps and subtasks.</div>
+<div class="mini-item">Defines inputs, outputs, and representations.</div>
+<div class="mini-item">Defines entrance and exit conditions.</div>
+<div class="mini-item">Provides procedures, methods, techniques, and flow relationships.</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- METHODOLOGY COOKBOOK -->
 <section class="section">
-  <div class="kicker">Methodology as a Cookbook</div>
-  <h2>What must a methodology tell the team?</h2>
-
-  <div class="cookbook">
-    <div class="recipe-grid">
-
-      <div class="recipe-card">
-        <div class="icon">1→2→3</div>
-        <b>Steps</b>
-        <p>Steps needed to accomplish a series of subtasks.</p>
-      </div>
-
-      <div class="recipe-card">
-        <div class="icon">⇥⇤</div>
-        <b>Inputs &amp; Outputs</b>
-        <p>The input and output of each step.</p>
-      </div>
-
-      <div class="recipe-card">
-        <div class="icon">▤</div>
-        <b>Representations</b>
-        <p>How the inputs and outputs are represented.</p>
-      </div>
-
-      <div class="recipe-card">
-        <div class="icon">✓</div>
-        <b>Entrance / Exit Conditions</b>
-        <p>What must be true before a step starts and when it finishes.</p>
-      </div>
-
-      <div class="recipe-card">
-        <div class="icon">⚙</div>
-        <b>Procedures</b>
-        <p>The procedure used to carry out each step.</p>
-      </div>
-
-      <div class="recipe-card">
-        <div class="icon">⌁</div>
-        <b>Methods &amp; Techniques</b>
-        <p>The specific methods and techniques used by each step.</p>
-      </div>
-
-      <div class="recipe-card">
-        <div class="icon">↔</div>
-        <b>Control &amp; Data Flow</b>
-        <p>The relationships, control flow, and data flow between steps.</p>
-      </div>
-
-    </div>
-  </div>
+<div class="kicker">Methodology as a Cookbook</div>
+<h2>What must a methodology tell the team?</h2>
+<div class="cookbook">
+<div class="recipe-grid">
+<div class="recipe-card">
+<div class="icon">1→2→3</div>
+<b>Steps</b>
+<p>Steps needed to accomplish a series of subtasks.</p>
+</div>
+<div class="recipe-card">
+<div class="icon">⇥⇤</div>
+<b>Inputs &amp; Outputs</b>
+<p>The input and output of each step.</p>
+</div>
+<div class="recipe-card">
+<div class="icon">▤</div>
+<b>Representations</b>
+<p>How the inputs and outputs are represented.</p>
+</div>
+<div class="recipe-card">
+<div class="icon">✓</div>
+<b>Entrance / Exit Conditions</b>
+<p>What must be true before a step starts and when it finishes.</p>
+</div>
+<div class="recipe-card">
+<div class="icon">⚙</div>
+<b>Procedures</b>
+<p>The procedure used to carry out each step.</p>
+</div>
+<div class="recipe-card">
+<div class="icon">⌁</div>
+<b>Methods &amp; Techniques</b>
+<p>The specific methods and techniques used by each step.</p>
+</div>
+<div class="recipe-card">
+<div class="icon">↔</div>
+<b>Control &amp; Data Flow</b>
+<p>The relationships, control flow, and data flow between steps.</p>
+</div>
+</div>
+</div>
 </section>
-
 <!-- STUDENT EXAMPLE -->
 <section class="section">
-  <div class="kicker">Example Closer to Students</div>
-  <h2>University Registration System</h2>
-  <p>
+<div class="kicker">Example Closer to Students</div>
+<h2>University Registration System</h2>
+<p>
     The same project can show the difference clearly: the process gives the major phases,
     while the methodology tells the team exactly how to perform a selected phase.
   </p>
-
-  <div class="example">
-
-    <div class="exroot">SOFTWARE PROCESS · UNIVERSITY REGISTRATION SYSTEM</div>
-
-    <div class="exrow">
-      <div class="exphase">
-        <b>Requirements</b>
-        <span>Understand registration rules, prerequisites, conflicts, users, and constraints.</span>
-      </div>
-
-      <div class="exphase">
-        <b>Design</b>
-        <span>Define architecture, interfaces, data, responsibilities, and major components.</span>
-      </div>
-
-      <div class="exphase">
-        <b>Implementation</b>
-        <span>Build services, UI, APIs, validation logic, and data access.</span>
-      </div>
-
-      <div class="exphase">
-        <b>Testing</b>
-        <span>Verify prerequisites, seat limits, conflicts, integration, and expected behavior.</span>
-      </div>
-    </div>
-
-    <div class="method-zoom">
-      <strong>Now zoom into the Requirements phase.</strong>
+<div class="example">
+<div class="exroot">SOFTWARE PROCESS · UNIVERSITY REGISTRATION SYSTEM</div>
+<div class="exrow">
+<div class="exphase">
+<b>Requirements</b>
+<span>Understand registration rules, prerequisites, conflicts, users, and constraints.</span>
+</div>
+<div class="exphase">
+<b>Design</b>
+<span>Define architecture, interfaces, data, responsibilities, and major components.</span>
+</div>
+<div class="exphase">
+<b>Implementation</b>
+<span>Build services, UI, APIs, validation logic, and data access.</span>
+</div>
+<div class="exphase">
+<b>Testing</b>
+<span>Verify prerequisites, seat limits, conflicts, integration, and expected behavior.</span>
+</div>
+</div>
+<div class="method-zoom">
+<strong>Now zoom into the Requirements phase.</strong>
       A methodology would specify the detailed elicitation steps, stakeholder interviews,
       inputs to each step, requirement representations, entrance/exit criteria, review procedures,
       techniques, and the flow between those activities.
     </div>
-
-  </div>
+</div>
 </section>
-
 <!-- STORY -->
 <section class="section">
-  <div class="kicker">Illustrated Story</div>
-  <h2>The team that had a process—but no methodology</h2>
-
-  <div class="story">
-
-    <div class="panel">
-      <div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div>
-      <span class="no">Panel 1</span>
-      <h4>The process is clear</h4>
-      <p>The team knows it must complete requirements, design, implementation, and testing.</p>
-    </div>
-
-    <div class="panel">
-      <div class="visual"><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
-      <span class="no">Panel 2</span>
-      <h4>But “how” is undefined</h4>
-      <p>Different analysts document requirements differently and use different criteria for “done.”</p>
-    </div>
-
-    <div class="panel">
-      <div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div>
-      <span class="no">Panel 3</span>
-      <h4>Outputs do not fit</h4>
-      <p>Designers receive inconsistent artifacts because the team followed the phase name but not a shared method.</p>
-    </div>
-
-    <div class="panel">
-      <div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
-      <span class="no">Panel 4</span>
-      <h4>Methodology creates repeatability</h4>
-      <p>Steps, inputs, outputs, criteria, procedures, and techniques make the process executable and consistent.</p>
-    </div>
-
-  </div>
+<div class="kicker">Illustrated Story</div>
+<h2>The team that had a process—but no methodology</h2>
+<div class="story">
+<div class="panel">
+<div class="visual"><img alt="" src="../../assets/images/mentor-01-confident-smile.png"/></div>
+<span class="no">Panel 1</span>
+<h4>The process is clear</h4>
+<p>The team knows it must complete requirements, design, implementation, and testing.</p>
+</div>
+<div class="panel">
+<div class="visual"><img alt="" src="../../assets/images/mentor-03-thinking.png"/></div>
+<span class="no">Panel 2</span>
+<h4>But “how” is undefined</h4>
+<p>Different analysts document requirements differently and use different criteria for “done.”</p>
+</div>
+<div class="panel">
+<div class="visual"><img alt="" src="../../assets/images/mentor-10-concerned.png"/></div>
+<span class="no">Panel 3</span>
+<h4>Outputs do not fit</h4>
+<p>Designers receive inconsistent artifacts because the team followed the phase name but not a shared method.</p>
+</div>
+<div class="panel">
+<div class="visual"><img alt="" src="../../assets/images/mentor-09-idea.png"/></div>
+<span class="no">Panel 4</span>
+<h4>Methodology creates repeatability</h4>
+<p>Steps, inputs, outputs, criteria, procedures, and techniques make the process executable and consistent.</p>
+</div>
+</div>
 </section>
-
 <div class="note">
-  <div>
-    <b>Mentor Insight</b>
-    <p>
+<div>
+<b>Mentor Insight</b>
+<p>
       Naming a phase is not enough. “Do requirements” is a process-level instruction.
       A methodology makes it actionable by defining how requirements work is actually carried out.
     </p>
-  </div>
-  <img src="../../assets/images/mentor-11-serious.png" alt="Mentor emphasizing the difference between process and methodology">
 </div>
-
+<img alt="Mentor emphasizing the difference between process and methodology" src="../../assets/images/mentor-11-serious.png"/>
+</div>
 <div class="take">
-  <b>Key Takeaway</b>
-  <p>
+<b>Key Takeaway</b>
+<p>
     A software process defines the phases and activities required to construct a software system.
     A methodology implements the process by detailing how those activities are performed.
     Software development needs both.
   </p>
 </div>
-
 <div class="think">
-  <div>
-    <span class="tlabel">Think Like a Software Engineer</span>
-    <h3>A team says, “Our process includes testing.” What would you ask next to discover whether they actually have a testing methodology?</h3>
-    <p>
+<div>
+<span class="tlabel">Think Like a Software Engineer</span>
+<h3>A team says, “Our process includes testing.” What would you ask next to discover whether they actually have a testing methodology?</h3>
+<p>
       Ask about steps, inputs, outputs, representations, entrance and exit criteria, procedures,
       techniques, and how results flow to other development activities.
     </p>
-  </div>
-  <img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about process and methodology">
 </div>
-
+<img alt="Mentor thinking about process and methodology" src="../../assets/images/mentor-03-thinking.png"/>
+</div>
 <div class="nav">
-  <a href="../03-System Engineering/configuration-management.html">← Topic 03</a>
-  <a class="next" href="development-challenges.html">Next · Development Challenges →</a>
+<a href="../03-System Engineering/configuration-management.html">← Topic 03</a>
+<a class="next" href="development-challenges.html">Next · Development Challenges →</a>
 </div>
-
 </article>
 </main>
 </div>
-
 <script>
 if(sessionStorage.getItem("cpcs351_access") !== "granted"){
   window.location.href="../../access.html";
 }
 </script>
-
 </body>
 </html>

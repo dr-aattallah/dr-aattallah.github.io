@@ -1,4 +1,5 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agile Methods | CPCS 351</title>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><title>Agile Methods | CPCS 351</title>
 <style>
 :root{--i:#172036;--m:#64708a;--l:#e1e6ef;--p:#302b7c;--v:#f1efff;--a:#e9fbfb;--g:#eff9e8;--r:#fff0f6;--y:#fff5df}
 *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,"Segoe UI",sans-serif;color:var(--i)}a{color:inherit}.top{height:62px;position:sticky;top:0;z-index:9;background:#fffd;border-bottom:1px solid var(--l);display:flex;align-items:center;justify-content:space-between;padding:0 16px}.brand{font-weight:900;text-decoration:none}.brand:before{content:"+";display:inline-grid;place-items:center;width:31px;height:31px;border-radius:10px;background:linear-gradient(135deg,#302b7c,#35c3c4,#e6ae48);color:white;margin-right:10px}.top nav a{font-size:13px;font-weight:750;color:#657087;text-decoration:none;margin-left:20px}.layout{display:grid;grid-template-columns:242px 1fr}.side{position:sticky;top:62px;height:calc(100vh - 62px);overflow:auto;border-right:1px solid var(--l);background:#fafaff;padding:23px 14px}.side small{font-weight:900;color:#9299ad}.side strong{display:block;margin:7px 0 20px}.side a{display:block;padding:9px 10px;border-radius:8px;text-decoration:none;font-size:12.5px;font-weight:650;color:#606b83}.side .active{background:var(--v);color:#40378d;font-weight:900}.content{width:min(1060px,calc(100% - 48px));margin:auto;padding:55px 0 90px}.crumb{font-size:13px;color:#8a92a6;margin-bottom:27px}.hero{display:grid;grid-template-columns:1fr 270px;gap:35px;align-items:center}.ey,.k{font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:#5548b0}h1{font-size:clamp(44px,6vw,67px);line-height:.98;letter-spacing:-.045em;margin:13px 0 20px}.lead{font-size:18px;line-height:1.75;color:var(--m)}.mentor{border:1px solid var(--l);border-radius:20px;overflow:hidden}.mentor img{width:100%;height:220px;object-fit:contain;background:linear-gradient(#f4f1ff,#fff)}.mentor p{padding:16px;margin:0;font-size:13px;line-height:1.6;color:#515d74}.sec{margin-top:70px}.sec h2{font-size:31px;letter-spacing:-.03em;margin:7px 0 14px}.sec>p{font-size:16px;line-height:1.8;color:#59667d}
@@ -31,10 +32,18 @@
 .const{margin-top:27px;border:1px solid var(--l);border-radius:27px;padding:25px;background:radial-gradient(circle at 50% 38%,#eeecff,transparent 25%),#fbfcff}.bar{background:var(--p);color:#fff;border-radius:14px;padding:14px 17px;font-size:11px;font-weight:900}.core{width:170px;height:170px;border-radius:50%;margin:28px auto;background:linear-gradient(145deg,#312d84,#685bc8);color:#fff;display:grid;place-items:center;text-align:center;box-shadow:0 18px 42px #302b7b2b}.core b{font-size:20px}.methods,.examples{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{border:1px solid var(--l);border-radius:18px;padding:17px;min-height:145px}.card:nth-child(1){background:var(--a)}.card:nth-child(2){background:var(--g)}.card:nth-child(3){background:var(--v)}.card:nth-child(4){background:var(--r)}.card:nth-child(5){background:var(--y)}.card:nth-child(6){background:#f2f6fb}.card i{font-style:normal;font-size:26px}.card h3{font-size:14px;margin:7px 0}.card p,.ex p,.ex li{font-size:10px;line-height:1.55;color:#667188}.card b{font-size:9px}
 .flow{margin-top:26px;border:1px solid var(--l);border-radius:24px;padding:24px}.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.step{border:1px solid var(--l);border-radius:15px;padding:14px;background:#fafbff;position:relative}.step:not(:last-child):after{content:"→";position:absolute;right:-12px;top:44%;font-weight:900;color:#9aa1b2}.n{width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:var(--p);color:#fff;font-size:9px;font-weight:900}.step h4{font-size:12px;margin:8px 0 5px}.step p{font-size:9.5px;line-height:1.5;color:#667188;margin:0}.inc{margin-top:17px;border-radius:14px;background:var(--g);padding:14px 17px;font-size:11px;color:#4e6b3c}.table{overflow:auto;margin-top:25px;border:1px solid var(--l);border-radius:20px}table{border-collapse:collapse;width:100%;min-width:800px;font-size:11px}th{background:var(--p);color:#fff;text-align:left;padding:13px}td{padding:13px;border-bottom:1px solid var(--l);vertical-align:top;color:#59657b}td:first-child{font-weight:900;color:#263047;background:#fafbff}.ex{border:1px solid var(--l);border-radius:18px;padding:18px}.ex:nth-child(1){background:var(--a)}.ex:nth-child(2){background:var(--g)}.ex:nth-child(3){background:var(--r)}.ex h3{font-size:15px;margin:7px 0}.story{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:24px}.panel{border:1px solid var(--l);border-radius:17px;padding:13px}.panel img{width:100%;height:110px;object-fit:contain;background:#f8f6ff;border-radius:10px}.panel h4{font-size:12px;margin:7px 0}.panel p{font-size:9.5px;line-height:1.5;color:#687389}.take,.think{margin-top:29px;border-radius:17px;padding:22px}.take{border-left:4px solid #685bc8;background:#f4f2ff}.take p,.think p{line-height:1.7;font-size:14px;color:#5d5879}.think{display:grid;grid-template-columns:1fr 140px;gap:18px;background:#eef8ff;border:1px solid #d8e6f1}.think img{width:100%;max-height:145px;object-fit:contain}.nav{margin-top:48px;padding-top:23px;border-top:1px solid var(--l);display:flex;justify-content:space-between}.nav a{text-decoration:none;border:1px solid var(--l);border-radius:11px;padding:13px 16px;font-size:12px;font-weight:850}.nav .next{background:var(--p);color:#fff}
 @media(max-width:850px){.scrum-read{grid-template-columns:1fr 1fr}.layout{display:block}.side{display:none}.content{width:calc(100% - 28px)}.hero{grid-template-columns:1fr}.methods,.examples{grid-template-columns:1fr 1fr}.story{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.step:not(:last-child):after{content:"↓";right:50%;top:auto;bottom:-15px}}@media(max-width:600px){.scrum-read{grid-template-columns:1fr}.scrum-model-img{padding:8px}.methods,.examples,.story,.think{grid-template-columns:1fr}}
+
+/* Topic 04 navigation consistency */
+.mobile-topic-nav{display:none}
+@media(max-width:850px){
+  .mobile-topic-nav{display:flex;gap:7px;overflow-x:auto;white-space:nowrap;padding:9px 12px;position:sticky;top:62px;z-index:45;background:rgba(250,250,255,.97);border-bottom:1px solid var(--line,#e1e6ef);scrollbar-width:thin}
+  .mobile-topic-nav a{flex:0 0 auto;text-decoration:none;padding:7px 10px;border:1px solid var(--line,#e1e6ef);border-radius:999px;background:#fff;color:var(--muted,#65718a);font-size:11px;font-weight:800}
+  .mobile-topic-nav a.active{background:var(--indigo,#2d2a78);border-color:var(--indigo,#2d2a78);color:#fff}
+}
 </style></head><body>
-<header class="top"><a class="brand" href="../../index.html">The Educator</a><nav><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header><div class="layout"><aside class="side"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong><a href="index.html">1. Process &amp; Methodology</a><a href="development-challenges.html">2. Development Challenges</a><a href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a href="prototyping-model.html">5. Prototyping Model</a><a href="evolutionary-development.html">6. Evolutionary Development</a><a href="spiral-model.html">7. Spiral Model</a><a href="agile-process-models.html">8. Agile Process Models</a><a href="choosing-process-model.html">9. Choosing the Right Model</a><a class="active" href="agile-methods.html">10. Agile Methods</a><a href="software-paradigms.html">11. Software Paradigms</a></aside>
+<header class="top"><a class="brand" href="../../index.html">The Educator</a><nav><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header><nav aria-label="Topic 04 lesson navigation" class="mobile-topic-nav"><a href="index.html">01 Process</a><a href="development-challenges.html">02 Challenges</a><a href="process-models-overview.html">03 Models</a><a href="waterfall-model.html">04 Waterfall</a><a href="prototyping-model.html">05 Prototype</a><a href="evolutionary-development.html">06 Evolutionary</a><a href="spiral-model.html">07 Spiral</a><a href="agile-process-models.html">08 Agile Process</a><a href="choosing-process-model.html">09 Choose Model</a><a aria-current="page" class="active" href="agile-methods.html">10 Agile Methods</a><a href="software-paradigms.html">11 Paradigms</a></nav><div class="layout"><aside class="side"><div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div><div class="label">Topic 04</div><a href="index.html">1. Process &amp; Methodology</a><a href="development-challenges.html">2. Development Challenges</a><a href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a href="prototyping-model.html">5. Prototyping Model</a><a href="evolutionary-development.html">6. Evolutionary Development</a><a href="spiral-model.html">7. Spiral Model</a><a href="agile-process-models.html">8. Agile Process Models</a><a href="choosing-process-model.html">9. Choosing the Right Model</a><a class="active" href="agile-methods.html">10. Agile Methods</a><a href="software-paradigms.html">11. Software Paradigms</a><div class="label">Course</div><a href="../../index.html">Course Home</a></aside>
 <main><article class="content"><div class="crumb">CPCS 351 › Topic 04 › Agile Methods</div>
-<section class="hero"><div><div class="ey">Topic 04 · Agile Family</div><h1>Agile Methods</h1><p class="lead"><strong>Agile is not one single method.</strong> It is a family of approaches sharing an adaptive direction but organizing work differently. Well-known methods include <strong>Dynamic Systems Development Method (DSDM), Feature Driven Development (FDD), Scrum, Extreme Programming (XP), Crystal Clear, and Lean Development.</strong></p></div><div class="mentor"><img src="../../assets/images/mentor-02-explaining.png"><p>“Same Agile direction, different mechanics. Learn what each method makes especially visible.”</p></div></section>
+<section class="hero"><div><div class="ey">Topic 04 · Agile Family</div><h1>Agile Methods</h1><p class="lead"><strong>Agile is not one single method.</strong> It is a family of approaches sharing an adaptive direction but organizing work differently. Well-known methods include <strong>Dynamic Systems Development Method (DSDM), Feature Driven Development (FDD), Scrum, Extreme Programming (XP), Crystal Clear, and Lean Development.</strong></p></div><div class="mentor"><img src="../../assets/images/mentor-02-explaining.png"/><p>“Same Agile direction, different mechanics. Learn what each method makes especially visible.”</p></div></section>
 <section class="sec">
 <div class="k">Large Visual Model</div>
 <h2>Scrum — see the framework at full scale</h2>
@@ -43,63 +52,50 @@ Scrum is a concrete example of an Agile method. The diagram below is loaded as a
 <strong>direct image</strong> rather than an embedded PDF, so it can display normally inside GitHub Pages.
 Read it as a repeating delivery-and-feedback loop rather than a straight sequence.
 </p>
-
 <div class="big scrum-reference">
-  <div class="bhead">
-    <span>SCRUM PROCESS · LARGE REFERENCE IMAGE</span>
-    <a class="src"
-       href="https://commons.wikimedia.org/wiki/File:Scrum_process.svg"
-       target="_blank" rel="noopener">
+<div class="bhead">
+<span>SCRUM PROCESS · LARGE REFERENCE IMAGE</span>
+<a class="src" href="https://commons.wikimedia.org/wiki/File:Scrum_process.svg" rel="noopener" target="_blank">
        Open image source ↗
     </a>
-  </div>
-
-  <figure class="scrum-figure">
-    <a href="https://upload.wikimedia.org/wikipedia/commons/5/58/Scrum_process.svg"
-       target="_blank" rel="noopener">
-      <img
-        class="scrum-model-img"
-        src="https://upload.wikimedia.org/wikipedia/commons/5/58/Scrum_process.svg"
-        alt="Scrum process showing product backlog, sprint backlog, sprint cycle, daily scrum and working product increment"
-        loading="lazy"
-        onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Scrum_process.svg/1280px-Scrum_process.svg.png';">
-    </a>
-
-    <figcaption class="cap">
-      <strong>How to read it:</strong>
+</div>
+<figure class="scrum-figure">
+<a href="https://upload.wikimedia.org/wikipedia/commons/5/58/Scrum_process.svg" rel="noopener" target="_blank">
+<img alt="Scrum process showing product backlog, sprint backlog, sprint cycle, daily scrum and working product increment" class="scrum-model-img" loading="lazy" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Scrum_process.svg/1280px-Scrum_process.svg.png';" src="https://upload.wikimedia.org/wikipedia/commons/5/58/Scrum_process.svg"/>
+</a>
+<figcaption class="cap">
+<strong>How to read it:</strong>
       the Product Backlog supplies prioritized work. A subset becomes the Sprint Backlog.
       During the Sprint, the team repeatedly coordinates and develops the selected work.
       The Sprint produces a working product Increment, and new learning feeds later backlog decisions.
     </figcaption>
-  </figure>
-
-  <div class="scrum-read">
-    <div class="sr">
-      <span>1</span>
-      <div><b>Product Backlog</b><small>Everything currently known that may add value to the product.</small></div>
-    </div>
-    <div class="sr">
-      <span>2</span>
-      <div><b>Sprint Backlog</b><small>The selected work and plan for achieving the Sprint Goal.</small></div>
-    </div>
-    <div class="sr">
-      <span>3</span>
-      <div><b>Sprint</b><small>A short, fixed-length cycle in which the team creates value.</small></div>
-    </div>
-    <div class="sr">
-      <span>4</span>
-      <div><b>Increment</b><small>A usable step toward the Product Goal that satisfies the Definition of Done.</small></div>
-    </div>
-  </div>
-
-  <div class="scrum-source-note">
-    <strong>Reference:</strong> the image is loaded directly from Wikimedia Commons
+</figure>
+<div class="scrum-read">
+<div class="sr">
+<span>1</span>
+<div><b>Product Backlog</b><small>Everything currently known that may add value to the product.</small></div>
+</div>
+<div class="sr">
+<span>2</span>
+<div><b>Sprint Backlog</b><small>The selected work and plan for achieving the Sprint Goal.</small></div>
+</div>
+<div class="sr">
+<span>3</span>
+<div><b>Sprint</b><small>A short, fixed-length cycle in which the team creates value.</small></div>
+</div>
+<div class="sr">
+<span>4</span>
+<div><b>Increment</b><small>A usable step toward the Product Goal that satisfies the Definition of Done.</small></div>
+</div>
+</div>
+<div class="scrum-source-note">
+<strong>Reference:</strong> the image is loaded directly from Wikimedia Commons
     (<em>Scrum process.svg</em>) rather than copied into The Educator assets.
     Scrum terminology on the page is aligned with the Scrum framework described by Scrum.org.
   </div>
 </div>
 </section>
-<section class="sec"><div class="k">Visual Hook</div><h2>The Agile Methods Constellation</h2><p>Agile sits at the center; each method emphasizes a different way to organize adaptive software development.</p><div class="const"><div class="bar">AGILE METHODS CONSTELLATION · ONE DIRECTION, MULTIPLE METHODS</div><div class="core"><div><b>AGILE</b><br><small>adapt · collaborate<br>deliver · learn</small></div></div><div class="methods">
+<section class="sec"><div class="k">Visual Hook</div><h2>The Agile Methods Constellation</h2><p>Agile sits at the center; each method emphasizes a different way to organize adaptive software development.</p><div class="const"><div class="bar">AGILE METHODS CONSTELLATION · ONE DIRECTION, MULTIPLE METHODS</div><div class="core"><div><b>AGILE</b><br/><small>adapt · collaborate<br/>deliver · learn</small></div></div><div class="methods">
 <div class="card"><i>⏱</i><h3>DSDM</h3><p>Iterative delivery with strong business involvement and attention to controlled delivery constraints.</p><b>HOOK: TIME + BUSINESS</b></div>
 <div class="card"><i>🧩</i><h3>FDD</h3><p>Organizes progress around small client-valued features and a defined feature-oriented process.</p><b>HOOK: BUILD BY FEATURE</b></div>
 <div class="card"><i>🔄</i><h3>Scrum</h3><p>A lightweight framework using a Scrum Team, Sprints, events, artifacts, goals, inspection, and adaptation.</p><b>HOOK: SPRINT FEEDBACK LOOP</b></div>
@@ -118,8 +114,8 @@ Read it as a repeating delivery-and-feedback loop rather than a straight sequenc
 </tbody></table></div></section>
 <section class="sec"><div class="k">FDD Close-Up</div><h2>Feature Driven Development in five moves</h2><p>FDD is memorable because its process can be expressed through five named activities.</p><div class="flow"><div class="steps"><div class="step"><span class="n">1</span><h4>Develop Overall Model</h4><p>Understand the domain and establish the overall model.</p></div><div class="step"><span class="n">2</span><h4>Build Feature List</h4><p>Decompose the domain into client-valued features.</p></div><div class="step"><span class="n">3</span><h4>Plan by Feature</h4><p>Sequence feature sets and assign responsibility.</p></div><div class="step"><span class="n">4</span><h4>Design by Feature</h4><p>Create and inspect the design for selected features.</p></div><div class="step"><span class="n">5</span><h4>Build by Feature</h4><p>Implement, inspect, unit test, and promote to the build.</p></div></div><div class="inc"><strong>Example feature:</strong> “Enroll a student in an available section.”</div></div></section>
 <section class="sec"><div class="k">Three Examples</div><h2>Same product, different Agile viewpoints</h2><div class="examples"><div class="ex"><h3>Scrum View</h3><p>Food-delivery app: Sprint Goal = make order tracking useful.</p><ol><li>Select tracking backlog items.</li><li>Build in the Sprint.</li><li>Inspect the Increment.</li><li>Adapt what comes next.</li></ol></div><div class="ex"><h3>FDD View</h3><p>Describe client-valued features.</p><ol><li>Show courier location.</li><li>Calculate ETA.</li><li>Notify delay.</li><li>Confirm delivery.</li></ol></div><div class="ex"><h3>XP View</h3><p>Focus on the engineering feedback behind rapid change.</p><ol><li>Express expected behavior.</li><li>Change code in small steps.</li><li>Get fast feedback.</li><li>Keep code changeable.</li></ol></div></div></section>
-<section class="sec"><div class="k">Illustrated Story</div><h2>“Use Agile” is only the beginning</h2><div class="story"><div class="panel"><img src="../../assets/images/mentor-09-idea.png"><h4>1. Direction</h4><p>The team wants adaptive delivery.</p></div><div class="panel"><img src="../../assets/images/mentor-03-thinking.png"><h4>2. Question</h4><p>What needs structure: teamwork, engineering, features, business control, or flow?</p></div><div class="panel"><img src="../../assets/images/mentor-06-pointing.png"><h4>3. Method</h4><p>Scrum, XP, FDD, DSDM, Crystal and Lean emphasize different mechanics.</p></div><div class="panel"><img src="../../assets/images/mentor-01-confident-smile.png"><h4>4. Purpose</h4><p>Deliver, learn, collaborate and adapt—not merely perform rituals.</p></div></div></section>
+<section class="sec"><div class="k">Illustrated Story</div><h2>“Use Agile” is only the beginning</h2><div class="story"><div class="panel"><img src="../../assets/images/mentor-09-idea.png"/><h4>1. Direction</h4><p>The team wants adaptive delivery.</p></div><div class="panel"><img src="../../assets/images/mentor-03-thinking.png"/><h4>2. Question</h4><p>What needs structure: teamwork, engineering, features, business control, or flow?</p></div><div class="panel"><img src="../../assets/images/mentor-06-pointing.png"/><h4>3. Method</h4><p>Scrum, XP, FDD, DSDM, Crystal and Lean emphasize different mechanics.</p></div><div class="panel"><img src="../../assets/images/mentor-01-confident-smile.png"/><h4>4. Purpose</h4><p>Deliver, learn, collaborate and adapt—not merely perform rituals.</p></div></div></section>
 <div class="take"><b>KEY TAKEAWAY</b><p>Agile is a family of methods. Well-known methods include DSDM, FDD, Scrum, XP, Crystal Clear, and Lean Development. Recognize their shared adaptive direction, then distinguish the emphasis each method brings.</p></div>
-<div class="think"><div><b>THINK LIKE A SOFTWARE ENGINEER</b><h3>“We use Agile because we have a Daily Scrum.” Is that enough?</h3><p>No. Ask what is delivered, how feedback changes decisions, how engineering quality is protected, and whether the chosen method actually helps the team respond to change.</p></div><img src="../../assets/images/mentor-03-thinking.png"></div>
+<div class="think"><div><b>THINK LIKE A SOFTWARE ENGINEER</b><h3>“We use Agile because we have a Daily Scrum.” Is that enough?</h3><p>No. Ask what is delivered, how feedback changes decisions, how engineering quality is protected, and whether the chosen method actually helps the team respond to change.</p></div><img src="../../assets/images/mentor-03-thinking.png"/></div>
 <div class="nav"><a href="choosing-process-model.html">← Choosing the Right Model</a><a class="next" href="software-paradigms.html">Next · Software Paradigms →</a></div>
 </article></main></div><script>if(sessionStorage.getItem("cpcs351_access")!=="granted"){window.location.href="../../access.html"}</script></body></html>

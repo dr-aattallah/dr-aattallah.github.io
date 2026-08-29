@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
 <title>Prototyping Model | CPCS 351</title>
 <style>
 :root{
@@ -170,30 +171,22 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}
 @media(max-width:950px){.proto-flow{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.why{grid-template-columns:1fr 1fr}.source-strip{grid-template-columns:1fr}.screen-row,.story{grid-template-columns:1fr 1fr}}
 @media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,1000px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}.phase{grid-template-columns:75px 1fr}.phase-out{grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}}
 @media(max-width:650px){.types-grid,.why,.screen-row,.examples,.pc,.story{grid-template-columns:1fr}.throwaway,.finalpath{grid-template-columns:1fr}.discard{transform:rotate(90deg)}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}}
+
+/* Topic 04 navigation consistency */
+.mobile-topic-nav{display:none}
+@media(max-width:850px){
+  .mobile-topic-nav{display:flex;gap:7px;overflow-x:auto;white-space:nowrap;padding:9px 12px;position:sticky;top:62px;z-index:45;background:rgba(250,250,255,.97);border-bottom:1px solid var(--line,#e1e6ef);scrollbar-width:thin}
+  .mobile-topic-nav a{flex:0 0 auto;text-decoration:none;padding:7px 10px;border:1px solid var(--line,#e1e6ef);border-radius:999px;background:#fff;color:var(--muted,#65718a);font-size:11px;font-weight:800}
+  .mobile-topic-nav a.active{background:var(--indigo,#2d2a78);border-color:var(--indigo,#2d2a78);color:#fff}
+}
 </style>
 </head>
 <body>
-<header class="top"><a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a><nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header>
+<header class="top"><a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a><nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header><nav aria-label="Topic 04 lesson navigation" class="mobile-topic-nav"><a href="index.html">01 Process</a><a href="development-challenges.html">02 Challenges</a><a href="process-models-overview.html">03 Models</a><a href="waterfall-model.html">04 Waterfall</a><a aria-current="page" class="active" href="prototyping-model.html">05 Prototype</a><a href="evolutionary-development.html">06 Evolutionary</a><a href="spiral-model.html">07 Spiral</a><a href="agile-process-models.html">08 Agile Process</a><a href="choosing-process-model.html">09 Choose Model</a><a href="agile-methods.html">10 Agile Methods</a><a href="software-paradigms.html">11 Paradigms</a></nav>
 <div class="layout">
-<aside class="side">
-<div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div>
-<div class="label">Topic 04</div>
-<a href="index.html">1. Process &amp; Methodology</a>
-<a href="development-challenges.html">2. Development Challenges</a>
-<a href="process-models-overview.html">3. Process Models Overview</a>
-<a href="waterfall-model.html">4. Waterfall Model</a>
-<a class="active" href="prototyping-model.html">5. Prototyping Model</a>
-<span class="future">6. Evolutionary Development</span>
-<span class="future">7. Spiral Model</span>
-<span class="future">8. Agile Process Models</span>
-<span class="future">9. Choosing the Right Model</span>
-<span class="future">10. Agile Methods</span>
-<span class="future">11. Software Paradigms</span>
-</aside>
-
+<aside class="side"><div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div><div class="label">Topic 04</div><a href="index.html">1. Process &amp; Methodology</a><a href="development-challenges.html">2. Development Challenges</a><a href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a class="active" href="prototyping-model.html">5. Prototyping Model</a><a href="evolutionary-development.html">6. Evolutionary Development</a><a href="spiral-model.html">7. Spiral Model</a><a href="agile-process-models.html">8. Agile Process Models</a><a href="choosing-process-model.html">9. Choosing the Right Model</a><a href="agile-methods.html">10. Agile Methods</a><a href="software-paradigms.html">11. Software Paradigms</a><div class="label">Course</div><a href="../../index.html">Course Home</a></aside>
 <main><article class="content">
 <div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 04 › Prototyping Model</div>
-
 <section class="hero">
 <div>
 <div class="eyebrow">Topic 04 · Model 02</div>
@@ -203,19 +196,16 @@ Instead of freezing uncertain requirements and hoping they are correct, the team
 </p>
 </div>
 <div class="mentor">
-<div class="pic"><img src="../../assets/images/mentor-09-idea.png" alt="Mentor introducing prototyping"></div>
+<div class="pic"><img alt="Mentor introducing prototyping" src="../../assets/images/mentor-09-idea.png"/></div>
 <p>“Do not argue for weeks about an unclear screen. Build a small version, put it in front of users, and learn from what they actually do.”</p>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Visual Hook</div>
 <h2>The Requirements Discovery Lab</h2>
 <p>Prototyping converts vague ideas into something users can see, touch, criticize, and revise. The prototype is a learning instrument—not necessarily the final product.</p>
-
 <div class="lab">
 <div class="lab-head"><b>PROTOTYPING LAB · LEARN BEFORE COMMITTING</b><span>KNOWN REQUIREMENTS → MODEL → FEEDBACK → BETTER REQUIREMENTS</span></div>
-
 <div class="proto-flow">
 <div class="station s1"><div class="icon">🗣</div><b>Known Requirements</b><span>Start with what customers and users currently believe they need.</span></div>
 <div class="arrow">→</div>
@@ -223,20 +213,15 @@ Instead of freezing uncertain requirements and hoping they are correct, the team
 <div class="arrow">→</div>
 <div class="station s3"><div class="icon">👀</div><b>User Review</b><span>Users try it, expose misunderstandings, notice missing functionality, and suggest changes.</span></div>
 </div>
-
 <div class="feedback"><strong>↻ FEEDBACK LOOP:</strong> revise the prototype and review again until the important uncertainty is reduced.</div>
-
 <div class="finalpath">
 <div class="finalbox"><b>Refined / Validated Requirements</b><span>What the team learned becomes a stronger basis for the real system.</span></div>
 <div class="arrow">→</div>
 <div class="finalbox"><b>Engineer the Production System</b><span>The throwaway prototype has done its job: learning.</span></div>
 </div>
-
 <div class="lab-note"><strong>Core distinction:</strong> the prototype is deliberately incomplete. Its purpose is to reveal knowledge early, before the project spends heavily on full-scale design and implementation.</div>
-
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Reference Diagram</div>
 <h2>Prototyping Lifecycle — see the complete cycle at full size</h2>
@@ -246,15 +231,12 @@ then the clarified knowledge feeds the engineering of the real system. The diagr
 University of Toronto Computer Science teaching material by Steve Easterbrook; this web image is
 linked directly rather than stored in The Educator.
 </p>
-
 <figure class="reference-figure">
 <div class="source-label">
 <span>UNIVERSITY OF TORONTO · COMPUTER SCIENCE</span>
-<a href="https://www.cs.toronto.edu/~sme/CSC444F/slides/L04-Lifecycles.pdf" target="_blank" rel="noopener">Open original academic slides ↗</a>
+<a href="https://www.cs.toronto.edu/~sme/CSC444F/slides/L04-Lifecycles.pdf" rel="noopener" target="_blank">Open original academic slides ↗</a>
 </div>
-<img src="https://image.slideserve.com/291340/prototyping-lifecycle-l.jpg"
-     alt="University of Toronto prototyping lifecycle showing prototype requirements, design, build and test followed by documented requirements, design, code, test and integration"
-     loading="lazy">
+<img alt="University of Toronto prototyping lifecycle showing prototype requirements, design, build and test followed by documented requirements, design, code, test and integration" loading="lazy" src="https://image.slideserve.com/291340/prototyping-lifecycle-l.jpg"/>
 <figcaption>
 <strong>How to read it:</strong> requirements are explored through a short prototype cycle—requirements → design prototype →
 build prototype → test prototype. What the team learns is then documented and carried into the disciplined production path:
@@ -262,7 +244,6 @@ requirements → design → code → test → integrate.
 </figcaption>
 </figure>
 </section>
-
 <section class="section">
 <div class="kicker">Prototype Families</div>
 <h2>Not every prototype has the same destination</h2>
@@ -271,43 +252,36 @@ requirements → design → code → test → integrate.
 The most important distinction is whether the prototype is <strong>discarded</strong> or <strong>allowed to evolve</strong>.
 Other forms control what part of the system is explored.
 </p>
-
 <div class="types-map">
 <div class="types-core"><div><b>PROTOTYPE</b><span>A model built to reduce uncertainty</span></div></div>
-
 <div class="types-grid">
 <div class="type-card throw">
 <div class="type-head"><div class="type-icon">🧪</div><h3>1. Throwaway / Exploratory</h3></div>
 <p>Build quickly to understand unclear requirements or compare ideas. Once enough has been learned, discard the prototype and engineer the real system properly.</p>
 <div class="type-flow"><span>Question</span><i>→</i><span>Prototype</span><i>→</i><span>Learn</span><i>→</i><span>🗑 Discard</span></div>
 </div>
-
 <div class="type-card evolutionary">
 <div class="type-head"><div class="type-icon">🌱</div><h3>2. Evolutionary</h3></div>
 <p>Start with a working core and repeatedly refine it. Unlike throwaway prototyping, the implementation itself grows toward the final operational system.</p>
 <div class="type-flow"><span>v1</span><i>→</i><span>v2</span><i>→</i><span>v3</span><i>→</i><span>Final System</span></div>
 </div>
-
 <div class="type-card incremental">
 <div class="type-head"><div class="type-icon">🧩</div><h3>3. Incremental</h3></div>
 <p>Prototype separate parts or capabilities and progressively combine them. Useful when different sections of a large solution can be explored independently.</p>
 <div class="type-flow"><span>Part A</span><span>Part B</span><span>Part C</span><i>→</i><span>Integrated</span></div>
 </div>
-
 <div class="type-card extreme">
 <div class="type-head"><div class="type-icon">🎯</div><h3>4. Focused Prototype / Spike</h3></div>
 <p>Explore one narrow uncertainty—such as a difficult interface, risky algorithm, performance bottleneck, or unfamiliar technology—without modeling the entire product.</p>
 <div class="type-flow"><span>High-risk Question</span><i>→</i><span>Small Experiment</span><i>→</i><span>Decision</span></div>
 </div>
 </div>
-
 <div class="type-memory">
 <strong>Memory hook:</strong> Throwaway = learn then discard · Evolutionary = learn while growing ·
 Incremental = learn by parts · Focused/Spike = answer one risky question.
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Why Prototype?</div>
 <h2>The model attacks uncertainty directly</h2>
@@ -318,27 +292,19 @@ Incremental = learn by parts · Focused/Spike = answer one risky question.
 <div class="whycard"><div class="icon">⚡</div><b>Fast Feedback</b><p>Missing functionality and better alternatives can be discovered quickly.</p></div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Worked Example · Step by Step</div>
 <h2>Prototype a University Registration System</h2>
 <p>Suppose students complain that registration is confusing, but they cannot agree on what a better experience should look like. That is a good prototyping problem.</p>
-
 <div class="walkthrough">
-<div class="phase p1"><div class="phase-id">01<br>LISTEN</div><div class="phase-main"><h3>Collect the currently known requirements</h3><p>Interview students, advisors, and registration staff. Do not pretend the requirements are complete. Capture the parts everyone agrees on and explicitly mark uncertainty.</p><div class="tasks"><span class="task">Search sections</span><span class="task">Add/drop</span><span class="task">Prerequisites</span><span class="task">Schedule conflict</span><span class="task">Unknown: best UI flow</span></div></div><div class="phase-out"><small>OUTPUT</small><b>Initial Requirement Set</b><span>Enough knowledge to build a focused prototype—not enough to freeze the final system.</span></div></div>
-
-<div class="phase p2"><div class="phase-id">02<br>SELECT</div><div class="phase-main"><h3>Choose what uncertainty the prototype should explore</h3><p>Do not prototype everything. Here, the biggest uncertainty is the student's add-course workflow: searching, seeing prerequisite status, avoiding conflicts, and understanding failures.</p><div class="tasks"><span class="task">Target high-uncertainty workflow</span><span class="task">Ignore unrelated admin features</span></div></div><div class="phase-out"><small>OUTPUT</small><b>Prototype Scope</b><span>Student search + section details + add-course feedback.</span></div></div>
-
-<div class="phase p3"><div class="phase-id">03<br>BUILD</div><div class="phase-main"><h3>Build a quick working prototype</h3><p>Create only enough behavior for users to experience the interaction. A dummy course list and simulated prerequisite responses are acceptable because the goal is learning, not production reliability.</p><div class="tasks"><span class="task">Clickable screens</span><span class="task">Dummy data</span><span class="task">Simple validation</span><span class="task">Fast construction</span></div></div><div class="phase-out"><small>OUTPUT</small><b>Prototype v1</b><span>Looks and behaves enough like registration to trigger meaningful user reactions.</span></div></div>
-
-<div class="phase p4"><div class="phase-id">04<br>REVIEW</div><div class="phase-main"><h3>Put the prototype in front of users</h3><p>Ask students to complete realistic tasks rather than simply asking whether they “like” the interface. Observe where they hesitate, misinterpret labels, or expect missing behavior.</p><div class="tasks"><span class="task">Task: find CPCS 351</span><span class="task">Task: add section</span><span class="task">Observe errors</span><span class="task">Collect comments</span></div></div><div class="phase-out"><small>DISCOVERY</small><b>Unexpected Need</b><span>Students want conflict and prerequisite warnings before pressing “Add,” not after failure.</span></div></div>
-
-<div class="phase p5"><div class="phase-id">05<br>REVISE</div><div class="phase-main"><h3>Revise the prototype and requirements</h3><p>Change the interaction so every section shows a readiness status: Eligible, Missing Prerequisite, Time Conflict, or Full. Then test the revised prototype with users again.</p><div class="tasks"><span class="task">Revise UI</span><span class="task">Add missing behavior</span><span class="task">Clarify terminology</span><span class="task">Repeat review</span></div></div><div class="phase-out"><small>OUTPUT</small><b>Prototype v2 + Better Requirements</b><span>The team now understands behavior that was not obvious in the first interview.</span></div></div>
-
-<div class="phase p6"><div class="phase-id">06<br>DISCARD</div><div class="phase-main"><h3>Freeze the learning—not the prototype code</h3><p>Once the important requirements are understood, document them properly and engineer the production system using appropriate architecture, security, performance, database, testing, and maintainability practices.</p><div class="tasks"><span class="task">Update SRS</span><span class="task">Record decisions</span><span class="task">Discard shortcuts</span><span class="task">Design production solution</span></div></div><div class="phase-out"><small>FINAL LEARNING</small><b>Validated Requirements</b><span>The prototype may be thrown away; the knowledge it produced is retained.</span></div></div>
+<div class="phase p1"><div class="phase-id">01<br/>LISTEN</div><div class="phase-main"><h3>Collect the currently known requirements</h3><p>Interview students, advisors, and registration staff. Do not pretend the requirements are complete. Capture the parts everyone agrees on and explicitly mark uncertainty.</p><div class="tasks"><span class="task">Search sections</span><span class="task">Add/drop</span><span class="task">Prerequisites</span><span class="task">Schedule conflict</span><span class="task">Unknown: best UI flow</span></div></div><div class="phase-out"><small>OUTPUT</small><b>Initial Requirement Set</b><span>Enough knowledge to build a focused prototype—not enough to freeze the final system.</span></div></div>
+<div class="phase p2"><div class="phase-id">02<br/>SELECT</div><div class="phase-main"><h3>Choose what uncertainty the prototype should explore</h3><p>Do not prototype everything. Here, the biggest uncertainty is the student's add-course workflow: searching, seeing prerequisite status, avoiding conflicts, and understanding failures.</p><div class="tasks"><span class="task">Target high-uncertainty workflow</span><span class="task">Ignore unrelated admin features</span></div></div><div class="phase-out"><small>OUTPUT</small><b>Prototype Scope</b><span>Student search + section details + add-course feedback.</span></div></div>
+<div class="phase p3"><div class="phase-id">03<br/>BUILD</div><div class="phase-main"><h3>Build a quick working prototype</h3><p>Create only enough behavior for users to experience the interaction. A dummy course list and simulated prerequisite responses are acceptable because the goal is learning, not production reliability.</p><div class="tasks"><span class="task">Clickable screens</span><span class="task">Dummy data</span><span class="task">Simple validation</span><span class="task">Fast construction</span></div></div><div class="phase-out"><small>OUTPUT</small><b>Prototype v1</b><span>Looks and behaves enough like registration to trigger meaningful user reactions.</span></div></div>
+<div class="phase p4"><div class="phase-id">04<br/>REVIEW</div><div class="phase-main"><h3>Put the prototype in front of users</h3><p>Ask students to complete realistic tasks rather than simply asking whether they “like” the interface. Observe where they hesitate, misinterpret labels, or expect missing behavior.</p><div class="tasks"><span class="task">Task: find CPCS 351</span><span class="task">Task: add section</span><span class="task">Observe errors</span><span class="task">Collect comments</span></div></div><div class="phase-out"><small>DISCOVERY</small><b>Unexpected Need</b><span>Students want conflict and prerequisite warnings before pressing “Add,” not after failure.</span></div></div>
+<div class="phase p5"><div class="phase-id">05<br/>REVISE</div><div class="phase-main"><h3>Revise the prototype and requirements</h3><p>Change the interaction so every section shows a readiness status: Eligible, Missing Prerequisite, Time Conflict, or Full. Then test the revised prototype with users again.</p><div class="tasks"><span class="task">Revise UI</span><span class="task">Add missing behavior</span><span class="task">Clarify terminology</span><span class="task">Repeat review</span></div></div><div class="phase-out"><small>OUTPUT</small><b>Prototype v2 + Better Requirements</b><span>The team now understands behavior that was not obvious in the first interview.</span></div></div>
+<div class="phase p6"><div class="phase-id">06<br/>DISCARD</div><div class="phase-main"><h3>Freeze the learning—not the prototype code</h3><p>Once the important requirements are understood, document them properly and engineer the production system using appropriate architecture, security, performance, database, testing, and maintainability practices.</p><div class="tasks"><span class="task">Update SRS</span><span class="task">Record decisions</span><span class="task">Discard shortcuts</span><span class="task">Design production solution</span></div></div><div class="phase-out"><small>FINAL LEARNING</small><b>Validated Requirements</b><span>The prototype may be thrown away; the knowledge it produced is retained.</span></div></div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">A Visual Mini-Prototype</div>
 <h2>How one screen can evolve through feedback</h2>
@@ -351,7 +317,6 @@ Incremental = learn by parts · Focused/Spike = answer one risky question.
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Throwaway Means Throwaway</div>
 <h2>Do not confuse the learning model with the production system</h2>
@@ -361,7 +326,6 @@ Incremental = learn by parts · Focused/Spike = answer one risky question.
 <div class="throwbox product"><h3>Production System</h3><p>Engineered for correctness, security, performance, reliability, maintainability, integration, and long-term operation.</p></div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Strengths vs Limitations</div>
 <h2>Rapid learning has its own risks</h2>
@@ -381,7 +345,6 @@ Incremental = learn by parts · Focused/Spike = answer one risky question.
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">More Examples</div>
 <h2>Where prototyping gives strong learning value</h2>
@@ -391,22 +354,19 @@ Incremental = learn by parts · Focused/Spike = answer one risky question.
 <div class="ex"><div class="icon">🏥</div><b>Clinical Dashboard</b><p>Prototype how doctors see alerts and patient trends so information overload and unsafe interaction patterns appear early.</p></div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Illustrated Story</div>
 <h2>The requirement users could not explain</h2>
 <div class="story">
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-03-thinking.png" alt=""></div><span class="no">PANEL 1</span><h4>“Make registration easier.”</h4><p>The request is real—but too vague to design confidently.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div><span class="no">PANEL 2</span><h4>Build something small</h4><p>The team creates a quick prototype of the add-course workflow.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div><span class="no">PANEL 3</span><h4>Users reveal the missing need</h4><p>Students expect eligibility warnings before they attempt enrollment.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div><span class="no">PANEL 4</span><h4>Learning becomes requirement</h4><p>The revised requirement is specific enough to engineer properly.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-03-thinking.png"/></div><span class="no">PANEL 1</span><h4>“Make registration easier.”</h4><p>The request is real—but too vague to design confidently.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-07-working-laptop.png"/></div><span class="no">PANEL 2</span><h4>Build something small</h4><p>The team creates a quick prototype of the add-course workflow.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-10-concerned.png"/></div><span class="no">PANEL 3</span><h4>Users reveal the missing need</h4><p>Students expect eligibility warnings before they attempt enrollment.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-09-idea.png"/></div><span class="no">PANEL 4</span><h4>Learning becomes requirement</h4><p>The revised requirement is specific enough to engineer properly.</p></div>
 </div>
 </section>
-
-<div class="note"><div><b>Mentor Insight</b><p>A successful throwaway prototype is allowed to be technically ugly if it creates valuable knowledge quickly. The mistake is allowing prototype shortcuts to silently become production architecture.</p></div><img src="../../assets/images/mentor-11-serious.png" alt=""></div>
+<div class="note"><div><b>Mentor Insight</b><p>A successful throwaway prototype is allowed to be technically ugly if it creates valuable knowledge quickly. The mistake is allowing prototype shortcuts to silently become production architecture.</p></div><img alt="" src="../../assets/images/mentor-11-serious.png"/></div>
 <div class="take"><b>Key Takeaway</b><p>In the Prototyping Model, requirements are not frozen too early. A throwaway prototype is built from currently known requirements, reviewed by users, and revised to improve understanding. The learning is retained; the prototype itself does not have to become the final system.</p></div>
-<div class="think"><div><span class="tlabel">Think Like a Software Engineer</span><h3>Your prototype works and users love it. Why might rewriting it still be the correct engineering decision?</h3><p>Ask what shortcuts were taken in architecture, security, performance, reliability, data integrity, testing, and maintainability. A successful learning model is not automatically a safe production system.</p></div><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
-
+<div class="think"><div><span class="tlabel">Think Like a Software Engineer</span><h3>Your prototype works and users love it. Why might rewriting it still be the correct engineering decision?</h3><p>Ask what shortcuts were taken in architecture, security, performance, reliability, data integrity, testing, and maintainability. A successful learning model is not automatically a safe production system.</p></div><img alt="" src="../../assets/images/mentor-03-thinking.png"/></div>
 <div class="nav"><a href="waterfall-model.html">← Waterfall Model</a><a class="next" href="evolutionary-development.html">Next · Evolutionary Development →</a></div>
 </article></main>
 </div>

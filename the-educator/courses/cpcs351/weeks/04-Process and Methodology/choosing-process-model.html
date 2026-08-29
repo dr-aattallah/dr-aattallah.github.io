@@ -1,7 +1,8 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Choosing the Right Process Model | CPCS 351</title>
 <style>
 :root{
@@ -58,28 +59,30 @@ h1{font-size:clamp(44px,5.8vw,66px);line-height:.98;letter-spacing:-.045em;margi
 @media(max-width:950px){.signals{grid-template-columns:1fr 1fr 1fr}.personalities{grid-template-columns:1fr 1fr 1fr}.story{grid-template-columns:1fr 1fr}}
 @media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,1060px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
 @media(max-width:650px){.signals,.personalities,.scenarios,.story{grid-template-columns:1fr}.models{grid-template-columns:1fr}.qrow{grid-template-columns:1fr}.arr{transform:rotate(90deg)}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}.console-head{flex-direction:column}}
+
+/* Topic 04 navigation consistency */
+.mobile-topic-nav{display:none}
+@media(max-width:850px){
+  .mobile-topic-nav{display:flex;gap:7px;overflow-x:auto;white-space:nowrap;padding:9px 12px;position:sticky;top:62px;z-index:45;background:rgba(250,250,255,.97);border-bottom:1px solid var(--line,#e1e6ef);scrollbar-width:thin}
+  .mobile-topic-nav a{flex:0 0 auto;text-decoration:none;padding:7px 10px;border:1px solid var(--line,#e1e6ef);border-radius:999px;background:#fff;color:var(--muted,#65718a);font-size:11px;font-weight:800}
+  .mobile-topic-nav a.active{background:var(--indigo,#2d2a78);border-color:var(--indigo,#2d2a78);color:#fff}
+}
 </style>
 </head>
 <body>
-<header class="top"><a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a><nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header>
+<header class="top"><a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a><nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header><nav aria-label="Topic 04 lesson navigation" class="mobile-topic-nav"><a href="index.html">01 Process</a><a href="development-challenges.html">02 Challenges</a><a href="process-models-overview.html">03 Models</a><a href="waterfall-model.html">04 Waterfall</a><a href="prototyping-model.html">05 Prototype</a><a href="evolutionary-development.html">06 Evolutionary</a><a href="spiral-model.html">07 Spiral</a><a href="agile-process-models.html">08 Agile Process</a><a aria-current="page" class="active" href="choosing-process-model.html">09 Choose Model</a><a href="agile-methods.html">10 Agile Methods</a><a href="software-paradigms.html">11 Paradigms</a></nav>
 <div class="layout">
-<aside class="side">
-<div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div>
-<div class="label">Topic 04</div>
-<a href="index.html">1. Process &amp; Methodology</a><a href="development-challenges.html">2. Development Challenges</a><a href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a href="prototyping-model.html">5. Prototyping Model</a><a href="evolutionary-development.html">6. Evolutionary Development</a><a href="spiral-model.html">7. Spiral Model</a><a href="agile-process-models.html">8. Agile Process Models</a><a class="active" href="choosing-process-model.html">9. Choosing the Right Model</a><span class="future">10. Agile Methods</span><span class="future">11. Software Paradigms</span>
-</aside>
+<aside class="side"><div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div><div class="label">Topic 04</div><a href="index.html">1. Process &amp; Methodology</a><a href="development-challenges.html">2. Development Challenges</a><a href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a href="prototyping-model.html">5. Prototyping Model</a><a href="evolutionary-development.html">6. Evolutionary Development</a><a href="spiral-model.html">7. Spiral Model</a><a href="agile-process-models.html">8. Agile Process Models</a><a class="active" href="choosing-process-model.html">9. Choosing the Right Model</a><a href="agile-methods.html">10. Agile Methods</a><a href="software-paradigms.html">11. Software Paradigms</a><div class="label">Course</div><a href="../../index.html">Course Home</a></aside>
 <main><article class="content">
 <div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 04 › Choosing the Right Process Model</div>
-
 <section class="hero"><div><div class="eyebrow">Topic 04 · Decision Point</div><h1>Choosing the Right Process Model</h1>
 <p class="lead">There is no universally “best” SDLC model. The engineering question is: <strong>which process behavior fits this project's uncertainty, technology, constraints, people, and business context?</strong></p></div>
-<div class="mentor"><div class="pic"><img src="../../assets/images/mentor-03-thinking.png" alt="Mentor comparing process models"></div><p>“Do not choose a model because it is fashionable. Choose it because its strengths match the risks and constraints of the project.”</p></div></section>
-
+<div class="mentor"><div class="pic"><img alt="Mentor comparing process models" src="../../assets/images/mentor-03-thinking.png"/></div><p>“Do not choose a model because it is fashionable. Choose it because its strengths match the risks and constraints of the project.”</p></div></section>
 <section class="section"><div class="kicker">Visual Hook</div><h2>The Process Model Selection Console</h2>
 <p>Imagine every project entering a selection console. The console reads its strongest signals—requirements, technology, complexity, time, cost, people, and stakeholder involvement—before recommending a development route.</p>
 <div class="console">
 <div class="console-head"><b>PROCESS MODEL SELECTION CONSOLE</b><span>PROJECT CHARACTERISTICS → MODEL FIT</span></div>
-<div class="project"><div><b>YOUR PROJECT</b><small>requirements · technology<br>complexity · time · budget<br>people · business</small></div></div>
+<div class="project"><div><b>YOUR PROJECT</b><small>requirements · technology<br/>complexity · time · budget<br/>people · business</small></div></div>
 <div class="signals">
 <div class="signal"><div class="ico">❓</div><b>Requirement Clarity</b><span>Are user needs stable, or are important requirements still unclear?</span></div>
 <div class="signal"><div class="ico">🧪</div><b>Technology Familiarity</b><span>Is the technology proven, or must the team explore unfamiliar technical territory?</span></div>
@@ -91,16 +94,13 @@ h1{font-size:clamp(44px,5.8vw,66px);line-height:.98;letter-spacing:-.045em;margi
 <div class="models"><div class="model">↓ Waterfall</div><div class="model">↻ Evolutionary Prototyping</div><div class="model">◎ Spiral</div><div class="model">▰ Iterative &amp; Incremental</div><div class="model">⚡ Agile</div></div>
 <div class="memory"><strong>Memory hook:</strong> do not ask “Which model is best?” Ask “Which model's strengths fit the dominant characteristics of this project?”</div>
 </div></section>
-
 <section class="section"><div class="kicker">Selection Factors</div><h2>What should influence the choice?</h2>
 <p>Model selection depends on several project conditions. Important high-level considerations include <strong>resources—time, people, and budget—project type, and business type</strong>. The matrix below expands the decision into specific engineering factors.</p>
 </section>
-
 <section class="section"><div class="kicker">Complete Comparison Matrix</div><h2>Compare the five process choices factor by factor</h2>
-<p>This matrix preserves the comparative ratings used in the course material. Read across a row: first identify a characteristic that strongly describes your project, then compare which models receive stronger ratings for that characteristic.</p>
-
+<p>Read across a row: first identify a characteristic that strongly describes your project, then compare which models receive stronger ratings for that characteristic. Treat the matrix as a decision aid—not an automatic rule—because real projects may combine constraints and practices from more than one model.</p>
 <div class="matrix-wrap"><table class="matrix">
-<thead><tr><th>Factor</th><th>Waterfall</th><th>Evolutionary<br>Prototyping</th><th>Spiral</th><th>Iterative &amp;<br>Incremental</th><th>Agile</th></tr></thead>
+<thead><tr><th>Factor</th><th>Waterfall</th><th>Evolutionary<br/>Prototyping</th><th>Spiral</th><th>Iterative &amp;<br/>Incremental</th><th>Agile</th></tr></thead>
 <tbody>
 <tr><td>Unclear User Requirement</td><td class="pr">Poor</td><td class="gd">Good</td><td class="ex">Excellent</td><td class="gd">Good</td><td class="ex">Excellent</td></tr>
 <tr><td>Unfamiliar Technology</td><td class="pr">Poor</td><td class="ex">Excellent</td><td class="ex">Excellent</td><td class="gd">Good</td><td class="pr">Poor</td></tr>
@@ -116,7 +116,6 @@ h1{font-size:clamp(44px,5.8vw,66px);line-height:.98;letter-spacing:-.045em;margi
 </tbody></table>
 <div class="legend"><span class="e">Excellent = strong fit in this matrix</span><span class="g">Good = reasonable fit</span><span class="p">Poor = weak fit</span></div></div>
 </section>
-
 <section class="section"><div class="kicker">Model Personalities</div><h2>Remember each model by the problem it handles well</h2>
 <div class="personalities">
 <div class="person"><div class="sym">↓</div><h3>Waterfall</h3><p>Sequential and documentation-friendly. Better when predictability and structured artifacts matter.</p><b>Memory: PLAN THE ROUTE</b></div>
@@ -125,7 +124,6 @@ h1{font-size:clamp(44px,5.8vw,66px);line-height:.98;letter-spacing:-.045em;margi
 <div class="person"><div class="sym">▰</div><h3>Iterative &amp; Incremental</h3><p>Build through manageable increments; rated strongly for short schedules, cost limits, documentation, and reuse.</p><b>Memory: BUILD IN PIECES</b></div>
 <div class="person"><div class="sym">⚡</div><h3>Agile</h3><p>Adaptive, fast, stakeholder-visible delivery; rated strongly for unclear requirements and short schedules.</p><b>Memory: DELIVER &amp; ADAPT</b></div>
 </div></section>
-
 <section class="section"><div class="kicker">Reasoning Path</div><h2>Turn project facts into process decisions</h2>
 <div class="path">
 <div class="qrow"><div class="q"><b>Requirements are unclear and users can collaborate frequently?</b><span>The team needs repeated feedback rather than one frozen specification.</span></div><div class="arr">→</div><div class="answer"><b>Consider Agile or Spiral</b><span>Both receive Excellent for unclear user requirements in the comparison matrix.</span></div></div>
@@ -133,32 +131,23 @@ h1{font-size:clamp(44px,5.8vw,66px);line-height:.98;letter-spacing:-.045em;margi
 <div class="qrow"><div class="q"><b>The schedule is short and cost is tightly constrained?</b><span>The project needs useful progress under strong delivery constraints.</span></div><div class="arr">→</div><div class="answer"><b>Consider Iterative &amp; Incremental or Agile</b><span>Both receive Excellent for short schedules and cost limitation in the matrix.</span></div></div>
 <div class="qrow"><div class="q"><b>Documentation and component reuse are major priorities?</b><span>Formal artifacts and reusable components carry high value.</span></div><div class="arr">→</div><div class="answer"><b>Waterfall or Iterative &amp; Incremental score strongly</b><span>Both receive Excellent for documentation and component reusability in the provided comparison.</span></div></div>
 </div></section>
-
 <section class="section"><div class="kicker">Worked Scenarios</div><h2>Same question. Different projects. Different answers.</h2>
 <div class="scenarios">
 <div class="scenario"><div class="topline"><h3>University Mobile App</h3><span class="badge">AGILE</span></div><p>Students are available for feedback; UI needs will evolve; a useful subset must appear quickly.</p><div class="facts"><span>Unclear requirements</span><span>Short schedule</span><span>High stakeholder visibility</span></div><div class="why"><strong>Why:</strong> Agile is rated Excellent for all three of these factors in the matrix.</div></div>
-
 <div class="scenario"><div class="topline"><h3>Experimental AI Research System</h3><span class="badge">EVOLUTIONARY</span></div><p>The team is exploring behavior that cannot be specified confidently before experiments and prototypes exist.</p><div class="facts"><span>Unfamiliar technology</span><span>Exploratory work</span><span>Visible prototypes</span></div><div class="why"><strong>Why:</strong> Evolutionary prototyping is rated Excellent for unfamiliar technology and stakeholder visibility, and the model naturally grows a prototype toward the production system.</div></div>
-
 <div class="scenario"><div class="topline"><h3>Safety-Critical Control Platform</h3><span class="badge">SPIRAL</span></div><p>The system is complex and reliability matters strongly; uncertainty must be analyzed before increasing commitment.</p><div class="facts"><span>Complex</span><span>Reliable system</span><span>Risk analysis</span></div><div class="why"><strong>Why:</strong> Spiral is rated Excellent for complex and reliable systems, while its process explicitly emphasizes risk assessment and reduction.</div></div>
-
 <div class="scenario"><div class="topline"><h3>Reusable Enterprise Platform</h3><span class="badge">ITERATIVE + INCREMENTAL</span></div><p>The organization wants documented increments and reusable components while delivering progressively.</p><div class="facts"><span>Documentation</span><span>Reuse</span><span>Incremental delivery</span></div><div class="why"><strong>Why:</strong> Iterative &amp; Incremental is rated Excellent for documentation and component reusability in the matrix.</div></div>
 </div></section>
-
 <section class="section"><div class="kicker">Illustrated Story</div><h2>The team that chose a model before understanding the project</h2>
 <div class="story">
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div><small>1 · HABIT</small><h4>“We always use Agile.”</h4><p>The team selects its familiar process before examining project conditions.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div><small>2 · CONFLICT</small><h4>The project disagrees</h4><p>Technology is unfamiliar, reliability is critical, and major technical risks are unresolved.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-03-thinking.png" alt=""></div><small>3 · ENGINEERING</small><h4>Read the signals</h4><p>The team compares uncertainty, complexity, risk, time, people, budget, and stakeholder needs.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div><small>4 · FIT</small><h4>Choose deliberately</h4><p>The process is selected because it fits the project—not because its name is popular.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-07-working-laptop.png"/></div><small>1 · HABIT</small><h4>“We always use Agile.”</h4><p>The team selects its familiar process before examining project conditions.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-10-concerned.png"/></div><small>2 · CONFLICT</small><h4>The project disagrees</h4><p>Technology is unfamiliar, reliability is critical, and major technical risks are unresolved.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-03-thinking.png"/></div><small>3 · ENGINEERING</small><h4>Read the signals</h4><p>The team compares uncertainty, complexity, risk, time, people, budget, and stakeholder needs.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-01-confident-smile.png"/></div><small>4 · FIT</small><h4>Choose deliberately</h4><p>The process is selected because it fits the project—not because its name is popular.</p></div>
 </div></section>
-
-<div class="note"><div><b>Mentor Insight</b><p>A process model is an engineering decision. Real projects may also tailor or combine practices, but the first discipline is understanding what each model is good and poor at before making that choice.</p></div><img src="../../assets/images/mentor-11-serious.png" alt=""></div>
-
+<div class="note"><div><b>Mentor Insight</b><p>A process model is an engineering decision. Real projects may also tailor or combine practices, but the first discipline is understanding what each model is good and poor at before making that choice.</p></div><img alt="" src="../../assets/images/mentor-11-serious.png"/></div>
 <div class="take"><b>Key Takeaway</b><p>Choose an SDLC model by matching project characteristics to model strengths. Resources such as time, people, and budget matter, as do project and business type. The comparison matrix highlights requirement uncertainty, unfamiliar technology, complexity, reliability, schedule, cost, management, stakeholder visibility, skills, documentation, and component reuse as important selection factors.</p></div>
-
-<div class="think"><div><span class="tlabel">Think Like a Software Engineer</span><h3>Your requirements are unclear, the technology is unfamiliar, and the deadline is very short. Which model wins?</h3><p>There may be no perfect winner. The factors pull in different directions. Use the matrix to expose the trade-off, identify the project's dominant risk, and justify which weakness you are willing to manage.</p></div><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
-
+<div class="think"><div><span class="tlabel">Think Like a Software Engineer</span><h3>Your requirements are unclear, the technology is unfamiliar, and the deadline is very short. Which model wins?</h3><p>There may be no perfect winner. The factors pull in different directions. Use the matrix to expose the trade-off, identify the project's dominant risk, and justify which weakness you are willing to manage.</p></div><img alt="" src="../../assets/images/mentor-03-thinking.png"/></div>
 <div class="nav"><a href="agile-process-models.html">← Agile Process Models</a><a class="next" href="agile-methods.html">Next · Agile Methods →</a></div>
 </article></main></div>
 <script>if(sessionStorage.getItem("cpcs351_access")!=="granted"){window.location.href="../../access.html";}</script>

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
 <title>Development Challenges | CPCS 351</title>
-<meta name="description" content="CPCS 351 Software Engineering I — Development Challenges.">
+<meta content="CPCS 351 Software Engineering I — Development Challenges." name="description"/>
 <style>
 :root{
   --ink:#172036;--muted:#65718a;--line:#e1e6ef;
@@ -109,39 +110,25 @@ linear-gradient(180deg,#fcfcff,#f7f7ff)}
 @media(max-width:900px){.alert-grid,.departments{grid-template-columns:1fr 1fr}.story{grid-template-columns:1fr 1fr}}
 @media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,980px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
 @media(max-width:680px){.alert-grid,.departments,.weather-grid,.example-grid,.story{grid-template-columns:1fr}.pair{grid-template-columns:1fr}.arrow{transform:rotate(90deg);padding:6px}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}}
+
+/* Topic 04 navigation consistency */
+.mobile-topic-nav{display:none}
+@media(max-width:850px){
+  .mobile-topic-nav{display:flex;gap:7px;overflow-x:auto;white-space:nowrap;padding:9px 12px;position:sticky;top:62px;z-index:45;background:rgba(250,250,255,.97);border-bottom:1px solid var(--line,#e1e6ef);scrollbar-width:thin}
+  .mobile-topic-nav a{flex:0 0 auto;text-decoration:none;padding:7px 10px;border:1px solid var(--line,#e1e6ef);border-radius:999px;background:#fff;color:var(--muted,#65718a);font-size:11px;font-weight:800}
+  .mobile-topic-nav a.active{background:var(--indigo,#2d2a78);border-color:var(--indigo,#2d2a78);color:#fff}
+}
 </style>
 </head>
 <body>
-
 <header class="top">
 <a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
 <nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
-</header>
-
+</header><nav aria-label="Topic 04 lesson navigation" class="mobile-topic-nav"><a href="index.html">01 Process</a><a aria-current="page" class="active" href="development-challenges.html">02 Challenges</a><a href="process-models-overview.html">03 Models</a><a href="waterfall-model.html">04 Waterfall</a><a href="prototyping-model.html">05 Prototype</a><a href="evolutionary-development.html">06 Evolutionary</a><a href="spiral-model.html">07 Spiral</a><a href="agile-process-models.html">08 Agile Process</a><a href="choosing-process-model.html">09 Choose Model</a><a href="agile-methods.html">10 Agile Methods</a><a href="software-paradigms.html">11 Paradigms</a></nav>
 <div class="layout">
-
-<aside class="side">
-<div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div>
-<div class="label">Topic 04</div>
-<a href="index.html">1. Process &amp; Methodology</a>
-<a class="active" href="development-challenges.html">2. Development Challenges</a>
-<span class="future">3. Process Models Overview</span>
-<span class="future">4. Waterfall Model</span>
-<span class="future">5. Prototyping Model</span>
-<span class="future">6. Evolutionary Development</span>
-<span class="future">7. Spiral Model</span>
-<span class="future">8. Agile Process Models</span>
-<span class="future">9. Choosing the Right Model</span>
-<span class="future">10. Agile Methods</span>
-<span class="future">11. Software Paradigms</span>
-<div class="label">Course</div>
-<a href="../../index.html">Course Home</a>
-</aside>
-
+<aside class="side"><div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div><div class="label">Topic 04</div><a href="index.html">1. Process &amp; Methodology</a><a class="active" href="development-challenges.html">2. Development Challenges</a><a href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a href="prototyping-model.html">5. Prototyping Model</a><a href="evolutionary-development.html">6. Evolutionary Development</a><a href="spiral-model.html">7. Spiral Model</a><a href="agile-process-models.html">8. Agile Process Models</a><a href="choosing-process-model.html">9. Choosing the Right Model</a><a href="agile-methods.html">10. Agile Methods</a><a href="software-paradigms.html">11. Software Paradigms</a><div class="label">Course</div><a href="../../index.html">Course Home</a></aside>
 <main><article class="content">
-
 <div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 04 › Development Challenges</div>
-
 <section class="hero">
 <div>
 <div class="eyebrow">Topic 04 · Lesson 02</div>
@@ -151,204 +138,158 @@ Software development becomes difficult long before coding becomes difficult.
 Time, people, uncertainty, changing requirements, heterogeneous technologies, and coordination all create engineering problems.
 </p>
 </div>
-
 <div class="mentor">
-<div class="pic"><img src="../../assets/images/mentor-10-concerned.png" alt="Mentor concerned about development challenges"></div>
+<div class="pic"><img alt="Mentor concerned about development challenges" src="../../assets/images/mentor-10-concerned.png"/></div>
 <p>“Complexity grows through people, change, interfaces, and uncertainty—not only through lines of code.”</p>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Visual Hook</div>
 <h2>The Development Challenge Control Room</h2>
 <p>Six warning lights explain why software development needs disciplined processes and methodologies.</p>
-
 <div class="control-room">
-
 <div class="room-head">
 <b>PROJECT + SYSTEM CHALLENGE MONITOR</b>
 <span>WHAT CAN DERAIL DEVELOPMENT?</span>
 </div>
-
 <div class="alert-grid">
-
 <div class="alert">
 <div class="badge"></div><div class="icon">⏳</div>
 <b>Long Development Time</b>
 <p>Projects may take years, while future needs and customer expectations remain uncertain.</p>
 </div>
-
 <div class="alert">
 <div class="badge"></div><div class="icon">👥</div>
 <b>Many Teams</b>
 <p>Multiple departments must divide work, coordinate dependencies, and integrate their results.</p>
 </div>
-
 <div class="alert">
 <div class="badge"></div><div class="icon">🧰</div>
 <b>Different Tools &amp; Methods</b>
 <p>Teams may use different processes, methods, tools, and locations.</p>
 </div>
-
 <div class="alert">
 <div class="badge"></div><div class="icon">🔄</div>
 <b>Changing Requirements</b>
 <p>Requirements and constraints may change during development.</p>
 </div>
-
 <div class="alert">
 <div class="badge"></div><div class="icon">🧩</div>
 <b>Many Technologies</b>
 <p>Hardware, software, third-party components, languages, and platforms may all differ.</p>
 </div>
-
 <div class="alert">
 <div class="badge"></div><div class="icon">🎯</div>
 <b>Many Requirements &amp; Constraints</b>
 <p>The complete system must still satisfy all required capabilities and limitations.</p>
 </div>
-
 </div>
-
 <div class="room-note">
 <strong>Engineering problem:</strong> how do we organize work so uncertainty, coordination, change, and heterogeneity remain controllable?
 </div>
-
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Project-Level Challenges</div>
 <h2>Reality creates a management question</h2>
-
 <div class="pairs">
-
 <div class="pair">
 <div class="reality"><b>Reality 1 · Projects can take many years</b><p>The future is uncertain and customers may not know exactly what they will need.</p></div>
 <div class="arrow">→</div>
 <div class="challenge"><b>Challenge 1</b><p>How do we schedule and manage work without knowing exactly what the customer wants or what may happen later?</p></div>
 </div>
-
 <div class="pair">
 <div class="reality"><b>Reality 2 · Many teams must collaborate</b><p>Large projects often cross departments, disciplines, and organizational boundaries.</p></div>
 <div class="arrow">→</div>
 <div class="challenge"><b>Challenge 2</b><p>How do we divide the work among teams and integrate the components they produce?</p></div>
 </div>
-
 <div class="pair">
 <div class="reality"><b>Reality 3 · Teams may work differently</b><p>Different teams may use different processes, methods, tools, and locations.</p></div>
 <div class="arrow">→</div>
 <div class="challenge"><b>Challenge 3</b><p>How do we ensure proper communication and coordination across those differences?</p></div>
 </div>
-
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Visual Example</div>
 <h2>One university project, four departments</h2>
-
 <div class="team-map">
-
-<div class="team-core">UNIVERSITY<br>DIGITAL CAMPUS<br>PROJECT</div>
-
+<div class="team-core">UNIVERSITY<br/>DIGITAL CAMPUS<br/>PROJECT</div>
 <div class="departments">
 <div class="dept"><div class="icon">🎓</div><b>Academic Systems</b><span>registration, grades, courses</span></div>
 <div class="dept"><div class="icon">💳</div><b>Finance</b><span>fees, payments, refunds</span></div>
 <div class="dept"><div class="icon">🚌</div><b>Transportation</b><span>buses, routes, tracking</span></div>
 <div class="dept"><div class="icon">🛡</div><b>IT &amp; Security</b><span>identity, infrastructure, access</span></div>
 </div>
-
 <div class="coord-line"></div>
 <div class="coord-note">Different teams can build different pieces—but the final system must behave like one coherent product.</div>
-
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">System-Level Challenges</div>
 <h2>Systems add another layer of difficulty</h2>
-
 <div class="pairs">
-
 <div class="pair">
 <div class="reality"><b>System Reality 1 · Many requirements &amp; constraints</b><p>The system must satisfy numerous functional and non-functional expectations.</p></div>
 <div class="arrow">→</div>
 <div class="challenge"><b>System Challenge 1</b><p>How do we develop the system so the required capabilities and constraints are actually met?</p></div>
 </div>
-
 <div class="pair">
 <div class="reality"><b>System Reality 2 · Requirements change</b><p>Business rules, technologies, regulations, and user expectations can evolve.</p></div>
 <div class="arrow">→</div>
 <div class="challenge"><b>System Challenge 2</b><p>How do we design both processes and products so they can cope with change?</p></div>
 </div>
-
 <div class="pair">
 <div class="reality"><b>System Reality 3 · Heterogeneous components</b><p>A system may combine hardware, software, third-party components, different languages, platforms, machines, and locations.</p></div>
 <div class="arrow">→</div>
 <div class="challenge"><b>System Challenge 3</b><p>How do we design the system so those differences are hidden behind usable interfaces?</p></div>
 </div>
-
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Change Visual</div>
 <h2>Requirements behave like weather</h2>
-
 <div class="weather">
 <div class="weather-grid">
-
 <div class="wcard">
 <div class="icon">☀</div>
 <b>Today</b>
 <p>Requirements appear stable and the project plan looks predictable.</p>
 </div>
-
 <div class="wcard">
 <div class="icon">🌦</div>
 <b>During Development</b>
 <p>Business priorities, regulations, users, and technology begin to change.</p>
 </div>
-
 <div class="wcard">
 <div class="icon">🌩</div>
 <b>Without Adaptability</b>
 <p>The process becomes rigid, rework grows, and the delivered system may no longer fit the real need.</p>
 </div>
-
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Technology Heterogeneity</div>
 <h2>One system can sit on many technology layers</h2>
-
 <div class="stack">
 <div class="stack-grid">
-
 <div class="layerbox l1">Users &amp; Operators<small>different skills, devices, locations</small></div>
 <div class="layerbox l2">Applications<small>web · mobile · desktop</small></div>
 <div class="layerbox l3">Software Components<small>Java · Python · APIs · third-party services</small></div>
 <div class="layerbox l4">Platforms<small>cloud · on-premise · multiple operating systems</small></div>
 <div class="layerbox l5">Machines &amp; Networks<small>servers · devices · distributed locations</small></div>
 <div class="layerbox l6">Hardware / External Components<small>sensors · scanners · vendor systems</small></div>
-
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">More Examples</div>
 <h2>See the same challenges in familiar systems</h2>
-
 <div class="example-grid">
-
 <div class="example-card">
 <h3>Mobile Banking System</h3>
 <p>A bank may have mobile apps, web portals, payment gateways, fraud services, databases, legacy systems, regulators, and security teams.</p>
-
 <div class="ex-list">
 <div class="ex-item">Requirement change: new compliance rule.</div>
 <div class="ex-item">Integration challenge: old core banking + modern APIs.</div>
@@ -356,11 +297,9 @@ Time, people, uncertainty, changing requirements, heterogeneous technologies, an
 <div class="ex-item">Technology challenge: many platforms and third-party services.</div>
 </div>
 </div>
-
 <div class="example-card">
 <h3>Ride-Sharing Platform</h3>
 <p>The system combines passenger app, driver app, maps, GPS, payments, messaging, pricing, and cloud services.</p>
-
 <div class="ex-list">
 <div class="ex-item">Requirement change: new city regulations.</div>
 <div class="ex-item">Integration challenge: payment provider + mapping API.</div>
@@ -368,47 +307,38 @@ Time, people, uncertainty, changing requirements, heterogeneous technologies, an
 <div class="ex-item">Team challenge: distributed developers in different locations.</div>
 </div>
 </div>
-
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Illustrated Story</div>
 <h2>The project that looked simple on day one</h2>
-
 <div class="story">
-
 <div class="panel">
-<div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div>
+<div class="visual"><img alt="" src="../../assets/images/mentor-01-confident-smile.png"/></div>
 <span class="no">Panel 1</span>
 <h4>Simple beginning</h4>
 <p>The team starts with a clear goal and a small set of requirements.</p>
 </div>
-
 <div class="panel">
-<div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div>
+<div class="visual"><img alt="" src="../../assets/images/mentor-07-working-laptop.png"/></div>
 <span class="no">Panel 2</span>
 <h4>More teams join</h4>
 <p>Security, infrastructure, business, mobile, and external vendors become involved.</p>
 </div>
-
 <div class="panel">
-<div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div>
+<div class="visual"><img alt="" src="../../assets/images/mentor-10-concerned.png"/></div>
 <span class="no">Panel 3</span>
 <h4>Reality changes</h4>
 <p>Requirements evolve, technologies differ, deadlines remain, and interfaces multiply.</p>
 </div>
-
 <div class="panel">
-<div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
+<div class="visual"><img alt="" src="../../assets/images/mentor-09-idea.png"/></div>
 <span class="no">Panel 4</span>
 <h4>Engineering discipline matters</h4>
 <p>Processes and methodologies provide structure for planning, coordination, change, integration, and quality.</p>
 </div>
-
 </div>
 </section>
-
 <div class="note">
 <div>
 <b>Mentor Insight</b>
@@ -416,9 +346,8 @@ Time, people, uncertainty, changing requirements, heterogeneous technologies, an
 The purpose of a process is not bureaucracy. Its value is making complex, uncertain, multi-team development more controllable and repeatable.
 </p>
 </div>
-<img src="../../assets/images/mentor-11-serious.png" alt="Mentor emphasizing development discipline">
+<img alt="Mentor emphasizing development discipline" src="../../assets/images/mentor-11-serious.png"/>
 </div>
-
 <div class="take">
 <b>Key Takeaway</b>
 <p>
@@ -427,7 +356,6 @@ large numbers of requirements and constraints, changing requirements, and hetero
 Processes and methodologies exist to help teams manage these realities.
 </p>
 </div>
-
 <div class="think">
 <div>
 <span class="tlabel">Think Like a Software Engineer</span>
@@ -436,22 +364,18 @@ Processes and methodologies exist to help teams manage these realities.
 Choose one for a large university system and explain why. Then identify one process or methodological practice that could reduce that risk.
 </p>
 </div>
-<img src="../../assets/images/mentor-03-thinking.png" alt="Mentor thinking about development risks">
+<img alt="Mentor thinking about development risks" src="../../assets/images/mentor-03-thinking.png"/>
 </div>
-
 <div class="nav">
 <a href="index.html">← Process &amp; Methodology</a>
 <a class="next" href="process-models-overview.html">Next · Process Models Overview →</a>
 </div>
-
 </article></main>
 </div>
-
 <script>
 if(sessionStorage.getItem("cpcs351_access") !== "granted"){
   window.location.href="../../access.html";
 }
 </script>
-
 </body>
 </html>

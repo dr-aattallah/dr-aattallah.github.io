@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
 <title>Software Paradigms | CPCS 351</title>
 <style>
 :root{
@@ -120,34 +121,25 @@ linear-gradient(180deg,#fcfcff,#f8fbff)}
 @media(max-width:950px){.lens-grid,.views,.examples,.rep{grid-template-columns:1fr 1fr}.story{grid-template-columns:1fr 1fr}.row{grid-template-columns:150px 1fr 35px 1fr 35px 1fr}}
 @media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,1040px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
 @media(max-width:680px){.lens-grid,.views,.examples,.rep,.story{grid-template-columns:1fr}.row{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}.note,.think{grid-template-columns:1fr}.topic-summary{grid-template-columns:1fr 1fr}.nav{flex-direction:column}.nav a{text-align:center}.lens-head{flex-direction:column}}
+
+/* Topic 04 navigation consistency */
+.mobile-topic-nav{display:none}
+@media(max-width:850px){
+  .mobile-topic-nav{display:flex;gap:7px;overflow-x:auto;white-space:nowrap;padding:9px 12px;position:sticky;top:62px;z-index:45;background:rgba(250,250,255,.97);border-bottom:1px solid var(--line,#e1e6ef);scrollbar-width:thin}
+  .mobile-topic-nav a{flex:0 0 auto;text-decoration:none;padding:7px 10px;border:1px solid var(--line,#e1e6ef);border-radius:999px;background:#fff;color:var(--muted,#65718a);font-size:11px;font-weight:800}
+  .mobile-topic-nav a.active{background:var(--indigo,#2d2a78);border-color:var(--indigo,#2d2a78);color:#fff}
+}
 </style>
 </head>
 <body>
 <header class="top">
 <a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a>
 <nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav>
-</header>
-
+</header><nav aria-label="Topic 04 lesson navigation" class="mobile-topic-nav"><a href="index.html">01 Process</a><a href="development-challenges.html">02 Challenges</a><a href="process-models-overview.html">03 Models</a><a href="waterfall-model.html">04 Waterfall</a><a href="prototyping-model.html">05 Prototype</a><a href="evolutionary-development.html">06 Evolutionary</a><a href="spiral-model.html">07 Spiral</a><a href="agile-process-models.html">08 Agile Process</a><a href="choosing-process-model.html">09 Choose Model</a><a href="agile-methods.html">10 Agile Methods</a><a aria-current="page" class="active" href="software-paradigms.html">11 Paradigms</a></nav>
 <div class="layout">
-<aside class="side">
-<div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div>
-<div class="label">Topic 04</div>
-<a href="index.html">1. Process &amp; Methodology</a>
-<a href="development-challenges.html">2. Development Challenges</a>
-<a href="process-models-overview.html">3. Process Models Overview</a>
-<a href="waterfall-model.html">4. Waterfall Model</a>
-<a href="prototyping-model.html">5. Prototyping Model</a>
-<a href="evolutionary-development.html">6. Evolutionary Development</a>
-<a href="spiral-model.html">7. Spiral Model</a>
-<a href="agile-process-models.html">8. Agile Process Models</a>
-<a href="choosing-process-model.html">9. Choosing the Right Model</a>
-<a href="agile-methods.html">10. Agile Methods</a>
-<a class="active" href="software-paradigms.html">11. Software Paradigms</a>
-</aside>
-
+<aside class="side"><div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div><div class="label">Topic 04</div><a href="index.html">1. Process &amp; Methodology</a><a href="development-challenges.html">2. Development Challenges</a><a href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a href="prototyping-model.html">5. Prototyping Model</a><a href="evolutionary-development.html">6. Evolutionary Development</a><a href="spiral-model.html">7. Spiral Model</a><a href="agile-process-models.html">8. Agile Process Models</a><a href="choosing-process-model.html">9. Choosing the Right Model</a><a href="agile-methods.html">10. Agile Methods</a><a class="active" href="software-paradigms.html">11. Software Paradigms</a><div class="label">Course</div><a href="../../index.html">Course Home</a></aside>
 <main><article class="content">
 <div class="crumb">CPCS 351 › Topic 04 › Software Paradigms</div>
-
 <section class="hero">
 <div>
 <div class="eyebrow">Topic 04 · Lesson 11</div>
@@ -157,13 +149,11 @@ A software paradigm is a <strong>style of software development—a way of viewin
 The same problem can therefore be analyzed, designed, and programmed differently depending on the paradigm through which the team sees it.
 </p>
 </div>
-
 <div class="mentor">
-<div class="pic"><img src="../../assets/images/mentor-06-pointing.png" alt="Mentor explaining software paradigms"></div>
+<div class="pic"><img alt="Mentor explaining software paradigms" src="../../assets/images/mentor-06-pointing.png"/></div>
 <p>“A paradigm changes what you notice first. One engineer sees actions, another sees collaborating objects, and another sees data and relationships.”</p>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Visual Hook</div>
 <h2>Three lenses on the same reality</h2>
@@ -171,12 +161,9 @@ The same problem can therefore be analyzed, designed, and programmed differently
 The system does not change—the <strong>view of the system</strong> changes.
 That viewpoint then shapes the analysis technique, the design representation, and even the programming style.
 </p>
-
 <div class="lenses">
 <div class="lens-head"><b>ONE REALITY · THREE SOFTWARE PARADIGMS</b><span>VIEWPOINT → ANALYSIS → DESIGN → IMPLEMENTATION</span></div>
-
 <div class="reality"><div><b>University Registration System</b><span>students · courses · enrollment · rules · data</span></div></div>
-
 <div class="lens-grid">
 <div class="lens proc">
 <div class="icon">⚙</div>
@@ -184,14 +171,12 @@ That viewpoint then shapes the analysis technique, the design representation, an
 <p>View the system mainly as a collection of <strong>processes and actions</strong> that transform inputs into outputs.</p>
 <div class="focus">FOCUS: What process happens next?</div>
 </div>
-
 <div class="lens oo">
 <div class="icon">◉◉◉</div>
 <h3>Object-Oriented Paradigm</h3>
 <p>View the system as <strong>objects that own state, behavior, responsibilities, and relationships</strong> and collaborate with one another.</p>
 <div class="focus">FOCUS: Who is responsible for this behavior?</div>
 </div>
-
 <div class="lens data">
 <div class="icon">▦</div>
 <h3>Data-Oriented Paradigm</h3>
@@ -199,20 +184,16 @@ That viewpoint then shapes the analysis technique, the design representation, an
 <div class="focus">FOCUS: What data exists and how is it related?</div>
 </div>
 </div>
-
 <div class="memory">
 <strong>Memory hook:</strong> Procedural = follow the actions · OO = follow the objects · Data-oriented = follow the data.
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Same System · Different Mental Model</div>
 <h2>How would each paradigm “see” registration?</h2>
-
 <div class="same">
 <div class="same-title">UNIVERSITY REGISTRATION SYSTEM · THREE REPRESENTATIONS</div>
-
 <div class="views">
 <div class="view">
 <small>PROCEDURAL VIEW</small>
@@ -225,7 +206,6 @@ That viewpoint then shapes the analysis technique, the design representation, an
 <div class="node">Create enrollment</div>
 </div>
 </div>
-
 <div class="view">
 <small>OBJECT-ORIENTED VIEW</small>
 <h3>Follow the Collaborators</h3>
@@ -237,7 +217,6 @@ That viewpoint then shapes the analysis technique, the design representation, an
 </div>
 <div class="arr" style="margin-top:12px">objects exchange messages → behavior emerges</div>
 </div>
-
 <div class="view">
 <small>DATA-ORIENTED VIEW</small>
 <h3>Follow the Information</h3>
@@ -252,7 +231,6 @@ That viewpoint then shapes the analysis technique, the design representation, an
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Paradigm &amp; Methodology</div>
 <h2>The viewpoint flows through analysis, design, and programming</h2>
@@ -260,39 +238,31 @@ That viewpoint then shapes the analysis technique, the design representation, an
 A paradigm is not only a coding-language preference. It shapes the methodology used to understand the problem,
 represent the solution, and implement the system.
 </p>
-
 <div class="pipeline">
-
 <div class="row proc">
 <div class="par">PROCEDURAL PARADIGM</div>
 <div class="box">Structured Analysis</div><div class="arrow">→</div>
 <div class="box">Structured Design</div><div class="arrow">→</div>
 <div class="box">Structured Programming</div>
 </div>
-
 <div class="row oo">
 <div class="par">OO PARADIGM</div>
 <div class="box">Object-Oriented Analysis</div><div class="arrow">→</div>
 <div class="box">Object-Oriented Design</div><div class="arrow">→</div>
 <div class="box">Object-Oriented Programming</div>
 </div>
-
 <div class="row data">
 <div class="par">DATA-ORIENTED PARADIGM</div>
 <div class="box">Data-Oriented Analysis</div><div class="arrow">→</div>
 <div class="box">Data-Oriented Design</div><div class="arrow">→</div>
-<div class="box">Programming in 4GL<br>(e.g., SQL)</div>
+<div class="box">Programming in 4GL<br/>(e.g., SQL)</div>
 </div>
-
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Detailed Examples</div>
 <h2>One business rule, three ways to think</h2>
-
 <div class="examples">
-
 <div class="ex">
 <span class="tag">PROCEDURAL</span>
 <h3>“Register a Student” as a sequence of actions</h3>
@@ -306,7 +276,6 @@ represent the solution, and implement the system.
 <li>Return success or error.</li>
 </ul>
 </div>
-
 <div class="ex">
 <span class="tag">OBJECT-ORIENTED</span>
 <h3>“Register a Student” as collaboration</h3>
@@ -319,7 +288,6 @@ represent the solution, and implement the system.
 <li>Objects retain state and behavior together.</li>
 </ul>
 </div>
-
 <div class="ex">
 <span class="tag">DATA-ORIENTED</span>
 <h3>“Register a Student” as data relationships</h3>
@@ -332,16 +300,12 @@ represent the solution, and implement the system.
 <li>Queries and constraints manipulate and protect the data.</li>
 </ul>
 </div>
-
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Implementation Flavor</div>
 <h2>The same intent can look very different in code</h2>
-
 <div class="rep">
-
 <div class="code">
 <div class="codehead">PROCEDURAL THINKING</div>
 <pre>registerStudent(studentId, sectionId)
@@ -352,7 +316,6 @@ checkCapacity(...)
 
 createEnrollment(...)</pre>
 </div>
-
 <div class="code">
 <div class="codehead">OBJECT-ORIENTED THINKING</div>
 <pre>student.canEnroll(section)
@@ -364,7 +327,6 @@ registration.confirm(
   student, section
 )</pre>
 </div>
-
 <div class="code">
 <div class="codehead">DATA-ORIENTED THINKING</div>
 <pre>SELECT ...
@@ -374,47 +336,38 @@ JOIN course_section ...
 
 INSERT INTO enrollment (...)</pre>
 </div>
-
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Illustrated Story</div>
 <h2>Three engineers enter the same meeting</h2>
-
 <div class="story">
-
 <div class="panel">
-<div class="visual"><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
+<div class="visual"><img alt="" src="../../assets/images/mentor-03-thinking.png"/></div>
 <small>THE PROBLEM</small>
 <h4>Students cannot register correctly</h4>
 <p>Everyone agrees on the business problem—but not yet on how to conceptualize the solution.</p>
 </div>
-
 <div class="panel">
-<div class="visual"><img src="../../assets/images/mentor-06-pointing.png" alt=""></div>
+<div class="visual"><img alt="" src="../../assets/images/mentor-06-pointing.png"/></div>
 <small>PROCEDURAL LENS</small>
 <h4>“Show me the workflow.”</h4>
 <p>One engineer begins by decomposing the registration process into transformations and steps.</p>
 </div>
-
 <div class="panel">
-<div class="visual"><img src="../../assets/images/mentor-02-explaining.png" alt=""></div>
+<div class="visual"><img alt="" src="../../assets/images/mentor-02-explaining.png"/></div>
 <small>OO LENS</small>
 <h4>“Who owns each responsibility?”</h4>
 <p>Another identifies Student, CourseSection, Rule, and Registration objects and their collaborations.</p>
 </div>
-
 <div class="panel">
-<div class="visual"><img src="../../assets/images/mentor-09-idea.png" alt=""></div>
+<div class="visual"><img alt="" src="../../assets/images/mentor-09-idea.png"/></div>
 <small>DATA LENS</small>
 <h4>“What information must remain consistent?”</h4>
 <p>A third begins with entities, relationships, constraints, and queries. Same reality—different organizing idea.</p>
 </div>
-
 </div>
 </section>
-
 <div class="note">
 <div>
 <b>Mentor Insight</b>
@@ -424,9 +377,8 @@ just as using SQL does not mean the entire system must be conceived only as data
 <strong>what conceptual lens is organizing the engineering work?</strong>
 </p>
 </div>
-<img src="../../assets/images/mentor-11-serious.png" alt="">
+<img alt="" src="../../assets/images/mentor-11-serious.png"/>
 </div>
-
 <div class="take">
 <b>Key Takeaway</b>
 <p>
@@ -437,7 +389,6 @@ Structured Analysis/Design/Programming; Object-Oriented Analysis/Design/Programm
 Data-Oriented Analysis/Design with 4GL programming such as SQL.
 </p>
 </div>
-
 <div class="think">
 <div>
 <span class="tlabel">Think Like a Software Engineer</span>
@@ -447,9 +398,8 @@ Yes. A large system may use objects to organize domain responsibilities, procedu
 and relational/data-oriented models for persistent information. The paradigm tells you what viewpoint dominates a particular engineering decision.
 </p>
 </div>
-<img src="../../assets/images/mentor-03-thinking.png" alt="">
+<img alt="" src="../../assets/images/mentor-03-thinking.png"/>
 </div>
-
 <div class="topic-close">
 <h3>Topic 04 Complete</h3>
 <p>
@@ -471,15 +421,12 @@ software paradigm changes the way engineers conceptualize the system itself.
 <div class="summary-chip">Software Paradigms</div>
 </div>
 </div>
-
 <div class="nav">
 <a href="agile-methods.html">← Agile Methods</a>
 <a class="next" href="../../index.html">Finish Topic 04 · Course Home →</a>
 </div>
-
 </article></main>
 </div>
-
 <script>
 if(sessionStorage.getItem("cpcs351_access")!=="granted"){
   window.location.href="../../access.html";

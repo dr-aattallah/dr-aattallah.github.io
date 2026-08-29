@@ -1,7 +1,8 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>Agile Process Models | CPCS 351</title>
 <style>
 :root{
@@ -124,32 +125,22 @@ h2{font-size:31px;letter-spacing:-.03em;margin:0 0 14px}.section>p{color:#59667d
 @media(max-width:950px){.traits{grid-template-columns:1fr 1fr 1fr}.sprint-machine{grid-template-columns:1fr}.days,.incrow{grid-template-columns:1fr 1fr}.story{grid-template-columns:1fr 1fr}.step{grid-template-columns:80px 1fr}.sout{grid-column:1/-1;border-left:0;border-top:1px solid var(--line)}}
 @media(max-width:850px){.layout{display:block}.side{display:none}.content{width:min(100% - 28px,1000px);padding-top:42px}.hero{grid-template-columns:1fr}.mentor{max-width:350px}}
 @media(max-width:650px){.traits,.days,.incrow,.pc,.story{grid-template-columns:1fr}.inc:not(:last-child):after{display:none}.change{grid-template-columns:1fr}.charr{transform:rotate(90deg)}.note,.think{grid-template-columns:1fr}.nav{flex-direction:column}.nav a{text-align:center}.refhead{flex-direction:column;align-items:flex-start}.inner{grid-template-columns:1fr 1fr}}
+
+/* Topic 04 navigation consistency */
+.mobile-topic-nav{display:none}
+@media(max-width:850px){
+  .mobile-topic-nav{display:flex;gap:7px;overflow-x:auto;white-space:nowrap;padding:9px 12px;position:sticky;top:62px;z-index:45;background:rgba(250,250,255,.97);border-bottom:1px solid var(--line,#e1e6ef);scrollbar-width:thin}
+  .mobile-topic-nav a{flex:0 0 auto;text-decoration:none;padding:7px 10px;border:1px solid var(--line,#e1e6ef);border-radius:999px;background:#fff;color:var(--muted,#65718a);font-size:11px;font-weight:800}
+  .mobile-topic-nav a.active{background:var(--indigo,#2d2a78);border-color:var(--indigo,#2d2a78);color:#fff}
+}
 </style>
 </head>
 <body>
-
-<header class="top"><a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a><nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header>
-
+<header class="top"><a class="brand" href="../../index.html"><span class="mark">+</span><span>The Educator</span></a><nav class="links"><a href="../../index.html">CPCS 351</a><a href="../../resources/">Resources</a><a href="../../../../index.html">All Courses</a></nav></header><nav aria-label="Topic 04 lesson navigation" class="mobile-topic-nav"><a href="index.html">01 Process</a><a href="development-challenges.html">02 Challenges</a><a href="process-models-overview.html">03 Models</a><a href="waterfall-model.html">04 Waterfall</a><a href="prototyping-model.html">05 Prototype</a><a href="evolutionary-development.html">06 Evolutionary</a><a href="spiral-model.html">07 Spiral</a><a aria-current="page" class="active" href="agile-process-models.html">08 Agile Process</a><a href="choosing-process-model.html">09 Choose Model</a><a href="agile-methods.html">10 Agile Methods</a><a href="software-paradigms.html">11 Paradigms</a></nav>
 <div class="layout">
-<aside class="side">
-<div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div>
-<div class="label">Topic 04</div>
-<a href="index.html">1. Process &amp; Methodology</a>
-<a href="development-challenges.html">2. Development Challenges</a>
-<a href="process-models-overview.html">3. Process Models Overview</a>
-<a href="waterfall-model.html">4. Waterfall Model</a>
-<a href="prototyping-model.html">5. Prototyping Model</a>
-<a href="evolutionary-development.html">6. Evolutionary Development</a>
-<a href="spiral-model.html">7. Spiral Model</a>
-<a class="active" href="agile-process-models.html">8. Agile Process Models</a>
-<span class="future">9. Choosing the Right Model</span>
-<span class="future">10. Agile Methods</span>
-<span class="future">11. Software Paradigms</span>
-</aside>
-
+<aside class="side"><div class="course"><small>CPCS 351 · TOPIC 04</small><strong>Process &amp; Methodology</strong></div><div class="label">Topic 04</div><a href="index.html">1. Process &amp; Methodology</a><a href="development-challenges.html">2. Development Challenges</a><a href="process-models-overview.html">3. Process Models Overview</a><a href="waterfall-model.html">4. Waterfall Model</a><a href="prototyping-model.html">5. Prototyping Model</a><a href="evolutionary-development.html">6. Evolutionary Development</a><a href="spiral-model.html">7. Spiral Model</a><a class="active" href="agile-process-models.html">8. Agile Process Models</a><a href="choosing-process-model.html">9. Choosing the Right Model</a><a href="agile-methods.html">10. Agile Methods</a><a href="software-paradigms.html">11. Software Paradigms</a><div class="label">Course</div><a href="../../index.html">Course Home</a></aside>
 <main><article class="content">
 <div class="crumb"><a href="../../index.html">CPCS 351</a> › Topic 04 › Agile Process Models</div>
-
 <section class="hero">
 <div>
 <div class="eyebrow">Topic 04 · Model 05</div>
@@ -160,11 +151,10 @@ and rapid response to change</strong>. The plan still matters—but learning dur
 </p>
 </div>
 <div class="mentor">
-<div class="pic"><img src="../../assets/images/mentor-06-pointing.png" alt="Mentor explaining agile iterations"></div>
+<div class="pic"><img alt="Mentor explaining agile iterations" src="../../assets/images/mentor-06-pointing.png"/></div>
 <p>“Agile does not mean ‘no plan.’ It means plan a short horizon, build something useful, learn from reality, then plan the next horizon better.”</p>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Academic Reference · Large Image</div>
 <h2>Agile as a short iterative development loop</h2>
@@ -173,31 +163,23 @@ San José State University describes Agile as an iterative-incremental approach 
 The diagram below comes directly from its teaching material on Agile/Test-Driven Development:
 new requirements become tests, the system is changed until the test suite passes, and the cycle repeats.
 </p>
-
 <figure class="reference">
 <div class="refhead">
 <span>SAN JOSÉ STATE UNIVERSITY · COMPUTER SCIENCE</span>
-<a href="https://www.cs.sjsu.edu/~pearce/modules/lectures/tdd/intro.htm" target="_blank" rel="noopener">Open academic source ↗</a>
+<a href="https://www.cs.sjsu.edu/~pearce/modules/lectures/tdd/intro.htm" rel="noopener" target="_blank">Open academic source ↗</a>
 </div>
-<img class="refimg"
- src="https://www.cs.sjsu.edu/~pearce/modules/lectures/tdd/intro_files/image006.gif"
- alt="San Jose State University agile test-driven development iterative cycle"
- loading="lazy">
+<img alt="San Jose State University agile test-driven development iterative cycle" class="refimg" loading="lazy" src="https://www.cs.sjsu.edu/~pearce/modules/lectures/tdd/intro_files/image006.gif"/>
 <figcaption>
 <strong>How to read it:</strong> a small requirement enters the iteration. Tests make the expected behavior concrete.
 Developers implement or refactor until the new and previous tests pass. Then the team accepts another requirement and repeats.
 This is the opposite of waiting months for one large validation point.
 </figcaption>
-
 <div class="ref2">
 <div class="refhead">
 <span>SAN JOSÉ STATE UNIVERSITY · ADAPTIVE VS PREDICTIVE LIFECYCLES</span>
-<a href="https://www.cs.sjsu.edu/~pearce/modules/lectures/ood2/context/se.htm" target="_blank" rel="noopener">Open lifecycle source ↗</a>
+<a href="https://www.cs.sjsu.edu/~pearce/modules/lectures/ood2/context/se.htm" rel="noopener" target="_blank">Open lifecycle source ↗</a>
 </div>
-<img class="refimg"
- src="https://www.cs.sjsu.edu/~pearce/modules/lectures/ood2/context/se_files/image006.png"
- alt="San Jose State University adaptive to predictive lifecycle spectrum"
- loading="lazy">
+<img alt="San Jose State University adaptive to predictive lifecycle spectrum" class="refimg" loading="lazy" src="https://www.cs.sjsu.edu/~pearce/modules/lectures/ood2/context/se_files/image006.png"/>
 <figcaption>
 Agile sits toward the <strong>adaptive</strong> end of the lifecycle spectrum: it can react quickly to requirement change,
 while predictive processes emphasize early planning, control, documentation, and long-range predictability.
@@ -205,7 +187,6 @@ while predictive processes emphasize early planning, control, documentation, and
 </div>
 </figure>
 </section>
-
 <section class="section">
 <div class="kicker">Visual Hook</div>
 <h2>The Agile Delivery Engine</h2>
@@ -213,51 +194,42 @@ while predictive processes emphasize early planning, control, documentation, and
 The engine repeatedly pulls a small set of high-value features from the backlog, turns them into a tested working increment,
 shows the result to stakeholders, and uses feedback to decide what enters the next iteration.
 </p>
-
 <div class="engine">
 <div class="engine-head"><b>AGILE DELIVERY ENGINE</b><span>PRIORITIZE → BUILD → TEST → DEMO → ADAPT</span></div>
-
 <div class="sprint-machine">
 <div class="backlog"><div class="icon">📚</div><b>Product Backlog</b><span>Desired features, fixes, improvements, and changes are prioritized by business value and current need.</span></div>
-
 <div class="cyclebox">
 <h3>SHORT ITERATION / SPRINT</h3>
 <p>typically weeks rather than months</p>
 <div class="inner">
-<div>1<br>Plan</div>
-<div>2<br>Design + Build</div>
-<div>3<br>Test</div>
-<div>4<br>Review</div>
+<div>1<br/>Plan</div>
+<div>2<br/>Design + Build</div>
+<div>3<br/>Test</div>
+<div>4<br/>Review</div>
 </div>
 </div>
-
 <div class="release"><div class="icon">🚀</div><b>Working Increment</b><span>A usable piece of software is delivered frequently, not only at the end of the entire project.</span></div>
 </div>
-
 <div class="loopnote">
 <strong>↻ Feedback returns to the backlog.</strong>
 New knowledge, customer feedback, defects, and even late requirement changes influence the next iteration.
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Core Agile Behavior</div>
 <h2>Five ideas make the process “agile”</h2>
-
 <div class="traits">
-<div class="trait"><div class="ico">⚡</div><b>Short Iterations</b><p>Sprints/iterations are shorter in duration; the course material gives a broad range from about 2 weeks to 2 months.</p></div>
+<div class="trait"><div class="ico">⚡</div><b>Short Iterations</b><p>Sprints or iterations are deliberately short; a broad teaching range is about 2 weeks to 2 months, depending on the project and method.</p></div>
 <div class="trait"><div class="ico">📦</div><b>Frequent Working Software</b><p>Predetermined features are developed and delivered during an iteration, with working software appearing in weeks rather than months.</p></div>
 <div class="trait"><div class="ico">🤝</div><b>Customer Collaboration</b><p>Business people and developers cooperate closely so priorities and feedback influence development continuously.</p></div>
 <div class="trait"><div class="ico">🔄</div><b>Welcome Change</b><p>Changing circumstances are expected. Even late requirement changes can be incorporated into future iterations.</p></div>
 <div class="trait"><div class="ico">🎯</div><b>Value First</b><p>The team selects a manageable set of useful features rather than trying to implement everything at once.</p></div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">One Iteration</div>
 <h2>What can happen inside a two-week sprint?</h2>
-
 <div class="timeline">
 <div class="days">
 <div class="day"><b>Day 1 · Sprint Planning</b><span>Choose high-priority stories, clarify acceptance criteria, split them into tasks, and agree on a realistic sprint goal.</span></div>
@@ -268,7 +240,6 @@ New knowledge, customer feedback, defects, and even late requirement changes inf
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Worked Example · Sprint by Sprint</div>
 <h2>Build the University Registration System with Agile</h2>
@@ -276,51 +247,42 @@ New knowledge, customer feedback, defects, and even late requirement changes inf
 Instead of attempting the complete registration platform in one long pass, the team delivers useful capabilities incrementally.
 Students and advisors can react to real software after every sprint.
 </p>
-
 <div class="walk">
-
 <div class="step st1">
-<div class="sid">SPRINT 1<br>DISCOVER</div>
+<div class="sid">SPRINT 1<br/>DISCOVER</div>
 <div class="smain"><h3>Goal: students can find sections</h3><p>The team selects the smallest useful journey from the backlog: sign in, search for a course, and see sections. Prerequisite and enrollment logic can wait.</p>
 <div class="chips"><span class="chip">Login</span><span class="chip">Course search</span><span class="chip">Section list</span><span class="chip">Basic UI</span></div></div>
 <div class="sout"><small>WORKING INCREMENT</small><b>Searchable Course Catalog</b><span>Students can already perform one real task and give feedback.</span></div>
 </div>
-
 <div class="step st2">
-<div class="sid">SPRINT 2<br>REGISTER</div>
+<div class="sid">SPRINT 2<br/>REGISTER</div>
 <div class="smain"><h3>Goal: add a section safely</h3><p>Feedback from Sprint 1 shows students need seat availability beside every section. The next sprint adds enrollment and seat-capacity validation.</p>
 <div class="chips"><span class="chip">Add course</span><span class="chip">Seat check</span><span class="chip">Enrollment record</span><span class="chip">Confirmation</span></div></div>
 <div class="sout"><small>WORKING INCREMENT</small><b>Basic Registration</b><span>Students can search and enroll when a seat is available.</span></div>
 </div>
-
 <div class="step st3">
-<div class="sid">SPRINT 3<br>RULES</div>
+<div class="sid">SPRINT 3<br/>RULES</div>
 <div class="smain"><h3>Goal: enforce academic rules</h3><p>Now implement prerequisite checking and schedule-conflict detection. Acceptance criteria are written as concrete examples before work is considered complete.</p>
 <div class="chips"><span class="chip">Prerequisite service</span><span class="chip">Conflict check</span><span class="chip">Clear error messages</span></div></div>
 <div class="sout"><small>WORKING INCREMENT</small><b>Rule-Aware Registration</b><span>Invalid enrollments are rejected with understandable explanations.</span></div>
 </div>
-
 <div class="step st4">
-<div class="sid">SPRINT 4<br>CHANGE</div>
+<div class="sid">SPRINT 4<br/>CHANGE</div>
 <div class="smain"><h3>Goal changes: university requests wait-listing</h3><p>This requirement did not exist in the original backlog. Agile does not require pretending the old plan is sacred. The product owner reprioritizes; lower-value work moves later and wait-listing enters this sprint.</p>
 <div class="chips"><span class="chip">Wait list</span><span class="chip">Position</span><span class="chip">Notification</span><span class="chip">Reprioritize backlog</span></div></div>
 <div class="sout"><small>CHANGE ABSORBED</small><b>Wait-List Increment</b><span>Late change is handled by changing future scope, not by restarting the whole project.</span></div>
 </div>
-
 <div class="step st5">
-<div class="sid">SPRINT 5<br>HARDEN</div>
+<div class="sid">SPRINT 5<br/>HARDEN</div>
 <div class="smain"><h3>Goal: prepare for peak registration</h3><p>Use production-like workloads to improve performance, reliability, monitoring, and operational readiness while keeping all previous behavior working.</p>
 <div class="chips"><span class="chip">Load test</span><span class="chip">Performance fixes</span><span class="chip">Monitoring</span><span class="chip">Regression suite</span></div></div>
 <div class="sout"><small>RELEASE</small><b>Production Candidate</b><span>The final product is the accumulation of tested increments—not one giant late delivery.</span></div>
 </div>
-
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Incremental Delivery</div>
 <h2>Every sprint adds visible business value</h2>
-
 <div class="increments">
 <div class="incrow">
 <div class="inc"><b>Increment 1</b><span>Search courses</span></div>
@@ -330,31 +292,26 @@ Students and advisors can react to real software after every sprint.
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Responding to Change</div>
 <h2>Agile changes the next plan—not history</h2>
-
 <div class="change">
 <div class="chbox plan"><h3>Original Plan</h3><p>Sprint 4 was expected to implement advisor approval and reporting.</p></div>
 <div class="charr">→</div>
 <div class="chbox adapt"><h3>Reality Changes</h3><p>A new wait-list policy becomes urgent. The backlog is reprioritized: wait-listing moves into Sprint 4; reporting moves later. The team adapts without discarding completed increments.</p></div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Advantages &amp; Disadvantages</div>
 <h2>Speed and flexibility come with trade-offs</h2>
-
 <div class="pc">
 <div class="box good"><h3>✓ Advantages</h3>
 <div class="point"><i>✓</i><span>Rapid, continuous delivery of useful software can improve customer satisfaction.</span></div>
 <div class="point"><i>✓</i><span>Working software is delivered frequently—weeks rather than months.</span></div>
-<div class="point"><i>✓</i><span>Business people and developers cooperate closely.</span></div>
+<div class="point"><i>✓</i><span>Business people and developers cooperate closely, often on a daily basis.</span></div>
 <div class="point"><i>✓</i><span>The project regularly adapts to changing circumstances.</span></div>
 <div class="point"><i>✓</i><span>Even late changes in requirements can be welcomed and reprioritized.</span></div>
 </div>
-
 <div class="box bad"><h3>⚠ Disadvantages</h3>
 <div class="point"><i>!</i><span>There may be insufficient emphasis on necessary design and documentation if the team interprets agility carelessly.</span></div>
 <div class="point"><i>!</i><span>New team members can find it harder to integrate when important knowledge exists mainly in team conversations.</span></div>
@@ -363,24 +320,19 @@ Students and advisors can react to real software after every sprint.
 </div>
 </div>
 </section>
-
 <section class="section">
 <div class="kicker">Illustrated Story</div>
 <h2>The requirement that arrived after development started</h2>
 <div class="story">
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-07-working-laptop.png" alt=""></div><span class="no">SPRINT 1–3</span><h4>Useful software already exists</h4><p>Search, enrollment, prerequisites, and conflicts are working.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-10-concerned.png" alt=""></div><span class="no">NEW POLICY</span><h4>Wait-listing becomes urgent</h4><p>The requirement appears after the original plan was created.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-06-pointing.png" alt=""></div><span class="no">REPRIORITIZE</span><h4>Change the next sprint</h4><p>The product owner moves wait-listing ahead of lower-value reporting work.</p></div>
-<div class="panel"><div class="visual"><img src="../../assets/images/mentor-01-confident-smile.png" alt=""></div><span class="no">DELIVER</span><h4>Existing value survives</h4><p>No restart is needed. The product grows through another working increment.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-07-working-laptop.png"/></div><span class="no">SPRINT 1–3</span><h4>Useful software already exists</h4><p>Search, enrollment, prerequisites, and conflicts are working.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-10-concerned.png"/></div><span class="no">NEW POLICY</span><h4>Wait-listing becomes urgent</h4><p>The requirement appears after the original plan was created.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-06-pointing.png"/></div><span class="no">REPRIORITIZE</span><h4>Change the next sprint</h4><p>The product owner moves wait-listing ahead of lower-value reporting work.</p></div>
+<div class="panel"><div class="visual"><img alt="" src="../../assets/images/mentor-01-confident-smile.png"/></div><span class="no">DELIVER</span><h4>Existing value survives</h4><p>No restart is needed. The product grows through another working increment.</p></div>
 </div>
 </section>
-
-<div class="note"><div><b>Mentor Insight</b><p>Agile's strength is not simply that developers work faster. The deeper advantage is shortening the distance between a decision and evidence. Working software appears frequently, so assumptions are corrected while change is still manageable.</p></div><img src="../../assets/images/mentor-11-serious.png" alt=""></div>
-
-<div class="take"><b>Key Takeaway</b><p>Agile process models use short sprints or iterations to develop and deliver predetermined features, repeatedly producing working software and adapting to feedback and changing circumstances. The course material emphasizes rapid delivery, close business/developer cooperation, and welcoming change, while warning about documentation/design discipline, onboarding new team members, and difficulty estimating total effort early.</p></div>
-
-<div class="think"><div><span class="tlabel">Think Like a Software Engineer</span><h3>A customer adds an urgent feature halfway through a sprint. Should the team immediately stop and implement it?</h3><p>“Welcome change” does not mean “accept chaos.” Consider sprint stability, urgency, current work, product-owner priorities, and whether the change belongs in the current sprint or the next prioritized iteration.</p></div><img src="../../assets/images/mentor-03-thinking.png" alt=""></div>
-
+<div class="note"><div><b>Mentor Insight</b><p>Agile's strength is not simply that developers work faster. The deeper advantage is shortening the distance between a decision and evidence. Working software appears frequently, so assumptions are corrected while change is still manageable.</p></div><img alt="" src="../../assets/images/mentor-11-serious.png"/></div>
+<div class="take"><b>Key Takeaway</b><p>Agile process models use short sprints or iterations to develop and deliver predetermined features, repeatedly producing working software and adapting to feedback and changing circumstances. The model emphasizes rapid delivery, close business/developer cooperation, and welcoming change, while also requiring deliberate design/documentation discipline, effective onboarding, and realistic handling of uncertain early estimates.</p></div>
+<div class="think"><div><span class="tlabel">Think Like a Software Engineer</span><h3>A customer adds an urgent feature halfway through a sprint. Should the team immediately stop and implement it?</h3><p>“Welcome change” does not mean “accept chaos.” Consider sprint stability, urgency, current work, product-owner priorities, and whether the change belongs in the current sprint or the next prioritized iteration.</p></div><img alt="" src="../../assets/images/mentor-03-thinking.png"/></div>
 <div class="nav"><a href="spiral-model.html">← Spiral Model</a><a class="next" href="choosing-process-model.html">Next · Choosing the Right Model →</a></div>
 </article></main>
 </div>
