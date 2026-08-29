@@ -283,6 +283,24 @@ footer{
   border-top:1px solid var(--line);
   padding:24px 0 30px;
 }
+
+.visitor-counter{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  color:var(--muted);
+  font-size:12px;
+  font-weight:750;
+}
+.visitor-counter::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 0 4px var(--green-soft);
+}
+.visitor-count{color:var(--ink);font-variant-numeric:tabular-nums}
 .footer{
   display:flex;
   justify-content:space-between;
@@ -420,8 +438,12 @@ footer{
 <footer>
   <div class="wrap footer">
     <span>© 2026 The Educator</span>
+    <span class="visitor-counter" data-visitor-counter="the-educator" aria-live="polite">
+      Visitors since launch: <strong class="visitor-count" data-visitor-count>…</strong>
+    </span>
     <a href="../">Academic Portfolio</a>
   </div>
 </footer>
+<script src="../assets/js/visitor-counter.js?v=20260829"></script>
 </body>
 </html>

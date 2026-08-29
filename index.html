@@ -1997,6 +1997,27 @@ main section:nth-of-type(3n)::after{
   font-size:14px;
 }
 
+.visitor-counter{
+  width:max-content;
+  margin:12px auto 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:700;
+}
+.visitor-counter::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 0 4px rgba(176,138,53,.13);
+}
+.visitor-count{color:var(--navy);font-variant-numeric:tabular-nums}
+
 .back-to-top{
   position:fixed;
   z-index:950;
@@ -2957,6 +2978,9 @@ html[dir="rtl"] .back-to-top{
 
 <footer class="footer">
   © 2026 Dr. Abdulaziz Attaallah. Academic Portfolio.
+  <div class="visitor-counter" data-visitor-counter="academic-portfolio" aria-live="polite">
+    Visitors since counter launch: <strong class="visitor-count" data-visitor-count>…</strong>
+  </div>
 </footer>
 
 <script>
@@ -2968,6 +2992,7 @@ html[dir="rtl"] .back-to-top{
     "Home":"الرئيسية","About":"نبذة","Education":"المؤهلات","Leadership":"القيادة",
     "Expertise":"الخبرات","Research":"البحث العلمي","Teaching":"التدريس",
     "Publications":"المنشورات","The Educator":"المنصة التعليمية","Contact":"التواصل",
+    "Visitors since counter launch:":"إجمالي الزوار منذ إطلاق العداد:",
     "Academic Affiliation":"الانتماء الأكاديمي","King Abdulaziz University":"جامعة الملك عبدالعزيز",
     "Computer Science · Academic Leadership · Research · Digital Transformation":"علوم الحاسبات · القيادة الأكاديمية · البحث العلمي · التحول الرقمي",
     "DR. ABDULAZIZ ATTAALLAH":"الدكتور عبدالعزيز عطاءالله",
@@ -3169,5 +3194,6 @@ html[dir="rtl"] .back-to-top{
   applyLanguage(document.documentElement.lang === "en" ? "en" : "ar");
 })();
 </script>
+<script src="assets/js/visitor-counter.js?v=20260829"></script>
 </body>
 </html>

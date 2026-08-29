@@ -140,6 +140,7 @@ app.MapGet("/health/database", async (
 app.MapHealthChecks("/health/live");
 app.MapIdentityEndpoints();
 app.MapCourseEndpoints();
+app.MapVisitorEndpoints();
 
 app.Run();
 
