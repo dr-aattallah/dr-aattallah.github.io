@@ -2,7 +2,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
-import { fileURLToPath } from 'node:url';
 
 const repoRoot = process.cwd();
 const host = '127.0.0.1';
@@ -22,8 +21,8 @@ const routes = [
   '/the-educator/learning/courses/cpcs351/weeks/08-domain-modeling-and-uml-class-diagram/',
   '/the-educator/learning/courses/cpcs351/weeks/09-object-interaction-modeling/',
   '/the-educator/learning/courses/cpcs351/weeks/10-activity-modeling/',
-  '/the-educator/learning/courses/cpcs351/weeks/11-modelling-interactions-and-behaviour-revision/',
-  '/the-educator/learning/courses/cpcs351/weeks/12-applying-responsibility-assignment-patterns/',
+  '/the-educator/learning/courses/cpcs351/weeks/11-modeling-interactions-and-behavior-revision/',
+  '/the-educator/learning/courses/cpcs351/weeks/12-responsibility-assignment-patterns/',
   '/the-educator/learning/courses/cpcs351/weeks/13-software-testing/',
   '/the-educator/attendance/',
   '/the-educator/attendance/admin/',
