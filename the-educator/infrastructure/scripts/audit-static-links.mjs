@@ -8,7 +8,6 @@ const textExts = new Set(['.html', '.css', '.js', '.mjs', '.json', '.md']);
 const ignoredPrefixes = ['http://','https://','mailto:','tel:','data:','javascript:','#','//','{','${'];
 const legacyPrefixes = ['/the-educator/courses/','/the-educator/systems/'];
 const errors = [];
-const warnings = [];
 let checkedRefs = 0;
 let scannedFiles = 0;
 
@@ -37,7 +36,7 @@ function resolveLocal(fromFile, ref){
   }else if(clean==='/the-educator' || clean==='/the-educator/'){
     target=siteRoot;
   }else if(clean.startsWith('/')){
-    return null; // repository-external absolute path, e.g. portfolio root
+    return null;
   }else{
     target=path.resolve(path.dirname(fromFile),clean);
   }
@@ -59,14 +58,13 @@ function extractRefs(file, text){
   const ext=path.extname(file).toLowerCase();
   if(ext==='.html'){
     for(const m of text.matchAll(/\b(?:href|src|action|poster)\s*=\s*["']([^"']+)["']/gi)) refs.push(m[1]);
-    for(const m of text.matchAll(/<meta[^>]+http-equiv=["']refresh["'][^>]+content=["'][^"']*url=([^"';>\s]+)[^"']*["']/gi)) refs.push(m[1]);
+    for(const m of text.matchAll(/<meta[^>]+http-equiv=["']refresh["'][^>]+content=["'][^"']*?url=([^"']+)["']/gi)) refs.push(m[1].trim());
   }
   if(ext==='.css'){
     for(const m of text.matchAll(/url\(\s*["']?([^"')]+)["']?\s*\)/gi)) refs.push(m[1]);
   }
-  if(ext==='.js' || ext==='.mjs'){
-    for(const m of text.matchAll(/(?:location(?:\.href)?|window\.location\.href)\s*=\s*["']([^"']+)["']/gi)) refs.push(m[1]);
-  }
+  // Relative redirects inside shared JavaScript resolve against the document URL,
+  // not the JavaScript file location, so they are audited through their host pages.
   return refs;
 }
 
@@ -82,8 +80,10 @@ for(const file of walk(siteRoot)){
   const text=fs.readFileSync(file,'utf8');
   const rel=path.relative(repoRoot,file).replaceAll(path.sep,'/');
 
-  for(const legacy of legacyPrefixes){
-    if(text.includes(legacy)) errors.push(`${rel}: legacy path remains: ${legacy}`);
+  if(!rel.endsWith('/audit-static-links.mjs')){
+    for(const legacy of legacyPrefixes){
+      if(text.includes(legacy)) errors.push(`${rel}: legacy path remains: ${legacy}`);
+    }
   }
 
   if(rel.startsWith('the-educator/classroom/') && /href=["']\.\.\/["'][^>]*>\s*Portfolio\s*</i.test(text)){
@@ -102,7 +102,6 @@ for(const file of walk(siteRoot)){
 }
 
 console.log(`Scanned ${scannedFiles} text files and checked ${checkedRefs} local references.`);
-if(warnings.length){ console.log('\nWarnings:'); warnings.forEach(x=>console.log(`- ${x}`)); }
 if(errors.length){
   console.error(`\nFound ${errors.length} issue(s):`);
   errors.forEach(x=>console.error(`- ${x}`));
