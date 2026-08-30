@@ -63,7 +63,7 @@ Pages should explain ideas as engineering decisions: what the concept means, wha
 
 ## 4. Terminology
 
-Use these forms consistently:
+Use these forms consistently when applicable:
 - **Course Home**
 - **Topic**
 - **Lesson**
@@ -76,9 +76,6 @@ Use these forms consistently:
 - **Added Practice**
 - **Study Boundary**
 - **Remember**
-- **Active Recall**
-- **Self-Feedback**
-- **Common Learning Trap**
 
 Domain terminology must preserve the terminology of the course source material. Do not rename technical concepts merely for stylistic consistency.
 
@@ -93,13 +90,18 @@ A normal study page follows this recognizable sequence when applicable:
 6. Learning key / Learning Focus.
 7. Core content chunks.
 8. Visual or worked example.
-9. Remember / key memory cue.
+9. Remember / key memory cue when it adds real value.
 10. Added teaching clarification or practice, clearly separated from source-derived content.
-11. Common Learning Trap.
-12. Active Recall with explanatory self-feedback.
-13. Previous Lesson / Course Home / Next Lesson.
+11. Previous Lesson / Course Home / Next Lesson navigation.
 
 Not every page needs every block, but blocks must keep the same name, styling, and purpose when used.
+
+### Prohibited generic end-of-page blocks
+- Do **not** automatically add a generic **Active Recall · 2 Minutes / Check your understanding before moving on** block.
+- Do **not** automatically add the generic **Self-Feedback: A strong answer...** paragraph associated with that block.
+- Do **not** automatically add a generic **Common Learning Trap** block.
+- Do **not** add a large content callout labeled **Next Topic** at the end of a page. The persistent Previous/Next navigation is sufficient.
+- Topic-specific questions, feedback, misconceptions, or practice are still allowed when they are genuinely tied to the concept and designed as part of that lesson rather than as a repeated template.
 
 ## 6. Media Consistency
 
