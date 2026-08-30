@@ -1,4 +1,4 @@
-name: The Educator static link audit
+name: The Educator integrity audit
 
 on:
   push:
@@ -25,3 +25,5 @@ jobs:
           node-version: '22'
       - name: Audit local links and legacy paths
         run: node the-educator/infrastructure/scripts/audit-static-links.mjs
+      - name: Audit subsystem architecture
+        run: node the-educator/infrastructure/scripts/audit-architecture.mjs
