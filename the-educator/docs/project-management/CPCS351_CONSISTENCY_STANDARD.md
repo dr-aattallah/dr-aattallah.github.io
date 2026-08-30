@@ -109,6 +109,14 @@ Not every page needs every block, but blocks must keep the same name, styling, a
 - Low-quality stock imagery is avoided. Conceptual diagrams and instructional visuals are preferred.
 - Topic visual diversity is encouraged only when it improves memory or explanation; UI chrome remains consistent.
 
+### Mandatory visual anchors for enumerations
+- **Important enumerations must not be presented as text-only bullets or cards.** When the course introduces types, categories, techniques, roles, phases, models, tracks, or major sections, each important item receives its own memorable **Visual Anchor**.
+- A Visual Anchor may be an instructional image, illustration, miniature diagram, symbolic scene, or inline SVG. It must communicate or reinforce the meaning of the item, not merely decorate the card.
+- When the original lecture uses imagery to distinguish items, the web version preserves that instructional function even if the artwork is redrawn in the course visual language.
+- The anchors within one enumeration should share a coherent illustration style while remaining visually distinct enough for recognition and recall.
+- Text labels and explanations remain present; the visual never becomes the only carrier of meaning.
+- This requirement applies throughout current and future CPCS 351 Topics, not only to UML content.
+
 ## 7. Accessibility & States
 
 - Minimum important touch target: 48 px.
