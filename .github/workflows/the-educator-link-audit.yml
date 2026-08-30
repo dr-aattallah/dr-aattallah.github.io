@@ -1,0 +1,27 @@
+name: The Educator static link audit
+
+on:
+  push:
+    branches:
+      - restructure-the-educator-systems
+    paths:
+      - 'the-educator/**'
+      - '.github/workflows/the-educator-link-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Audit local links and legacy paths
+        run: node the-educator/infrastructure/scripts/audit-static-links.mjs
