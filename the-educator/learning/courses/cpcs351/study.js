@@ -129,24 +129,12 @@
     const progress=$('.learning-progress');(progress||hero).insertAdjacentElement('afterend',box);
   }
 
-  function activeRecall(){
-    const content=$('.content'); if(!content||$('.active-recall'))return;
-    const h1=safeText($('.hero h1')?.textContent||document.title);
-    const headings=$$('.section h2').map(x=>safeText(x.textContent)).filter(Boolean).slice(0,3);
-    const box=document.createElement('section');box.className='section active-recall';
-    box.innerHTML=`<div class="kicker">Active Recall · 2 Minutes</div><h2>Check your understanding before moving on</h2><div class="recall-grid">
-      <details><summary>1 · Explain it without looking</summary><p>In your own words, explain <b>${h1}</b>. Compare your answer with the Learning Focus and the main sections.</p></details>
-      <details><summary>2 · Connect the ideas</summary><p>${headings.length?`Explain how <b>${headings.join('</b>, <b>')}</b> fit together.`:'Identify the main idea, one example, and one decision this page helps you make.'}</p></details>
-      <details><summary>3 · Apply it to a new case</summary><p>Create a different software-system example. A strong example changes the situation and still uses the same reasoning correctly.</p></details>
-    </div><div class="feedback-note"><b>Self-Feedback:</b> A strong answer uses the concept correctly, explains <i>why</i>, and transfers it to a new scenario. If you can only repeat a definition, revisit the relevant section.</div>`;
-    const nav=$('.lesson-nav');nav?nav.insertAdjacentElement('beforebegin',box):content.append(box);
-  }
-
-  function misconceptions(){
-    if($('.misconception-auto')||!$('.content'))return;
-    const box=document.createElement('section');box.className='misconception-auto';
-    box.innerHTML='<strong>Common Learning Trap</strong><p>Recognizing a term is not the same as being able to use it. Before continuing, explain when the concept applies, justify one example, and identify one nearby concept it could be confused with.</p>';
-    $('.active-recall')?.insertAdjacentElement('beforebegin',box);
+  function removeGenericStudyBlocks(){
+    $$('.active-recall,.misconception-auto').forEach(el=>el.remove());
+    $$('.remember,.section,.enrichment').forEach(el=>{
+      const label=safeText(el.querySelector(':scope > strong,:scope > .kicker')?.textContent);
+      if(label==='Next Topic')el.remove();
+    });
   }
 
   function normalizeMedia(){
@@ -180,7 +168,7 @@
 
   injectDesignSystem();
   window.addEventListener('DOMContentLoaded',()=>setTimeout(()=>{
-    a11y();normalizeStructure();normalizeNavigation();progress();hook();normalizeTerminology();normalizeMedia();activeRecall();misconceptions();tools();keyboard();states();
+    removeGenericStudyBlocks();a11y();normalizeStructure();normalizeNavigation();progress();hook();normalizeTerminology();normalizeMedia();tools();keyboard();states();
     const current=$('.mobile-topic .active');current?.scrollIntoView({inline:'center',block:'nearest'});
   },0));
 })();
