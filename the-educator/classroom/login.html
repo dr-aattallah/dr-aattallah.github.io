@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login | The Educator</title>
+<meta name="description" content="Login page for The Educator academic course platform." />
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body class="page-login">
+
+<nav>
+  <div class="brand">
+    <div class="brand-symbol" aria-hidden="true"></div>
+    <span>The Educator</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="../../">Portfolio</a>
+  </div>
+</nav>
+
+<main>
+  <section class="login-shell" aria-label="Login to The Educator">
+    <aside class="info-card">
+      <div>
+        <div class="info-mark" aria-hidden="true">
+          <span class="dot one"></span>
+          <span class="dot two"></span>
+          <span class="dot three"></span>
+          <div class="connector"></div>
+        </div>
+
+        <h1>Welcome back.</h1>
+        <p>
+          Access your course space, resources, updates, and assignments from one simple academic platform.
+        </p>
+      </div>
+
+      <div class="info-pills">
+        <span class="pill">Courses</span>
+        <span class="pill">Resources</span>
+        <span class="pill">Assignments</span>
+      </div>
+    </aside>
+
+    <section class="login-card">
+      <h2>Login to your course space</h2>
+      <p class="hint">
+        Choose your role and continue to the course dashboard.
+      </p>
+
+      <div class="role-switch" aria-label="Role selection">
+        <button class="role active" type="button">Instructor</button>
+        <button class="role" type="button">Student</button>
+      </div>
+
+      <div class="app-message" data-login-message hidden></div>
+
+      <form class="form" data-login-form>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="name@university.edu" autocomplete="email" required />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required />
+        </div>
+
+        <button class="submit" type="submit">Continue</button>
+      </form>
+
+      <div class="small-row">
+        <a href="index.html">Back to home</a>
+        <a href="reset-password.html?return=/the-educator/login.html">Forgot password?</a>
+      </div>
+
+      <div class="demo-note">
+        Development login is connected to Supabase Auth and the hosted Educator API.
+      </div>
+    </section>
+  </section>
+</main>
+
+<script src="assets/js/the-educator-auth.js?v=20260713-api-debug"></script>
+<script src="/the-educator/assets/js/iso-accessibility.js?v=20260724-iso-ux"></script>
+</body>
+</html>
