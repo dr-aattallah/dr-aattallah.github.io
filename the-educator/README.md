@@ -1,38 +1,41 @@
 # The Educator
 
-The Educator is organized as a small platform made of independent subsystems. The repository is intentionally structured so new teaching tools can be added without mixing their pages, assets or experiments.
+The Educator is now organized as a modular academic platform. Runtime systems are separated so courses, attendance, classroom tools and future practice features can evolve without mixing their files.
 
-## Runtime structure
+## Structure
 
 ```text
 the-educator/
-├── index.html                     # platform home
-├── systems/
-│   ├── index.html                 # system directory
-│   ├── learning/
-│   │   ├── index.html
-│   │   └── courses/               # CPCS 351 and future courses
-│   ├── attendance/                # complete attendance subsystem
-│   ├── classroom/                 # LMS/course-management prototype
-│   └── practice/                  # reserved for Practice Lab pilot
+├── index.html                    # platform home
+├── learning/                     # learning-content subsystem
+│   ├── index.html
+│   └── courses/
+│       └── cpcs351/
+├── attendance/                   # attendance subsystem + its css/js/sql/docs/tests
+├── classroom/                    # LMS/course-management prototype + local assets
+├── practice/                     # reserved Practice Lab namespace
+├── assets/                       # shared/compatibility platform assets
 ├── docs/
 │   ├── ARCHITECTURE.md
 │   ├── backend/
 │   └── project-management/
-└── infrastructure/
-    ├── backend/
-    ├── scripts/
-    └── tests/
+├── infrastructure/
+│   ├── backend/
+│   ├── scripts/
+│   └── tests/
+├── login.html                    # compatibility redirect
+└── help.html                     # compatibility redirect
 ```
 
-## Ownership rule
-A subsystem owns its HTML, CSS, JavaScript, images, data and internal docs. Do not place new subsystem files in the project root.
+## Stable runtime URLs
+- Platform: `/the-educator/`
+- Learning: `/the-educator/learning/`
+- CPCS 351: `/the-educator/learning/courses/cpcs351/`
+- Attendance: `/the-educator/attendance/`
+- Classroom: `/the-educator/classroom/`
+- Practice Lab: `/the-educator/practice/`
 
-## Stable URLs
-- Learning: `/the-educator/systems/learning/`
-- CPCS 351: `/the-educator/systems/learning/courses/cpcs351/`
-- Attendance: `/the-educator/systems/attendance/`
-- Classroom prototype: `/the-educator/systems/classroom/`
-- Practice Lab: `/the-educator/systems/practice/`
+## Development rule
+Do not add new system pages to the project root. Put each feature in the subsystem that owns it. Create a new top-level subsystem only when the feature has an independent purpose, navigation flow, or resource set.
 
-See `docs/ARCHITECTURE.md` for expansion rules.
+See `docs/ARCHITECTURE.md` for the detailed rules.
