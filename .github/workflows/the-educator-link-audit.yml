@@ -27,3 +27,5 @@ jobs:
         run: node the-educator/infrastructure/scripts/audit-static-links.mjs
       - name: Audit subsystem architecture
         run: node the-educator/infrastructure/scripts/audit-architecture.mjs
+      - name: Smoke-test critical subsystem routes
+        run: node the-educator/infrastructure/scripts/smoke-static-site.mjs
