@@ -1,7 +1,19 @@
 (()=>{
   if(sessionStorage.getItem('cpcs351_access')!=='granted'){location.href='access.html';return;}
   const topics=[
-    ['01','Introduction','weeks/01-introduction/'],['02','Software Quality','weeks/02-Software Quality/'],['03','System Engineering','weeks/03-System Engineering/'],['04','Process and Methodology','weeks/04-Process and Methodology/'],['05','Software Requirements Elicitation','weeks/05-Software Requirements Elicitation/'],['06','Deriving Use Cases from Requirements','weeks/06-Deriving Use Cases from Requirements/'],['07','Architectural Design and Software Design Principles','weeks/week07.html'],['08','Domain Modeling and UML Class Diagram','weeks/week08.html'],['09','Object Interaction Modeling','weeks/week09.html'],['10','Activity Modeling','weeks/week10.html'],['11','Modelling Interactions and Behaviour Revision','weeks/week11.html'],['12','Applying Responsibility Assignment Patterns','weeks/week12.html'],['13','Software Testing','weeks/week13.html']
+    ['01','Introduction','weeks/01-introduction/'],
+    ['02','Software Quality','weeks/02-software-quality/'],
+    ['03','System Engineering','weeks/03-system-engineering/'],
+    ['04','Process and Methodology','weeks/04-process-and-methodology/'],
+    ['05','Software Requirements Elicitation','weeks/05-software-requirements-elicitation/'],
+    ['06','Deriving Use Cases from Requirements','weeks/06-deriving-use-cases-from-requirements/'],
+    ['07','Architectural Design and Software Design Principles','weeks/07-architectural-design-and-software-design-principles/'],
+    ['08','Domain Modeling and UML Class Diagram','weeks/08-domain-modeling-and-uml-class-diagram/'],
+    ['09','Object Interaction Modeling','weeks/09-object-interaction-modeling/'],
+    ['10','Activity Modeling','weeks/10-activity-modeling/'],
+    ['11','Modelling Interactions and Behaviour Revision','weeks/11-modeling-interactions-and-behavior-revision/'],
+    ['12','Applying Responsibility Assignment Patterns','weeks/12-responsibility-assignment-patterns/'],
+    ['13','Software Testing','weeks/13-software-testing/']
   ];
   const icon='<span class="ui-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg></span>';
   const list=document.querySelector('#topic-list'),q=document.querySelector('#course-search'),summary=document.querySelector('#course-progress'),progress=document.querySelector('.progress');
