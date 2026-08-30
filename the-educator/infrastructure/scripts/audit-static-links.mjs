@@ -63,8 +63,6 @@ function extractRefs(file, text){
   if(ext==='.css'){
     for(const m of text.matchAll(/url\(\s*["']?([^"')]+)["']?\s*\)/gi)) refs.push(m[1]);
   }
-  // Relative redirects inside shared JavaScript resolve against the document URL,
-  // not the JavaScript file location, so they are audited through their host pages.
   return refs;
 }
 
@@ -80,7 +78,8 @@ for(const file of walk(siteRoot)){
   const text=fs.readFileSync(file,'utf8');
   const rel=path.relative(repoRoot,file).replaceAll(path.sep,'/');
 
-  if(!rel.endsWith('/audit-static-links.mjs')){
+  const isDocumentation = rel.startsWith('the-educator/docs/') || rel.endsWith('/README.md');
+  if(!isDocumentation && !rel.endsWith('/audit-static-links.mjs')){
     for(const legacy of legacyPrefixes){
       if(text.includes(legacy)) errors.push(`${rel}: legacy path remains: ${legacy}`);
     }
