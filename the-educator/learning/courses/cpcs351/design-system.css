@@ -74,7 +74,11 @@
 .lesson-nav a:hover{background:var(--ui-brand-soft);color:var(--ui-brand)}
 .lesson-nav .next,.lesson-nav .prev{color:var(--ui-brand)}
 
-.learning-hook{margin-top:var(--space-3);padding:var(--space-3);border-radius:var(--radius-lg);background:var(--ui-ink)}
+.learning-hook{margin-top:var(--space-3);padding:var(--space-3);border-radius:var(--radius-lg);background:var(--ui-ink);color:#f8fafc}
+.learning-hook .hook-label{display:block;margin-bottom:var(--space-1);color:#93c5fd;font-size:11px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+.learning-hook strong{display:block;color:#fff;font-size:1.08rem;line-height:1.5}
+.learning-hook p{margin:var(--space-1) 0 0;color:#dbe4f0;line-height:1.7}
+.learning-hook a{color:#bfdbfe}
 .recall-grid{gap:var(--space-1)}
 .recall-grid details{border-radius:var(--radius-md)}
 .recall-grid summary{min-height:48px;padding:var(--space-2)}
