@@ -30,7 +30,7 @@
 /* One product identity; topic accent colors remain for learning visuals only. */
 .topbar{height:64px;padding:0 var(--space-3);gap:var(--space-2);border-color:var(--ui-line);background:rgba(255,255,255,.97)}
 .brand{gap:var(--space-1);font-weight:850}
-.brand-mark{width:32px;height:32px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--ui-brand),var(--ui-mint));font-size:22px}
+.brand-mark{width:42px;height:42px;flex:0 0 42px;border-radius:var(--radius-sm);background:url('/the-educator/assets/images/edulogo.png') center/contain no-repeat!important;font-size:0!important;color:transparent!important}
 .home-link,.course-id{color:var(--ui-muted)}
 .home-link:hover,.home-link:focus-visible{color:var(--ui-brand)}
 
