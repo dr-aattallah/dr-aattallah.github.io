@@ -1,0 +1,31 @@
+name: Move Educator logo to shared assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/move-educator-logo.yml'
+      - 'the-educator/learning/courses/cpcs351/assets/edulogo.png'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  move-logo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Move uploaded logo to shared platform assets
+        run: |
+          mkdir -p the-educator/assets/images
+          cp the-educator/learning/courses/cpcs351/assets/edulogo.png the-educator/assets/images/edulogo.png
+          rm the-educator/learning/courses/cpcs351/assets/edulogo.png
+      - name: Commit shared logo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add the-educator/assets/images/edulogo.png the-educator/learning/courses/cpcs351/assets/edulogo.png
+          git diff --cached --quiet && exit 0
+          git commit -m "Move Educator logo to shared platform assets"
+          git push
