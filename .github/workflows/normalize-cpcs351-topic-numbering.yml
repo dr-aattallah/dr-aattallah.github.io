@@ -1,0 +1,127 @@
+name: Normalize CPCS 351 topic numbering
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/normalize-cpcs351-topic-numbering.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Normalize folders, links, and topic metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="the-educator/learning/courses/cpcs351"
+          W="$ROOT/weeks"
+
+          # Topic 06 was merged into Topic 05. Remove the retired duplicate topic.
+          rm -rf "$W/06-deriving-use-cases-from-requirements"
+
+          # These are obsolete redirect wrappers, not study pages.
+          rm -f "$W/week07.html" "$W/week08.html" "$W/week09.html" "$W/week10.html" "$W/week11.html" "$W/week12.html" "$W/week13.html"
+
+          # Rename physical topic folders so folder numbers match the learning path.
+          git mv "$W/07-architectural-design-and-software-design-principles" "$W/06-architectural-design-and-software-design-principles"
+          git mv "$W/08-domain-modeling-and-uml-class-diagram" "$W/07-domain-modeling-and-uml-class-diagram"
+          git mv "$W/09-object-interaction-modeling" "$W/08-object-interaction-modeling"
+          git mv "$W/10-activity-modeling" "$W/09-activity-modeling"
+          git mv "$W/11-modeling-interactions-and-behavior-revision" "$W/10-modeling-interactions-and-behavior-revision"
+          git mv "$W/12-responsibility-assignment-patterns" "$W/11-responsibility-assignment-patterns"
+          git mv "$W/13-software-testing" "$W/12-software-testing"
+
+          python3 - <<'PY'
+          from pathlib import Path
+
+          root = Path('the-educator/learning/courses/cpcs351')
+          pairs = [
+              ('07-architectural-design-and-software-design-principles','06-architectural-design-and-software-design-principles',7,6),
+              ('08-domain-modeling-and-uml-class-diagram','07-domain-modeling-and-uml-class-diagram',8,7),
+              ('09-object-interaction-modeling','08-object-interaction-modeling',9,8),
+              ('10-activity-modeling','09-activity-modeling',10,9),
+              ('11-modeling-interactions-and-behavior-revision','10-modeling-interactions-and-behavior-revision',11,10),
+              ('12-responsibility-assignment-patterns','11-responsibility-assignment-patterns',12,11),
+              ('13-software-testing','12-software-testing',13,12),
+          ]
+
+          text_ext = {'.html','.js','.css','.md','.txt','.json','.yml','.yaml'}
+
+          # Update references anywhere in CPCS 351 from old physical paths to new canonical paths.
+          for p in root.rglob('*'):
+              if not p.is_file() or p.suffix.lower() not in text_ext:
+                  continue
+              try:
+                  s = p.read_text(encoding='utf-8')
+              except UnicodeDecodeError:
+                  continue
+              original = s
+              for old_dir,new_dir,old_num,new_num in pairs:
+                  s = s.replace(f'weeks/{old_dir}', f'weeks/{new_dir}')
+                  s = s.replace(f'../{old_dir}', f'../{new_dir}')
+                  s = s.replace(f'/{old_dir}/', f'/{new_dir}/')
+              if s != original:
+                  p.write_text(s, encoding='utf-8')
+
+          # Normalize topic metadata inside each renumbered folder.
+          weeks = root/'weeks'
+          for old_dir,new_dir,old_num,new_num in pairs:
+              d = weeks/new_dir
+              if not d.exists():
+                  continue
+              old2=f'{old_num:02d}'; new2=f'{new_num:02d}'
+              # Rename topicXX.js when present.
+              oldjs=d/f'topic{old2}.js'; newjs=d/f'topic{new2}.js'
+              if oldjs.exists() and oldjs != newjs:
+                  oldjs.rename(newjs)
+              for p in d.rglob('*'):
+                  if not p.is_file() or p.suffix.lower() not in text_ext:
+                      continue
+                  try:
+                      s=p.read_text(encoding='utf-8')
+                  except UnicodeDecodeError:
+                      continue
+                  original=s
+                  s=s.replace(f'data-topic="{old2}"', f'data-topic="{new2}"')
+                  s=s.replace(f'data-topic="{old_num}"', f'data-topic="{new_num}"')
+                  s=s.replace(f'Topic {old2}', f'Topic {new2}')
+                  s=s.replace(f'Topic {old_num}', f'Topic {new_num}')
+                  s=s.replace(f'topic{old2}.js', f'topic{new2}.js')
+                  s=s.replace(f'TOPIC{old2}', f'TOPIC{new2}')
+                  if s != original:
+                      p.write_text(s, encoding='utf-8')
+
+          # Dashboard: canonical physical paths + one-time progress migration.
+          dash = root/'course-dashboard.js'
+          s = dash.read_text(encoding='utf-8')
+          for old_dir,new_dir,_,_ in pairs:
+              s=s.replace(f'weeks/{old_dir}/', f'weeks/{new_dir}/')
+          start = s.find('  const storageAliases=')
+          if start != -1:
+              end = s.find('  function done(n)', start)
+              if end != -1:
+                  migration = '''  // One-time migration after Topic 06 was merged into Topic 05 and Topics 07–13 shifted down by one.\n  try{\n    if(!localStorage.getItem('cpcs351-topic-numbering-v2')){\n      for(let old=13;old>=7;old--){\n        const v=localStorage.getItem(`cpcs351-topic-${old}`);\n        if(v)localStorage.setItem(`cpcs351-topic-${old-1}`,v);\n      }\n      localStorage.setItem('cpcs351-topic-numbering-v2','done');\n    }\n  }catch{}\n'''
+                  s=s[:start]+migration+s[end:]
+          # Replace alias-based done() with canonical direct-key progress lookup.
+          import re
+          s=re.sub(r"  function done\(n\)\{.*?\n  \}\n  function render", "  function done(n){try{return (JSON.parse(localStorage.getItem(`cpcs351-topic-${Number(n)}`)||'{}').completed||[]).length}catch{return 0}}\n  function render", s, flags=re.S)
+          dash.write_text(s, encoding='utf-8')
+          PY
+
+          # Remove this one-off workflow after it has completed its job.
+          git rm .github/workflows/normalize-cpcs351-topic-numbering.yml
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Normalize CPCS 351 topics 06-12 after Topic 05 merge"
+          git push
