@@ -6,31 +6,27 @@
     ['03','System Engineering','weeks/03-system-engineering/'],
     ['04','Process and Methodology','weeks/04-process-and-methodology/'],
     ['05','Requirements Elicitation & Use-Case Engineering','weeks/05-software-requirements-elicitation/'],
-    ['06','Architectural Design and Software Design Principles','weeks/07-architectural-design-and-software-design-principles/'],
-    ['07','Domain Modeling and UML Class Diagram','weeks/08-domain-modeling-and-uml-class-diagram/'],
-    ['08','Object Interaction Modeling','weeks/09-object-interaction-modeling/'],
-    ['09','Activity Modeling','weeks/10-activity-modeling/'],
-    ['10','Modelling Interactions and Behaviour Revision','weeks/11-modeling-interactions-and-behavior-revision/'],
-    ['11','Applying Responsibility Assignment Patterns','weeks/12-responsibility-assignment-patterns/'],
-    ['12','Software Testing','weeks/13-software-testing/']
+    ['06','Architectural Design and Software Design Principles','weeks/06-architectural-design-and-software-design-principles/'],
+    ['07','Domain Modeling and UML Class Diagram','weeks/07-domain-modeling-and-uml-class-diagram/'],
+    ['08','Object Interaction Modeling','weeks/08-object-interaction-modeling/'],
+    ['09','Activity Modeling','weeks/09-activity-modeling/'],
+    ['10','Modelling Interactions and Behaviour Revision','weeks/10-modeling-interactions-and-behavior-revision/'],
+    ['11','Applying Responsibility Assignment Patterns','weeks/11-responsibility-assignment-patterns/'],
+    ['12','Software Testing','weeks/12-software-testing/']
   ];
   const icon='<span class="ui-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg></span>';
   const list=document.querySelector('#topic-list'),q=document.querySelector('#course-search'),summary=document.querySelector('#course-progress'),progress=document.querySelector('.progress');
-  const storageAliases={
-    '06':['06','07'],
-    '07':['07','08'],
-    '08':['08','09'],
-    '09':['09','10'],
-    '10':['10','11'],
-    '11':['11','12'],
-    '12':['12','13']
-  };
-  function done(n){
-    try{
-      const keys=storageAliases[n]||[n];
-      return Math.max(...keys.map(k=>(JSON.parse(localStorage.getItem(`cpcs351-topic-${Number(k)}`)||'{}').completed||[]).length),0);
-    }catch{return 0}
-  }
+  // One-time migration after Topic 06 was merged into Topic 05 and Topics 07–13 shifted down by one.
+  try{
+    if(!localStorage.getItem('cpcs351-topic-numbering-v2')){
+      for(let old=13;old>=7;old--){
+        const v=localStorage.getItem(`cpcs351-topic-${old}`);
+        if(v)localStorage.setItem(`cpcs351-topic-${old-1}`,v);
+      }
+      localStorage.setItem('cpcs351-topic-numbering-v2','done');
+    }
+  }catch{}
+  function done(n){try{return (JSON.parse(localStorage.getItem(`cpcs351-topic-${Number(n)}`)||'{}').completed||[]).length}catch{return 0}}
   function render(filter=''){
     const f=filter.toLowerCase().trim();
     list.innerHTML=topics.filter(t=>!f||t[1].toLowerCase().includes(f)||t[0].includes(f)).map(t=>{
