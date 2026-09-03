@@ -25,6 +25,8 @@ jobs:
           node-version: '22'
       - name: Audit local links and legacy paths
         run: node the-educator/infrastructure/scripts/audit-static-links.mjs
+      - name: Audit CPCS 351 navigation targets
+        run: node the-educator/infrastructure/scripts/audit-cpcs351-navigation.mjs
       - name: Audit subsystem architecture
         run: node the-educator/infrastructure/scripts/audit-architecture.mjs
       - name: Smoke-test critical subsystem routes
