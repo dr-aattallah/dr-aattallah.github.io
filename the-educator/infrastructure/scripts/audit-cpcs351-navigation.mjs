@@ -13,6 +13,7 @@ const topics=[
 ];
 const errors=[]; let generatedLinks=0; let lessonPages=0;
 const exists=p=>fs.existsSync(p)&&fs.statSync(p).isFile();
+const decodeRef=ref=>{try{return decodeURIComponent(ref)}catch{return ref}};
 
 if(!exists(path.join(courseRoot,'index.html')))errors.push('Course Home index.html is missing.');
 if(!exists(path.join(courseRoot,'navigation-system.js')))errors.push('navigation-system.js is missing.');
@@ -33,19 +34,19 @@ for(const [num,slug] of topics){
  const jsFile=fs.readdirSync(dir).find(n=>/^topic\d+\.js$/i.test(n));
  if(jsFile){
    const js=fs.readFileSync(path.join(dir,jsFile),'utf8');
-   const refs=[...js.matchAll(/["']([^"']+\.html)["']/g)].map(m=>m[1]);
+   const refs=[...js.matchAll(/["']([^"']+\.html)["']/g)].map(m=>decodeRef(m[1]));
    for(const ref of new Set(refs)){
      if(ref.includes('/')||ref.startsWith('http'))continue;
      generatedLinks++;
      if(!exists(path.join(dir,ref)))errors.push(`Topic ${num} ${jsFile}: generated navigation target does not exist: ${ref}`);
    }
  }
- // Check explicit local menu / previous-next hrefs present in lesson HTML.
  for(const file of htmlFiles){
    const text=fs.readFileSync(path.join(dir,file),'utf8');
    for(const m of text.matchAll(/href=["']([^"']+)["']/gi)){
-     const ref=m[1].split('#')[0].split('?')[0];
+     let ref=m[1].split('#')[0].split('?')[0];
      if(!ref||ref.startsWith('#')||/^(https?:|mailto:|tel:|javascript:|\/)/i.test(ref))continue;
+     ref=decodeRef(ref);
      const target=path.resolve(dir,ref);
      generatedLinks++;
      if(!fs.existsSync(target)&&!exists(target+'.html'))errors.push(`Topic ${num} ${file}: local navigation/reference target missing: ${ref}`);
@@ -53,7 +54,6 @@ for(const [num,slug] of topics){
  }
 }
 
-// Confirm the global bottom-navigation rules and recovery routes are present.
 for(const token of ['Previous Lesson','Next Lesson','Previous Topic','Next Topic','Topic Home','Course Home']){
  if(!unified.includes(token))errors.push(`Unified navigation is missing recovery/path label: ${token}`);
 }
