@@ -3,7 +3,7 @@ name: The Educator integrity audit
 on:
   push:
     branches:
-      - restructure-the-educator-systems
+      - main
     paths:
       - 'the-educator/**'
       - '.github/workflows/the-educator-link-audit.yml'
