@@ -1,44 +1,10 @@
 (()=>{
   if(sessionStorage.getItem('cpcs351_access')!=='granted'){location.href='access.html';return;}
-  const topics=[
-    ['01','Introduction','weeks/01-introduction/'],
-    ['02','Software Quality','weeks/02-software-quality/'],
-    ['03','System Engineering','weeks/03-system-engineering/'],
-    ['04','Process and Methodology','weeks/04-process-and-methodology/'],
-    ['05','Requirements Elicitation & Use-Case Engineering','weeks/05-software-requirements-elicitation/'],
-    ['06','Architectural Design and Software Design Principles','weeks/06-architectural-design-and-software-design-principles/'],
-    ['07','Domain Modeling and UML Class Diagram','weeks/07-domain-modeling-and-uml-class-diagram/'],
-    ['08','Object Interaction Modeling','weeks/08-object-interaction-modeling/'],
-    ['09','Activity Modeling','weeks/09-activity-modeling/'],
-    ['10','Modelling Interactions and Behaviour Revision','weeks/10-modeling-interactions-and-behavior-revision/'],
-    ['11','Applying Responsibility Assignment Patterns','weeks/11-responsibility-assignment-patterns/'],
-    ['12','Software Testing','weeks/12-software-testing/']
-  ];
+  const topics=[['01','Introduction','weeks/01-introduction/'],['02','Software Quality','weeks/02-software-quality/'],['03','System Engineering','weeks/03-system-engineering/'],['04','Process and Methodology','weeks/04-process-and-methodology/'],['05','Requirements Elicitation & Use-Case Engineering','weeks/05-software-requirements-elicitation/'],['06','Architectural Design and Software Design Principles','weeks/06-architectural-design-and-software-design-principles/'],['07','Domain Modeling and UML Class Diagram','weeks/07-domain-modeling-and-uml-class-diagram/'],['08','Object Interaction Modeling','weeks/08-object-interaction-modeling/'],['09','Activity Modeling','weeks/09-activity-modeling/'],['10','Modelling Interactions and Behaviour Revision','weeks/10-modeling-interactions-and-behavior-revision/'],['11','Applying Responsibility Assignment Patterns','weeks/11-responsibility-assignment-patterns/'],['12','Software Testing','weeks/12-software-testing/']];
   const icon='<span class="ui-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg></span>';
   const list=document.querySelector('#topic-list'),q=document.querySelector('#course-search'),summary=document.querySelector('#course-progress'),progress=document.querySelector('.progress');
-  // One-time migration after Topic 06 was merged into Topic 05 and Topics 07–13 shifted down by one.
-  try{
-    if(!localStorage.getItem('cpcs351-topic-numbering-v2')){
-      for(let old=13;old>=7;old--){
-        const v=localStorage.getItem(`cpcs351-topic-${old}`);
-        if(v)localStorage.setItem(`cpcs351-topic-${old-1}`,v);
-      }
-      localStorage.setItem('cpcs351-topic-numbering-v2','done');
-    }
-  }catch{}
+  try{if(!localStorage.getItem('cpcs351-topic-numbering-v2')){for(let old=13;old>=7;old--){const v=localStorage.getItem(`cpcs351-topic-${old}`);if(v)localStorage.setItem(`cpcs351-topic-${old-1}`,v)}localStorage.setItem('cpcs351-topic-numbering-v2','done')}}catch{}
   function done(n){try{return (JSON.parse(localStorage.getItem(`cpcs351-topic-${Number(n)}`)||'{}').completed||[]).length}catch{return 0}}
-  function render(filter=''){
-    const f=filter.toLowerCase().trim();
-    list.innerHTML=topics.filter(t=>!f||t[1].toLowerCase().includes(f)||t[0].includes(f)).map(t=>{
-      const count=done(t[0]);
-      return `<a class="topic" href="${t[2]}"><span class="num">${t[0]}</span><span><strong>${t[1]}</strong><small>${count?`${count} Page${count===1?'':'s'} Completed`:'Not Started'}</small></span>${icon}</a>`;
-    }).join('')||'<p class="empty">No Topic matches your search.</p>';
-    const started=topics.filter(t=>done(t[0])>0).length;
-    summary.textContent=`${started} of ${topics.length} Topics Started`;
-    progress.setAttribute('aria-valuemax',String(topics.length));
-    progress.setAttribute('aria-valuenow',String(started));
-    progress.querySelector('i').style.width=`${started/topics.length*100}%`;
-  }
-  q.addEventListener('input',()=>render(q.value));
-  render();
-})();
+  function render(filter=''){const f=filter.toLowerCase().trim();list.innerHTML=topics.filter(t=>!f||t[1].toLowerCase().includes(f)||t[0].includes(f)).map(t=>{const count=done(t[0]);return `<a class="topic" href="${t[2]}"><span class="num">${t[0]}</span><span><strong>${t[1]}</strong><small>${count?`${count} Page${count===1?'':'s'} Completed`:'Not Started'}</small></span>${icon}</a>`}).join('')||'<p class="empty">No Topic matches your search.</p>';const started=topics.filter(t=>done(t[0])>0).length;summary.textContent=`${started} of ${topics.length} Topics Started`;progress.setAttribute('aria-valuemax',String(topics.length));progress.setAttribute('aria-valuenow',String(started));progress.querySelector('i').style.width=`${started/topics.length*100}%`}
+  q.addEventListener('input',()=>render(q.value));render();
+})();(()=>{if(!document.querySelector('script[data-cpcs-nav]')){const s=document.createElement('script');s.src='navigation-system.js';s.dataset.cpcsNav='1';document.head.append(s)}})();
