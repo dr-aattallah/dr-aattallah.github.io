@@ -1,5 +1,5 @@
 :root{--t9-purple:#6d4aff;--t9-blue:#2f80ed;--t9-teal:#00a7a0;--t9-green:#18a66a;--t9-amber:#f59e0b;--t9-orange:#f97316;--t9-pink:#ec4899;--t9-red:#ef476f;--t9-indigo:#4f46e5;--t9-cyan:#0891b2;--t9-ink:#172033;--t9-soft:#f7f8ff}
-body[data-topic="09"]{--page-accent:var(--t9-purple);--page-accent2:var(--t9-blue);--page-soft:#f4f1ff}
+body[data-topic="09"]{--page-accent:var(--t9-purple);--page-accent2:var(--t9-blue);--page-soft:#f4f1ff;--accent:var(--page-accent);--accent2:var(--page-accent2);--accent-soft:var(--page-soft)}
 body[data-page="1"]{--page-accent:#6d4aff;--page-accent2:#00a7a0;--page-soft:#f4f1ff}
 body[data-page="2"]{--page-accent:#2f80ed;--page-accent2:#7c3aed;--page-soft:#eef6ff}
 body[data-page="3"]{--page-accent:#ec4899;--page-accent2:#7c3aed;--page-soft:#fff1f8}
