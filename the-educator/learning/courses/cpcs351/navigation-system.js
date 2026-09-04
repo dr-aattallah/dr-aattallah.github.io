@@ -3,6 +3,20 @@
   const topics=[
     ['01','Introduction','01-introduction'],['02','Software Quality','02-software-quality'],['03','System Engineering','03-system-engineering'],['04','Process and Methodology','04-process-and-methodology'],['05','Requirements Elicitation & Use-Case Engineering','05-software-requirements-elicitation'],['06','Architectural Design & Software Design Principles','06-architectural-design-and-software-design-principles'],['07','Domain Modeling & UML Class Diagram','07-domain-modeling-and-uml-class-diagram'],['08','Object Interaction Modeling','08-object-interaction-modeling'],['09','Activity Modeling','09-activity-modeling'],['10','Interactions & Behaviour Revision','10-modeling-interactions-and-behavior-revision'],['11','Responsibility Assignment Patterns','11-responsibility-assignment-patterns'],['12','Software Testing','12-software-testing']
   ];
+  const topicLessons={
+    '05-software-requirements-elicitation':[
+      ['index.html','Requirements Elicitation'],
+      ['challenges-and-types.html','Requirements Challenges & Types'],
+      ['elicitation-process.html','Elicitation Process'],
+      ['information-collection-analysis.html','Information Collection & Analysis'],
+      ['use-case-foundations.html','Use-Case Foundations'],
+      ['deriving-use-cases.html','Derive, Specify & Trace Use Cases'],
+      ['use-case-relationships.html','Use-Case Relationships'],
+      ['use-case-guidelines.html','Designing Clear Use-Case Diagrams'],
+      ['specification-feasibility.html','SRS & Feasibility'],
+      ['reviews-and-agile.html','Validation, Reviews & Agile Practice']
+    ]
+  };
   const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
   const esc=s=>(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   const path=location.pathname;
@@ -32,8 +46,23 @@
 
   function breadcrumbs(){if(!topic)return;const content=$('.content')||$('main');const hero=$('.hero');if(!content||!hero)return;$$('.breadcrumb').forEach(x=>x.remove());if($('.edu-breadcrumbs'))return;const title=($('.hero h1')?.textContent||document.title.split('|')[0]).trim();const b=document.createElement('nav');b.className='edu-breadcrumbs';b.setAttribute('aria-label','Breadcrumb');b.innerHTML=`<a href="${base}index.html">CPCS 351</a><span aria-hidden="true">›</span><a href="${base}weeks/${topic[2]}/">Topic ${topic[0]} · ${esc(topic[1])}</a><span aria-hidden="true">›</span><span aria-current="page">${esc(title)}</span>`;content.insertBefore(b,hero)}
 
+  function canonicalizeLocalNav(side){
+    const lessons=topicLessons[slug];if(!lessons)return;
+    const head=$('.side-head,.side-title',side);
+    $$('.side-link,.side-nav a',side).forEach(a=>a.remove());
+    lessons.forEach(([href,label])=>{const a=document.createElement('a');a.className='side-link';a.href=href;a.textContent=label;side.append(a)});
+    if(head&&head.parentElement!==side)side.prepend(head)
+  }
+
+  function syncMobileNav(links,current){
+    const mobile=$('.mobile-topic');if(!mobile)return;
+    mobile.innerHTML='';mobile.setAttribute('aria-label','Topic lessons');
+    links.forEach((a,i)=>{const m=document.createElement('a');m.href=a.getAttribute('href');m.textContent=`${String(i+1).padStart(2,'0')} ${a.textContent.replace(/^\s*\d{2}\s*/,'').trim()}`;if(a===current){m.className='active';m.setAttribute('aria-current','page')}mobile.append(m)})
+  }
+
   function localNav(){
     const side=$('.sidebar');if(!side)return;
+    canonicalizeLocalNav(side);
     const links=$$('.side-link,.side-nav a',side);if(!links.length)return;
     const currentPath=location.pathname.replace(/\/$/,'/index.html');
     let current=links.find(a=>{try{return new URL(a.href,location.href).pathname.replace(/\/$/,'/index.html')===currentPath}catch{return false}})||links.find(a=>a.classList.contains('active'));
@@ -44,7 +73,7 @@
       const n=document.createElement('span');n.className='edu-lesson-number';n.dataset.navNumber='1';n.textContent=String(i+1).padStart(2,'0');a.prepend(n);
       const active=a===current;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
     });
-    side.setAttribute('aria-label','Topic lessons')
+    side.setAttribute('aria-label','Topic lessons');syncMobileNav(links,current)
   }
 
   function bottomNav(){if(!topic)return;const side=$('.sidebar'),links=side?$$('.side-link,.side-nav a',side):[];const currentPath=location.pathname.replace(/\/$/,'/index.html');let i=links.findIndex(a=>{try{return new URL(a.href,location.href).pathname.replace(/\/$/,'/index.html')===currentPath}catch{return false}});let nav=$('.lesson-nav');if(!nav){nav=document.createElement('nav');nav.className='lesson-nav';($('article')||$('main'))?.append(nav)}nav.setAttribute('aria-label','Lesson navigation');nav.innerHTML='';const mk=(href,label,role)=>{const a=document.createElement('a');a.href=href;a.dataset.navRole=role;a.innerHTML=role==='prev'?`← <span>${esc(label)}</span>`:role==='next'?`<span>${esc(label)}</span> →`:`<span>${esc(label)}</span>`;return a};if(i>0)nav.append(mk(links[i-1].getAttribute('href'),'Previous Lesson','prev'));else if(topicIndex>0)nav.append(mk(`${base}weeks/${topics[topicIndex-1][2]}/`,'Previous Topic','prev'));else nav.append(mk(base+'index.html','Course Home','prev'));nav.append(mk(`${base}weeks/${topic[2]}/`,'Topic Home','home'));if(i>=0&&i<links.length-1)nav.append(mk(links[i+1].getAttribute('href'),'Next Lesson','next'));else if(topicIndex>=0&&topicIndex<topics.length-1)nav.append(mk(`${base}weeks/${topics[topicIndex+1][2]}/`,'Next Topic','next'));else nav.append(mk(base+'index.html','Course Home','next'))}
