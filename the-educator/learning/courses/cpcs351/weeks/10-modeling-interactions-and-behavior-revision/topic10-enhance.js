@@ -15,7 +15,7 @@
     if(story){
       const fig=document.createElement('figure');
       fig.className='t10-overview-figure';
-      fig.innerHTML='<img src="assets/behavioral-modeling-overview.svg" alt="Integrated Behavioral Modeling overview showing the Smart Parcel Locker scenario through Sequence, State, and Activity UML views"><figcaption><b>Visual map:</b> one scenario can produce different behavioral models because each model answers a different engineering question.</figcaption>';
+      fig.innerHTML='<img src="assets/behavioral-modeling-overview.svg?v=20260906c" alt="Smart Parcel Locker Pickup scenario viewed through Use Case, Sequence, State, and Activity UML diagrams"><figcaption><b>Visual map:</b> one detailed scenario becomes four complementary UML views: actors and goals, message collaboration, lifecycle, and workflow.</figcaption>';
       story.insertAdjacentElement('afterend',fig);
     }
   }
