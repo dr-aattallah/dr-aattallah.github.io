@@ -1,22 +1,8 @@
 (()=>{
-  const article=document.querySelector('article.content');
-  if(!article)return;
-  document.querySelectorAll('iframe').forEach(el=>el.remove());
-  [...article.querySelectorAll('section,div')].forEach(el=>{
-    const text=(el.textContent||'').trim();
-    if(/External UML Reference/i.test(text)||/Activity diagram notation/i.test(text)){
-      if(el.closest('.hero,.t10-story,.model-banner'))return;
-      el.remove();
-    }
-  });
-  const page=Number(document.body.dataset.page||1);
-  if(page===1&&!article.querySelector('.t10-overview-figure')){
-    const story=article.querySelector('.t10-story');
-    if(story){
-      const fig=document.createElement('figure');
-      fig.className='t10-overview-figure';
-      fig.innerHTML='<img src="assets/behavioral-modeling-overview.svg?v=20260906c" alt="Smart Parcel Locker Pickup scenario viewed through Use Case, Sequence, State, and Activity UML diagrams"><figcaption><b>Visual map:</b> one detailed scenario becomes four complementary UML views: actors and goals, message collaboration, lifecycle, and workflow.</figcaption>';
-      story.insertAdjacentElement('afterend',fig);
-    }
-  }
+ const article=document.querySelector('article.content'); if(!article)return;
+ document.querySelectorAll('iframe').forEach(el=>el.remove());
+ const page=Number(document.body.dataset.page||1);
+ if(page===1){const story=article.querySelector('.anchor-story');if(story&&!story.querySelector('.scenario-visual')){const fig=document.createElement('figure');fig.className='scenario-visual';fig.innerHTML='<img src="assets/secenarionparcal.png" alt="Illustrated Smart Parcel Locker Pickup scenario"><figcaption>Smart Parcel Locker Pickup — the anchor scenario used throughout Topic 10.</figcaption>';const h=story.querySelector('h2');if(h)h.insertAdjacentElement('afterend',fig);else story.prepend(fig);}}
+ const imgs={2:['assets/usecaseparcl.png','Smart Parcel Locker Pickup UML Use Case Diagram','Use Case view — actors, goals, system boundary, and relationships.'],3:['assets/sequancepacel.png','Smart Parcel Locker Pickup UML Sequence Diagram','Sequence view — ordered interactions for Collect Parcel.'],4:['assets/stateparcel.png','Smart Parcel Locker Pickup UML State Diagram','State view — lifecycle, events, guards, and outcomes.'],5:['assets/activityparcl.png','Smart Parcel Locker Pickup UML Activity Diagram','Activity view — workflow, decisions, and responsibilities.']};
+ const d=imgs[page];if(d){const code=article.querySelector('pre.plantuml');if(code){const label=code.previousElementSibling?.classList?.contains('code-label')?code.previousElementSibling:null;const fig=document.createElement('figure');fig.className='uml-solution-figure';fig.innerHTML=`<img src="${d[0]}" alt="${d[1]}"><figcaption><b>Model solution:</b> ${d[2]}</figcaption>`;code.replaceWith(fig);if(label)label.remove();}}
 })();
