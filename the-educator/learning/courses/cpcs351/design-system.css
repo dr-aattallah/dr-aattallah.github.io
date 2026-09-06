@@ -8,7 +8,7 @@
 
 /* Product identity. Topic colors belong to learning content, not product navigation. */
 .brand{display:flex;align-items:center;gap:var(--space-1);font-weight:850;text-decoration:none}
-.brand-mark{display:block!important;width:42px!important;height:42px!important;flex:0 0 42px!important;border-radius:var(--radius-sm)!important;background:url('/the-educator/learning/courses/cpcs351/assets/educator-mark.svg') center/contain no-repeat!important;font-size:0!important;color:transparent!important}
+.brand-mark{display:block!important;width:42px!important;height:42px!important;flex:0 0 42px!important;border-radius:var(--radius-sm)!important;background:url('/the-educator/assets/images/edulogo.png') center/contain no-repeat!important;font-size:0!important;color:transparent!important}
 .course-id,.home-link{color:var(--ui-muted)}
 
 /* Stable course geometry shared by every lesson page. */
@@ -38,4 +38,3 @@ iframe,.learning-media,img.learning-media{display:block;max-width:100%;border:1p
   body[data-topic] .hero{grid-template-columns:1fr}
 }
 @media(max-width:620px){body[data-topic] .content{width:min(100% - 28px,960px)!important;padding-top:24px!important}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
