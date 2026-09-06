@@ -15,12 +15,14 @@
   ];
   const file=location.pathname.split('/').pop()||'index.html';
   const current=Math.max(0,pages.findIndex(p=>p[0]===file));
+  document.body.dataset.topic='10';
   document.body.dataset.page=String(current+1);
 
-  const side=document.getElementById('topic-sidebar'),mobile=document.getElementById('topic-mobile');
-  const links=pages.map((p,i)=>`<a class="${i===current?'active':''}" href="${p[0]}"><span>${String(i+1).padStart(2,'0')}</span>${p[1]}</a>`).join('');
-  if(side)side.innerHTML=`<div class="side-title"><small>Topic 10</small><strong>Integrated UML Modeling</strong></div><nav class="side-nav">${links}</nav>`;
-  if(mobile)mobile.innerHTML=`<select aria-label="Topic pages" onchange="location.href=this.value">${pages.map((p,i)=>`<option value="${p[0]}" ${i===current?'selected':''}>${i+1}. ${p[1]}</option>`).join('')}</select>`;
+  const side=document.getElementById('topic-sidebar');
+  const mobile=document.getElementById('topic-mobile');
+  const sideLinks=pages.map((p,i)=>`<a class="side-link ${i===current?'active':''}" href="${p[0]}"><span>${String(i+1).padStart(2,'0')}</span><span>${p[1]}</span></a>`).join('');
+  if(side)side.innerHTML=`<div class="side-head"><small>Topic 10</small><strong>Integrated UML Modeling</strong></div>${sideLinks}`;
+  if(mobile)mobile.innerHTML=pages.map((p,i)=>`<a class="${i===current?'active':''}" href="${p[0]}">${String(i+1).padStart(2,'0')} · ${p[1]}</a>`).join('');
 
   const prev=document.getElementById('prev-link'),next=document.getElementById('next-link');
   if(prev&&current>0){prev.hidden=false;prev.href=pages[current-1][0]}
@@ -81,4 +83,3 @@
     if(mastery&&!mastery.querySelector('.class-mastery')){const d=document.createElement('div');d.className='class-mastery';d.innerHTML='<b>Class</b><br>Identify concepts, attributes, associations, multiplicities, and structural relationships.';mastery.insertBefore(d,mastery.children[1]||null);mastery.classList.add('six');}
   }
 })();
-(()=>{if(!document.querySelector('script[data-cpcs-nav]')){const s=document.createElement('script');s.src='../../navigation-system.js';s.dataset.cpcsNav='1';document.head.append(s)}})();
