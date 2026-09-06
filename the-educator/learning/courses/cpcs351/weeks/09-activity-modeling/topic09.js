@@ -18,12 +18,18 @@ const T9_HOOKS={
 
 (function(){
   document.body.dataset.topic='09';
-  if(!document.querySelector('link[data-topic09-style]')){const l=document.createElement('link');l.rel='stylesheet';l.href='topic09.css';l.dataset.topic09Style='1';document.head.append(l)}
-  const n=+document.body.dataset.page||1,s=document.getElementById('topic-sidebar'),m=document.getElementById('topic-mobile');
+  const current=location.pathname.split('/').pop()||'index.html';
+  const found=TOPIC09.findIndex(p=>p[0]===current);
+  const n=found>=0?found+1:(+document.body.dataset.page||1);
+  document.body.dataset.page=String(n);
+  if(!document.querySelector('link[data-topic09-style]')&&!document.querySelector('link[href="topic09.css"]')){const l=document.createElement('link');l.rel='stylesheet';l.href='topic09.css';l.dataset.topic09Style='1';document.head.append(l)}
+  let s=document.getElementById('topic-sidebar')||document.querySelector('.sidebar');if(s&&!s.id)s.id='topic-sidebar';
+  let m=document.getElementById('topic-mobile');if(!m&&s){m=document.createElement('nav');m.id='topic-mobile';m.className='mobile-topic';const shell=document.querySelector('.shell');if(shell&&shell.parentNode)shell.parentNode.insertBefore(m,shell)}
   const h='<div class="side-head"><small>Topic 09 · Chapters 13–14</small><strong>Behavioral Modeling with UML</strong></div>';
   const links=TOPIC09.map((p,i)=>`<a class="side-link ${i+1===n?'active':''}" href="${p[0]}"><span>${String(i+1).padStart(2,'0')}</span><span>${p[1]}</span></a>`).join('');
   if(s)s.innerHTML=h+links;if(m)m.innerHTML=TOPIC09.map((p,i)=>`<a class="${i+1===n?'active':''}" href="${p[0]}">${String(i+1).padStart(2,'0')} · ${p[1]}</a>`).join('');
-  let a=document.getElementById('prev-link'),b=document.getElementById('next-link');if(a&&n>1){a.href=TOPIC09[n-2][0];a.hidden=false}if(b&&n<TOPIC09.length){b.href=TOPIC09[n][0];b.hidden=false}
+  const a=document.getElementById('prev-link'),b=document.getElementById('next-link');if(a&&n>1){a.href=TOPIC09[n-2][0];a.hidden=false}if(b&&n<TOPIC09.length){b.href=TOPIC09[n][0];b.hidden=false}
+  const progress=document.querySelector('.hero-progress small');if(progress&&/of\s+\d+\s+pages/i.test(progress.textContent))progress.textContent=`of ${TOPIC09.length} pages`;
   const hook=T9_HOOKS[n],article=document.querySelector('article.content');if(hook&&article&&!article.querySelector('.t9-hook')){const section=document.createElement('section');section.className='t9-hook';section.innerHTML=`<div class="t9-hook-head"><div class="t9-hook-icon" aria-hidden="true">${hook.icon}</div><div><small>Visual learning hook</small><h2>${hook.title}</h2></div></div>${hook.html}`;const target=article.querySelector('.objective')||article.querySelector('.hero');target?.insertAdjacentElement('afterend',section)}
+  if(!document.querySelector('script[src="../../study.js"]')&&!document.querySelector('script[data-cpcs-study]')){const st=document.createElement('script');st.src='../../study.js';st.dataset.cpcsStudy='1';document.head.append(st)}
 })();
-(()=>{if(!document.querySelector('script[data-cpcs-nav]')){const s=document.createElement('script');s.src='../../navigation-system.js';s.dataset.cpcsNav='1';document.head.append(s)}})();
