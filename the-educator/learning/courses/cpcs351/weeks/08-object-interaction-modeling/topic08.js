@@ -4,6 +4,8 @@
   ];
   const current=location.pathname.split('/').pop()||'index.html';
   const activeIndex=Math.max(0,pages.findIndex(p=>p[0]===current));
+  document.body.dataset.topic='08';
+  document.body.dataset.page=String(activeIndex+1);
   const sidebar=document.querySelector('.sidebar[data-o8-nav]');
   if(sidebar&&!sidebar.id)sidebar.id='topic-sidebar';
   let mobile=document.querySelector('#topic-mobile');
