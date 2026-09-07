@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Design Principles | Topic 11</title>
+  <link rel="stylesheet" href="../../study.css">
+  <link rel="stylesheet" href="topic11.css?v=20260907g">
+  <style>
+    .design-principles-page .hero{display:block!important;margin-bottom:20px}
+    .design-principles-page .hero .eyebrow{font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#5b63d9;font-size:.78rem}
+    .design-principles-page .hero h1{margin:.35rem 0 .55rem;font-size:clamp(2rem,4vw,3.4rem);line-height:1.05}
+    .design-principles-page .hero p{max-width:850px;font-size:1.05rem;line-height:1.7;color:#536178}
+    .dp-intro{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0 24px}
+    .dp-intro div{padding:16px 18px;border:1px solid #dfe7f5;border-radius:16px;background:linear-gradient(180deg,#fff,#f8fbff)}
+    .dp-intro b{display:block;margin-bottom:5px;color:#17233c}
+    .dp-gallery{display:grid;gap:28px}
+    .dp-figure{margin:0;border:1px solid #dfe7f5;border-radius:22px;background:#fff;padding:14px;box-shadow:0 16px 45px rgba(34,51,84,.08)}
+    .dp-figure img{display:block;width:100%;height:auto;border-radius:15px}
+    .dp-figure figcaption{padding:14px 6px 4px;color:#536178;line-height:1.65}
+    .dp-note{margin-top:24px;padding:18px 20px;border-left:4px solid #5b63d9;border-radius:14px;background:#f5f7ff;line-height:1.7}
+    @media(max-width:760px){.dp-intro{grid-template-columns:1fr}.dp-figure{padding:8px;border-radius:16px}.dp-figure img{border-radius:11px}}
+  </style>
+</head>
+<body data-topic="11" class="design-principles-page">
+<header class="topbar">
+  <a class="brand" href="../../index.html"><span class="brand-mark">+</span><span>The Educator</span></a>
+  <div class="course-id">CPCS 351 · Software Engineering I</div>
+  <a class="home-link" href="../../index.html">Course Home</a>
+</header>
+<nav class="mobile-topic" id="topic-mobile"></nav>
+<div class="shell">
+  <aside class="sidebar" id="topic-sidebar"></aside>
+  <main>
+    <article class="content">
+      <section class="hero">
+        <div class="eyebrow">08 · SOFTWARE DESIGN PRINCIPLES</div>
+        <h1>Design Principles</h1>
+        <p>Use these two visual study summaries to review the principles that guide cleaner object-oriented design before moving into GRASP responsibility assignment. Focus on the design problem each principle prevents, the structural idea behind it, and the effect on maintainability and change.</p>
+      </section>
+
+      <div class="dp-intro" aria-label="Study focus">
+        <div><b>Recognize the problem</b><span>Identify designs with mixed responsibilities, rigid extension points, unsafe inheritance, oversized interfaces, or excessive dependencies.</span></div>
+        <div><b>Apply the principle</b><span>Use SRP, OCP, LSP, ISP, DIP, Low Coupling, and High Cohesion as reasoning tools—not mechanical rules.</span></div>
+        <div><b>Connect to GRASP</b><span>These principles prepare you to judge whether Controller, Information Expert, and Creator responsibilities are assigned well.</span></div>
+      </div>
+
+      <div class="dp-gallery">
+        <figure class="dp-figure">
+          <img src="assets/dp2.png" alt="Software Design Principles infographic explaining SRP, OCP, LSP, ISP, DIP, Low Coupling and High Cohesion with definitions and illustrations" loading="eager">
+          <figcaption><strong>Visual summary:</strong> definitions, real-world analogies, and before/after design illustrations for the core principles.</figcaption>
+        </figure>
+        <figure class="dp-figure">
+          <img src="assets/dp3.png" alt="Design Principles in Action infographic showing Java examples for SRP, OCP, LSP, ISP, DIP, Low Coupling and High Cohesion" loading="lazy">
+          <figcaption><strong>Applied summary:</strong> Java-oriented examples showing how each principle changes the structure of a design and reduces future change impact.</figcaption>
+        </figure>
+      </div>
+
+      <div class="dp-note"><strong>Study takeaway:</strong> good design principles do not prescribe one perfect class structure. They help you evaluate alternatives: keep responsibilities focused, dependencies controlled, abstractions stable, and change localized.</div>
+    </article>
+  </main>
+</div>
+<script src="../../study.js"></script>
+<script src="topic11-navigation.js?v=20260907g"></script>
+</body>
+</html>
