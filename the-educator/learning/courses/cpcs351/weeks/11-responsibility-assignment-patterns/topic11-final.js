@@ -44,9 +44,10 @@
     if(document.body.dataset.page!=='10')return;
     document.querySelector('.hero h1')&&(document.querySelector('.hero h1').textContent='GRASP Information Expert — Put Work Where the Knowledge Is');
     document.querySelector('.hero .eyebrow')&&(document.querySelector('.hero .eyebrow').textContent='10 · GRASP · INFORMATION EXPERT');
-    document.querySelector('.seq-wrap')?.remove();
+    removeSeq();
     byHeading('Checkout: move availability behavior to Document')?.remove();
-    const hero=document.querySelector('.p11-hero'); if(hero&&!document.querySelector('[data-expert-visual]')){const f=fig('experpattern.png','Infographic comparing a weak checkout design with an improved Information Expert design.','Information Expert: assign a responsibility to the object that already has the information needed to fulfill it. Document owns availability, so it answers and changes that state.');f.dataset.expertVisual='1';hero.insertAdjacentElement('afterend',f)}
+    [...document.querySelectorAll('.section')].filter(s=>/Reset Password exercise/i.test(s.textContent||'')).forEach(s=>s.remove());
+    const hero=document.querySelector('.p11-hero'); if(hero&&!document.querySelector('[data-expert-visual]')){const f=fig('experpattern.png','Infographic comparing a weak checkout design with an improved Information Expert design.','Information Expert: assign a responsibility to the object that already has the information needed to fulfill it. Document owns availability, so it answers and changes that state.');f.dataset.expertVisual='1';hero.insertAdjacentElement('afterend',f);const reset=fig('resetsquancedia.png','Reset Password infographic comparing a problematic design with an improved design that applies GRASP Information Expert.','Reset Password example: authentication responsibilities move to the object that owns the required information, making the collaboration more cohesive and less coupled.');reset.dataset.resetExpertVisual='1';f.insertAdjacentElement('afterend',reset)}
   };
   const creator=()=>{
     if(document.body.dataset.page!=='11')return;
@@ -56,7 +57,9 @@
   const integrated=()=>{
     if(document.body.dataset.page!=='12')return;
     const hero=document.querySelector('.p11-hero'); if(hero){hero.querySelector('h2')&&(hero.querySelector('h2').textContent='One use case, three responsibility decisions');hero.querySelector('.lead')&&(hero.querySelector('.lead').textContent='Read the collaboration as a chain: Controller receives the system event → Information Expert owns knowledge-based work → Creator assigns object creation.')}
-    const first=document.querySelector('.seq-wrap'); if(first&&!document.querySelector('.integration-strip')){const d=document.createElement('div');d.className='integration-strip';d.innerHTML='<div><b>Controller</b><span>Who receives?</span></div><i>→</i><div><b>Information Expert</b><span>Who knows?</span></div><i>→</i><div><b>Creator</b><span>Who creates?</span></div>';first.insertAdjacentElement('beforebegin',d)}
+    removeSeq();
+    [...document.querySelectorAll('.integration-strip')].forEach(x=>x.remove());
+    if(hero&&!document.querySelector('[data-doc-checkout-visual]')){const f=fig('doccheckoutseq.png','Full Checkout Document collaboration infographic comparing an initial design with a refined responsibility assignment.','Integrated checkout example: Controller coordinates the system event, Information Expert places knowledge-based behavior with the object that owns the information, and creation responsibility is assigned to the collaborator with the needed construction relationship or data.');f.dataset.docCheckoutVisual='1';hero.insertAdjacentElement('afterend',f)}
   };
   const review=()=>{
     if(document.body.dataset.page!=='13')return;
