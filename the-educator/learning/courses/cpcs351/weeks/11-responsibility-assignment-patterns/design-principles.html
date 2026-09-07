@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Design Principles | Topic 11</title>
   <link rel="stylesheet" href="../../study.css">
-  <link rel="stylesheet" href="topic11.css?v=20260907g">
+  <link rel="stylesheet" href="topic11.css?v=20260907h">
   <style>
     .design-principles-page .hero{display:block!important;margin-bottom:20px}
     .design-principles-page .hero .eyebrow{font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#5b63d9;font-size:.78rem}
@@ -18,8 +18,14 @@
     .dp-figure{margin:0;border:1px solid #dfe7f5;border-radius:22px;background:#fff;padding:14px;box-shadow:0 16px 45px rgba(34,51,84,.08)}
     .dp-figure img{display:block;width:100%;height:auto;border-radius:15px}
     .dp-figure figcaption{padding:14px 6px 4px;color:#536178;line-height:1.65}
-    .dp-note{margin-top:24px;padding:18px 20px;border-left:4px solid #5b63d9;border-radius:14px;background:#f5f7ff;line-height:1.7}
-    @media(max-width:760px){.dp-intro{grid-template-columns:1fr}.dp-figure{padding:8px;border-radius:16px}.dp-figure img{border-radius:11px}}
+    .dp-bridge{margin-top:28px;padding:22px;border:1px solid #d9e2ff;border-radius:20px;background:linear-gradient(135deg,#f5f7ff,#f0fbf8)}
+    .dp-bridge h2{margin:0 0 14px;color:#17233c}
+    .bridge-flow{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px}
+    .bridge-flow>div{padding:18px;border-radius:16px;background:#fff;border:1px solid #e1e7f3}
+    .bridge-flow b{display:block;margin-bottom:6px;color:#2637a8}
+    .bridge-arrow{font-size:1.8rem;font-weight:900;color:#5b63d9}
+    .dp-note{margin-top:18px;padding:18px 20px;border-left:4px solid #5b63d9;border-radius:14px;background:#f5f7ff;line-height:1.7}
+    @media(max-width:760px){.dp-intro{grid-template-columns:1fr}.dp-figure{padding:8px;border-radius:16px}.dp-figure img{border-radius:11px}.bridge-flow{grid-template-columns:1fr}.bridge-arrow{text-align:center;transform:rotate(90deg)}}
   </style>
 </head>
 <body data-topic="11" class="design-principles-page">
@@ -36,31 +42,39 @@
       <section class="hero">
         <div class="eyebrow">08 · SOFTWARE DESIGN PRINCIPLES</div>
         <h1>Design Principles</h1>
-        <p>Use these two visual study summaries to review the principles that guide cleaner object-oriented design before moving into GRASP responsibility assignment. Focus on the design problem each principle prevents, the structural idea behind it, and the effect on maintainability and change.</p>
+        <p>Use these two visual summaries as a compact bridge between GoF patterns and GRASP responsibility assignment. The goal is not to memorize slogans, but to recognize what makes a design easier to change, understand, and maintain.</p>
       </section>
 
       <div class="dp-intro" aria-label="Study focus">
-        <div><b>Recognize the problem</b><span>Identify designs with mixed responsibilities, rigid extension points, unsafe inheritance, oversized interfaces, or excessive dependencies.</span></div>
-        <div><b>Apply the principle</b><span>Use SRP, OCP, LSP, ISP, DIP, Low Coupling, and High Cohesion as reasoning tools—not mechanical rules.</span></div>
-        <div><b>Connect to GRASP</b><span>These principles prepare you to judge whether Controller, Information Expert, and Creator responsibilities are assigned well.</span></div>
+        <div><b>Recognize the design smell</b><span>Look for mixed responsibilities, rigid extension points, unsafe inheritance, oversized interfaces, and excessive dependencies.</span></div>
+        <div><b>Choose a design direction</b><span>Use SRP, OCP, LSP, ISP, DIP, Low Coupling, and High Cohesion to evaluate alternatives.</span></div>
+        <div><b>Assign responsibility</b><span>Then use GRASP to decide which object should receive, know, coordinate, or create.</span></div>
       </div>
 
       <div class="dp-gallery">
         <figure class="dp-figure">
           <img src="assets/dp2.png" alt="Software Design Principles infographic explaining SRP, OCP, LSP, ISP, DIP, Low Coupling and High Cohesion with definitions and illustrations" loading="eager">
-          <figcaption><strong>Visual summary:</strong> definitions, real-world analogies, and before/after design illustrations for the core principles.</figcaption>
+          <figcaption><strong>Concept summary:</strong> definitions, analogies, and before/after illustrations for the core design principles.</figcaption>
         </figure>
         <figure class="dp-figure">
           <img src="assets/dp3.png" alt="Design Principles in Action infographic showing Java examples for SRP, OCP, LSP, ISP, DIP, Low Coupling and High Cohesion" loading="lazy">
-          <figcaption><strong>Applied summary:</strong> Java-oriented examples showing how each principle changes the structure of a design and reduces future change impact.</figcaption>
+          <figcaption><strong>Applied summary:</strong> Java examples showing how the principles reduce change impact and improve design structure.</figcaption>
         </figure>
       </div>
 
-      <div class="dp-note"><strong>Study takeaway:</strong> good design principles do not prescribe one perfect class structure. They help you evaluate alternatives: keep responsibilities focused, dependencies controlled, abstractions stable, and change localized.</div>
+      <section class="dp-bridge" aria-label="Design Principles to GRASP bridge">
+        <h2>Design Principles → GRASP</h2>
+        <div class="bridge-flow">
+          <div><b>Principles evaluate quality</b><span>Is the design cohesive? Is coupling controlled? Are responsibilities focused and dependencies stable?</span></div>
+          <span class="bridge-arrow" aria-hidden="true">→</span>
+          <div><b>GRASP assigns responsibility</b><span><strong>Controller:</strong> who receives the system event? <strong>Information Expert:</strong> who has the knowledge? <strong>Creator:</strong> who should create the object?</span></div>
+        </div>
+        <div class="dp-note"><strong>Key connection:</strong> Design Principles tell you <em>what a good design should achieve</em>; GRASP helps you decide <em>where responsibilities should go</em> to achieve it. The next lessons apply this reasoning directly to sequence diagrams.</div>
+      </section>
     </article>
   </main>
 </div>
 <script src="../../study.js"></script>
-<script src="topic11-navigation.js?v=20260907g"></script>
+<script src="topic11-navigation.js?v=20260907h"></script>
 </body>
 </html>
