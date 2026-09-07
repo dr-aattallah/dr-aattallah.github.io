@@ -34,17 +34,30 @@
     });
   };
 
+  const rebuild=()=>{
+    document.querySelectorAll('.crumbs,.legend').forEach(x=>x.remove());
+    window.CPCS351Navigation?.refresh();
+    normalizeLabels();
+  };
+
   const mount=()=>{
     const side=document.getElementById('topic-sidebar');
     const links=pages.map((p,i)=>`<a class="side-link ${i===current?'active':''}" href="${p[0]}"><span>${String(i+1).padStart(2,'0')}</span><span>${p[1]}</span></a>`).join('');
     if(side)side.innerHTML=`<div class="side-head"><small>Topic 11</small><strong>${topicLabel}</strong></div>${links}`;
 
-    document.querySelectorAll('.crumbs,.legend').forEach(x=>x.remove());
-    window.CPCS351Navigation?.refresh();
-    normalizeLabels();
+    rebuild();
 
     const panel=document.querySelector('.edu-nav-panel');
     if(panel)new MutationObserver(normalizeLabels).observe(panel,{childList:true,subtree:true});
   };
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
+
+  // Initial navigation build.
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
+
+  // Topic 11 renders several lessons dynamically after the initial DOM pass.
+  // Rebuild once all scripts/images are settled so breadcrumbs, mobile rail,
+  // active state, and Previous/Home/Next controls are consistent on every page.
+  window.addEventListener('load',()=>{
+    requestAnimationFrame(()=>requestAnimationFrame(rebuild));
+  },{once:true});
 })();
