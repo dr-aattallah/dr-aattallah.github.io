@@ -1,24 +1,26 @@
 (()=>{
   const topicLabel='Design Patterns & GRASP Responsibility Assignment';
+  // Third value preserves the existing renderer page number for legacy dynamic lessons.
   const pages=[
-    ['index.html','Foundations & Pattern Map'],
-    ['gof-singleton.html','Singleton'],
-    ['builder.html','Builder'],
-    ['factory-method.html','Factory Method'],
-    ['facade.html','Facade'],
-    ['adapter.html','Adapter'],
-    ['observer.html','Observer'],
-    ['grasp-controller.html','GRASP Controller'],
-    ['controller-quality.html','Controller Quality'],
-    ['expert.html','Information Expert'],
-    ['creator.html','Creator'],
-    ['worked-example.html','Patterns Working Together'],
-    ['review.html','Review & Practice']
+    ['index.html','Foundations & Pattern Map',1],
+    ['gof-singleton.html','Singleton',2],
+    ['builder.html','Builder',3],
+    ['factory-method.html','Factory Method',4],
+    ['facade.html','Facade',5],
+    ['adapter.html','Adapter',6],
+    ['observer.html','Observer',7],
+    ['design-principles.html','Design Principles',null],
+    ['grasp-controller.html','GRASP Controller',8],
+    ['controller-quality.html','Controller Quality',9],
+    ['expert.html','Information Expert',10],
+    ['creator.html','Creator',11],
+    ['worked-example.html','Patterns Working Together',12],
+    ['review.html','Review & Practice',13]
   ];
   const file=location.pathname.split('/').pop()||'index.html';
   const current=Math.max(0,pages.findIndex(p=>p[0]===file));
   document.body.dataset.topic='11';
-  document.body.dataset.page=String(current+1);
+  document.body.dataset.page=pages[current]?.[2]==null?'design-principles':String(pages[current][2]);
 
   const normalizeLabels=()=>{
     const bc=[...document.querySelectorAll('.edu-breadcrumbs a')];
@@ -37,10 +39,7 @@
     const links=pages.map((p,i)=>`<a class="side-link ${i===current?'active':''}" href="${p[0]}"><span>${String(i+1).padStart(2,'0')}</span><span>${p[1]}</span></a>`).join('');
     if(side)side.innerHTML=`<div class="side-head"><small>Topic 11</small><strong>${topicLabel}</strong></div>${links}`;
 
-    // Remove Topic 11's old local copies; the shared course system owns these elements.
     document.querySelectorAll('.crumbs,.legend').forEach(x=>x.remove());
-
-    // Use the exact navigation pipeline used by Topic 10.
     window.CPCS351Navigation?.refresh();
     normalizeLabels();
 
