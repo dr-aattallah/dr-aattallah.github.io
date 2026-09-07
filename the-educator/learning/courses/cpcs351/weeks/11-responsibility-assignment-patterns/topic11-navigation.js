@@ -21,15 +21,16 @@
 
   const mount=()=>{
     const side=document.getElementById('topic-sidebar');
-    const mobile=document.getElementById('topic-mobile');
     const links=pages.map((p,i)=>`<a class="side-link ${i===current?'active':''}" href="${p[0]}"><span>${String(i+1).padStart(2,'0')}</span><span>${p[1]}</span></a>`).join('');
     if(side)side.innerHTML=`<div class="side-head"><small>Topic 11</small><strong>Design Patterns & GRASP Responsibility Assignment</strong></div>${links}`;
-    if(mobile)mobile.innerHTML=pages.map((p,i)=>`<a class="${i===current?'active':''}" href="${p[0]}">${String(i+1).padStart(2,'0')} · ${p[1]}</a>`).join('');
 
-    const crumbs=[...document.querySelectorAll('.crumbs')];
-    if(crumbs.length>1)crumbs.slice(1).forEach(x=>x.remove());
-    const legends=[...document.querySelectorAll('.legend')];
-    if(legends.length>1)legends.slice(1).forEach(x=>x.remove());
+    // Topic 11 previously rendered its own breadcrumb/key. The shared study system
+    // already provides both, so remove the legacy copies before refreshing navigation.
+    document.querySelectorAll('.crumbs,.legend').forEach(x=>x.remove());
+
+    // Re-run the same shared navigation pipeline used by Topic 10 so sidebar numbering,
+    // active state, mobile navigation, breadcrumbs, and Previous/Home/Next stay consistent.
+    window.CPCS351Navigation?.refresh();
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
 })();
