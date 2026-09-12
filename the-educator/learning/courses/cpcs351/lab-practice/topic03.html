@@ -7,14 +7,9 @@
   <meta name="description" content="Standalone CPCS 351 system engineering practice mission for Topic 03.">
   <link rel="stylesheet" href="lab.css">
   <style>
-    .system-mission-visual{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
-    .system-mission-visual div{position:relative;min-height:134px;padding:20px;border:1px solid #f0cdd0;border-radius:18px;background:linear-gradient(145deg,#fff,#fff7f7);overflow:hidden}
-    .system-mission-visual div::after{content:"";position:absolute;width:90px;height:90px;right:-34px;bottom:-42px;border-radius:50%;background:rgba(227,6,19,.08)}
-    .system-mission-visual span{display:grid;place-items:center;width:42px;height:42px;margin-bottom:14px;border-radius:13px;background:#e30613;color:#fff;font-weight:900;font-size:1.05rem;box-shadow:0 8px 18px rgba(227,6,19,.16)}
-    .system-mission-visual strong{display:block;margin-bottom:6px;font-size:1rem;line-height:1.25}
-    .system-mission-visual small{display:block;color:#667085;line-height:1.45}
-    @media(max-width:800px){.system-mission-visual{grid-template-columns:1fr 1fr}}
-    @media(max-width:480px){.system-mission-visual{grid-template-columns:1fr}}
+    .topic03-mission-visual{margin:28px 0 0;border:1px solid #e7d7d9;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 14px 32px rgba(44,20,24,.08)}
+    .topic03-mission-visual img{display:block;width:100%;height:auto}
+    @media(max-width:680px){.topic03-mission-visual{margin-top:22px;border-radius:15px}}
   </style>
 </head>
 <body>
@@ -29,12 +24,9 @@
       <h1>Mission 03 — Engineer the Whole System</h1>
       <p>KAU is planning a Smart Campus Mobility System that combines mobile software, access gates, sensors, shuttles, operators, procedures, and external university services. You are the system engineer responsible for making the parts work as one dependable system.</p>
 
-      <div class="system-mission-visual" aria-label="System engineering mission themes">
-        <div><span aria-hidden="true">01</span><strong>Whole System</strong><small>See the boundary, environment, subsystems, and cross-discipline dependencies.</small></div>
-        <div><span aria-hidden="true">02</span><strong>Requirements & Architecture</strong><small>Move from business need to whole-system obligations and useful subsystem boundaries.</small></div>
-        <div><span aria-hidden="true">03</span><strong>Allocation & Integration</strong><small>Assign responsibility, preserve traceability, and prove that independently built parts work together.</small></div>
-        <div><span aria-hidden="true">04</span><strong>Controlled Evolution</strong><small>Deploy, test in the real environment, and keep versions compatible over time.</small></div>
-      </div>
+      <figure class="topic03-mission-visual">
+        <img src="assets/Mission03.png" alt="Visual story for Mission 03 Engineer the Whole System, showing eight system engineering stages in a KAU and Jeddah smart campus context." loading="eager">
+      </figure>
 
       <div class="lab-mission-meta" aria-label="Mission information">
         <span class="lab-chip">8 stages</span>
