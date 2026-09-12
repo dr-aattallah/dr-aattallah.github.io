@@ -48,6 +48,28 @@
       }
     }
     const rule=article.querySelector('.remember p');if(rule)rule.textContent='Derive every model from the same requirements. Each view answers a different question, but all five must tell one consistent system story.';
+
+    if(!document.getElementById('topic10-practice-lab-style')){
+      const style=document.createElement('style');
+      style.id='topic10-practice-lab-style';
+      style.textContent=`
+        .practice-lab-card{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:28px;margin:28px 0;padding:26px 28px;border-radius:22px;background:linear-gradient(135deg,#d90416 0%,#ef1727 58%,#b00012 100%);color:#fff;box-shadow:0 16px 34px rgba(176,0,18,.18)}
+        .practice-lab-card::before,.practice-lab-card::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.09);pointer-events:none}.practice-lab-card::before{width:180px;height:180px;right:-55px;top:-85px}.practice-lab-card::after{width:105px;height:105px;right:115px;bottom:-60px}
+        .practice-lab-copy{position:relative;z-index:1;max-width:720px}.practice-lab-copy small{display:block;margin-bottom:6px;font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.88}.practice-lab-copy strong{display:block;font-size:1.25rem;line-height:1.3;margin-bottom:7px}.practice-lab-copy p{margin:0;color:rgba(255,255,255,.92);line-height:1.6}
+        .practice-lab-link{position:relative;z-index:1;flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:14px;background:#fff;color:#c90014;text-decoration:none;font-weight:800;box-shadow:0 8px 20px rgba(98,0,10,.18);transition:transform .18s ease,box-shadow .18s ease}.practice-lab-link:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(98,0,10,.24)}.practice-lab-link:focus-visible{outline:3px solid rgba(255,255,255,.8);outline-offset:4px}
+        @media(max-width:760px){.practice-lab-card{align-items:flex-start;flex-direction:column;gap:18px;padding:22px}.practice-lab-link{width:100%}}
+        @media(prefers-reduced-motion:reduce){.practice-lab-link{transition:none}}
+      `;
+      document.head.appendChild(style);
+    }
+    if(!article.querySelector('.practice-lab-card')){
+      const card=document.createElement('section');
+      card.className='practice-lab-card';
+      card.setAttribute('aria-label','Practice Lab Topic 10');
+      card.innerHTML=`<div class="practice-lab-copy"><small>Practice Lab · Topic 10</small><strong>Mission 10 — Make Five Models Tell One Story</strong><p>Review one smart-parking scenario across Use Case, Class, Sequence, State, and Activity views. Trace requirements, detect contradictions, choose the right UML view, and approve only a coherent model set.</p></div><a class="practice-lab-link" href="../../lab-practice/topic10.html">▶ Start Practice Lab</a>`;
+      const firstStory=article.querySelector('.t10-story');
+      if(firstStory)firstStory.insertAdjacentElement('afterend',card);else if(hero)hero.insertAdjacentElement('afterend',card);else article.prepend(card);
+    }
   }
 
   if(file==='consistency.html'){
