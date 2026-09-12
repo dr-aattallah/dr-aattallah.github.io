@@ -10,7 +10,8 @@ export const topic01Mission = {
       skill: 'Software Nature',
       level: 'Recognize',
       type: 'choice',
-      prompt: 'The university adds one “small” approval rule after deployment. Why can the change still be risky?',
+      context: 'The first version is already running. A new policy now requires an extra approval step for one type of student request. Management calls it “just one small change.”',
+      prompt: 'Why can this apparently small software change still be risky?',
       options: [
         'Software is easy to copy, so every copy must be rebuilt.',
         'Software is easy to edit, but a local change can affect connected requirements, logic, tests and operations.',
@@ -30,7 +31,8 @@ export const topic01Mission = {
       skill: 'SE & PQCT Reasoning',
       level: 'Distinguish',
       type: 'choice',
-      prompt: 'Management proposes skipping reviews and testing to release before registration week. What is the best engineering response?',
+      context: 'Registration week is approaching. The project manager asks whether reviews and testing can be reduced so the service can launch earlier.',
+      prompt: 'What is the best software-engineering response?',
       options: [
         'It improves every PQCT dimension because less work is always better.',
         'It may reduce time now, but can damage quality and increase later cost; the trade-off must be evaluated across PQCT.',
@@ -50,7 +52,8 @@ export const topic01Mission = {
       skill: 'SE Reasoning',
       level: 'Apply',
       type: 'choice',
-      prompt: 'The service expands to authentication, records, notifications, payments and several integrations. Why does this strengthen the case for software engineering?',
+      context: 'The original service expands. It now connects authentication, student records, notifications, payments and several university systems, with different teams responsible for each area.',
+      prompt: 'Why does this growth strengthen the case for software engineering?',
       options: [
         'A larger codebase only needs faster typing.',
         'Scale increases intellectual complexity and requires coordinated teamwork, methods and tools.',
@@ -70,7 +73,8 @@ export const topic01Mission = {
       skill: 'Teamwork',
       level: 'Apply',
       type: 'choice',
-      prompt: 'The UI team and database team each have a correct view of their own part, but they disagree about how the whole system should behave. What is the primary challenge?',
+      context: 'The UI team describes the system around the student journey. The data team describes it around records and relationships. Both views are useful, but the teams disagree about the behavior of the whole service.',
+      prompt: 'What is the primary teamwork challenge?',
       options: ['Conceptualization', 'Communication', 'Coordination', 'Maintenance'],
       answer: 0,
       feedback: {
@@ -85,7 +89,8 @@ export const topic01Mission = {
       skill: 'Life-Cycle Thinking',
       level: 'Apply',
       type: 'classification',
-      prompt: 'Classify activities into Development, SQA or Project Management.',
+      context: 'The project is active on several fronts at once. Some work builds the product, some protects quality, and some controls delivery.',
+      prompt: 'Classify each activity into Development, SQA or Project Management.',
       items: [
         { text: 'Design the software architecture', answer: 'Development' },
         { text: 'Review a requirements document for quality and conformance', answer: 'SQA' },
@@ -100,7 +105,8 @@ export const topic01Mission = {
       skill: 'Lifecycle Sequence',
       level: 'Apply',
       type: 'sequence',
-      prompt: 'Reconstruct the Waterfall sequence used in Topic 01.',
+      context: 'A new team member has the development phases but has mixed up their order. Reconstruct the sequence used in Topic 01.',
+      prompt: 'Assign a position to every Waterfall phase.',
       answer: [
         'System Engineering',
         'Software Requirements Analysis',
@@ -118,7 +124,8 @@ export const topic01Mission = {
       skill: 'Phase & Deliverables',
       level: 'Analyze',
       type: 'matching',
-      prompt: 'Match each phase with representative evidence it should leave behind.',
+      context: 'The team says several phases are complete. Your job is to check whether each phase left useful engineering evidence behind.',
+      prompt: 'Match each phase with representative evidence it should produce.',
       pairs: [
         ['Requirements Analysis', 'SRS or equivalent agreed requirements'],
         ['Software Design', 'Architecture and detailed design models/specifications'],
@@ -134,7 +141,8 @@ export const topic01Mission = {
       skill: 'Integrated Reasoning',
       level: 'Analyze',
       type: 'choice',
-      prompt: 'Which statement best shows that the Smart Campus Service is being engineered rather than merely programmed?',
+      context: 'The Smart Campus Service is approaching release. You must explain to stakeholders what makes the work software engineering rather than simply programming.',
+      prompt: 'Which statement gives the strongest explanation?',
       options: [
         'The team has produced a large amount of source code.',
         'The system is organized around agreed needs, coordinated teamwork, lifecycle activities, quality evidence, project control and maintainable change.',
