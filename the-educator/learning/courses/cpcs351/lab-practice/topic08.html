@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Practice Lab · Topic 08 | CPCS 351</title>
+  <meta name="description" content="Standalone CPCS 351 object interaction modeling and sequence diagram practice mission for Topic 08.">
+  <link rel="stylesheet" href="lab.css">
+</head>
+<body>
+  <div class="lab-shell">
+    <header class="lab-topbar">
+      <a class="lab-brand" href="../index.html">The Educator · CPCS 351</a>
+      <a class="lab-topic-link" href="../weeks/08-object-interaction-modeling/">Topic 08</a>
+    </header>
+
+    <section class="lab-hero">
+      <p class="lab-kicker">Practice Lab · Topic 08</p>
+      <h1>Mission 08 — Make the Objects Tell the Story</h1>
+      <p>A Jeddah delivery startup is building <strong>WaselNow</strong>, a same-day parcel delivery platform. A customer requests pickup, the system validates the request, finds an available courier, creates a delivery task, tracks acceptance, updates parcel state, and notifies the customer. You are the interaction modeler. Move from use-case steps to scenarios, identify the right collaborating objects, order messages correctly, inspect flawed sequence diagrams, and connect interactions to responsibilities and methods.</p>
+
+      <div class="lab-mission-meta" aria-label="Mission information">
+        <span class="lab-chip">14 stages</span>
+        <span class="lab-chip">Apply → Analyze</span>
+        <span class="lab-chip">Jeddah Delivery Scenario</span>
+        <span class="lab-chip">Sequence Diagram Review</span>
+        <span class="lab-chip">Message & Control Semantics</span>
+      </div>
+    </section>
+
+    <main id="lab-root"></main>
+  </div>
+
+  <script type="module">
+    import { LabEngine } from './core/lab-engine.js';
+    import { topic08Mission } from './data/topic08.js';
+    const root = document.querySelector('#lab-root');
+    const engine = new LabEngine(root, topic08Mission);
+    engine.start();
+  </script>
+</body>
+</html>
