@@ -5,7 +5,7 @@ export const topic05Mission = {
   scenario: 'A Jeddah property company is building BaytLink, a digital real-estate platform for buyers, tenants, property owners, agents, and payment services. You are the requirements and use-case engineer. Your job is to turn stakeholder needs into a correct actor-centered UML use-case model—and to detect modeling mistakes before the design reaches the development team.',
   returnUrl: '../weeks/05-software-requirements-elicitation/',
   returnLabel: 'Return to Topic 05',
-  readyMessage: 'You completed a 14-stage requirements and UML use-case design review: from stakeholder needs to actors, goals, boundaries, relationships, diagram defects, traceability, and final model quality.',
+  readyMessage: 'You completed a 16-stage requirements and UML use-case design review: from stakeholder evidence and requirement elicitation to actors, goals, boundaries, relationships, diagram defects, traceability, and final model quality.',
   stages: [
     {
       id: 'need-to-requirement', title: 'From Property Problem to Requirement', skill: 'Requirements Elicitation', level: 'Recognize', type: 'classification',
@@ -18,6 +18,34 @@ export const topic05Mission = {
         {text:'Owners cannot easily track viewing requests for their listed properties.',answer:'Business Problem'}
       ], checkLabel:'Check the requirement meaning',
       feedback:{why:'Problems describe pain; wishes express desired improvement; requirements state a system commitment precise enough to design and test.',consequence:'A use-case diagram derived directly from vague wishes will inherit ambiguity.'}, lesson:'../weeks/05-software-requirements-elicitation/index.html'
+    },
+    {
+      id:'elicit-from-evidence', title:'Elicit Requirements from Stakeholder Evidence', skill:'Requirement Elicitation', level:'Apply', type:'multiselect',
+      context:'You interview a tenant, a property owner, and a real-estate agent. Their raw comments are messy: “I keep calling about flats that are already rented,” “Owners need to know who requested a viewing,” “The search should feel instant,” and “Agents should be alerted when someone books a visit.” The analyst proposes several candidate requirements.',
+      prompt:'Which candidate statements are defensible requirements that can be derived from the stakeholder evidence?', instruction:'Select every statement that is specific enough to become an engineering commitment.',
+      options:[
+        'The system shall show only properties whose availability status is current at the time search results are produced.',
+        'The system shall allow a property owner to view pending viewing requests for each listed property.',
+        'The platform should be amazing and very easy for everyone.',
+        'The system shall notify the assigned real-estate agent when a customer requests a property viewing.',
+        'The system shall return property-search results within 2 seconds under the agreed normal workload.',
+        'Use the newest technology possible.'
+      ], answer:[0,1,3,4], checkLabel:'Check elicited requirements',
+      feedback:{why:'Good elicitation converts stakeholder pain, goals, and quality expectations into specific, testable commitments. “Amazing” and “newest technology” are vague wishes or solution preferences, not defensible requirements.',consequence:'The analyst must interpret stakeholder evidence rather than copy statements verbatim; otherwise ambiguity simply moves into the specification.'}, lesson:'../weeks/05-software-requirements-elicitation/information-collection-analysis.html'
+    },
+    {
+      id:'categorize-elicited-requirements', title:'Categorize the Elicited Requirements', skill:'Functional vs Non-functional Requirements', level:'Apply', type:'classification',
+      context:'The elicitation session produced a small requirement set. Before deriving use cases, separate behavioral capabilities from quality and constraint requirements.',
+      prompt:'Classify each elicited requirement as Functional or Non-functional.', categories:['Functional','Non-functional'],
+      items:[
+        {text:'The system shall allow a property owner to view pending viewing requests for each listed property.',answer:'Functional'},
+        {text:'The system shall notify the assigned real-estate agent when a customer requests a property viewing.',answer:'Functional'},
+        {text:'The system shall return property-search results within 2 seconds under the agreed normal workload.',answer:'Non-functional'},
+        {text:'Only authenticated property owners may change the availability status of their listings.',answer:'Non-functional'},
+        {text:'The system shall allow a customer to save a property to a favorites list.',answer:'Functional'},
+        {text:'The service shall maintain the agreed availability level during published operating hours.',answer:'Non-functional'}
+      ], checkLabel:'Classify elicited requirements',
+      feedback:{why:'Functional requirements define system capabilities and information-processing behavior. Non-functional requirements constrain qualities such as performance, security, availability, interfaces, or implementation conditions.',consequence:'This distinction matters before use-case modeling because use cases primarily organize actor-centered functional goals, while NFRs usually constrain those goals.'}, lesson:'../weeks/05-software-requirements-elicitation/challenges-and-types.html'
     },
     {
       id:'requirement-types', title:'Capability or Quality?', skill:'Requirement Types', level:'Apply', type:'classification',
