@@ -7,14 +7,9 @@
   <meta name="description" content="Standalone CPCS 351 requirements elicitation and UML use-case diagram practice mission for Topic 05.">
   <link rel="stylesheet" href="lab.css">
   <style>
-    .topic05-map{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px}
-    .topic05-map div{position:relative;min-height:140px;padding:18px;border:1px solid #f0cdd0;border-radius:18px;background:linear-gradient(145deg,#fff,#fff7f7);overflow:hidden}
-    .topic05-map div::after{content:"";position:absolute;width:88px;height:88px;right:-32px;bottom:-42px;border-radius:50%;background:rgba(227,6,19,.08)}
-    .topic05-map span{display:grid;place-items:center;width:40px;height:40px;margin-bottom:12px;border-radius:12px;background:#e30613;color:#fff;font-weight:900}
-    .topic05-map strong{display:block;margin-bottom:5px;font-size:.98rem;line-height:1.25}
-    .topic05-map small{display:block;color:#667085;line-height:1.45}
-    @media(max-width:900px){.topic05-map{grid-template-columns:1fr 1fr}}
-    @media(max-width:520px){.topic05-map{grid-template-columns:1fr}}
+    .topic05-mission-visual{margin:28px 0 0;border:1px solid #e7d7d9;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 14px 32px rgba(44,20,24,.08)}
+    .topic05-mission-visual img{display:block;width:100%;height:auto}
+    @media(max-width:680px){.topic05-mission-visual{margin-top:22px;border-radius:15px}}
   </style>
 </head>
 <body>
@@ -29,13 +24,9 @@
       <h1>Mission 05 — Model the Real-Estate Experience</h1>
       <p>A Jeddah property company is building <strong>BaytLink</strong>, a digital real-estate platform for buyers, tenants, property owners, agents, and external services. You are the requirements and use-case engineer. Elicit requirements from messy stakeholder evidence, classify functional and non-functional requirements, build the right actor-centered model, inspect flawed UML drafts, identify exactly what is wrong, and choose stronger redesigns before development begins.</p>
 
-      <div class="topic05-map" aria-label="Requirements and UML use-case diagram mission themes">
-        <div><span>01</span><strong>Elicit the Need</strong><small>Turn property-sector evidence into clear, testable requirements.</small></div>
-        <div><span>02</span><strong>Classify & Find Goals</strong><small>Separate functional/NFR commitments, actors, and business goals from internal implementation.</small></div>
-        <div><span>03</span><strong>Inspect Bad UML</strong><small>Find boundary, naming, association, and relationship defects.</small></div>
-        <div><span>04</span><strong>Redesign the Model</strong><small>Choose better «include», «extend», generalization, and diagram structure.</small></div>
-        <div><span>05</span><strong>Defend the Design</strong><small>Check traceability and decide which final diagram deserves approval.</small></div>
-      </div>
+      <figure class="topic05-mission-visual">
+        <img src="assets/Mission05.png" alt="Visual story for Mission 05 Model the Real-Estate Experience, showing the BaytLink real-estate requirements and UML use-case engineering mission in Jeddah." loading="eager">
+      </figure>
 
       <div class="lab-mission-meta" aria-label="Mission information">
         <span class="lab-chip">16 stages</span>
