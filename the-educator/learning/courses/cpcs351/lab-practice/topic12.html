@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Practice Lab · Topic 12 | CPCS 351</title>
+  <meta name="description" content="Standalone CPCS 351 software testing practice mission for Topic 12.">
+  <link rel="stylesheet" href="lab.css">
+</head>
+<body>
+  <div class="lab-shell">
+    <header class="lab-topbar">
+      <a class="lab-brand" href="../index.html">The Educator · CPCS 351</a>
+      <a class="lab-topic-link" href="../weeks/12-software-testing/">Topic 12</a>
+    </header>
+
+    <section class="lab-hero">
+      <p class="lab-kicker">Practice Lab · Topic 12</p>
+      <h1>Mission 12 — Turn Requirements Into Test Evidence</h1>
+      <p>A Jeddah digital-health company is preparing <strong>CarePass</strong>, a patient appointment and e-check-in platform for a hospital network. The release team has test results, but the evidence is incomplete. You are the test lead. Build a defensible release-evidence package by choosing the right testing level, designing meaningful black-box tests, finding missing business-rule combinations, and making defects reproducible.</p>
+
+      <div class="lab-mission-meta" aria-label="Mission information">
+        <span class="lab-chip">14 stages</span>
+        <span class="lab-chip">Apply → Analyze</span>
+        <span class="lab-chip">Digital Health · Jeddah</span>
+        <span class="lab-chip">Testing Levels · EP · BVA</span>
+        <span class="lab-chip">Decision Tables · Defects · Evidence</span>
+      </div>
+    </section>
+
+    <main id="lab-root"></main>
+  </div>
+
+  <script type="module">
+    import { LabEngine } from './core/lab-engine.js';
+    import { topic12Mission } from './data/topic12.js';
+    const root = document.querySelector('#lab-root');
+    const engine = new LabEngine(root, topic12Mission);
+    engine.start();
+  </script>
+</body>
+</html>
