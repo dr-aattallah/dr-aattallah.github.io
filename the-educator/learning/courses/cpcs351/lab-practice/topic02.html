@@ -7,14 +7,9 @@
   <meta name="description" content="Standalone CPCS 351 quality engineering practice mission for Topic 02.">
   <link rel="stylesheet" href="lab.css">
   <style>
-    .quality-mission-visual{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
-    .quality-mission-visual div{position:relative;min-height:128px;padding:20px 16px;border:1px solid #f0cdd0;border-radius:18px;background:linear-gradient(145deg,#fff,#fff5f5);overflow:hidden}
-    .quality-mission-visual div::after{content:"";position:absolute;width:76px;height:76px;border-radius:50%;right:-24px;bottom:-28px;background:rgba(227,6,19,.08)}
-    .quality-mission-visual span{display:grid;place-items:center;width:40px;height:40px;margin-bottom:13px;border-radius:12px;background:#e30613;color:#fff;font-size:1.15rem;font-weight:900;box-shadow:0 7px 16px rgba(227,6,19,.16)}
-    .quality-mission-visual strong{display:block;margin-bottom:5px;font-size:1rem}
-    .quality-mission-visual small{display:block;color:#667085;line-height:1.45}
-    @media(max-width:760px){.quality-mission-visual{grid-template-columns:1fr 1fr}.quality-mission-visual div{min-height:118px}}
-    @media(max-width:460px){.quality-mission-visual{grid-template-columns:1fr}}
+    .topic02-mission-visual{margin:28px 0 0;border:1px solid #e7d7d9;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 14px 32px rgba(44,20,24,.08)}
+    .topic02-mission-visual img{display:block;width:100%;height:auto}
+    @media(max-width:680px){.topic02-mission-visual{margin-top:22px;border-radius:15px}}
   </style>
 </head>
 <body>
@@ -28,12 +23,11 @@
       <p class="lab-kicker">Practice Lab · Topic 02</p>
       <h1>Mission 02 — Build the Quality Case</h1>
       <p>A mobile banking team is preparing an instant international transfer release. You are the quality engineer responsible for building credible evidence that the release is correct, useful, measurable, and sustainable.</p>
-      <div class="quality-mission-visual" aria-label="Quality engineering mission themes">
-        <div><span aria-hidden="true">₿</span><strong>Quality Cost</strong><small>Prevent early or pay for failure later.</small></div>
-        <div><span aria-hidden="true">✓</span><strong>V &amp; V</strong><small>Ask the right conformance and real-need questions.</small></div>
-        <div><span aria-hidden="true">◫</span><strong>Evidence</strong><small>Use reviews, testing, and metrics deliberately.</small></div>
-        <div><span aria-hidden="true">↗</span><strong>Quality Over Time</strong><small>Judge today’s release and tomorrow’s change.</small></div>
-      </div>
+
+      <figure class="topic02-mission-visual">
+        <img src="assets/Mission02.png" alt="Visual story for Mission 02 Build the Quality Case, showing nine quality engineering stages in a Jeddah and KAU context." loading="eager">
+      </figure>
+
       <div class="lab-mission-meta" aria-label="Mission information">
         <span class="lab-chip">9 stages</span>
         <span class="lab-chip">Recognize → Analyze</span>
