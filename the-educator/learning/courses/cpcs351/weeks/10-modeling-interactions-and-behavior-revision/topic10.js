@@ -67,8 +67,7 @@
       card.className='practice-lab-card';
       card.setAttribute('aria-label','Practice Lab Topic 10');
       card.innerHTML=`<div class="practice-lab-copy"><small>Practice Lab · Topic 10</small><strong>Mission 10 — Make Five Models Tell One Story</strong><p>Review one smart-parking scenario across Use Case, Class, Sequence, State, and Activity views. Trace requirements, detect contradictions, choose the right UML view, and approve only a coherent model set.</p></div><a class="practice-lab-link" href="../../lab-practice/topic10.html">▶ Start Practice Lab</a>`;
-      const firstStory=article.querySelector('.t10-story');
-      if(firstStory)firstStory.insertAdjacentElement('afterend',card);else if(hero)hero.insertAdjacentElement('afterend',card);else article.prepend(card);
+      if(hero)hero.insertAdjacentElement('afterend',card);else article.prepend(card);
     }
   }
 
