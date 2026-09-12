@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Lab Practice | CPCS 351</title>
+  <meta name="description" content="Standalone CPCS 351 practice lab for Topic 01.">
+  <link rel="stylesheet" href="lab.css">
+</head>
+<body>
+  <div class="lab-shell">
+    <header class="lab-topbar">
+      <a class="lab-brand" href="../index.html">The Educator · CPCS 351</a>
+      <a class="lab-topic-link" href="../weeks/01-introduction/">Topic 01</a>
+    </header>
+
+    <section class="lab-hero">
+      <p class="lab-kicker">Practice Lab · Topic 01</p>
+      <h1>Mission 01 — From Idea to Engineered Software</h1>
+      <p>KAU wants to launch a Smart Campus Service. The first instruction is simple: “The idea is clear. Start coding.” Your role is to turn that idea into an engineered software system by applying the concepts from Topic 01.</p>
+      <div class="lab-mission-meta" aria-label="Mission information">
+        <span class="lab-chip">8 stages</span>
+        <span class="lab-chip">Recognize → Analyze</span>
+        <span class="lab-chip">Diagnostic feedback</span>
+        <span class="lab-chip">No score-only quiz</span>
+      </div>
+    </section>
+
+    <main id="lab-root" aria-live="polite"></main>
+  </div>
+
+  <script type="module">
+    import { LabEngine } from './core/lab-engine.js';
+    import { topic01Mission } from './data/topic01.js';
+
+    const root = document.querySelector('#lab-root');
+    const engine = new LabEngine(root, topic01Mission);
+    engine.start();
+  </script>
+</body>
+</html>
