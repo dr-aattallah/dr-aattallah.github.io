@@ -7,9 +7,7 @@ export class LabEngine {
     this.stageLocked = false;
   }
 
-  start() {
-    this.renderStage();
-  }
+  start() { this.renderStage(); }
 
   renderStage() {
     const stage = this.mission.stages[this.stageIndex];
@@ -25,10 +23,7 @@ export class LabEngine {
           <div class="lab-progress-text"><span>Stage ${this.stageIndex + 1} of ${this.mission.stages.length}</span><span>${progress}% complete</span></div>
           <div class="lab-progress-track" aria-hidden="true"><span style="width:${progress}%"></span></div>
         </div>
-        <div class="lab-stage-meta">
-          <span>${stage.level}</span>
-          <span>${stage.skill}</span>
-        </div>
+        <div class="lab-stage-meta"><span>${stage.level}</span><span>${stage.skill}</span></div>
         <h2 id="lab-stage-title">${stage.title}</h2>
         ${context}
         <p class="lab-prompt">${stage.prompt}</p>
@@ -45,6 +40,7 @@ export class LabEngine {
     else if (stage.type === 'classification') this.renderClassification(host, stage);
     else if (stage.type === 'sequence') this.renderSequence(host, stage);
     else if (stage.type === 'matching') this.renderMatching(host, stage);
+    else if (stage.type === 'multiselect') this.renderMultiSelect(host, stage);
     else this.renderUnsupported(host, stage);
 
     this.root.querySelector('[data-next]').addEventListener('click', () => {
@@ -55,9 +51,7 @@ export class LabEngine {
   }
 
   renderChoice(host, stage) {
-    host.innerHTML = `<div class="lab-options">${stage.options.map((option, i) => `
-      <button type="button" class="lab-option" data-choice="${i}">${option}</button>`).join('')}</div>`;
-
+    host.innerHTML = `<div class="lab-options">${stage.options.map((option, i) => `<button type="button" class="lab-option" data-choice="${i}">${option}</button>`).join('')}</div>`;
     host.querySelectorAll('[data-choice]').forEach(button => {
       button.addEventListener('click', () => {
         if (this.stageLocked) return;
@@ -73,16 +67,16 @@ export class LabEngine {
       <label class="lab-row"><span>${item.text}</span><select data-classify="${i}">
         <option value="">Choose…</option>
         ${stage.categories.map(c => `<option value="${c}">${c}</option>`).join('')}
-      </select></label>`).join('') + '<button class="lab-primary" type="button" data-check>Check classification</button>';
-
+      </select></label>`).join('') + '<button class="lab-primary lab-check" type="button" data-check>Check classification</button>';
     host.querySelector('[data-check]').addEventListener('click', () => {
       if (this.stageLocked) return;
       const answers = [...host.querySelectorAll('[data-classify]')].map(x => x.value);
       const correct = answers.every((value, i) => value === stage.items[i].answer);
-      this.finishStage(stage, correct, {
-        why: correct ? 'You correctly separated building work, quality assurance and project control.' : 'Development builds the product; SQA evaluates process/artifact quality; Project Management controls effort, schedule and administration.',
-        consequence: 'Keep the three tracks distinct while remembering that they interact throughout the life cycle.'
-      });
+      const feedback = stage.feedback || {
+        why: correct ? 'You classified the engineering responsibilities correctly.' : 'Review how the course distinguishes the categories in this activity.',
+        consequence: 'Correct classification helps you reason about engineering work instead of memorizing isolated terms.'
+      };
+      this.finishStage(stage, correct, feedback);
     });
   }
 
@@ -92,8 +86,7 @@ export class LabEngine {
       <label class="lab-row"><span>${item}</span><select data-order="${i}">
         <option value="">Position…</option>
         ${stage.answer.map((_, n) => `<option value="${n}">${n + 1}</option>`).join('')}
-      </select></label>`).join('') + '<button class="lab-primary" type="button" data-check>Check sequence</button>';
-
+      </select></label>`).join('') + '<button class="lab-primary lab-check" type="button" data-check>Check sequence</button>';
     host.querySelector('[data-check]').addEventListener('click', () => {
       if (this.stageLocked) return;
       const selects = [...host.querySelectorAll('[data-order]')];
@@ -114,46 +107,46 @@ export class LabEngine {
     const outputs = stage.pairs.map(pair => pair[1]);
     host.innerHTML = stage.pairs.map((pair, i) => `
       <label class="lab-row"><span>${pair[0]}</span><select data-match="${i}">
-        <option value="">Choose evidence…</option>
+        <option value="">Choose…</option>
         ${outputs.map(output => `<option value="${output}">${output}</option>`).join('')}
-      </select></label>`).join('') + '<button class="lab-primary" type="button" data-check>Check evidence</button>';
-
+      </select></label>`).join('') + `<button class="lab-primary lab-check" type="button" data-check>${stage.checkLabel || 'Check matches'}</button>`;
     host.querySelector('[data-check]').addEventListener('click', () => {
       if (this.stageLocked) return;
       const answers = [...host.querySelectorAll('[data-match]')].map(x => x.value);
       const correct = answers.every((value, i) => value === stage.pairs[i][1]);
-      this.finishStage(stage, correct, {
-        why: correct ? 'You connected each development phase to representative evidence.' : 'A phase is not complete just because work happened; it should leave artifacts or evidence that support verification and the next decisions.',
-        consequence: 'Think phase → purpose → evidence, not phase names in isolation.'
+      this.finishStage(stage, correct, stage.feedback || {
+        why: correct ? 'You connected each item to the appropriate engineering evidence.' : 'Review the relationship between each concept and its engineering consequence.',
+        consequence: 'The goal is to reason from concept to engineering action, not memorize labels in isolation.'
       });
     });
   }
 
-  renderUnsupported(host, stage) {
-    host.innerHTML = `<p class="lab-error">Unsupported activity type: ${stage.type}</p>`;
+  renderMultiSelect(host, stage) {
+    host.innerHTML = `<fieldset class="lab-multiselect"><legend>${stage.instruction || 'Select all that apply.'}</legend>${stage.options.map((option, i) => `
+      <label class="lab-check-option"><input type="checkbox" value="${i}" data-multi><span>${option}</span></label>`).join('')}</fieldset>
+      <button class="lab-primary lab-check" type="button" data-check>Check decision</button>`;
+    host.querySelector('[data-check]').addEventListener('click', () => {
+      if (this.stageLocked) return;
+      const selected = [...host.querySelectorAll('[data-multi]:checked')].map(x => Number(x.value)).sort((a,b) => a-b);
+      const expected = [...stage.answer].sort((a,b) => a-b);
+      const correct = selected.length === expected.length && selected.every((value, i) => value === expected[i]);
+      this.finishStage(stage, correct, stage.feedback);
+    });
   }
+
+  renderUnsupported(host, stage) { host.innerHTML = `<p class="lab-error">Unsupported activity type: ${stage.type}</p>`; }
 
   finishStage(stage, correct, feedback) {
     if (this.stageLocked) return;
     this.stageLocked = true;
     this.results.set(stage.id, { correct, skill: stage.skill });
-
-    const interaction = this.root.querySelector('[data-interaction]');
-    interaction.querySelectorAll('button, select, input').forEach(control => {
-      control.disabled = true;
-    });
-
+    this.root.querySelector('[data-interaction]').querySelectorAll('button, select, input').forEach(control => { control.disabled = true; });
     const box = this.root.querySelector('[data-feedback]');
     box.hidden = false;
     box.classList.toggle('is-correct', correct);
     box.classList.toggle('is-review', !correct);
-    box.innerHTML = `
-      <strong>${correct ? 'Correct reasoning' : 'Review the reasoning'}</strong>
-      <p><b>Why:</b> ${feedback.why}</p>
-      <p><b>Engineering consequence:</b> ${feedback.consequence}</p>`;
-
-    const next = this.root.querySelector('[data-next]');
-    next.hidden = false;
+    box.innerHTML = `<strong>${correct ? 'Correct reasoning' : 'Review the reasoning'}</strong><p><b>Why:</b> ${feedback.why}</p><p><b>Engineering consequence:</b> ${feedback.consequence}</p>`;
+    this.root.querySelector('[data-next]').hidden = false;
     box.focus({ preventScroll: true });
   }
 
