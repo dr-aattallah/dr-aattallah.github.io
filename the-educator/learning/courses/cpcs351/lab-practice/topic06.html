@@ -7,14 +7,8 @@
   <meta name="description" content="Standalone CPCS 351 architectural design and software design principles practice mission for Topic 06.">
   <link rel="stylesheet" href="lab.css">
   <style>
-    .topic06-map{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px}
-    .topic06-map div{position:relative;min-height:140px;padding:18px;border:1px solid #f0cdd0;border-radius:18px;background:linear-gradient(145deg,#fff,#fff7f7);overflow:hidden}
-    .topic06-map div::after{content:"";position:absolute;width:88px;height:88px;right:-32px;bottom:-42px;border-radius:50%;background:rgba(227,6,19,.08)}
-    .topic06-map span{display:grid;place-items:center;width:40px;height:40px;margin-bottom:12px;border-radius:12px;background:#e30613;color:#fff;font-weight:900}
-    .topic06-map strong{display:block;margin-bottom:5px;font-size:.98rem;line-height:1.25}
-    .topic06-map small{display:block;color:#667085;line-height:1.45}
-    @media(max-width:900px){.topic06-map{grid-template-columns:1fr 1fr}}
-    @media(max-width:520px){.topic06-map{grid-template-columns:1fr}}
+    .lab-mission-visual{margin:28px 0 0}
+    .lab-mission-visual img{display:block;width:100%;height:auto;border-radius:20px;border:1px solid #f0cdd0;box-shadow:0 18px 44px rgba(30,41,59,.14)}
   </style>
 </head>
 <body>
@@ -29,13 +23,9 @@
       <h1>Mission 06 — Design the Architecture Before It Designs You</h1>
       <p>A Jeddah healthcare company is building <strong>MediLink</strong>, a platform that connects patients, clinics, appointment services, notifications, billing, and medical-record integrations. You are the software architect. Turn requirements into architectural objectives, classify subsystem behavior, choose suitable styles, inspect weak designs, and defend an architecture that can evolve safely.</p>
 
-      <div class="topic06-map" aria-label="Architecture mission themes">
-        <div><span>01</span><strong>Read the Drivers</strong><small>Turn requirements and quality constraints into architectural objectives.</small></div>
-        <div><span>02</span><strong>Classify the System</strong><small>Recognize dominant subsystem behavior before choosing structure.</small></div>
-        <div><span>03</span><strong>Choose the Style</strong><small>Use N-Tier, Event-Driven, persistence, and other styles deliberately.</small></div>
-        <div><span>04</span><strong>Inspect the Design</strong><small>Find coupling, cohesion, interface, simplicity, and persistence defects.</small></div>
-        <div><span>05</span><strong>Defend the Architecture</strong><small>Trace decisions to objectives and approve the stronger architecture.</small></div>
-      </div>
+      <figure class="lab-mission-visual">
+        <img src="assets/Mission06.png" alt="Visual roadmap for Mission 06 — Design the Architecture Before It Designs You, showing the MediLink healthcare architecture journey from requirements and system classification through architectural styles, design review, integration and evolution." loading="eager">
+      </figure>
 
       <div class="lab-mission-meta" aria-label="Mission information">
         <span class="lab-chip">14 stages</span>
