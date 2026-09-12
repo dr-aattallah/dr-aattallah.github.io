@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Practice Lab · Topic 05 | CPCS 351</title>
+  <meta name="description" content="Standalone CPCS 351 requirements elicitation and use-case engineering practice mission for Topic 05.">
+  <link rel="stylesheet" href="lab.css">
+  <style>
+    .topic05-map{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px}
+    .topic05-map div{position:relative;min-height:140px;padding:18px;border:1px solid #f0cdd0;border-radius:18px;background:linear-gradient(145deg,#fff,#fff7f7);overflow:hidden}
+    .topic05-map div::after{content:"";position:absolute;width:88px;height:88px;right:-32px;bottom:-42px;border-radius:50%;background:rgba(227,6,19,.08)}
+    .topic05-map span{display:grid;place-items:center;width:40px;height:40px;margin-bottom:12px;border-radius:12px;background:#e30613;color:#fff;font-weight:900}
+    .topic05-map strong{display:block;margin-bottom:5px;font-size:.98rem;line-height:1.25}
+    .topic05-map small{display:block;color:#667085;line-height:1.45}
+    @media(max-width:900px){.topic05-map{grid-template-columns:1fr 1fr}}
+    @media(max-width:520px){.topic05-map{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="lab-shell">
+    <header class="lab-topbar">
+      <a class="lab-brand" href="../index.html">The Educator · CPCS 351</a>
+      <a class="lab-topic-link" href="../weeks/05-software-requirements-elicitation/">Topic 05</a>
+    </header>
+
+    <section class="lab-hero">
+      <p class="lab-kicker">Practice Lab · Topic 05</p>
+      <h1>Mission 05 — Turn Needs into Defensible Use Cases</h1>
+      <p>SkyGate Experience System is being refined for a major theme park in Jeddah. Guests, parents, operators, emergency staff, and management all describe needs differently. You are the requirements engineer responsible for turning messy stakeholder reality into clear, feasible, traceable requirements and actor-centered use cases.</p>
+
+      <div class="topic05-map" aria-label="Requirements and use-case engineering mission themes">
+        <div><span>01</span><strong>Elicit the Need</strong><small>Separate problems, wishes, capabilities, qualities, and constraints.</small></div>
+        <div><span>02</span><strong>Structure the Evidence</strong><small>Collect, model, derive, test feasibility, and review.</small></div>
+        <div><span>03</span><strong>Find Actor Goals</strong><small>Distinguish external roles and useful use cases from internal steps.</small></div>
+        <div><span>04</span><strong>Model & Trace</strong><small>Use UML relationships deliberately and prove requirements coverage.</small></div>
+        <div><span>05</span><strong>Validate the Commitment</strong><small>Check feasibility, verification, validation, and review perspectives.</small></div>
+      </div>
+
+      <div class="lab-mission-meta" aria-label="Mission information">
+        <span class="lab-chip">10 stages</span>
+        <span class="lab-chip">Recognize → Analyze</span>
+        <span class="lab-chip">Requirements → Use Cases</span>
+        <span class="lab-chip">Diagnostic feedback</span>
+      </div>
+    </section>
+
+    <main id="lab-root"></main>
+  </div>
+
+  <script type="module">
+    import { LabEngine } from './core/lab-engine.js';
+    import { topic05Mission } from './data/topic05.js';
+
+    const root = document.querySelector('#lab-root');
+    const engine = new LabEngine(root, topic05Mission);
+    engine.start();
+  </script>
+</body>
+</html>
