@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Practice Lab · Topic 11 | CPCS 351</title>
+  <meta name="description" content="Standalone CPCS 351 responsibility assignment and design patterns practice mission for Topic 11.">
+  <link rel="stylesheet" href="lab.css">
+</head>
+<body>
+  <div class="lab-shell">
+    <header class="lab-topbar">
+      <a class="lab-brand" href="../index.html">The Educator · CPCS 351</a>
+      <a class="lab-topic-link" href="../weeks/11-responsibility-assignment-patterns/">Topic 11</a>
+    </header>
+
+    <section class="lab-hero">
+      <p class="lab-kicker">Practice Lab · Topic 11</p>
+      <h1>Mission 11 — Assign the Right Responsibility</h1>
+      <p>A Jeddah event company is building <strong>EventFlow</strong>, a platform for creating events, selling tickets, processing payments, notifying attendees, integrating venue systems, and generating event reports. The current design works, but responsibilities are scattered. You are the design reviewer. Apply GRASP and GoF patterns only where they solve a real design problem, improve collaboration, and reduce unnecessary coupling.</p>
+
+      <div class="lab-mission-meta" aria-label="Mission information">
+        <span class="lab-chip">14 stages</span>
+        <span class="lab-chip">Apply → Analyze</span>
+        <span class="lab-chip">GRASP Responsibility Assignment</span>
+        <span class="lab-chip">GoF Pattern Selection</span>
+        <span class="lab-chip">Controller · Expert · Creator · Patterns</span>
+      </div>
+    </section>
+
+    <main id="lab-root"></main>
+  </div>
+
+  <script type="module">
+    import { LabEngine } from './core/lab-engine.js';
+    import { topic11Mission } from './data/topic11.js';
+    const root = document.querySelector('#lab-root');
+    const engine = new LabEngine(root, topic11Mission);
+    engine.start();
+  </script>
+</body>
+</html>
