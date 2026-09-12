@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Practice Lab · Topic 04 | CPCS 351</title>
+  <meta name="description" content="Standalone CPCS 351 process and methodology practice mission for Topic 04.">
+  <link rel="stylesheet" href="lab.css">
+  <style>
+    .topic04-map{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px}
+    .topic04-map div{position:relative;min-height:136px;padding:18px;border:1px solid #f0cdd0;border-radius:18px;background:linear-gradient(145deg,#fff,#fff7f7);overflow:hidden}
+    .topic04-map div::after{content:"";position:absolute;width:88px;height:88px;right:-32px;bottom:-42px;border-radius:50%;background:rgba(227,6,19,.08)}
+    .topic04-map span{display:grid;place-items:center;width:40px;height:40px;margin-bottom:12px;border-radius:12px;background:#e30613;color:#fff;font-weight:900}
+    .topic04-map strong{display:block;margin-bottom:5px;font-size:.98rem;line-height:1.25}
+    .topic04-map small{display:block;color:#667085;line-height:1.45}
+    @media(max-width:900px){.topic04-map{grid-template-columns:1fr 1fr}}
+    @media(max-width:520px){.topic04-map{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="lab-shell">
+    <header class="lab-topbar">
+      <a class="lab-brand" href="../index.html">The Educator · CPCS 351</a>
+      <a class="lab-topic-link" href="../weeks/04-process-and-methodology/">Topic 04</a>
+    </header>
+
+    <section class="lab-hero">
+      <p class="lab-kicker">Practice Lab · Topic 04</p>
+      <h1>Mission 04 — Choose the Development Strategy</h1>
+      <p>KAU is planning a new Student Services Platform. Some requirements are stable, others are unclear, several teams must coordinate, and management wants visible progress without ignoring technical risk. You are the software engineer responsible for choosing and justifying how the project should be organized.</p>
+
+      <div class="topic04-map" aria-label="Process and methodology mission themes">
+        <div><span>01</span><strong>Read the Pressure</strong><small>Identify uncertainty, change, coordination, risk, and stability.</small></div>
+        <div><span>02</span><strong>Structure the Work</strong><small>Separate process from methodology and understand what each controls.</small></div>
+        <div><span>03</span><strong>Compare Models</strong><small>Recognize Waterfall, Prototype, Evolutionary, Spiral, and Agile logic.</small></div>
+        <div><span>04</span><strong>Choose & Justify</strong><small>Match project conditions to the process strategy that manages them best.</small></div>
+        <div><span>05</span><strong>Apply the Lens</strong><small>Connect Agile methods and software paradigms to the larger engineering story.</small></div>
+      </div>
+
+      <div class="lab-mission-meta" aria-label="Mission information">
+        <span class="lab-chip">10 stages</span>
+        <span class="lab-chip">Recognize → Analyze</span>
+        <span class="lab-chip">Process-model reasoning</span>
+        <span class="lab-chip">Diagnostic feedback</span>
+      </div>
+    </section>
+
+    <main id="lab-root"></main>
+  </div>
+
+  <script type="module">
+    import { LabEngine } from './core/lab-engine.js';
+    import { topic04Mission } from './data/topic04.js';
+
+    const root = document.querySelector('#lab-root');
+    const engine = new LabEngine(root, topic04Mission);
+    engine.start();
+  </script>
+</body>
+</html>
