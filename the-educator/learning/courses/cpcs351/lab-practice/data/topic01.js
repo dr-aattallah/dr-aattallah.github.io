@@ -9,19 +9,18 @@ export const topic01Mission = {
       title: 'Software Reality',
       skill: 'Software Nature',
       level: 'Recognize',
-      type: 'choice',
-      context: 'The first version is already running. A new policy now requires an extra approval step for one type of student request. Management calls it “just one small change.”',
-      prompt: 'Why can this apparently small software change still be risky?',
-      options: [
-        'Software is easy to copy, so every copy must be rebuilt.',
-        'Software is easy to edit, but a local change can affect connected requirements, logic, tests and operations.',
-        'Software physically wears out when users change it.',
-        'Software changes are expensive mainly because new raw materials are required.'
+      type: 'matching',
+      context: 'The first version is already running. Management calls a requested policy change “just one small edit.” Before approving it, connect the nature of software to the engineering response it creates.',
+      prompt: 'Match each software property with the engineering consequence it should trigger.',
+      pairs: [
+        ['Easy to modify', 'Analyze impact and retest connected behavior'],
+        ['Does not physically wear out', 'Control deterioration caused by repeated unmanaged change'],
+        ['Labor-intensive to build', 'Use disciplined methods and coordinated teamwork']
       ],
-      answer: 1,
+      checkLabel: 'Check engineering links',
       feedback: {
-        why: 'Software is highly changeable but interconnected. Ease of editing is not the same as ease of understanding.',
-        consequence: 'Treat even small changes as engineering changes: analyze impact, update artifacts, test and coordinate release.'
+        why: 'Software properties create engineering consequences. Easy editing can hide ripple effects; software deteriorates through unmanaged change rather than physical wear; and development depends heavily on human reasoning and coordination.',
+        consequence: 'Treat software characteristics as reasons for engineering discipline, not as isolated facts to memorize.'
       },
       lesson: '../weeks/01-introduction/index.html'
     },
@@ -30,19 +29,19 @@ export const topic01Mission = {
       title: 'The Management Decision',
       skill: 'SE & PQCT Reasoning',
       level: 'Distinguish',
-      type: 'choice',
-      context: 'Registration week is approaching. The project manager asks whether reviews and testing can be reduced so the service can launch earlier.',
-      prompt: 'What is the best software-engineering response?',
-      options: [
-        'It improves every PQCT dimension because less work is always better.',
-        'It may reduce time now, but can damage quality and increase later cost; the trade-off must be evaluated across PQCT.',
-        'Only productivity matters in software engineering.',
-        'Testing belongs to project management, so it can be skipped safely.'
+      type: 'classification',
+      context: 'Registration week is approaching. Management proposes reducing reviews and testing to launch earlier. Your job is to identify which PQCT dimension each consequence primarily affects.',
+      prompt: 'Classify the consequences using the four PQCT dimensions.',
+      categories: ['Productivity', 'Quality', 'Cost', 'Time to Market'],
+      items: [
+        { text: 'The service can be released earlier', answer: 'Time to Market' },
+        { text: 'More defects may escape into production', answer: 'Quality' },
+        { text: 'Post-release rework may increase', answer: 'Cost' },
+        { text: 'The team completes less useful work per unit of effort because of rework', answer: 'Productivity' }
       ],
-      answer: 1,
       feedback: {
-        why: 'Software engineering balances Productivity, Quality, Cost and Time to Market rather than optimizing one metric blindly.',
-        consequence: 'A faster release is not an improvement if defects, rework or operational failures erase the gain.'
+        why: 'Software engineering evaluates Productivity, Quality, Cost and Time to Market together. Improving one dimension can create pressure on another.',
+        consequence: 'Do not accept “faster” as automatically “better”; reason across the whole PQCT trade-off.'
       },
       lesson: '../weeks/01-introduction/what-is-se.html'
     },
@@ -51,19 +50,21 @@ export const topic01Mission = {
       title: 'The Project Grows',
       skill: 'SE Reasoning',
       level: 'Apply',
-      type: 'choice',
-      context: 'The original service expands. It now connects authentication, student records, notifications, payments and several university systems, with different teams responsible for each area.',
-      prompt: 'Why does this growth strengthen the case for software engineering?',
+      type: 'multiselect',
+      context: 'The original service expands to authentication, student records, notifications, payments and several university integrations. Different teams now own different parts of the system.',
+      prompt: 'Which signals show that this is now an engineering-at-scale problem rather than simply a larger coding task?',
+      instruction: 'Select every signal that strengthens the need for software engineering.',
       options: [
-        'A larger codebase only needs faster typing.',
-        'Scale increases intellectual complexity and requires coordinated teamwork, methods and tools.',
-        'Large systems eliminate the need for requirements.',
-        'Software engineering is only useful for embedded hardware.'
+        'Multiple teams must coordinate decisions across subsystem boundaries.',
+        'Several external and university systems must integrate reliably.',
+        'Shared requirements, models and processes are needed to keep a common understanding.',
+        'The developers only need faster typing to handle the larger codebase.',
+        'A larger monitor will reduce the intellectual complexity of the system.'
       ],
-      answer: 1,
+      answer: [0, 1, 2],
       feedback: {
-        why: 'Scale changes the problem from individual programming to coordinated engineering.',
-        consequence: 'The project needs shared models, defined processes, communication mechanisms and coordinated responsibilities.'
+        why: 'Scale increases intellectual complexity, dependencies and coordination needs. The core difficulty is not typing more code; it is keeping many people and parts aligned.',
+        consequence: 'At scale, shared processes, models, communication mechanisms and coordinated responsibilities become essential engineering infrastructure.'
       },
       lesson: '../weeks/01-introduction/why-se.html'
     },
@@ -97,6 +98,10 @@ export const topic01Mission = {
         { text: 'Estimate effort and schedule the release', answer: 'Project Management' }
       ],
       categories: ['Development', 'SQA', 'Project Management'],
+      feedback: {
+        why: 'Development creates the product, SQA checks process and artifact quality, and Project Management controls effort, schedule and administration.',
+        consequence: 'Keep the three tracks conceptually distinct while remembering that they operate together throughout the life cycle.'
+      },
       lesson: '../weeks/01-introduction/life-cycle.html'
     },
     {
