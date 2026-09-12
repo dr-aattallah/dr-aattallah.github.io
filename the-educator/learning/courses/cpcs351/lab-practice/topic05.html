@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Practice Lab · Topic 05 | CPCS 351</title>
-  <meta name="description" content="Standalone CPCS 351 requirements elicitation and use-case engineering practice mission for Topic 05.">
+  <meta name="description" content="Standalone CPCS 351 requirements elicitation and UML use-case diagram practice mission for Topic 05.">
   <link rel="stylesheet" href="lab.css">
   <style>
     .topic05-map{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px}
@@ -26,22 +26,23 @@
 
     <section class="lab-hero">
       <p class="lab-kicker">Practice Lab · Topic 05</p>
-      <h1>Mission 05 — Turn Needs into Defensible Use Cases</h1>
-      <p>SkyGate Experience System is being refined for a major theme park in Jeddah. Guests, parents, operators, emergency staff, and management all describe needs differently. You are the requirements engineer responsible for turning messy stakeholder reality into clear, feasible, traceable requirements and actor-centered use cases.</p>
+      <h1>Mission 05 — Model the Real-Estate Experience</h1>
+      <p>A Jeddah property company is building <strong>BaytLink</strong>, a digital real-estate platform for buyers, tenants, property owners, agents, and external services. You are the requirements and use-case engineer. Build the right actor-centered model, inspect flawed UML drafts, identify exactly what is wrong, and choose stronger redesigns before development begins.</p>
 
-      <div class="topic05-map" aria-label="Requirements and use-case engineering mission themes">
-        <div><span>01</span><strong>Elicit the Need</strong><small>Separate problems, wishes, capabilities, qualities, and constraints.</small></div>
-        <div><span>02</span><strong>Structure the Evidence</strong><small>Collect, model, derive, test feasibility, and review.</small></div>
-        <div><span>03</span><strong>Find Actor Goals</strong><small>Distinguish external roles and useful use cases from internal steps.</small></div>
-        <div><span>04</span><strong>Model & Trace</strong><small>Use UML relationships deliberately and prove requirements coverage.</small></div>
-        <div><span>05</span><strong>Validate the Commitment</strong><small>Check feasibility, verification, validation, and review perspectives.</small></div>
+      <div class="topic05-map" aria-label="Requirements and UML use-case diagram mission themes">
+        <div><span>01</span><strong>Elicit the Need</strong><small>Turn real property-sector problems into clear requirements.</small></div>
+        <div><span>02</span><strong>Find Actors & Goals</strong><small>Separate external roles and business goals from internal implementation.</small></div>
+        <div><span>03</span><strong>Inspect Bad UML</strong><small>Find boundary, naming, association, and relationship defects.</small></div>
+        <div><span>04</span><strong>Redesign the Model</strong><small>Choose better «include», «extend», generalization, and diagram structure.</small></div>
+        <div><span>05</span><strong>Defend the Design</strong><small>Check traceability and decide which final diagram deserves approval.</small></div>
       </div>
 
       <div class="lab-mission-meta" aria-label="Mission information">
-        <span class="lab-chip">10 stages</span>
+        <span class="lab-chip">14 stages</span>
         <span class="lab-chip">Recognize → Analyze</span>
-        <span class="lab-chip">Requirements → Use Cases</span>
-        <span class="lab-chip">Diagnostic feedback</span>
+        <span class="lab-chip">Real-Estate Scenario</span>
+        <span class="lab-chip">UML Error Detection</span>
+        <span class="lab-chip">Design Review</span>
       </div>
     </section>
 
@@ -51,7 +52,6 @@
   <script type="module">
     import { LabEngine } from './core/lab-engine.js';
     import { topic05Mission } from './data/topic05.js';
-
     const root = document.querySelector('#lab-root');
     const engine = new LabEngine(root, topic05Mission);
     engine.start();
