@@ -23,9 +23,15 @@ export class LabEngine {
     this.stageIndex = Number.isInteger(saved.stageIndex) ? Math.max(0, Math.min(saved.stageIndex, this.activeStageIds.length)) : 0;
   }
 
-  saveState() { this.state.save({ stageIndex: this.stageIndex, results: this.results, activeStageIds: this.activeStageIds }); }
-  currentStage() { const id = this.activeStageIds[this.stageIndex]; return this.mission.stages.find(stage => stage.id === id); }
-  icon(name) { const icons = { review:'📘', next:'➜', check:'✓', weak:'🎯', restart:'↻', topic:'⌂' }; return `<span class="lab-btn-icon" aria-hidden="true">${icons[name] || ''}</span>`; }
+  saveState() {
+    this.state.save({ stageIndex: this.stageIndex, results: this.results, activeStageIds: this.activeStageIds });
+  }
+
+  currentStage() {
+    const id = this.activeStageIds[this.stageIndex];
+    return this.mission.stages.find(stage => stage.id === id);
+  }
+
   start() { this.renderStage(); }
 
   renderStage() {
@@ -39,7 +45,7 @@ export class LabEngine {
       <div class="lab-progress" aria-label="Mission progress"><div class="lab-progress-text"><span>Stage ${this.stageIndex + 1} of ${total}</span><span>${progress}% complete</span></div><div class="lab-progress-track" aria-hidden="true"><span style="width:${progress}%"></span></div></div>
       <div class="lab-stage-meta"><span>${stage.level}</span><span>${stage.skill}</span></div><h2 id="lab-stage-title">${stage.title}</h2>${context}<p class="lab-prompt">${stage.prompt}</p>
       <div class="lab-interaction" data-interaction></div><div class="lab-feedback" data-feedback tabindex="-1" hidden></div>
-      <div class="lab-actions"><a class="lab-review-link" href="${stage.lesson}">${this.icon('review')}<span>Review lesson</span></a><button class="lab-next" type="button" data-next hidden>${this.icon('next')}<span>Next stage</span></button></div></section>`;
+      <div class="lab-actions"><a class="lab-review-link" href="${stage.lesson}"><span class="lab-btn-icon" aria-hidden="true">📘</span>Review lesson</a><button class="lab-next" type="button" data-next hidden><span class="lab-btn-icon" aria-hidden="true">➜</span>Next stage</button></div></section>`;
     const host = this.root.querySelector('[data-interaction]');
     if (stage.type === 'choice') this.renderChoice(host, stage);
     else if (stage.type === 'classification') this.renderClassification(host, stage);
@@ -47,7 +53,12 @@ export class LabEngine {
     else if (stage.type === 'matching') this.renderMatching(host, stage);
     else if (stage.type === 'multiselect') this.renderMultiSelect(host, stage);
     else this.renderUnsupported(host, stage);
-    this.root.querySelector('[data-next]').addEventListener('click', () => { this.stageIndex += 1; this.saveState(); this.renderStage(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    this.root.querySelector('[data-next]').addEventListener('click', () => {
+      this.stageIndex += 1;
+      this.saveState();
+      this.renderStage();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
 
   renderChoice(host, stage) {
@@ -56,24 +67,31 @@ export class LabEngine {
   }
 
   renderClassification(host, stage) {
-    host.innerHTML = stage.items.map((item, i) => `<label class="lab-row"><span>${item.text}</span><select data-classify="${i}"><option value="">Choose…</option>${stage.categories.map(c => `<option value="${c}">${c}</option>`).join('')}</select></label>`).join('') + `<button class="lab-check-action" type="button" data-check>${this.icon('check')}<span>${stage.checkLabel || 'Check classification'}</span></button>`;
+    host.innerHTML = stage.items.map((item, i) => `<label class="lab-row"><span>${item.text}</span><select data-classify="${i}"><option value="">Choose…</option>${stage.categories.map(c => `<option value="${c}">${c}</option>`).join('')}</select></label>`).join('') + `<button class="lab-check-action" type="button" data-check><span class="lab-btn-icon" aria-hidden="true">✓</span>${stage.checkLabel || 'Check classification'}</button>`;
     host.querySelector('[data-check]').addEventListener('click', () => { if (this.stageLocked) return; const answers = [...host.querySelectorAll('[data-classify]')].map(x => x.value); const correct = answers.every((value, i) => value === stage.items[i].answer); this.finishStage(stage, correct, stage.feedback || { why: 'Review the categories used in this activity.', consequence: 'Correct classification supports engineering reasoning.' }); });
   }
 
   renderSequence(host, stage) {
     const presented = [...stage.answer].reverse();
-    host.innerHTML = `<ol class="lab-sequence-builder">${stage.answer.map((_, pos) => `<li><label><span class="lab-position">${pos + 1}</span><select data-sequence-slot="${pos}"><option value="">Choose phase…</option>${presented.map(item => `<option value="${item}">${item}</option>`).join('')}</select></label></li>`).join('')}</ol><button class="lab-check-action" type="button" data-check>${this.icon('check')}<span>Check lifecycle</span></button>`;
-    host.querySelector('[data-check]').addEventListener('click', () => { if (this.stageLocked) return; const values = [...host.querySelectorAll('[data-sequence-slot]')].map(x => x.value); const complete = values.every(Boolean); const unique = new Set(values).size === stage.answer.length; const correct = complete && unique && values.every((item, i) => item === stage.answer[i]); this.finishStage(stage, correct, stage.feedback || { why: correct ? 'You reconstructed the lifecycle in the intended Topic 01 order.' : `The Topic 01 sequence is: ${stage.answer.join(' → ')}.`, consequence: 'Lifecycle order helps you reason about how decisions and evidence flow from concept through operation and change.' }); });
+    host.innerHTML = `<ol class="lab-sequence-builder">${stage.answer.map((_, pos) => `<li><label><span class="lab-position">${pos + 1}</span><select data-sequence-slot="${pos}"><option value="">Choose phase…</option>${presented.map(item => `<option value="${item}">${item}</option>`).join('')}</select></label></li>`).join('')}</ol><button class="lab-check-action" type="button" data-check><span class="lab-btn-icon" aria-hidden="true">✓</span>Check lifecycle</button>`;
+    host.querySelector('[data-check]').addEventListener('click', () => {
+      if (this.stageLocked) return;
+      const values = [...host.querySelectorAll('[data-sequence-slot]')].map(x => x.value);
+      const complete = values.every(Boolean);
+      const unique = new Set(values).size === stage.answer.length;
+      const correct = complete && unique && values.every((item, i) => item === stage.answer[i]);
+      this.finishStage(stage, correct, stage.feedback || { why: correct ? 'You reconstructed the lifecycle in the intended Topic 01 order.' : `The Topic 01 sequence is: ${stage.answer.join(' → ')}.`, consequence: 'Lifecycle order helps you reason about how decisions and evidence flow from concept through operation and change.' });
+    });
   }
 
   renderMatching(host, stage) {
     const outputs = stage.pairs.map(pair => pair[1]);
-    host.innerHTML = stage.pairs.map((pair, i) => `<label class="lab-row"><span>${pair[0]}</span><select data-match="${i}"><option value="">Choose…</option>${outputs.map(output => `<option value="${output}">${output}</option>`).join('')}</select></label>`).join('') + `<button class="lab-check-action" type="button" data-check>${this.icon('check')}<span>${stage.checkLabel || 'Check matches'}</span></button>`;
+    host.innerHTML = stage.pairs.map((pair, i) => `<label class="lab-row"><span>${pair[0]}</span><select data-match="${i}"><option value="">Choose…</option>${outputs.map(output => `<option value="${output}">${output}</option>`).join('')}</select></label>`).join('') + `<button class="lab-check-action" type="button" data-check><span class="lab-btn-icon" aria-hidden="true">✓</span>${stage.checkLabel || 'Check matches'}</button>`;
     host.querySelector('[data-check]').addEventListener('click', () => { if (this.stageLocked) return; const answers = [...host.querySelectorAll('[data-match]')].map(x => x.value); const correct = answers.every((value, i) => value === stage.pairs[i][1]); this.finishStage(stage, correct, stage.feedback || { why: correct ? 'You connected each item to the appropriate engineering evidence.' : 'Review the relationship between each concept and its engineering consequence.', consequence: 'Reason from concept to engineering action, not labels in isolation.' }); });
   }
 
   renderMultiSelect(host, stage) {
-    host.innerHTML = `<fieldset class="lab-multiselect"><legend>${stage.instruction || 'Select all that apply.'}</legend>${stage.options.map((option, i) => `<label class="lab-check-option"><input type="checkbox" value="${i}" data-multi><span>${option}</span></label>`).join('')}</fieldset><button class="lab-check-action" type="button" data-check>${this.icon('check')}<span>${stage.checkLabel || 'Check decision'}</span></button>`;
+    host.innerHTML = `<fieldset class="lab-multiselect"><legend>${stage.instruction || 'Select all that apply.'}</legend>${stage.options.map((option, i) => `<label class="lab-check-option"><input type="checkbox" value="${i}" data-multi><span>${option}</span></label>`).join('')}</fieldset><button class="lab-check-action" type="button" data-check><span class="lab-btn-icon" aria-hidden="true">✓</span>${stage.checkLabel || 'Check decision'}</button>`;
     host.querySelector('[data-check]').addEventListener('click', () => { if (this.stageLocked) return; const selected = [...host.querySelectorAll('[data-multi]:checked')].map(x => Number(x.value)).sort((a,b) => a-b); const expected = [...stage.answer].sort((a,b) => a-b); const correct = selected.length === expected.length && selected.every((value, i) => value === expected[i]); this.finishStage(stage, correct, stage.feedback); });
   }
 
@@ -91,8 +109,23 @@ export class LabEngine {
     this.root.querySelector('[data-next]').hidden = false; box.focus({ preventScroll: true });
   }
 
-  retryWeakAreas(weakIds) { this.activeStageIds = weakIds; weakIds.forEach(id => this.results.delete(id)); this.stageIndex = 0; this.saveState(); this.renderStage(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
-  resetMission() { this.activeStageIds = this.mission.stages.map(stage => stage.id); this.stageIndex = 0; this.results.clear(); this.state.clear(); this.renderStage(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  retryWeakAreas(weakIds) {
+    this.activeStageIds = weakIds;
+    weakIds.forEach(id => this.results.delete(id));
+    this.stageIndex = 0;
+    this.saveState();
+    this.renderStage();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  resetMission() {
+    this.activeStageIds = this.mission.stages.map(stage => stage.id);
+    this.stageIndex = 0;
+    this.results.clear();
+    this.state.clear();
+    this.renderStage();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   renderSummary() {
     const orderedResults = this.mission.stages.map(stage => [stage.id, this.results.get(stage.id)]).filter(([, result]) => result);
@@ -102,8 +135,15 @@ export class LabEngine {
     const weak = weakEntries.map(([, result]) => result);
     const weakIds = weakEntries.map(([id]) => id);
     const readiness = correct === this.mission.stages.length ? 'Mission Ready' : correct >= 6 ? 'Nearly Ready' : correct >= 4 ? 'Developing' : 'Needs Review';
-    this.root.innerHTML = `<section class="lab-summary" aria-labelledby="lab-summary-title"><p class="lab-kicker">Mission debrief</p><h2 id="lab-summary-title">Engineering Readiness Profile</h2><div class="lab-readiness"><strong>${readiness}</strong><span>${correct} of ${this.mission.stages.length} engineering decisions demonstrated</span></div><div class="lab-skill-list">${orderedResults.map(([, result]) => `<div><span>${result.skill}<small>${result.title}</small></span><strong class="${result.correct ? 'is-mastered' : 'is-review-text'}">${result.correct ? 'Mastered' : 'Review'}</strong></div>`).join('')}</div>${weak.length ? `<aside class="lab-recommendation"><span>Recommended next step</span><p>Revisit <strong>${weak[0].title}</strong>, then retry only the concepts that need more work.</p><a class="lab-review-link" href="${weak[0].lesson}">${this.icon('review')}<span>Review recommended lesson</span></a></aside>` : `<aside class="lab-recommendation is-ready"><span>Engineering checkpoint</span><p>You demonstrated the Topic 01 reasoning chain from software nature through lifecycle evidence and engineering control.</p></aside>`}<p class="lab-summary-note">This is a diagnostic learning profile, not a grade. Your progress is saved on this device.</p><div class="lab-actions lab-summary-actions">${weakIds.length ? `<button class="lab-weak-action" type="button" data-retry-weak>${this.icon('weak')}<span>Retry weak areas</span></button>` : ''}<button class="lab-restart-action" type="button" data-retry>${this.icon('restart')}<span>Restart full mission</span></button><a class="lab-topic-action" href="../weeks/01-introduction/">${this.icon('topic')}<span>Return to Topic 01</span></a></div></section>`;
-    const retryWeak = this.root.querySelector('[data-retry-weak]'); if (retryWeak) retryWeak.addEventListener('click', () => this.retryWeakAreas(weakIds));
+    this.root.innerHTML = `<section class="lab-summary" aria-labelledby="lab-summary-title">
+      <p class="lab-kicker">Mission debrief</p><h2 id="lab-summary-title">Engineering Readiness Profile</h2>
+      <div class="lab-readiness"><strong>${readiness}</strong><span>${correct} of ${this.mission.stages.length} engineering decisions demonstrated</span></div>
+      <div class="lab-skill-list">${orderedResults.map(([, result]) => `<div><span>${result.skill}<small>${result.title}</small></span><strong class="${result.correct ? 'is-mastered' : 'is-review-text'}">${result.correct ? 'Mastered' : 'Review'}</strong></div>`).join('')}</div>
+      ${weak.length ? `<aside class="lab-recommendation"><span>Recommended next step</span><p>Revisit <strong>${weak[0].title}</strong>, then retry only the concepts that need more work.</p><a class="lab-review-link" href="${weak[0].lesson}"><span class="lab-btn-icon" aria-hidden="true">📘</span>Review recommended lesson</a></aside>` : `<aside class="lab-recommendation is-ready"><span>Engineering checkpoint</span><p>You demonstrated the Topic 01 reasoning chain from software nature through lifecycle evidence and engineering control.</p></aside>`}
+      <p class="lab-summary-note">This is a diagnostic learning profile, not a grade. Your progress is saved on this device.</p>
+      <div class="lab-actions lab-summary-actions">${weakIds.length ? '<button class="lab-weak-action" type="button" data-retry-weak><span class="lab-btn-icon" aria-hidden="true">🎯</span>Retry weak areas</button>' : ''}<button class="lab-restart-action" type="button" data-retry><span class="lab-restart-icon" aria-hidden="true">↻</span><span>Restart full mission</span></button><a class="lab-topic-action" href="../weeks/01-introduction/"><span class="lab-btn-icon" aria-hidden="true">⌂</span>Return to Topic 01</a></div></section>`;
+    const retryWeak = this.root.querySelector('[data-retry-weak]');
+    if (retryWeak) retryWeak.addEventListener('click', () => this.retryWeakAreas(weakIds));
     this.root.querySelector('[data-retry]').addEventListener('click', () => this.resetMission());
     this.saveState();
   }
