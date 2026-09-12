@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Practice Lab · Topic 10 | CPCS 351</title>
+  <meta name="description" content="Standalone CPCS 351 integrated UML modeling practice mission for Topic 10.">
+  <link rel="stylesheet" href="lab.css">
+</head>
+<body>
+  <div class="lab-shell">
+    <header class="lab-topbar">
+      <a class="lab-brand" href="../index.html">The Educator · CPCS 351</a>
+      <a class="lab-topic-link" href="../weeks/10-modeling-interactions-and-behavior-revision/">Topic 10</a>
+    </header>
+
+    <section class="lab-hero">
+      <p class="lab-kicker">Practice Lab · Topic 10</p>
+      <h1>Mission 10 — Make Five Models Tell One Story</h1>
+      <p>Jeddah Mobility is launching <strong>ParkFlow</strong>, a smart parking reservation platform for public parking facilities. A driver searches for a facility, reserves an available space, receives a time-limited entry code, enters the facility, occupies the assigned space, pays, exits, and receives confirmation. If the code is invalid or expired, entry must be blocked. You are the lead model reviewer. Choose the right UML view, trace requirements across models, detect contradictions, and approve only a coherent set of diagrams.</p>
+
+      <div class="lab-mission-meta" aria-label="Mission information">
+        <span class="lab-chip">14 stages</span>
+        <span class="lab-chip">Apply → Analyze</span>
+        <span class="lab-chip">Integrated UML Review</span>
+        <span class="lab-chip">Use Case · Class · Sequence</span>
+        <span class="lab-chip">State · Activity · Consistency</span>
+      </div>
+    </section>
+
+    <main id="lab-root"></main>
+  </div>
+
+  <script type="module">
+    import { LabEngine } from './core/lab-engine.js';
+    import { topic10Mission } from './data/topic10.js';
+    const root = document.querySelector('#lab-root');
+    const engine = new LabEngine(root, topic10Mission);
+    engine.start();
+  </script>
+</body>
+</html>
