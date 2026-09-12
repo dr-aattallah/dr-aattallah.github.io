@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Practice Lab · Topic 09 | CPCS 351</title>
+  <meta name="description" content="Standalone CPCS 351 activity modeling practice mission for Topic 09.">
+  <link rel="stylesheet" href="lab.css">
+</head>
+<body>
+  <div class="lab-shell">
+    <header class="lab-topbar">
+      <a class="lab-brand" href="../index.html">The Educator · CPCS 351</a>
+      <a class="lab-topic-link" href="../weeks/09-activity-modeling/">Topic 09</a>
+    </header>
+
+    <section class="lab-hero">
+      <p class="lab-kicker">Practice Lab · Topic 09</p>
+      <h1>Mission 09 — Make the Workflow Visible</h1>
+      <p>A Jeddah hospital group is launching <strong>CareFlow</strong>, a patient discharge coordination workflow spanning physician approval, pharmacy preparation, billing clearance, transport arrangements, patient education, and final discharge. You are the behavior modeler. Choose the right behavioral view, structure the workflow correctly, model decisions and concurrency, assign responsibilities with swimlanes, and review flawed activity diagrams before approving the process.</p>
+
+      <div class="lab-mission-meta" aria-label="Mission information">
+        <span class="lab-chip">14 stages</span>
+        <span class="lab-chip">Apply → Analyze</span>
+        <span class="lab-chip">Jeddah Healthcare Workflow</span>
+        <span class="lab-chip">Activity Diagram Review</span>
+        <span class="lab-chip">Decision · Fork · Join · Swimlanes</span>
+      </div>
+    </section>
+
+    <main id="lab-root"></main>
+  </div>
+
+  <script type="module">
+    import { LabEngine } from './core/lab-engine.js';
+    import { topic09Mission } from './data/topic09.js';
+    const root = document.querySelector('#lab-root');
+    const engine = new LabEngine(root, topic09Mission);
+    engine.start();
+  </script>
+</body>
+</html>
