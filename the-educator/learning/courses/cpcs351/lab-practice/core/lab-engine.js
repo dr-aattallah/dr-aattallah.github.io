@@ -16,7 +16,8 @@ export class LabEngine {
     if (!stage) return this.renderSummary();
 
     this.stageLocked = false;
-    const progress = Math.round(((this.stageIndex) / this.mission.stages.length) * 100);
+    const progress = Math.round((this.stageIndex / this.mission.stages.length) * 100);
+    const context = stage.context ? `<aside class="lab-context"><span>Project update</span><p>${stage.context}</p></aside>` : '';
 
     this.root.innerHTML = `
       <section class="lab-stage" aria-labelledby="lab-stage-title">
@@ -29,6 +30,7 @@ export class LabEngine {
           <span>${stage.skill}</span>
         </div>
         <h2 id="lab-stage-title">${stage.title}</h2>
+        ${context}
         <p class="lab-prompt">${stage.prompt}</p>
         <div class="lab-interaction" data-interaction></div>
         <div class="lab-feedback" data-feedback tabindex="-1" hidden></div>
