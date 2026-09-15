@@ -3,26 +3,38 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="CPCS 351 resource hub for visual learning, concept posts, course downloads, project tools, past exams, and references.">
+  <meta name="description" content="CPCS 351 resources: course downloads, visual learning, project tools, past exams, concept posts, and references.">
   <title>Course Resources | CPCS 351</title>
   <link rel="stylesheet" href="../design-system.css">
   <link rel="stylesheet" href="resources.css">
 </head>
 <body>
   <header class="resource-topbar"><a class="resource-brand" href="../index.html"><span class="brand-mark" aria-hidden="true"></span><span><strong>The Educator</strong><small>CPCS 351 · Software Engineering I</small></span></a><a class="resource-home" href="../index.html">Course Home</a></header>
-  <main class="resource-shell">
+  <main class="resource-shell resource-hub-simple">
     <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../index.html">CPCS 351</a><span>›</span><span aria-current="page">Resources</span></nav>
-    <section class="resource-hero"><div class="hero-copy"><p class="eyebrow">CPCS 351 · RESOURCE HUB</p><h1>Learn deeper. Find faster.</h1><p class="lead">A curated home for visual explanations, focused concept posts, downloadable course material, project tools, past exams, and trusted references—kept separate from the lesson sequence but connected to your learning.</p><div class="hero-actions"><a class="primary-action" href="#collections">Explore Resources</a><a class="secondary-action" href="../index.html">← Course Home</a></div></div><div class="hero-visual" aria-hidden="true"><span class="visual-orbit orbit-one"></span><span class="visual-orbit orbit-two"></span><div class="visual-core">SE</div><span class="visual-chip chip-one">UML</span><span class="visual-chip chip-two">PDF</span><span class="visual-chip chip-three">QA</span></div></section>
-    <section class="resource-intro" id="collections"><div><p class="section-kicker">RESOURCE COLLECTIONS</p><h2>Everything has a clear home.</h2></div><p>Start with the kind of support you need. Each collection is designed to grow without mixing resources with the core Topic pages.</p></section>
-    <section class="collection-grid" aria-label="Resource collections">
-      <a class="collection-card visual" href="visual-learning/"><span class="card-icon" aria-hidden="true">◫</span><div><span class="card-label">SEE THE IDEA</span><h3>Visual Learning</h3><p>Infographics and visual guides that make major software engineering concepts easier to understand and remember.</p><span class="card-link">Explore visuals →</span></div></a>
-      <a class="collection-card concepts" href="concept-posts/"><span class="card-icon" aria-hidden="true">✦</span><div><span class="card-label">FOCUSED EXPLANATIONS</span><h3>Concept Posts</h3><p>Short, focused explanations for important distinctions, modeling decisions, and frequently confused concepts.</p><span class="card-link">Read concept posts →</span></div></a>
-      <a class="collection-card downloads" href="downloads/"><span class="card-icon" aria-hidden="true">↓</span><div><span class="card-label">STUDY OFFLINE</span><h3>Course Downloads</h3><p>Topic PDFs, presentation slides, and future complete-course packages organized for quick access.</p><span class="card-link">Browse downloads →</span></div></a>
-      <a class="collection-card toolkit" href="project-toolkit/"><span class="card-icon" aria-hidden="true">◇</span><div><span class="card-label">BUILD THE PROJECT</span><h3>Project Toolkit</h3><p>Project templates, scoring rubrics, guides, examples, and supporting material for the group project.</p><span class="card-link">Open toolkit →</span></div></a>
-      <a class="collection-card concepts" href="past-exams/"><span class="card-icon" aria-hidden="true">✓</span><div><span class="card-label">PREPARE &amp; PRACTICE</span><h3>Past Exams &amp; Practice</h3><p>Previous CPCS 351 exam papers and selected practice material for understanding question styles and reviewing course concepts.</p><span class="card-link">Browse past exams →</span></div></a>
-      <a class="collection-card references" href="references/"><span class="card-icon" aria-hidden="true">↗</span><div><span class="card-label">GO TO THE SOURCE</span><h3>References &amp; Links</h3><p>A selective collection of standards, professional references, UML resources, and useful engineering tools.</p><span class="card-link">View references →</span></div></a>
+
+    <section class="simple-hero">
+      <div><p class="eyebrow">CPCS 351 · RESOURCES</p><h1>Everything you need,<br>in one place.</h1><p>Study materials, project tools, visual guides, and exam practice.</p></div>
+      <div class="simple-hero-mark" aria-hidden="true"><span>SE</span><small>RESOURCES</small></div>
     </section>
-    <section class="featured-strip"><div><p class="section-kicker">DESIGNED FOR CPCS 351</p><h2>Resources should support the lesson—not compete with it.</h2><p>Use this hub when you want another explanation, a visual summary, a reusable project asset, exam practice, or a downloadable version of course material.</p></div><div class="resource-path" aria-label="Resource learning path"><span>Learn</span><i>→</i><span>Visualize</span><i>→</i><span>Practice</span><i>→</i><span>Build</span></div></section>
+
+    <section class="priority-resources" aria-labelledby="main-resources-title">
+      <div class="simple-heading"><p class="section-kicker">START HERE</p><h2 id="main-resources-title">Core resources</h2></div>
+      <div class="priority-grid">
+        <a class="priority-card downloads" href="downloads/"><span class="priority-icon" aria-hidden="true">↓</span><div><small>COURSE MATERIAL</small><h3>Course Downloads</h3><p>Topic PDFs and downloadable course material.</p><strong>Browse files →</strong></div></a>
+        <a class="priority-card toolkit" href="project-toolkit/"><span class="priority-icon" aria-hidden="true">◇</span><div><small>GROUP PROJECT</small><h3>Project Toolkit</h3><p>Templates, rubric, and project support.</p><strong>Open toolkit →</strong></div></a>
+        <a class="priority-card exams" href="past-exams/"><span class="priority-icon" aria-hidden="true">✓</span><div><small>EXAM PREPARATION</small><h3>Past Exams</h3><p>Previous exams and practice material.</p><strong>Practice →</strong></div></a>
+      </div>
+    </section>
+
+    <section class="support-resources" aria-labelledby="support-title">
+      <div class="simple-heading"><p class="section-kicker">EXPLORE</p><h2 id="support-title">Learn another way</h2></div>
+      <div class="support-grid">
+        <a class="support-card visual" href="visual-learning/"><span aria-hidden="true">◫</span><div><h3>Visual Learning</h3><p>Infographics and visual guides.</p></div><b>→</b></a>
+        <a class="support-card concepts" href="concept-posts/"><span aria-hidden="true">✦</span><div><h3>Concept Posts</h3><p>Focused explanations of key ideas.</p></div><b>→</b></a>
+        <a class="support-card references" href="references/"><span aria-hidden="true">↗</span><div><h3>References &amp; Links</h3><p>Standards, UML resources, and tools.</p></div><b>→</b></a>
+      </div>
+    </section>
   </main>
   <footer class="resource-footer"><div><strong>The Educator</strong><span>CPCS 351 · Software Engineering I</span></div><a href="../index.html">Back to Course Home ↑</a></footer>
 </body>
