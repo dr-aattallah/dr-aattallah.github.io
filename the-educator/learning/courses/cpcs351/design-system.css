@@ -11,6 +11,17 @@
 .brand-mark{display:block!important;width:42px!important;height:42px!important;flex:0 0 42px!important;border-radius:var(--radius-sm)!important;background:url('/the-educator/assets/images/edulogo.png') center/contain no-repeat!important;font-size:0!important;color:transparent!important}
 .course-id,.home-link{color:var(--ui-muted)}
 
+/* One component-level header language across Home, Project, Research, Labs and Resources. */
+.course-header{width:min(1188px,calc(100% - 32px))!important;min-height:64px!important;margin:14px auto 0!important;padding:7px 16px!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;border:1px solid var(--ui-line)!important;border-radius:16px!important;background:rgba(255,255,255,.94)!important;box-shadow:none!important;position:relative!important;top:auto!important;z-index:100!important}
+.course-header .course-header-brand{display:flex!important;align-items:center!important;gap:10px!important;min-width:max-content!important;color:var(--ui-ink)!important;text-decoration:none!important;font-weight:950!important}
+.course-header .course-header-brand .brand-mark{width:38px!important;height:38px!important;flex-basis:38px!important}
+.course-header .course-header-brand small{display:block;color:var(--ui-muted);font-size:11px;font-weight:650;line-height:1.2}
+.course-header .course-header-nav{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:4px!important;flex-wrap:wrap!important;margin-left:auto!important}
+.course-header .course-header-nav a{min-height:40px;display:inline-flex;align-items:center;padding:8px 10px;border-radius:10px;color:#52637c!important;text-decoration:none!important;font-size:12px!important;font-weight:850!important;line-height:1.2}
+.course-header .course-header-nav a:hover,.course-header .course-header-nav a:focus-visible{background:var(--ui-brand-soft)!important;color:var(--ui-brand)!important;outline:none}
+.course-header .course-header-nav a[aria-current="page"]{background:var(--ui-brand-soft)!important;color:var(--ui-brand-strong)!important}
+@media(max-width:760px){.course-header{align-items:flex-start!important;flex-direction:column!important}.course-header .course-header-nav{width:100%!important;justify-content:flex-start!important;overflow-x:auto!important;flex-wrap:nowrap!important;padding-bottom:2px!important}.course-header .course-header-nav a{white-space:nowrap!important}}
+
 /* Stable course geometry shared by every lesson page. */
 body[data-topic] .shell{grid-template-columns:264px minmax(0,1fr)!important}
 body[data-topic] main{min-width:0}
