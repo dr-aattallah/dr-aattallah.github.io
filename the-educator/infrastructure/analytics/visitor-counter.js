@@ -1,13 +1,13 @@
 (()=>{
   'use strict';
-  const DEFAULT_ENDPOINT='https://api.counterapi.dev/v1';
+  const DEFAULT_ENDPOINT='https://counterapi.com/api';
   const SCRIPT=document.currentScript;
   const endpoint=(SCRIPT?.dataset.endpoint||DEFAULT_ENDPOINT).replace(/\/$/,'');
-  const namespace=SCRIPT?.dataset.namespace||location.hostname.replace(/[^a-z0-9_-]/gi,'-')||'the-educator';
+  const namespace=SCRIPT?.dataset.namespace||location.hostname.replace(/[^a-z0-9._-]/gi,'-')||'the-educator';
   const seen=new Map();
 
   function clean(value,fallback){
-    const out=String(value||'').trim().toLowerCase().replace(/[^a-z0-9_-]+/g,'-').replace(/^-+|-+$/g,'');
+    const out=String(value||'').trim().toLowerCase().replace(/[^a-z0-9._-]+/g,'-').replace(/^-+|-+$/g,'');
     return out||fallback;
   }
   function format(value){return new Intl.NumberFormat(document.documentElement.lang||'en').format(value)}
@@ -23,17 +23,18 @@
   async function count(el){
     const key=clean(el.dataset.visitorCounter||el.dataset.key||location.pathname,'page');
     const ns=clean(el.dataset.namespace||namespace,'the-educator');
-    const id=`${ns}/${key}`;
+    const action=clean(el.dataset.action||'view','view');
+    const id=`${ns}/${action}/${key}`;
     el.classList.add('visitor-counter','visitor-counter--loading');
     el.setAttribute('role','status');el.setAttribute('aria-live','polite');el.textContent=el.dataset.loadingLabel||'Counting visits…';
     try{
       let promise=seen.get(id);
       if(!promise){
-        promise=fetch(`${endpoint}/${encodeURIComponent(ns)}/${encodeURIComponent(key)}/up`,{headers:{Accept:'application/json'}}).then(r=>{if(!r.ok)throw new Error(`Counter ${r.status}`);return r.json()});
+        promise=fetch(`${endpoint}/${encodeURIComponent(ns)}/${encodeURIComponent(action)}/${encodeURIComponent(key)}`,{headers:{Accept:'application/json'}}).then(r=>{if(!r.ok)throw new Error(`Counter ${r.status}`);return r.json()});
         seen.set(id,promise);
       }
       const data=await promise;
-      const value=Number(data.count??data.value??data.data?.count);
+      const value=Number(data.value??data.count??data.data?.count);
       if(!Number.isFinite(value))throw new Error('Invalid counter response');
       render(el,value);
     }catch(error){console.warn('[VisitorCounter]',error);seen.delete(id);fail(el)}
