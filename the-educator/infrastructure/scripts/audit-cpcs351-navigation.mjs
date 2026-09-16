@@ -14,19 +14,21 @@ const topics=[
 const errors=[]; let generatedLinks=0; let lessonPages=0;
 const exists=p=>fs.existsSync(p)&&fs.statSync(p).isFile();
 const decodeRef=ref=>{try{return decodeURIComponent(ref)}catch{return ref}};
+const walk=(dir,out=[])=>{for(const e of fs.readdirSync(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(e.isDirectory())walk(p,out);else if(e.name.endsWith('.html'))out.push(p)}return out};
 
 const homePath=path.join(courseRoot,'index.html');
 const navShimPath=path.join(courseRoot,'navigation-system.js');
 const navCssPath=path.join(courseRoot,'navigation-system.css');
 const studyPath=path.join(courseRoot,'study.js');
+const courseHeaderPath=path.join(courseRoot,'course-header.js');
 if(!exists(homePath))errors.push('Course Home index.html is missing.');
 if(!exists(navShimPath))errors.push('navigation-system.js is missing.');
 if(!exists(navCssPath))errors.push('navigation-system.css is missing.');
 if(!exists(studyPath))errors.push('study.js shared navigation controller is missing.');
+if(!exists(courseHeaderPath))errors.push('course-header.js shared course header is missing.');
 
 const dashboard=fs.readFileSync(path.join(courseRoot,'course-dashboard.js'),'utf8');
-// study.js is the canonical CPCS 351 navigation controller. navigation-system.js is a compatibility loader/shim.
-const unified=[navShimPath,studyPath].filter(exists).map(p=>fs.readFileSync(p,'utf8')).join('\n');
+const unified=[navShimPath,studyPath,courseHeaderPath].filter(exists).map(p=>fs.readFileSync(p,'utf8')).join('\n');
 
 for(const [num,slug] of topics){
  const dir=path.join(weeksRoot,slug);
@@ -67,10 +69,32 @@ for(const token of ['aria-current','Breadcrumb','aria-label','Escape','focus']){
  if(!unified.toLowerCase().includes(token.toLowerCase()))errors.push(`Unified navigation accessibility/wayfinding signal missing: ${token}`);
 }
 
-console.log(`Navigation audit checked ${topics.length} topics, ${lessonPages} lesson HTML pages, and ${generatedLinks} generated/explicit local navigation references.`);
+// Whole-course coverage: every ordinary CPCS 351 HTML page must load one of the shared navigation controllers.
+const allHtml=walk(courseRoot),specialPurpose=new Set(['access.html']);
+let sharedNavPages=0,deepPages=0;
+for(const file of allHtml){
+ const rel=path.relative(courseRoot,file).replaceAll('\\','/');
+ if(specialPurpose.has(rel))continue;
+ const text=fs.readFileSync(file,'utf8');
+ const isPresentation=/presentation\.html$/i.test(rel);
+ const hasShared=/course-header\.js|study\.js|navigation-system\.js|course-dashboard\.js/.test(text);
+ // Presentation mode is intentionally full-screen and keeps its own presentation navigation.
+ if(!isPresentation&&!hasShared)errors.push(`${rel}: missing shared CPCS 351 navigation controller.`); else sharedNavPages++;
+ const parts=rel.split('/');
+ const deep=parts.length>=3 && rel!=='index.html';
+ if(deep&&!isPresentation){
+   deepPages++;
+   const topicPage=/^weeks\/\d{2}-(?!lab-learning-path)/.test(rel);
+   const hasRecovery=topicPage?(/study\.js|navigation-system\.js/.test(text)):/course-header\.js/.test(text);
+   if(!hasRecovery)errors.push(`${rel}: third-level page is missing shared parent/back recovery navigation.`);
+ }
+}
+if(!unified.includes('Back to Labs')||!unified.includes('Back to Resources')||!unified.includes('Back to Topic'))errors.push('course-header.js is missing contextual Back navigation for deep course pages.');
+
+console.log(`Navigation audit checked ${topics.length} topics, ${lessonPages} lesson HTML pages, ${allHtml.length} total course HTML pages, ${sharedNavPages} shared-navigation pages, ${deepPages} deep pages, and ${generatedLinks} generated/explicit local references.`);
 if(errors.length){
  console.error(`Found ${errors.length} navigation issue(s):`);
  errors.forEach(e=>console.error(`- ${e}`));
  process.exit(1);
 }
-console.log('CPCS 351 global, local, breadcrumb, topic-map, and Previous/Next navigation targets are internally consistent.');
+console.log('CPCS 351 unified course navigation, contextual Back recovery, topic maps, breadcrumbs, and Previous/Next targets are internally consistent.');
