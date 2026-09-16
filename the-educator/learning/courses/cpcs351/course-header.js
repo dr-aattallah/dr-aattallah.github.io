@@ -1,5 +1,6 @@
 (()=>{
   const BASE='/the-educator/learning/courses/cpcs351/';
+  if(!document.querySelector('link[data-course-design-system]')&&!document.querySelector('link[href$="design-system.css"]')){const css=document.createElement('link');css.rel='stylesheet';css.href=BASE+'design-system.css';css.dataset.courseDesignSystem='1';document.head.append(css);}
   const path=location.pathname;
   const current=path.includes('/project/')?'project':path.includes('/research/')?'research':path.includes('/13-lab-learning-path/')?'labs':path.includes('/resources/')?'resources':path.includes('/lab-practice/')?'learning':path.endsWith('/cpcs351/')||path.endsWith('/cpcs351/index.html')?'home':'';
   const host=document.querySelector('[data-course-header],.resource-topbar,header.top,header.topbar,header.lab-topbar');
