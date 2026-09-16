@@ -15,12 +15,18 @@ const errors=[]; let generatedLinks=0; let lessonPages=0;
 const exists=p=>fs.existsSync(p)&&fs.statSync(p).isFile();
 const decodeRef=ref=>{try{return decodeURIComponent(ref)}catch{return ref}};
 
-if(!exists(path.join(courseRoot,'index.html')))errors.push('Course Home index.html is missing.');
-if(!exists(path.join(courseRoot,'navigation-system.js')))errors.push('navigation-system.js is missing.');
-if(!exists(path.join(courseRoot,'navigation-system.css')))errors.push('navigation-system.css is missing.');
+const homePath=path.join(courseRoot,'index.html');
+const navShimPath=path.join(courseRoot,'navigation-system.js');
+const navCssPath=path.join(courseRoot,'navigation-system.css');
+const studyPath=path.join(courseRoot,'study.js');
+if(!exists(homePath))errors.push('Course Home index.html is missing.');
+if(!exists(navShimPath))errors.push('navigation-system.js is missing.');
+if(!exists(navCssPath))errors.push('navigation-system.css is missing.');
+if(!exists(studyPath))errors.push('study.js shared navigation controller is missing.');
 
 const dashboard=fs.readFileSync(path.join(courseRoot,'course-dashboard.js'),'utf8');
-const unified=fs.readFileSync(path.join(courseRoot,'navigation-system.js'),'utf8');
+// study.js is the canonical CPCS 351 navigation controller. navigation-system.js is a compatibility loader/shim.
+const unified=[navShimPath,studyPath].filter(exists).map(p=>fs.readFileSync(p,'utf8')).join('\n');
 
 for(const [num,slug] of topics){
  const dir=path.join(weeksRoot,slug);
