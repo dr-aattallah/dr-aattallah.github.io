@@ -24,7 +24,8 @@ for(const s of runtime){
 }
 for(const f of files){
   const r=rel(f), b=path.basename(f), size=fs.statSync(f).size;
-  if(size<=1) report.emptyFiles.push(r);
+  // .gitkeep files intentionally preserve otherwise-empty directories and are not runtime placeholders.
+  if(size<=1 && b!=='.gitkeep') report.emptyFiles.push(r);
   if(/(?:PATCH|patch|FIX|fix|backup|old|copy|temp|tmp)/.test(b)) report.legacyNamedActiveFiles.push(r);
   if(!r.includes('/') && !['index.html','README.md','login.html','help.html','reset-password.html'].includes(r)) report.rootRuntimeFiles.push(r);
 }
