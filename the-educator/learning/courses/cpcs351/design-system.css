@@ -16,6 +16,7 @@
 .course-header .course-header-nav a{min-height:40px;display:inline-flex;align-items:center;padding:8px 10px;border-radius:10px;color:#52637c!important;text-decoration:none!important;font-size:12px!important;font-weight:850!important;line-height:1.2}
 .course-header .course-header-nav a:hover,.course-header .course-header-nav a:focus-visible{background:var(--ui-brand-soft)!important;color:var(--ui-brand)!important;outline:none}
 .course-header .course-header-nav a[aria-current="page"]{background:var(--ui-brand-soft)!important;color:var(--ui-brand-strong)!important}
+.course-context-row{width:min(1188px,calc(100% - 32px));margin:8px auto 0;display:flex;align-items:center}.course-back-link{display:inline-flex;align-items:center;min-height:36px;padding:6px 10px;border-radius:10px;color:var(--ui-muted)!important;text-decoration:none!important;font-size:12px;font-weight:850}.course-back-link:hover,.course-back-link:focus-visible{background:var(--ui-brand-soft);color:var(--ui-brand-strong)!important}
 body[data-topic] .shell{grid-template-columns:264px minmax(0,1fr)!important}
 body[data-topic] main{min-width:0}
 body[data-topic] .content{width:min(960px,calc(100% - 64px))!important;max-width:960px!important;margin-inline:auto!important;padding:40px 0 72px!important}
@@ -25,7 +26,6 @@ body[data-topic] .objective{margin-top:var(--space-2);padding:var(--space-2);bor
 body[data-topic] .section{margin-top:var(--space-6)}
 body[data-topic] .example-box{padding:var(--space-3);border-radius:var(--radius-lg);box-shadow:var(--shadow-1)}
 body[data-topic] .remember{margin-top:var(--space-5);padding:var(--space-3);border-radius:var(--radius-lg)}
-/* Match the Learning pages to the same visual header language while preserving the shared Topics control. */
 body[data-topic] .topbar{width:min(1188px,calc(100% - 32px))!important;min-height:64px!important;height:64px!important;margin:14px auto 0!important;padding:7px 16px!important;border:1px solid var(--ui-line)!important;border-radius:16px!important;background:#fff!important;position:sticky!important;top:0!important}
 body[data-topic] .topbar .brand-mark{width:38px!important;height:38px!important;flex-basis:38px!important}
 body[data-topic] .topbar .course-id{margin:0 auto 0 2px!important;font-size:11px!important;font-weight:650!important}
@@ -38,5 +38,5 @@ button:active,a:active{transform:translateY(1px)}
 [aria-disabled="true"],button:disabled{opacity:.55;cursor:not-allowed;transform:none}
 .ui-icon{width:18px;height:18px;display:inline-block;vertical-align:-3px;flex:0 0 auto}.ui-icon svg{width:100%;height:100%;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 iframe,.learning-media,img.learning-media{display:block;max-width:100%;border:1px solid var(--ui-line)!important;border-radius:var(--radius-lg)!important;background:#fff;box-shadow:0 4px 16px rgba(23,32,51,.05)}
-@media(max-width:860px){body[data-topic] .shell{display:block!important}body[data-topic] .content{width:min(100% - 32px,960px)!important;max-width:960px!important;padding:32px 0 64px!important}body[data-topic] .hero{grid-template-columns:1fr}body[data-topic] .topbar{width:calc(100% - 20px)!important;margin-top:10px!important}.course-header{align-items:flex-start!important;flex-direction:column!important}.course-header .course-header-nav{width:100%!important;justify-content:flex-start!important;overflow-x:auto!important;flex-wrap:nowrap!important;padding-bottom:2px!important}.course-header .course-header-nav a{white-space:nowrap!important}}
+@media(max-width:860px){body[data-topic] .shell{display:block!important}body[data-topic] .content{width:min(100% - 32px,960px)!important;max-width:960px!important;padding:32px 0 64px!important}body[data-topic] .hero{grid-template-columns:1fr}body[data-topic] .topbar{width:calc(100% - 20px)!important;margin-top:10px!important}.course-header{align-items:flex-start!important;flex-direction:column!important}.course-header .course-header-nav{width:100%!important;justify-content:flex-start!important;overflow-x:auto!important;flex-wrap:nowrap!important;padding-bottom:2px!important}.course-header .course-header-nav a{white-space:nowrap!important}.course-context-row{width:calc(100% - 20px)}}
 @media(max-width:620px){body[data-topic] .content{width:min(100% - 28px,960px)!important;padding-top:24px!important}}
