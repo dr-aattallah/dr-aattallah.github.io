@@ -19,7 +19,9 @@
     const topics={01:'01-introduction',02:'02-software-quality',03:'03-system-engineering',04:'04-process-and-methodology',05:'05-software-requirements-elicitation',06:'06-architectural-design-and-software-design-principles',07:'07-domain-modeling-and-uml-class-diagram',08:'08-object-interaction-modeling',09:'09-activity-modeling',10:'10-modeling-interactions-and-behavior-revision',11:'11-responsibility-assignment-patterns',12:'12-software-testing'};
     const n=practice[1],slug=topics[n];if(slug)back={href:`${BASE}weeks/${slug}/`,label:`Back to Topic ${n}`};
   }else if(labGuide)back={href:`${BASE}weeks/13-lab-learning-path/`,label:'Back to Labs'};
-  else if(resource)back={href:`${BASE}resources/`,label:'Back to Resources'};
+  // Resource child pages already expose their parent through the breadcrumb. Add a separate
+  // back row only on legacy/resource pages that do not provide that navigation themselves.
+  else if(resource&&!document.querySelector('.breadcrumbs,[aria-label="Breadcrumb"]'))back={href:`${BASE}resources/`,label:'Back to Resources'};
   if(back){const row=document.createElement('div');row.className='course-context-row';row.innerHTML=`<a class="course-back-link" href="${back.href}">← ${back.label}</a>`;host.insertAdjacentElement('afterend',row);}
   if(current==='home'&&host.parentElement?.classList.contains('page'))document.body.prepend(host);
 })();
