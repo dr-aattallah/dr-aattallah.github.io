@@ -1,4 +1,3 @@
-import '../../course-header.js';
 import { LabState } from './lab-state.js';
 
 export class LabEngine {
