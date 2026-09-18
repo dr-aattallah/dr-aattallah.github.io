@@ -149,3 +149,25 @@
 .edu-zoom-controls button[data-z="0"]{font-size:11px;min-width:38px}
 .edu-zoom-controls button:hover,.edu-zoom-controls button:focus-visible{background:#edf5ff;outline:none}
 @media(max-width:800px){.edu-zoom-controls{right:68px;bottom:14px}}
+
+/* Presentation utility placement: keep zoom tools clear of Reveal navigation. */
+.edu-zoom-controls{
+ left:50%!important;
+ right:auto!important;
+ bottom:18px!important;
+ transform:translateX(-50%)!important;
+ z-index:45!important;
+}
+.reveal .controls{
+ right:18px!important;
+ bottom:18px!important;
+}
+@media(max-width:800px){
+ .edu-zoom-controls{
+   left:50%!important;
+   right:auto!important;
+   bottom:14px!important;
+   transform:translateX(-50%)!important;
+ }
+ .reveal .controls{right:12px!important;bottom:14px!important}
+}
