@@ -281,3 +281,63 @@ body[data-topic] .topbar{
     body[data-topic] .topbar{width:calc(100dvw - 16px)!important}
   }
 }
+
+
+/* === Topic header: true viewport width + Course Home visual parity ===
+   Important: .topbar lives inside legacy page wrappers on some topics, so width:100%
+   was relative to that wrapper. Pull it out to the viewport mathematically. */
+body[data-topic] .topbar{
+  width:calc(100vw - 28px)!important;
+  max-width:none!important;
+  margin-top:12px!important;
+  margin-right:0!important;
+  margin-bottom:0!important;
+  margin-left:calc(50% - 50vw + 14px)!important;
+  min-height:68px!important;
+  height:auto!important;
+  padding:8px 18px!important;
+  align-items:center!important;
+  gap:14px!important;
+}
+@supports(width:100dvw){
+  body[data-topic] .topbar{
+    width:calc(100dvw - 28px)!important;
+    margin-left:calc(50% - 50dvw + 14px)!important;
+  }
+}
+/* Match the Home header's two-line brand lockup without changing text or links. */
+body[data-topic] .topbar .brand{
+  flex:0 0 auto!important;
+  align-self:center!important;
+}
+body[data-topic] .topbar .course-id{
+  position:absolute!important;
+  left:74px!important;
+  top:39px!important;
+  margin:0!important;
+  font-size:11px!important;
+  line-height:1.2!important;
+  font-weight:650!important;
+  color:var(--ui-muted)!important;
+  white-space:nowrap!important;
+  pointer-events:none!important;
+}
+body[data-topic] .edu-top-actions{
+  margin-left:auto!important;
+  justify-content:flex-end!important;
+}
+@media(max-width:860px){
+  body[data-topic] .topbar{
+    width:calc(100vw - 16px)!important;
+    margin-left:calc(50% - 50vw + 8px)!important;
+    margin-top:8px!important;
+    padding:8px 14px!important;
+  }
+  @supports(width:100dvw){
+    body[data-topic] .topbar{
+      width:calc(100dvw - 16px)!important;
+      margin-left:calc(50% - 50dvw + 8px)!important;
+    }
+  }
+  body[data-topic] .topbar .course-id{display:none!important}
+}
