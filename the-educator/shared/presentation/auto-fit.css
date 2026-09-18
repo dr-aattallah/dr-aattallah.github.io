@@ -1,11 +1,28 @@
 /* The Educator automatic classroom fitting layer */
-.reveal .slides>section{height:100%;overflow:hidden}
-.reveal .slide-card.edu-autofit{height:545px!important;min-height:0!important;max-height:545px;overflow:hidden!important;justify-content:center}
-.reveal .slide-card.edu-autofit>*{min-width:0}
-.reveal .slide-card.edu-autofit:has(img.visual){justify-content:flex-start!important;padding-top:18px!important;padding-bottom:16px!important;overflow:hidden!important}.reveal .slide-card.edu-autofit img.visual{display:block;width:100%!important;max-width:none!important;height:390px!important;max-height:390px!important;object-fit:contain;margin:0 auto 4px!important;flex:1 1 auto;min-height:0}.reveal .slide-card.edu-autofit:has(img.visual) h2{margin:0 0 2px!important}.reveal .slide-card.edu-autofit:has(img.visual) .kicker{margin-bottom:2px!important}.reveal .slide-card.edu-autofit:has(img.visual) .mini{margin:2px 0 0!important;font-size:18px!important;line-height:1.25!important;flex:0 0 auto}
-.reveal .slide-card.edu-autofit .grid2,.reveal .slide-card.edu-autofit .grid3,.reveal .slide-card.edu-autofit .grid4,.reveal .slide-card.edu-autofit .pqct,.reveal .slide-card.edu-autofit .tracks,.reveal .slide-card.edu-autofit .waterfall{min-height:0}
-.reveal .slide-card.edu-autofit .card,.reveal .slide-card.edu-autofit .question,.reveal .slide-card.edu-autofit .answer{overflow-wrap:anywhere}
-.reveal .slide-card.edu-autofit.edu-airy{justify-content:center}
-.reveal .slide-card.edu-autofit.edu-overflow-safe{overflow:hidden!important;justify-content:flex-start}
-.reveal .slide-card.edu-autofit.edu-overflow-safe:after{content:none!important}
-@media(max-width:800px){.reveal .slide-card.edu-autofit{height:545px!important}.reveal .slide-card.edu-autofit img.visual{height:350px!important;max-height:350px!important}}
+.reveal .slides>section.classroom-slide{height:auto!important;min-height:0!important;overflow:visible!important}
+.reveal .slide-card.edu-autofit{box-sizing:border-box!important;width:100%!important;height:545px!important;min-height:545px!important;max-height:545px!important;padding:24px 30px!important;overflow:hidden!important;display:block!important}
+.reveal .slide-card.edu-autofit .slide-meta{margin:0 0 10px!important;font-size:17px!important;line-height:1.2!important}
+.reveal .slide-card.edu-autofit h1,.reveal .slide-card.edu-autofit h2,.reveal .slide-card.edu-autofit h3{margin-top:4px!important;margin-bottom:12px!important}
+.reveal .slide-card.edu-autofit p{margin:.32em 0 .58em!important}
+.reveal .slide-card.edu-autofit li{margin:.18em 0!important}
+.reveal .slide-card.edu-autofit>*{min-width:0;box-sizing:border-box}
+.reveal .slide-card.edu-autofit details{display:block!important}
+.reveal .slide-card.edu-autofit details>summary{margin-bottom:12px!important}
+.reveal .slide-card.edu-autofit .visual-flow{display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;flex-wrap:wrap!important;margin:14px 0!important}
+.reveal .slide-card.edu-autofit .flow-node{display:flex!important;align-items:center!important;justify-content:center!important;min-height:52px!important;padding:8px 12px!important;border:1px solid #cfe0f2!important;border-radius:12px!important;background:#f7fbff!important;font-size:18px!important;font-weight:800!important;text-align:center!important}
+.reveal .slide-card.edu-autofit .flow-arrow{font-size:25px!important;color:#2f80ed!important;line-height:1!important}
+.reveal .slide-card.edu-autofit figure{display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;margin:4px auto 8px!important;padding:0!important;width:100%!important;background:transparent!important;border:0!important;box-shadow:none!important}
+.reveal .slide-card.edu-autofit figure img,.reveal .slide-card.edu-autofit img.visual{display:block!important;width:auto!important;max-width:94%!important;height:auto!important;max-height:405px!important;object-fit:contain!important;margin:0 auto!important;border-radius:12px!important}
+.reveal .slide-card.edu-autofit figure figcaption{margin:7px auto 0!important;max-width:92%!important;font-size:18px!important;line-height:1.25!important;color:#607087!important;text-align:center!important}
+.reveal .slide-card.edu-autofit:has(figure) h2{margin-bottom:5px!important}
+.reveal .slide-card.edu-autofit:has(figure){padding-top:18px!important;padding-bottom:14px!important}
+.reveal .slide-card.edu-autofit .practice-lab-card{display:grid!important;grid-template-columns:minmax(0,1fr) auto!important;gap:18px!important;align-items:center!important;margin:8px 0!important;padding:20px 22px!important;border-radius:18px!important}
+.reveal .slide-card.edu-autofit .practice-lab-card strong{display:block!important;margin:4px 0 7px!important;font-size:27px!important;line-height:1.2!important}
+.reveal .slide-card.edu-autofit .practice-lab-card p{font-size:20px!important;line-height:1.35!important}
+.reveal .slide-card.edu-autofit .practice-lab-link{font-size:20px!important;padding:10px 14px!important}
+.reveal .slide-card.edu-autofit.edu-dense{font-size:18px!important}
+.reveal .slide-card.edu-autofit.edu-dense *{line-height:1.25!important}
+.reveal .controls{right:18px!important;bottom:16px!important}
+.reveal .slide-number{left:18px!important;right:auto!important;bottom:14px!important;font-size:17px!important;border-radius:8px!important;padding:4px 7px!important}
+.reveal .progress{bottom:0!important}
+@media(max-width:800px){.reveal .slide-card.edu-autofit{height:545px!important;min-height:545px!important;max-height:545px!important;padding:20px!important}.reveal .slide-card.edu-autofit figure img,.reveal .slide-card.edu-autofit img.visual{max-height:360px!important}.reveal .slide-card.edu-autofit .practice-lab-card{grid-template-columns:1fr!important}}
