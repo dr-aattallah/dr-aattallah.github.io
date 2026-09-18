@@ -1,0 +1,11 @@
+/* The Educator automatic classroom fitting layer */
+.reveal .slides>section{height:100%;overflow:hidden}
+.reveal .slide-card.edu-autofit{height:545px!important;min-height:0!important;max-height:545px;overflow:hidden!important;justify-content:center}
+.reveal .slide-card.edu-autofit>*{min-width:0}
+.reveal .slide-card.edu-autofit img.visual{max-height:330px!important;width:auto;max-width:100%;object-fit:contain}
+.reveal .slide-card.edu-autofit .grid2,.reveal .slide-card.edu-autofit .grid3,.reveal .slide-card.edu-autofit .grid4,.reveal .slide-card.edu-autofit .pqct,.reveal .slide-card.edu-autofit .tracks,.reveal .slide-card.edu-autofit .waterfall{min-height:0}
+.reveal .slide-card.edu-autofit .card,.reveal .slide-card.edu-autofit .question,.reveal .slide-card.edu-autofit .answer{overflow-wrap:anywhere}
+.reveal .slide-card.edu-autofit.edu-airy{justify-content:center}
+.reveal .slide-card.edu-autofit.edu-overflow-safe{overflow:auto!important;scrollbar-width:thin;justify-content:flex-start}
+.reveal .slide-card.edu-autofit.edu-overflow-safe:after{content:"Scroll for remaining content";position:sticky;display:block;bottom:0;margin:8px auto -8px;padding:4px 9px;width:max-content;border-radius:999px;background:#fff;color:#64748b;font-size:13px;font-weight:800;box-shadow:0 2px 8px #0001}
+@media(max-width:800px){.reveal .slide-card.edu-autofit{height:545px!important}.reveal .slide-card.edu-autofit img.visual{max-height:260px!important}}
