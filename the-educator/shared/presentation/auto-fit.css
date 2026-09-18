@@ -268,3 +268,30 @@
  .reveal .controls .navigate-left{left:7px!important;top:17px!important}
  .reveal .controls .navigate-right{right:7px!important;top:17px!important}
 }
+
+/* Reduce floating slide navigation by 30% while preserving direction and hit separation. */
+.reveal .controls{
+ width:109px!important;
+ height:64px!important;
+}
+.reveal .controls .navigate-left{
+ left:6px!important;
+ right:auto!important;
+ top:13px!important;
+}
+.reveal .controls .navigate-right{
+ left:auto!important;
+ right:6px!important;
+ top:13px!important;
+}
+.reveal .controls .navigate-left .controls-arrow{
+ transform:rotate(-45deg) scale(1.19)!important;
+}
+.reveal .controls .navigate-right .controls-arrow{
+ transform:rotate(135deg) scale(1.19)!important;
+}
+@media(max-width:800px){
+ .reveal .controls{width:101px!important;height:59px!important}
+ .reveal .controls .navigate-left{left:5px!important;top:12px!important}
+ .reveal .controls .navigate-right{right:5px!important;top:12px!important}
+}
