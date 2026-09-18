@@ -1,6 +1,6 @@
 /* The Educator — open-canvas classroom presentation
    Presentation content is no longer constrained by visual cards. */
-.reveal .slides>section.classroom-slide{
+.reveal .slides>section{
   height:100%!important;
   min-height:100%!important;
   overflow:visible!important;
@@ -126,3 +126,26 @@
  .reveal .slide-card.edu-autofit figure img,.reveal .slide-card.edu-autofit img.visual{max-height:390px!important}
  .reveal .slide-card.edu-autofit .practice-lab-card{grid-template-columns:1fr!important}
 }
+/* Unified open-canvas override for both legacy static decks (Topics 01–02)
+   and runtime-generated decks (Topics 03+). */
+.reveal .slides .slide-card.edu-autofit{
+ background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+ min-height:0!important;height:auto!important;max-height:none!important;justify-content:flex-start!important;
+ overflow:visible!important;transform:none!important;transform-origin:top left!important;
+}
+.reveal .slides .slide-card.edu-autofit.section-title{
+ background:linear-gradient(135deg,#172f52,#255b95)!important;
+ padding:44px 54px!important;min-height:610px!important;border-radius:0!important;
+}
+.edu-zoom-controls{
+ position:fixed;z-index:45;right:78px;bottom:18px;display:flex;align-items:center;gap:4px;
+ padding:4px;border:1px solid #d9e4f0;border-radius:12px;background:rgba(255,255,255,.94);
+ box-shadow:0 5px 18px rgba(28,52,84,.10);font:800 12px/1 system-ui,-apple-system,"Segoe UI",sans-serif
+}
+.edu-zoom-controls button{
+ min-width:31px;height:30px;padding:0 8px;border:0;border-radius:8px;background:transparent;
+ color:#365675;font:900 15px/1 inherit;cursor:pointer
+}
+.edu-zoom-controls button[data-z="0"]{font-size:11px;min-width:38px}
+.edu-zoom-controls button:hover,.edu-zoom-controls button:focus-visible{background:#edf5ff;outline:none}
+@media(max-width:800px){.edu-zoom-controls{right:68px;bottom:14px}}
