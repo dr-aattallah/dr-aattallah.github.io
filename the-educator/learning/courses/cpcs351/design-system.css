@@ -257,3 +257,27 @@ body[data-topic] .edu-top-actions a:first-child{
   body[data-topic] .topbar .course-id{display:none!important}
   body[data-topic] .edu-top-actions{flex-wrap:nowrap!important;overflow-x:auto!important}
 }
+
+
+/* Full-viewport header parity for lesson/topic pages.
+   Mirrors Course Home: 14px viewport gutter, no centered/max-width cap. */
+body[data-topic] .topbar{
+  width:calc(100vw - 28px)!important;
+  max-width:none!important;
+  margin:12px 14px 0!important;
+  left:auto!important;
+  right:auto!important;
+}
+@supports(width:100dvw){
+  body[data-topic] .topbar{width:calc(100dvw - 28px)!important}
+}
+@media(max-width:860px){
+  body[data-topic] .topbar{
+    width:calc(100vw - 16px)!important;
+    max-width:none!important;
+    margin:8px 8px 0!important;
+  }
+  @supports(width:100dvw){
+    body[data-topic] .topbar{width:calc(100dvw - 16px)!important}
+  }
+}
