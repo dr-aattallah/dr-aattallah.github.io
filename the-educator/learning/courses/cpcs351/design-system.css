@@ -191,3 +191,69 @@ body[data-topic] .edu-top-actions button.liquid-ripple::after{
   .course-header,body[data-topic] .topbar{animation:none!important}
   .course-header .course-header-nav::before,body[data-topic] .edu-top-actions::before{transition:none!important}
 }
+
+
+/* Topic header parity: match the Course Home liquid-glass header exactly. */
+body[data-topic] .topbar{
+  height:auto!important;
+  min-height:68px!important;
+  position:sticky!important;
+  top:0!important;
+  z-index:100!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  gap:16px!important;
+  padding:8px 18px!important;
+}
+body[data-topic] .topbar .brand{
+  display:flex!important;
+  align-items:center!important;
+  gap:10px!important;
+  flex:0 0 auto!important;
+  color:var(--ui-ink)!important;
+  text-decoration:none!important;
+  font-weight:950!important;
+}
+body[data-topic] .topbar .brand-mark{
+  width:38px!important;
+  height:38px!important;
+  flex:0 0 38px!important;
+}
+body[data-topic] .topbar .course-id{
+  margin:0 auto 0 2px!important;
+  color:var(--ui-muted)!important;
+  font-size:11px!important;
+  font-weight:650!important;
+  white-space:nowrap!important;
+}
+body[data-topic] .edu-top-actions{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:4px!important;
+  margin-left:auto!important;
+  flex-wrap:wrap!important;
+}
+body[data-topic] .edu-top-actions a,
+body[data-topic] .edu-top-actions button{
+  min-height:40px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:6px!important;
+  padding:8px 10px!important;
+  border-radius:10px!important;
+  color:#52637c!important;
+  font:850 12px/1.2 Inter,system-ui,sans-serif!important;
+  text-decoration:none!important;
+  white-space:nowrap!important;
+}
+body[data-topic] .edu-top-actions a:first-child{
+  color:var(--ui-brand-strong)!important;
+}
+@media(max-width:860px){
+  body[data-topic] .topbar{padding:8px 14px!important}
+  body[data-topic] .topbar .course-id{display:none!important}
+  body[data-topic] .edu-top-actions{flex-wrap:nowrap!important;overflow-x:auto!important}
+}
