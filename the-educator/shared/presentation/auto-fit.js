@@ -52,7 +52,8 @@ function boot(){
  let tries=0;const timer=setInterval(()=>{tries++;
    if(window.Reveal&&Reveal.isReady?.()&&q('.reveal .slides .slide-card')){
      clearInterval(timer);controls();requestAnimationFrame(()=>requestAnimationFrame(fitAll));
-     Reveal.on?.('slidechanged',e=>{const c=q('.slide-card',e.currentSlide);if(c&&!c.dataset.eduZoom)fitCard(c)});
+     Reveal.on?.('slidechanged',e=>{const c=q('.slide-card',e.currentSlide);if(c)fitCard(c)});
+     Reveal.on?.('ready',()=>requestAnimationFrame(()=>requestAnimationFrame(fitAll)));
      window.addEventListener('resize',()=>{clearTimeout(window.__eduFitTimer);window.__eduFitTimer=setTimeout(fitAll,120)});
    }else if(tries>120)clearInterval(timer);
  },100);
