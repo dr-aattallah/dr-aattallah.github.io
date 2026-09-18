@@ -10,7 +10,7 @@
   // Lab guides already contain a purpose-built .bar header. Reuse it as the single course header
   // instead of prepending a second header above it.
   if(!host&&labGuide)host=document.querySelector('.bar');
-  if(topicPage)host=null;
+  // Topic pages may request this shared component more than once while their lesson scripts refresh.\n  // Reuse an already-mounted shared header so repeated initialization stays idempotent.\n  if(topicPage)host=document.querySelector('.course-header[data-course-header]');
   if(!host){host=document.createElement('header');document.body.prepend(host);}
   host.className='course-header';host.setAttribute('data-course-header','');
   host.innerHTML=`<a class="course-header-brand" href="${BASE}index.html"><span class="brand-mark" aria-hidden="true"></span><span><strong>The Educator</strong><small>CPCS 351 · Software Engineering I</small></span></a><nav class="course-header-nav" aria-label="Course navigation"><a href="${BASE}index.html"${current==='home'?' aria-current="page"':''}>Course Home</a><a href="${BASE}index.html#learning-materials"${current==='learning'?' aria-current="page"':''}>Learning</a><a href="${BASE}project/"${current==='project'?' aria-current="page"':''}>Project</a><a href="${BASE}research/"${current==='research'?' aria-current="page"':''}>Research</a><a href="${BASE}weeks/13-lab-learning-path/"${current==='labs'?' aria-current="page"':''}>Labs</a><a href="${BASE}resources/"${current==='resources'?' aria-current="page"':''}>Resources</a></nav>`;
