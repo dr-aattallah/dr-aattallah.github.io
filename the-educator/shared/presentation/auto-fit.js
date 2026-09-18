@@ -1,54 +1,65 @@
 (()=>{
 'use strict';
-const CFG={pad:34,minBody:20,minCard:18,minLead:22,minH2:34,minH1:46,maxPasses:9};
+const CFG={cardH:545,minBody:18,minH2:32,minH1:44,maxPasses:10};
 const q=(s,r=document)=>r.querySelector(s),qa=(s,r=document)=>[...r.querySelectorAll(s)];
-function overflow(card){return card.scrollHeight>card.clientHeight+2||card.scrollWidth>card.clientWidth+2}
-function set(el,prop,v){if(el)el.style.setProperty(prop,v+'px','important')}
-function shrink(card,pass){
- const ratio=Math.max(.72,1-pass*.035);
- qa('h1',card).forEach(x=>set(x,'font-size',Math.max(CFG.minH1,66*ratio)));
- qa('h2',card).forEach(x=>set(x,'font-size',Math.max(CFG.minH2,48*ratio)));
- qa('.lead,.big',card).forEach(x=>set(x,'font-size',Math.max(CFG.minLead,30*ratio)));
- qa('.card,.question,.answer,.list',card).forEach(x=>set(x,'font-size',Math.max(CFG.minCard,25*ratio)));
- qa('.card strong',card).forEach(x=>set(x,'font-size',Math.max(20,28*ratio)));
- set(card,'padding',Math.max(18,28-pass));
+const overflow=c=>c.scrollHeight>c.clientHeight+3||c.scrollWidth>c.clientWidth+3;
+const px=(el,p,v)=>el&&el.style.setProperty(p,v+'px','important');
+
+function normalize(card){
+ card.classList.add('edu-autofit');
+ card.style.height=CFG.cardH+'px'; card.style.minHeight='0'; card.style.maxHeight=CFG.cardH+'px'; card.style.overflow='hidden';
+ qa('details',card).forEach(d=>d.open=true);
+ if(card.matches('details'))card.open=true;
 }
-function splitList(section,card){
- const list=q('ul.list,ol.list',card); if(!list||list.children.length<5)return false;
- const items=[...list.children],half=Math.ceil(items.length/2);
- const clone=section.cloneNode(true),c2=q('.slide-card',clone),l2=q('ul.list,ol.list',c2);
- [...l2.children].slice(0,half).forEach(x=>x.remove());
- items.slice(half).forEach(x=>x.remove());
- const h1=q('h1,h2',c2);if(h1)h1.textContent=h1.textContent.replace(/\s*·\s*\d+\s*of\s*\d+$/i,'')+' · Continued';
+function splitFigureContent(section,card){
+ const fig=q('figure',card);
+ if(!fig)return false;
+ const movable=[...card.children].filter(el=>el!==fig&&!el.classList.contains('slide-meta')&&!el.matches('.kicker,h1,h2,h3')&&el.compareDocumentPosition(fig)&Node.DOCUMENT_POSITION_PRECEDING);
+ if(!movable.length)return false;
+ const clone=section.cloneNode(true),c2=q('.slide-card',clone),f2=q('figure',c2);
+ if(f2)f2.remove();
+ qa('.kicker,h1,h2,h3',c2).forEach((h,idx)=>{if(idx>0)h.remove()});
+ const h=q('h1,h2,h3',c2); if(h)h.textContent=(h.textContent||'')+' · Continued';
+ [...card.children].filter(el=>movable.includes(el)).forEach(el=>el.remove());
  section.after(clone); return true;
 }
-function splitGrid(section,card){
- const grid=qa('.grid4,.grid3,.grid2,.pqct,.tracks,.waterfall',card).find(g=>g.children.length>=5);
- if(!grid)return false; const kids=[...grid.children],half=Math.ceil(kids.length/2);
- const clone=section.cloneNode(true),g2=qa('.grid4,.grid3,.grid2,.pqct,.tracks,.waterfall',clone).find(g=>g.children.length>=5);
- [...g2.children].slice(0,half).forEach(x=>x.remove()); kids.slice(half).forEach(x=>x.remove());
- const h=q('h1,h2',clone);if(h)h.textContent=h.textContent+' · Continued';
+function splitList(section,card){
+ const list=qa('ul,ol',card).find(x=>x.children.length>=6); if(!list)return false;
+ const items=[...list.children],half=Math.ceil(items.length/2),clone=section.cloneNode(true),c2=q('.slide-card',clone);
+ const lists=qa('ul,ol',c2),idx=qa('ul,ol',card).indexOf(list),l2=lists[idx]; if(!l2)return false;
+ [...l2.children].slice(0,half).forEach(x=>x.remove()); items.slice(half).forEach(x=>x.remove());
+ const h=q('h1,h2,h3',c2);if(h)h.textContent=(h.textContent||'')+' · Continued';
  section.after(clone);return true;
 }
-function fit(section){
- const card=q('.slide-card',section);if(!card)return;
- card.classList.add('edu-autofit');card.style.height='545px';card.style.minHeight='0';card.style.overflow='hidden';
- [0,1,2,3,4,5,6,7,8].some(p=>{if(!overflow(card))return true;shrink(card,p+1);return false});
- if(overflow(card)&&(splitList(section,card)||splitGrid(section,card))){fit(section);const next=section.nextElementSibling;if(next)fit(next)}
- if(overflow(card)){card.classList.add('edu-overflow-safe');card.style.overflow='auto'}
+function shrink(card,pass){
+ const ratio=Math.max(.70,1-pass*.03);
+ qa('h1',card).forEach(x=>px(x,'font-size',Math.max(CFG.minH1,58*ratio)));
+ qa('h2',card).forEach(x=>px(x,'font-size',Math.max(CFG.minH2,46*ratio)));
+ qa('h3',card).forEach(x=>px(x,'font-size',Math.max(26,31*ratio)));
+ qa('p,li,td,th,summary,figcaption',card).forEach(x=>px(x,'font-size',Math.max(CFG.minBody,25*ratio)));
+ px(card,'padding',Math.max(18,28-pass));
 }
-function balance(card){
- if(!card||card.classList.contains('section-title'))return;
- const used=card.scrollHeight/card.clientHeight;
- if(used<.55)card.classList.add('edu-airy');
+function fit(section,depth=0){
+ const card=q('.slide-card',section);if(!card||depth>3)return;
+ normalize(card);
+ if(card.dataset.eduFit==='done')return;
+ if(overflow(card)&&splitFigureContent(section,card)){card.dataset.eduFit='done';fit(section.nextElementSibling,depth+1);}
+ for(let p=0;p<CFG.maxPasses&&overflow(card);p++)shrink(card,p+1);
+ if(overflow(card)&&splitList(section,card)){card.dataset.eduFit='done';fit(section.nextElementSibling,depth+1);for(let p=0;p<CFG.maxPasses&&overflow(card);p++)shrink(card,p+1);}
+ card.classList.toggle('edu-dense',overflow(card));
+ card.dataset.eduFit='done';
 }
 function run(){
- const deck=q('.reveal .slides');if(!deck)return;
- qa(':scope > section',deck).forEach(fit);
- qa(':scope > section .slide-card',deck).forEach(balance);
- if(window.Reveal){Reveal.sync();Reveal.layout();}
- document.documentElement.classList.add('edu-autofit-ready');
+ const deck=q('.reveal .slides');if(!deck||qa(':scope > section',deck).length<2)return false;
+ qa(':scope > section',deck).forEach(s=>fit(s));
+ qa('.slide-card details',deck).forEach(d=>d.open=true);
+ if(window.Reveal&&Reveal.isReady?.()){Reveal.sync();Reveal.layout();}
+ document.documentElement.classList.add('edu-autofit-ready');return true;
+}
+function boot(){
+ let tries=0;
+ const timer=setInterval(()=>{tries++;const ready=window.Reveal&&Reveal.isReady?.()&&q('.reveal .slides .classroom-slide');if(ready&&run()||tries>80)clearInterval(timer)},100);
 }
 window.EducatorAutoPresentation={run};
-document.readyState==='loading'?document.addEventListener('DOMContentLoaded',()=>requestAnimationFrame(run),{once:true}):requestAnimationFrame(run);
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',boot,{once:true}):boot();
 })();
