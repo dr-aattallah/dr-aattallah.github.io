@@ -97,3 +97,26 @@ html,body{background:#f6f8fc}.reveal{font-family:Inter,system-ui,-apple-system,"
 @media(max-width:700px){
  .reveal .slide-card .method-anatomy{grid-template-columns:1fr!important}
 }
+
+
+/* Unified classroom normalization — Topics 03–12 */
+.reveal .slide-card.edu-autofit :is(.concept-grid,.impact-grid,.principle-grid,.hook-grid,.o8-grid,.t12-grid,.clarify-grid,.char-grid){
+ display:grid!important;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))!important;gap:16px!important;align-items:stretch!important
+}
+.reveal .slide-card.edu-autofit :is(.concept-card,.compare-card,.impact,.pm-card,.arch-card,.ba-card,.hook-card,.card,.model-card,.t12-card){
+ min-width:0!important;padding:16px 18px!important;border-radius:16px!important;overflow:visible!important
+}
+.reveal .slide-card.edu-autofit :is(.arch-flow,.t12-flow,.flow,.visual-flow,.model-map){
+ display:flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;flex-wrap:wrap!important;width:100%!important
+}
+.reveal .slide-card.edu-autofit :is(.merge-map,.example-box,.software-example,.remember,.rule,.t12-rule,.objective,.learning-hook,.support){
+ margin:14px 0!important;padding:16px 20px!important;border-radius:16px!important;overflow:visible!important
+}
+.reveal .slide-card.edu-autofit :is(.lecture-figure,.topic-visual,.visual-section,.abhs-visual){
+ width:100%!important;max-width:100%!important;margin:10px auto 14px!important;overflow:visible!important
+}
+.reveal .slide-card.edu-autofit :is(svg){max-width:100%!important;height:auto!important}
+.reveal .slide-card.edu-autofit.edu-dense p,
+.reveal .slide-card.edu-autofit.edu-dense li{line-height:1.34!important}
+.reveal .slide-card.edu-autofit.edu-dense :is(.concept-grid,.impact-grid,.principle-grid,.hook-grid,.o8-grid,.t12-grid,.clarify-grid,.char-grid){gap:11px!important}
+.reveal .slide-card.edu-autofit.edu-dense :is(.concept-card,.compare-card,.impact,.pm-card,.arch-card,.ba-card,.hook-card,.card,.model-card,.t12-card){padding:12px 14px!important}
