@@ -1,56 +1,55 @@
 (()=>{
 'use strict';
-const CFG={minH:500,maxH:660,targetH:610,minBody:18,minH2:31,minH1:42,maxPasses:8};
+const CFG={safeH:650,minBody:18,minH2:30,minH1:40,maxPasses:6};
 const q=(s,r=document)=>r.querySelector(s),qa=(s,r=document)=>[...r.querySelectorAll(s)];
 const px=(el,p,v)=>el&&el.style.setProperty(p,v+'px','important');
-const overflow=c=>c.scrollHeight>c.clientHeight+2||c.scrollWidth>c.clientWidth+2;
-function naturalHeight(card){
- card.style.setProperty('height','auto','important');card.style.setProperty('min-height','0','important');card.style.setProperty('max-height','none','important');card.style.setProperty('overflow','visible','important');
- return Math.ceil(card.scrollHeight);
-}
-function setHeight(card,h){h=Math.max(CFG.minH,Math.min(CFG.maxH,h));card.style.setProperty('--edu-card-h',h+'px');card.style.setProperty('height',h+'px','important');card.style.setProperty('min-height',h+'px','important');card.style.setProperty('max-height',h+'px','important');return h}
+const overflow=c=>c.scrollHeight>CFG.safeH+2||c.scrollWidth>c.clientWidth+2;
 function normalize(card){
- card.classList.add('edu-autofit');qa('details',card).forEach(d=>d.open=true);if(card.matches('details'))card.open=true;
- card.style.removeProperty('font-size');card.classList.remove('edu-dense');
+ card.classList.add('edu-autofit');
+ qa('details',card).forEach(d=>d.open=true);if(card.matches('details'))card.open=true;
+ ['height','min-height','max-height','overflow'].forEach(p=>card.style.removeProperty(p));
+ card.classList.remove('edu-dense');
 }
 function shrink(card,pass){
- const ratio=Math.max(.74,1-pass*.035);
- qa('h1',card).forEach(x=>px(x,'font-size',Math.max(CFG.minH1,56*ratio)));
- qa('h2',card).forEach(x=>px(x,'font-size',Math.max(CFG.minH2,44*ratio)));
- qa('h3',card).forEach(x=>px(x,'font-size',Math.max(25,30*ratio)));
- qa('p,li,td,th,summary,figcaption',card).forEach(x=>px(x,'font-size',Math.max(CFG.minBody,24*ratio)));
+ const ratio=Math.max(.78,1-pass*.035);
+ qa('h1',card).forEach(x=>px(x,'font-size',Math.max(CFG.minH1,54*ratio)));
+ qa('h2',card).forEach(x=>px(x,'font-size',Math.max(CFG.minH2,42*ratio)));
+ qa('h3',card).forEach(x=>px(x,'font-size',Math.max(24,29*ratio)));
+ qa('p,li,td,th,summary,figcaption',card).forEach(x=>px(x,'font-size',Math.max(CFG.minBody,23*ratio)));
 }
-function splitTable(section,card){
- const table=q('table',card);if(!table)return false;
- const rows=[...table.tBodies].flatMap(b=>[...b.rows]);if(rows.length<5)return false;
- const half=Math.ceil(rows.length/2),clone=section.cloneNode(true),c2=q('.slide-card',clone),t2=q('table',c2);
- const rows2=[...t2.tBodies].flatMap(b=>[...b.rows]);
- rows.slice(half).forEach(x=>x.remove());rows2.slice(0,half).forEach(x=>x.remove());
- const h=q('h1,h2,h3',c2);if(h)h.textContent=(h.textContent||'')+' · Continued';
+function continued(section,selector,min){
+ const source=qa(selector,q('.slide-card',section)).find(x=>x.children.length>=min);if(!source)return false;
+ const items=[...source.children],half=Math.ceil(items.length/2),clone=section.cloneNode(true),c2=q('.slide-card',clone);
+ const all2=qa(selector,c2),idx=qa(selector,q('.slide-card',section)).indexOf(source),dest=all2[idx];if(!dest)return false;
+ items.slice(half).forEach(x=>x.remove());[...dest.children].slice(0,half).forEach(x=>x.remove());
+ const h=q('h1,h2,h3',c2);if(h&&!/continued/i.test(h.textContent))h.textContent=(h.textContent||'')+' · Continued';
  section.after(clone);return true;
 }
-function splitList(section,card){
- const list=qa('ul,ol',card).find(x=>x.children.length>=5);if(!list)return false;
- const items=[...list.children],half=Math.ceil(items.length/2),clone=section.cloneNode(true),c2=q('.slide-card',clone),lists=qa('ul,ol',c2),idx=qa('ul,ol',card).indexOf(list),l2=lists[idx];if(!l2)return false;
- items.slice(half).forEach(x=>x.remove());[...l2.children].slice(0,half).forEach(x=>x.remove());
- const h=q('h1,h2,h3',c2);if(h)h.textContent=(h.textContent||'')+' · Continued';
+function splitTable(section){
+ const table=q('.slide-card table',section);if(!table)return false;
+ const bodies=[...table.tBodies],rows=bodies.flatMap(b=>[...b.rows]);if(rows.length<4)return false;
+ const half=Math.ceil(rows.length/2),clone=section.cloneNode(true),t2=q('.slide-card table',clone);
+ const rows2=[...t2.tBodies].flatMap(b=>[...b.rows]);
+ rows.slice(half).forEach(x=>x.remove());rows2.slice(0,half).forEach(x=>x.remove());
+ const h=q('.slide-card h1,.slide-card h2,.slide-card h3',clone);if(h&&!/continued/i.test(h.textContent))h.textContent=(h.textContent||'')+' · Continued';
  section.after(clone);return true;
 }
 function fit(section,depth=0){
- const card=q('.slide-card',section);if(!card||depth>5||card.dataset.eduFit==='done')return;
+ const card=q('.slide-card',section);if(!card||depth>6||card.dataset.eduFit==='done')return;
  normalize(card);
- let need=naturalHeight(card),h=setHeight(card,Math.max(CFG.minH,Math.min(CFG.targetH,need+10)));
- for(let p=0;p<CFG.maxPasses&&overflow(card);p++){if(h<CFG.maxH){h=setHeight(card,Math.min(CFG.maxH,h+25));}else shrink(card,p+1);}
+ for(let p=0;p<CFG.maxPasses&&overflow(card);p++)shrink(card,p+1);
  if(overflow(card)){
-   const split=splitTable(section,card)||splitList(section,card);
-   if(split){card.dataset.eduFit='done';fit(section,depth+1);fit(section.nextElementSibling,depth+1);return;}
+   const did=splitTable(section)||continued(section,'ul,ol',5);
+   if(did){card.dataset.eduFit='done';fit(section,depth+1);fit(section.nextElementSibling,depth+1);return;}
  }
- if(overflow(card)){card.classList.add('edu-dense');setHeight(card,CFG.maxH);}
+ /* Never clip: if a mixed-content slide is still too tall, allow Reveal to scale the whole slide.
+    This is safer than hiding content below an artificial card boundary. */
  card.dataset.eduFit='done';
 }
 function fitAll(){
  const deck=q('.reveal .slides');if(!deck||qa(':scope > section',deck).length<2)return false;
- qa(':scope > section',deck).forEach(s=>fit(s));qa('.slide-card details',deck).forEach(d=>d.open=true);
+ qa(':scope > section',deck).forEach(s=>fit(s));
+ qa('.slide-card details',deck).forEach(d=>d.open=true);
  Reveal.sync?.();Reveal.layout?.();document.documentElement.classList.add('edu-autofit-ready');return true;
 }
 function boot(){let tries=0;const timer=setInterval(()=>{tries++;if(window.Reveal&&Reveal.isReady?.()&&q('.reveal .slides .classroom-slide')){clearInterval(timer);requestAnimationFrame(()=>requestAnimationFrame(fitAll));}else if(tries>100)clearInterval(timer)},100)}
