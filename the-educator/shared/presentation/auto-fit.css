@@ -241,3 +241,30 @@
  .reveal .controls{right:12px!important;bottom:12px!important;width:108px!important;height:84px!important}
  .reveal .controls button{width:50px!important;height:50px!important}
 }
+
+/* Fix horizontal navigation direction and increase separation. */
+.reveal .controls{
+ width:156px!important;
+ height:92px!important;
+}
+.reveal .controls .navigate-left{
+ left:8px!important;
+ right:auto!important;
+ top:19px!important;
+}
+.reveal .controls .navigate-right{
+ left:auto!important;
+ right:8px!important;
+ top:19px!important;
+}
+.reveal .controls .navigate-left .controls-arrow{
+ transform:rotate(-45deg) scale(1.7)!important;
+}
+.reveal .controls .navigate-right .controls-arrow{
+ transform:rotate(135deg) scale(1.7)!important;
+}
+@media(max-width:800px){
+ .reveal .controls{width:144px!important;height:84px!important}
+ .reveal .controls .navigate-left{left:7px!important;top:17px!important}
+ .reveal .controls .navigate-right{right:7px!important;top:17px!important}
+}
