@@ -2,10 +2,10 @@
 .reveal .slides>section{height:100%;overflow:hidden}
 .reveal .slide-card.edu-autofit{height:545px!important;min-height:0!important;max-height:545px;overflow:hidden!important;justify-content:center}
 .reveal .slide-card.edu-autofit>*{min-width:0}
-.reveal .slide-card.edu-autofit img.visual{display:block;width:auto!important;max-width:100%!important;height:auto!important;max-height:420px!important;object-fit:contain;margin:4px auto 8px!important}.reveal .slide-card.edu-autofit:has(>img.visual),.reveal .slide-card.edu-autofit:has(>h2+img.visual){justify-content:flex-start!important}.reveal .slide-card.edu-autofit:has(img.visual) h2{margin-bottom:4px!important}.reveal .slide-card.edu-autofit:has(img.visual) .mini{margin-top:4px!important;margin-bottom:0!important}
+.reveal .slide-card.edu-autofit:has(img.visual){justify-content:flex-start!important;padding-top:18px!important;padding-bottom:16px!important;overflow:hidden!important}.reveal .slide-card.edu-autofit img.visual{display:block;width:100%!important;max-width:none!important;height:390px!important;max-height:390px!important;object-fit:contain;margin:0 auto 4px!important;flex:1 1 auto;min-height:0}.reveal .slide-card.edu-autofit:has(img.visual) h2{margin:0 0 2px!important}.reveal .slide-card.edu-autofit:has(img.visual) .kicker{margin-bottom:2px!important}.reveal .slide-card.edu-autofit:has(img.visual) .mini{margin:2px 0 0!important;font-size:18px!important;line-height:1.25!important;flex:0 0 auto}
 .reveal .slide-card.edu-autofit .grid2,.reveal .slide-card.edu-autofit .grid3,.reveal .slide-card.edu-autofit .grid4,.reveal .slide-card.edu-autofit .pqct,.reveal .slide-card.edu-autofit .tracks,.reveal .slide-card.edu-autofit .waterfall{min-height:0}
 .reveal .slide-card.edu-autofit .card,.reveal .slide-card.edu-autofit .question,.reveal .slide-card.edu-autofit .answer{overflow-wrap:anywhere}
 .reveal .slide-card.edu-autofit.edu-airy{justify-content:center}
-.reveal .slide-card.edu-autofit.edu-overflow-safe{overflow:auto!important;scrollbar-width:thin;justify-content:flex-start}
-.reveal .slide-card.edu-autofit.edu-overflow-safe:after{content:"Scroll for remaining content";position:sticky;display:block;bottom:0;margin:8px auto -8px;padding:4px 9px;width:max-content;border-radius:999px;background:#fff;color:#64748b;font-size:13px;font-weight:800;box-shadow:0 2px 8px #0001}
-@media(max-width:800px){.reveal .slide-card.edu-autofit{height:545px!important}.reveal .slide-card.edu-autofit img.visual{max-height:360px!important}}
+.reveal .slide-card.edu-autofit.edu-overflow-safe{overflow:hidden!important;justify-content:flex-start}
+.reveal .slide-card.edu-autofit.edu-overflow-safe:after{content:none!important}
+@media(max-width:800px){.reveal .slide-card.edu-autofit{height:545px!important}.reveal .slide-card.edu-autofit img.visual{height:350px!important;max-height:350px!important}}
