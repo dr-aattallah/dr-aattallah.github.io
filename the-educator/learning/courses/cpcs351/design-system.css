@@ -341,3 +341,67 @@ body[data-topic] .edu-top-actions{
   }
   body[data-topic] .topbar .course-id{display:none!important}
 }
+
+
+/* === FINAL shared course-nav geometry (Home + Topics) ===
+   One viewport rule for both header implementations. This deliberately overrides
+   legacy topic wrapper geometry and the Home .page constraint without changing content. */
+.course-header,
+body[data-topic] .topbar{
+  width:calc(100vw - 28px)!important;
+  max-width:none!important;
+  min-width:0!important;
+  min-height:68px!important;
+  height:auto!important;
+  margin:12px 14px 0!important;
+  padding:8px 18px!important;
+  box-sizing:border-box!important;
+}
+@supports(width:100dvw){
+  .course-header,
+  body[data-topic] .topbar{width:calc(100dvw - 28px)!important}
+}
+/* course-header is normally direct body child; topic topbar can be trapped in a
+   legacy wrapper. Use fixed viewport anchoring only for the horizontal geometry. */
+body[data-topic] .topbar{
+  margin-left:calc(50% - 50vw + 14px)!important;
+  margin-right:0!important;
+}
+@supports(width:100dvw){
+  body[data-topic] .topbar{margin-left:calc(50% - 50dvw + 14px)!important}
+}
+.course-header{
+  margin-left:14px!important;
+  margin-right:14px!important;
+}
+/* Keep identical internal spacing and navigation density. */
+.course-header .course-header-nav,
+body[data-topic] .edu-top-actions{
+  margin-left:auto!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:flex-end!important;
+  gap:4px!important;
+  flex-wrap:nowrap!important;
+}
+.course-header .course-header-nav a,
+body[data-topic] .edu-top-actions a,
+body[data-topic] .edu-top-actions button{
+  min-height:40px!important;
+  padding:8px 10px!important;
+  font:850 12px/1.2 Inter,system-ui,sans-serif!important;
+  white-space:nowrap!important;
+}
+@media(max-width:860px){
+  .course-header,
+  body[data-topic] .topbar{
+    width:calc(100vw - 16px)!important;
+    margin-top:8px!important;
+  }
+  .course-header{margin-left:8px!important;margin-right:8px!important}
+  body[data-topic] .topbar{margin-left:calc(50% - 50vw + 8px)!important}
+  @supports(width:100dvw){
+    .course-header,body[data-topic] .topbar{width:calc(100dvw - 16px)!important}
+    body[data-topic] .topbar{margin-left:calc(50% - 50dvw + 8px)!important}
+  }
+}
