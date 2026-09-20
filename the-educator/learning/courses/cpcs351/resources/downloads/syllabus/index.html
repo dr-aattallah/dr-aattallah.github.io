@@ -12,6 +12,33 @@ section.content-section{padding:68px 0}.content-section+section.content-section{
 .deliverable-board{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}.delivery-list{display:grid;gap:9px}.delivery{display:grid;grid-template-columns:78px 1fr auto;gap:14px;align-items:center;padding:15px 17px;border:1px solid var(--line);border-radius:17px;background:#fff}.delivery .when{display:grid;place-items:center;min-height:48px;border-radius:13px;background:#eef4ff;color:var(--blue);font-size:13px;font-weight:950}.delivery.project .when{background:#f2efff;color:var(--violet)}.delivery.research .when{background:#fff7e8;color:var(--amber)}.delivery.exam .when{background:#fff0f4;color:var(--rose)}.delivery h3{margin:0;font-size:14px}.delivery p{margin:2px 0 0;color:var(--muted);font-size:11px}.tag{padding:5px 8px;border-radius:999px;background:#f4f6fa;color:#61718a;font-size:9px;font-weight:900;white-space:nowrap}
 .lab-panel{padding:25px;border:1px solid #cfe7df;border-radius:24px;background:linear-gradient(145deg,#fff,#f0faf7)}.lab-panel .total{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.lab-panel .total strong{color:var(--green);font-size:2rem;letter-spacing:-.05em}.lab-panel h3{margin:0;font-size:20px}.lab-panel>p{margin:5px 0 18px;color:var(--muted);font-size:12px}.graded-labs{display:grid;grid-template-columns:1fr 1fr;gap:9px}.graded{padding:14px;border:1px solid #cbe5dc;border-radius:15px;background:#fff}.graded b{display:block;color:var(--green);font-size:11px}.graded span{display:block;margin-top:3px;font-size:12px;font-weight:850}.graded small{color:var(--muted);font-size:10px}.policy{border-left:3px solid var(--blue)}footer{padding:38px 0 54px;border-top:1px solid var(--line);color:var(--muted);text-align:center;font-size:11px}
 @media(max-width:920px){.hero-grid,.deliverable-board{grid-template-columns:1fr}.visual{width:min(420px,100%)}.schedule{grid-template-columns:repeat(2,1fr)}.navlinks a:nth-child(2),.navlinks a:nth-child(5){display:none}}@media(max-width:700px){.official-doc{align-items:flex-start;flex-wrap:wrap}.official-doc__action{margin-left:64px}.wrap{width:min(100% - 28px,1160px)}.page-nav{top:6px}.hero{padding:48px 0 58px}.hero h1{font-size:clamp(3rem,17vw,4.6rem)}.lead{font-size:15px}.grid{grid-template-columns:1fr}.big{grid-column:auto}.assess{grid-template-columns:repeat(2,1fr)}section.content-section{padding:52px 0}.section-head{align-items:flex-start}.schedule{grid-template-columns:1fr}.delivery{grid-template-columns:62px 1fr}.delivery .tag{grid-column:2}.graded-labs{grid-template-columns:1fr}.navlinks a{padding:8px 7px;font-size:10px}}@media(max-width:470px){.brand small{display:none}.navlinks a:nth-child(3){display:none}.assess{grid-template-columns:1fr 1fr}}
+/* Academic / official visual refinement */
+:root{--ink:#16233a;--muted:#5f6e82;--blue:#174f9e;--violet:#315f9f;--paper:#f7f8fa;--line:#d7dee7}
+body{background:#f7f8fa}
+.hero{padding:58px 0 64px;background:linear-gradient(180deg,#f8fafc,#f3f6fa);border-bottom:1px solid #d8e0e9}
+.hero-grid{grid-template-columns:minmax(0,1.25fr) minmax(300px,.55fr);gap:72px}
+.kicker{color:#365f91;letter-spacing:.18em}
+.hero h1{margin:14px 0 0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(5rem,9.2vw,8rem);line-height:.86;letter-spacing:-.065em;background:none;color:#14243c;-webkit-text-fill-color:#14243c}
+.syllabus-course-title{margin:24px 0 14px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,3.3vw,3.15rem);font-weight:700;letter-spacing:-.035em}
+.lead{color:#53657c;font-size:16px;line-height:1.75}
+.chip{border-color:#d5dde7;border-radius:6px;background:#fff;font-size:10.5px}
+.visual{aspect-ratio:1.05;border:1px solid #294d7c;border-radius:12px;background:linear-gradient(145deg,#18355f,#244e80 68%,#2d678c);box-shadow:0 18px 42px rgba(25,51,83,.14)}
+.visual:before,.visual:after{border-color:rgba(255,255,255,.30);border-radius:8px}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.84rem;font-weight:650}
+.official-doc{border:1px solid #b9c9dc;border-left:5px solid #174f9e;border-radius:8px;background:#fff;box-shadow:0 8px 22px rgba(28,49,76,.07)}
+.official-doc:hover,.official-doc:focus-visible{box-shadow:0 12px 28px rgba(28,49,76,.11)}
+.official-doc__icon{border-radius:5px;background:#174f9e;font-size:14px;font-weight:900}
+.official-doc__copy strong{color:#173e70}.official-doc__action{border-radius:5px;background:#174f9e}
+section.content-section{background:#f7f8fa}
+.content-section:nth-of-type(even){background:#fff}
+.section-title{font-family:Georgia,"Times New Roman",serif;letter-spacing:-.035em;color:#17253a}
+.section-no{color:#7c8ba0}
+.card,.week,.delivery,.graded{border-radius:9px;box-shadow:0 3px 12px rgba(34,48,70,.035)}
+.week{border-top:3px solid #d5dfeb}.week.milestone{border-color:#b8c9dc;border-top-color:#315f9f;background:#f8fafc}.week b{color:#315f9f}.week:before{color:#f0f3f7}
+.lab-panel{border-radius:10px;background:#f5faf8}
+.assess strong{color:#315f9f}
+.policy{border-left-color:#315f9f}
+@media(max-width:700px){.hero h1{font-size:clamp(4.2rem,20vw,6rem)}}
 </style></head><body>
 <main>
 <section class="hero" id="overview"><div class="wrap hero-grid"><div><div class="kicker">CPCS 351 · Student Syllabus</div><h1>Syllabus</h1><div class="syllabus-course-title">Software Engineering I</div><p class="lead">A clear semester map from software-engineering foundations to requirements, modeling, architecture, patterns and testing — connected through project milestones, assessed labs and exams.</p><div class="chips"><span class="chip">3 Credits</span><span class="chip">CPCS 351</span><span class="chip">Prerequisite: CPCS 204</span><span class="chip">15 Teaching Weeks</span><span class="chip">Team Project</span></div><a class="official-doc" href="../pdf/CPCS-351-Syllabus-42289186%20.pdf" target="_blank" rel="noopener" aria-label="Open the official CPCS 351 syllabus PDF"><span class="official-doc__icon" aria-hidden="true">PDF</span><span class="official-doc__copy"><strong>Official CPCS 351 Syllabus Document</strong><span>This webpage is a student-friendly guide. Open the official approved syllabus PDF for the authoritative course document.</span></span><span class="official-doc__action">OPEN OFFICIAL PDF ↗</span></a></div><div class="visual" aria-hidden="true"><div class="code c1">Problem → Requirements<br>↓<br>Models → Design</div><div class="code c2">Architecture → Patterns<br>↓<br>Test Evidence</div></div></div></section>
