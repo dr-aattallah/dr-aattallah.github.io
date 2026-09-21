@@ -53,3 +53,25 @@ html.liquid-ui .liquid-surface:after{opacity:var(--orb-alpha,.9);right:var(--orb
 html.liquid-ui .lab.graded.liquid-surface{--gx:212,59,99;border:2.5px solid rgba(212,59,99,.92)!important;background:radial-gradient(circle at var(--mx) var(--my),rgba(212,59,99,.19),transparent 35%),linear-gradient(145deg,rgba(255,255,255,.82),rgba(255,239,246,.58))!important;box-shadow:inset 1px 1px 0 rgba(255,255,255,.98),inset -1px -1px 0 rgba(212,59,99,.12),0 18px 42px rgba(212,59,99,.14),0 4px 13px rgba(212,59,99,.11)!important}
 html.liquid-ui .lab.graded.liquid-surface:hover{box-shadow:inset 1px 1px 0 #fff,0 25px 56px rgba(212,59,99,.22),0 8px 22px rgba(212,59,99,.14)!important}
 html.liquid-ui .lab.graded.liquid-surface:before{content:'GRADED · 2.5 MARKS';z-index:4;left:auto;right:14px;top:14px;width:auto;height:auto;inset:auto 14px auto auto;padding:6px 9px;border-radius:999px;background:#d43b63!important;color:#fff;font-size:.62rem;font-weight:950;letter-spacing:.06em;filter:none;opacity:1;transform:none}
+
+/* Bold liquid override: ensure component pages visibly match Topic 01 */
+html.liquid-ui .liquid-surface{
+ background:
+ radial-gradient(circle at var(--mx,30%) var(--my,20%),rgba(var(--gx),.28) 0,rgba(var(--gx),.12) 22%,transparent 44%),
+ linear-gradient(128deg,rgba(255,255,255,.84) 0%,rgba(232,244,255,.48) 48%,rgba(255,255,255,.62) 100%)!important;
+ border:1.5px solid rgba(255,255,255,.94)!important;
+ backdrop-filter:blur(24px) saturate(185%) contrast(1.025)!important;
+ -webkit-backdrop-filter:blur(24px) saturate(185%) contrast(1.025)!important;
+ box-shadow:inset 2px 2px 1px rgba(255,255,255,1),inset -2px -2px 2px rgba(var(--gx),.12),0 22px 48px rgba(26,54,94,.15),0 6px 18px rgba(var(--gx),.13)!important
+}
+html.liquid-ui .liquid-surface:before{z-index:1!important;height:42%!important;background:linear-gradient(112deg,rgba(255,255,255,.92),rgba(255,255,255,.22) 52%,transparent 76%)!important;mix-blend-mode:screen;pointer-events:none}
+html.liquid-ui .liquid-surface:after{z-index:0!important;background:radial-gradient(circle,rgba(var(--gx),.26),rgba(var(--gx),.07) 45%,transparent 72%)!important;filter:blur(16px)!important;pointer-events:none}
+html.liquid-ui .liquid-surface>*{position:relative;z-index:2}
+html.liquid-ui .liquid-surface.liquid-blue{--gx:47,128,237}html.liquid-ui .liquid-surface.liquid-violet{--gx:124,77,255}html.liquid-ui .liquid-surface.liquid-mint{--gx:34,184,154}html.liquid-ui .liquid-surface.liquid-rose{--gx:225,92,132}html.liquid-ui .liquid-surface.liquid-amber{--gx:242,157,55}
+html.liquid-ui .liquid-surface.liquid-round{border-radius:42px 18px 52px 24px / 28px 38px 22px 46px!important}
+html.liquid-ui .liquid-surface.liquid-pebble{border-radius:20px 54px 26px 46px / 44px 22px 52px 24px!important}
+html.liquid-ui .liquid-surface.liquid-capsule{border-radius:52px 22px 48px 18px / 24px 46px 20px 42px!important}
+html.liquid-ui .liquid-surface.liquid-wave{border-radius:18px 58px 22px 50px / 48px 20px 54px 24px!important}
+html.liquid-ui .infographic.liquid-surface,html.liquid-ui .visual.liquid-surface{padding:10px!important}
+html.liquid-ui .infographic.liquid-surface img,html.liquid-ui .visual.liquid-surface img{border-radius:24px;display:block}
+html.liquid-ui .lab.graded.liquid-surface{border:2.5px solid rgba(212,59,99,.94)!important}
