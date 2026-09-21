@@ -26,3 +26,22 @@ html.liquid-ui :is(.project-hero,.infographic,.summary,.file,.hero,.stat,.card,.
 html.liquid-ui :is(.project-hero,.summary,.file,.stat,.card,.official-resource,.fact,.grading-banner,.lab,.official-doc,.week,.delivery,.lab-panel,.assess,.policy,.resource-tile):before{content:"";position:absolute;z-index:-1;pointer-events:none;left:2%;top:1px;width:52%;height:30%;border-radius:999px;background:linear-gradient(112deg,rgba(255,255,255,.7),rgba(255,255,255,.06) 66%,transparent);filter:blur(.6px)}
 html.liquid-ui :is(.summary,.file,.stat,.card,.official-resource,.fact,.lab,.week,.delivery,.assess,.policy,.resource-tile){transition:transform .36s cubic-bezier(.16,1,.3,1),box-shadow .36s ease,border-radius .6s ease}html.liquid-ui :is(.summary,.file,.stat,.card,.official-resource,.fact,.lab,.week,.delivery,.assess,.policy,.resource-tile):hover{transform:translateY(-3px);box-shadow:inset 1px 1px 0 #fff,0 21px 44px rgba(29,62,105,.12)!important}
 html.liquid-ui :is(.project-summary,.guidance,.facts,.grid,.schedule,.assess,.resource-tiles)>*:nth-child(5n+2){--gx:124,77,255}html.liquid-ui :is(.project-summary,.guidance,.facts,.grid,.schedule,.assess,.resource-tiles)>*:nth-child(5n+3){--gx:34,184,154}html.liquid-ui :is(.project-summary,.guidance,.facts,.grid,.schedule,.assess,.resource-tiles)>*:nth-child(5n+4){--gx:225,92,132}html.liquid-ui :is(.project-summary,.guidance,.facts,.grid,.schedule,.assess,.resource-tiles)>*:nth-child(5n){--gx:242,157,55}
+
+/* Unified Master Liquid Surface — all CPCS351 component pages */
+html.liquid-ui :is(.topbar,.hero,.component-card,.learning-panel,.topics>a,.quick,.project-hero,.infographic,.summary,.file,.stat,.card,.notice,.official-resource,.rubric-wrap,.submit,.labs-hero,.fact,.source-note,.grading-banner,.lab,.official-doc,.visual,.week,.deliverable-board,.delivery,.lab-panel,.assess,.policy,.gallery-hero,.resource-tile,.resource-note).liquid-surface{
+ --gx:47,128,237;--mx:30%;--my:20%;--rot:0deg;position:relative;isolation:isolate;overflow:hidden;
+ border:1px solid rgba(255,255,255,.82)!important;
+ background:radial-gradient(circle at var(--mx) var(--my),rgba(var(--gx),.18),transparent 34%),linear-gradient(135deg,rgba(255,255,255,.76),rgba(244,249,255,.42))!important;
+ backdrop-filter:blur(22px) saturate(165%)!important;-webkit-backdrop-filter:blur(22px) saturate(165%)!important;
+ box-shadow:inset 1px 1px 0 rgba(255,255,255,.98),inset -1px -1px 0 rgba(var(--gx),.08),0 18px 42px rgba(29,55,92,.12),0 4px 12px rgba(var(--gx),.08)!important;
+ transition:transform .42s cubic-bezier(.16,1,.3,1),border-radius .72s cubic-bezier(.16,1,.3,1),box-shadow .38s ease!important;transform:translateZ(0)
+}
+html.liquid-ui .liquid-surface:before{content:"";position:absolute;z-index:-1;pointer-events:none;inset:1px 22% auto 3%;height:38%;border-radius:999px;background:linear-gradient(115deg,rgba(255,255,255,.72),rgba(255,255,255,.12) 55%,transparent);filter:blur(1px);opacity:.8}
+html.liquid-ui .liquid-surface:after{content:"";position:absolute;z-index:-2;pointer-events:none;width:44%;aspect-ratio:1;right:-12%;bottom:-52%;border-radius:50%;background:rgba(var(--gx),.12);filter:blur(20px);transition:transform .5s ease}
+html.liquid-ui .liquid-surface:hover{transform:translateY(-5px) scale(1.012) rotate(var(--rot));box-shadow:inset 1px 1px 0 #fff,0 24px 54px rgba(29,55,92,.16),0 8px 22px rgba(var(--gx),.12)!important}
+html.liquid-ui .liquid-surface:hover:after{transform:translate(-12%,-14%) scale(1.15)}
+html.liquid-ui .liquid-surface.liquid-round{animation:liquidBreatheA 7.5s ease-in-out infinite}
+html.liquid-ui .liquid-surface.liquid-pebble{animation:liquidBreatheB 9s ease-in-out infinite}
+html.liquid-ui .liquid-surface.liquid-capsule{animation:liquidBreatheC 8.5s ease-in-out infinite}
+html.liquid-ui .liquid-surface.liquid-wave{animation:liquidBreatheB 10s ease-in-out infinite reverse}
+@media(prefers-reduced-motion:reduce){html.liquid-ui .liquid-surface{animation:none!important;transition:none!important}html.liquid-ui .liquid-surface:hover{transform:none!important}}
