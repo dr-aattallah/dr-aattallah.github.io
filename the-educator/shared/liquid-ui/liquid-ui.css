@@ -45,3 +45,11 @@ html.liquid-ui .liquid-surface.liquid-pebble{animation:liquidBreatheB 9s ease-in
 html.liquid-ui .liquid-surface.liquid-capsule{animation:liquidBreatheC 8.5s ease-in-out infinite}
 html.liquid-ui .liquid-surface.liquid-wave{animation:liquidBreatheB 10s ease-in-out infinite reverse}
 @media(prefers-reduced-motion:reduce){html.liquid-ui .liquid-surface{animation:none!important;transition:none!important}html.liquid-ui .liquid-surface:hover{transform:none!important}}
+
+/* Liquid individuality + graded-lab priority */
+html.liquid-ui .liquid-surface{--shine-a:.72;--shine-b:.12;--glass-alpha:.18}
+html.liquid-ui .liquid-surface:before{opacity:var(--shine-a);transform:translate(var(--shine-x,0),var(--shine-y,0)) rotate(var(--shine-r,0deg));width:var(--shine-w,54%)}
+html.liquid-ui .liquid-surface:after{opacity:var(--orb-alpha,.9);right:var(--orb-x,-12%);bottom:var(--orb-y,-52%)}
+html.liquid-ui .lab.graded.liquid-surface{--gx:212,59,99;border:2.5px solid rgba(212,59,99,.92)!important;background:radial-gradient(circle at var(--mx) var(--my),rgba(212,59,99,.19),transparent 35%),linear-gradient(145deg,rgba(255,255,255,.82),rgba(255,239,246,.58))!important;box-shadow:inset 1px 1px 0 rgba(255,255,255,.98),inset -1px -1px 0 rgba(212,59,99,.12),0 18px 42px rgba(212,59,99,.14),0 4px 13px rgba(212,59,99,.11)!important}
+html.liquid-ui .lab.graded.liquid-surface:hover{box-shadow:inset 1px 1px 0 #fff,0 25px 56px rgba(212,59,99,.22),0 8px 22px rgba(212,59,99,.14)!important}
+html.liquid-ui .lab.graded.liquid-surface:before{content:'GRADED · 2.5 MARKS';z-index:4;left:auto;right:14px;top:14px;width:auto;height:auto;inset:auto 14px auto auto;padding:6px 9px;border-radius:999px;background:#d43b63!important;color:#fff;font-size:.62rem;font-weight:950;letter-spacing:.06em;filter:none;opacity:1;transform:none}
