@@ -468,3 +468,37 @@ body[data-topic] .edu-topic-glass-panel .edu-topic-map a.current .num{color:#2f8
  body[data-topic] .edu-topic-glass-panel .edu-topic-map{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){body[data-topic] .edu-topic-glass-panel{animation:none!important}}
+
+
+/* Mobile course navigation: keep every label complete and readable. */
+@media(max-width:860px){
+  .course-header{overflow:hidden!important;padding:12px 14px 10px!important;gap:10px!important}
+  .course-header .course-header-brand{width:100%!important;min-width:0!important}
+  .course-header .course-header-nav{
+    width:100%!important;
+    max-width:100%!important;
+    display:grid!important;
+    grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    gap:6px!important;
+    overflow:visible!important;
+    padding:0!important;
+    margin:0!important;
+  }
+  .course-header .course-header-nav a{
+    min-width:0!important;
+    width:100%!important;
+    min-height:38px!important;
+    padding:7px 4px!important;
+    justify-content:center!important;
+    text-align:center!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    font-size:clamp(9.5px,2.7vw,12px)!important;
+    line-height:1.12!important;
+  }
+}
+@media(max-width:430px){
+  .course-header .course-header-nav{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  .course-header .course-header-nav a{font-size:11px!important;padding:7px 3px!important}
+}
