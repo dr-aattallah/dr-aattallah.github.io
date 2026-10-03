@@ -12,3 +12,12 @@
 .password-meter{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:14px 0}.password-meter span{height:13px;border-radius:999px;background:linear-gradient(90deg,#ff5a69,#ffb04d,#6ecf9b,#3d8eea)}
 .code-scene{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;padding:20px;border-radius:18px;background:#11182b;color:#dbe7ff;overflow:auto}.code-scene b{color:#7fe2c9}
 @media(max-width:760px){.story-steps,.visual-board,.cia{grid-template-columns:1fr}.hero:after{font-size:50px}.section{padding:19px!important}}
+.topic13-infographic{margin:20px 0 26px;border:1px solid #dce4f2;border-radius:24px;overflow:hidden;background:#fff;box-shadow:0 16px 38px rgba(31,52,91,.09)}
+.topic13-infographic a{display:block;background:linear-gradient(135deg,#f4f7ff,#effbf8);overflow:hidden}
+.topic13-infographic img{display:block;width:100%;height:auto;transition:transform .28s ease}
+.topic13-infographic a:hover img{transform:scale(1.012)}
+.topic13-infographic figcaption{display:grid;gap:4px;padding:16px 19px;border-top:1px solid #e6ebf3}
+.topic13-infographic figcaption strong{font-size:1rem;color:#27375b}
+.topic13-infographic figcaption span{color:#60708a;font-size:.9rem;line-height:1.45}
+.topic13-infographic figcaption small{color:#7257ca;font-weight:800;margin-top:2px}
+@media(min-width:900px){.topic13-infographic:not(.overview) a{max-height:520px}.topic13-infographic:not(.overview) img{min-height:420px;object-fit:cover}.topic13-infographic.privacy img{object-position:center 42%}.topic13-infographic.terms img{object-position:center 58%}.topic13-infographic.password img{object-position:center 73%}.topic13-infographic.software img{object-position:center 73%}.topic13-infographic.design img{object-position:center 73%}.topic13-infographic.malware img{object-position:center bottom}}
