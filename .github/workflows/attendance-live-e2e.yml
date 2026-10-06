@@ -1,8 +1,8 @@
 name: Attendance live E2E and security
 
 on:
-  schedule:
-    - cron: "45 23 * * *"
+  # Temporarily manual-only while the retired Supabase endpoint is replaced.
+  # Re-enable the schedule after production credentials/endpoints are configured.
   workflow_dispatch:
 
 permissions:
