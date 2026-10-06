@@ -1,8 +1,8 @@
 name: Attendance operational monitor
 
 on:
-  schedule:
-    - cron: "*/15 * * * *"
+  # Temporarily manual-only while the retired Supabase endpoint is replaced.
+  # This prevents repeated false-failure notifications without deleting the monitor.
   workflow_dispatch:
 
 permissions:
