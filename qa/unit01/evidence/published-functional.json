@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "name": "Q1 correct incorrect lock reset keyboard counters",
+      "passed": true
+    },
+    {
+      "name": "Q2 correct incorrect lock reset keyboard counters",
+      "passed": true
+    },
+    {
+      "name": "Q3 correct incorrect lock reset keyboard counters",
+      "passed": true
+    },
+    {
+      "name": "Q4 correct incorrect lock reset keyboard counters",
+      "passed": true
+    },
+    {
+      "name": "Q5 correct incorrect lock reset keyboard counters",
+      "passed": true
+    },
+    {
+      "name": "all summary 5 correct",
+      "passed": true
+    }
+  ]
+}
