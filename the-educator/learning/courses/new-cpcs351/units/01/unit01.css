@@ -1,0 +1,62 @@
+/* Unit 01 refinements are scoped here so adjacent units keep their presentation. */
+.unit01 .toc-strip { position:static; flex-wrap:wrap; white-space:normal; gap:8px 18px; }
+.unit01 .toc-strip a,.unit01 .site-nav a,.unit01 .fallback-nav a { display:inline-flex; align-items:center; min-height:44px; font-size:14px; }
+.unit01 .site-nav { flex-wrap:wrap; }
+.unit01 .fallback-nav { padding:20px; display:flex; flex-wrap:wrap; gap:16px; }
+.unit01 .process-flow { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.unit01 .challenge-strip { grid-template-columns:repeat(5,minmax(0,1fr)); }
+.unit01 .process-step { min-width:0; }
+.unit01 .process-step b { margin-top:18px; font-size:15px; line-height:1.6; }
+.unit01 .visual-title,.unit01 .section-tag,.unit01 .quiz-no,.unit01 .unit-chip small,.unit01 .studio-label,.unit01 .scenario-label { font-size:12px; }
+.unit01 .focus-items div,.unit01 .concept p,.unit01 .compare-side li,.unit01 .challenge-strip p,
+.unit01 .scenario p,.unit01 .scenario-grid small,.unit01 .tryit li,.unit01 .project-bridge p,
+.unit01 .reveal-box div,.unit01 .role-shift span,.unit01 .discipline-map span,
+.unit01 .eco-card span,.unit01 .systems-map small,.unit01 .story-steps span,
+.unit01 .worksheet span,.unit01 .ethics-wheel small,.unit01 .remember-grid span,
+.unit01 .transfer-challenge li { font-size:16px; line-height:1.7; }
+.unit01 .reveal-box summary { font-size:16px; min-height:44px; }
+.unit01 .studio-phases p,.unit01 .story-question p { font-size:16px!important; line-height:1.7; }
+.unit01 .quiz-feedback { font-size:16px!important; line-height:1.7; }
+.unit01 .quiz-q button { font-size:16px; line-height:1.6; min-height:44px; }
+.unit01 .quiz-options button[aria-disabled="true"] { cursor:default; }
+.unit01 .quality-diamond p { color:#fff; font-size:16px; line-height:1.7; }
+.unit01 .quality-diamond>div:nth-child(3) { background:#3c654d; }
+.unit01 .quality-diamond>div:nth-child(4) { background:#80601e; }
+.unit01 .story-question span { color:#80580d; font-size:12px; }
+.unit01 .role-shift span,.unit01 .mid-checkpoint>p,.unit01 .site-footer { color:#475467; }
+.unit01 .site-footer { font-size:14px; }
+.unit01 .ethics-wheel div { border-radius:12px; aspect-ratio:auto; }
+.unit01 .prose h4 { line-height:1.4; }
+.unit01 .unit-hero h1 { line-height:1.04; }
+.unit01 .transfer-challenge { grid-template-columns:1fr; gap:24px; }
+.unit01 .transfer-challenge ol { margin:0; }
+.unit01 :focus-visible { outline:3px solid #a51c30; outline-offset:3px; }
+.unit01 .unit-hero :focus-visible,.unit01 .transfer-challenge :focus-visible { outline-color:#fff; }
+@media(max-width:1100px) {
+  .unit01 .process-flow,.unit01 .challenge-strip,.unit01 .quality-diamond,.unit01 .ethics-wheel { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .unit01 .discipline-map { grid-template-columns:1fr; }
+  .unit01 .remember-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .unit01 .discipline-map>strong { padding:10px; }
+}
+@media(max-width:620px) {
+  .unit01 .site-nav { overflow:visible; gap:4px 16px; }
+  .unit01 .toc-strip { padding:12px 20px; }
+  .unit01 .process-flow,.unit01 .challenge-strip,.unit01 .story-steps { grid-template-columns:1fr; }
+  .unit01 .visual,.unit01 .scenario,.unit01 .tryit,.unit01 .studio-box,.unit01 .project-bridge { padding:20px; }
+}
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .unit01 * { transition:none!important; animation:none!important; } }
+
+.unit01 .story-visual img[hidden],.unit01 .image-fallback[hidden],.unit01 .image-status[hidden] { display:none; }
+.unit01 .image-fallback { padding:20px; background:#eef6f8; border-left:4px solid var(--blue); }
+.unit01 .image-fallback p { font-size:16px; line-height:1.7; }
+.unit01 .process-step span,.unit01 .focus-items b,.unit01 .studio-phases span,
+.unit01 .role-shift small,.unit01 .discipline-map small,.unit01 .eco-card em { font-size:12px; }
+.unit01 .worksheet b,.unit01 .studio-phases b,.unit01 .scenario-grid b { font-size:15px; }
+.unit01 .studio-box p,.unit01 .studio-box li { font-size:16px; line-height:1.7; }
+@media(max-width:620px) {
+  .unit01 .quality-diamond,.unit01 .ethics-wheel,.unit01 .remember-grid { grid-template-columns:1fr; }
+}
+
+.unit01 .u01-story-grid summary,.unit01 .u01-mini-grid summary { min-height:44px; padding:10px 0; }
+.unit01 .concept h3.concept-heading { font-size:17px; margin:0 0 7px; line-height:1.4; }
+.unit01 .compare-side h3.concept-heading { font-size:22px; margin:0 0 16px; line-height:1.4; }
