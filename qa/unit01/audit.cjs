@@ -63,7 +63,7 @@ async function check(name, fn) { try { await fn(); checks.push({name,passed:true
  });
  const images=await page.locator('img').evaluateAll(es=>es.map(e=>({src:e.src,alt:e.alt,complete:e.complete,width:e.naturalWidth,height:e.naturalHeight})));
  save('images.json',images);
- await check('required original images render — release gate',()=>assert.ok(images.length===2 && images.every(i=>i.width>0 && i.alt.trim()),JSON.stringify(images))); 
+ await check('required original images render — release gate',()=>assert.ok(images.length===2 && images.every(i=>i.width>0 && i.alt.trim()),JSON.stringify(images)));
  const qs=page.locator('.quiz-q');
  await check('five practice questions',async()=>assert.equal(await qs.count(),5));
  await check('initial summary',async()=>assert.match(await page.locator('#u01-quiz-summary').innerText(),/0 of 5 practiced/));
