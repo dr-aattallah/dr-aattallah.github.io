@@ -40,3 +40,15 @@ html{scroll-behavior:smooth}.lesson,.study-route,.story-thread,.mid-checkpoint,.
 .story-question p{line-height:1.65!important}.story-visual figcaption{max-width:1000px;margin:auto}
 @media(max-width:1000px){.study-route{grid-template-columns:1fr}.study-route-steps{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:620px){.study-route{padding:28px 20px}.study-route-steps{grid-template-columns:1fr}.toc-strip{top:62px}.prose>p{font-size:12px;line-height:1.78}.study-anchor{flex-direction:column;gap:6px}.mid-checkpoint{padding:36px 20px}}
+
+/* CPCS351 readability/accessibility QA — Oct 2026 */
+@media screen {
+  .prose>p{font-size:clamp(16px,1.05vw,18px);line-height:1.75}
+  .study-route-steps span,.study-anchor span,.mid-checkpoint>p{font-size:14px;line-height:1.65}
+  .study-route-steps b,.study-anchor b{font-size:13px}
+  .sources,.sources li,.sources p,.story-question p,.story-visual figcaption{font-size:15px;line-height:1.7}
+  .quiz-options button{font-size:15px;line-height:1.55;min-height:48px}
+  .quiz-feedback{font-size:15px;line-height:1.65}
+  .toc-strip a{font-size:13px}
+  @media(max-width:620px){.prose>p{font-size:16px;line-height:1.75}.study-route-steps span,.study-anchor span{font-size:14px}}
+}
