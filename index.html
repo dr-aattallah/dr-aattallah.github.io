@@ -24,9 +24,6 @@
 <meta name="theme-color" content="#0B1F3A" />
 <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
 <link rel="canonical" href="https://dr-aattallah.github.io/" />
-<link rel="alternate" href="https://dr-aattallah.github.io/?lang=en" hreflang="en" />
-<link rel="alternate" href="https://dr-aattallah.github.io/?lang=ar" hreflang="ar" />
-<link rel="alternate" href="https://dr-aattallah.github.io/" hreflang="x-default" />
 
 <meta property="og:type" content="profile" />
 <meta property="og:locale" content="en_US" />
@@ -2393,8 +2390,13 @@ html[dir="rtl"] .back-to-top{
   #publications .pub li {padding:56px 14px 16px}
   #publications .pub li::before {top:12px;left:14px}
   #publications .card {padding:20px 14px}
+  #publications .publication-expand {min-width:0;max-width:100%}
+  #publications .publication-expand-copy {min-width:0;overflow-wrap:anywhere}
+  .hero, .hero-content, .photo-panel, .card, .grid > * {min-width:0}
+  .links {max-width:100%;overscroll-behavior-x:contain}
   .hero-content {min-width:0}
   .hero-content h1 {overflow-wrap:anywhere}
+  .buttons .btn {min-width:0;white-space:normal;overflow-wrap:anywhere}
 }
 </style>
 </head>
