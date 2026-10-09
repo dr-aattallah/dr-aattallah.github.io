@@ -1,0 +1,30 @@
+[
+  {
+    "scan": "axe-answered",
+    "violations": [],
+    "incompleteRules": [
+      "color-contrast"
+    ]
+  },
+  {
+    "scan": "axe-desktop",
+    "violations": [],
+    "incompleteRules": [
+      "color-contrast"
+    ]
+  },
+  {
+    "scan": "axe-instructor",
+    "violations": [],
+    "incompleteRules": [
+      "color-contrast"
+    ]
+  },
+  {
+    "scan": "axe-mobile",
+    "violations": [],
+    "incompleteRules": [
+      "color-contrast"
+    ]
+  }
+]
