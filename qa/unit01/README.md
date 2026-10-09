@@ -34,3 +34,5 @@ No production build step is needed for this static page. GitHub Pages currently 
 The original illustrations are stored in `assets/images/u01-roomnow-quality-boundary.png` and `assets/images/u01-campuscare-judgment.png` under the course directory. Their bytes match the originals fetched from Drive. Keep meaningful alt text/captions and the failure fallback. Do not substitute generated artwork.
 
 Current educational revision: [report](educational-revision-report.md), [local results](evidence/educational-revision/results.json). Earlier follow-up evidence is retained as history.
+
+Published verification: [43-check results](evidence/deployed-educational-revision/results.json). The suite requires the expected revision marker and rejects a stale page before auditing. Navigation uses DOM readiness so unrelated external image requests do not block link/fragment verification.

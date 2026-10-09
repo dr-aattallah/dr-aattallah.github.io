@@ -30,4 +30,14 @@ Playwright 1.62.1 / Chromium 153.0.8010.0 / axe-core 4.10.3: 43 checks passed, 0
 
 Reviewed mobile/desktop screenshots, plus open mobile planning tables, artwork interpretation, worksheet and instructor calibration. Corrected the narrow mobile table-caption layout following visual review.
 
-The local 43-check run precedes publication. Deployed verification will be recorded separately after main is published. Firefox/WebKit, native browser zoom and actual screen-reader speech remain unverified. Browser testing through a TLS-intercepting environment proxy is not certificate/security certification. This is not Golden Master approval or evidence of measured student learning gains.
+## Executed published verification
+
+Published product commit: `148df7ee333ea97b35fe22e495c29aefbe9c94c6`. PR #18 is merged. The public page exposes revision `20261009-education1`. Anonymous HTTP responses for HTML, scoped CSS and scoped JS are 200 and their SHA-256 digests match the tested local files exactly.
+
+The final published audit at `https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/` completed with 43 passed, 0 failed. All four selected-WCAG axe scans have zero violations; seven navigation URLs return 200; all ten tested viewport widths have no horizontal overflow. Required illustrations, full-size popup links, question feedback, worksheet export, nested keyboard disclosures, instructor notes, forced image failures and no-JavaScript reading passed on the published page. Compact evidence is in `evidence/deployed-educational-revision/`.
+
+Verified HTML SHA-256: `7a8ebc1b837c9b74acc8ee2ae3e7a051b031c0298fb0bb2b49d3cfc11c88f3f0`.
+
+Google Fonts endpoints were unreachable in this audit environment and explicitly blocked; the published run therefore exercised the real page’s fallback fonts. Browser TLS verification was skipped only in the test context because the environment proxy intercepts TLS; no product TLS setting was changed. Navigation checks wait for DOM readiness and valid fragments; they do not certify external illustrations on other course pages. A revision gate rejects tests against an older page while deployment propagates.
+
+Reviewed live mobile hero and desktop practice screenshots in addition to the local visual review. Firefox/WebKit, native browser zoom and actual screen-reader speech remain unverified. Browser testing through a TLS-intercepting environment proxy is not certificate/security certification. This is not Golden Master approval or evidence of measured student learning gains.

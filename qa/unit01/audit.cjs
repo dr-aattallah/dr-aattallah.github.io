@@ -28,7 +28,8 @@ async function check(name, fn) { try { await fn(); checks.push({name,passed:true
  page.on('pageerror',e=>errors.push(e.message));
  page.on('response',r=>{if(/google|unit01|site.css|navigation.js/.test(r.url()))network.push({url:r.url(),status:r.status(),type:r.headers()['content-type']});});
  page.on('requestfailed',r=>network.push({url:r.url(),failure:r.failure()}));
- await page.goto(url); await page.waitForLoadState('networkidle');
+ await page.goto(url,{waitUntil:'domcontentloaded'}); await page.waitForLoadState('networkidle');
+ if(await page.locator('body').getAttribute('data-unit-revision') !== '20261009-education1') throw new Error('The expected Unit 01 revision is not published at this URL yet; retry after deployment completes.');
  const axePath=process.env.AXE_PATH || require.resolve('axe-core/axe.min.js');
  async function axeScan(name) {
   await page.addScriptTag({path:axePath});
@@ -79,6 +80,7 @@ async function check(name, fn) { try { await fn(); checks.push({name,passed:true
   assert.ok(!(await page.locator('.mid-checkpoint').innerText()).includes('Before the Studio'));
  });
  await check('both original illustrations open at full size in a new tab',async()=>{
+  assert.equal(await page.locator('.u01-image-open').count(),2);
   for(const link of await page.locator('.u01-image-open').all()) {
    const popupPromise=page.waitForEvent('popup');await link.click();const popup=await popupPromise;
    await popup.waitForLoadState();assert.equal(popup.url(),new URL(await link.getAttribute('href'),page.url()).href);
@@ -136,12 +138,12 @@ async function check(name, fn) { try { await fn(); checks.push({name,passed:true
  const linkResults=[];
  for(const href of links){if(new URL(href).origin!==new URL(base).origin)continue;const r=await page.request.get(href);linkResults.push({href,status:r.status()});}
  save('links.json',linkResults);
- await check('browser navigation reaches course and unit destinations with valid fragments',async()=>{for(const {href} of linkResults){await page.goto(href);assert.equal(new URL(page.url()).pathname,new URL(href).pathname);const hash=new URL(href).hash;if(hash)assert.equal(await page.locator(hash).count(),1,href);}});await check('course and next-unit HTTP links',()=>assert.ok(linkResults.every(r=>r.status===200)));
- for(const file of ['index.html','syllabus.html','project.html','units/02/','instructor-guide.html']){await page.goto(base+route+file);assert.ok(await page.locator('h1').count());}
- await page.goto(url+'?instructor=1');
+ await check('browser navigation reaches course and unit destinations with valid fragments',async()=>{for(const {href} of linkResults){await page.goto(href,{waitUntil:'domcontentloaded'});assert.equal(new URL(page.url()).pathname,new URL(href).pathname);const hash=new URL(href).hash;if(hash)assert.equal(await page.locator(hash).count(),1,href);}});await check('course and next-unit HTTP links',()=>assert.ok(linkResults.every(r=>r.status===200)));
+ for(const file of ['index.html','syllabus.html','project.html','units/02/','instructor-guide.html']){await page.goto(base+route+file,{waitUntil:'domcontentloaded'});assert.ok(await page.locator('h1').count());}
+ await page.goto(url+'?instructor=1',{waitUntil:'domcontentloaded'});
  await check('both instructor notes visible and keyboard-expand',async()=>{const ns=page.locator('[data-instructor-only]');assert.equal(await ns.count(),2);for(let i=0;i<2;i++){const n=ns.nth(i);assert.ok(await n.isVisible());await n.locator('summary').focus();await page.keyboard.press('Enter');assert.ok(await n.evaluate(e=>e.open));}});
  await page.screenshot({path:path.join(out,'instructor-mobile.png'),fullPage:true});await axeScan('instructor');
- await page.goto(url);await page.emulateMedia({reducedMotion:'reduce'});
+ await page.goto(url,{waitUntil:'domcontentloaded'});await page.emulateMedia({reducedMotion:'reduce'});
  await check('reduced motion',async()=>assert.equal(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior),'auto'));
  await page.setViewportSize({width:1280,height:800});
  // Viewport equivalents exercise reflow; these do not certify native browser zoom.
@@ -151,12 +153,12 @@ async function check(name, fn) { try { await fn(); checks.push({name,passed:true
   await page.screenshot({path:path.join(out,`reflow-${factor*100}.png`)});
  }
  const failedImages=await makePage({ignoreHTTPSErrors:process.env.PROXY_TLS_INTERCEPTION === '1',viewport:{width:390,height:844}});
- await failedImages.route('**/assets/images/u01-*.png',route=>route.abort());await failedImages.goto(url);
+ await failedImages.route('**/assets/images/u01-*.png',route=>route.abort());await failedImages.goto(url,{waitUntil:'domcontentloaded'});
  await check('both failed images show descriptions and hide broken-image controls',async()=>{for(const f of await failedImages.locator('.story-visual').all()){await f.scrollIntoViewIfNeeded();await failedImages.waitForTimeout(150);assert.ok(await f.locator('.image-fallback').isVisible());assert.ok(await f.locator('.image-status').isVisible());assert.ok(!(await f.locator('img').isVisible()));}});
  await failedImages.locator('.story-visual').first().screenshot({path:path.join(out,'image-fallback.png')});await failedImages.close();
- await page.setViewportSize({width:320,height:568});await page.goto(url);
+ await page.setViewportSize({width:320,height:568});await page.goto(url,{waitUntil:'domcontentloaded'});
  await check('visible interactive targets at least 24 CSS px',async()=>{const small=await page.locator('a,button,summary').evaluateAll(es=>es.filter(e=>e.getClientRects().length).map(e=>({text:e.textContent.slice(0,60),w:e.getBoundingClientRect().width,h:e.getBoundingClientRect().height})).filter(r=>r.w<24||r.h<24));assert.deepEqual(small,[]);});
- const nojs=await makePage({ignoreHTTPSErrors:process.env.PROXY_TLS_INTERCEPTION === '1',javaScriptEnabled:false,viewport:{width:390,height:844}});await nojs.goto(url);
+ const nojs=await makePage({ignoreHTTPSErrors:process.env.PROXY_TLS_INTERCEPTION === '1',javaScriptEnabled:false,viewport:{width:390,height:844}});await nojs.goto(url,{waitUntil:'domcontentloaded'});
  await check('no-JS reading and navigation',async()=>{assert.ok(await nojs.locator('h1').isVisible());assert.ok(await nojs.locator('noscript nav').isVisible());assert.equal(await nojs.locator('.quiz-feedback:visible').count(),5);assert.equal(await nojs.locator('[data-instructor-only]:visible').count(),0);});
  await nojs.screenshot({path:path.join(out,'no-js-mobile.png'),fullPage:true});await nojs.close();
  await check('no uncaught JavaScript errors',()=>assert.equal(errors.length,0,errors.join('\n')));
