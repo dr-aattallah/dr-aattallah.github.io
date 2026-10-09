@@ -1,0 +1,538 @@
+[
+  {
+    "id": "1Jr1Z9qM03pulR8iPJmphjUeZKdBWalLJ",
+    "title": "ESR.docx",
+    "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "url": "https://docs.google.com/document/d/1Jr1Z9qM03pulR8iPJmphjUeZKdBWalLJ/edit?usp=drivesdk&ouid=116877402492951220231&rtpof=true&sd=true",
+    "parent": null,
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1nh6MiLaJ-p6njad3QjGBclxVS7qoi4gj",
+    "title": "tracks.JPG",
+    "type": "image/jpeg",
+    "url": "https://drive.google.com/file/d/1nh6MiLaJ-p6njad3QjGBclxVS7qoi4gj/view?usp=drivesdk",
+    "parent": null,
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "12b8s2UIUH-AuCZLEQ1oJzByD8rYGqbM1",
+    "title": "3333.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/12b8s2UIUH-AuCZLEQ1oJzByD8rYGqbM1/view?usp=drivesdk",
+    "parent": null,
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1snpObC8-OQXqGE-E6S4TKZnjZYreul4G",
+    "title": "4444.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1snpObC8-OQXqGE-E6S4TKZnjZYreul4G/view?usp=drivesdk",
+    "parent": null,
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1q4HEvrjgnoz5quna-zDJ01nYWWzoSsF6",
+    "title": "2222.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1q4HEvrjgnoz5quna-zDJ01nYWWzoSsF6/view?usp=drivesdk",
+    "parent": null,
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "13cvm-fxKXd-XsPvwvswTH9_EaKp3m2Pd",
+    "title": "1111.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/13cvm-fxKXd-XsPvwvswTH9_EaKp3m2Pd/view?usp=drivesdk",
+    "parent": null,
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1ns8dt6yoHobZh4_tbWY9_g_41BuwLqrV",
+    "title": "se courses.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1ns8dt6yoHobZh4_tbWY9_g_41BuwLqrV/view?usp=drivesdk",
+    "parent": null,
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1CNh5QbKr1YJ29ZfRhlvSeT63G02LVppJ",
+    "title": "se dev.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1CNh5QbKr1YJ29ZfRhlvSeT63G02LVppJ/view?usp=drivesdk",
+    "parent": null,
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1TFcc8LRYfK5vAB7XN-Pu2b0K6l1ry49a",
+    "title": "تطوري هندسة البرمجيات .png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1TFcc8LRYfK5vAB7XN-Pu2b0K6l1ry49a/view?usp=drivesdk",
+    "parent": null,
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1_jrDJsODvC6kqlRurd0hvDwUwU4XebEFk9J6_ZmzDJM",
+    "title": "02 - SE Curriculum Evidence Repository",
+    "type": "application/vnd.google-apps.spreadsheet",
+    "url": "https://docs.google.com/spreadsheets/d/1_jrDJsODvC6kqlRurd0hvDwUwU4XebEFk9J6_ZmzDJM/edit?usp=drivesdk",
+    "parent": null,
+    "review": "Native tab metadata and A1:P30 reviewed"
+  },
+  {
+    "id": "1goaPld-qX7LH5mGJgbYTFfF6SQFT40q5",
+    "title": "FICT PLAN.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1goaPld-qX7LH5mGJgbYTFfF6SQFT40q5/view?usp=drivesdk",
+    "parent": null,
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1dKS1Q2Ah-yiT5bkNGSoXvB_1RnTiCoOM",
+    "title": "Computer Science Cu.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1dKS1Q2Ah-yiT5bkNGSoXvB_1RnTiCoOM/view?usp=drivesdk",
+    "parent": null,
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1msV19vj_0sDfumvgGz0qyp_lQEiQNp7a",
+    "title": "New CS Degree Plan 2025 Final-1.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1msV19vj_0sDfumvgGz0qyp_lQEiQNp7a/view?usp=drivesdk",
+    "parent": null,
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1HUoIbCU6_Jh9ioiiEeMH9knXzQPR5dc",
+    "title": "نسخة من Course List",
+    "type": "application/vnd.google-apps.shortcut",
+    "url": "https://drive.google.com/file/d/1HUoIbCU6_Jh9ioiiEeMH9knXzQPR5dc/view?usp=drivesdk",
+    "parent": null,
+    "review": "Blocked: shortcut download 403; target metadata unavailable"
+  },
+  {
+    "id": "18eF3zVgHIQMuE4_Fiqgc-4jqpigEiccQ",
+    "title": "Program-Course-List-CS.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/18eF3zVgHIQMuE4_Fiqgc-4jqpigEiccQ/view?usp=drivesdk",
+    "parent": null,
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1JxoFvWvoJPoFvfL-2fPab-r-FZBZMo-4tfhADteWAdI",
+    "title": "CPCS351 - SE Track AI Master Brief v1.0",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1JxoFvWvoJPoFvfL-2fPab-r-FZBZMo-4tfhADteWAdI/edit?usp=drivesdk",
+    "parent": null,
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "12w_yWK7BOiCmWHm6YiKI2IqqqU091wKS",
+    "title": "Sommerville - Engineering Software Products - Global Edition.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/12w_yWK7BOiCmWHm6YiKI2IqqqU091wKS/view?usp=drivesdk",
+    "parent": "05g - Books & Academic Resources",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1rrvU5oSpSxExpXLC4gpxHDE6Qn_XzOpB",
+    "title": "Sommerville - Software Engineering - 10th Edition - Global Edition.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1rrvU5oSpSxExpXLC4gpxHDE6Qn_XzOpB/view?usp=drivesdk",
+    "parent": "05g - Books & Academic Resources",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1VlJHShOANlNQSOJF4Vh-o5XeoQO3tgIa",
+    "title": "CPCS351 - Instructor Teaching Guide - v1.3.docx",
+    "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "url": "https://docs.google.com/document/d/1VlJHShOANlNQSOJF4Vh-o5XeoQO3tgIa/edit?usp=drivesdk&ouid=116877402492951220231&rtpof=true&sd=true",
+    "parent": "05a - Design Syllabus",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1c6CPSbvsYkRMEKWPAZ5F1r6rGDTCMNQN",
+    "title": "CPCS351 - Student Syllabus - Proposed v1.4.docx",
+    "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "url": "https://docs.google.com/document/d/1c6CPSbvsYkRMEKWPAZ5F1r6rGDTCMNQN/edit?usp=drivesdk&ouid=116877402492951220231&rtpof=true&sd=true",
+    "parent": "05a - Design Syllabus",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1BIDadRKvy0FAt6z8SePZtYXubcj98Ovn",
+    "title": "CPCS351 - Instructor Teaching Guide - v1.1.docx",
+    "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "url": "https://docs.google.com/document/d/1BIDadRKvy0FAt6z8SePZtYXubcj98Ovn/edit?usp=drivesdk&ouid=116877402492951220231&rtpof=true&sd=true",
+    "parent": "05a - Design Syllabus",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1M4_obDEIB_ER-xhEhQfNtlrFPffL3AWL",
+    "title": "CPCS351 - Student Syllabus - Proposed v1.2.docx",
+    "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "url": "https://docs.google.com/document/d/1M4_obDEIB_ER-xhEhQfNtlrFPffL3AWL/edit?usp=drivesdk&ouid=116877402492951220231&rtpof=true&sd=true",
+    "parent": "05a - Design Syllabus",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1f533g0p07TVM9JhkLCNNNOrYgNz2I5WA",
+    "title": "CPCS351 - Integrated Syllabus and Course Guide - v1.2.docx",
+    "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "url": "https://docs.google.com/document/d/1f533g0p07TVM9JhkLCNNNOrYgNz2I5WA/edit?usp=drivesdk&ouid=116877402492951220231&rtpof=true&sd=true",
+    "parent": "05a - Design Syllabus",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1lSgzdQDiH4nEsws9HRMu1q5rgkQthbcO",
+    "title": "ABET - Computing Accreditation Criteria 2026-2027.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1lSgzdQDiH4nEsws9HRMu1q5rgkQthbcO/view?usp=drivesdk",
+    "parent": "02c - ABET",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1mz8C0JGyQ7loogYcmkjcd1TVAqT_OYK6CpW5wMY0U8Y",
+    "title": "READ ME - ABET Official Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1mz8C0JGyQ7loogYcmkjcd1TVAqT_OYK6CpW5wMY0U8Y/edit?usp=drivesdk",
+    "parent": "02c - ABET",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1AaKLgHMN_zy-EXk8SH-K-d5W-ZNc8wNv",
+    "title": "CPCS351 - Assessment and Rubrics Handbook - v1.0.docx",
+    "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "url": "https://docs.google.com/document/d/1AaKLgHMN_zy-EXk8SH-K-d5W-ZNc8wNv/edit?usp=drivesdk&ouid=116877402492951220231&rtpof=true&sd=true",
+    "parent": "05d - Assessment & Rubrics",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1yQg0YQd4Hj98NWQUthrD_Lpb_sKX6RuN",
+    "title": "CPCS351_Infographic_Learning_Activities_At_A_Glance.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1yQg0YQd4Hj98NWQUthrD_Lpb_sKX6RuN/view?usp=drivesdk",
+    "parent": "Visual Assets",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1nD_52e2C62Fc3y_XNhyhJANrDbVZFkJJ",
+    "title": "CPCS351_Infographic_Learning_Activities_Overview_Timeline.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1nD_52e2C62Fc3y_XNhyhJANrDbVZFkJJ/view?usp=drivesdk",
+    "parent": "Visual Assets",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1-pgui2im6zerjsi8hdC7bl0LOalmhGS1",
+    "title": "CPCS351_Infographic_Engineering_Challenges.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1-pgui2im6zerjsi8hdC7bl0LOalmhGS1/view?usp=drivesdk",
+    "parent": "Visual Assets",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1Ze2SfcwIsTh5v8OOFH6cHR_M2qHzmGIl",
+    "title": "CPCS351_Infographic_Engineering_Studios.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1Ze2SfcwIsTh5v8OOFH6cHR_M2qHzmGIl/view?usp=drivesdk",
+    "parent": "Visual Assets",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1LtsX222Y12N4fSvn-fYOlnZagXq1Dr_j",
+    "title": "CPCS351_Infographic_Quick_Checks.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1LtsX222Y12N4fSvn-fYOlnZagXq1Dr_j/view?usp=drivesdk",
+    "parent": "Visual Assets",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1lAR-GarEp15eoArAtN_-MOHucttvKEI9",
+    "title": "CPCS351_Infographic_Semester_Journey_Master.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1lAR-GarEp15eoArAtN_-MOHucttvKEI9/view?usp=drivesdk",
+    "parent": "Visual Assets",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1jzAJ4D-7CjqYT9vmhMbp86e7WJDb16at",
+    "title": "CPCS351_Infographic_GitHub_Project_Workspace.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1jzAJ4D-7CjqYT9vmhMbp86e7WJDb16at/view?usp=drivesdk",
+    "parent": "Visual Assets",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1P9ZdyIkddRhj4jwOwHueJsfYZDCCLnhe",
+    "title": "NCAAA ETEC - Program Review Eligibility and Required Documents - English.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1P9ZdyIkddRhj4jwOwHueJsfYZDCCLnhe/view?usp=drivesdk",
+    "parent": "02d - NCAAA ETEC",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1ba8B0QmXTFFuJkjdXLcSW8Y_uQD6mfVI",
+    "title": "NCAAA ETEC - Program Specification Template - English.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1ba8B0QmXTFFuJkjdXLcSW8Y_uQD6mfVI/view?usp=drivesdk",
+    "parent": "02d - NCAAA ETEC",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1mU2wqZh1j3TGuc7HaqH4goMaJCThVufmT4lQPGhi0AQ",
+    "title": "READ ME - NCAAA ETEC Official Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1mU2wqZh1j3TGuc7HaqH4goMaJCThVufmT4lQPGhi0AQ/edit?usp=drivesdk",
+    "parent": "02d - NCAAA ETEC",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1u9ldA5GzJdhsCfzc6j10xIK5Q4jvaJz-",
+    "title": "CS2023 - Software Engineering Knowledge Area.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1u9ldA5GzJdhsCfzc6j10xIK5Q4jvaJz-/view?usp=drivesdk",
+    "parent": "02a - ACM IEEE-CS AAAI CS2023",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1kUX86hDWHYJ6xqm32U0N4uBubyYA-UQw",
+    "title": "CS2023 - ACM IEEE-CS AAAI - Computer Science Curricula 2023.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1kUX86hDWHYJ6xqm32U0N4uBubyYA-UQw/view?usp=drivesdk",
+    "parent": "02a - ACM IEEE-CS AAAI CS2023",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1H7SPewDhMbU6iKyhd9Bu2y045N_68qvtsc0O01phpTo",
+    "title": "READ ME - CS2023 Official Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1H7SPewDhMbU6iKyhd9Bu2y045N_68qvtsc0O01phpTo/edit?usp=drivesdk",
+    "parent": "02a - ACM IEEE-CS AAAI CS2023",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1Y4zsh9MTkIwUdp4K3u4t1aDfBDGJDZDe",
+    "title": "IEEE - SWEBOK Guide v4.0.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1Y4zsh9MTkIwUdp4K3u4t1aDfBDGJDZDe/view?usp=drivesdk",
+    "parent": "02b - IEEE SWEBOK",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "10Z_LrW7Blj7nSo3aQvlC8Qx48lfyA_Q629weGpSyk3I",
+    "title": "READ ME - SWEBOK Official Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/10Z_LrW7Blj7nSo3aQvlC8Qx48lfyA_Q629weGpSyk3I/edit?usp=drivesdk",
+    "parent": "02b - IEEE SWEBOK",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1QPSxICInykEGJDkpEbB7cBqhp5MSXMTrh47BcoOgLfE",
+    "title": "01 - Project Charter – Software Engineering Curriculum Development",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1QPSxICInykEGJDkpEbB7cBqhp5MSXMTrh47BcoOgLfE/edit?usp=drivesdk",
+    "parent": "01 - Project Management",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1ZQPc1T_xle-DLFA4BpP5oq0gLeGNc4QnrkTtwckkQ4o",
+    "title": "READ ME - NC State CSC326 Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1ZQPc1T_xle-DLFA4BpP5oq0gLeGNc4QnrkTtwckkQ4o/edit?usp=drivesdk",
+    "parent": "NC State - CSC326",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1I0BtR3rVX0T2NcB09wzx0uQnl1sEaiNOTyL2VAFV2cE",
+    "title": "READ ME - Toronto CSC301 Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1I0BtR3rVX0T2NcB09wzx0uQnl1sEaiNOTyL2VAFV2cE/edit?usp=drivesdk",
+    "parent": "Toronto - CSC301",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1jql4DFBZZVjyb2EVRPzJkZwKEyZJBLn_4GFtgyByBuY",
+    "title": "READ ME - Waterloo CS346 Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1jql4DFBZZVjyb2EVRPzJkZwKEyZJBLn_4GFtgyByBuY/edit?usp=drivesdk",
+    "parent": "Waterloo - CS346",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1BCwTDN2TiCeEpWYUNFM8TQSjEHED4eyn",
+    "title": "KFUPM - Software Engineering Student Guide - August 2025.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1BCwTDN2TiCeEpWYUNFM8TQSjEHED4eyn/view?usp=drivesdk",
+    "parent": "KFUPM - SWE",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1w-fBJmCOfZNFeaA7VSaMslpZzZ41PM2wMtuqAjA1Vgk",
+    "title": "READ ME - KFUPM SWE Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1w-fBJmCOfZNFeaA7VSaMslpZzZ41PM2wMtuqAjA1Vgk/edit?usp=drivesdk",
+    "parent": "KFUPM - SWE",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1TI17RjZKaFfKmHspnXukG5LLIWPI2pzE2f6q20pXJko",
+    "title": "READ ME - KFUPM SWE Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1TI17RjZKaFfKmHspnXukG5LLIWPI2pzE2f6q20pXJko/edit?usp=drivesdk",
+    "parent": "KFUPM - SWE",
+    "review": "Fetch returned empty text"
+  },
+  {
+    "id": "1GAFCaZa7D1irTybAq6zQO3VuZEGo8Fba1naHlWt6uCo",
+    "title": "READ ME - CMU 17-214 Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1GAFCaZa7D1irTybAq6zQO3VuZEGo8Fba1naHlWt6uCo/edit?usp=drivesdk",
+    "parent": "CMU - 17-214",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1mjgKXzPgd1X9WPXEJFoDxnyPD6AUcpAdB8EygA7jiXk",
+    "title": "READ ME - UIUC CS427 Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1mjgKXzPgd1X9WPXEJFoDxnyPD6AUcpAdB8EygA7jiXk/edit?usp=drivesdk",
+    "parent": "UIUC - CS427",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1QVlQYxiZ1Y1KNhNt1kvHd1NauYqVyPyu",
+    "title": "University of Toronto - CSC301 - Syllabus.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1QVlQYxiZ1Y1KNhNt1kvHd1NauYqVyPyu/view?usp=drivesdk",
+    "parent": "Toronto - CSC301",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1LM6uK0U0xYMPdhMGFqOyzH0OfpumpBqATwZDikmFSUo",
+    "title": "READ ME - KSU CSC342 Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1LM6uK0U0xYMPdhMGFqOyzH0OfpumpBqATwZDikmFSUo/edit?usp=drivesdk",
+    "parent": "KSU - CSC342",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1H4rZt7ZnaCccROiGiCcld7ZdKjpcPnzP",
+    "title": "NC State - CSC326 - Fall 2026 Syllabus.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1H4rZt7ZnaCccROiGiCcld7ZdKjpcPnzP/view?usp=drivesdk",
+    "parent": "NC State - CSC326",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1FfRcEsaw6AwieXirj6WYsH49vA1qACRY",
+    "title": "Carnegie Mellon - 17-214 - Principles of Software Construction - Syllabus.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1FfRcEsaw6AwieXirj6WYsH49vA1qACRY/view?usp=drivesdk",
+    "parent": "CMU - 17-214",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1gAHMMn_JLgsvIMFMLS0ZOSecLACYFgk_",
+    "title": "Qassim University - BSc Computer Science - Course Specifications.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1gAHMMn_JLgsvIMFMLS0ZOSecLACYFgk_/view?usp=drivesdk",
+    "parent": "Qassim - CS383",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1tDcghdiQsE-ZOc_NDYYwyOJUcPQ9HKHKncJ0c7vpwag",
+    "title": "READ ME - Qassim CS383 Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1tDcghdiQsE-ZOc_NDYYwyOJUcPQ9HKHKncJ0c7vpwag/edit?usp=drivesdk",
+    "parent": "Qassim - CS383",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  },
+  {
+    "id": "1imEwlt9W0YG5o8QJAUD98giJeWV0seip",
+    "title": "CPCS351 - Engineering Challenges.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1imEwlt9W0YG5o8QJAUD98giJeWV0seip/view?usp=drivesdk",
+    "parent": "Infographics",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1V6VhpnEQ3-PShhRe5hd5v5YQuJUn8dUq",
+    "title": "CPCS351 - Engineering Studios.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1V6VhpnEQ3-PShhRe5hd5v5YQuJUn8dUq/view?usp=drivesdk",
+    "parent": "Infographics",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "183txJHsPPLopetZOJ5apwSjXuN8L8ZWL",
+    "title": "CPCS351 - Quick Checks.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/183txJHsPPLopetZOJ5apwSjXuN8L8ZWL/view?usp=drivesdk",
+    "parent": "Infographics",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1lHP9d96_GVzp7jKDaUvK-7Joe-w9AX9R",
+    "title": "CPCS351 - Semester Journey - Master.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1lHP9d96_GVzp7jKDaUvK-7Joe-w9AX9R/view?usp=drivesdk",
+    "parent": "Infographics",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1_XFDJd-2GAHsj9XrSQFW6k9bFE2C_hsG",
+    "title": "CPCS351 - GitHub Project Workspace.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1_XFDJd-2GAHsj9XrSQFW6k9bFE2C_hsG/view?usp=drivesdk",
+    "parent": "Infographics",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1wCfIXNYn2jZzWK6spohF66QFzRn2WmoR",
+    "title": "CPCS351 - Infographic - Engineering Challenges.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1wCfIXNYn2jZzWK6spohF66QFzRn2WmoR/view?usp=drivesdk",
+    "parent": "Infographics",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "17vCanBot7RUhTOcJsuKSEmnawi1anuF2",
+    "title": "CPCS351 - Infographic - Quick Checks.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/17vCanBot7RUhTOcJsuKSEmnawi1anuF2/view?usp=drivesdk",
+    "parent": "Infographics",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1haqnmLkT6aHYtIeGew6mwv9O4zHt6u6c",
+    "title": "CPCS351 - Infographic - Engineering Studios.png",
+    "type": "image/png",
+    "url": "https://drive.google.com/file/d/1haqnmLkT6aHYtIeGew6mwv9O4zHt6u6c/view?usp=drivesdk",
+    "parent": "Infographics",
+    "review": "Downloaded and visually inspected; exact duplicate images deduplicated"
+  },
+  {
+    "id": "1hmg5gTCZpG1XmyYakKYYa5nGew3iRkrE",
+    "title": "University of Waterloo - CS346 - Fall 2026 Syllabus.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1hmg5gTCZpG1XmyYakKYYa5nGew3iRkrE/view?usp=drivesdk",
+    "parent": "Waterloo - CS346",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1Qrrp-kOKWD6iK6D07YbRggqggaN7gmBx",
+    "title": "IAU - BSc Computer Science - Short Course Descriptions.pdf",
+    "type": "application/pdf",
+    "url": "https://drive.google.com/file/d/1Qrrp-kOKWD6iK6D07YbRggqggaN7gmBx/view?usp=drivesdk",
+    "parent": "IAU - CSC305",
+    "review": "Downloaded; text extracted; relevant curriculum sections reviewed; image-only syllabi rendered"
+  },
+  {
+    "id": "1lRvgO3fheqee53rTNPLX1S7NKC4xozVXFNFGumcTYTk",
+    "title": "READ ME - IAU CSC305 Evidence",
+    "type": "application/vnd.google-apps.document",
+    "url": "https://docs.google.com/document/d/1lRvgO3fheqee53rTNPLX1S7NKC4xozVXFNFGumcTYTk/edit?usp=drivesdk",
+    "parent": "IAU - CSC305",
+    "review": "Readable contents fetched; relevant sections and tables reviewed"
+  }
+]
