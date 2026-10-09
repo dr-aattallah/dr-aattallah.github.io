@@ -43,15 +43,6 @@
 <meta name="twitter:image" content="https://dr-aattallah.github.io/assets/images/profile.jpg" />
 <meta name="twitter:image:alt" content="Portrait of Dr. Abdulaziz Attaallah" />
 
-<meta name="citation_author" content="Attaallah, Abdulaziz" />
-<meta name="citation_author_institution" content="King Abdulaziz University" />
-<meta name="citation_title" content="Explainable AI-Driven Metrics for Transparent Software Quality Prediction" />
-<meta name="citation_publication_date" content="2026/07/13" />
-<meta name="citation_journal_title" content="IEEE Access" />
-<meta name="citation_volume" content="14" />
-<meta name="citation_firstpage" content="107875" />
-<meta name="citation_doi" content="10.1109/ACCESS.2026.3712592" />
-<meta name="citation_pdf_url" content="https://dr-aattallah.github.io/assets/files/Explainable_AI-Driven_Metrics_for_Transparent_Software_Quality_Prediction.pdf" />
 <meta name="DC.title" content="Dr. Abdulaziz Attaallah Academic Portfolio" />
 <meta name="DC.creator" content="Dr. Abdulaziz Attaallah" />
 <meta name="DC.subject" content="Computer Science; Software Engineering; Cybersecurity; Artificial Intelligence; Blockchain; Digital Transformation" />
@@ -2375,6 +2366,13 @@ html[dir="rtl"] .back-to-top{
   }
 }
 
+/* Academic teaching evidence, responsive navigation and contrast */
+.teaching-evidence{margin:16px 0 24px;padding:16px 20px;border:1px solid var(--gold-border);border-radius:18px;background:rgba(255,255,255,.7);color:var(--navy);line-height:1.75}
+.teaching-evidence p{margin:4px 0}
+.teaching-evidence a{color:#163d6a;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+html[lang="ar"] .teaching-evidence p:not([lang="ar"]){display:none}
+html[lang="en"] .teaching-evidence p[lang="ar"]{display:none}
+@media(max-width:650px){.links{scrollbar-width:thin;scrollbar-color:rgba(176,138,53,.6) transparent}}
 /* Portfolio audit repairs: intrinsic grid sizing and readable narrow-screen citations */
 #publications, #publications .card, #publications .pub, #publications .pub li,
 #publications .publication-archive-panel, #publications .publication-archive-inner,
@@ -2480,7 +2478,7 @@ html[dir="rtl"] .back-to-top{
   <a class="btn gold" href="https://orcid.org/0000-0001-5363-040X" target="_blank" rel="noopener">ORCID</a>
   <a class="btn cv" href="assets/files/Dr_Abdulaziz_Attaallah_13-6-2026_CV.pdf" target="_blank" rel="noopener" download>Download CV</a>
   <a class="btn light" href="https://www.researchgate.net/profile/Abdulaziz-Attaallah-2" target="_blank" rel="noopener">ResearchGate</a>
-  <a class="btn light" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=aattallah@kau.edu.sa" target="_blank" rel="noopener">Email</a>
+  <a class="btn light" href="mailto:aattallah@kau.edu.sa" target="_blank" rel="noopener">Email</a>
   <a class="btn gold" href="the-educator/">The Educator</a>
 </div>
     </div>
@@ -2761,6 +2759,10 @@ html[dir="rtl"] .back-to-top{
         <div class="section-ar-title" lang="ar" dir="rtl">المقررات والخبرة التدريسية</div>
       </div>
 
+      <div class="teaching-evidence" aria-label="Teaching resources">
+        <p><strong>Teaching resources:</strong> Explore published course materials, software engineering learning activities, and practical exercises on <a href="the-educator/learning/courses/cpcs351/">The Educator — CPCS-351</a>.</p>
+        <p lang="ar" dir="rtl"><strong>مصادر تعليمية:</strong> استعرض مواد هندسة البرمجيات والأنشطة والتطبيقات العملية عبر <a href="the-educator/learning/courses/cpcs351/">المنصة التعليمية — CPCS-351</a>.</p>
+      </div>
       <div class="grid teaching-grid balanced">
         <div class="dual-card">
           <h3>Software Engineering</h3>
@@ -2883,7 +2885,7 @@ html[dir="rtl"] .back-to-top{
         </li>
         <li>
           <strong>Estimating Usable-Security Through Hesitant Fuzzy Linguistic Term Sets Based Technique.</strong>
-          Computers, Materials &amp; Continua, vol. 70, pp. 5683-5705, 2021. <span class="doi">DOI: <a href="https://doi.org/10.32604/cmc.2022.021643" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.32604/cmc.2022.021643">10.32604/cmc.2022.021643</a></span>
+          Computers, Materials &amp; Continua, vol. 70, pp. 5683-5705, 2022. <span class="doi">DOI: <a href="https://doi.org/10.32604/cmc.2022.021643" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.32604/cmc.2022.021643">10.32604/cmc.2022.021643</a></span>
         </li>
         <li>
           <strong>Device Security Assessment of Internet of Healthcare Things.</strong>
@@ -2948,7 +2950,7 @@ html[dir="rtl"] .back-to-top{
         </div>
 
         <div class="contact-actions" aria-label="Primary contact actions">
-          <a class="btn gold" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=aattallah@kau.edu.sa" target="_blank" rel="noopener">Email</a>
+          <a class="btn gold" href="mailto:aattallah@kau.edu.sa" target="_blank" rel="noopener">Email</a>
           <a class="btn cv" href="assets/files/Dr_Abdulaziz_Attaallah_13-6-2026_CV.pdf" target="_blank" rel="noopener" download>Download CV</a>
           <a class="btn light" href="https://scholar.google.com/citations?user=scCDFpcAAAAJ" target="_blank" rel="noopener">Scholar Profile</a>
         </div>
@@ -2958,7 +2960,7 @@ html[dir="rtl"] .back-to-top{
         <div class="dual-card">
           <h3>Email</h3>
           <div class="ar-card-title" lang="ar" dir="rtl">البريد الجامعي</div>
-          <p><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=aattallah@kau.edu.sa" target="_blank" rel="noopener">aattallah@kau.edu.sa</a></p>
+          <p><a href="mailto:aattallah@kau.edu.sa" target="_blank" rel="noopener">aattallah@kau.edu.sa</a></p>
           <div class="ar-card-text" lang="ar" dir="rtl">للتواصل الأكاديمي والبحثي.</div>
         </div>
 
