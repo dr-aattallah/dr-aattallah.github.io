@@ -1,0 +1,226 @@
+{
+  "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/units/01/",
+  "date": "2026-10-09T00:54:12.311Z",
+  "browsers": {
+    "chromium": "153.0.8010.0",
+    "firefox": {
+      "available": false,
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/firefox-1538/firefox/firefox"
+    },
+    "webkit": {
+      "available": false,
+      "reason": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/webkit-2336/pw_run.sh"
+    }
+  },
+  "environment": {
+    "externalFontsBlocked": true,
+    "proxyTlsInterception": false
+  },
+  "checks": [
+    {
+      "name": "axe desktop: no violations",
+      "passed": true
+    },
+    {
+      "name": "skip link is first keyboard stop and focuses main",
+      "passed": true
+    },
+    {
+      "name": "semantic heading sequence",
+      "passed": true
+    },
+    {
+      "name": "no horizontal overflow 320x568",
+      "passed": true
+    },
+    {
+      "name": "no horizontal overflow 375x812",
+      "passed": true
+    },
+    {
+      "name": "no horizontal overflow 390x844",
+      "passed": true
+    },
+    {
+      "name": "no horizontal overflow 430x932",
+      "passed": true
+    },
+    {
+      "name": "no horizontal overflow 768x1024",
+      "passed": true
+    },
+    {
+      "name": "no horizontal overflow 1024x768",
+      "passed": true
+    },
+    {
+      "name": "no horizontal overflow 1280x800",
+      "passed": true
+    },
+    {
+      "name": "no horizontal overflow 1440x900",
+      "passed": true
+    },
+    {
+      "name": "no horizontal overflow 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "no horizontal overflow 844x390",
+      "passed": true
+    },
+    {
+      "name": "learning evidence uses the content column at 320px",
+      "passed": true
+    },
+    {
+      "name": "learning evidence uses the content column at 390px",
+      "passed": true
+    },
+    {
+      "name": "learning evidence uses the content column at 768px",
+      "passed": true
+    },
+    {
+      "name": "learning evidence uses the content column at 900px",
+      "passed": true
+    },
+    {
+      "name": "learning evidence uses the content column at 901px",
+      "passed": true
+    },
+    {
+      "name": "learning evidence uses the content column at 1024px",
+      "passed": true
+    },
+    {
+      "name": "learning evidence uses the content column at 1440px",
+      "passed": true
+    },
+    {
+      "name": "learning evidence uses the content column at 1920px",
+      "passed": true
+    },
+    {
+      "name": "axe mobile: no violations",
+      "passed": true
+    },
+    {
+      "name": "failed-image fallback contains meaningful accessible descriptions",
+      "passed": true
+    },
+    {
+      "name": "required original images render — release gate",
+      "passed": true
+    },
+    {
+      "name": "educational revision and consistent workshop/practice names",
+      "passed": true
+    },
+    {
+      "name": "both original illustrations open at full size in a new tab",
+      "passed": true
+    },
+    {
+      "name": "workshop notes export preserves both risk responses without submitting data",
+      "passed": true
+    },
+    {
+      "name": "five practice questions",
+      "passed": true
+    },
+    {
+      "name": "initial summary",
+      "passed": true
+    },
+    {
+      "name": "Q1 correct, lock, reset, incorrect, keyboard and live feedback",
+      "passed": true
+    },
+    {
+      "name": "Q2 correct, lock, reset, incorrect, keyboard and live feedback",
+      "passed": true
+    },
+    {
+      "name": "Q3 correct, lock, reset, incorrect, keyboard and live feedback",
+      "passed": true
+    },
+    {
+      "name": "Q4 correct, lock, reset, incorrect, keyboard and live feedback",
+      "passed": true
+    },
+    {
+      "name": "Q5 correct, lock, reset, incorrect, keyboard and live feedback",
+      "passed": true
+    },
+    {
+      "name": "all practiced and correct summary",
+      "passed": true
+    },
+    {
+      "name": "axe answered: no violations",
+      "passed": true
+    },
+    {
+      "name": "reset decrements summary",
+      "passed": true
+    },
+    {
+      "name": "all 16 student disclosures keyboard-expand and collapse",
+      "passed": true
+    },
+    {
+      "name": "student notes hidden",
+      "passed": true
+    },
+    {
+      "name": "every section anchor resolves",
+      "passed": true
+    },
+    {
+      "name": "browser navigation reaches course and unit destinations with valid fragments",
+      "passed": true
+    },
+    {
+      "name": "course and next-unit HTTP links",
+      "passed": true
+    },
+    {
+      "name": "both instructor notes visible and keyboard-expand",
+      "passed": true
+    },
+    {
+      "name": "axe instructor: no violations",
+      "passed": true
+    },
+    {
+      "name": "reduced motion",
+      "passed": true
+    },
+    {
+      "name": "200% zoom-equivalent reflow",
+      "passed": true
+    },
+    {
+      "name": "400% zoom-equivalent reflow",
+      "passed": true
+    },
+    {
+      "name": "both failed images show descriptions and hide broken-image controls",
+      "passed": true
+    },
+    {
+      "name": "visible interactive targets at least 24 CSS px",
+      "passed": true
+    },
+    {
+      "name": "no-JS reading and navigation",
+      "passed": true
+    },
+    {
+      "name": "no uncaught JavaScript errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

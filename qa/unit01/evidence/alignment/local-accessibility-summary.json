@@ -1,0 +1,22 @@
+[
+  {
+    "scan": "axe-answered",
+    "violations": 0,
+    "passes": 28
+  },
+  {
+    "scan": "axe-instructor",
+    "violations": 0,
+    "passes": 30
+  },
+  {
+    "scan": "axe-mobile",
+    "violations": 0,
+    "passes": 28
+  },
+  {
+    "scan": "axe-desktop",
+    "violations": 0,
+    "passes": 27
+  }
+]
