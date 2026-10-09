@@ -1,0 +1,93 @@
+{
+  "base": "http://127.0.0.1:1",
+  "completed": false,
+  "checks": [
+    {
+      "name": "served bytes match checkout: index.html",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/index.html\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: professional.html",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/professional.html\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: engineering.html",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/engineering.html\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: quality.html",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/quality.html\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: process.html",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/process.html\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: context.html",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/context.html\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: systems.html",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/systems.html\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: responsibility.html",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/responsibility.html\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: workshop.html",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/workshop.html\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: practice.html",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/practice.html\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: transfer.html",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/transfer.html\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: reference.html",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/reference.html\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: instructor.html",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/instructor.html\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: unit01.js",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/unit01.js\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "served bytes match checkout: unit01.css",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/unit01.css\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "anonymous original PNG integrity: u01-roomnow-quality-boundary.png",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/assets/images/u01-roomnow-quality-boundary.png\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    },
+    {
+      "name": "anonymous original PNG integrity: u01-campuscare-judgment.png",
+      "passed": false,
+      "error": "apiRequestContext.get: connect ECONNREFUSED 127.0.0.1:1\nCall log:\n\u001b[2m  - → GET http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/assets/images/u01-campuscare-judgment.png\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n"
+    }
+  ],
+  "errors": [],
+  "fatal": "page.goto: net::ERR_UNSAFE_PORT at http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/index.html\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:1/the-educator/learning/courses/new-cpcs351/units/01/index.html\", waiting until \"networkidle\"\u001b[22m\n"
+}

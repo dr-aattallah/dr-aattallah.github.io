@@ -1,0 +1,16 @@
+[
+  {
+    "file": "u01-roomnow-quality-boundary.png",
+    "status": 200,
+    "mime": "image/png",
+    "bytes": 2295148,
+    "sha256": "c48e56a6528862cc01d819b0d6560b01e8b0332f6bc826aa03e72d7e63e67e5b"
+  },
+  {
+    "file": "u01-campuscare-judgment.png",
+    "status": 200,
+    "mime": "image/png",
+    "bytes": 2486511,
+    "sha256": "ee854bee23979ff02d5b77e8cea0a10acf322e4ad06cf9a55d3ddeded98e73fc"
+  }
+]
