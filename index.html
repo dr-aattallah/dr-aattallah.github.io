@@ -2374,7 +2374,10 @@ html[lang="ar"] .teaching-evidence p:not([lang="ar"]){display:none}
 html[lang="en"] .teaching-evidence p[lang="ar"]{display:none}
 @media(max-width:650px){.links{scrollbar-width:thin;scrollbar-color:rgba(176,138,53,.6) transparent}}
 /* Portfolio audit repairs: intrinsic grid sizing and readable narrow-screen citations */
-#publications, #publications .card, #publications .pub, #publications .pub li,
+/* Keep the publications section aligned with the global 1180px section container. */
+#publications {width:100%;max-width:1180px;margin-inline:auto;box-sizing:border-box}
+
+#publications .card, #publications .pub, #publications .pub li,
 #publications .publication-archive-panel, #publications .publication-archive-inner,
 #publications .featured-publication, #publications .publication-citation {
   min-width:0;
