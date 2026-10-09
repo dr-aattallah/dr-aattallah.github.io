@@ -115,3 +115,22 @@ document.querySelectorAll('.story-visual').forEach(figure => {
     document.getElementById('u01-notes-status').textContent = 'Your notes file was prepared for download. Save it before leaving this page.';
   });
 })();
+
+// Independent constructed response: local download, no submission or automatic grading.
+(() => {
+  const button = document.getElementById('u01-download-exit');
+  if (!button) return;
+  button.addEventListener('click', () => {
+    const response = document.getElementById('u01-exit-response').value.trim();
+    const text = ['CPCS351 — Unit 01 CampusCare Exit Response', 'Ungraded individual practice; no submission recorded.', '', response || '[not yet completed]'].join('\n');
+    const url = URL.createObjectURL(new Blob([text], {type:'text/plain;charset=utf-8'}));
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'CPCS351-Unit01-Exit-Response.txt';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    document.getElementById('u01-exit-status').textContent = 'Your exit response was prepared for download. Check that it was saved before leaving.';
+  });
+})();

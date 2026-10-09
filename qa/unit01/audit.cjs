@@ -29,7 +29,7 @@ async function check(name, fn) { try { await fn(); checks.push({name,passed:true
  page.on('response',r=>{if(/google|unit01|site.css|navigation.js/.test(r.url()))network.push({url:r.url(),status:r.status(),type:r.headers()['content-type']});});
  page.on('requestfailed',r=>network.push({url:r.url(),failure:r.failure()}));
  await page.goto(url,{waitUntil:'domcontentloaded'}); await page.waitForLoadState('networkidle');
- if(await page.locator('body').getAttribute('data-unit-revision') !== '20261009-alignment2') throw new Error('The expected Unit 01 revision is not published at this URL yet; retry after deployment completes.');
+ if(await page.locator('body').getAttribute('data-unit-revision') !== '20261009-meetings3') throw new Error('The expected Unit 01 revision is not published at this URL yet; retry after deployment completes.');
  const axePath=process.env.AXE_PATH || require.resolve('axe-core/axe.min.js');
  async function axeScan(name) {
   await page.addScriptTag({path:axePath});
@@ -85,7 +85,7 @@ async function check(name, fn) { try { await fn(); checks.push({name,passed:true
  save('images.json',images);
  await check('required original images render — release gate',()=>assert.ok(images.length===2 && images.every(i=>i.width>0 && i.alt.trim()),JSON.stringify(images)));
  await check('educational revision and consistent workshop/practice names',async()=>{
-  assert.equal(await page.locator('body').getAttribute('data-unit-revision'),'20261009-alignment2');
+  assert.equal(await page.locator('body').getAttribute('data-unit-revision'),'20261009-meetings3');
   assert.equal(await page.locator('#studio .lesson-index').innerText(),'WORKSHOP');
   assert.equal(await page.locator('#check h2').innerText(),'Practice: Check Your Engineering Judgment');
   assert.ok(!(await page.locator('.mid-checkpoint').innerText()).includes('Before the Studio'));
@@ -107,6 +107,26 @@ async function check(name, fn) { try { await fn(); checks.push({name,passed:true
   const filename=path.join(out,'worksheet-test.txt');await download.saveAs(filename);const text=fs.readFileSync(filename,'utf8');
   assert.ok(text.includes('E1: confirmation exists; record missing after restart.'));assert.ok(text.includes('Repeat the recovery drill'));
   assert.match(await page.locator('#u01-notes-status').innerText(),/prepared for download/);
+ });
+ await check('meeting paths and essential artwork caveats visible before disclosures',async()=>{
+  assert.equal(await page.locator('.u01-meeting-grid article').count(),3);
+  for(const card of await page.locator('.u01-meeting-grid article').all()) {
+   assert.ok(await card.isVisible());assert.match(await card.innerText(),/Read now:/);assert.match(await card.innerText(),/Produce:/);
+   assert.equal(await card.locator('xpath=ancestor::details').count(),0);
+  }
+  assert.equal(await page.locator('.u01-artwork-warning').count(),2);
+  for(const note of await page.locator('.u01-artwork-warning').all()) {assert.ok(await note.isVisible());assert.equal(await note.locator('xpath=ancestor::details').count(),0);}
+  const boxes=await page.locator('.u01-risk-grid fieldset').evaluateAll(es=>es.map(e=>e.getBoundingClientRect().toJSON()));
+  assert.ok(boxes[1].y>=boxes[0].y+boxes[0].height,'Risk panels stack separately on mobile');
+ });
+ await check('independent exit response exports entered text and provides revision feedback',async()=>{
+  await page.locator('#u01-exit-response').fill('Student access matters. A missing record is a risk, not a proven cause. Compare saved and confirmed IDs after restart.');
+  const pending=page.waitForEvent('download');await page.locator('#u01-download-exit').click();const download=await pending;
+  assert.equal(download.suggestedFilename(),'CPCS351-Unit01-Exit-Response.txt');
+  const filename=path.join(out,'exit-test.txt');await download.saveAs(filename);
+  assert.ok(fs.readFileSync(filename,'utf8').includes('Compare saved and confirmed IDs after restart.'));
+  assert.match(await page.locator('#u01-exit-status').innerText(),/prepared for download/);
+  assert.match(await page.locator('.u01-exit-writing details').innerText(),/Check and revise/);
  });
  const qs=page.locator('.quiz-q');
  await check('five practice questions',async()=>assert.equal(await qs.count(),5));
