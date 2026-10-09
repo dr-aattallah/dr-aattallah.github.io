@@ -1,1 +1,10 @@
-{"private":true,"scripts":{"test":"node audit.cjs"},"devDependencies":{"playwright":"1.62.1","axe-core":"4.10.3"}}
+{
+  "private": true,
+  "scripts": {
+    "test": "node multipage-audit.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1",
+    "axe-core": "4.10.3"
+  }
+}

@@ -134,3 +134,19 @@ document.querySelectorAll('.story-visual').forEach(figure => {
     document.getElementById('u01-exit-status').textContent = 'Your exit response was prepared for download. Check that it was saved before leaving.';
   });
 })();
+
+/* Keep incoming links to the former single page working. */
+(() => {
+ const routes = {"puzzle": "index.html", "professional": "professional.html", "engineering": "engineering.html", "quality": "quality.html", "worked-decision": "quality.html", "process": "process.html", "diversity": "context.html", "challenges": "context.html", "systems": "systems.html", "ethics": "responsibility.html", "studio": "workshop.html", "decision-worksheet": "workshop.html", "risk-1-symptom": "workshop.html", "risk-1-hypothesis": "workshop.html", "risk-1-impact": "workshop.html", "risk-1-response": "workshop.html", "risk-1-verification": "workshop.html", "risk-2-symptom": "workshop.html", "risk-2-hypothesis": "workshop.html", "risk-2-impact": "workshop.html", "risk-2-response": "workshop.html", "risk-2-verification": "workshop.html", "u01-download-notes": "workshop.html", "u01-notes-status": "workshop.html", "check": "practice.html", "u01-exit-help": "transfer.html", "u01-exit-response": "transfer.html", "u01-download-exit": "transfer.html", "u01-exit-status": "transfer.html", "storyline": "reference.html", "takeaways": "reference.html", "sources": "reference.html", "delivery": "index.html", "practice-lens": "practice.html"};
+ const hash = decodeURIComponent(location.hash.slice(1));
+ if (document.body.dataset.unitPage === 'index.html' && routes[hash] && routes[hash] !== 'index.html') { location.replace(routes[hash] + location.hash); return; }
+ if (new URLSearchParams(location.search).get('instructor') === '1' && document.body.dataset.unitPage === 'index.html') { location.replace('instructor.html'); return; }
+ const menu = document.querySelector('.unit-menu');
+ const media = matchMedia('(max-width: 980px)');
+ const sync = () => { menu.open = !media.matches; };
+ sync(); media.addEventListener('change', sync);
+})();
+
+// The shared course header creates its footer before parsing these static pages.
+const courseFooter = document.querySelector('.site-footer');
+if (courseFooter) document.body.appendChild(courseFooter);
