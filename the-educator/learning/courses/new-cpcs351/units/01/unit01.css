@@ -64,7 +64,12 @@
 /* Focused educational revision: preserve the course palette and typography. */
 .unit01 .unit-hero { padding-top:48px; padding-bottom:48px; }
 .unit01 .unit-hero h1 { font-size:clamp(46px,6vw,86px); }
-.unit01 .u01-learning-target { max-width:1000px; font-size:16px; line-height:1.7; color:#30445a; margin:24px 0 0; }
+.unit01 .u01-learning-target { grid-column:2; min-width:0; max-width:1000px; font-size:16px; line-height:1.7; color:#30445a; margin:0; text-align:start; }
+.unit01 .learning-focus { grid-template-columns:180px minmax(0,1fr); align-items:start; }
+@media(max-width:900px) {
+ .unit01 .learning-focus { grid-template-columns:minmax(0,1fr); }
+ .unit01 .u01-learning-target { grid-column:1; }
+}
 .unit01 .u01-plan>summary,.unit01 .u01-artwork-note>summary { font-size:16px; line-height:1.6; min-height:44px; padding:12px 0; cursor:pointer; font-weight:700; color:#0c2d48; }
 .unit01 .u01-artwork-note { border:1px solid #dbe1e5; background:#f5f7f8; padding:12px 20px; margin:20px 0 32px; border-radius:12px; }
 .unit01 .u01-artwork-note p,.unit01 .u01-editor-note { font-size:16px; line-height:1.7; color:#30445a; }

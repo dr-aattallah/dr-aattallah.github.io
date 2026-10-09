@@ -29,7 +29,7 @@ async function check(name, fn) { try { await fn(); checks.push({name,passed:true
  page.on('response',r=>{if(/google|unit01|site.css|navigation.js/.test(r.url()))network.push({url:r.url(),status:r.status(),type:r.headers()['content-type']});});
  page.on('requestfailed',r=>network.push({url:r.url(),failure:r.failure()}));
  await page.goto(url,{waitUntil:'domcontentloaded'}); await page.waitForLoadState('networkidle');
- if(await page.locator('body').getAttribute('data-unit-revision') !== '20261009-education1') throw new Error('The expected Unit 01 revision is not published at this URL yet; retry after deployment completes.');
+ if(await page.locator('body').getAttribute('data-unit-revision') !== '20261009-alignment2') throw new Error('The expected Unit 01 revision is not published at this URL yet; retry after deployment completes.');
  const axePath=process.env.AXE_PATH || require.resolve('axe-core/axe.min.js');
  async function axeScan(name) {
   await page.addScriptTag({path:axePath});
@@ -54,6 +54,17 @@ async function check(name, fn) { try { await fn(); checks.push({name,passed:true
   await check(`no horizontal overflow ${width}x${height}`,()=>assert.ok(size.scrollWidth<=width,JSON.stringify(size)));
   await page.screenshot({path:path.join(out,`full-${width}x${height}.png`),fullPage:true});
  }
+ for(const width of [320,390,768,900,901,1024,1440,1920]) {
+  await page.setViewportSize({width,height:900});
+  await check(`learning evidence uses the content column at ${width}px`,async()=>{
+   const b=await page.locator('.u01-learning-target').boundingBox();
+   const items=await page.locator('.focus-items').boundingBox();
+   const section=await page.locator('.learning-focus').boundingBox();
+   assert.ok(Math.abs(b.x-items.x)<1,'Evidence and learning items must share the left edge');
+   assert.ok(b.width>=(width>900?Math.min(1000,items.width)-1:items.width-1),'Evidence must not fall into the 180px heading column');
+   assert.ok(b.y+b.height<=section.y+section.height,'Evidence stays inside its section');
+  });
+ }
  save('viewports.json',viewports);
  for(const width of [390,1440]) {
   await page.setViewportSize({width,height:900});
@@ -74,7 +85,7 @@ async function check(name, fn) { try { await fn(); checks.push({name,passed:true
  save('images.json',images);
  await check('required original images render — release gate',()=>assert.ok(images.length===2 && images.every(i=>i.width>0 && i.alt.trim()),JSON.stringify(images)));
  await check('educational revision and consistent workshop/practice names',async()=>{
-  assert.equal(await page.locator('body').getAttribute('data-unit-revision'),'20261009-education1');
+  assert.equal(await page.locator('body').getAttribute('data-unit-revision'),'20261009-alignment2');
   assert.equal(await page.locator('#studio .lesson-index').innerText(),'WORKSHOP');
   assert.equal(await page.locator('#check h2').innerText(),'Practice: Check Your Engineering Judgment');
   assert.ok(!(await page.locator('.mid-checkpoint').innerText()).includes('Before the Studio'));
