@@ -1,0 +1,21 @@
+[
+  {
+    "page": "workshop",
+    "width": 320,
+    "scrollWidth": 320,
+    "fonts": [
+      "18px",
+      "18px",
+      "18px",
+      "18px"
+    ]
+  },
+  {
+    "page": "professional",
+    "width": 320,
+    "scrollWidth": 320,
+    "fonts": [
+      "18px"
+    ]
+  }
+]
