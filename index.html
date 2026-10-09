@@ -59,7 +59,7 @@
 <meta name="DC.creator" content="Dr. Abdulaziz Attaallah" />
 <meta name="DC.subject" content="Computer Science; Software Engineering; Cybersecurity; Artificial Intelligence; Blockchain; Digital Transformation" />
 <meta name="DC.language" content="en; ar" />
-<script src="./assets/js/system-navigation.js"></script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -2377,6 +2377,27 @@ html[dir="rtl"] .back-to-top{
     animation:none !important;
   }
 }
+
+/* Portfolio audit repairs: intrinsic grid sizing and readable narrow-screen citations */
+#publications, #publications .card, #publications .pub, #publications .pub li,
+#publications .publication-archive-panel, #publications .publication-archive-inner,
+#publications .featured-publication, #publications .publication-citation {
+  min-width:0;
+  max-width:100%;
+}
+#publications .pub {grid-template-columns:minmax(0,1fr)}
+#publications .pub li, #publications .doi, #publications .doi a,
+#publications .publication-citation {overflow-wrap:anywhere;word-break:normal}
+#publications .doi a {color:inherit;text-decoration:underline;text-underline-offset:3px}
+.photo-wrap {aspect-ratio:4016 / 6016}
+.photo {display:block;aspect-ratio:4016 / 6016;object-fit:cover}
+@media(max-width:480px){
+  #publications .pub li {padding:56px 14px 16px}
+  #publications .pub li::before {top:12px;left:14px}
+  #publications .card {padding:20px 14px}
+  .hero-content {min-width:0}
+  .hero-content h1 {overflow-wrap:anywhere}
+}
 </style>
 </head>
 
@@ -2410,7 +2431,7 @@ html[dir="rtl"] .back-to-top{
   <section class="hero" aria-label="Profile introduction">
     <div class="photo-panel">
       <div class="photo-wrap">
-        <img class="photo" src="assets/images/profile.jpg" alt="Portrait of Dr. Abdulaziz Attaallah" />
+        <img class="photo" src="assets/images/profile.jpg" width="4016" height="6016" fetchpriority="high" decoding="async" alt="Portrait of Dr. Abdulaziz Attaallah" />
       </div>
 
       <div class="hero-card">
@@ -2436,7 +2457,7 @@ html[dir="rtl"] .back-to-top{
       </div>
 
       <div class="hero-flag" aria-hidden="true">
-        <img src="assets/images/saudi-flag-glass.png" alt="" />
+        <img src="assets/images/saudi-flag-glass.png" loading="lazy" decoding="async" alt="" />
       </div>
 
       <div class="hero-metrics" aria-label="Academic profile highlights">
@@ -2813,7 +2834,7 @@ html[dir="rtl"] .back-to-top{
           <span class="publication-badge">New · IEEE Access 2026</span>
           <strong>Explainable AI-Driven Metrics for Transparent Software Quality Prediction.</strong>
           Abdulaziz Attaallah and Khalil AlSulbi. IEEE Access, vol. 14, pp. 107875-107895, 2026.
-          <span class="doi">DOI: 10.1109/ACCESS.2026.3712592</span>
+          <span class="doi">DOI: <a href="https://doi.org/10.1109/ACCESS.2026.3712592" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.1109/ACCESS.2026.3712592">10.1109/ACCESS.2026.3712592</a></span>
           <div class="publication-access" aria-label="Access publication">
             <a href="assets/files/Explainable_AI-Driven_Metrics_for_Transparent_Software_Quality_Prediction.pdf" target="_blank" rel="noopener">Read Full Paper (PDF)</a>
             <a class="secondary" href="https://doi.org/10.1109/ACCESS.2026.3712592" target="_blank" rel="noopener">View on IEEE via DOI</a>
@@ -2821,27 +2842,27 @@ html[dir="rtl"] .back-to-top{
         </li>
         <li>
           <strong>Security Test Case Prioritization Through Ant Colony Optimization Algorithm.</strong>
-          Computer Systems Science and Engineering, vol. 47, pp. 3165-3195, 2023. <span class="doi">DOI: 10.32604/csse.2023.040259</span>
+          Computer Systems Science and Engineering, vol. 47, pp. 3165-3195, 2023. <span class="doi">DOI: <a href="https://doi.org/10.32604/csse.2023.040259" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.32604/csse.2023.040259">10.32604/csse.2023.040259</a></span>
         </li>
         <li>
           <strong>Enhancing Healthcare Management During Covid-19: A Patient-Centric Architectural Framework Enabled by Hyperledger Fabric Blockchain.</strong>
-          Information, vol. 14, pp. 425, 2023. <span class="doi">DOI: 10.3390/info14080425</span>
+          Information, vol. 14, pp. 425, 2023. <span class="doi">DOI: <a href="https://doi.org/10.3390/info14080425" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.3390/info14080425">10.3390/info14080425</a></span>
         </li>
         <li>
           <strong>A Trailblazing Framework of Security Assessment for Traffic Data Management.</strong>
-          Intelligent Automation &amp; Soft Computing, vol. 37, pp. 1853-1875, 2023. <span class="doi">DOI: 10.32604/iasc.2023.039761</span>
+          Intelligent Automation &amp; Soft Computing, vol. 37, pp. 1853-1875, 2023. <span class="doi">DOI: <a href="https://doi.org/10.32604/iasc.2023.039761" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.32604/iasc.2023.039761">10.32604/iasc.2023.039761</a></span>
         </li>
         <li>
           <strong>A Fuzzy TOPSIS-Based Approach for Comprehensive Evaluation of Bio-Medical Waste Management: Advancing Sustainability and Decision-Making.</strong>
-          Sustainability, vol. 15, pp. 12565, 2023. <span class="doi">DOI: 10.3390/su151612565</span>
+          Sustainability, vol. 15, pp. 12565, 2023. <span class="doi">DOI: <a href="https://doi.org/10.3390/su151612565" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.3390/su151612565">10.3390/su151612565</a></span>
         </li>
         <li>
           <strong>Fuzzy-Based Unified Decision-Making Technique to Evaluate Security Risks: A Healthcare Perspective.</strong>
-          Mathematics, vol. 11, pp. 2554, 2023. <span class="doi">DOI: 10.3390/math11112554</span>
+          Mathematics, vol. 11, pp. 2554, 2023. <span class="doi">DOI: <a href="https://doi.org/10.3390/math11112554" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.3390/math11112554">10.3390/math11112554</a></span>
         </li>
         <li>
           <strong>A Security Testing Mechanism for Detecting Attacks in Distributed Software Applications Using Blockchain.</strong>
-          PLOS ONE, vol. 18, pp. e0280038, 2023. <span class="doi">DOI: 10.1371/journal.pone.0280038</span>
+          PLOS ONE, vol. 18, pp. e0280038, 2023. <span class="doi">DOI: <a href="https://doi.org/10.1371/journal.pone.0280038" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.1371/journal.pone.0280038">10.1371/journal.pone.0280038</a></span>
         </li>
       </ol>
 
@@ -2858,27 +2879,27 @@ html[dir="rtl"] .back-to-top{
           <ol class="pub continued">
         <li>
           <strong>Analyzing the Big Data Security Through a Unified Decision-Making Approach.</strong>
-          Intelligent Automation &amp; Soft Computing, vol. 32, pp. 1071-1088, 2022. <span class="doi">DOI: 10.32604/iasc.2022.022569</span>
+          Intelligent Automation &amp; Soft Computing, vol. 32, pp. 1071-1088, 2022. <span class="doi">DOI: <a href="https://doi.org/10.32604/iasc.2022.022569" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.32604/iasc.2022.022569">10.32604/iasc.2022.022569</a></span>
         </li>
         <li>
           <strong>Estimating Usable-Security Through Hesitant Fuzzy Linguistic Term Sets Based Technique.</strong>
-          Computers, Materials &amp; Continua, vol. 70, pp. 5683-5705, 2021. <span class="doi">DOI: 10.32604/cmc.2022.021643</span>
+          Computers, Materials &amp; Continua, vol. 70, pp. 5683-5705, 2021. <span class="doi">DOI: <a href="https://doi.org/10.32604/cmc.2022.021643" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.32604/cmc.2022.021643">10.32604/cmc.2022.021643</a></span>
         </li>
         <li>
           <strong>Device Security Assessment of Internet of Healthcare Things.</strong>
-          Intelligent Automation &amp; Soft Computing, vol. 27, pp. 593-603, 2021. <span class="doi">DOI: 10.32604/iasc.2021.015092</span>
+          Intelligent Automation &amp; Soft Computing, vol. 27, pp. 593-603, 2021. <span class="doi">DOI: <a href="https://doi.org/10.32604/iasc.2021.015092" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.32604/iasc.2021.015092">10.32604/iasc.2021.015092</a></span>
         </li>
         <li>
           <strong>Prediction of Covid-19 Pandemic Spread in Kingdom of Saudi Arabia.</strong>
-          Computer Systems Science and Engineering, vol. 37, pp. 313-329, 2021. <span class="doi">DOI: 10.32604/csse.2021.014933</span>
+          Computer Systems Science and Engineering, vol. 37, pp. 313-329, 2021. <span class="doi">DOI: <a href="https://doi.org/10.32604/csse.2021.014933" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.32604/csse.2021.014933">10.32604/csse.2021.014933</a></span>
         </li>
         <li>
           <strong>Estimating the Impact of Covid-19 Pandemic on the Research Community in the Kingdom of Saudi Arabia.</strong>
-          Computer Modeling in Engineering &amp; Sciences, vol. 126, pp. 419-436, 2021. <span class="doi">DOI: 10.32604/cmes.2021.014263</span>
+          Computer Modeling in Engineering &amp; Sciences, vol. 126, pp. 419-436, 2021. <span class="doi">DOI: <a href="https://doi.org/10.32604/cmes.2021.014263" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.32604/cmes.2021.014263">10.32604/cmes.2021.014263</a></span>
         </li>
         <li>
           <strong>Standalone Behaviour-Based Attack Detection Techniques for Distributed Software Systems via Blockchain.</strong>
-          Applied Sciences, vol. 11, pp. 5685, 2021. <span class="doi">DOI: 10.3390/app11125685</span>
+          Applied Sciences, vol. 11, pp. 5685, 2021. <span class="doi">DOI: <a href="https://doi.org/10.3390/app11125685" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.3390/app11125685">10.3390/app11125685</a></span>
         </li>
         <li>
           <strong>A Fuzzy Multi-Objective Covering-Based Security Quantification Model for Mitigating Risk of Web Based Medical Image Processing System.</strong>
@@ -2886,15 +2907,15 @@ html[dir="rtl"] .back-to-top{
         </li>
         <li>
           <strong>Attribute Based Honey Encryption Algorithm for Securing Big Data: Hadoop Distributed File System Perspective.</strong>
-          PeerJ Computer Science, vol. 6, pp. e259, 2020. <span class="doi">DOI: 10.7717/peerj-cs.259</span>
+          PeerJ Computer Science, vol. 6, pp. e259, 2020. <span class="doi">DOI: <a href="https://doi.org/10.7717/peerj-cs.259" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.7717/peerj-cs.259">10.7717/peerj-cs.259</a></span>
         </li>
         <li>
           <strong>Managing Security-Risks for Improving Security-Durability of Institutional Web-Applications: Design Perspective.</strong>
-          Computers, Materials &amp; Continua, vol. 66, pp. 1849-1865, 2020. <span class="doi">DOI: 10.32604/cmc.2020.013854</span>
+          Computers, Materials &amp; Continua, vol. 66, pp. 1849-1865, 2020. <span class="doi">DOI: <a href="https://doi.org/10.32604/cmc.2020.013854" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.32604/cmc.2020.013854">10.32604/cmc.2020.013854</a></span>
         </li>
         <li>
           <strong>A Hybrid Fuzzy Rule-Based Multi-Criteria Framework for Security Assessment of Medical Device Software.</strong>
-          International Journal of Intelligent Engineering and Systems, vol. 13, pp. 51-62, 2020. <span class="doi">DOI: 10.22266/ijies2020.1031.06</span>
+          International Journal of Intelligent Engineering and Systems, vol. 13, pp. 51-62, 2020. <span class="doi">DOI: <a href="https://doi.org/10.22266/ijies2020.1031.06" target="_blank" rel="noopener noreferrer" aria-label="Open DOI 10.22266/ijies2020.1031.06">10.22266/ijies2020.1031.06</a></span>
         </li>
           </ol>
 
@@ -2970,7 +2991,7 @@ html[dir="rtl"] .back-to-top{
           <div class="office-details">
             <div>
               <p>Room No. 35F97 (354), 3rd Floor<br>Faculty of Computing and Information Technology, Building 70</p>
-              <a class="map-link" href="https://www.google.com/maps/place/%D9%83%D9%84%D9%8A%D8%A9+%D8%B9%D9%84%D9%88%D9%85+%D8%A7%D9%84%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA+%D9%88%D8%AA%D9%82%D9%86%D9%8A%D8%A9+%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA+-+%D8%B4%D8%B7%D8%B1+%D8%A7%D9%84%D8%B7%D9%84%D8%A7%D8%A8%25E2%2580%25AD/data=!4m7!3m6!1s0x15c3cddca9276515:0xd3fa51911327949c!8m2!3d21.496514!4d39.247456!16s%252Fg%252F11dxbnpg1g!19sChIJFWUnqdzNwxURnJQnE5FR-tM?authuser=0&amp;hl=ar&amp;rclk=1" target="_blank" rel="noopener" aria-label="Open the Faculty of Computing and Information Technology location in Google Maps">Open in Google Maps</a>
+              <a class="map-link" href="https://www.google.com/maps/place/%D9%83%D9%84%D9%8A%D8%A9+%D8%B9%D9%84%D9%88%D9%85+%D8%A7%D9%84%D8%AD%D8%A7%D8%B3%D8%A8%D8%A7%D8%AA+%D9%88%D8%AA%D9%82%D9%86%D9%8A%D8%A9+%D8%A7%D9%84%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA+-+%D8%B4%D8%B7%D8%B1+%D8%A7%D9%84%D8%B7%D9%84%D8%A7%D8%A8%25E2%2580%25AD/data=!4m7!3m6!1s0x15c3cddca9276515:0xd3fa51911327949c!8m2!3d21.496514!4d39.247456!16s%252Fg%252F11dxbnpg1g!19sChIJFWUnqdzNwxURnJQnE5FR-tM?authuser=0&amp;hl=ar&amp;rclk=1" target="_blank" rel="noopener" aria-label="Open in Google Maps — Faculty of Computing and Information Technology">Open in Google Maps</a>
             </div>
             <div lang="ar" dir="rtl">
               <p>غرفة رقم: ٣٥ ف ٩٧ (٣٥٤)، الدور الثالث<br>كلية الحاسبات وتقنية المعلومات، مبنى (٧٠)</p>
@@ -3162,6 +3183,7 @@ html[dir="rtl"] .back-to-top{
         ? "الموقع الأكاديمي الرسمي للدكتور عبدالعزيز عطاءالله، أستاذ مشارك في علوم الحاسبات بجامعة الملك عبدالعزيز، والمتخصص في هندسة البرمجيات والأمن السيبراني والذكاء الاصطناعي والتحول الرقمي."
         : originalDescription;
     }
+    window.dispatchEvent(new CustomEvent("portfolio:languagechange", {detail:{language}}));
     toggle.textContent = isArabic ? "English" : "العربية";
     toggle.setAttribute("aria-label", isArabic ? "Switch to English" : "التبديل إلى العربية");
 
