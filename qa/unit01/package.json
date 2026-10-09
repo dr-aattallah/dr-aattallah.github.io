@@ -1,7 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "test": "node multipage-audit.cjs"
+    "test": "node multipage-audit.cjs",
+    "test:verify": "node verification-audit.cjs"
   },
   "devDependencies": {
     "playwright": "1.62.1",

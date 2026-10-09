@@ -1,0 +1,750 @@
+{
+  "base": "https://dr-aattallah.github.io",
+  "date": "2026-10-09T16:31:57.605Z",
+  "browser": "154.0.8037.98",
+  "tlsValidation": true,
+  "fontsBlocked": false,
+  "checks": [
+    {
+      "name": "served bytes match checkout: index.html",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: professional.html",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: engineering.html",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: quality.html",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: process.html",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: context.html",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: systems.html",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: responsibility.html",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: workshop.html",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: practice.html",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: transfer.html",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: reference.html",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: instructor.html",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: unit01.js",
+      "passed": true
+    },
+    {
+      "name": "served bytes match checkout: unit01.css",
+      "passed": true
+    },
+    {
+      "name": "anonymous original PNG integrity: u01-roomnow-quality-boundary.png",
+      "passed": true
+    },
+    {
+      "name": "anonymous original PNG integrity: u01-campuscare-judgment.png",
+      "passed": true
+    },
+    {
+      "name": "mobile axe index.html",
+      "passed": true
+    },
+    {
+      "name": "index.html viewport 320x568",
+      "passed": true
+    },
+    {
+      "name": "index.html viewport 375x812",
+      "passed": true
+    },
+    {
+      "name": "index.html viewport 390x844",
+      "passed": true
+    },
+    {
+      "name": "index.html viewport 430x932",
+      "passed": true
+    },
+    {
+      "name": "index.html viewport 768x1024",
+      "passed": true
+    },
+    {
+      "name": "index.html viewport 1024x768",
+      "passed": true
+    },
+    {
+      "name": "index.html viewport 1280x800",
+      "passed": true
+    },
+    {
+      "name": "index.html viewport 1440x900",
+      "passed": true
+    },
+    {
+      "name": "index.html viewport 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "index.html viewport 844x390",
+      "passed": true
+    },
+    {
+      "name": "mobile axe professional.html",
+      "passed": true
+    },
+    {
+      "name": "professional.html viewport 320x568",
+      "passed": true
+    },
+    {
+      "name": "professional.html viewport 375x812",
+      "passed": true
+    },
+    {
+      "name": "professional.html viewport 390x844",
+      "passed": true
+    },
+    {
+      "name": "professional.html viewport 430x932",
+      "passed": true
+    },
+    {
+      "name": "professional.html viewport 768x1024",
+      "passed": true
+    },
+    {
+      "name": "professional.html viewport 1024x768",
+      "passed": true
+    },
+    {
+      "name": "professional.html viewport 1280x800",
+      "passed": true
+    },
+    {
+      "name": "professional.html viewport 1440x900",
+      "passed": true
+    },
+    {
+      "name": "professional.html viewport 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "professional.html viewport 844x390",
+      "passed": true
+    },
+    {
+      "name": "mobile axe engineering.html",
+      "passed": true
+    },
+    {
+      "name": "engineering.html viewport 320x568",
+      "passed": true
+    },
+    {
+      "name": "engineering.html viewport 375x812",
+      "passed": true
+    },
+    {
+      "name": "engineering.html viewport 390x844",
+      "passed": true
+    },
+    {
+      "name": "engineering.html viewport 430x932",
+      "passed": true
+    },
+    {
+      "name": "engineering.html viewport 768x1024",
+      "passed": true
+    },
+    {
+      "name": "engineering.html viewport 1024x768",
+      "passed": true
+    },
+    {
+      "name": "engineering.html viewport 1280x800",
+      "passed": true
+    },
+    {
+      "name": "engineering.html viewport 1440x900",
+      "passed": true
+    },
+    {
+      "name": "engineering.html viewport 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "engineering.html viewport 844x390",
+      "passed": true
+    },
+    {
+      "name": "mobile axe quality.html",
+      "passed": true
+    },
+    {
+      "name": "quality.html viewport 320x568",
+      "passed": true
+    },
+    {
+      "name": "quality.html viewport 375x812",
+      "passed": true
+    },
+    {
+      "name": "quality.html viewport 390x844",
+      "passed": true
+    },
+    {
+      "name": "quality.html viewport 430x932",
+      "passed": true
+    },
+    {
+      "name": "quality.html viewport 768x1024",
+      "passed": true
+    },
+    {
+      "name": "quality.html viewport 1024x768",
+      "passed": true
+    },
+    {
+      "name": "quality.html viewport 1280x800",
+      "passed": true
+    },
+    {
+      "name": "quality.html viewport 1440x900",
+      "passed": true
+    },
+    {
+      "name": "quality.html viewport 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "quality.html viewport 844x390",
+      "passed": true
+    },
+    {
+      "name": "image dimensions, ratio and alt quality.html",
+      "passed": true
+    },
+    {
+      "name": "mobile axe process.html",
+      "passed": true
+    },
+    {
+      "name": "process.html viewport 320x568",
+      "passed": true
+    },
+    {
+      "name": "process.html viewport 375x812",
+      "passed": true
+    },
+    {
+      "name": "process.html viewport 390x844",
+      "passed": true
+    },
+    {
+      "name": "process.html viewport 430x932",
+      "passed": true
+    },
+    {
+      "name": "process.html viewport 768x1024",
+      "passed": true
+    },
+    {
+      "name": "process.html viewport 1024x768",
+      "passed": true
+    },
+    {
+      "name": "process.html viewport 1280x800",
+      "passed": true
+    },
+    {
+      "name": "process.html viewport 1440x900",
+      "passed": true
+    },
+    {
+      "name": "process.html viewport 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "process.html viewport 844x390",
+      "passed": true
+    },
+    {
+      "name": "mobile axe context.html",
+      "passed": true
+    },
+    {
+      "name": "context.html viewport 320x568",
+      "passed": true
+    },
+    {
+      "name": "context.html viewport 375x812",
+      "passed": true
+    },
+    {
+      "name": "context.html viewport 390x844",
+      "passed": true
+    },
+    {
+      "name": "context.html viewport 430x932",
+      "passed": true
+    },
+    {
+      "name": "context.html viewport 768x1024",
+      "passed": true
+    },
+    {
+      "name": "context.html viewport 1024x768",
+      "passed": true
+    },
+    {
+      "name": "context.html viewport 1280x800",
+      "passed": true
+    },
+    {
+      "name": "context.html viewport 1440x900",
+      "passed": true
+    },
+    {
+      "name": "context.html viewport 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "context.html viewport 844x390",
+      "passed": true
+    },
+    {
+      "name": "mobile axe systems.html",
+      "passed": true
+    },
+    {
+      "name": "systems.html viewport 320x568",
+      "passed": true
+    },
+    {
+      "name": "systems.html viewport 375x812",
+      "passed": true
+    },
+    {
+      "name": "systems.html viewport 390x844",
+      "passed": true
+    },
+    {
+      "name": "systems.html viewport 430x932",
+      "passed": true
+    },
+    {
+      "name": "systems.html viewport 768x1024",
+      "passed": true
+    },
+    {
+      "name": "systems.html viewport 1024x768",
+      "passed": true
+    },
+    {
+      "name": "systems.html viewport 1280x800",
+      "passed": true
+    },
+    {
+      "name": "systems.html viewport 1440x900",
+      "passed": true
+    },
+    {
+      "name": "systems.html viewport 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "systems.html viewport 844x390",
+      "passed": true
+    },
+    {
+      "name": "mobile axe responsibility.html",
+      "passed": true
+    },
+    {
+      "name": "responsibility.html viewport 320x568",
+      "passed": true
+    },
+    {
+      "name": "responsibility.html viewport 375x812",
+      "passed": true
+    },
+    {
+      "name": "responsibility.html viewport 390x844",
+      "passed": true
+    },
+    {
+      "name": "responsibility.html viewport 430x932",
+      "passed": true
+    },
+    {
+      "name": "responsibility.html viewport 768x1024",
+      "passed": true
+    },
+    {
+      "name": "responsibility.html viewport 1024x768",
+      "passed": true
+    },
+    {
+      "name": "responsibility.html viewport 1280x800",
+      "passed": true
+    },
+    {
+      "name": "responsibility.html viewport 1440x900",
+      "passed": true
+    },
+    {
+      "name": "responsibility.html viewport 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "responsibility.html viewport 844x390",
+      "passed": true
+    },
+    {
+      "name": "image dimensions, ratio and alt responsibility.html",
+      "passed": true
+    },
+    {
+      "name": "mobile axe workshop.html",
+      "passed": true
+    },
+    {
+      "name": "workshop.html viewport 320x568",
+      "passed": true
+    },
+    {
+      "name": "workshop.html viewport 375x812",
+      "passed": true
+    },
+    {
+      "name": "workshop.html viewport 390x844",
+      "passed": true
+    },
+    {
+      "name": "workshop.html viewport 430x932",
+      "passed": true
+    },
+    {
+      "name": "workshop.html viewport 768x1024",
+      "passed": true
+    },
+    {
+      "name": "workshop.html viewport 1024x768",
+      "passed": true
+    },
+    {
+      "name": "workshop.html viewport 1280x800",
+      "passed": true
+    },
+    {
+      "name": "workshop.html viewport 1440x900",
+      "passed": true
+    },
+    {
+      "name": "workshop.html viewport 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "workshop.html viewport 844x390",
+      "passed": true
+    },
+    {
+      "name": "mobile axe practice.html",
+      "passed": true
+    },
+    {
+      "name": "practice.html viewport 320x568",
+      "passed": true
+    },
+    {
+      "name": "practice.html viewport 375x812",
+      "passed": true
+    },
+    {
+      "name": "practice.html viewport 390x844",
+      "passed": true
+    },
+    {
+      "name": "practice.html viewport 430x932",
+      "passed": true
+    },
+    {
+      "name": "practice.html viewport 768x1024",
+      "passed": true
+    },
+    {
+      "name": "practice.html viewport 1024x768",
+      "passed": true
+    },
+    {
+      "name": "practice.html viewport 1280x800",
+      "passed": true
+    },
+    {
+      "name": "practice.html viewport 1440x900",
+      "passed": true
+    },
+    {
+      "name": "practice.html viewport 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "practice.html viewport 844x390",
+      "passed": true
+    },
+    {
+      "name": "mobile axe transfer.html",
+      "passed": true
+    },
+    {
+      "name": "transfer.html viewport 320x568",
+      "passed": true
+    },
+    {
+      "name": "transfer.html viewport 375x812",
+      "passed": true
+    },
+    {
+      "name": "transfer.html viewport 390x844",
+      "passed": true
+    },
+    {
+      "name": "transfer.html viewport 430x932",
+      "passed": true
+    },
+    {
+      "name": "transfer.html viewport 768x1024",
+      "passed": true
+    },
+    {
+      "name": "transfer.html viewport 1024x768",
+      "passed": true
+    },
+    {
+      "name": "transfer.html viewport 1280x800",
+      "passed": true
+    },
+    {
+      "name": "transfer.html viewport 1440x900",
+      "passed": true
+    },
+    {
+      "name": "transfer.html viewport 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "transfer.html viewport 844x390",
+      "passed": true
+    },
+    {
+      "name": "mobile axe reference.html",
+      "passed": true
+    },
+    {
+      "name": "reference.html viewport 320x568",
+      "passed": true
+    },
+    {
+      "name": "reference.html viewport 375x812",
+      "passed": true
+    },
+    {
+      "name": "reference.html viewport 390x844",
+      "passed": true
+    },
+    {
+      "name": "reference.html viewport 430x932",
+      "passed": true
+    },
+    {
+      "name": "reference.html viewport 768x1024",
+      "passed": true
+    },
+    {
+      "name": "reference.html viewport 1024x768",
+      "passed": true
+    },
+    {
+      "name": "reference.html viewport 1280x800",
+      "passed": true
+    },
+    {
+      "name": "reference.html viewport 1440x900",
+      "passed": true
+    },
+    {
+      "name": "reference.html viewport 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "reference.html viewport 844x390",
+      "passed": true
+    },
+    {
+      "name": "mobile axe instructor.html",
+      "passed": true
+    },
+    {
+      "name": "instructor.html viewport 320x568",
+      "passed": true
+    },
+    {
+      "name": "instructor.html viewport 375x812",
+      "passed": true
+    },
+    {
+      "name": "instructor.html viewport 390x844",
+      "passed": true
+    },
+    {
+      "name": "instructor.html viewport 430x932",
+      "passed": true
+    },
+    {
+      "name": "instructor.html viewport 768x1024",
+      "passed": true
+    },
+    {
+      "name": "instructor.html viewport 1024x768",
+      "passed": true
+    },
+    {
+      "name": "instructor.html viewport 1280x800",
+      "passed": true
+    },
+    {
+      "name": "instructor.html viewport 1440x900",
+      "passed": true
+    },
+    {
+      "name": "instructor.html viewport 1920x1080",
+      "passed": true
+    },
+    {
+      "name": "instructor.html viewport 844x390",
+      "passed": true
+    },
+    {
+      "name": "initial summary",
+      "passed": true
+    },
+    {
+      "name": "Q1: correct, incorrect, locking, reset, keyboard and live feedback",
+      "passed": true
+    },
+    {
+      "name": "summary after Q1",
+      "passed": true
+    },
+    {
+      "name": "Q2: correct, incorrect, locking, reset, keyboard and live feedback",
+      "passed": true
+    },
+    {
+      "name": "summary after Q2",
+      "passed": true
+    },
+    {
+      "name": "Q3: correct, incorrect, locking, reset, keyboard and live feedback",
+      "passed": true
+    },
+    {
+      "name": "summary after Q3",
+      "passed": true
+    },
+    {
+      "name": "Q4: correct, incorrect, locking, reset, keyboard and live feedback",
+      "passed": true
+    },
+    {
+      "name": "summary after Q4",
+      "passed": true
+    },
+    {
+      "name": "Q5: correct, incorrect, locking, reset, keyboard and live feedback",
+      "passed": true
+    },
+    {
+      "name": "summary after Q5",
+      "passed": true
+    },
+    {
+      "name": "reset summary",
+      "passed": true
+    },
+    {
+      "name": "image fallback quality.html",
+      "passed": true
+    },
+    {
+      "name": "image fallback responsibility.html",
+      "passed": true
+    },
+    {
+      "name": "instructor compatibility redirect",
+      "passed": true
+    },
+    {
+      "name": "integration index.html",
+      "passed": true
+    },
+    {
+      "name": "integration syllabus.html",
+      "passed": true
+    },
+    {
+      "name": "integration project.html",
+      "passed": true
+    },
+    {
+      "name": "integration units/02/",
+      "passed": true
+    },
+    {
+      "name": "integration instructor-guide.html",
+      "passed": true
+    },
+    {
+      "name": "actual Google Fonts HTTP loading",
+      "passed": true
+    },
+    {
+      "name": "reduced motion",
+      "passed": true
+    },
+    {
+      "name": "uncaught errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

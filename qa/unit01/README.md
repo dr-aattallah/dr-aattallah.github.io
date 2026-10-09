@@ -36,3 +36,13 @@ The original illustrations are stored in `assets/images/u01-roomnow-quality-boun
 Current educational revision: [report](educational-revision-report.md), [local results](evidence/educational-revision/results.json). Earlier follow-up evidence is retained as history.
 
 Published verification: [43-check results](evidence/deployed-educational-revision/results.json). The suite requires the expected revision marker and rejects a stale page before auditing. Navigation uses DOM readiness so unrelated external image requests do not block link/fragment verification.
+
+## Independent current verification — 9 October 2026
+
+See [final verification](final-verification-20261009.md) for the actual repository state: PR #18 is already merged, both original images are deployed and match the Drive originals byte for byte.
+
+The current multipage suite resolves routes relative to its script, uses Playwright's browser unless `CHROME_PATH` is supplied, and only blocks Google Fonts or bypasses TLS validation when the documented environment flags explicitly request it. It waits for complete image loading and `decode()` before accepting illustration rendering.
+
+Run `npm run test:verify` for additional anonymous byte-integrity checks, ten viewport configurations on all thirteen pages, mobile axe scans, correct/incorrect keyboard quiz paths, counters, and deliberate image-failure fallbacks. This suite defaults to port 8766; set `BASE_URL=http://127.0.0.1:8765` to share the standard local server. Set `BASE_URL=https://dr-aattallah.github.io` for published verification. It compares served Unit 01 bytes to the checked-out source, so intentionally rejects an unmatched or stale deployment.
+
+Final recorded results: 150 local checks, 150 published checks, and 185 supplemental published checks pass. Counts overlap across suites and are not independent WCAG criteria. Native browser zoom, actual screen-reader speech and classroom effectiveness remain unverified; final academic approval belongs to the instructor.

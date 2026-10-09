@@ -1,0 +1,275 @@
+[
+  {
+    "file": "context.html-axe.json",
+    "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/context.html",
+    "timestamp": "2026-10-09T16:29:33.250Z",
+    "engine": {
+      "name": "axe-core",
+      "version": "4.10.3"
+    },
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodeCount": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodeCount": 11
+      }
+    ],
+    "passedRuleCount": 22
+  },
+  {
+    "file": "engineering.html-axe.json",
+    "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/engineering.html",
+    "timestamp": "2026-10-09T16:29:24.747Z",
+    "engine": {
+      "name": "axe-core",
+      "version": "4.10.3"
+    },
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodeCount": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodeCount": 10
+      }
+    ],
+    "passedRuleCount": 22
+  },
+  {
+    "file": "index.html-axe.json",
+    "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/index.html",
+    "timestamp": "2026-10-09T16:29:20.036Z",
+    "engine": {
+      "name": "axe-core",
+      "version": "4.10.3"
+    },
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodeCount": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodeCount": 8
+      }
+    ],
+    "passedRuleCount": 21
+  },
+  {
+    "file": "instructor.html-axe.json",
+    "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/instructor.html",
+    "timestamp": "2026-10-09T16:29:48.246Z",
+    "engine": {
+      "name": "axe-core",
+      "version": "4.10.3"
+    },
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodeCount": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodeCount": 6
+      }
+    ],
+    "passedRuleCount": 21
+  },
+  {
+    "file": "practice.html-axe.json",
+    "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/practice.html",
+    "timestamp": "2026-10-09T16:29:44.150Z",
+    "engine": {
+      "name": "axe-core",
+      "version": "4.10.3"
+    },
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodeCount": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodeCount": 5
+      }
+    ],
+    "passedRuleCount": 24
+  },
+  {
+    "file": "process.html-axe.json",
+    "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/process.html",
+    "timestamp": "2026-10-09T16:29:30.422Z",
+    "engine": {
+      "name": "axe-core",
+      "version": "4.10.3"
+    },
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodeCount": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodeCount": 11
+      }
+    ],
+    "passedRuleCount": 22
+  },
+  {
+    "file": "professional.html-axe.json",
+    "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/professional.html",
+    "timestamp": "2026-10-09T16:29:21.727Z",
+    "engine": {
+      "name": "axe-core",
+      "version": "4.10.3"
+    },
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodeCount": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodeCount": 12
+      }
+    ],
+    "passedRuleCount": 24
+  },
+  {
+    "file": "quality.html-axe.json",
+    "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/quality.html",
+    "timestamp": "2026-10-09T16:29:28.617Z",
+    "engine": {
+      "name": "axe-core",
+      "version": "4.10.3"
+    },
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodeCount": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodeCount": 14
+      }
+    ],
+    "passedRuleCount": 26
+  },
+  {
+    "file": "reference.html-axe.json",
+    "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/reference.html",
+    "timestamp": "2026-10-09T16:29:46.956Z",
+    "engine": {
+      "name": "axe-core",
+      "version": "4.10.3"
+    },
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodeCount": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodeCount": 6
+      }
+    ],
+    "passedRuleCount": 21
+  },
+  {
+    "file": "responsibility.html-axe.json",
+    "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/responsibility.html",
+    "timestamp": "2026-10-09T16:29:39.454Z",
+    "engine": {
+      "name": "axe-core",
+      "version": "4.10.3"
+    },
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodeCount": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodeCount": 13
+      }
+    ],
+    "passedRuleCount": 28
+  },
+  {
+    "file": "systems.html-axe.json",
+    "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/systems.html",
+    "timestamp": "2026-10-09T16:29:36.187Z",
+    "engine": {
+      "name": "axe-core",
+      "version": "4.10.3"
+    },
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodeCount": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodeCount": 10
+      }
+    ],
+    "passedRuleCount": 22
+  },
+  {
+    "file": "transfer.html-axe.json",
+    "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/transfer.html",
+    "timestamp": "2026-10-09T16:29:45.625Z",
+    "engine": {
+      "name": "axe-core",
+      "version": "4.10.3"
+    },
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodeCount": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodeCount": 12
+      }
+    ],
+    "passedRuleCount": 28
+  },
+  {
+    "file": "workshop.html-axe.json",
+    "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/workshop.html",
+    "timestamp": "2026-10-09T16:29:42.571Z",
+    "engine": {
+      "name": "axe-core",
+      "version": "4.10.3"
+    },
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "nodeCount": 1
+      },
+      {
+        "id": "color-contrast",
+        "nodeCount": 23
+      }
+    ],
+    "passedRuleCount": 28
+  }
+]

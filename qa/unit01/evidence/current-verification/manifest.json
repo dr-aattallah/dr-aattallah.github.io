@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-09",
+  "verified_unit_source": "6a96a5b48f1cd956f9a9e6b88d2e2ddac46bba2a",
+  "branch_base": "5914571d39fa6204d293bf78c76cf52b8e33d8b5",
+  "unit_source_unchanged_between_these_revisions": true,
+  "artifact_scope": "QA tests, documentation and evidence only",
+  "public_image_hashes": [
+    {
+      "file": "u01-roomnow-quality-boundary.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 2295148,
+      "sha256": "c48e56a6528862cc01d819b0d6560b01e8b0332f6bc826aa03e72d7e63e67e5b"
+    },
+    {
+      "file": "u01-campuscare-judgment.png",
+      "status": 200,
+      "mime": "image/png",
+      "bytes": 2486511,
+      "sha256": "ee854bee23979ff02d5b77e8cea0a10acf322e4ad06cf9a55d3ddeded98e73fc"
+    }
+  ]
+}

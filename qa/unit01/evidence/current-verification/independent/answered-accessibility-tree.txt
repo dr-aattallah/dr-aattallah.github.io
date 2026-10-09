@@ -1,0 +1,49 @@
+- status: 4 of 5 practiced; 4 correct on current attempts. This is ungraded practice, not your Blackboard Quick Check.
+- group "RoomNow passes its demo, but changing one booking policy requires risky edits across 17 files. Which investigation best addresses the missing evidence of product quality?":
+  - text: Questions 01 / 05 · QUALITY & PROFESSIONAL PRODUCT
+  - heading "RoomNow passes its demo, but changing one booking policy requires risky edits across 17 files. Which investigation best addresses the missing evidence of product quality?" [level=3]
+  - button "Measure page response time before deciding whether the product is ready."
+  - button "Inspect change dependencies and regression evidence for the affected booking rules."
+  - button "Repeat the original happy-path demo before deciding whether to approve the change."
+  - button "Check whether students prefer the updated interface before approving the change."
+  - status: Choose your first answer. Feedback appears after your attempt.
+- group "University IT operates SSO. RoomNow cannot sign users in during an SSO outage. Which allocation of responsibility is most defensible?":
+  - text: Questions 02 / 05 · SYSTEM BOUNDARY
+  - heading "University IT operates SSO. RoomNow cannot sign users in during an SSO outage. Which allocation of responsibility is most defensible?" [level=3]
+  - button "RoomNow owns authentication operations because sign-in appears in its interface." [disabled]
+  - button "University IT owns the outage and all user messages shown by RoomNow." [disabled]
+  - button "University IT restores SSO; RoomNow handles failed sign-in and booking outcomes safely." [disabled] [pressed]
+  - button "RoomNow should confirm bookings locally and reconcile identities after SSO recovers." [disabled]
+  - status: "Correct first attempt. Correct answer: University IT restores SSO; RoomNow handles failed sign-in and booking outcomes safely. Ownership is separate from dependency handling: each team remains accountable for its own behavior."
+  - text: "Reasoning: A boundary separates scope and ownership, not relevance. RoomNow must avoid unauthorized bookings and misleading success while its external dependency is unavailable."
+  - button "Try this question again"
+- group "Users reject a pilot booking rule. Which response best applies software engineering rather than treating this only as an algorithm problem?":
+  - text: Questions 03 / 05 · PROCESS & DISCIPLINES
+  - heading "Users reject a pilot booking rule. Which response best applies software engineering rather than treating this only as an algorithm problem?" [level=3]
+  - button "Optimize the booking algorithm and repeat its speed measurements with the existing rule." [disabled]
+  - button "Ask users to follow the implemented rule until the original specification is complete." [disabled]
+  - button "Update the user guide and retain the rule because the implementation passes unit tests." [disabled]
+  - button "Clarify the need, revise the rule, implement the change and validate it with affected users." [disabled] [pressed]
+  - status: "Correct first attempt. Correct answer: Clarify the need, revise the rule, implement the change and validate it with affected users. Specification, development and validation recur together in response to evidence."
+  - text: "Reasoning: Computer science foundations support the solution; software engineering also coordinates requirements, implementation and validation under real constraints. These activities need not form a single linear pass."
+  - button "Try this question again"
+- group "Policy requires MFA for room administrators, while users report login difficulty. Which decision respects both the constraint and the need for evidence?":
+  - text: Questions 04 / 05 · CONTEXT & ENGINEERING JUDGMENT
+  - heading "Policy requires MFA for room administrators, while users report login difficulty. Which decision respects both the constraint and the need for evidence?" [level=3]
+  - button "Keep required MFA and compare compliant sign-in flows using threat and usability evidence." [disabled] [pressed]
+  - button "Remove MFA for all administrators and monitor the number of unauthorized changes." [disabled]
+  - button "Apply the most restrictive MFA flow to every user and use sign-in time as the only metric." [disabled]
+  - button "Keep the current flow unchanged because compliance establishes that it is usable enough." [disabled]
+  - status: "Correct first attempt. Correct answer: Keep required MFA and compare compliant sign-in flows using threat and usability evidence. Mandatory policy constrains the option set; compare evidence among options that meet it."
+  - text: "Reasoning: Context does not make every option equally acceptable. Respect mandatory controls, identify viable alternatives and compare threat impact, usability and accessibility evidence before choosing."
+  - button "Try this question again"
+- group "A public AI service could help debug RoomNow, but institutional approval for uploading booking records has not been established. What should the engineer do?":
+  - text: Questions 05 / 05 · PROFESSIONAL RESPONSIBILITY
+  - heading "A public AI service could help debug RoomNow, but institutional approval for uploading booking records has not been established. What should the engineer do?" [level=3]
+  - button "Remove visible names and upload the records because identifiers are no longer on screen." [disabled]
+  - button "Upload a small sample and request institutional approval after the debugging task." [disabled]
+  - button "Pause the upload; use synthetic examples or an authorized environment under applicable policy." [disabled] [pressed]
+  - button "Ask a teammate to sanitize the records and treat their confirmation as upload approval." [disabled]
+  - status: "Correct first attempt. Correct answer: Pause the upload; use synthetic examples or an authorized environment under applicable policy. Synthetic data avoids sending the actual records; any institutional-data use still needs authorized handling."
+  - text: "Reasoning: Confidentiality remains an engineering responsibility. Sanitization alone is not permission. If records were already sent, follow the institution’s incident reporting and containment process rather than continuing the upload."
+  - button "Try this question again"
