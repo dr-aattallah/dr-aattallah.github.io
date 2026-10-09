@@ -137,7 +137,7 @@ document.querySelectorAll('.story-visual').forEach(figure => {
 
 /* Keep incoming links to the former single page working. */
 (() => {
- const routes = {"puzzle": "index.html", "professional": "professional.html", "engineering": "engineering.html", "quality": "quality.html", "worked-decision": "quality.html", "process": "process.html", "diversity": "context.html", "challenges": "context.html", "systems": "systems.html", "ethics": "responsibility.html", "studio": "workshop.html", "decision-worksheet": "workshop.html", "risk-1-symptom": "workshop.html", "risk-1-hypothesis": "workshop.html", "risk-1-impact": "workshop.html", "risk-1-response": "workshop.html", "risk-1-verification": "workshop.html", "risk-2-symptom": "workshop.html", "risk-2-hypothesis": "workshop.html", "risk-2-impact": "workshop.html", "risk-2-response": "workshop.html", "risk-2-verification": "workshop.html", "u01-download-notes": "workshop.html", "u01-notes-status": "workshop.html", "check": "practice.html", "u01-exit-help": "transfer.html", "u01-exit-response": "transfer.html", "u01-download-exit": "transfer.html", "u01-exit-status": "transfer.html", "storyline": "reference.html", "takeaways": "reference.html", "sources": "reference.html", "delivery": "index.html", "practice-lens": "practice.html"};
+ const routes = {"puzzle": "index.html", "professional": "professional.html", "engineering": "engineering.html", "quality": "quality.html", "worked-decision": "quality.html", "process": "process.html", "diversity": "context.html", "challenges": "context.html", "systems": "systems.html", "ethics": "responsibility.html", "studio": "workshop.html", "decision-worksheet": "workshop.html", "risk-1-symptom": "workshop.html", "risk-1-hypothesis": "workshop.html", "risk-1-impact": "workshop.html", "risk-1-response": "workshop.html", "risk-1-verification": "workshop.html", "risk-2-symptom": "workshop.html", "risk-2-hypothesis": "workshop.html", "risk-2-impact": "workshop.html", "risk-2-response": "workshop.html", "risk-2-verification": "workshop.html", "u01-download-notes": "workshop.html", "u01-notes-status": "workshop.html", "check": "practice.html", "u01-exit-help": "transfer.html", "u01-exit-response": "transfer.html", "u01-download-exit": "transfer.html", "u01-exit-status": "transfer.html", "storyline": "index.html", "takeaways": "reference.html", "sources": "reference.html", "delivery": "index.html", "practice-lens": "practice.html"};
  const hash = decodeURIComponent(location.hash.slice(1));
  if (document.body.dataset.unitPage === 'index.html' && routes[hash] && routes[hash] !== 'index.html') { location.replace(routes[hash] + location.hash); return; }
  if (new URLSearchParams(location.search).get('instructor') === '1' && document.body.dataset.unitPage === 'index.html') { location.replace('instructor.html'); return; }
@@ -150,3 +150,32 @@ document.querySelectorAll('.story-visual').forEach(figure => {
 // The shared course header creates its footer before parsing these static pages.
 const courseFooter = document.querySelector('.site-footer');
 if (courseFooter) document.body.appendChild(courseFooter);
+
+// Keep course navigation compact on mobile, with a native accessible disclosure.
+(() => {
+ const header = document.querySelector('.site-header');
+ const nav = header?.querySelector('.site-nav');
+ if (!nav) return;
+ const menu = document.createElement('details');
+ menu.className = 'course-menu';
+ const summary = document.createElement('summary');
+ summary.textContent = 'Course menu';
+ menu.appendChild(summary); menu.appendChild(nav); header.appendChild(menu);
+ const media = matchMedia('(max-width: 980px)');
+ const sync = () => { menu.open = !media.matches; };
+ sync(); media.addEventListener('change', sync);
+})();
+
+// Handle legacy hashes even when navigation stays in the overview document.
+(() => {
+ const routes = {"puzzle": "index.html", "professional": "professional.html", "engineering": "engineering.html", "quality": "quality.html", "worked-decision": "quality.html", "process": "process.html", "diversity": "context.html", "challenges": "context.html", "systems": "systems.html", "ethics": "responsibility.html", "studio": "workshop.html", "decision-worksheet": "workshop.html", "risk-1-symptom": "workshop.html", "risk-1-hypothesis": "workshop.html", "risk-1-impact": "workshop.html", "risk-1-response": "workshop.html", "risk-1-verification": "workshop.html", "risk-2-symptom": "workshop.html", "risk-2-hypothesis": "workshop.html", "risk-2-impact": "workshop.html", "risk-2-response": "workshop.html", "risk-2-verification": "workshop.html", "u01-download-notes": "workshop.html", "u01-notes-status": "workshop.html", "check": "practice.html", "u01-exit-help": "transfer.html", "u01-exit-response": "transfer.html", "u01-download-exit": "transfer.html", "u01-exit-status": "transfer.html", "storyline": "index.html", "takeaways": "reference.html", "sources": "reference.html", "delivery": "index.html", "practice-lens": "practice.html"};
+ const followHash = () => {
+  const id = decodeURIComponent(location.hash.slice(1));
+  const target = routes[id];
+  if (document.body.dataset.unitPage === 'index.html' && target && target !== 'index.html') { location.replace(target + location.hash); return; }
+  const element = document.getElementById(id);
+  if (element) { for (let parent = element.parentElement; parent; parent = parent.parentElement) { if (parent.tagName === 'DETAILS') parent.open = true; } }
+ };
+ window.addEventListener('hashchange', followHash);
+ followHash();
+})();

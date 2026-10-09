@@ -1,0 +1,14 @@
+# Unit 01 focused learning refinement
+
+Revision `20261009-focus2`. Six authorized improvements are implemented on the existing multipage Unit 01:
+
+1. Conceptual quality/process/discipline/comparison diagrams are labelled Theory. Applied case sketches, original illustrations and worked decisions remain Example. Mixed theory/example pages expose both labels.
+2. Ten numbered essential pages form one previous/next sequence. Context/challenges is explicitly after-class reading in a separate navigation group. Reference and instructor resources are separately grouped.
+3. Mobile course navigation collapses into a native Course menu; the color legend is inside the topic menu. Redundant unit introduction, breadcrumbs and page counters are hidden on mobile. The topic title remains visible near the top of the first screen.
+4. Seven conceptual pages each include a guiding question, worked weak/strong response comparison, short independent response field, feedback and revision instruction.
+5. Feedback names concrete uncertainty, stakeholders and observable evidence. The examples are hypothetical, locally authored teaching adaptations, not textbook recommendations. Responses are ungraded, local and lost on reload; no automatic evaluation or submission is claimed.
+6. The RoomNow journey is on the overview as four linked stages with optional detailed reasoning. It is removed from the reference desk, which retains takeaways and academic sources. Existing case sections remain available.
+
+Academic basis checked against the retained source: Sommerville SE10 Chapter 1 section 1.1 (professional product, definition, quality, recurring activities, contextual methods and system relationship) and section 1.2 (responsibility, confidentiality, competence and intellectual property). Source conflicts and study references remain as recorded in project-study-critical-review.md and project-source-inventory.json. No advanced topic breadth or assessment/schedule change was introduced. The instructor guide selects one short attempt within existing retrieval/exit time; other attempts are independent study, not seven added in-class activities.
+
+Validation: 150 local checks passed across 13 pages in Chromium 153, including six viewport/breakpoint sizes per page, thirteen axe scans without violations, guided-response feedback, compact mobile navigation, coherent essential route, semantic theory labels, original images, local exports, quiz reset and no-JavaScript navigation. Static validation checked 374 references/fragments with no missing targets or duplicate IDs. A regression exposed same-document legacy hash navigation; hashchange handling now redirects correctly and expands a disclosure containing an incoming fragment. External fonts were blocked for browser tests. Automated checks do not certify full WCAG conformance or learning effectiveness.

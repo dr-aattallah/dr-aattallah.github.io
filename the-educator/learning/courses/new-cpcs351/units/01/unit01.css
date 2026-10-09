@@ -283,3 +283,51 @@
 
 @media(min-width:981px) { .unit01 .unit-menu summary { pointer-events:auto; } .unit01 .unit-menu summary>span { display:inline; } }
 .unit01 .studio-phases p,.unit01 .story-question p { font-size:18px!important; line-height:1.8; }
+
+/* Focused learning refinement: semantic labels, compact mobile chrome and reasoning cycles. */
+.unit01 .nav-group h2 { margin:18px 12px 8px; color:#53657a; font-size:12px; line-height:1.5; text-transform:uppercase; letter-spacing:.07em; }
+.unit01 .nav-group .unit-nav-link { margin:4px 0; }
+.unit01 .unit-menu .type-legend { border-top:1px solid #dce2e9; margin-top:12px; padding:16px 12px; }
+.unit01 .course-menu summary { font-size:15px; min-height:44px; padding:10px; cursor:pointer; font-weight:700; color:#163552; }
+.unit01 .guiding-question { border-left:4px solid #245b91; padding:18px 20px; margin-bottom:16px; background:#edf4fc; }
+.unit01 .guiding-question strong { font-size:13px; color:#245b91; }
+.unit01 .guiding-question p { margin:6px 0 0; }
+.unit01 .case-location { margin:0 0 28px; color:#53657a; font-size:15px!important; }
+.unit01 .case-location a { color:#245b91; display:inline-flex; min-height:32px; align-items:center; }
+.unit01 .case-journey { padding:24px; background:#fff; border:1px solid #dce2e9; border-left:4px solid #684494; border-radius:10px; margin-bottom:32px; }
+.unit01 .journey-stages { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.unit01 .journey-stages article { padding:18px; background:#f3eefb; border-radius:8px; }
+.unit01 .journey-stages b { font-size:18px; color:#513274; }
+.unit01 .journey-stages p { font-size:17px; margin:10px 0; }
+.unit01 .journey-stages a { display:inline-flex; align-items:center; min-height:36px; color:#513274; font-size:16px; }
+.unit01 .connected-story>summary { padding:16px 0; min-height:48px; font-size:17px; color:#513274; cursor:pointer; font-weight:700; }
+.unit01 .reasoning-cycle { margin:36px 0; }
+.unit01 .worked-contrast,.unit01 .micro-attempt { padding:24px; margin:20px 0; background:#fff; border:1px solid #dce2e9; border-left:4px solid var(--kind); border-radius:10px; }
+.unit01 .reasoning-cycle h2 { font-size:26px; margin:16px 0; }
+.unit01 .answer-contrast { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+.unit01 .answer-contrast article { padding:18px; background:#f5f6f8; }
+.unit01 .answer-contrast article:last-child { background:#f3eefb; }
+.unit01 .answer-contrast h3 { font-size:20px; margin:0 0 10px; }
+.unit01 .answer-contrast p { margin:0; }
+.unit01 .micro-attempt label { display:block; margin:16px 0 8px; font-size:18px; font-weight:700; line-height:1.6; }
+.unit01 .micro-attempt textarea { width:100%; max-width:100%; min-height:112px; font:inherit; font-size:18px; padding:12px; border:1px solid #667085; border-radius:5px; resize:vertical; color:#101828; background:#fff; }
+.unit01 .micro-attempt .attempt-note { font-size:15px; color:#53657a; }
+.unit01 .cycle-summary { padding:18px 20px; background:#edf4fc; }
+@media(min-width:981px) { .unit01 .course-menu>summary { display:none; } }
+@media(max-width:980px) {
+ .unit01 .site-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; min-height:70px; padding:16px 20px; }
+ .unit01 .brand strong { font-size:22px; }
+ .unit01 .brand-kicker { font-size:8px; }
+ .unit01 .course-menu { max-width:65%; }
+ .unit01 .course-menu .site-nav { flex-direction:column; align-items:stretch; gap:0; margin:0; }
+ .unit01 .course-menu .site-nav a { padding:10px; }
+ .unit01 .unit-sidebar { padding:12px 20px; }
+ .unit01 .unit-home { display:none; }
+ .unit01 .unit-sidebar>.type-legend { display:none; }
+ .unit01 .breadcrumbs { display:none; }
+ .unit01 .hero-meta>span:last-child { display:none; }
+ .unit01 .page-hero { padding:20px; }
+ .unit01 .page-hero h1 { margin:12px 0; }
+ .unit01 .page-content { padding-top:20px; }
+}
+@media(max-width:620px) { .unit01 .journey-stages,.unit01 .answer-contrast { grid-template-columns:1fr; } .unit01 .worked-contrast,.unit01 .micro-attempt,.unit01 .case-journey { padding:20px; } }
