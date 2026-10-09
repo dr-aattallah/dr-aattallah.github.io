@@ -1,0 +1,902 @@
+{
+  "testEngine": {
+    "name": "axe-core",
+    "version": "4.10.3"
+  },
+  "testRunner": {
+    "name": "axe"
+  },
+  "testEnvironment": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "windowWidth": 390,
+    "windowHeight": 844,
+    "orientationAngle": 0,
+    "orientationType": "landscape-primary"
+  },
+  "timestamp": "2026-10-08T18:27:31.918Z",
+  "url": "https://dr-aattallah.github.io/the-educator/learning/courses/new-cpcs351/units/01/",
+  "toolOptions": {
+    "runOnly": {
+      "type": "tag",
+      "values": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag21aa",
+        "wcag22aa"
+      ]
+    },
+    "reporter": "v1"
+  },
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT"
+      ],
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#667085",
+                "bgColor": "#f4f1e9",
+                "contrastRatio": 4.4,
+                "fontSize": "7.5pt (10px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body data-page=\"learning\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.4 (foreground color: #667085, background color: #f4f1e9, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<div><b>The Educator</b> \u00b7 CPCS 351 \u00b7 Software Engineering I</div>",
+          "target": [
+            "footer > div:nth-child(1)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.4 (foreground color: #667085, background color: #f4f1e9, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#667085",
+                "bgColor": "#f4f1e9",
+                "contrastRatio": 4.4,
+                "fontSize": "7.5pt (10px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body data-page=\"learning\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.4 (foreground color: #667085, background color: #f4f1e9, font size: 7.5pt (10px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<b>The Educator</b>",
+          "target": [
+            "footer > div:nth-child(1) > b"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.4 (foreground color: #667085, background color: #f4f1e9, font size: 7.5pt (10px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#667085",
+                "bgColor": "#f4f1e9",
+                "contrastRatio": 4.4,
+                "fontSize": "7.5pt (10px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body data-page=\"learning\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.4 (foreground color: #667085, background color: #f4f1e9, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<div>King Abdulaziz University \u00b7 Faculty of Computing &amp; Information Technology</div>",
+          "target": [
+            "footer > div:nth-child(2)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.4 (foreground color: #667085, background color: #f4f1e9, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#9a6b13",
+                "bgColor": "#fff8e8",
+                "contrastRatio": 4.42,
+                "fontSize": "6.0pt (8px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"story-question\"><span>ROOMNOW \u00b7 PROFESSIONAL PRODUCT</span><b>What would you do as the software engineer?</b><p>The prototype works for 20 students. Before approving campus-wide use, what would you investigate beyond the code itself?</p></div>",
+                  "target": [
+                    "#professional > .prose > .story-question"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span>ROOMNOW \u00b7 PROFESSIONAL PRODUCT</span>",
+          "target": [
+            "#professional > .prose > .story-question > span"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#667085",
+                "bgColor": "#e9f4ee",
+                "contrastRatio": 4.41,
+                "fontSize": "6.8pt (9px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"engineer\"><small>ENGINEERING VIEW</small><b>People \u2192 Requirements \u2192 Design \u2192 Code \u2192 Tests \u2192 Evidence \u2192 Evolution</b><span>\u201cCan our team justify, verify, change and sustain the solution?\u201d</span></div>",
+                  "target": [
+                    ".engineer"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.41 (foreground color: #667085, background color: #e9f4ee, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span>\u201cCan our team justify, verify, change and sustain the solution?\u201d</span>",
+          "target": [
+            ".engineer > span"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.41 (foreground color: #667085, background color: #e9f4ee, font size: 6.8pt (9px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#dfe7e3",
+                "bgColor": "#4f7c63",
+                "contrastRatio": 3.79,
+                "fontSize": "7.5pt (10px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div><b>Efficiency</b><p>Does it use time, computing resources and capacity responsibly while meeting performance needs?</p></div>",
+                  "target": [
+                    ".quality-diamond > div:nth-child(3)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.79 (foreground color: #dfe7e3, background color: #4f7c63, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<p>Does it use time, computing resources and capacity responsibly while meeting performance needs?</p>",
+          "target": [
+            ".quality-diamond > div:nth-child(3) > p"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.79 (foreground color: #dfe7e3, background color: #4f7c63, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#ffffff",
+                "bgColor": "#b78528",
+                "contrastRatio": 3.28,
+                "fontSize": "12.8pt (17px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div><b>Acceptability</b><p>Is it understandable, usable and compatible with the environment and users for whom it is intended?</p></div>",
+                  "target": [
+                    ".quality-diamond > div:nth-child(4)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.28 (foreground color: #ffffff, background color: #b78528, font size: 12.8pt (17px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<b>Acceptability</b>",
+          "target": [
+            ".quality-diamond > div:nth-child(4) > b"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.28 (foreground color: #ffffff, background color: #b78528, font size: 12.8pt (17px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#f2e9d8",
+                "bgColor": "#b78528",
+                "contrastRatio": 2.72,
+                "fontSize": "7.5pt (10px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div><b>Acceptability</b><p>Is it understandable, usable and compatible with the environment and users for whom it is intended?</p></div>",
+                  "target": [
+                    ".quality-diamond > div:nth-child(4)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.72 (foreground color: #f2e9d8, background color: #b78528, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<p>Is it understandable, usable and compatible with the environment and users for whom it is intended?</p>",
+          "target": [
+            ".quality-diamond > div:nth-child(4) > p"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.72 (foreground color: #f2e9d8, background color: #b78528, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#9a6b13",
+                "bgColor": "#fff8e8",
+                "contrastRatio": 4.42,
+                "fontSize": "6.0pt (8px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"story-question\"><span>ROOMNOW \u00b7 QUALITY PROBLEM</span><b>What would you do as the software engineer?</b><p>Peak demand is growing. Would you optimize speed first, strengthen controls first, or change the design? What evidence would justify your priority?</p></div>",
+                  "target": [
+                    "#quality > .prose > .story-question"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span>ROOMNOW \u00b7 QUALITY PROBLEM</span>",
+          "target": [
+            "#quality > .prose > .story-question > span"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#9a6b13",
+                "bgColor": "#fff8e8",
+                "contrastRatio": 4.42,
+                "fontSize": "6.0pt (8px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"story-question\"><span>ROOMNOW \u00b7 PROCESS</span><b>What would you do as the software engineer?</b><p>After the first pilot, students ask for group bookings and facilities changes room rules. Which activities must repeat, and what evidence should be updated?</p></div>",
+                  "target": [
+                    "#process > .prose > .story-question"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span>ROOMNOW \u00b7 PROCESS</span>",
+          "target": [
+            "#process > .prose > .story-question > span"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#9a6b13",
+                "bgColor": "#fff8e8",
+                "contrastRatio": 4.42,
+                "fontSize": "6.0pt (8px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"story-question\"><span>ROOMNOW \u00b7 CONTEXT</span><b>What would you do as the software engineer?</b><p>Would you engineer RoomNow the same way as a safety-critical medical controller? Identify which risks and evidence requirements change\u2014and which engineering fundamentals remain.</p></div>",
+                  "target": [
+                    "#diversity > .prose > .story-question"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span>ROOMNOW \u00b7 CONTEXT</span>",
+          "target": [
+            "#diversity > .prose > .story-question > span"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#9a6b13",
+                "bgColor": "#fff8e8",
+                "contrastRatio": 4.42,
+                "fontSize": "6.0pt (8px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"story-question\"><span>ROOMNOW \u00b7 SYSTEM BOUNDARY</span><b>What would you do as the software engineer?</b><p>KAU Identity goes offline for ten minutes. Which responsibility belongs to RoomNow, which belongs outside it, and what behavior should users see?</p></div>",
+                  "target": [
+                    "#systems > .prose > .story-question"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span>ROOMNOW \u00b7 SYSTEM BOUNDARY</span>",
+          "target": [
+            "#systems > .prose > .story-question > span"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#9a6b13",
+                "bgColor": "#fff8e8",
+                "contrastRatio": 4.42,
+                "fontSize": "6.0pt (8px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"story-question\"><span>ROOMNOW \u00b7 ENGINEERING DECISION</span><b>What would you do as the software engineer?</b><p>The easiest solution is not necessarily the best one. What alternatives, constraints and evidence must the team compare before deciding?</p></div>",
+                  "target": [
+                    "#ethics > .prose > .story-question:nth-child(5)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span>ROOMNOW \u00b7 ENGINEERING DECISION</span>",
+          "target": [
+            "#ethics > .prose > .story-question:nth-child(5) > span"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#9a6b13",
+                "bgColor": "#fff8e8",
+                "contrastRatio": 4.42,
+                "fontSize": "6.0pt (8px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"story-question\"><span>ROOMNOW \u00b7 ETHICAL DECISION</span><b>What would you do as the software engineer?</b><p>If schedule pressure conflicts with traceability and accountability, what is your professional obligation\u2014and how would you escalate the risk?</p></div>",
+                  "target": [
+                    "#ethics > .prose > .story-question:nth-child(7)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span>ROOMNOW \u00b7 ETHICAL DECISION</span>",
+          "target": [
+            "#ethics > .prose > .story-question:nth-child(7) > span"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.42 (foreground color: #9a6b13, background color: #fff8e8, font size: 6.0pt (8px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#667085",
+                "bgColor": "#eef3f6",
+                "contrastRatio": 4.45,
+                "fontSize": "10.5pt (14px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<section class=\"mid-checkpoint\">",
+                  "target": [
+                    ".mid-checkpoint"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 4.45 (foreground color: #667085, background color: #eef3f6, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<p>Explain this chain in your own words without looking back:</p>",
+          "target": [
+            ".mid-checkpoint > p"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 4.45 (foreground color: #667085, background color: #eef3f6, font size: 10.5pt (14px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    }
+  ],
+  "incomplete": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.10/color-contrast?application=axeAPI",
+      "nodes": [
+        {
+          "target": [
+            ".site-nav > a:nth-child(6)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+        },
+        {
+          "target": [
+            ".overline"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+        },
+        {
+          "target": [
+            "h1"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+        },
+        {
+          "target": [
+            ".intro"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+        },
+        {
+          "target": [
+            ".unit-chip:nth-child(1) > small"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+        },
+        {
+          "target": [
+            ".unit-chip:nth-child(1) > b"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+        },
+        {
+          "target": [
+            ".unit-chip:nth-child(2) > small"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+        },
+        {
+          "target": [
+            ".unit-chip:nth-child(2) > b"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+        },
+        {
+          "target": [
+            ".unit-chip:nth-child(3) > small"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+        },
+        {
+          "target": [
+            ".unit-chip:nth-child(3) > b"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+        },
+        {
+          "target": [
+            ".unit-chip:nth-child(4) > small"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+        },
+        {
+          "target": [
+            ".unit-chip:nth-child(4) > b"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+        },
+        {
+          "target": [
+            "a[href$=\"#engineering\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+        },
+        {
+          "target": [
+            "a[href$=\"#quality\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+        },
+        {
+          "target": [
+            "a[href$=\"#process\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+        },
+        {
+          "target": [
+            "a[href$=\"#diversity\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+        },
+        {
+          "target": [
+            "a[href$=\"#systems\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+        },
+        {
+          "target": [
+            "a[href$=\"#challenges\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+        },
+        {
+          "target": [
+            "a[href$=\"#ethics\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+        },
+        {
+          "target": [
+            "a[href$=\"#studio\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+        },
+        {
+          "target": [
+            "a[href$=\"#check\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+        },
+        {
+          "target": [
+            "a[href$=\"#takeaways\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+        },
+        {
+          "target": [
+            "a[href$=\"#sources\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+        },
+        {
+          "target": [
+            ".compare-mid"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        },
+        {
+          "target": [
+            ".role-shift > strong"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        },
+        {
+          "target": [
+            ".visual:nth-child(2) > .process-flow > .process-step:nth-child(4) > b"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+        },
+        {
+          "target": [
+            "#challenges > .prose > .visual > .process-flow > .process-step:nth-child(4) > b"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+        },
+        {
+          "target": [
+            ".dark > b:nth-child(2)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        },
+        {
+          "target": [
+            ".dark > b:nth-child(4)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        },
+        {
+          "target": [
+            ".dark > b:nth-child(6)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        },
+        {
+          "target": [
+            ".dark > b:nth-child(8)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        },
+        {
+          "target": [
+            ".dark > b:nth-child(10)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        },
+        {
+          "target": [
+            "b:nth-child(12)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        },
+        {
+          "target": [
+            ".transfer-challenge > .closure-path > b:nth-child(2)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        },
+        {
+          "target": [
+            ".transfer-challenge > .closure-path > b:nth-child(4)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        },
+        {
+          "target": [
+            ".transfer-challenge > .closure-path > b:nth-child(6)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        },
+        {
+          "target": [
+            ".transfer-challenge > .closure-path > b:nth-child(8)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        },
+        {
+          "target": [
+            ".transfer-challenge > .closure-path > b:nth-child(10)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
+        }
+      ]
+    }
+  ],
+  "passes": [
+    {
+      "id": "aria-allowed-attr",
+      "nodeCount": 10
+    },
+    {
+      "id": "aria-conditional-attr",
+      "nodeCount": 10
+    },
+    {
+      "id": "aria-deprecated-role",
+      "nodeCount": 1
+    },
+    {
+      "id": "aria-hidden-body",
+      "nodeCount": 1
+    },
+    {
+      "id": "aria-prohibited-attr",
+      "nodeCount": 10
+    },
+    {
+      "id": "aria-required-attr",
+      "nodeCount": 1
+    },
+    {
+      "id": "aria-roles",
+      "nodeCount": 1
+    },
+    {
+      "id": "aria-valid-attr-value",
+      "nodeCount": 10
+    },
+    {
+      "id": "aria-valid-attr",
+      "nodeCount": 10
+    },
+    {
+      "id": "avoid-inline-spacing",
+      "nodeCount": 3
+    },
+    {
+      "id": "button-name",
+      "nodeCount": 20
+    },
+    {
+      "id": "bypass",
+      "nodeCount": 1
+    },
+    {
+      "id": "color-contrast",
+      "nodeCount": 488
+    },
+    {
+      "id": "document-title",
+      "nodeCount": 1
+    },
+    {
+      "id": "html-has-lang",
+      "nodeCount": 1
+    },
+    {
+      "id": "html-lang-valid",
+      "nodeCount": 1
+    },
+    {
+      "id": "image-alt",
+      "nodeCount": 2
+    },
+    {
+      "id": "link-name",
+      "nodeCount": 23
+    },
+    {
+      "id": "list",
+      "nodeCount": 6
+    },
+    {
+      "id": "listitem",
+      "nodeCount": 27
+    },
+    {
+      "id": "meta-viewport",
+      "nodeCount": 1
+    },
+    {
+      "id": "nested-interactive",
+      "nodeCount": 32
+    },
+    {
+      "id": "scrollable-region-focusable",
+      "nodeCount": 2
+    },
+    {
+      "id": "summary-name",
+      "nodeCount": 10
+    },
+    {
+      "id": "target-size",
+      "nodeCount": 53
+    }
+  ],
+  "note": "Compact pull-request evidence. Full raw axe results are in the delivered evidence archive."
+}

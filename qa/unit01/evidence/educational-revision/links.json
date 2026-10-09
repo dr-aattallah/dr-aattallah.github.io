@@ -1,0 +1,30 @@
+[
+  {
+    "href": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/index.html",
+    "status": 200
+  },
+  {
+    "href": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/index.html#learning",
+    "status": 200
+  },
+  {
+    "href": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/project.html",
+    "status": 200
+  },
+  {
+    "href": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/index.html#assessment",
+    "status": 200
+  },
+  {
+    "href": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/syllabus.html",
+    "status": 200
+  },
+  {
+    "href": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/syllabus.html#downloads",
+    "status": 200
+  },
+  {
+    "href": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/units/02/",
+    "status": 200
+  }
+]

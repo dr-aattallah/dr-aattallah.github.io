@@ -1,0 +1,410 @@
+[
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/units/01/unit01.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/units/01/unit01.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "https://drive.google.com/thumbnail?id=1TRpG2UAuxkI7e9H92DfslGWxS6Df5_EE&sz=w2400",
+    "status": 302,
+    "type": "application/binary"
+  },
+  {
+    "url": "https://lh3.googleusercontent.com/d/1TRpG2UAuxkI7e9H92DfslGWxS6Df5_EE=w2400",
+    "status": 302,
+    "type": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://drive.google.com/thumbnail?id=1H7sGv-9k6Ty9MV0z0VhTyGloebTe62IO&sz=w2400",
+    "status": 302,
+    "type": "application/binary"
+  },
+  {
+    "url": "https://work.fife.usercontent.google.com/rd-d/ALs6j_HNPj_wtMqSg3cUDMzjAlvguZTPxh_w-AgSNcqfy5fkhL8AtVfKsd7V0ezSOQ_iia-3PNjU1hP1oe0bTJkU8655pa_Lqiwmz7SHHAZwCoeEj_UzrXuo10nF0dtgtPVOwqZvLN4og75EADB86vHaUllTCoilIBejeZ7x27_pj94v3Mr7ktFc86s-dOEnntOi-_vSaeiMy874rWvbCUhd-NjuV6Mo3tmTZ3noFCg8Le6mitHE8GAjFuag=s16383-w2400",
+    "status": 302,
+    "type": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://lh3.googleusercontent.com/d/1H7sGv-9k6Ty9MV0z0VhTyGloebTe62IO=w2400",
+    "status": 302,
+    "type": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://work.fife.usercontent.google.com/rd-d/ALs6j_FvNI7vI7hbDYgihJxiwMxafx6In8VvZZogSGekYScNS_e8zFJ7D8Zsfm9gupJHTAiq9B5liuelloZYebXP_ZKY5dgMrgNVbggcrmbdCxNIQlJ6Q4sMM1V92bYICNfsjWZDkLcBl4HaCuxPyuM9aP5HWqy7rztfU_xzwd6eKa1U30sSaLQyFgu788pwjh4q7isZYi026hHeSpILrDdcNIBRJSAnHZEXfK8elK8TBxHhguVSeke7Qup4=s16383-w2400",
+    "status": 302,
+    "type": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://accounts.google.com/ServiceLogin?continue=https://work.fife.usercontent.google.com/rd-d/ALs6j_FvNI7vI7hbDYgihJxiwMxafx6In8VvZZogSGekYScNS_e8zFJ7D8Zsfm9gupJHTAiq9B5liuelloZYebXP_ZKY5dgMrgNVbggcrmbdCxNIQlJ6Q4sMM1V92bYICNfsjWZDkLcBl4HaCuxPyuM9aP5HWqy7rztfU_xzwd6eKa1U30sSaLQyFgu788pwjh4q7isZYi026hHeSpILrDdcNIBRJSAnHZEXfK8elK8TBxHhguVSeke7Qup4%3Ds16383-w2400&hl=en",
+    "failure": {
+      "errorText": "net::ERR_BLOCKED_BY_ORB"
+    }
+  },
+  {
+    "url": "https://accounts.google.com/ServiceLogin?continue=https://work.fife.usercontent.google.com/rd-d/ALs6j_HNPj_wtMqSg3cUDMzjAlvguZTPxh_w-AgSNcqfy5fkhL8AtVfKsd7V0ezSOQ_iia-3PNjU1hP1oe0bTJkU8655pa_Lqiwmz7SHHAZwCoeEj_UzrXuo10nF0dtgtPVOwqZvLN4og75EADB86vHaUllTCoilIBejeZ7x27_pj94v3Mr7ktFc86s-dOEnntOi-_vSaeiMy874rWvbCUhd-NjuV6Mo3tmTZ3noFCg8Le6mitHE8GAjFuag%3Ds16383-w2400&hl=en",
+    "failure": {
+      "errorText": "net::ERR_BLOCKED_BY_ORB"
+    }
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 304
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "https://drive.google.com/thumbnail?id=1-pgui2im6zerjsi8hdC7bl0LOalmhGS1&sz=w1400",
+    "status": 302,
+    "type": "application/binary"
+  },
+  {
+    "url": "https://drive.google.com/thumbnail?id=1Ze2SfcwIsTh5v8OOFH6cHR_M2qHzmGIl&sz=w1400",
+    "status": 302,
+    "type": "application/binary"
+  },
+  {
+    "url": "https://drive.google.com/thumbnail?id=1LtsX222Y12N4fSvn-fYOlnZagXq1Dr_j&sz=w1400",
+    "status": 302,
+    "type": "application/binary"
+  },
+  {
+    "url": "https://drive.google.com/thumbnail?id=1lAR-GarEp15eoArAtN_-MOHucttvKEI9&sz=w1800",
+    "status": 302,
+    "type": "application/binary"
+  },
+  {
+    "url": "https://drive.google.com/thumbnail?id=1jzAJ4D-7CjqYT9vmhMbp86e7WJDb16at&sz=w1400",
+    "status": 302,
+    "type": "application/binary"
+  },
+  {
+    "url": "https://lh3.googleusercontent.com/d/1-pgui2im6zerjsi8hdC7bl0LOalmhGS1=w1400",
+    "status": 200,
+    "type": "image/png"
+  },
+  {
+    "url": "https://lh3.googleusercontent.com/d/1jzAJ4D-7CjqYT9vmhMbp86e7WJDb16at=w1400",
+    "status": 200,
+    "type": "image/png"
+  },
+  {
+    "url": "https://lh3.googleusercontent.com/d/1lAR-GarEp15eoArAtN_-MOHucttvKEI9=w1800",
+    "status": 200,
+    "type": "image/png"
+  },
+  {
+    "url": "https://lh3.googleusercontent.com/d/1Ze2SfcwIsTh5v8OOFH6cHR_M2qHzmGIl=w1400",
+    "status": 200,
+    "type": "image/png"
+  },
+  {
+    "url": "https://lh3.googleusercontent.com/d/1LtsX222Y12N4fSvn-fYOlnZagXq1Dr_j=w1400",
+    "status": 200,
+    "type": "image/png"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "https://drive.google.com/thumbnail?id=1jzAJ4D-7CjqYT9vmhMbp86e7WJDb16at&sz=w1400",
+    "status": 302,
+    "type": "application/binary"
+  },
+  {
+    "url": "https://lh3.googleusercontent.com/d/1jzAJ4D-7CjqYT9vmhMbp86e7WJDb16at=w1400",
+    "status": 200,
+    "type": "image/png"
+  },
+  {
+    "url": "https://drive.google.com/thumbnail?id=1-pgui2im6zerjsi8hdC7bl0LOalmhGS1&sz=w1400",
+    "status": 302,
+    "type": "application/binary"
+  },
+  {
+    "url": "https://drive.google.com/thumbnail?id=1lAR-GarEp15eoArAtN_-MOHucttvKEI9&sz=w1800",
+    "status": 302,
+    "type": "application/binary"
+  },
+  {
+    "url": "https://lh3.googleusercontent.com/d/1-pgui2im6zerjsi8hdC7bl0LOalmhGS1=w1400",
+    "status": 200,
+    "type": "image/png"
+  },
+  {
+    "url": "https://lh3.googleusercontent.com/d/1lAR-GarEp15eoArAtN_-MOHucttvKEI9=w1800",
+    "status": 200,
+    "type": "image/png"
+  },
+  {
+    "url": "https://drive.google.com/thumbnail?id=1LtsX222Y12N4fSvn-fYOlnZagXq1Dr_j&sz=w1400",
+    "status": 302,
+    "type": "application/binary"
+  },
+  {
+    "url": "https://lh3.googleusercontent.com/d/1LtsX222Y12N4fSvn-fYOlnZagXq1Dr_j=w1400",
+    "status": 200,
+    "type": "image/png"
+  },
+  {
+    "url": "https://drive.google.com/thumbnail?id=1Ze2SfcwIsTh5v8OOFH6cHR_M2qHzmGIl&sz=w1400",
+    "status": 302,
+    "type": "application/binary"
+  },
+  {
+    "url": "https://lh3.googleusercontent.com/d/1Ze2SfcwIsTh5v8OOFH6cHR_M2qHzmGIl=w1400",
+    "status": 200,
+    "type": "image/png"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/units/01/unit01.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/units/01/unit01.css",
+    "status": 304
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/units/01/unit01.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 304
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/units/01/unit01.js",
+    "status": 304
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/css/site.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/units/01/unit01.css",
+    "status": 200,
+    "type": "text/css"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/assets/js/navigation.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/units/01/unit01.js",
+    "status": 200,
+    "type": "text/javascript"
+  },
+  {
+    "url": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap",
+    "status": 200,
+    "type": "text/css; charset=utf-8"
+  }
+]

@@ -1,0 +1,675 @@
+{
+  "browser": "154.0.8037.98",
+  "errors": [],
+  "viewports": [
+    {
+      "width": 320,
+      "scroll": 494,
+      "overflow": [
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Syllabus"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Resources"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "What is SE?"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Good Software"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Process"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Diversity"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Systems Thinking"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Challenges"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Responsibility"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Studio"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Quick Check"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Key Takeaways"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Sources"
+        },
+        {
+          "tag": "DIV",
+          "cls": "process-step",
+          "text": "VALIDATEWhat evidence shows that the software satisfies its "
+        },
+        {
+          "tag": "DIV",
+          "cls": "process-step",
+          "text": "EVOLVEHow will the software change as needs, defects and con"
+        }
+      ]
+    },
+    {
+      "width": 375,
+      "scroll": 494,
+      "overflow": [
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Resources"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "What is SE?"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Good Software"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Process"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Diversity"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Systems Thinking"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Challenges"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Responsibility"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Studio"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Quick Check"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Key Takeaways"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Sources"
+        },
+        {
+          "tag": "DIV",
+          "cls": "process-step",
+          "text": "EVOLVEHow will the software change as needs, defects and con"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "",
+          "text": "EVOLVE"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "text": "How will the software change as needs, defects and context c"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "scroll": 494,
+      "overflow": [
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Resources"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "What is SE?"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Good Software"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Process"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Diversity"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Systems Thinking"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Challenges"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Responsibility"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Studio"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Quick Check"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Key Takeaways"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Sources"
+        },
+        {
+          "tag": "DIV",
+          "cls": "process-step",
+          "text": "EVOLVEHow will the software change as needs, defects and con"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "text": "How will the software change as needs, defects and context c"
+        },
+        {
+          "tag": "DIV",
+          "cls": "process-step",
+          "text": "RISKfailure consequences"
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "scroll": 494,
+      "overflow": [
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Good Software"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Process"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Diversity"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Systems Thinking"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Challenges"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Responsibility"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Studio"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Quick Check"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Key Takeaways"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Sources"
+        },
+        {
+          "tag": "DIV",
+          "cls": "process-step",
+          "text": "SCALEusers + data + teams"
+        },
+        {
+          "tag": "SPAN",
+          "cls": "",
+          "text": "SCALE"
+        },
+        {
+          "tag": "B",
+          "cls": "",
+          "text": "users + data + teams"
+        }
+      ]
+    },
+    {
+      "width": 768,
+      "scroll": 768,
+      "overflow": [
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Systems Thinking"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Challenges"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Responsibility"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Studio"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Quick Check"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Key Takeaways"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Sources"
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "scroll": 1024,
+      "overflow": [
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Studio"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Quick Check"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Key Takeaways"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Sources"
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "scroll": 1280,
+      "overflow": [
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Key Takeaways"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Sources"
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "scroll": 1440,
+      "overflow": []
+    },
+    {
+      "width": 1920,
+      "scroll": 1920,
+      "overflow": []
+    },
+    {
+      "width": 844,
+      "scroll": 844,
+      "overflow": [
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Challenges"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Responsibility"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Studio"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Quick Check"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Key Takeaways"
+        },
+        {
+          "tag": "A",
+          "cls": "",
+          "text": "Sources"
+        }
+      ]
+    }
+  ],
+  "images": [
+    {
+      "src": "https://drive.google.com/thumbnail?id=1TRpG2UAuxkI7e9H92DfslGWxS6Df5_EE&sz=w2400",
+      "alt": "Illustrated RoomNow story showing quality trade-offs and system boundary in a real campus project",
+      "width": 0,
+      "height": 0
+    },
+    {
+      "src": "https://drive.google.com/thumbnail?id=1H7sGv-9k6Ty9MV0z0VhTyGloebTe62IO&sz=w2400",
+      "alt": "CampusCare illustrated story explaining engineering judgment",
+      "width": 0,
+      "height": 0
+    }
+  ],
+  "controls": [
+    {
+      "tag": "DETAILS",
+      "text": "Reveal a strong line of reasoningScale and organizational dependence change the problem. Identity administrators, facilities staff, security teams, support staff and decision maker",
+      "html": "<details class=\"reveal-box\"><summary>Reveal a strong line of reasoning</summary><div>Scale and organizational dependence change the problem. Identity administrators, facilities staff, security teams, support staff and decision makers become stakeholders. Availability, security, privacy, maintainability, usability and auditability matter. The engineering problem is therefore not simply adding features; it is controlling complexity and change while protecting value and people.</div></details>"
+    },
+    {
+      "tag": "DETAILS",
+      "text": "What evidence is missing?Representative users, peak load, conflicting bookings, change effort and failure handling.",
+      "html": "<details><summary>What evidence is missing?</summary><p>Representative users, peak load, conflicting bookings, change effort and failure handling.</p></details>"
+    },
+    {
+      "tag": "DETAILS",
+      "text": "Who owns what?RoomNow owns booking rules and graceful response to SSO failure; the identity provider owns authentication service operation. External dependency does not remove Room",
+      "html": "<details><summary>Who owns what?</summary><p>RoomNow owns booking rules and graceful response to SSO failure; the identity provider owns authentication service operation. External dependency does not remove RoomNow accountability for its own behavior.</p></details>"
+    },
+    {
+      "tag": "DETAILS",
+      "text": "What changes in the process?Specify the conflict rule → develop an appropriate control → validate conflicting and concurrent requests → evolve the rule when policy changes.",
+      "html": "<details><summary>What changes in the process?</summary><p>Specify the conflict rule → develop an appropriate control → validate conflicting and concurrent requests → evolve the rule when policy changes.</p></details>"
+    },
+    {
+      "tag": "DETAILS",
+      "text": "What makes a decision defensible?State stakeholders, alternatives, constraints, trade-offs, evidence and remaining risk. Do not simply maximize one quality attribute.",
+      "html": "<details><summary>What makes a decision defensible?</summary><p>State stakeholders, alternatives, constraints, trade-offs, evidence and remaining risk. Do not simply maximize one quality attribute.</p></details>"
+    },
+    {
+      "tag": "DETAILS",
+      "text": "What a strong explanation should includeContext determines who depends on the software and what constraints matter. Stakeholder needs shape quality priorities. Process organizes ho",
+      "html": "<details class=\"reveal-box\"><summary>What a strong explanation should include</summary><div>Context determines who depends on the software and what constraints matter. Stakeholder needs shape quality priorities. Process organizes how the team specifies, develops, validates and evolves the product. System boundaries expose dependencies and responsibilities. Those relationships create risks, and engineering claims need evidence before a team can justify a decision or release.</div></details>"
+    },
+    {
+      "tag": "DETAILS",
+      "text": "Process: a booking policy changes. Which activities recur?Re-specify the rule, change implementation, validate normal/conflict behavior and plan continued evolution. These activiti",
+      "html": "<details><summary>Process: a booking policy changes. Which activities recur?</summary><p>Re-specify the rule, change implementation, validate normal/conflict behavior and plan continued evolution. These activities can overlap and repeat rather than forming a single waterfall.</p></details>"
+    },
+    {
+      "tag": "DETAILS",
+      "text": "Boundary: university SSO is down. Is it “not our problem”?No. RoomNow does not operate SSO, but must handle its dependency responsibly: explain unavailable sign-in, avoid misleadin",
+      "html": "<details><summary>Boundary: university SSO is down. Is it “not our problem”?</summary><p>No. RoomNow does not operate SSO, but must handle its dependency responsibly: explain unavailable sign-in, avoid misleading success, log appropriate diagnostic evidence and follow the agreed recovery policy.</p></details>"
+    },
+    {
+      "tag": "DETAILS",
+      "text": "Quality: which trade-off needs evidence?Stronger access controls can increase friction. Compare threat impact, accessibility/usability, policy constraints and observed failure rate",
+      "html": "<details><summary>Quality: which trade-off needs evidence?</summary><p>Stronger access controls can increase friction. Compare threat impact, accessibility/usability, policy constraints and observed failure rates before choosing a design.</p></details>"
+    },
+    {
+      "tag": "DETAILS",
+      "text": "Instructor Notes — expected reasoning & debriefPause after diagnosis: ask, “Which of these problems could exist even if every feature passed its demo?”Expected misconception: stude",
+      "html": "<details class=\"reveal-box instructor-note\" data-instructor-only=\"\" hidden=\"\"><summary>Instructor Notes — expected reasoning &amp; debrief</summary><div><b>Pause after diagnosis:</b> ask, “Which of these problems could exist even if every feature passed its demo?”<br><br><b>Expected misconception:</b> students may prescribe tools (“use GitHub”, “write documentation”) without linking them to a risk. Push them to explain the causal chain: symptom → engineering weakness → consequence → practice → evidence.<br><br><b>Debrief target:</b> the app did not fail because “the programmers were bad”; it f"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Performance",
+      "html": "<button data-choice=\"a\">Performance</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Maintainability",
+      "html": "<button data-choice=\"b\">Maintainability</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Usability",
+      "html": "<button data-choice=\"c\">Usability</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Availability",
+      "html": "<button data-choice=\"d\">Availability</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "Try this question again",
+      "html": "<button type=\"button\" class=\"u01-reset\" hidden=\"\">Try this question again</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "SSO must be inside RoomNow because login is a RoomNow feature.",
+      "html": "<button data-choice=\"a\">SSO must be inside RoomNow because login is a RoomNow feature.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Everything a user touches is inside RoomNow.",
+      "html": "<button data-choice=\"b\">Everything a user touches is inside RoomNow.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "SSO may be outside RoomNow while its interface and failure behavior remain RoomNow engineering concerns.",
+      "html": "<button data-choice=\"c\">SSO may be outside RoomNow while its interface and failure behavior remain RoomNow engineering concerns.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "External systems do not affect RoomNow quality.",
+      "html": "<button data-choice=\"d\">External systems do not affect RoomNow quality.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "Try this question again",
+      "html": "<button type=\"button\" class=\"u01-reset\" hidden=\"\">Try this question again</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Requirements must have been completed incorrectly.",
+      "html": "<button data-choice=\"a\">Requirements must have been completed incorrectly.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Validation happens only after development.",
+      "html": "<button data-choice=\"b\">Validation happens only after development.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Evolution starts only after final release.",
+      "html": "<button data-choice=\"c\">Evolution starts only after final release.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Specification, development and validation can interact iteratively.",
+      "html": "<button data-choice=\"d\">Specification, development and validation can interact iteratively.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "Try this question again",
+      "html": "<button type=\"button\" class=\"u01-reset\" hidden=\"\">Try this question again</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Compare stakeholder needs, risk, alternatives and evidence before deciding.",
+      "html": "<button data-choice=\"a\">Compare stakeholder needs, risk, alternatives and evidence before deciding.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Always maximize security regardless of context.",
+      "html": "<button data-choice=\"b\">Always maximize security regardless of context.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Always maximize usability because students are the users.",
+      "html": "<button data-choice=\"c\">Always maximize usability because students are the users.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Let the programmer choose the easiest implementation.",
+      "html": "<button data-choice=\"d\">Let the programmer choose the easiest implementation.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "Try this question again",
+      "html": "<button type=\"button\" class=\"u01-reset\" hidden=\"\">Try this question again</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Acceptable if debugging is faster.",
+      "html": "<button data-choice=\"a\">Acceptable if debugging is faster.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Acceptable if student names are not visible on screen.",
+      "html": "<button data-choice=\"b\">Acceptable if student names are not visible on screen.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Stop and use an approved/sanitized method; confidentiality and authorized handling still apply.",
+      "html": "<button data-choice=\"c\">Stop and use an approved/sanitized method; confidentiality and authorized handling still apply.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "submit",
+      "text": "Only the product manager is responsible.",
+      "html": "<button data-choice=\"d\">Only the product manager is responsible.</button>"
+    },
+    {
+      "tag": "BUTTON",
+      "type": "button",
+      "text": "Try this question again",
+      "html": "<button type=\"button\" class=\"u01-reset\" hidden=\"\">Try this question again</button>"
+    },
+    {
+      "tag": "DETAILS",
+      "text": "Open the reasoning lensThere is no single correct design. A strong answer connects context → risk → quality → alternatives → evidence → justified decision. If the answer is only a ",
+      "html": "<details class=\"reveal-box\"><summary>Open the reasoning lens</summary><div>There is no single correct design. A strong answer connects context → risk → quality → alternatives → evidence → justified decision. If the answer is only a feature list, you are still thinking mainly like a programmer.</div></details>"
+    },
+    {
+      "tag": "DETAILS",
+      "text": "Instructor Notes — final misconception checkAsk: “Complete this sentence: Software Engineering = ?”Misconception to challenge: Software Engineering = Programming + UML + Documentat",
+      "html": "<details class=\"reveal-box instructor-note\" data-instructor-only=\"\" hidden=\"\"><summary>Instructor Notes — final misconception check</summary><div><b>Ask:</b> “Complete this sentence: Software Engineering = ?”<br><br><b>Misconception to challenge:</b> Software Engineering = Programming + UML + Documentation.<br><br><b>Target message:</b> <strong>Software Engineering = making justified engineering decisions about software throughout its life, under real constraints, with evidence.</strong><br><br>If students can transfer this reasoning to CampusCare without copying RoomNow's exact solution, Unit"
+    }
+  ]
+}

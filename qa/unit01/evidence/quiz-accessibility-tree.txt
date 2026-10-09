@@ -1,0 +1,51 @@
+- status: 5 of 5 practiced; 5 correct on current attempts. This is ungraded practice, not your Blackboard Quick Check.
+- group "RoomNow meets every functional requirement, but a policy change requires modifying 17 unrelated files. Which concern is most exposed?":
+  - text: 01 / 05 · QUALITY
+  - heading "RoomNow meets every functional requirement, but a policy change requires modifying 17 unrelated files. Which concern is most exposed?" [level=3]
+  - button "Performance" [disabled]
+  - button "Maintainability" [disabled] [pressed]
+  - button "Usability" [disabled]
+  - button "Availability" [disabled]
+  - status: "Correct first attempt. Correct answer: Maintainability Maintainability. A localized policy change should not force risky changes across many unrelated parts. The symptom suggests poor modularity/separation and high change cost."
+  - text: Maintainability. A localized policy change should not force risky changes across many unrelated parts. The symptom suggests poor modularity/separation and high change cost.
+  - button "Try this question again"
+- group "RoomNow uses KAU Single Sign-On. Which statement best represents the boundary?":
+  - text: 02 / 05 · SYSTEM BOUNDARY
+  - heading "RoomNow uses KAU Single Sign-On. Which statement best represents the boundary?" [level=3]
+  - button "SSO must be inside RoomNow because login is a RoomNow feature." [disabled]
+  - button "Everything a user touches is inside RoomNow." [disabled]
+  - button "SSO may be outside RoomNow while its interface and failure behavior remain RoomNow engineering concerns." [disabled] [pressed]
+  - button "External systems do not affect RoomNow quality." [disabled]
+  - status: "Correct first attempt. Correct answer: SSO may be outside RoomNow while its interface and failure behavior remain RoomNow engineering concerns. Correct reasoning: system boundary separates ownership/scope, not relevance. An external dependency remains part of the system context and creates assumptions, interfaces and risks that RoomNow must handle."
+  - text: "Correct reasoning: system boundary separates ownership/scope, not relevance. An external dependency remains part of the system context and creates assumptions, interfaces and risks that RoomNow must handle."
+  - button "Try this question again"
+- group "A team validates a small increment, learns that users misunderstood a requirement, then revises it before the next increment. What does this illustrate?":
+  - text: 03 / 05 · PROCESS
+  - heading "A team validates a small increment, learns that users misunderstood a requirement, then revises it before the next increment. What does this illustrate?" [level=3]
+  - button "Requirements must have been completed incorrectly." [disabled]
+  - button "Validation happens only after development." [disabled]
+  - button "Evolution starts only after final release." [disabled]
+  - button "Specification, development and validation can interact iteratively." [disabled] [pressed]
+  - status: "Correct first attempt. Correct answer: Specification, development and validation can interact iteratively. Exactly. Sommerville's fundamental activities describe engineering purposes; they do not require a single linear pass."
+  - text: Exactly. Sommerville's fundamental activities describe engineering purposes; they do not require a single linear pass.
+  - button "Try this question again"
+- group "Adding stronger authentication improves security but increases login friction. What is the most professional next step?":
+  - text: 04 / 05 · ENGINEERING JUDGMENT
+  - heading "Adding stronger authentication improves security but increases login friction. What is the most professional next step?" [level=3]
+  - button "Compare stakeholder needs, risk, alternatives and evidence before deciding." [disabled] [pressed]
+  - button "Always maximize security regardless of context." [disabled]
+  - button "Always maximize usability because students are the users." [disabled]
+  - button "Let the programmer choose the easiest implementation." [disabled]
+  - status: "Correct first attempt. Correct answer: Compare stakeholder needs, risk, alternatives and evidence before deciding. Engineering is trade-off reasoning. There is rarely one universally maximal quality configuration. Context, consequences, constraints and evidence shape the justified decision."
+  - text: Engineering is trade-off reasoning. There is rarely one universally maximal quality configuration. Context, consequences, constraints and evidence shape the justified decision.
+  - button "Try this question again"
+- group "A developer copies production booking data into a public AI service to debug an issue. What is the strongest response?":
+  - text: 05 / 05 · PROFESSIONAL RESPONSIBILITY
+  - heading "A developer copies production booking data into a public AI service to debug an issue. What is the strongest response?" [level=3]
+  - button "Acceptable if debugging is faster." [disabled]
+  - button "Acceptable if student names are not visible on screen." [disabled]
+  - button "Stop and use an approved/sanitized method; confidentiality and authorized handling still apply." [disabled] [pressed]
+  - button "Only the product manager is responsible." [disabled]
+  - status: "Correct first attempt. Correct answer: Stop and use an approved/sanitized method; confidentiality and authorized handling still apply. Professional responsibility remains with the engineer. Technical convenience does not override confidentiality, authorized data handling, security/privacy obligations, or organizational policy."
+  - text: Professional responsibility remains with the engineer. Technical convenience does not override confidentiality, authorized data handling, security/privacy obligations, or organizational policy.
+  - button "Try this question again"

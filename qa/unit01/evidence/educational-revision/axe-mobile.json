@@ -1,0 +1,18 @@
+{
+  "testEngine": {
+    "name": "axe-core",
+    "version": "4.10.3"
+  },
+  "testEnvironment": {
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.0 Safari/537.36",
+    "windowWidth": 390,
+    "windowHeight": 844,
+    "orientationAngle": 0,
+    "orientationType": "landscape-primary"
+  },
+  "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/units/01/#main",
+  "timestamp": "2026-10-09T00:32:45.043Z",
+  "violations": [],
+  "passes_count": 28,
+  "incomplete_count": 1
+}
