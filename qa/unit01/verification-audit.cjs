@@ -5,13 +5,14 @@ const course='/the-educator/learning/courses/new-cpcs351/',root=course+'units/01
 const repo=path.resolve(__dirname,'../..'),unit=path.join(repo,root);
 const routes=JSON.parse(fs.readFileSync(path.join(unit,'unit01-routes.json'))).pages;
 const base=process.env.BASE_URL||'http://127.0.0.1:8766',out=process.env.OUTPUT_DIR||path.join(__dirname,'verification-results');
-fs.mkdirSync(out,{recursive:true});const checks=[],errors=[],images=[],fonts=[];
+fs.mkdirSync(out,{recursive:true});for(const file of ['results.json','run-error.json']){const target=path.join(out,file);if(fs.existsSync(target))fs.unlinkSync(target)}const checks=[],errors=[],images=[],fonts=[];
 const hash=b=>crypto.createHash('sha256').update(b).digest('hex');
 const save=(name,data)=>fs.writeFileSync(path.join(out,name),JSON.stringify(data,null,2));
 async function check(name,f){try{await f();checks.push({name,passed:true})}catch(e){checks.push({name,passed:false,error:e.message})}}
+let activeBrowser;
 (async()=>{
  const browser=await chromium.launch({...process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{}});
- const page=await browser.newPage({viewport:{width:390,height:844}});page.on('pageerror',e=>errors.push(e.message));
+ activeBrowser=browser;const page=await browser.newPage({viewport:{width:390,height:844}});page.on('pageerror',e=>errors.push(e.message));
  page.on('response',r=>{if(/fonts\.(googleapis|gstatic)\.com/.test(r.url()))fonts.push({url:r.url(),status:r.status()})});
  for(const file of [...routes,'unit01.js','unit01.css'])await check('served bytes match checkout: '+file,async()=>{const r=await page.request.get(base+root+file);assert.equal(r.status(),200);assert.equal(hash(await r.body()),hash(fs.readFileSync(path.join(unit,file))))});
  for(const [file,sha,size] of [
@@ -41,7 +42,11 @@ async function check(name,f){try{await f();checks.push({name,passed:true})}catch
    const good=q.locator(`[data-choice="${a}"]`),bad=q.locator(`[data-choice]:not([data-choice="${a}"])`).first(),reset=q.locator('.u01-reset');
    await good.focus();await page.keyboard.press(i%2?'Space':'Enter');assert.equal(await q.getAttribute('data-correct'),'true');assert.match(await q.locator('.u01-attempt-note').innerText(),/Correct first attempt/);assert.equal(await q.locator('[aria-disabled="true"]').count(),4);
    await bad.evaluate(e=>e.click());assert.equal(await q.getAttribute('data-correct'),'true');await reset.focus();await page.keyboard.press('Enter');assert.equal(await q.getAttribute('data-attempted'),'false');assert.ok(!(await q.locator('.quiz-feedback').isVisible()));assert.equal(await q.locator('[aria-disabled="true"]').count(),0);assert.ok(await q.locator('[data-choice]').first().evaluate(e=>e===document.activeElement));
-   await bad.focus();await page.keyboard.press('Enter');const t=await q.locator('.u01-attempt-note').innerText();assert.match(t,/Not correct/);assert.ok(t.includes(await good.innerText()));assert.ok(t.includes(await bad.getAttribute('data-explanation')));assert.equal(await q.locator('.u01-attempt-note').getAttribute('role'),'status');assert.equal(await q.locator('.u01-attempt-note').getAttribute('aria-atomic'),'true');await good.evaluate(e=>e.click());assert.equal(await q.getAttribute('data-correct'),'false');await reset.click();await good.click();
+   for(const wrong of await q.locator(`[data-choice]:not([data-choice="${a}"])`).all()){
+    const explanation=await wrong.getAttribute('data-explanation');assert.ok(explanation&&explanation.trim().length>15,'Each alternative needs nonempty specific reasoning');
+    await wrong.focus();await page.keyboard.press('Enter');const t=await q.locator('.u01-attempt-note').innerText();assert.match(t,/Not correct/);assert.ok(t.includes(await good.innerText()));assert.ok(t.includes(explanation));assert.equal(await q.locator('.u01-attempt-note').getAttribute('role'),'status');assert.equal(await q.locator('.u01-attempt-note').getAttribute('aria-atomic'),'true');await good.evaluate(e=>e.click());assert.equal(await q.getAttribute('data-correct'),'false');await reset.click();
+   }
+   await good.click();
   });
   await check('summary after Q'+(i+1),async()=>assert.match(await page.locator('#u01-quiz-summary').innerText(),new RegExp(`${i+1} of 5 practiced; ${i+1} correct`)));
  }
@@ -52,5 +57,5 @@ async function check(name,f){try{await f();checks.push({name,passed:true})}catch
  await broken.close();await check('instructor compatibility redirect',async()=>{await page.goto(base+root+'?instructor=1');await page.waitForURL('**/instructor.html');assert.equal(await page.locator('.instructor-note').count(),2)});
  for(const file of ['index.html','syllabus.html','project.html','units/02/','instructor-guide.html'])await check('integration '+file,async()=>{const r=await page.goto(base+course+file);assert.equal(r.status(),200);assert.ok(await page.locator('h1').count())});
  await check('actual Google Fonts HTTP loading',()=>{assert.ok(fonts.length>0);assert.ok(fonts.every(r=>r.status===200))});await page.goto(base+root);await page.emulateMedia({reducedMotion:'reduce'});await check('reduced motion',async()=>assert.equal(await page.evaluate(()=>getComputedStyle(document.documentElement).scrollBehavior),'auto'));await check('uncaught errors',()=>assert.deepEqual(errors,[]));
- save('image-integrity.json',images);save('fonts.json',fonts);save('results.json',{base,date:new Date().toISOString(),browser:browser.version(),tlsValidation:true,fontsBlocked:false,checks,errors});await browser.close();console.log(JSON.stringify({passed:checks.filter(x=>x.passed).length,failed:checks.filter(x=>!x.passed)},null,2));process.exitCode=checks.some(x=>!x.passed)?1:0;
-})().catch(e=>{save('run-error.json',{error:e.message});console.error(e.message);process.exitCode=1});
+ save('image-integrity.json',images);save('fonts.json',fonts);save('results.json',{base,date:new Date().toISOString(),browser:browser.version(),completed:true,tlsValidation:true,fontsBlocked:false,checks,errors});await browser.close();console.log(JSON.stringify({passed:checks.filter(x=>x.passed).length,failed:checks.filter(x=>!x.passed)},null,2));process.exitCode=checks.some(x=>!x.passed)?1:0;
+})().catch(async e=>{save('run-error.json',{error:e.message});save('results.json',{base,completed:false,checks,errors,fatal:e.message});console.error(e.message);if(activeBrowser)await activeBrowser.close().catch(()=>{});process.exitCode=1});

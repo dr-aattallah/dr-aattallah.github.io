@@ -2,10 +2,11 @@ const fs=require('fs'),path=require('path'),assert=require('assert/strict');
 const {chromium}=require('playwright');
 const base=process.env.BASE_URL||'http://127.0.0.1:8765';const root='/the-educator/learning/courses/new-cpcs351/units/01/';
 const routes=JSON.parse(fs.readFileSync(path.join(__dirname,'../../the-educator/learning/courses/new-cpcs351/units/01/unit01-routes.json')));
-const out=process.env.OUTPUT_DIR||'multipage-results';fs.mkdirSync(out,{recursive:true});const checks=[],errors=[];
+const out=process.env.OUTPUT_DIR||'multipage-results';fs.mkdirSync(out,{recursive:true});const resultFile=path.join(out,'results.json');if(fs.existsSync(resultFile))fs.unlinkSync(resultFile);const checks=[],errors=[];
 async function check(name,fn){try{await fn();checks.push({name,passed:true})}catch(e){checks.push({name,passed:false,error:e.message})}}
+let activeBrowser;
 (async()=>{const browser=await chromium.launch({...(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{}),...(process.env.BROWSER_PROXY?{proxy:{server:process.env.BROWSER_PROXY}}:{})});
-const page=await browser.newPage({ignoreHTTPSErrors:process.env.PROXY_TLS_INTERCEPTION==='1',viewport:{width:1440,height:900}});page.on('pageerror',e=>errors.push(e.message));if(process.env.BLOCK_EXTERNAL_FONTS==='1'){await page.route('https://fonts.googleapis.com/**',r=>r.abort());await page.route('https://fonts.gstatic.com/**',r=>r.abort());}
+activeBrowser=browser;const page=await browser.newPage({ignoreHTTPSErrors:process.env.PROXY_TLS_INTERCEPTION==='1',viewport:{width:1440,height:900}});page.on('pageerror',e=>errors.push(e.message));if(process.env.BLOCK_EXTERNAL_FONTS==='1'){await page.route('https://fonts.googleapis.com/**',r=>r.abort());await page.route('https://fonts.gstatic.com/**',r=>r.abort());}
 for(const file of routes.pages){
  await page.goto(base+root+file,{waitUntil:'networkidle'});
  assert.equal(await page.locator('body').getAttribute('data-unit-revision'),'20261009-focus2','Deployment still pending');
@@ -31,5 +32,5 @@ await check('instructor notes moved out of student pages',async()=>{assert.equal
 await check('skip link focuses main',async()=>{await page.goto(base+root);await page.keyboard.press('Tab');assert.equal(await page.evaluate(()=>document.activeElement.className),'skip');await page.keyboard.press('Enter');assert.equal(await page.evaluate(()=>document.activeElement.id),'main');});
 const nojs=await browser.newPage({javaScriptEnabled:false,ignoreHTTPSErrors:process.env.PROXY_TLS_INTERCEPTION==='1',viewport:{width:390,height:844}});if(process.env.BLOCK_EXTERNAL_FONTS==='1'){await nojs.route('https://fonts.googleapis.com/**',r=>r.abort());await nojs.route('https://fonts.gstatic.com/**',r=>r.abort());}await nojs.goto(base+root+'practice.html',{waitUntil:'networkidle'});await check('no-JavaScript navigation and practice reasoning',async()=>{assert.ok(await nojs.locator('.unit-menu a[href="quality.html"]').isVisible());assert.equal(await nojs.locator('.quiz-feedback:visible').count(),5);});await nojs.close();
 await check('no uncaught JavaScript errors',()=>assert.deepEqual(errors,[]));
-fs.writeFileSync(path.join(out,'results.json'),JSON.stringify({url:base+root,revision:'20261009-focus2',date:new Date().toISOString(),browser:browser.version(),externalFontsBlocked:process.env.BLOCK_EXTERNAL_FONTS==='1',checks,errors},null,2));console.log(JSON.stringify({passed:checks.filter(c=>c.passed).length,failed:checks.filter(c=>!c.passed)},null,2));await browser.close();process.exitCode=checks.some(c=>!c.passed)?1:0;
-})();
+fs.writeFileSync(path.join(out,'results.json'),JSON.stringify({url:base+root,revision:'20261009-focus2',date:new Date().toISOString(),browser:browser.version(),completed:true,tlsCertificateValidation:process.env.PROXY_TLS_INTERCEPTION!=='1',externalFontsBlocked:process.env.BLOCK_EXTERNAL_FONTS==='1',checks,errors},null,2));console.log(JSON.stringify({passed:checks.filter(c=>c.passed).length,failed:checks.filter(c=>!c.passed)},null,2));await browser.close();process.exitCode=checks.some(c=>!c.passed)?1:0;
+})().catch(async e=>{fs.writeFileSync(path.join(out,'results.json'),JSON.stringify({completed:false,checks,errors,fatal:e.message},null,2));console.error(e.message);if(activeBrowser)await activeBrowser.close().catch(()=>{});process.exitCode=1});
