@@ -1,0 +1,22 @@
+{
+  "testEngine": {
+    "name": "axe-core",
+    "version": "4.10.3"
+  },
+  "testEnvironment": {
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.8010.0 Safari/537.36",
+    "windowWidth": 1440,
+    "windowHeight": 900,
+    "orientationAngle": 0,
+    "orientationType": "landscape-primary"
+  },
+  "testRunner": {
+    "name": "axe"
+  },
+  "url": "http://127.0.0.1:8765/the-educator/learning/courses/new-cpcs351/units/01/",
+  "timestamp": "2026-10-09T00:15:59.190Z",
+  "violations": [],
+  "passes_count": 24,
+  "incomplete_count": 1,
+  "note": "Compact summary of executed scan; complete raw output retained in local audit results."
+}

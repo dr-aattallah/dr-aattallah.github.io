@@ -120,7 +120,7 @@ async function check(name, fn) { try { await fn(); checks.push({name,passed:true
   await page.screenshot({path:path.join(out,`reflow-${factor*100}.png`)});
  }
  const failedImages=await browser.newPage({viewport:{width:390,height:844}});
- await failedImages.route('**/drive.google.com/**',route=>route.abort());await failedImages.goto(url);
+ await failedImages.route('**/assets/images/u01-*.png',route=>route.abort());await failedImages.goto(url);
  await check('both failed images show descriptions and hide broken-image controls',async()=>{for(const f of await failedImages.locator('.story-visual').all()){await f.scrollIntoViewIfNeeded();await failedImages.waitForTimeout(150);assert.ok(await f.locator('.image-fallback').isVisible());assert.ok(await f.locator('.image-status').isVisible());assert.ok(!(await f.locator('img').isVisible()));}});
  await failedImages.locator('.story-visual').first().screenshot({path:path.join(out,'image-fallback.png')});await failedImages.close();
  await page.setViewportSize({width:320,height:568});await page.goto(url);

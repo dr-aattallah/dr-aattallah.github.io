@@ -22,10 +22,10 @@ Optional environment variables:
 - `AXE_PATH`: alternate axe-core script path.
 - `OUTPUT_DIR`: evidence destination (default `results/`).
 
-The suite intentionally exits nonzero while the required original illustrations fail to render. Accessible descriptions mitigate the learning interruption, but do not pass the image release gate. The current run has a separate image gate failure in `evidence/results.json`.
+The suite exits nonzero if either original illustration fails to render. Accessible descriptions mitigate a loading failure but do not pass the required-image gate. The forced-failure check intercepts the local PNG requests. Historical evidence in `evidence/` describes the earlier audit; consult the follow-up report for the current result.
 
 Firefox and WebKit availability is recorded; the current audit ran in Chromium only. The 200%/400% checks use 640px/320px viewport equivalents of a 1280px window and do not certify native browser zoom or assistive-technology speech output.
 
 No production build step is needed for this static page. GitHub Pages currently publishes the repository root from `main`; creating a review branch does not deploy the changes.
 
-When the owner supplies the original illustrations, store the same artwork in `units/01/images/`, update the two `src` values, keep meaningful alt text/captions and the failure fallback, then rerun the suite. Do not substitute generated artwork.
+The original illustrations are stored in `assets/images/u01-roomnow-quality-boundary.png` and `assets/images/u01-campuscare-judgment.png` under the course directory. Their bytes match the originals fetched from Drive. Keep meaningful alt text/captions and the failure fallback. Do not substitute generated artwork.
