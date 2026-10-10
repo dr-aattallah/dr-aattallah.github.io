@@ -3,9 +3,9 @@
  const root=new URL('../../',document.currentScript.src),url=p=>new URL(p,root).href;
  const page=document.body.dataset.page||'',path=location.pathname;
  const category=document.body.dataset.category||(/\/units\/01\/(practice|transfer)\.html$/.test(path)?'practice':/\/units\/01\/workshop\.html$/.test(path)?'studios':/\/units\//.test(path)?'learn':'');
- const primary=[['home','Overview','index.html'],['learning','Unit 01 · Pilot','units/01/'],['project','Project','project.html'],['syllabus','Syllabus','syllabus.html']];
+ const primary=[['home','Overview','index.html'],['project','Project','project.html'],['syllabus','Syllabus','syllabus.html']];
  const places=[['learn','Learn','Concepts & examples'],['practice','Practice','Independent exercises'],['studios','Studios','Collaborative engineering'],['challenges','Challenges','Individual assessment'],['quick-checks','Quick Checks','Blackboard assessment']];
- for(const path of ['assets/css/structure.css?v=20261010-places1','assets/css/navigation.css?v=20261010-nav3']){
+ for(const path of ['assets/css/structure.css?v=20261010-places1','assets/css/navigation.css?v=20261010-nav4']){
    const link=document.createElement('link');link.rel='stylesheet';link.href=url(path);document.head.append(link);
  }
  const header=document.createElement('header');header.className='site-header course-header-v2';
