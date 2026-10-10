@@ -81,3 +81,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #98
 .official-hero-actions .button.ghost{border:1px solid #b9d0c2!important;color:#0b4e38!important;background:#fff!important}
 .official-hero-actions .hero-course-facts{margin-left:auto;color:#4d6457;font-size:.85rem;font-weight:700}
 @media(max-width:720px){.official-hero-actions{gap:10px;padding:16px}.official-hero-actions .hero-course-facts{width:100%;margin:0;font-size:.75rem}.course-home .official-hero-image{width:100%;height:auto}}
+
+/* Shared infographic presentation across course workspaces. */
+.course-infographic{margin:26px 0 34px;padding:clamp(10px,2vw,20px);background:#fff;border:1px solid #dce5dd;border-radius:12px;box-shadow:0 12px 32px #16332312;text-align:center}
+.course-infographic img{display:block;width:100%;height:auto;object-fit:contain;border-radius:5px}
+.course-infographic figcaption{font-size:14px;line-height:1.6;color:#465b4c;margin:13px auto 0;max-width:850px}
