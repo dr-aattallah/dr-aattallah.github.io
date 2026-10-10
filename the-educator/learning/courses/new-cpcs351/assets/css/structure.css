@@ -92,3 +92,61 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #98
 .workspace-infographic img{display:block;width:100%;height:auto;object-fit:contain}
 .workspace-infographic figcaption{margin:12px 8px 3px;color:#40584c;font-size:.9rem;line-height:1.5}
 @media(max-width:600px){.workspace-infographic{width:calc(100% - 24px);padding:8px;margin:18px auto}.workspace-infographic figcaption{font-size:.82rem}}
+
+
+/* UNIT EDITORIAL CANVAS v1 — shared by all unit shells.
+   One authoritative location for unit width, surfaces and floating topic navigation.
+   The unit01.css file retains only Unit 01 content-specific patterns. */
+:root{--unit-canvas:#f6f8f7;--unit-surface:#ffffff;--unit-ink:#192b25;--unit-muted:#41594d;--unit-accent:#1b654b;--unit-border:#dbe5df;--unit-nav-width:292px}
+body:has(.unit-shell){background:var(--unit-canvas);color:var(--unit-ink)}
+body:has(.unit-shell) main{max-width:none;width:100%;min-width:0}
+body:has(.unit-shell) .unit-shell{display:block!important;max-width:none!important;width:100%;min-width:0;margin:0!important}
+body:has(.unit-shell) .unit-shell>main,
+body:has(.unit-shell) .unit-shell>.unit-content{max-width:none!important;width:100%;min-width:0;margin:0!important}
+body:has(.unit-shell) .page-content{box-sizing:border-box;width:100%;max-width:none!important;margin:0!important;padding:clamp(24px,3.6vw,70px) clamp(24px,5vw,108px)!important}
+body:has(.unit-shell) .unit-hero,
+body:has(.unit-shell) .page-hero{max-width:none!important;width:100%;box-sizing:border-box}
+body:has(.unit-shell) .lesson.prose{max-width:none!important;width:100%;box-sizing:border-box}
+body:has(.unit-shell) .page-content>section,
+body:has(.unit-shell) .page-content>article{max-width:none}
+body:has(.unit-shell) .unit-sidebar{
+ position:fixed!important;z-index:120;left:0;top:clamp(82px,8vw,112px);
+ width:var(--unit-nav-width);max-width:calc(100vw - 24px);height:auto;max-height:calc(100dvh - 136px);
+ overflow-y:auto;overscroll-behavior:contain;
+ padding:18px!important;border:1px solid #cddfd3!important;border-left:0!important;
+ border-radius:0 18px 18px 0!important;
+ background:rgba(255,255,255,.96)!important;
+ box-shadow:12px 18px 48px rgba(18,45,33,.23),0 0 0 1px rgba(255,255,255,.6) inset!important;
+ backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+ transform:translateX(calc(-100% + 54px));transition:transform .24s ease,box-shadow .24s ease;
+ scrollbar-width:thin
+}
+body:has(.unit-shell) .unit-sidebar:hover,
+body:has(.unit-shell) .unit-sidebar:focus-within{transform:translateX(0)}
+body:has(.unit-shell) .unit-sidebar::after{
+ content:"TOPICS";position:absolute;right:0;top:16px;writing-mode:vertical-rl;
+ font-size:10px;letter-spacing:.15em;font-weight:900;color:#174c36;
+ pointer-events:none
+}
+body:has(.unit-shell) .unit-sidebar:hover::after,
+body:has(.unit-shell) .unit-sidebar:focus-within::after{opacity:0}
+body:has(.unit-shell) .unit-sidebar .unit-nav-link{border-radius:9px;transition:background .18s ease,transform .18s ease}
+body:has(.unit-shell) .unit-sidebar .unit-nav-link:hover{background:#e8f2eb;transform:translateX(2px)}
+body:has(.unit-shell) .unit-sidebar .unit-nav-link[aria-current]{background:#e4f0e8;color:#12402e}
+body:has(.unit-shell) .page-content p,
+body:has(.unit-shell) .page-content li{color:var(--unit-ink)}
+body:has(.unit-shell) .page-content a{color:#145d44}
+body:has(.unit-shell) .scenario,
+body:has(.unit-shell) .story-visual{color:var(--unit-ink)}
+body:has(.unit-shell) .scenario[style*="background:#"],
+body:has(.unit-shell) .story-visual[style*="background:#"]{color:#fff}
+@media(min-width:1100px){
+ body:has(.unit-shell) .page-content{padding-left:clamp(86px,7vw,132px)!important}
+ body:has(.unit-shell) .u01-meeting-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:980px){
+ body:has(.unit-shell) .unit-sidebar{top:auto;bottom:18px;left:12px;width:min(360px,calc(100vw - 24px));max-height:min(70dvh,650px);border-radius:18px!important;border-left:1px solid #cddfd3!important;transform:translateX(calc(-100% + 62px))}
+ body:has(.unit-shell) .page-content{padding:24px clamp(16px,4vw,42px)!important}
+ body:has(.unit-shell) .unit-sidebar::after{content:"TOPICS"}
+}
+@media(prefers-reduced-motion:reduce){body:has(.unit-shell) .unit-sidebar{transition:none}}
