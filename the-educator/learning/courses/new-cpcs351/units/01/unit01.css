@@ -331,3 +331,21 @@
  .unit01 .page-content { padding-top:20px; }
 }
 @media(max-width:620px) { .unit01 .journey-stages,.unit01 .answer-contrast { grid-template-columns:1fr; } .unit01 .worked-contrast,.unit01 .micro-attempt,.unit01 .case-journey { padding:20px; } }
+
+/* Unit 01 pilot: accessible editorial reading surfaces and contrast corrections.
+   Preserve existing educational content and interaction logic. */
+.unit01{color:#202b25;background:#f8f7f3}
+.unit01 .unit-shell,.unit01 main,.unit01 .course-reading{color:#202b25}
+.unit01 .unit-sidebar{background:#f1f4f0;color:#202b25;border-color:#d4dfd6}
+.unit01 .unit-sidebar a,.unit01 .unit-sidebar summary,.unit01 .unit-sidebar h2{color:#203a2c}
+.unit01 .unit-sidebar small,.unit01 .unit-sidebar p{color:#43574b}
+.unit01 .lesson,.unit01 .concept,.unit01 .quiz-q,.unit01 .task-block,.unit01 .worksheet,.unit01 .scenario,.unit01 .story-question{color:#202b25}
+.unit01 .lesson p,.unit01 .lesson li,.unit01 .concept p,.unit01 .scenario p,.unit01 .worksheet span,.unit01 .quiz-q p,.unit01 .story-question p{color:#293c30}
+.unit01 .lesson small,.unit01 .concept small,.unit01 .scenario small,.unit01 .quiz-q small{color:#405449}
+.unit01 .unit-nav-link[aria-current=page]{background:#e4eee5;color:#173d2a;border-left-color:#246347}
+.unit01 .unit-nav-link:hover{background:#eaf2eb}
+.unit01 .kind-theory,.unit01 .kind-example,.unit01 .kind-exercise,.unit01 .kind-questions,.unit01 .kind-activity{--kind:#246347;--tint:#eff5ef}
+.unit01 .quiz-feedback,.unit01 .reveal-box,.unit01 .tryit{color:#202b25}
+.unit01 a:not(.button):not(.unit-nav-link){text-underline-offset:3px}
+.unit01 a:focus-visible,.unit01 button:focus-visible,.unit01 summary:focus-visible{outline:3px solid #997737;outline-offset:3px}
+@media(max-width:760px){.unit01 .unit-shell{min-width:0}.unit01 .lesson,.unit01 .scenario,.unit01 .worksheet{max-width:100%;overflow-wrap:anywhere}}
