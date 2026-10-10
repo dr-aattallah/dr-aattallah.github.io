@@ -80,3 +80,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid #b9
 
 /* Replaceable hero art: swap .hero-placeholder with supplied image when approved. */
 .hero-placeholder{min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:15px;margin:0 0 25px;padding:30px 15px;background:radial-gradient(circle at 50% 50%,#ffffff17 0 22%,transparent 23%),repeating-radial-gradient(circle at 50% 50%,transparent 0 26px,#e5cf8d30 27px 28px,transparent 29px 50px),linear-gradient(145deg,#07543d,#042b20);border:1px solid #ffffff35;overflow:hidden}.hero-placeholder-mark{font-family:var(--display);font-weight:800;font-size:clamp(40px,5vw,70px);line-height:.88;letter-spacing:-.06em;color:#e6d39d!important;text-align:center}.hero-placeholder-caption{font-size:10px;font-weight:800;letter-spacing:.2em;color:#e4efe7!important;text-align:center}
+
+/* Official image hero. The image contains its own branded typography;
+   keep it uncropped to preserve logos and text at every viewport size. */
+.course-home .official-course-hero{display:block!important;min-height:0!important;background:#e8efe9!important;overflow:hidden!important;border:0!important}
+.course-home .official-course-hero::before{display:none!important}
+.course-home .official-hero-image{display:block;width:100%;height:auto;object-fit:contain}
+.official-hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:16px;padding:22px clamp(22px,5vw,76px);background:#fff;border-bottom:1px solid #dce6df}
+.official-hero-actions .button.ghost{border:1px solid #b9d0c2!important;color:#0b4e38!important;background:#fff!important}
+.official-hero-actions .hero-course-facts{margin-left:auto;color:#4d6457;font-size:.85rem;font-weight:700}
+@media(max-width:720px){.official-hero-actions{gap:10px;padding:16px}.official-hero-actions .hero-course-facts{width:100%;margin:0;font-size:.75rem}.course-home .official-hero-image{width:100%;height:auto}}
