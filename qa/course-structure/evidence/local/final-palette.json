@@ -1,0 +1,55 @@
+{
+  "browser": "153.0.8010.0",
+  "results": [
+    {
+      "page": "quality",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "quality",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "responsibility",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "responsibility",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "workshop",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "workshop",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "practice",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "practice",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "page": "transfer",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "page": "transfer",
+      "width": 1440,
+      "violations": []
+    }
+  ]
+}

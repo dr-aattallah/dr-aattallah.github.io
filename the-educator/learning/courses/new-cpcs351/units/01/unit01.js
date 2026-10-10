@@ -155,7 +155,7 @@ if (courseFooter) document.body.appendChild(courseFooter);
 (() => {
  const header = document.querySelector('.site-header');
  const nav = header?.querySelector('.site-nav');
- if (!nav) return;
+ if (!nav || nav.closest('.course-menu')) return;
  const menu = document.createElement('details');
  menu.className = 'course-menu';
  const summary = document.createElement('summary');

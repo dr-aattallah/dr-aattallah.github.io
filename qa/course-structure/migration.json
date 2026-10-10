@@ -1,0 +1,585 @@
+{
+  "date": "2026-10-10",
+  "baseCommit": "6f2320d",
+  "revision": "20261010-places1",
+  "scope": "User-authorized course-wide information architecture; no grading or calendar changes",
+  "moves": [
+    {
+      "from": "units/01/professional.html",
+      "to": "practice/u01-professional.html",
+      "anchor": "professional",
+      "sha256": "11a6dbf45d24a463157547eaf92271864618f4132e0dce99e7b6ef461f28f5a6",
+      "text": "✎ Exercise TRANSFER EXAMPLE Classify the product relationship Is RoomNow generic, customized, or hybrid if the team builds a reusable booking platform but KAU configures identity rules, room policies, and reporting? Defend your answer by discussing who controls the specification."
+    },
+    {
+      "from": "units/01/professional.html",
+      "to": "practice/u01-professional.html",
+      "anchor": "professional",
+      "sha256": "42a0db824dcb5d0acdf465837198dba5ee6349eff0507fd15b6d931503bec3b4",
+      "text": "✎ Exercise Your turn · two minutes A new facilities officer must operate RoomNow next month. Name one responsibility beyond coding and one check that it has been addressed. Write one or two sentences before opening the feedback Ungraded self-study practice. Your text is lost on reload; copy it before leaving, or answer on paper. Compare your reasoning, then revise Identify the officer’s task, a needed artifact or support practice, and an observable check. “Write documentation” alone is incomplete; a stronger answer checks whether the officer can use the instructions for a realistic task. Revise: add the stakeholder, uncertainty or observable evidence missing from your first response. Different justified answers are possible."
+    },
+    {
+      "from": "units/01/engineering.html",
+      "to": "practice/u01-engineering.html",
+      "anchor": "engineering",
+      "sha256": "1f789eafba66cabdb1b1218ab63560310912ba27f1b6e890645a116b5f7bda91",
+      "text": "✎ Exercise Your turn · two minutes A technically correct release is rejected by its users. Name the first uncertainty to resolve and the evidence you would collect. Write one or two sentences before opening the feedback Ungraded self-study practice. Your text is lost on reload; copy it before leaving, or answer on paper. Compare your reasoning, then revise State whose need or rule is unclear and how you would check it. Do not assume the algorithm is defective just because users reject the outcome. A stakeholder discussion plus representative acceptance scenarios can test the intended behavior. Revise: add the stakeholder, uncertainty or observable evidence missing from your first response. Different justified answers are possible."
+    },
+    {
+      "from": "units/01/quality.html",
+      "to": "practice/u01-quality.html",
+      "anchor": "quality",
+      "sha256": "e4dbafa2d970ba741b9b3e264ce94cf58014c2b1a730befe7a92c0613d238b7d",
+      "text": "✎ Exercise QUALITY TRADE-OFF RoomNow during final-exam week The team can add aggressive caching to improve response time, but room availability may be stale for up to 30 seconds. Is that acceptable? Your answer must identify stakeholders, consequence of stale data, alternative controls, and evidence needed before release."
+    },
+    {
+      "from": "units/01/quality.html",
+      "to": "practice/u01-quality.html",
+      "anchor": "quality",
+      "sha256": "b70716abf17518fa1bbb930a6f5b37fb1300490b744c914a6ef8bc58ca6aa2e4",
+      "text": "✎ Exercise Your turn · two minutes The team says RoomNow is easy to change. Name an observation that would support or challenge this maintainability claim. Write one or two sentences before opening the feedback Ungraded self-study practice. Your text is lost on reload; copy it before leaving, or answer on paper. Compare your reasoning, then revise Choose a representative change and observe its effort, affected dependencies and regression results. A claim such as “we use a framework” names a technique, not evidence that change is manageable. No universal numeric target is established by this scenario. Revise: add the stakeholder, uncertainty or observable evidence missing from your first response. Different justified answers are possible."
+    },
+    {
+      "from": "units/01/process.html",
+      "to": "practice/u01-process.html",
+      "anchor": "process",
+      "sha256": "3f25e9585b3b28ed3a98301d5764e4bc920ea0c1afdb87c74ebe3293a855b684",
+      "text": "✎ Exercise Your turn · two minutes The new rule works for staff but mistakenly blocks students. Name two activities to revisit and what each should establish. Write one or two sentences before opening the feedback Ungraded self-study practice. Your text is lost on reload; copy it before leaving, or answer on paper. Compare your reasoning, then revise Revisit specification to confirm the intended distinction and validation to check representative staff and student outcomes; development may also need revision. Just naming phases is insufficient: connect each activity to the missing understanding or evidence. Revise: add the stakeholder, uncertainty or observable evidence missing from your first response. Different justified answers are possible."
+    },
+    {
+      "from": "units/01/systems.html",
+      "to": "practice/u01-systems.html",
+      "anchor": "systems",
+      "sha256": "2d8272e2e43941e133f9949d0578de240c37cacfb3cc4a19c17c573849e9c10b",
+      "text": "✎ Exercise Your turn · two minutes SSO accepts an identity, but the booking request fails. Name the outcome RoomNow should communicate and one check of its behavior. Write one or two sentences before opening the feedback Ungraded self-study practice. Your text is lost on reload; copy it before leaving, or answer on paper. Compare your reasoning, then revise Distinguish successful authentication from a successful reservation. The message should reflect the actual booking result, and a failure scenario should check that no false confirmation or unauthorized booking is produced. Revise: add the stakeholder, uncertainty or observable evidence missing from your first response. Different justified answers are possible."
+    },
+    {
+      "from": "units/01/responsibility.html",
+      "to": "practice/u01-responsibility.html",
+      "anchor": "responsibility",
+      "sha256": "9c4836bcce0162a64c799e3e72922fe0df452b1a031b2592329391a2d3e0f7f9",
+      "text": "✎ Exercise ENGINEERING JUDGMENT Do not answer with “yes/no.” Build the decision. State the risk and uncertainty. Identify affected stakeholders and possible harm. Propose at least two responses. Identify evidence that would change your decision. Justify the recommendation."
+    },
+    {
+      "from": "units/01/responsibility.html",
+      "to": "practice/u01-responsibility.html",
+      "anchor": "responsibility",
+      "sha256": "bba994c1b14c8f47caa52b3632d22da46fbaf5f03f6092d7e01a92bb8918304c",
+      "text": "✎ Exercise Your turn · two minutes You are uncertain whether sharing a diagnostic record is permitted. State a safer immediate response and the uncertainty that must be resolved. Write one or two sentences before opening the feedback Ungraded self-study practice. Your text is lost on reload; copy it before leaving, or answer on paper. Compare your reasoning, then revise Pause the unapproved sharing, use synthetic data where suitable, and check the relevant authorization and policy with the responsible institutional role. Do not infer approval from convenience or from the absence of names. Revise: add the stakeholder, uncertainty or observable evidence missing from your first response. Different justified answers are possible."
+    },
+    {
+      "from": "units/01/context.html",
+      "to": "practice/u01-context.html",
+      "anchor": "context",
+      "sha256": "7a422430cc5edab88d5492bfd0eac6690e6a34a27390506918d3050f8a4ed921",
+      "text": "✎ Exercise TRANSFER CHALLENGE Same feature, different engineering Compare “send an alert” in (A) a social app and (B) an insulin-delivery system. Identify how the required evidence, tolerance for failure, release process, and verification strategy should differ. Avoid saying only “B is more important”—explain what engineering practices change."
+    },
+    {
+      "from": "units/01/context.html",
+      "to": "practice/u01-context.html",
+      "anchor": "context",
+      "sha256": "4ca8d4313a7b87e706b180c325c11169058a0d48a8c337301be79b839d41356e",
+      "text": "✎ Exercise Your turn · two minutes Choose one contextual difference between the two services and explain how it changes the evidence required before release. Write one or two sentences before opening the feedback Ungraded self-study practice. Your text is lost on reload; copy it before leaving, or answer on paper. Compare your reasoning, then revise Link a specific consequence to a proportionate verification need. For example, sensitive clinical information warrants evidence about authorized access. Do not claim that a particular process or tool guarantees safety for every system. Revise: add the stakeholder, uncertainty or observable evidence missing from your first response. Different justified answers are possible."
+    },
+    {
+      "from": "units/02/index.html",
+      "to": "practice/unit02.html",
+      "anchor": "concept-1",
+      "sha256": "3d78568eed6d784ce4719114a5a7dc2c786a25a472d30a75b886960db620c0d1",
+      "text": "Check your understanding Explain this concept in your own words, identify one risk if it is ignored, and give a second example from a different software system."
+    },
+    {
+      "from": "units/02/index.html",
+      "to": "practice/unit02.html",
+      "anchor": "concept-2",
+      "sha256": "3d78568eed6d784ce4719114a5a7dc2c786a25a472d30a75b886960db620c0d1",
+      "text": "Check your understanding Explain this concept in your own words, identify one risk if it is ignored, and give a second example from a different software system."
+    },
+    {
+      "from": "units/02/index.html",
+      "to": "practice/unit02.html",
+      "anchor": "concept-3",
+      "sha256": "3d78568eed6d784ce4719114a5a7dc2c786a25a472d30a75b886960db620c0d1",
+      "text": "Check your understanding Explain this concept in your own words, identify one risk if it is ignored, and give a second example from a different software system."
+    },
+    {
+      "from": "units/02/index.html",
+      "to": "practice/unit02.html",
+      "anchor": "concept-4",
+      "sha256": "3d78568eed6d784ce4719114a5a7dc2c786a25a472d30a75b886960db620c0d1",
+      "text": "Check your understanding Explain this concept in your own words, identify one risk if it is ignored, and give a second example from a different software system."
+    },
+    {
+      "from": "units/02/index.html",
+      "to": "practice/unit02.html",
+      "anchor": "concept-5",
+      "sha256": "3d78568eed6d784ce4719114a5a7dc2c786a25a472d30a75b886960db620c0d1",
+      "text": "Check your understanding Explain this concept in your own words, identify one risk if it is ignored, and give a second example from a different software system."
+    },
+    {
+      "from": "units/02/index.html",
+      "to": "practice/unit02.html",
+      "anchor": "concept-6",
+      "sha256": "3d78568eed6d784ce4719114a5a7dc2c786a25a472d30a75b886960db620c0d1",
+      "text": "Check your understanding Explain this concept in your own words, identify one risk if it is ignored, and give a second example from a different software system."
+    },
+    {
+      "from": "units/02/index.html",
+      "to": "practice/unit02.html",
+      "anchor": "self-check",
+      "sha256": "49acb87c7a6ba2e62812833aaf9d8dda2165dc9ce39d773ab93ef6fe8c95511b",
+      "text": "SELF-CHECK · UNGRADED Practice before the assessed work Define two concepts from this unit without using a memorized phrase. Apply one concept to RoomNow and explain a trade-off. Find a weakness in the provided example and propose a correction. State what evidence would convince you that the correction worked. Apply the same reasoning to a different university system. These questions are self-study practice only; the graded Quick Check is delivered separately in Blackboard."
+    },
+    {
+      "from": "units/03/index.html",
+      "to": "practice/unit03.html",
+      "anchor": "concept-1",
+      "sha256": "3d78568eed6d784ce4719114a5a7dc2c786a25a472d30a75b886960db620c0d1",
+      "text": "Check your understanding Explain this concept in your own words, identify one risk if it is ignored, and give a second example from a different software system."
+    },
+    {
+      "from": "units/03/index.html",
+      "to": "practice/unit03.html",
+      "anchor": "concept-2",
+      "sha256": "3d78568eed6d784ce4719114a5a7dc2c786a25a472d30a75b886960db620c0d1",
+      "text": "Check your understanding Explain this concept in your own words, identify one risk if it is ignored, and give a second example from a different software system."
+    },
+    {
+      "from": "units/03/index.html",
+      "to": "practice/unit03.html",
+      "anchor": "concept-3",
+      "sha256": "3d78568eed6d784ce4719114a5a7dc2c786a25a472d30a75b886960db620c0d1",
+      "text": "Check your understanding Explain this concept in your own words, identify one risk if it is ignored, and give a second example from a different software system."
+    },
+    {
+      "from": "units/03/index.html",
+      "to": "practice/unit03.html",
+      "anchor": "concept-4",
+      "sha256": "3d78568eed6d784ce4719114a5a7dc2c786a25a472d30a75b886960db620c0d1",
+      "text": "Check your understanding Explain this concept in your own words, identify one risk if it is ignored, and give a second example from a different software system."
+    },
+    {
+      "from": "units/03/index.html",
+      "to": "practice/unit03.html",
+      "anchor": "concept-5",
+      "sha256": "3d78568eed6d784ce4719114a5a7dc2c786a25a472d30a75b886960db620c0d1",
+      "text": "Check your understanding Explain this concept in your own words, identify one risk if it is ignored, and give a second example from a different software system."
+    },
+    {
+      "from": "units/03/index.html",
+      "to": "practice/unit03.html",
+      "anchor": "concept-6",
+      "sha256": "3d78568eed6d784ce4719114a5a7dc2c786a25a472d30a75b886960db620c0d1",
+      "text": "Check your understanding Explain this concept in your own words, identify one risk if it is ignored, and give a second example from a different software system."
+    },
+    {
+      "from": "units/03/index.html",
+      "to": "practice/unit03.html",
+      "anchor": "concept-7",
+      "sha256": "3d78568eed6d784ce4719114a5a7dc2c786a25a472d30a75b886960db620c0d1",
+      "text": "Check your understanding Explain this concept in your own words, identify one risk if it is ignored, and give a second example from a different software system."
+    },
+    {
+      "from": "units/03/index.html",
+      "to": "practice/unit03.html",
+      "anchor": "self-check",
+      "sha256": "49acb87c7a6ba2e62812833aaf9d8dda2165dc9ce39d773ab93ef6fe8c95511b",
+      "text": "SELF-CHECK · UNGRADED Practice before the assessed work Define two concepts from this unit without using a memorized phrase. Apply one concept to RoomNow and explain a trade-off. Find a weakness in the provided example and propose a correction. State what evidence would convince you that the correction worked. Apply the same reasoning to a different university system. These questions are self-study practice only; the graded Quick Check is delivered separately in Blackboard."
+    },
+    {
+      "from": "units/03/index.html",
+      "to": "practice/unit03.html",
+      "anchor": "clinic",
+      "sha256": "5e459d630b5021b9ade4c204a9820845abd859a0836aac74f3137361621a73b8",
+      "text": "GUIDED APPLICATION · FORMATIVE Guided requirements clinic — M0 readiness In pairs, critique three ambiguous RoomNow statements. For each, identify the stakeholder, rewrite as a testable FR or NFR, and name a validation question. Then check whether your team's M0 scope and initial backlog are realistic. EXPECTED EVIDENCE Formative: clear source, measurable outcome where appropriate, consistency with scope and evidence of stakeholder validation. Instructor preparation: W3 M1: remind students of M0 scope/repository/team agreement; W3 M3: allow a short clinic before QC2 and M0 submission. Important: This is formative guided practice, not an additional graded assignment. Official Quick Checks and milestones are recorded in Blackboard."
+    },
+    {
+      "from": "units/04/index.html",
+      "to": "practice/unit04.html",
+      "anchor": "concept-1",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/04/index.html",
+      "to": "practice/unit04.html",
+      "anchor": "concept-2",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/04/index.html",
+      "to": "practice/unit04.html",
+      "anchor": "concept-3",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/04/index.html",
+      "to": "practice/unit04.html",
+      "anchor": "concept-4",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/04/index.html",
+      "to": "practice/unit04.html",
+      "anchor": "concept-5",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/04/index.html",
+      "to": "practice/unit04.html",
+      "anchor": "self-check",
+      "sha256": "4851cdc1f79dd49f2cf7af9fcadff73f80a800477a083310ff1105efc525520c",
+      "text": "State two concepts and distinguish their purposes. Explain one RoomNow design or workflow trade-off. Identify a defect or unsupported claim in a sample artifact. Suggest a correction and evidence that could validate it. Transfer the idea to a different system."
+    },
+    {
+      "from": "units/05/index.html",
+      "to": "practice/unit05.html",
+      "anchor": "concept-1",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/05/index.html",
+      "to": "practice/unit05.html",
+      "anchor": "concept-2",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/05/index.html",
+      "to": "practice/unit05.html",
+      "anchor": "concept-3",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/05/index.html",
+      "to": "practice/unit05.html",
+      "anchor": "concept-4",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/05/index.html",
+      "to": "practice/unit05.html",
+      "anchor": "concept-5",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/05/index.html",
+      "to": "practice/unit05.html",
+      "anchor": "self-check",
+      "sha256": "4851cdc1f79dd49f2cf7af9fcadff73f80a800477a083310ff1105efc525520c",
+      "text": "State two concepts and distinguish their purposes. Explain one RoomNow design or workflow trade-off. Identify a defect or unsupported claim in a sample artifact. Suggest a correction and evidence that could validate it. Transfer the idea to a different system."
+    },
+    {
+      "from": "units/06/index.html",
+      "to": "practice/unit06.html",
+      "anchor": "concept-1",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/06/index.html",
+      "to": "practice/unit06.html",
+      "anchor": "concept-2",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/06/index.html",
+      "to": "practice/unit06.html",
+      "anchor": "concept-3",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/06/index.html",
+      "to": "practice/unit06.html",
+      "anchor": "concept-4",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/06/index.html",
+      "to": "practice/unit06.html",
+      "anchor": "concept-5",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/06/index.html",
+      "to": "practice/unit06.html",
+      "anchor": "concept-6",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/06/index.html",
+      "to": "practice/unit06.html",
+      "anchor": "self-check",
+      "sha256": "4851cdc1f79dd49f2cf7af9fcadff73f80a800477a083310ff1105efc525520c",
+      "text": "State two concepts and distinguish their purposes. Explain one RoomNow design or workflow trade-off. Identify a defect or unsupported claim in a sample artifact. Suggest a correction and evidence that could validate it. Transfer the idea to a different system."
+    },
+    {
+      "from": "units/07/index.html",
+      "to": "practice/unit07.html",
+      "anchor": "concept-1",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/07/index.html",
+      "to": "practice/unit07.html",
+      "anchor": "concept-2",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/07/index.html",
+      "to": "practice/unit07.html",
+      "anchor": "concept-3",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/07/index.html",
+      "to": "practice/unit07.html",
+      "anchor": "concept-4",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/07/index.html",
+      "to": "practice/unit07.html",
+      "anchor": "concept-5",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/07/index.html",
+      "to": "practice/unit07.html",
+      "anchor": "self-check",
+      "sha256": "4851cdc1f79dd49f2cf7af9fcadff73f80a800477a083310ff1105efc525520c",
+      "text": "State two concepts and distinguish their purposes. Explain one RoomNow design or workflow trade-off. Identify a defect or unsupported claim in a sample artifact. Suggest a correction and evidence that could validate it. Transfer the idea to a different system."
+    },
+    {
+      "from": "units/08/index.html",
+      "to": "practice/unit08.html",
+      "anchor": "concept-1",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/08/index.html",
+      "to": "practice/unit08.html",
+      "anchor": "concept-2",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/08/index.html",
+      "to": "practice/unit08.html",
+      "anchor": "concept-3",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/08/index.html",
+      "to": "practice/unit08.html",
+      "anchor": "concept-4",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/08/index.html",
+      "to": "practice/unit08.html",
+      "anchor": "concept-5",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/08/index.html",
+      "to": "practice/unit08.html",
+      "anchor": "self-check",
+      "sha256": "4851cdc1f79dd49f2cf7af9fcadff73f80a800477a083310ff1105efc525520c",
+      "text": "State two concepts and distinguish their purposes. Explain one RoomNow design or workflow trade-off. Identify a defect or unsupported claim in a sample artifact. Suggest a correction and evidence that could validate it. Transfer the idea to a different system."
+    },
+    {
+      "from": "units/09/index.html",
+      "to": "practice/unit09.html",
+      "anchor": "concept-1",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/09/index.html",
+      "to": "practice/unit09.html",
+      "anchor": "concept-2",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/09/index.html",
+      "to": "practice/unit09.html",
+      "anchor": "concept-3",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/09/index.html",
+      "to": "practice/unit09.html",
+      "anchor": "concept-4",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/09/index.html",
+      "to": "practice/unit09.html",
+      "anchor": "concept-5",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/09/index.html",
+      "to": "practice/unit09.html",
+      "anchor": "self-check",
+      "sha256": "4851cdc1f79dd49f2cf7af9fcadff73f80a800477a083310ff1105efc525520c",
+      "text": "State two concepts and distinguish their purposes. Explain one RoomNow design or workflow trade-off. Identify a defect or unsupported claim in a sample artifact. Suggest a correction and evidence that could validate it. Transfer the idea to a different system."
+    },
+    {
+      "from": "units/10/index.html",
+      "to": "practice/unit10.html",
+      "anchor": "concept-1",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/10/index.html",
+      "to": "practice/unit10.html",
+      "anchor": "concept-2",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/10/index.html",
+      "to": "practice/unit10.html",
+      "anchor": "concept-3",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/10/index.html",
+      "to": "practice/unit10.html",
+      "anchor": "concept-4",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/10/index.html",
+      "to": "practice/unit10.html",
+      "anchor": "concept-5",
+      "sha256": "4dc5d0a899e99f6a8c928284f14918c9bee0c0358adf71e75d70008b9e15c91b",
+      "text": "Practice the engineering judgment What failure could occur if this principle is ignored? Propose a better decision and describe how you would verify it."
+    },
+    {
+      "from": "units/10/index.html",
+      "to": "practice/unit10.html",
+      "anchor": "self-check",
+      "sha256": "4851cdc1f79dd49f2cf7af9fcadff73f80a800477a083310ff1105efc525520c",
+      "text": "State two concepts and distinguish their purposes. Explain one RoomNow design or workflow trade-off. Identify a defect or unsupported claim in a sample artifact. Suggest a correction and evidence that could validate it. Transfer the idea to a different system."
+    },
+    {
+      "from": "units/10/index.html",
+      "to": "practice/unit10.html",
+      "anchor": "clinic",
+      "sha256": "54b86087a25df5c029de854d75d25a33fdfc137d52dd2d44b1834bb9c5895521",
+      "text": "APPLICATION · CLASS / PROJECT Apply and transfer Project clinic: run a basic build/test workflow, assemble evidence, rehearse a concise demo and state limitations honestly. Evidence standard: an understandable decision, a specific artifact or link where appropriate, a verification method, and a brief justification. Studios are formative; Challenges are individual graded work when scheduled."
+    },
+    {
+      "from": "units/02/index.html",
+      "to": "studios/studio01.html",
+      "anchor": "brief",
+      "sha256": "90b9bc39606494cb71db34ccd2b08618f7aecb50206277e6aad58cd2bbe1a160",
+      "text": "GUIDED APPLICATION · FORMATIVE Studio 1 — Team Workflow In teams, create or join one repository, a simple board, a working agreement and three issues for RoomNow or your approved project. Each issue must state an observable completion condition. Assign owners, prioritize work, and explain why the first item should be done first. EXPECTED EVIDENCE Formative: working links, understandable issues, realistic ownership, clear acceptance criteria, one justified priority decision. Instructor preparation: Before W2 M3: GitHub accounts ready; instructor prepares a sample repository and fallback screenshots. W2 M2 last 10 minutes: explain goal, deliverables, roles and access check. Important: This is formative guided practice, not an additional graded assignment. Official Quick Checks and milestones are recorded in Blackboard."
+    },
+    {
+      "from": "units/04/index.html",
+      "to": "studios/studio02.html",
+      "anchor": "brief",
+      "sha256": "4de953c138ece1adfbcba7adeacdc1a8f8b7a926dd79f538ea88c4ce275bd202",
+      "text": "APPLICATION · CLASS / PROJECT Apply and transfer Studio 2: rewrite ambiguous stories, specify acceptance criteria, compare one concise use case, and link two requirements to project issues. Evidence standard: an understandable decision, a specific artifact or link where appropriate, a verification method, and a brief justification. Studios are formative; Challenges are individual graded work when scheduled."
+    },
+    {
+      "from": "units/06/index.html",
+      "to": "studios/studio03.html",
+      "anchor": "brief",
+      "sha256": "f745e7c8591d6ebe6ca3ad47ee2cb30f238a65c967eb43d20b4548c4e5e03312",
+      "text": "APPLICATION · CLASS / PROJECT Apply and transfer Studio 3: review a weak RoomNow design; identify coupling, privacy and testability issues; propose a clearer responsibility allocation with rationale. Evidence standard: an understandable decision, a specific artifact or link where appropriate, a verification method, and a brief justification. Studios are formative; Challenges are individual graded work when scheduled."
+    },
+    {
+      "from": "units/07/index.html",
+      "to": "studios/studio04.html",
+      "anchor": "brief",
+      "sha256": "eef44d99e0a390ad99b3648c94906063d81390631fad0e26cfb723a295c123ef",
+      "text": "APPLICATION · CLASS / PROJECT Apply and transfer Studio 4: in teams take one small issue through branch, change, PR, review and merge; Challenge 2 occurs separately in W10 M1. Evidence standard: an understandable decision, a specific artifact or link where appropriate, a verification method, and a brief justification. Studios are formative; Challenges are individual graded work when scheduled."
+    },
+    {
+      "from": "units/08/index.html",
+      "to": "studios/studio05.html",
+      "anchor": "brief",
+      "sha256": "2f31fff0c8fc87e1e347e48d2d3db4e2c13ef468f716250d9dabe6f7187d26c3",
+      "text": "APPLICATION · CLASS / PROJECT Apply and transfer Studio 5: derive and implement tests for one real acceptance criterion; interpret a failing test and document the evidence. Evidence standard: an understandable decision, a specific artifact or link where appropriate, a verification method, and a brief justification. Studios are formative; Challenges are individual graded work when scheduled."
+    },
+    {
+      "from": "units/09/index.html",
+      "to": "studios/studio06.html",
+      "anchor": "brief",
+      "sha256": "7d4ebdcc7e1dc9753fd3511209e25fbfca79434918dd4f3514677faa4442f59e",
+      "text": "APPLICATION · CLASS / PROJECT Apply and transfer Studio 6: evaluate AI-generated requirements/test/code artifacts and verify claims with evidence. Challenge 3 occurs separately in W14 M1. Evidence standard: an understandable decision, a specific artifact or link where appropriate, a verification method, and a brief justification. Studios are formative; Challenges are individual graded work when scheduled."
+    }
+  ],
+  "newPages": [
+    "practice/unit01.html",
+    "practice/unit02.html",
+    "practice/unit03.html",
+    "practice/unit04.html",
+    "practice/unit05.html",
+    "practice/unit06.html",
+    "practice/unit07.html",
+    "practice/unit08.html",
+    "practice/unit09.html",
+    "practice/unit10.html",
+    "studios/studio01.html",
+    "studios/studio02.html",
+    "studios/studio03.html",
+    "studios/studio04.html",
+    "studios/studio05.html",
+    "studios/studio06.html",
+    "challenges/challenge01.html",
+    "challenges/challenge02.html",
+    "challenges/challenge03.html",
+    "quick-checks/qc01.html",
+    "quick-checks/qc02.html",
+    "quick-checks/qc03.html",
+    "quick-checks/qc04.html",
+    "quick-checks/qc05.html",
+    "learn/index.html",
+    "practice/index.html",
+    "studios/index.html",
+    "challenges/index.html",
+    "quick-checks/index.html",
+    "practice/u01-professional.html",
+    "practice/u01-engineering.html",
+    "practice/u01-quality.html",
+    "practice/u01-process.html",
+    "practice/u01-systems.html",
+    "practice/u01-responsibility.html",
+    "practice/u01-context.html"
+  ]
+}
