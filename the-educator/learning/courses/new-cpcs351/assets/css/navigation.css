@@ -57,3 +57,17 @@ html{scroll-padding-top:190px}
 .course-header-v2 .course-places .place-link:hover,.course-header-v2 .course-places .place-link[aria-current]{border:0}
 @media(max-width:800px){html{scroll-padding-top:90px}.site-header.course-header-v2{margin:0;border-radius:0}.course-header-v2 .course-header-inner{width:100%;padding:0}.course-header-v2 .course-menu[open] .course-menu-content{border-radius:0}.course-header-v2 .site-nav{justify-content:start}.course-header-v2 .course-places{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.course-header-v2 .course-places .place-link,.course-header-v2 .course-places .place-link:first-child{border:0;min-height:76px;text-align:left;justify-content:flex-start;align-items:center;padding:12px 14px}.course-header-v2 .place-text{text-align:left}.course-header-v2 .course-places .place-link:last-child{grid-column:1/-1}}
 @media(max-width:460px){.course-header-v2 .course-places{grid-template-columns:1fr}.course-header-v2 .course-places .place-link:last-child{grid-column:auto}}
+
+/* Unified navigation: Overview then learning workflow, Project, Resources, Syllabus. */
+@media(min-width:801px){
+.course-header-v2 .course-header-inner{grid-template-columns:minmax(155px,220px) minmax(0,1fr);grid-template-areas:"brand places";gap:20px;align-items:center}
+.course-header-v2 .course-menu{grid-area:places;display:block;min-width:0}
+.course-header-v2 .course-menu-content{display:flex;align-items:stretch;min-width:0}
+.course-header-v2 .site-nav{display:contents}
+.course-header-v2 .site-nav a{flex:0 0 11.111%;min-width:0;display:flex;align-items:center;justify-content:center;text-align:center;font:700 clamp(12px,1.1vw,19px)/1.25 Georgia,serif;padding:10px 4px;border:0}
+.course-header-v2 .course-places{flex:1;min-width:0;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:0;padding:0}
+.course-header-v2 .course-places .place-link{min-width:0;min-height:92px;padding:10px 4px}
+.course-header-v2 .course-places .place-title{font-size:clamp(12px,1.1vw,19px)}
+.course-header-v2 .course-places small{font-size:clamp(9px,.7vw,11px)}
+}
+@media(max-width:800px){.course-header-v2 .course-places{grid-template-columns:repeat(2,minmax(0,1fr))}.course-header-v2 .course-places .place-link:last-child{grid-column:auto}}
