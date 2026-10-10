@@ -26,12 +26,12 @@ Software Engineering Track/
   assets/navigation.js
   courses/
     cpcs351/index.html
-    course-02/index.html  (planning placeholder)
-    course-03/index.html  (planning placeholder)
-    course-04/index.html  (planning placeholder)
-    course-05/index.html  (planning placeholder)
+    cpcs353/index.html
+    cpcs404/index.html
+    cpcs405/index.html
+    cpcs454/index.html\n    cpcs457/index.html
 ```
-Only CPCS 351 is treated as confirmed. Do not invent codes, course outcomes, sequencing, credits or approvals for future courses.
+The directory uses the supplied six course codes in ascending numeric order. CPCS 351 is the active pilot; do not infer approved course titles, outcomes, credits, availability or redesign approval for other codes.
 
 ## Navigation
 One canonical configuration generates the header links on every page. All routes must work from nested folders using URL resolution relative to the shared JS file. Include skip links, keyboard focus, semantic nav and current-page states. Course homepages link back to the track and forward to their canonical content.
@@ -53,4 +53,4 @@ Check 375, 768, 1024, 1440, 1920 px; links, no overflow, keyboard navigation, WC
 Audit → specify → implement shared tokens/navigation → build track and one course page → review → add future approved courses → QA → publish. Preserve existing academic materials, files, grades and interactions. Never infer approvals from draft plans.
 
 ## Implementation record
-Initial foundation: shared CSS + shared JS, editorial track landing, CPCS 351 directory landing, and four explicitly provisional course pages. All work restricted to the new Software Engineering Track folder.
+Initial foundation: shared CSS + shared JS, editorial track landing, CPCS 351 directory landing, and five code-specific course directory pages. All work restricted to the new Software Engineering Track folder.
