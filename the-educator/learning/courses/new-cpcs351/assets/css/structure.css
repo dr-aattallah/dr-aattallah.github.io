@@ -1252,3 +1252,100 @@ body.unit01 .related-work{background:#fff!important}
 body.unit01 .lesson .lesson-head,
 body.unit01 .lesson .prose{background:#fff!important}
 body.unit01 .page-content>section{border-radius:0!important}
+
+
+/* DIGITAL ENGINEERING PORTAL + COMMAND DOCK — centralized unit UI v1.
+   Rich hero intentionally contrasts with the white monochrome reading canvas. */
+body.unit01 .page-hero{
+ position:relative!important;isolation:isolate;overflow:hidden!important;
+ background:radial-gradient(ellipse at 88% 22%,rgba(35,193,160,.28),transparent 38%),
+ radial-gradient(ellipse at 70% 95%,rgba(0,166,187,.19),transparent 46%),
+ linear-gradient(125deg,#091d30 0%,#0d3442 48%,#126047 100%)!important;
+ color:#fff!important;border:1px solid #0e5848!important;
+ border-radius:0!important;
+ padding:clamp(40px,5.5vw,86px) clamp(26px,5vw,76px)!important;
+ min-height:clamp(270px,29vw,430px);
+ box-shadow:0 9px 0 #0a3936,0 18px 0 rgba(8,43,43,.40),0 34px 48px -20px rgba(5,30,36,.57)!important;
+ margin:0 0 38px!important;
+}
+body.unit01 .page-hero::before{
+ content:"";display:block!important;pointer-events:none;position:absolute;z-index:-1;
+ inset:0 0 0 44%;
+ background:
+ radial-gradient(circle at 75% 31%,rgba(94,244,216,.88) 0 3px,transparent 4px),
+ radial-gradient(circle at 41% 72%,rgba(94,244,216,.75) 0 3px,transparent 4px),
+ repeating-linear-gradient(0deg,transparent 0 30px,rgba(119,245,218,.09) 31px 32px),
+ repeating-linear-gradient(90deg,transparent 0 30px,rgba(119,245,218,.09) 31px 32px);
+ transform:perspective(540px) rotateY(-17deg) rotateX(12deg) scale(1.18);
+ transform-origin:75% 50%;
+ opacity:.75;
+ mask-image:linear-gradient(90deg,transparent,#000 24%);
+}
+body.unit01 .page-hero::after{
+ content:"";display:block!important;pointer-events:none;position:absolute;z-index:-1;
+ width:clamp(150px,21vw,310px);aspect-ratio:1;
+ right:clamp(32px,8vw,140px);top:50%;
+ transform:translateY(-50%) rotate(-27deg) skew(5deg,5deg);
+ border:3px solid rgba(125,246,217,.58);
+ box-shadow:inset 16px 16px 0 rgba(22,165,141,.13),22px 24px 0 rgba(4,30,47,.45),31px 34px 35px rgba(0,0,0,.32),0 0 35px rgba(87,242,206,.20);
+ background:linear-gradient(145deg,rgba(105,245,215,.18),rgba(9,31,52,.08));
+ clip-path:polygon(0 0,80% 0,100% 20%,100% 100%,20% 100%,0 80%);
+}
+body.unit01 .page-hero :is(h1,h2,p,span,small){color:#fff!important}
+body.unit01 .page-hero h1{
+ max-width:780px;position:relative;z-index:1;
+ color:#fff!important;font-size:clamp(36px,4.3vw,70px)!important;
+ letter-spacing:-.045em;line-height:1.08!important;
+ text-shadow:0 4px 16px rgba(0,0,0,.27);
+}
+body.unit01 .page-hero>p{position:relative;z-index:1;max-width:670px;color:#e5f7f0!important;font-size:clamp(17px,1.6vw,22px)!important}
+body.unit01 .page-hero :is(.breadcrumbs,.hero-meta){position:relative;z-index:1}
+body.unit01 .page-hero .breadcrumbs :is(a,span){color:#e4f5ef!important}
+body.unit01 .page-hero .content-badge{
+ background:rgba(12,44,50,.82)!important;color:#d6fff2!important;
+ border:1px solid rgba(143,233,203,.56)!important;
+}
+body.unit01 .page-hero .hero-meta>span{color:#e4f5ef!important}
+body.unit01 .page-hero .breadcrumbs a:focus-visible{outline-color:#fff!important}
+/* Command dock: a single floating control, not a stack of offset rectangles. */
+body.unit01 .unit-sidebar{z-index:40!important}
+body.unit01 .floating-unit-toggle{
+ position:relative!important;display:flex!important;align-items:center!important;
+ width:min(100%,340px)!important;min-height:66px!important;
+ padding:11px 17px!important;gap:12px!important;
+ border:1px solid #256c63!important;border-radius:0!important;
+ background:linear-gradient(130deg,#092536,#104f47)!important;
+ color:#fff!important;
+ box-shadow:0 5px 0 #082c31,0 11px 20px -6px rgba(5,36,42,.42)!important;
+ font-weight:800!important;letter-spacing:.02em!important;
+ transition:transform .2s ease,box-shadow .2s ease!important;
+}
+body.unit01 .floating-unit-toggle:hover{
+ transform:translateY(-2px)!important;
+ box-shadow:0 7px 0 #082c31,0 15px 23px -6px rgba(5,36,42,.47)!important;
+}
+body.unit01 .floating-unit-toggle .toggle-icon{
+ display:grid!important;place-items:center!important;
+ width:38px!important;height:38px!important;flex:none;
+ background:rgba(119,237,211,.13)!important;
+ border:1px solid rgba(147,242,218,.45)!important;
+ color:#9af3dc!important;font-size:24px!important;
+}
+body.unit01 .floating-unit-toggle .toggle-arrow{
+ margin-left:auto!important;font-size:22px!important;color:#aaf1dd!important;
+}
+body.unit01 .unit-sidebar.unit-nav-open .floating-unit-toggle{
+ border-bottom-color:#5bb99d!important;
+}
+body.unit01 .unit-sidebar .unit-menu{border-radius:0!important}
+body.unit01 .unit-sidebar .unit-menu nav{background:#fff!important}
+@media(max-width:800px){
+ body.unit01 .page-hero{min-height:260px;padding:38px 24px!important}
+ body.unit01 .page-hero::after{width:130px;right:18px;opacity:.35}
+ body.unit01 .page-hero::before{inset:0 0 0 20%;opacity:.4}
+ body.unit01 .floating-unit-toggle{min-height:60px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body.unit01 .floating-unit-toggle{transition:none!important}
+ body.unit01 .floating-unit-toggle:hover{transform:none!important}
+}
