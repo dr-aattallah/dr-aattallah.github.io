@@ -271,3 +271,29 @@ body:has(.unit-shell) .unit-sidebar:hover,
 body:has(.unit-shell) .unit-sidebar:focus-within{
  box-shadow:8px 10px 0 #d2ddd5,14px 19px 0 #a9bfb0,20px 30px 48px rgba(12,43,30,.36)!important;
 }
+
+
+/* Contrast repair: dark teaching/scenario surfaces must never inherit dark text.
+   Central fix across every unit/topic, preserving the five semantic light tints. */
+body:has(.unit-shell) :is(.scenario,.story-visual)[style*="background:#"],
+body:has(.unit-shell) :is(.scenario,.story-visual)[style*="background: #"],
+body:has(.unit-shell) :is(.scenario,.story-visual)[style*="background-color:#"],
+body:has(.unit-shell) :is(.scenario,.story-visual)[style*="background-color: #"]{
+ color:#fff!important;
+}
+body:has(.unit-shell) :is(.scenario,.story-visual)[style*="background"] :is(h1,h2,h3,h4,h5,h6,p,small,span,li,b,strong){
+ color:inherit;
+}
+body:has(.unit-shell) :is(.scenario,.story-visual)[style*="background"] :is(a,summary){
+ color:#f9e5ad;
+ text-decoration-thickness:1px;
+ text-underline-offset:3px;
+}
+/* Explicitly restore legible text in the common dark narrative panels. */
+body:has(.unit-shell) :is(.scenario,.story-visual)[style*="#183"],
+body:has(.unit-shell) :is(.scenario,.story-visual)[style*="#173"],
+body:has(.unit-shell) :is(.scenario,.story-visual)[style*="#203"],
+body:has(.unit-shell) :is(.scenario,.story-visual)[style*="#243"],
+body:has(.unit-shell) :is(.scenario,.story-visual)[style*="#2d4"]{
+ color:#fff!important;
+}
