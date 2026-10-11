@@ -198,3 +198,52 @@ body:has(.unit-shell) .unit-sidebar:focus-within{transform:none!important}
  body:has(.unit-shell) .floating-unit-toggle{min-height:58px;padding:10px 16px;font-size:15px}
  body:has(.unit-shell) .unit-sidebar.unit-nav-open{max-height:calc(78dvh - 20px)!important}
 }
+
+/* Central content-type colour system — applies to every unit and topic.
+   Semantic meaning is reinforced by existing text and symbols, not colour alone. */
+:root{
+ --type-theory:#245b9d;--type-theory-tint:#edf4fd;
+ --type-example:#7250a2;--type-example-tint:#f4effb;
+ --type-exercise:#087568;--type-exercise-tint:#e8f7f2;
+ --type-questions:#b14b69;--type-questions-tint:#fff0f5;
+ --type-activity:#95620e;--type-activity-tint:#fff5df;
+}
+body:has(.unit-shell) .kind-theory{--kind:var(--type-theory)!important;--tint:var(--type-theory-tint)!important}
+body:has(.unit-shell) .kind-example{--kind:var(--type-example)!important;--tint:var(--type-example-tint)!important}
+body:has(.unit-shell) .kind-exercise{--kind:var(--type-exercise)!important;--tint:var(--type-exercise-tint)!important}
+body:has(.unit-shell) .kind-questions{--kind:var(--type-questions)!important;--tint:var(--type-questions-tint)!important}
+body:has(.unit-shell) .kind-activity{--kind:var(--type-activity)!important;--tint:var(--type-activity-tint)!important}
+/* Legend badges: distinct, readable foreground and matching pastel surface. */
+body:has(.unit-shell) .content-badge[class*="kind-"],
+body:has(.unit-shell) .type-legend .kind-theory,
+body:has(.unit-shell) .type-legend .kind-example,
+body:has(.unit-shell) .type-legend .kind-exercise,
+body:has(.unit-shell) .type-legend .kind-questions,
+body:has(.unit-shell) .type-legend .kind-activity{
+ background:var(--tint)!important;
+ color:var(--kind)!important;
+ border:1px solid color-mix(in srgb,var(--kind) 30%,white)!important;
+ border-radius:7px;
+}
+/* Content panels and teaching examples: the same type controls border and fill. */
+body:has(.unit-shell) .typed-block[class*="kind-"],
+body:has(.unit-shell) .lesson[class*="kind-"],
+body:has(.unit-shell) .page-hero[class*="kind-"],
+body:has(.unit-shell) .case-journey[class*="kind-"]{
+ border:1px solid color-mix(in srgb,var(--kind) 36%,white)!important;
+ border-left:5px solid var(--kind)!important;
+ background:var(--tint)!important;
+ color:#182d28!important;
+}
+body:has(.unit-shell) .typed-block[class*="kind-"] :is(h2,h3,h4),
+body:has(.unit-shell) .lesson[class*="kind-"] :is(h2,h3,h4){color:var(--kind)!important}
+body:has(.unit-shell) .unit-sidebar .unit-nav-link[class*="kind-"]{
+ border-left:4px solid var(--kind)!important;
+ color:#18342b!important;
+ background:color-mix(in srgb,var(--tint) 55%,white)!important;
+}
+body:has(.unit-shell) .unit-sidebar .unit-nav-link[class*="kind-"]:is(:hover,[aria-current]){
+ background:var(--tint)!important;
+ border-color:var(--kind)!important;
+}
+body:has(.unit-shell) .unit-sidebar .unit-nav-link[class*="kind-"] .nav-number{color:var(--kind)!important}
