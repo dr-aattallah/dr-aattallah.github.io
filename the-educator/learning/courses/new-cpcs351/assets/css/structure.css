@@ -401,3 +401,52 @@ body:has(.unit-shell) .u01-image-open:focus-visible{
 .ecosystem-story .ecosystem-core small{color:#d3f2e2!important;font-size:12px!important;font-weight:700;opacity:1!important}
 .ecosystem-story .ecosystem-core span{color:#edf7f0!important;font-size:13px!important;opacity:1!important}
 .ecosystem-story .ecosystem-core b{color:#fff!important}
+
+
+/* Shared editorial treatment for Project and Syllabus. Single source of truth. */
+body[data-page="project"],body[data-page="syllabus"]{
+ --editorial-green:#174d3b;
+ --editorial-ink:#1b3029;
+ --editorial-muted:#455a52;
+ --editorial-border:#cddcd4;
+ background:#f5f7f4;
+ color:var(--editorial-ink);
+}
+body[data-page="project"] .page-hero,
+body[data-page="syllabus"] .page-hero{
+ background:linear-gradient(115deg,#edf4ef,#fafbf9);
+ color:var(--editorial-ink);
+ border-bottom:1px solid var(--editorial-border);
+}
+body[data-page="project"] .page-hero :is(h1,h2),
+body[data-page="syllabus"] .page-hero :is(h1,h2){color:#153b2e}
+body[data-page="project"] .page-hero :is(p,small),
+body[data-page="syllabus"] .page-hero :is(p,small){color:#3f584e}
+body[data-page="project"] .content-section,
+body[data-page="syllabus"] .content-section{color:var(--editorial-ink)}
+body[data-page="project"] :is(.info-card,.policy-list,.stack>div),
+body[data-page="syllabus"] :is(.info-card,.policy-list,.stack>div){border-color:var(--editorial-border)}
+body[data-page="project"] :is(.project-band,.download-band),
+body[data-page="syllabus"] .download-band{background:#194c3b;color:#fff}
+body[data-page="project"] :is(.project-band,.download-band) :is(h2,h3,p,small,span),
+body[data-page="syllabus"] .download-band :is(h2,h3,p,small,span){color:#f3f8f5}
+body[data-page="project"] :is(.project-band,.download-band) a,
+body[data-page="syllabus"] .download-band a{color:#fff}
+body[data-page="project"] .project-places{max-width:1180px;margin:28px auto;padding:0 24px}
+body[data-page="project"] .project-places h2{font-size:clamp(1.7rem,3vw,2.5rem);margin:7px 0;color:#173b2f}
+body[data-page="project"] .project-places>p{max-width:760px;color:var(--editorial-muted);line-height:1.65}
+body[data-page="project"] .project-places-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+body[data-page="project"] .project-places-grid a{display:flex;flex-direction:column;gap:10px;text-decoration:none;border:1px solid #cddcd4;border-top:5px solid var(--accent);background:var(--tint);padding:22px;border-radius:4px;min-height:165px;transition:transform .2s,box-shadow .2s}
+body[data-page="project"] .project-places-grid a:hover,
+body[data-page="project"] .project-places-grid a:focus-visible{transform:translateY(-3px);box-shadow:0 12px 28px #153b2e20;outline:2px solid var(--accent)}
+body[data-page="project"] .project-places-grid strong{color:#163f32;font-size:1.13rem}
+body[data-page="project"] .project-places-grid span{color:#344f44;font-size:.9rem;line-height:1.55}
+body[data-page="project"] .project-places-grid a:nth-child(1){--accent:#246d54;--tint:#edf6f0}
+body[data-page="project"] .project-places-grid a:nth-child(2){--accent:#567c52;--tint:#f0f5e9}
+body[data-page="project"] .project-places-grid a:nth-child(3){--accent:#80652b;--tint:#f8f4e9}
+body[data-page="project"] .project-places-grid a:nth-child(4){--accent:#315f74;--tint:#edf4f6}
+body[data-page="project"] .project-places-grid a:nth-child(5){--accent:#74537e;--tint:#f5eff6}
+body[data-page="project"] .project-places-grid a:nth-child(6){--accent:#345e4d;--tint:#edf5f1}
+body[data-page="project"] .project-guide{border:1px solid #bfd4c8;border-radius:4px;background:#edf5f0;padding:18px 20px;margin-top:18px;color:#25483a;line-height:1.6}
+@media(max-width:800px){body[data-page="project"] .project-places-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){body[data-page="project"] .project-places-grid{grid-template-columns:1fr}body[data-page="project"] .project-places-grid a{min-height:0}}
