@@ -297,3 +297,27 @@ body:has(.unit-shell) :is(.scenario,.story-visual)[style*="#243"],
 body:has(.unit-shell) :is(.scenario,.story-visual)[style*="#2d4"]{
  color:#fff!important;
 }
+
+
+/* Contrast fix v2: actual dark diagram nodes, not only scenario wrappers.
+   Nested labels previously inherited muted dark text from shared typography. */
+body:has(.unit-shell) .systems-map .node.core,
+body:has(.unit-shell) .systems-map .core{
+ background:#24473a!important;
+ color:#ffffff!important;
+}
+body:has(.unit-shell) .systems-map .node.core :is(b,strong,small,span,p,em),
+body:has(.unit-shell) .systems-map .core :is(b,strong,small,span,p,em){
+ color:#ffffff!important;
+ opacity:1!important;
+}
+body:has(.unit-shell) .quality-diamond > div :is(b,strong,p,small,span),
+body:has(.unit-shell) .unit-hero :is(h1,h2,p,small){
+ color:inherit;
+}
+/* General dark-background component variants used by learning diagrams. */
+body:has(.unit-shell) :is(.node,.process-step,.story-step,.visual-card)[class~="dark"] :is(b,strong,p,small,span,li),
+body:has(.unit-shell) :is(.node,.process-step,.story-step,.visual-card)[class~="core"] :is(b,strong,p,small,span,li){
+ color:#fff!important;
+ opacity:1!important;
+}
