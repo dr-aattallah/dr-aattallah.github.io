@@ -1027,8 +1027,8 @@ body.unit01 .unit-sidebar .unit-menu .nav-group>h2{
 html,body{background:#f6f3ec!important;color:#202b26}
 body :is(h1,h2,h3,h4,strong){color:inherit}
 body :is(a,button):focus-visible{outline:3px solid #175c45;outline-offset:3px}
-body :is(.course-hub,.unit01) a:not(.button){text-underline-offset:3px}
-body :is(.unit01,.course-hub,.course-home) :is(.page-hero,.course-hero,.component-hero,.hero-section){
+body:is(.course-hub,.unit01) a:not(.button){text-underline-offset:3px}
+body:is(.unit01,.course-hub,.course-home) :is(.page-hero,.course-hero,.component-hero,.hero-section){
  --kind:#175c45;--tint:#f2f4f0;
 }
 body.course-hub :is(.component-orientation,.hub-section,.catalog-card,.portal-card,.task-card,.studio-box),
@@ -1083,10 +1083,10 @@ body.unit01 :is(.scenario,.visual,.tryit,.transfer-challenge,.story-question) :i
 body.course-hub :is(.component-orientation,.hub-section,.catalog-card,.portal-card,.task-card,.studio-box) :is(.kicker,.eyebrow,small){
  color:#506158;
 }
-body :is(.course-hub,.unit01,.course-home) :is(.button-primary,.btn-primary,.primary-button){
+body:is(.course-hub,.unit01,.course-home) :is(.button-primary,.btn-primary,.primary-button){
  background:#175c45!important;color:#fff!important;border-color:#175c45!important;
 }
-body :is(.course-hub,.unit01,.course-home) :is(.button-secondary,.btn-secondary){
+body:is(.course-hub,.unit01,.course-home) :is(.button-secondary,.btn-secondary){
  background:#fff!important;color:#175c45!important;border-color:#d7ded8!important;
 }
 body.unit01 :is(.notice,.callout,.note,.reading-note,.source-note,.after-class),
@@ -1130,7 +1130,7 @@ body.unit01 :is(.scenario,.visual,.tryit,.transfer-challenge,.story-question) :i
  color:#202b26!important;
  border-radius:0!important;
 }
-body :is(.course-hub,.unit01,.course-home) :is(.step-card,.process-step,.unit-card,.learning-card,.topic-card){
+body:is(.course-hub,.unit01,.course-home) :is(.step-card,.process-step,.unit-card,.learning-card,.topic-card){
  border-radius:0!important;
 }
 body[data-page="resources"] .page-hero,
