@@ -48,3 +48,39 @@
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
+
+
+/* Central CLO-to-assessment display. Mappings from Assessment & Rubrics Handbook v1.1.
+   Do not assign unmapped Quick Checks or exams by inference. */
+(function(){
+ const map=Object.freeze({
+  M0:[1,5],M1:[2,3],M2:[3,4],M3:[5,6,7],
+  RELEASE:[5,6,7],CHALLENGE1:[2],CHALLENGE2:[4,7],CHALLENGE3:[6,7]
+ });
+ const patterns=[
+  [/\\bM0\\b|Project Proposal\\s*&\\s*Setup/i,'M0'],
+  [/\\bM1\\b|Requirements\\s*&\\s*Analysis/i,'M1'],
+  [/\\bM2\\b|Architecture\\s*&\\s*Design/i,'M2'],
+  [/\\bM3\\b|Implementation\\s*&\\s*Testing/i,'M3'],
+  [/Final (?:Engineering )?Release|Release\\s*&\\s*Demo/i,'RELEASE'],
+  [/Challenge\\s*1\\b/i,'CHALLENGE1'],
+  [/Challenge\\s*2\\b/i,'CHALLENGE2'],
+  [/Challenge\\s*3\\b/i,'CHALLENGE3']
+ ];
+ function init(){
+  const nodes=document.querySelectorAll('.timeline .week,.catalog-card,.grade-grid .grade,.project-places-grid a,.assessment-card,.task-hero,.page-hero,.task-heading,.milestone-card');
+  for(const node of nodes){
+   if(node.querySelector('.clo-mapping'))continue;
+   const text=(node.querySelector('.w,.catalog-kicker,h3,h1')||node).textContent.trim();
+   const matches=patterns.filter(([re])=>re.test(text));
+   if(matches.length!==1)continue;
+   const ids=map[matches[0][1]];
+   const badge=document.createElement('span');
+   badge.className='clo-mapping';
+   badge.textContent='CLO '+ids.join(' · CLO ');
+   badge.setAttribute('aria-label','Mapped course learning outcomes: '+ids.map(n=>'CLO '+n).join(', '));
+   (node.querySelector('.catalog-kicker,.w,h3,h1')||node).insertAdjacentElement('afterend',badge);
+  }
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
