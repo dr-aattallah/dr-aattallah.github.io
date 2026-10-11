@@ -521,3 +521,40 @@ body[data-page="project"] .editorial-course-hero .button.ghost{color:#193b2d;bor
   border-left:0;border-top:1px solid #cdd9d0;padding:12px 0 0;
  }
 }
+
+
+/* 2026-10-11 — CENTRAL PAGE CANVAS & HERO STANDARD
+   All rules scoped to the NEW course's shared stylesheet only. */
+:root{--course-canvas-beige:#f7f4ec;--course-hero-paper:#f0f1e9;--course-hero-ink:#1c3027}
+html,body{background:var(--course-canvas-beige)!important}
+body.course-hub{background:var(--course-canvas-beige)!important}
+body.course-hub main{box-sizing:border-box;max-width:none;width:100%;padding:26px clamp(16px,3vw,48px) 64px}
+body.course-hub main > :not(.hub-hero):not(.hub-breadcrumb){max-width:1240px;margin-left:auto;margin-right:auto}
+body.course-hub .hub-breadcrumb{display:none!important}
+body.course-hub .hub-hero{
+ box-sizing:border-box;width:100%;max-width:none;margin:0 0 30px;
+ border:1px solid #d8dfd5;border-radius:22px;
+ background:var(--course-hero-paper);color:var(--course-hero-ink);
+ padding:clamp(28px,4vw,64px) clamp(26px,5vw,80px);
+ box-shadow:none;
+}
+body.course-hub .hub-hero h1{color:var(--course-hero-ink);max-width:1100px}
+body.course-hub .hub-hero p{color:#31453a;max-width:850px}
+body.course-hub .hub-hero .hub-eyebrow{color:#234b3a}
+body.course-hub .hub-hero .hub-meta span{background:#e9e5ef;color:#273b32}
+body[data-page="project"] .editorial-course-hero,
+body[data-page="syllabus"] .editorial-course-hero{
+ box-sizing:border-box;width:calc(100% - clamp(32px,6vw,96px));
+ max-width:none;margin:26px auto 34px;
+ background:var(--course-hero-paper);color:var(--course-hero-ink);
+}
+body[data-page="project"] .editorial-course-hero h1,
+body[data-page="syllabus"] .editorial-course-hero h1{color:var(--course-hero-ink)}
+body[data-page="project"] .editorial-course-hero .intro,
+body[data-page="syllabus"] .editorial-course-hero .intro{color:#31453a}
+@media(max-width:750px){
+ body.course-hub main{padding:16px 14px 48px}
+ body.course-hub .hub-hero{padding:28px 22px;border-radius:18px}
+ body[data-page="project"] .editorial-course-hero,
+ body[data-page="syllabus"] .editorial-course-hero{width:calc(100% - 28px);margin:16px auto 26px}
+}
