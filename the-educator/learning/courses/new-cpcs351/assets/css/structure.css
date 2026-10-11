@@ -371,3 +371,27 @@ body:has(.unit-shell) .u01-image-open:focus-visible{
  background:#dff0e7!important;
  color:#06432f!important;
 }
+
+
+/* Contrast contract: discipline-map central focus (Software Engineering).
+   Generic muted span/small styles must not override text on dark green. */
+.discipline-map .focus{
+ background:#24473a;
+ color:#ffffff;
+}
+.discipline-map .focus :is(small,b,strong,span,p,em,li){
+ color:#ffffff!important;
+ opacity:1!important;
+}
+.discipline-map .focus small{
+ color:#d5f2e3!important;
+ letter-spacing:.10em;
+}
+.discipline-map .focus span,
+.discipline-map .focus p{
+ color:#f1f7f3!important;
+}
+.discipline-map .focus a{
+ color:#d8f7ff!important;
+ text-decoration:underline;
+}
