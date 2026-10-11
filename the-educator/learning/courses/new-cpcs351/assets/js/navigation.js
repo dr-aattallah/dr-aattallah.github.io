@@ -39,7 +39,11 @@
   button.setAttribute('aria-label','Open unit topics');
   const id='floating-unit-topics';
   sidebar.id=sidebar.id||id;button.setAttribute('aria-controls',sidebar.id);
-  button.innerHTML='<span class="toggle-icon" aria-hidden="true">☰</span><span>Unit topics</span><span class="toggle-arrow" aria-hidden="true">⌄</span>';
+  const active=sidebar.querySelector('.unit-nav-link[aria-current="page"]');
+  const unitLabel=sidebar.querySelector('.unit-home strong')?.textContent?.trim()||'Unit';
+  const topicNumber=active?.querySelector('.nav-number')?.textContent?.trim()||'01';
+  const total=sidebar.querySelectorAll('.unit-nav-link').length;
+  button.innerHTML='<span class="toggle-icon" aria-hidden="true">▦</span><span class="dock-copy"><strong>'+unitLabel+'</strong><small>TOPICS · '+topicNumber+' / '+String(total).padStart(2,'0')+'</small></span><span class="toggle-arrow" aria-hidden="true">⌄</span>';
   sidebar.prepend(button);
   const setOpen=(open)=>{sidebar.classList.toggle('unit-nav-open',open);button.setAttribute('aria-expanded',String(open));button.setAttribute('aria-label',open?'Close unit topics':'Open unit topics');button.querySelector('.toggle-arrow').textContent=open?'⌃':'⌄';};
   button.addEventListener('click',()=>setOpen(!sidebar.classList.contains('unit-nav-open')));
