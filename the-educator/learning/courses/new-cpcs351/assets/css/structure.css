@@ -1227,3 +1227,28 @@ body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link[aria-current="pag
  body.unit01 .meeting-cards>article::before{width:44px;height:44px;font-size:26px}
  body.unit01 .related-work,body.unit01 .case-journey,body.unit01 .learning-focus{padding:20px!important}
 }
+
+
+/* Precision fixes: nested RoomNow articles use ARTICLE, not classed ARTICLE. */
+body.unit01 .case-journey .journey-stages article{
+ background:#fff!important;color:#202b26!important;
+ border:1px solid #d3ded6!important;border-radius:0!important;
+ box-shadow:none!important;
+}
+body.unit01 .case-journey .journey-stages article :is(b,p,span){color:#202b26!important}
+body.unit01 .case-journey .journey-stages article a{color:#175c45!important}
+body.unit01 .case-journey{border-left:1px solid #d3ded6!important}
+body.unit01 .kind-example :is(.content-badge,.lesson-index),
+body.unit01 .kind-exercise :is(.content-badge,.lesson-index),
+body.unit01 .kind-questions :is(.content-badge,.lesson-index),
+body.unit01 .kind-activity :is(.content-badge,.lesson-index),
+body.unit01 .kind-theory :is(.content-badge,.lesson-index){
+ background:#fff!important;color:#175c45!important;border-color:#d3ded6!important
+}
+body.unit01 .case-journey .connected-story,
+body.unit01 .case-journey .connected-story>summary{background:#fff!important;color:#175c45!important}
+body.unit01 .eyebrow{color:#175c45!important}
+body.unit01 .related-work{background:#fff!important}
+body.unit01 .lesson .lesson-head,
+body.unit01 .lesson .prose{background:#fff!important}
+body.unit01 .page-content>section{border-radius:0!important}
