@@ -1362,3 +1362,25 @@ body.unit01 .floating-unit-toggle .dock-copy small{
  color:#b5e9d8!important;font-size:10px!important;
  font-weight:700!important;letter-spacing:.12em!important;
 }
+
+
+/* HOTFIX: ensure dark digital hero actually renders behind white lettering.
+   Previous generic :is(.page-hero) background rule had !important and high specificity. */
+html body.unit01 .unit-shell main#main > header.page-hero,
+html body.unit01 main#main > .page-hero,
+html body.unit01 header.page-hero.kind-theory,
+html body.unit01 header.page-hero.kind-example,
+html body.unit01 header.page-hero.kind-exercise,
+html body.unit01 header.page-hero.kind-questions,
+html body.unit01 header.page-hero.kind-activity{
+ background-color:#0b3040!important;
+ background-image:
+  radial-gradient(ellipse at 85% 25%,rgba(34,177,145,.28),transparent 38%),
+  linear-gradient(125deg,#091d30 0%,#0d3442 48%,#126047 100%)!important;
+ color:#fff!important;
+}
+html body.unit01 .page-hero::before,
+html body.unit01 .page-hero::after{background-color:transparent}
+html body.unit01 .page-hero :is(h1,p,span,small){color:#fff!important}
+html body.unit01 .page-hero .breadcrumbs :is(a,span){color:#d9f2e9!important}
+html body.unit01 .page-hero .hero-meta>span{color:#e2f5ee!important}
