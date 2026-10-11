@@ -1142,3 +1142,88 @@ body[data-page="project"] .page-hero{
  body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link{transition:none!important}
  body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link:hover{transform:none!important}
 }
+
+
+/* WHITE CANVAS + SHAPE-FIRST CARDS — screenshot-based corrective pass.
+   Scoped exclusively to new CPCS351 via this stylesheet. */
+:root{--paper:#fff!important;--soft:#f7f9f7;--type-theory:#175c45;--type-example:#175c45;--type-exercise:#175c45;--type-questions:#175c45;--type-activity:#175c45;
+ --type-theory-tint:#fff;--type-example-tint:#fff;--type-exercise-tint:#fff;--type-questions-tint:#fff;--type-activity-tint:#fff}
+html,body,body.unit01,body.course-hub,body.course-home,
+body.unit01 .unit-shell,body.unit01 main,body.unit01 .page-content,
+body.course-hub main,body.course-home main{background:#fff!important}
+body.unit01 :is(.page-hero,.related-work,.case-journey,.learning-focus,.route-section,.lesson,.page-source,.reading-note,.meeting-cards>article,.journey-stages>article,.focus-items>div,.scenario,.tryit,.visual,.worksheet,.concept,.quiz-q,.task-block,.story-question),
+body.course-hub :is(.hub-section,.catalog-card,.component-orientation,.portal-card,.task-card),
+body[data-page="project"] :is(.project-guide,.content-section),
+body[data-page="resources"] :is(.resource-card,.content-section){
+ border-radius:0!important;
+}
+body.unit01 :is(.related-work,.case-journey,.learning-focus,.meeting-cards>article,.scenario,.tryit,.visual,.worksheet,.concept,.quiz-q,.task-block,.story-question),
+body.course-hub :is(.catalog-card,.component-orientation,.portal-card,.task-card){
+ background:#fff!important;
+ border:1px solid #d3ded6!important;
+ box-shadow:5px 6px 0 rgba(32,73,48,.13),0 12px 22px -13px rgba(26,54,37,.20)!important;
+}
+body.unit01 .related-work,
+body.unit01 .case-journey,
+body.unit01 .learning-focus{padding:clamp(22px,2.6vw,36px)!important;margin-bottom:clamp(22px,2.5vw,36px)!important}
+body.unit01 .meeting-cards{gap:22px!important}
+body.unit01 .meeting-cards>article{
+ padding:clamp(24px,2.7vw,36px)!important;
+ min-height:160px;
+ position:relative;
+}
+body.unit01 .meeting-cards>article::before{
+ content:"▤";
+ display:grid;place-items:center;
+ width:52px;height:52px;
+ margin:0 0 18px;
+ border:2px solid #175c45;
+ background:#fff;color:#175c45;
+ font:700 30px/1 Georgia,serif;
+ box-shadow:3px 3px 0 rgba(23,92,69,.15);
+}
+body.unit01 .meeting-cards>article:nth-child(2)::before{content:"◇";font-size:37px}
+body.unit01 .meeting-cards>article:nth-child(3)::before{content:"⚙";font-size:29px}
+body.unit01 .case-journey>.content-badge::before{content:"◇";font:700 24px/1 Georgia,serif;margin-right:8px}
+body.unit01 .scenario>.content-badge::before{content:"◇";font:700 24px/1 Georgia,serif;margin-right:8px}
+body.unit01 .tryit>.content-badge::before,
+body.unit01 .transfer-challenge>.content-badge::before{content:"✎";font:700 24px/1 Georgia,serif;margin-right:8px}
+body.unit01 .related-work>h2::before{content:"▤";color:#175c45;font:700 30px/1 Georgia,serif;margin-right:12px;vertical-align:-2px}
+body.unit01 .learning-focus>h2::before{content:"◎";color:#175c45;font:700 30px/1 Georgia,serif;margin-right:12px;vertical-align:-2px}
+body.unit01 .route-section>h2::before{content:"▦";color:#175c45;font:700 30px/1 Georgia,serif;margin-right:12px;vertical-align:-2px}
+body.unit01 .journey-stages>article,
+body.unit01 .focus-items>div,
+body.unit01 .scenario :is(.compare-side,.question-card,.scenario-question){
+ background:#fff!important;color:#202b26!important;
+ border-color:#d3ded6!important;border-radius:0!important;
+ box-shadow:none!important;
+}
+body.unit01 .case-journey,
+body.unit01 .case-journey :is(h2,h3,p,b,small,a,summary),
+body.unit01 .journey-stages>article :is(b,p,a),
+body.unit01 .scenario :is(h2,h3,p,li,b),
+body.unit01 .tryit :is(h2,h3,p,li,b){color:#202b26!important}
+body.unit01 .case-journey a,
+body.unit01 .journey-stages a,
+body.unit01 .scenario a,
+body.unit01 .tryit a{color:#175c45!important}
+body.unit01 :is(.kind-theory,.kind-example,.kind-exercise,.kind-questions,.kind-activity),
+body.unit01 .journey-stages>article{--kind:#175c45!important;--tint:#fff!important}
+body.unit01 .related-links>a{
+ border-radius:0!important;background:#fff!important;color:#175c45!important;
+ border:1px solid #175c45!important;
+ box-shadow:3px 4px 0 rgba(23,92,69,.12)!important;
+ padding:12px 16px!important;min-height:44px;
+}
+body.unit01 .related-links>a:hover{box-shadow:5px 6px 0 rgba(23,92,69,.19)!important;transform:translateY(-2px)}
+body.unit01 .page-hero{background:#fff!important;color:#202b26!important;border-color:#d3ded6!important}
+body.unit01 .page-hero :is(h1,p){color:#202b26!important}
+body.unit01 .page-hero .content-badge{background:#fff!important;color:#175c45!important}
+body.unit01 .reading-note,
+body.unit01 .page-source{background:#fff!important;color:#202b26!important;box-shadow:none!important;border:1px solid #d3ded6!important}
+body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link{background:#fff!important;border-radius:0!important}
+body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link[aria-current="page"]{background:#eff5f0!important}
+@media(max-width:620px){
+ body.unit01 .meeting-cards>article::before{width:44px;height:44px;font-size:26px}
+ body.unit01 .related-work,body.unit01 .case-journey,body.unit01 .learning-focus{padding:20px!important}
+}
