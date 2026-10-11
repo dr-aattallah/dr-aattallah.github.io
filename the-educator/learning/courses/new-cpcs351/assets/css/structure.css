@@ -321,3 +321,53 @@ body:has(.unit-shell) :is(.node,.process-step,.story-step,.visual-card)[class~="
  color:#fff!important;
  opacity:1!important;
 }
+
+
+/* ACCESSIBLE CONTRAST CONTRACT — shared across all new CPCS351 unit pages.
+   High-specificity selectors override generic muted text inside dark surfaces. */
+:root{
+ --course-on-dark:#ffffff;
+ --course-on-dark-soft:#f1f6f4;
+ --course-link-on-dark:#e7f7ff;
+ --course-link-on-light:#075a47;
+}
+body:has(.unit-shell) .quality-diamond > div,
+body:has(.unit-shell) .quality-diamond > div :is(p,b,strong,small,span,em,li),
+body:has(.unit-shell) .systems-map .core,
+body:has(.unit-shell) .systems-map .core :is(p,b,strong,small,span,em,li),
+body:has(.unit-shell) .studio-box,
+body:has(.unit-shell) .studio-box :is(p,b,strong,small,span,em,li),
+body:has(.unit-shell) .project-bridge,
+body:has(.unit-shell) .project-bridge :is(p,b,strong,small,span,em,li){
+ color:var(--course-on-dark)!important;
+ opacity:1!important;
+}
+body:has(.unit-shell) .quality-diamond > div p,
+body:has(.unit-shell) .systems-map .core small{
+ color:var(--course-on-dark-soft)!important;
+}
+body:has(.unit-shell) .quality-diamond > div a,
+body:has(.unit-shell) .systems-map .core a,
+body:has(.unit-shell) .studio-box a,
+body:has(.unit-shell) .project-bridge a{
+ color:var(--course-link-on-dark)!important;
+ text-decoration:underline;
+ text-underline-offset:3px;
+}
+body:has(.unit-shell) .u01-image-open,
+body:has(.unit-shell) a.u01-image-open{
+ background:#f1f8f4!important;
+ color:var(--course-link-on-light)!important;
+ border:2px solid #237057!important;
+ text-decoration:underline!important;
+ text-underline-offset:3px;
+}
+body:has(.unit-shell) .u01-image-open :is(span,small,strong){
+ color:var(--course-link-on-light)!important;
+ opacity:1!important;
+}
+body:has(.unit-shell) .u01-image-open:hover,
+body:has(.unit-shell) .u01-image-open:focus-visible{
+ background:#dff0e7!important;
+ color:#06432f!important;
+}
