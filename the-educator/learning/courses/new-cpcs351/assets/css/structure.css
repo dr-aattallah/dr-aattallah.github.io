@@ -759,3 +759,40 @@ body>.site-footer b{color:#efd1a0!important}
  body>.site-footer{display:block!important;padding:26px 22px!important}
  body>.site-footer div+div{margin-top:12px!important}
 }
+
+
+/* Full-bleed homepage artwork: native aspect ratio, no stretching, strong feathered edges. */
+body.course-home #main{max-width:none!important;width:100%!important;margin:0!important}
+body.course-home .official-course-hero{
+ position:relative!important;isolation:isolate;display:block!important;
+ width:100vw!important;max-width:none!important;margin:0!important;
+ margin-left:calc(50% - 50vw)!important;min-height:0!important;
+ padding:0!important;overflow:hidden!important;border:0!important;
+ background:var(--course-canvas-beige,#f7f4ec)!important;
+}
+body.course-home .official-course-hero .official-hero-image{
+ display:block!important;width:100%!important;max-width:none!important;
+ height:auto!important;aspect-ratio:1942 / 809!important;
+ object-fit:contain!important;object-position:center!important;
+}
+body.course-home .official-course-hero::before{
+ content:""!important;display:block!important;position:absolute!important;
+ z-index:2!important;inset:0!important;pointer-events:none!important;
+ background:
+ linear-gradient(to right,var(--course-canvas-beige,#f7f4ec) 0%,rgba(247,244,236,.96) 1%,rgba(247,244,236,.50) 5%,transparent 13%,transparent 87%,rgba(247,244,236,.50) 95%,rgba(247,244,236,.96) 99%,var(--course-canvas-beige,#f7f4ec) 100%),
+ linear-gradient(to bottom,transparent 66%,rgba(247,244,236,.15) 74%,rgba(247,244,236,.65) 89%,var(--course-canvas-beige,#f7f4ec) 100%)!important;
+}
+body.course-home .official-hero-actions{
+ box-sizing:border-box;width:100%;max-width:none;
+ margin:0!important;border:0!important;
+ background:var(--course-canvas-beige,#f7f4ec)!important;
+ padding:clamp(16px,2vw,28px) clamp(22px,5vw,76px)!important;
+}
+@media(max-width:720px){
+ body.course-home .official-course-hero .official-hero-image{
+  aspect-ratio:auto!important;width:100%!important;height:auto!important;
+ }
+ body.course-home .official-course-hero::before{
+  background:linear-gradient(to bottom,transparent 64%,rgba(247,244,236,.65) 86%,var(--course-canvas-beige,#f7f4ec) 100%)!important;
+ }
+}
