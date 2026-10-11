@@ -558,3 +558,68 @@ body[data-page="syllabus"] .editorial-course-hero .intro{color:#31453a}
  body[data-page="project"] .editorial-course-hero,
  body[data-page="syllabus"] .editorial-course-hero{width:calc(100% - 28px);margin:16px auto 26px}
 }
+
+
+/* PREMIUM INSTITUTIONAL HERO SYSTEM — shared across course destinations.
+   Wide floating editorial panel, layered lighting and subtle three-dimensional depth. */
+:root{--hero-surface:#e9eee6;--hero-edge:#b5c7b7;--hero-shadow:rgba(22,51,39,.17)}
+body.course-hub main{padding-inline:clamp(10px,1.45vw,28px)}
+body.course-hub .hub-hero,
+body[data-page="project"] .editorial-course-hero,
+body[data-page="syllabus"] .editorial-course-hero,
+body[data-page="resources"] .hub-hero{
+ position:relative;isolation:isolate;overflow:hidden;
+ width:100%;max-width:none;box-sizing:border-box;
+ margin:18px 0 clamp(30px,4vw,58px);
+ border:2px solid var(--hero-edge);
+ border-top:3px solid #f9fcf7;
+ border-bottom:4px solid #8ba997;
+ border-radius:24px;
+ background:
+  radial-gradient(ellipse at 94% 4%,rgba(255,255,255,.94),transparent 38%),
+  radial-gradient(ellipse at 2% 100%,rgba(174,199,177,.36),transparent 48%),
+  linear-gradient(122deg,#f2f5ed 0%,var(--hero-surface) 57%,#dce7da 100%);
+ box-shadow:0 7px 0 rgba(75,115,88,.08),0 24px 48px -17px var(--hero-shadow),inset 0 2px 0 rgba(255,255,255,.96),inset 0 -2px 0 rgba(91,132,102,.1);
+ padding:clamp(30px,4vw,64px) clamp(28px,5.4vw,90px);
+ color:#173c2d;
+}
+body.course-hub .hub-hero::before,
+body[data-page="project"] .editorial-course-hero::before,
+body[data-page="syllabus"] .editorial-course-hero::before,
+body[data-page="resources"] .hub-hero::before{
+ content:"";position:absolute;z-index:-1;right:-95px;top:-180px;
+ width:min(44vw,600px);height:500px;border-radius:50%;
+ background:radial-gradient(circle,rgba(167,194,169,.30),transparent 68%);
+ pointer-events:none;
+}
+body.course-hub .hub-hero h1,
+body[data-page="project"] .editorial-course-hero h1,
+body[data-page="syllabus"] .editorial-course-hero h1,
+body[data-page="resources"] .hub-hero h1{
+ color:#173c2d;letter-spacing:-.047em;line-height:1.1;
+ text-shadow:0 1px 0 rgba(255,255,255,.65);
+}
+body.course-hub .hub-hero p,
+body[data-page="resources"] .hub-hero p{color:#354c3e}
+body[data-page="project"] .editorial-course-hero,
+body[data-page="syllabus"] .editorial-course-hero{
+ width:calc(100% - clamp(20px,2.9vw,56px));
+ margin-inline:auto;max-width:none;
+}
+body[data-page="resources"] .resources-main{max-width:none;margin:0 auto;padding:20px clamp(10px,1.45vw,28px) 70px}
+body[data-page="resources"] .resources-main>section{max-width:1240px;margin-inline:auto}
+body[data-page="resources"] .hub-hero{display:block}
+body[data-page="resources"] .hub-hero .hub-eyebrow{color:#24563e}
+body[data-page="resources"] .hub-hero p{max-width:800px;line-height:1.7;font-size:1.08rem}
+body[data-page="resources"] .hub-hero h1{font-size:clamp(2.4rem,4.2vw,4.2rem);margin:18px 0}
+@media(max-width:750px){
+ body.course-hub .hub-hero,
+ body[data-page="project"] .editorial-course-hero,
+ body[data-page="syllabus"] .editorial-course-hero,
+ body[data-page="resources"] .hub-hero{
+  border-radius:18px;padding:28px 22px;
+  box-shadow:0 5px 0 rgba(75,115,88,.07),0 17px 29px -14px var(--hero-shadow);
+ }
+ body[data-page="project"] .editorial-course-hero,
+ body[data-page="syllabus"] .editorial-course-hero{width:calc(100% - 24px)}
+}
