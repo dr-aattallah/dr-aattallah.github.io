@@ -1384,3 +1384,39 @@ html body.unit01 .page-hero::after{background-color:transparent}
 html body.unit01 .page-hero :is(h1,p,span,small){color:#fff!important}
 html body.unit01 .page-hero .breadcrumbs :is(a,span){color:#d9f2e9!important}
 html body.unit01 .page-hero .hero-meta>span{color:#e2f5ee!important}
+
+
+/* UNIT DOCK CLEANUP — remove legacy stacked plates/shadows behind control.
+   One crisp command bar, no decorative offset layers. */
+html body.unit01 .unit-shell .unit-sidebar:not(.unit-nav-open){
+ background:transparent!important;
+ border:0!important;
+ outline:0!important;
+ box-shadow:none!important;
+ filter:none!important;
+ backdrop-filter:none!important;
+ transform:none!important;
+}
+html body.unit01 .unit-shell .unit-sidebar::before,
+html body.unit01 .unit-shell .unit-sidebar::after{
+ content:none!important;
+ display:none!important;
+ box-shadow:none!important;
+}
+html body.unit01 .unit-shell .unit-sidebar .floating-unit-toggle{
+ width:100%!important;
+ max-width:none!important;
+ background:linear-gradient(125deg,#092536,#104f47)!important;
+ border:1px solid #256c63!important;
+ border-radius:0!important;
+ box-shadow:0 5px 12px rgba(5,36,42,.24)!important;
+ filter:none!important;
+}
+html body.unit01 .unit-shell .unit-sidebar .floating-unit-toggle::before,
+html body.unit01 .unit-shell .unit-sidebar .floating-unit-toggle::after{
+ content:none!important;
+ display:none!important;
+}
+html body.unit01 .unit-shell .unit-sidebar .floating-unit-toggle:hover{
+ box-shadow:0 8px 16px rgba(5,36,42,.28)!important;
+}
