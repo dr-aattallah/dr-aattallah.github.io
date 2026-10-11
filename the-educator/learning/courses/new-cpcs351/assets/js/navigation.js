@@ -28,3 +28,23 @@
  const footer=()=>{const f=document.createElement('footer');f.className='site-footer';f.innerHTML='<div><b>The Educator</b> · CPCS 351 · Software Engineering I</div><div>King Abdulaziz University · Faculty of Computing &amp; Information Technology</div>';document.body.append(f);};
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',footer,{once:true});else footer();
 })();
+/* Shared accessible click-toggle for unit topic panels. */
+(function(){
+ function init(){
+  const sidebar=document.querySelector('.unit-shell .unit-sidebar');
+  if(!sidebar||sidebar.querySelector('.floating-unit-toggle'))return;
+  const button=document.createElement('button');
+  button.type='button';button.className='floating-unit-toggle';
+  button.setAttribute('aria-expanded','false');
+  button.setAttribute('aria-label','Open unit topics');
+  const id='floating-unit-topics';
+  sidebar.id=sidebar.id||id;button.setAttribute('aria-controls',sidebar.id);
+  button.innerHTML='<span class="toggle-icon" aria-hidden="true">☰</span><span>Unit topics</span><span class="toggle-arrow" aria-hidden="true">⌄</span>';
+  sidebar.prepend(button);
+  const setOpen=(open)=>{sidebar.classList.toggle('unit-nav-open',open);button.setAttribute('aria-expanded',String(open));button.setAttribute('aria-label',open?'Close unit topics':'Open unit topics');button.querySelector('.toggle-arrow').textContent=open?'⌃':'⌄';};
+  button.addEventListener('click',()=>setOpen(!sidebar.classList.contains('unit-nav-open')));
+  document.addEventListener('pointerdown',e=>{if(sidebar.classList.contains('unit-nav-open')&&!sidebar.contains(e.target))setOpen(false);});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sidebar.classList.contains('unit-nav-open')){setOpen(false);button.focus();}});
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
