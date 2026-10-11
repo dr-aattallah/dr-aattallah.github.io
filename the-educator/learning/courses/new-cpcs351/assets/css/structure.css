@@ -1009,3 +1009,94 @@ body.unit01 .unit-sidebar .unit-menu .nav-group>h2{
   box-shadow:2px 3px 0 rgba(52,91,69,.12),0 6px 12px -8px rgba(28,55,46,.2)!important;
  }
 }
+
+
+/* ACADEMIC MONOCHROME — OCT 2026
+   Single source of truth for the NEW CPCS 351 site only.
+   Keep content-type distinctions in words/icons, not saturated backgrounds.
+   Structural elevation is reserved for cards; notes remain flat. */
+:root{
+ --paper:#f6f3ec;--white:#fff;--ink:#202b26;--muted:#506158;
+ --line:#d7ded8;--soft:#f2f4f0;--red:#175c45;--red2:#124834;
+ --blue:#175c45;--lime:#e8efe9;
+ --learn:#175c45;--practice:#175c45;--studios:#175c45;
+ --challenges:#175c45;--quick-checks:#175c45;
+ --brand-green:#175c45;
+ --card-3d-line:#d7ded8;--card-3d-shadow:rgba(29,52,40,.14);
+}
+html,body{background:#f6f3ec!important;color:#202b26}
+body :is(h1,h2,h3,h4,strong){color:inherit}
+body :is(a,button):focus-visible{outline:3px solid #175c45;outline-offset:3px}
+body :is(.course-hub,.unit01) a:not(.button){text-underline-offset:3px}
+body :is(.unit01,.course-hub,.course-home) :is(.page-hero,.course-hero,.component-hero,.hero-section){
+ --kind:#175c45;--tint:#f2f4f0;
+}
+body.course-hub :is(.component-orientation,.hub-section,.catalog-card,.portal-card,.task-card,.studio-box),
+body.unit01 :is(.lesson,.scenario,.visual,.tryit,.transfer-challenge,.worksheet,.concept,.quiz-q,.task-block,.story-question,.meeting-cards>article,.page-content,.lesson-section,.concept-card,.example-card,.exercise-card,.activity-card),
+body :is(.project-places a,.project-places-grid>a,.content-section,.info-card,.component-card){
+ border-radius:0!important;
+ border-color:#d7ded8!important;
+}
+body.course-hub :is(.component-orientation,.hub-section,.catalog-card,.portal-card,.task-card,.studio-box),
+body.unit01 :is(.lesson,.scenario,.visual,.tryit,.transfer-challenge,.worksheet,.concept,.quiz-q,.task-block,.story-question,.meeting-cards>article,.lesson-section,.concept-card,.example-card,.exercise-card,.activity-card){
+ background:#fff!important;
+ color:#202b26!important;
+ box-shadow:4px 5px 0 rgba(40,68,49,.10),0 12px 22px -12px rgba(29,52,40,.14)!important;
+}
+body.unit01 :is(.lesson,.scenario,.visual,.tryit,.transfer-challenge,.worksheet,.concept,.quiz-q,.task-block,.story-question,.meeting-cards>article,.lesson-section,.concept-card,.example-card,.exercise-card,.activity-card) :is(h2,h3,h4,p,li,span,small){
+ color:inherit;
+}
+body.unit01 :is(.kind-theory,.kind-example,.kind-exercise,.kind-questions,.kind-activity){
+ --kind:#175c45!important;--tint:#f2f4f0!important;
+}
+body.unit01 :is(.kind-theory,.kind-example,.kind-exercise,.kind-questions,.kind-activity):not(.unit-nav-link):not(.content-badge){
+ border-left-color:#d7ded8!important;
+}
+body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link{
+ --kind:#175c45!important;--tint:#f2f4f0!important;
+ background:#fff!important;color:#202b26!important;
+ border-color:#d7ded8!important;border-left-color:#175c45!important;
+}
+body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link[aria-current="page"]{
+ background:#eaf1eb!important;border-color:#175c45!important;
+}
+body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link .nav-number,
+body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link small{
+ color:#175c45!important;
+}
+body.unit01 .content-badge,
+body.unit01 .type-legend .content-badge,
+body.course-hub :is(.eyebrow,.kicker,.tag,.pill,.meta-tag){
+ background:#f2f4f0!important;color:#175c45!important;border-color:#d7ded8!important;
+ border-radius:0!important;
+}
+body.unit01 :is(.scenario,.visual,.tryit,.transfer-challenge,.story-question) :is(.content-badge,.label){
+ background:#f2f4f0!important;color:#175c45!important;
+}
+body.unit01 :is(.scenario,.visual,.tryit,.transfer-challenge,.story-question) :is(a,summary){
+ color:#175c45;
+}
+body.unit01 :is(.scenario,.visual,.tryit,.transfer-challenge,.story-question) :is(.quiz-feedback,.reveal-box,.note,.hint){
+ background:#f2f4f0!important;color:#202b26!important;
+ border-color:#d7ded8!important;box-shadow:none!important;
+}
+body.course-hub :is(.component-orientation,.hub-section,.catalog-card,.portal-card,.task-card,.studio-box) :is(.kicker,.eyebrow,small){
+ color:#506158;
+}
+body :is(.course-hub,.unit01,.course-home) :is(.button-primary,.btn-primary,.primary-button){
+ background:#175c45!important;color:#fff!important;border-color:#175c45!important;
+}
+body :is(.course-hub,.unit01,.course-home) :is(.button-secondary,.btn-secondary){
+ background:#fff!important;color:#175c45!important;border-color:#d7ded8!important;
+}
+body.unit01 :is(.notice,.callout,.note,.reading-note,.source-note,.after-class),
+body.course-hub :is(.course-notice,.notice,.callout,.source-note){
+ background:#f2f4f0!important;color:#202b26!important;
+ border-color:#d7ded8!important;border-radius:0!important;box-shadow:none!important;
+}
+body.course-hub :is(.component-orientation,.hub-section)>h2{color:#202b26!important}
+body.course-hub .hub-section{background:rgba(255,255,255,.35)!important}
+body.course-hub .hub-section .catalog-card{background:#fff!important}
+body.unit01 .unit-sidebar{background:#f2f4f0!important}
+body.unit01 .unit-sidebar :is(.nav-group h2,.unit-home strong){color:#202b26!important}
+/* Do not recolor informative images: preserve original artwork. */
