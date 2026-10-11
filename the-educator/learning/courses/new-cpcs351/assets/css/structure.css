@@ -1100,3 +1100,45 @@ body.course-hub .hub-section .catalog-card{background:#fff!important}
 body.unit01 .unit-sidebar{background:#f2f4f0!important}
 body.unit01 .unit-sidebar :is(.nav-group h2,.unit-home strong){color:#202b26!important}
 /* Do not recolor informative images: preserve original artwork. */
+
+
+/* MONOCHROME COMPLETION: page-wide structural consistency.
+   Target structural cards without changing embedded infographic art. */
+body[data-page="syllabus"] :is(.content-section,.syllabus-grid>article,.syllabus-grid>div,.download-card),
+body[data-page="project"] :is(.content-section,.project-places a,.project-guide,.project-places-grid>a),
+body[data-page="resources"] :is(.resource-card,.resource-grid>a,.resource-grid>article,.resource-list>a),
+body.course-hub :is(.component-orientation,.hub-card,.catalog-card,.component-card,.step-card,.process-step,.unit-card,.learning-card),
+body.unit01 :is(.meeting-card,.meeting-item,.topic-card,.topic-content,.unit-content-card){
+ border-radius:0!important;
+ border:1px solid #d7ded8!important;
+ background:#fff!important;
+ color:#202b26!important;
+ box-shadow:4px 5px 0 rgba(40,68,49,.10),0 12px 22px -12px rgba(29,52,40,.14)!important;
+}
+body[data-page="resources"] :is(.resource-card,.resource-grid>a,.resource-grid>article,.resource-list>a) :is(h2,h3,h4,p,small){
+ color:#202b26!important;
+}
+body.unit01 :is(.scenario,.visual,.tryit,.transfer-challenge,.story-question,.meeting-card,.meeting-item,.topic-card,.topic-content,.unit-content-card) :is(h2,h3,h4,p,li){
+ color:#202b26!important;
+}
+body.unit01 :is(.scenario,.visual,.tryit,.transfer-challenge,.story-question,.meeting-card,.meeting-item,.topic-card,.topic-content,.unit-content-card) :is(.kicker,.eyebrow,.label,.kind,.type-label){
+ color:#175c45!important;
+}
+body.unit01 :is(.scenario,.visual,.tryit,.transfer-challenge,.story-question) :is(.scenario-box,.scenario-panel,.example-panel,.exercise-panel,.scenario-detail,.question-box){
+ background:#f2f4f0!important;
+ border-color:#d7ded8!important;
+ color:#202b26!important;
+ border-radius:0!important;
+}
+body :is(.course-hub,.unit01,.course-home) :is(.step-card,.process-step,.unit-card,.learning-card,.topic-card){
+ border-radius:0!important;
+}
+body[data-page="resources"] .page-hero,
+body[data-page="syllabus"] .page-hero,
+body[data-page="project"] .page-hero{
+ color:#fff;
+}
+@media(prefers-reduced-motion:reduce){
+ body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link{transition:none!important}
+ body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link:hover{transform:none!important}
+}
