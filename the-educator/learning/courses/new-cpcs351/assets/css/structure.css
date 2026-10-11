@@ -623,3 +623,115 @@ body[data-page="resources"] .hub-hero h1{font-size:clamp(2.4rem,4.2vw,4.2rem);ma
  body[data-page="project"] .editorial-course-hero,
  body[data-page="syllabus"] .editorial-course-hero{width:calc(100% - 24px)}
 }
+
+
+/* HERO V3 — FULL BLEED / DARK INK & BRONZE / SHARP ARCHITECTURAL DEPTH
+   One authoritative design for all top-level destination heroes. */
+:root{--course-hero-navy:#172b38;--course-hero-bronze:#c8a778;--course-hero-white:#f9f5ec}
+body.course-hub .hub-hero,
+body[data-page="project"] .editorial-course-hero,
+body[data-page="syllabus"] .editorial-course-hero,
+body[data-page="resources"] .hub-hero{
+ position:relative!important;isolation:isolate;display:block;
+ box-sizing:border-box!important;
+ width:100vw!important;max-width:none!important;
+ margin:0 0 clamp(36px,5vw,70px)!important;
+ margin-left:calc(50% - 50vw)!important;
+ margin-right:calc(50% - 50vw)!important;
+ padding:clamp(38px,5vw,76px) clamp(30px,6.4vw,116px)!important;
+ border:0!important;border-top:4px solid var(--course-hero-bronze)!important;
+ border-bottom:7px solid #091923!important;
+ border-radius:0!important;
+ background:linear-gradient(115deg,#122631 0%,#1d3b47 57%,#244c4a 100%)!important;
+ color:var(--course-hero-white)!important;
+ box-shadow:0 10px 0 rgba(13,32,41,.13),0 25px 34px -13px rgba(18,38,48,.37),inset 0 2px 0 rgba(255,255,255,.09)!important;
+ overflow:hidden!important;
+}
+body.course-hub .hub-hero::before,
+body[data-page="project"] .editorial-course-hero::before,
+body[data-page="syllabus"] .editorial-course-hero::before,
+body[data-page="resources"] .hub-hero::before{
+ content:"";position:absolute;inset:0 0 0 auto;z-index:-1;
+ width:48%;height:100%;border-radius:0;
+ background:repeating-linear-gradient(128deg,transparent 0 34px,rgba(233,203,151,.065) 35px 36px,transparent 37px 73px),
+ linear-gradient(90deg,transparent,rgba(202,165,107,.10));
+ pointer-events:none;
+}
+body.course-hub .hub-hero::after,
+body[data-page="project"] .editorial-course-hero::after,
+body[data-page="syllabus"] .editorial-course-hero::after,
+body[data-page="resources"] .hub-hero::after{
+ content:"";position:absolute;right:6%;top:16%;width:clamp(100px,14vw,220px);
+ aspect-ratio:1;border:2px solid rgba(216,186,139,.20);
+ box-shadow:17px 17px 0 rgba(210,176,123,.07),34px 34px 0 rgba(210,176,123,.04);
+ transform:rotate(-12deg);pointer-events:none;
+}
+body.course-hub .hub-hero h1,
+body[data-page="project"] .editorial-course-hero h1,
+body[data-page="syllabus"] .editorial-course-hero h1,
+body[data-page="resources"] .hub-hero h1{
+ color:#fff9ed!important;text-shadow:none!important;
+ font-size:clamp(2.4rem,4.2vw,4.7rem)!important;
+ line-height:1.08!important;letter-spacing:-.048em!important;
+ max-width:1050px;
+}
+body.course-hub .hub-hero p,
+body[data-page="project"] .editorial-course-hero .intro,
+body[data-page="syllabus"] .editorial-course-hero .intro,
+body[data-page="resources"] .hub-hero p{
+ color:#e0e8e4!important;max-width:850px!important;
+}
+body.course-hub .hub-hero .hub-eyebrow,
+body[data-page="project"] .editorial-course-hero .hub-eyebrow,
+body[data-page="syllabus"] .editorial-course-hero .hub-eyebrow,
+body[data-page="resources"] .hub-hero .hub-eyebrow{
+ color:#e7c998!important;letter-spacing:.11em;
+}
+body.course-hub .hub-hero .place-symbol,
+body[data-page="project"] .editorial-course-hero .place-symbol,
+body[data-page="syllabus"] .editorial-course-hero .place-symbol,
+body[data-page="resources"] .hub-hero .place-symbol{
+ border-radius:0!important;background:#344a4b!important;color:#f2d9ac!important;
+ border:1px solid #7b7762;
+}
+body.course-hub .hub-hero .hub-meta span{border-radius:0!important;background:#334a50!important;color:#f6f0e6!important;border:1px solid #63747a}
+body[data-page="project"] .editorial-course-hero,
+body[data-page="syllabus"] .editorial-course-hero{
+ display:grid!important;grid-template-columns:minmax(0,1fr) minmax(235px,330px)!important;
+ align-items:center!important;gap:clamp(26px,5vw,76px)!important;
+}
+body[data-page="project"] .editorial-course-hero .page-meta,
+body[data-page="syllabus"] .editorial-course-hero .page-meta{
+ border-left:1px solid rgba(237,218,177,.34)!important;padding-left:26px!important;
+}
+body[data-page="project"] .editorial-course-hero .page-meta>div,
+body[data-page="syllabus"] .editorial-course-hero .page-meta>div{
+ border-bottom-color:rgba(239,226,200,.22)!important;
+}
+body[data-page="project"] .editorial-course-hero .page-meta small,
+body[data-page="syllabus"] .editorial-course-hero .page-meta small{color:#e7c998!important}
+body[data-page="project"] .editorial-course-hero .page-meta b,
+body[data-page="syllabus"] .editorial-course-hero .page-meta b{color:#f7f4eb!important}
+body[data-page="project"] .editorial-course-hero .button.primary{background:#e0bf86!important;color:#182b33!important;border-color:#e0bf86!important}
+body[data-page="project"] .editorial-course-hero .button.ghost{color:#fff7e8!important;border-color:#a6b5b3!important}
+body[data-page="resources"] .resources-main{padding-top:0!important}
+body[data-page="resources"] .resources-main .hub-hero{margin-top:0!important}
+@media(max-width:800px){
+ body[data-page="project"] .editorial-course-hero,
+ body[data-page="syllabus"] .editorial-course-hero{grid-template-columns:1fr!important}
+ body[data-page="project"] .editorial-course-hero .page-meta,
+ body[data-page="syllabus"] .editorial-course-hero .page-meta{
+  border-left:0!important;border-top:1px solid rgba(237,218,177,.34)!important;
+  padding:18px 0 0!important;
+ }
+}
+@media(max-width:600px){
+ body.course-hub .hub-hero,
+ body[data-page="project"] .editorial-course-hero,
+ body[data-page="syllabus"] .editorial-course-hero,
+ body[data-page="resources"] .hub-hero{padding:34px 24px 42px!important}
+ body.course-hub .hub-hero::after,
+ body[data-page="project"] .editorial-course-hero::after,
+ body[data-page="syllabus"] .editorial-course-hero::after,
+ body[data-page="resources"] .hub-hero::after{opacity:.3}
+}
