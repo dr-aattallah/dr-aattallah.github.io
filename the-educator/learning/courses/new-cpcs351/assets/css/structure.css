@@ -454,3 +454,70 @@ body[data-page="project"] .project-guide{border:1px solid #bfd4c8;border-radius:
 /* Centralized CLO badges for verified assessment-to-outcome mappings. */
 .clo-mapping{display:inline-flex;align-items:center;width:max-content;max-width:100%;flex-wrap:wrap;margin:7px 0;padding:5px 10px;border:1px solid #b9d5c6;border-radius:4px;background:#eaf4ed;color:#174d39!important;font:700 12px/1.4 system-ui,sans-serif;letter-spacing:.015em;vertical-align:middle}
 .timeline .week .clo-mapping{margin:5px 0}.catalog-card .clo-mapping{margin:8px 0}
+
+
+/* Unified course-hub hero: Project + Syllabus follow Challenges/Studios layout. */
+body[data-page="project"] .editorial-course-hero,
+body[data-page="syllabus"] .editorial-course-hero{
+ box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(230px,320px);
+ align-items:center;gap:clamp(20px,3vw,42px);width:min(100%,1060px);
+ max-width:1060px;min-height:0;margin:28px auto 34px;
+ padding:clamp(26px,3.4vw,46px);
+ border:1px solid #d9e2d9;border-radius:22px;
+ background:#eff3ec;color:#1d2924;
+ box-shadow:none;
+}
+body[data-page="project"] .editorial-course-hero h1,
+body[data-page="syllabus"] .editorial-course-hero h1{
+ font-size:clamp(2.15rem,4vw,3.4rem);line-height:1.08;
+ letter-spacing:-.045em;color:#1d2924;margin:16px 0;
+}
+body[data-page="project"] .editorial-course-hero h1 br,
+body[data-page="syllabus"] .editorial-course-hero h1 br{display:none}
+body[data-page="project"] .editorial-course-hero .intro,
+body[data-page="syllabus"] .editorial-course-hero .intro{
+ max-width:690px;color:#263a31;font-size:1rem;line-height:1.7;
+}
+body[data-page="project"] .editorial-course-hero .hub-eyebrow,
+body[data-page="syllabus"] .editorial-course-hero .hub-eyebrow{
+ display:flex;align-items:center;gap:12px;color:#1d2924;
+ font-size:.82rem;font-weight:800;letter-spacing:.04em;
+}
+body[data-page="project"] .editorial-course-hero .place-symbol,
+body[data-page="syllabus"] .editorial-course-hero .place-symbol{
+ display:inline-grid;place-items:center;width:44px;height:44px;
+ flex:none;background:#f3eef8;border-radius:12px;color:#1d2924;
+ font-size:1.4rem;letter-spacing:normal;
+}
+body[data-page="project"] .editorial-course-hero .page-meta,
+body[data-page="syllabus"] .editorial-course-hero .page-meta{
+ min-width:0;border:0;border-left:1px solid #cdd9d0;
+ padding:0 0 0 24px;background:transparent;box-shadow:none;
+}
+body[data-page="project"] .editorial-course-hero .page-meta>div,
+body[data-page="syllabus"] .editorial-course-hero .page-meta>div{
+ padding:11px 0;border-bottom:1px solid #d5dfd6;
+}
+body[data-page="project"] .editorial-course-hero .page-meta>div:last-child,
+body[data-page="syllabus"] .editorial-course-hero .page-meta>div:last-child{border-bottom:0}
+body[data-page="project"] .editorial-course-hero .page-meta small,
+body[data-page="syllabus"] .editorial-course-hero .page-meta small{
+ display:block;color:#476054;font-size:.69rem;font-weight:800;letter-spacing:.08em;
+}
+body[data-page="project"] .editorial-course-hero .page-meta b,
+body[data-page="syllabus"] .editorial-course-hero .page-meta b{
+ display:block;color:#20372b;font-size:.88rem;margin-top:4px;
+}
+body[data-page="project"] .editorial-course-hero .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+body[data-page="project"] .editorial-course-hero .button.primary{background:#1d513e;color:#fff;border-color:#1d513e}
+body[data-page="project"] .editorial-course-hero .button.ghost{color:#193b2d;border-color:#6c8175}
+@media(max-width:750px){
+ body[data-page="project"] .editorial-course-hero,
+ body[data-page="syllabus"] .editorial-course-hero{
+  grid-template-columns:minmax(0,1fr);margin:18px auto 26px;padding:26px 22px;border-radius:18px;
+ }
+ body[data-page="project"] .editorial-course-hero .page-meta,
+ body[data-page="syllabus"] .editorial-course-hero .page-meta{
+  border-left:0;border-top:1px solid #cdd9d0;padding:12px 0 0;
+ }
+}
