@@ -1349,3 +1349,16 @@ body.unit01 .unit-sidebar .unit-menu nav{background:#fff!important}
  body.unit01 .floating-unit-toggle{transition:none!important}
  body.unit01 .floating-unit-toggle:hover{transform:none!important}
 }
+
+
+body.unit01 .floating-unit-toggle .dock-copy{
+ display:flex!important;flex-direction:column!important;align-items:flex-start!important;
+ gap:4px!important;line-height:1.2!important;min-width:0;
+}
+body.unit01 .floating-unit-toggle .dock-copy strong{
+ color:#fff!important;font-size:16px!important;letter-spacing:.035em!important;
+}
+body.unit01 .floating-unit-toggle .dock-copy small{
+ color:#b5e9d8!important;font-size:10px!important;
+ font-weight:700!important;letter-spacing:.12em!important;
+}
