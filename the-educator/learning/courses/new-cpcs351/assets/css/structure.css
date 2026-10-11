@@ -247,3 +247,27 @@ body:has(.unit-shell) .unit-sidebar .unit-nav-link[class*="kind-"]:is(:hover,[ar
  border-color:var(--kind)!important;
 }
 body:has(.unit-shell) .unit-sidebar .unit-nav-link[class*="kind-"] .nav-number{color:var(--kind)!important}
+
+
+/* Floating unit menu — crisp, dimensional paper panel (shared by all units). */
+body:has(.unit-shell) .unit-sidebar{
+ border:2px solid #789985!important;
+ border-radius:0!important;
+ background:#fdfefd!important;
+ box-shadow:7px 8px 0 #d2ddd5, 12px 16px 0 #a9bfb0, 18px 27px 44px rgba(12,43,30,.32)!important;
+}
+body:has(.unit-shell) .floating-unit-toggle{
+ border-radius:0!important;
+ background:linear-gradient(145deg,#ffffff 0%,#f0f5f0 100%)!important;
+ border-bottom:3px solid #c0d2c4!important;
+ box-shadow:inset 0 2px 0 #fff,inset -3px -3px 0 #e2ebe4!important;
+}
+body:has(.unit-shell) .unit-sidebar.unit-nav-open .floating-unit-toggle{
+ border-radius:0!important;
+ border-bottom:3px solid #789985!important;
+}
+body:has(.unit-shell) .unit-sidebar .toggle-icon{border-radius:0!important}
+body:has(.unit-shell) .unit-sidebar:hover,
+body:has(.unit-shell) .unit-sidebar:focus-within{
+ box-shadow:8px 10px 0 #d2ddd5,14px 19px 0 #a9bfb0,20px 30px 48px rgba(12,43,30,.36)!important;
+}
