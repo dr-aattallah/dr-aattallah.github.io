@@ -966,3 +966,46 @@ body[data-page="syllabus"] main :is(.visual-gallery img,.infographic-gallery img
   box-shadow:4px 5px 0 rgba(55,93,73,.12),0 12px 22px -12px var(--infographic-shadow)!important;
  }
 }
+
+
+/* UNIT NAV CARDS — centralized architectural elevation for every Unit 01 page.
+   Preserve semantic category colors and visible keyboard focus. */
+body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link{
+ display:flex!important;
+ border-radius:0!important;
+ border:1px solid #cbd9d0!important;
+ border-left:4px solid var(--kind,#286b50)!important;
+ background:color-mix(in srgb,var(--tint,#edf4ee) 48%,white)!important;
+ box-shadow:3px 4px 0 rgba(52,91,69,.12),0 9px 15px -10px rgba(28,55,46,.20)!important;
+ margin:0 0 11px!important;
+ padding:clamp(10px,1vw,14px)!important;
+ transition:transform .2s ease,box-shadow .2s ease,background .2s ease!important;
+}
+body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link:hover{
+ transform:translate(-1px,-2px)!important;
+ box-shadow:5px 7px 0 rgba(52,91,69,.15),0 13px 20px -10px rgba(28,55,46,.23)!important;
+}
+body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link[aria-current="page"]{
+ border:2px solid var(--kind,#286b50)!important;
+ border-left-width:5px!important;
+ background:var(--tint,#e8f1eb)!important;
+ box-shadow:4px 5px 0 rgba(52,91,69,.19),0 12px 18px -10px rgba(28,55,46,.25)!important;
+}
+body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link:focus-visible{
+ outline:3px solid #a07a2f!important;outline-offset:3px!important;
+}
+body.unit01 .unit-sidebar .unit-menu .nav-support>a{
+ display:block;border-radius:0!important;
+ border:1px solid #cbd9d0!important;
+ background:#fff!important;
+ padding:12px!important;margin:0 0 11px!important;
+ box-shadow:3px 4px 0 rgba(52,91,69,.10),0 9px 15px -10px rgba(28,55,46,.16)!important;
+}
+body.unit01 .unit-sidebar .unit-menu .nav-group>h2{
+ margin:20px 0 12px!important;
+}
+@media(max-width:760px){
+ body.unit01 .unit-sidebar .unit-menu .nav-group>.unit-nav-link{
+  box-shadow:2px 3px 0 rgba(52,91,69,.12),0 6px 12px -8px rgba(28,55,46,.2)!important;
+ }
+}
