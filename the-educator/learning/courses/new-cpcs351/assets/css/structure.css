@@ -814,3 +814,61 @@ main :is(.catalog-card,.portal-card,.task-card,.visual-card,.studio-box,.info-ca
 main :is(.catalog-card,.portal-card,.task-card,.visual-card,.studio-box,.info-card,.content-section,.hub-section,.course-brief,.task-notice,.process-step,.story-step,.orientation-steps,.study-route-steps>*,.u01-meeting-grid>*,.grade,.week,.meeting-card,.lesson-card,.exercise-card,.resource-card,.assessment-card) :is(.step,.mini-card,.item,.panel){
  border-radius:0!important;
 }
+
+
+/* CARD SYSTEM V2 — shared sharp-corner elevation for all workspaces and Unit 01.
+   Containers only; preserve spacing, grids and responsive layouts. */
+:root{--card-3d-line:#cad8d0;--card-3d-shadow:rgba(34,65,51,.14)}
+body :is(.component-orientation,.hub-section,.route-section,.meeting-cards>article,.orientation-steps>div,.orientation-links>a,
+ .scenario,.visual,.tryit,.transfer-challenge,.legacy-route,.page-source,
+ .unit01 .meeting-cards article,.unit01 .scenario,.unit01 .visual,.unit01 .tryit,
+ .unit01 .transfer-challenge,.unit01 .route-section,
+ .unit01 .lesson-section,.unit01 .concept-card,.unit01 .example-card,
+ .unit01 .exercise-card,.unit01 .activity-card,
+ .catalog-card,.portal-card,.task-card,.studio-box,.info-card,.content-section,
+ .component-card,.project-places a,.project-places-grid>a,.study-route-steps>div){
+ border-radius:0!important;
+ border-color:var(--card-3d-line)!important;
+ box-shadow:4px 5px 0 rgba(66,103,80,.11),0 12px 22px -12px var(--card-3d-shadow)!important;
+}
+body.course-hub main>.component-orientation{
+ border:1px solid var(--card-3d-line)!important;
+ padding:clamp(22px,2.5vw,36px)!important;
+ background:#fff!important;
+}
+body.course-hub .component-orientation .orientation-steps{
+ border:0!important;background:transparent!important;box-shadow:none!important;
+ gap:clamp(8px,1vw,16px)!important;
+}
+body.course-hub .component-orientation .orientation-steps>div{
+ min-width:0;padding:clamp(12px,1.3vw,20px)!important;
+ background:#fff!important;
+}
+body.course-hub .hub-section{
+ padding:clamp(20px,2.4vw,36px)!important;
+ border:1px solid var(--card-3d-line)!important;
+ background:rgba(255,255,255,.40)!important;
+}
+body.course-hub .hub-section>h2{
+ margin:0 0 clamp(18px,2vw,28px)!important;
+ padding:0!important;line-height:1.25;
+}
+body.course-hub .hub-section>.catalog-grid{
+ border:0!important;background:transparent!important;box-shadow:none!important;
+ padding:0!important;gap:clamp(14px,1.6vw,24px)!important;
+}
+body.course-hub .hub-section .catalog-card{
+ padding:clamp(18px,2vw,28px)!important;
+ border:1px solid var(--card-3d-line)!important;
+ border-left:3px solid var(--place,var(--brand-green,#286b50))!important;
+ background:#fff!important;
+}
+body.unit01 .meeting-cards>article{
+ border:1px solid var(--card-3d-line)!important;
+ padding:clamp(20px,2.2vw,32px)!important;
+ background:#fff!important;
+}
+@media(max-width:650px){
+ body.course-hub .hub-section{padding:18px!important}
+ body.course-hub main>.component-orientation{padding:20px!important}
+}
