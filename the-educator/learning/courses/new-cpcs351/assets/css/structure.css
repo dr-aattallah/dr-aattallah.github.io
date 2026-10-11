@@ -450,3 +450,7 @@ body[data-page="project"] .project-places-grid a:nth-child(6){--accent:#345e4d;-
 body[data-page="project"] .project-guide{border:1px solid #bfd4c8;border-radius:4px;background:#edf5f0;padding:18px 20px;margin-top:18px;color:#25483a;line-height:1.6}
 @media(max-width:800px){body[data-page="project"] .project-places-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){body[data-page="project"] .project-places-grid{grid-template-columns:1fr}body[data-page="project"] .project-places-grid a{min-height:0}}
+
+/* Centralized CLO badges for verified assessment-to-outcome mappings. */
+.clo-mapping{display:inline-flex;align-items:center;width:max-content;max-width:100%;flex-wrap:wrap;margin:7px 0;padding:5px 10px;border:1px solid #b9d5c6;border-radius:4px;background:#eaf4ed;color:#174d39!important;font:700 12px/1.4 system-ui,sans-serif;letter-spacing:.015em;vertical-align:middle}
+.timeline .week .clo-mapping{margin:5px 0}.catalog-card .clo-mapping{margin:8px 0}
