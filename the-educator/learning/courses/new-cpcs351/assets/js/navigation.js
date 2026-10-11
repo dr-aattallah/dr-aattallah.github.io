@@ -14,7 +14,7 @@
   ['resources','Resources','Materials & downloads','resources.html'],
   ['syllabus','Syllabus','Course guide','syllabus.html']
  ];
- for(const file of ['assets/css/structure.css?v=20261010-places1','assets/css/navigation.css?v=20261010-nav7']){
+ for(const file of ['assets/css/structure.css?v=20261011-beige-hero2','assets/css/navigation.css?v=20261010-nav7']){
    const link=document.createElement('link');link.rel='stylesheet';link.href=url(file);document.head.append(link);
  }
  const header=document.createElement('header');header.className='site-header course-header-v2';
