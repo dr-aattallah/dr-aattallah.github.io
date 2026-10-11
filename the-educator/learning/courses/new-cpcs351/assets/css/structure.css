@@ -796,3 +796,21 @@ body.course-home .official-hero-actions{
   background:linear-gradient(to bottom,transparent 64%,rgba(247,244,236,.65) 86%,var(--course-canvas-beige,#f7f4ec) 100%)!important;
  }
 }
+
+
+/* GLOBAL CARD GEOMETRY — square architectural corners and subtle 3D elevation.
+   Applies to course content containers, not controls, imagery or navigation. */
+:root{--course-card-edge:#cbd8d0;--course-card-shadow:rgba(23,51,42,.13)}
+main :is(.catalog-card,.portal-card,.task-card,.visual-card,.studio-box,.info-card,.content-section,.hub-section,.course-brief,.task-notice,.process-step,.story-step,.orientation-steps,.project-places-grid>a,.study-route-steps>*,.u01-meeting-grid>*,.unit-grid>a,.tool-grid>a,.grade,.week,.meeting-card,.lesson-card,.exercise-card,.resource-card,.assessment-card),
+main :is(.catalog-grid,.portal-grid,.unit-grid,.tool-grid) > a,
+main :is(.catalog-grid,.portal-grid,.unit-grid,.tool-grid) > article{
+ border-radius:0!important;
+ border:1px solid var(--course-card-edge);
+ box-shadow:4px 5px 0 rgba(53,91,70,.10),0 10px 19px -11px var(--course-card-shadow)!important;
+}
+main :is(.catalog-card,.portal-card,.task-card,.visual-card,.studio-box,.info-card,.project-places-grid>a,.unit-grid>a,.portal-grid>a):hover{
+ box-shadow:6px 7px 0 rgba(53,91,70,.13),0 15px 24px -12px rgba(23,51,42,.19)!important;
+}
+main :is(.catalog-card,.portal-card,.task-card,.visual-card,.studio-box,.info-card,.content-section,.hub-section,.course-brief,.task-notice,.process-step,.story-step,.orientation-steps,.study-route-steps>*,.u01-meeting-grid>*,.grade,.week,.meeting-card,.lesson-card,.exercise-card,.resource-card,.assessment-card) :is(.step,.mini-card,.item,.panel){
+ border-radius:0!important;
+}
