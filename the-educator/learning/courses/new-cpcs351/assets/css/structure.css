@@ -395,3 +395,9 @@ body:has(.unit-shell) .u01-image-open:focus-visible{
  color:#d8f7ff!important;
  text-decoration:underline;
 }
+
+/* RoomNow ecosystem center: accessible contrast */
+.ecosystem-story .ecosystem-core{background:#24473a;color:#fff!important}
+.ecosystem-story .ecosystem-core small{color:#d3f2e2!important;font-size:12px!important;font-weight:700;opacity:1!important}
+.ecosystem-story .ecosystem-core span{color:#edf7f0!important;font-size:13px!important;opacity:1!important}
+.ecosystem-story .ecosystem-core b{color:#fff!important}
