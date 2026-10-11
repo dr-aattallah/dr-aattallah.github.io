@@ -1420,3 +1420,37 @@ html body.unit01 .unit-shell .unit-sidebar .floating-unit-toggle::after{
 html body.unit01 .unit-shell .unit-sidebar .floating-unit-toggle:hover{
  box-shadow:0 8px 16px rgba(5,36,42,.28)!important;
 }
+
+
+/* Neon levitation: luminous aura only, no stacked rectangular plates. */
+html body.unit01 .unit-shell .unit-sidebar:not(.unit-nav-open){
+ overflow:visible!important;
+ isolation:isolate!important;
+}
+html body.unit01 .unit-shell .unit-sidebar:not(.unit-nav-open) .floating-unit-toggle{
+ position:relative!important;
+ z-index:1!important;
+ overflow:visible!important;
+ border:1px solid rgba(109,246,218,.76)!important;
+ background:linear-gradient(115deg,#082d37,#07534c)!important;
+ box-shadow:
+  0 0 0 1px rgba(75,239,207,.16),
+  0 0 16px rgba(69,246,205,.43),
+  0 0 38px rgba(35,231,190,.34),
+  0 0 75px rgba(25,213,184,.20),
+  0 18px 28px -12px rgba(0,30,39,.54)!important;
+ transition:box-shadow .22s ease,transform .22s ease!important;
+}
+html body.unit01 .unit-shell .unit-sidebar:not(.unit-nav-open) .floating-unit-toggle:hover,
+html body.unit01 .unit-shell .unit-sidebar:not(.unit-nav-open) .floating-unit-toggle:focus-visible{
+ transform:translateY(-3px)!important;
+ box-shadow:
+  0 0 0 1px rgba(123,255,226,.42),
+  0 0 22px rgba(72,255,214,.61),
+  0 0 55px rgba(41,243,198,.43),
+  0 0 95px rgba(29,214,184,.27),
+  0 23px 34px -12px rgba(0,30,39,.55)!important;
+}
+@media(prefers-reduced-motion:reduce){
+ html body.unit01 .unit-shell .unit-sidebar:not(.unit-nav-open) .floating-unit-toggle:hover{transform:none!important}
+}
