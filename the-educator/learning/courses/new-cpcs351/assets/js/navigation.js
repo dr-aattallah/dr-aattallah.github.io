@@ -58,14 +58,14 @@
   RELEASE:[5,6,7],CHALLENGE1:[2],CHALLENGE2:[4,7],CHALLENGE3:[6,7]
  });
  const patterns=[
-  [/\\bM0\\b|Project Proposal\\s*&\\s*Setup/i,'M0'],
-  [/\\bM1\\b|Requirements\\s*&\\s*Analysis/i,'M1'],
-  [/\\bM2\\b|Architecture\\s*&\\s*Design/i,'M2'],
-  [/\\bM3\\b|Implementation\\s*&\\s*Testing/i,'M3'],
-  [/Final (?:Engineering )?Release|Release\\s*&\\s*Demo/i,'RELEASE'],
-  [/Challenge\\s*1\\b/i,'CHALLENGE1'],
-  [/Challenge\\s*2\\b/i,'CHALLENGE2'],
-  [/Challenge\\s*3\\b/i,'CHALLENGE3']
+  [/\bM0\b|Project Proposal\s*&\s*Setup/i,'M0'],
+  [/\bM1\b|Requirements\s*&\s*Analysis/i,'M1'],
+  [/\bM2\b|Architecture\s*&\s*Design/i,'M2'],
+  [/\bM3\b|Implementation\s*&\s*Testing/i,'M3'],
+  [/Final (?:Engineering )?Release|Release\s*&\s*Demo/i,'RELEASE'],
+  [/Challenge\s*1\b/i,'CHALLENGE1'],
+  [/Challenge\s*2\b/i,'CHALLENGE2'],
+  [/Challenge\s*3\b/i,'CHALLENGE3']
  ];
  function init(){
   const nodes=document.querySelectorAll('.timeline .week,.catalog-card,.grade-grid .grade,.project-places-grid a,.assessment-card,.task-hero,.page-hero,.task-heading,.milestone-card');
