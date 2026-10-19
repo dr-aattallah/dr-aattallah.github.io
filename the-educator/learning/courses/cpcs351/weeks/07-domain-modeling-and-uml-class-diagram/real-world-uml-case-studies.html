@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Real-World UML Case Studies | Topic 07 | CPCS 351</title><meta name="description" content="Two complete UML case studies: HungerStation and Snapchat. Scenarios, actors, use cases, class discovery, diagrams, and exercises."><link rel="stylesheet" href="../../study.css"><link rel="stylesheet" href="topic07.css"><style>
+.case-content{max-width:1120px!important}.case-hero{padding:28px 0 20px}.case-hero h1{font-size:clamp(2.25rem,5vw,4.25rem);line-height:1.08;letter-spacing:-.045em}.case-hero .lead{max-width:870px}.case-quicknav{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}.case-quicknav a,.case-pill{display:inline-flex;padding:9px 15px;border:1px solid #dbe3ee;border-radius:99px;background:#fff;color:#23416d;font-weight:800;text-decoration:none}.case-quicknav a:hover{background:#eef5ff}.case-intro{background:linear-gradient(120deg,#eff6ff,#f0fdfa);border:1px solid #cde2f1;padding:22px;border-radius:20px}.case-section{margin:38px 0 42px;scroll-margin-top:120px}.case-section h2{font-size:clamp(1.5rem,3vw,2.15rem);line-height:1.22;margin:8px 0 18px}.case-section h3{font-size:1.18rem;margin:18px 0 10px}.case-section p{line-height:1.8}.case-section ul li{margin:8px 0}.case-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.case-card{padding:22px;border:1px solid #dae5ef;border-radius:18px;background:#fff;box-shadow:0 6px 22px rgba(24,45,70,.045)}.case-card h3{margin-top:0}.scenario{padding:26px 30px;border:1px solid #d7e4ef;border-left:5px solid #d47731;border-radius:18px;background:#fffaf4}.scenario p{margin:12px 0}.table-scroll{overflow-x:auto;margin:16px 0 24px}.case-diagram{margin:24px 0;padding:16px;border:1px solid #d8e3ee;border-radius:18px;background:#fff}.diagram-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.diagram-expand{border:1px solid #cbd5e1;border-radius:10px;background:#f8fafc;padding:9px 13px;font-weight:750;cursor:pointer;color:#24354d}.diagram-stage{overflow:auto;background:#fbfdff;border:1px solid #e4ebf3;border-radius:12px;padding:18px;min-height:150px}.diagram-stage svg{max-width:none!important;min-width:750px;height:auto}.diagram-stage pre.mermaid{white-space:pre-wrap;font-size:13px}.case-diagram figcaption{font-size:.9rem;color:#52657b;margin:12px 2px}.case-diagram details{margin-top:12px}.source-code{white-space:pre;overflow:auto;padding:14px;background:#f1f5f9;border-radius:10px;font-size:12px}.steps{counter-reset:steps;list-style:decimal;padding-left:26px}.steps li{padding:5px 0;line-height:1.7}.case-note{padding:17px 20px;background:#eff6ff;border-left:4px solid #3b82f6;border-radius:12px;margin:20px 0}.case-note.warn{background:#fff7ed;border-left-color:#ea8c31}.case-compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}.case-compare>div{padding:20px;background:#f8fafc;border-radius:15px}.case-question{border:1px solid #dce6ee;border-radius:14px;margin:12px 0;padding:14px 18px;background:#fff}.case-question summary{cursor:pointer;font-weight:800}.case-question p{margin-bottom:0}.case-tabs{display:flex;gap:10px;flex-wrap:wrap}.case-tabs a{padding:10px 15px;border-radius:10px;background:#eaf3ff;color:#214c86;font-weight:800;text-decoration:none}.case-banner{padding:22px;border-radius:20px;background:linear-gradient(110deg,#132f55,#17637a);color:white;margin:34px 0}.case-banner h2,.case-banner p{color:#fff}.case-compact{font-size:.92rem;color:#53657b}.diagram-overlay{position:fixed;inset:0;z-index:99999;background:rgba(9,20,37,.94);padding:24px;display:flex;flex-direction:column;gap:12px}.diagram-overlay .diagram-stage{flex:1;overflow:auto;background:white}.diagram-overlay .diagram-stage svg{min-width:1000px}.diagram-overlay .diagram-expand{align-self:flex-end}.case-divider{border:0;border-top:2px solid #dce5ef;margin:45px 0}.case-content a:focus-visible,.case-content button:focus-visible{outline:3px solid #2563eb;outline-offset:3px}@media(max-width:780px){.case-split,.case-compare{grid-template-columns:1fr}.scenario{padding:18px}.case-diagram{padding:10px}.diagram-stage{padding:8px}.case-hero h1{font-size:2.25rem}}@media print{.case-quicknav,.diagram-expand{display:none!important}.case-section{break-inside:avoid}.diagram-stage{overflow:visible}.diagram-stage svg{max-width:100%!important;min-width:0}}
+</style></head><body data-topic="07" data-page="15"><header class="topbar"><a class="brand" href="../../index.html"><span class="brand-mark">+</span><span>The Educator</span></a><div class="course-id">CPCS 351 · Software Engineering I</div><a class="home-link" href="../../index.html">Course Home</a></header><nav class="mobile-topic" id="topic-mobile"></nav><div class="shell"><aside class="sidebar" id="topic-sidebar"></aside><main><article class="content case-content"><div class="breadcrumb"><a href="../../index.html">CPCS 351</a><span>›</span><span>Topic 07 · Chapter 5</span><span>›</span><span>Real-World UML Case Studies</span></div><section class="hero case-hero"><div class="hero-copy"><div class="eyebrow">Topic 07 · Chapter 5 · Lesson 15</div><h1>Real-World UML Modeling: HungerStation &amp; Snapchat</h1><p class="lead">From a real-world system description to actors, use cases, candidate classes, and defensible UML models.</p></div><div class="hero-progress"><span>15</span><small>of 15 pages</small></div></section><div class="study-key"><span><i class="dot core"></i> Worked examples</span><span><i class="dot add"></i> Classroom discussion &amp; self-checks</span></div><section class="objective"><strong>Learning outcomes</strong><p>Analyze natural-language requirements, identify actors and functional goals, construct a use case diagram, distinguish classes from attributes, and justify UML class relationships and multiplicities.</p></section><nav class="case-quicknav" aria-label="Page sections"><a href="#method">Modeling method</a><a href="#hunger">HungerStation</a><a href="#snap">Snapchat</a><a href="#comparison">Comparison</a><a href="#exercises">Practice questions</a></nav><div class="case-intro"><strong>Scope and modeling integrity</strong><p>These are educational models inspired by publicly visible app workflows, not representations of either company's proprietary implementation. Business rules are simplified and some details are explicit teaching assumptions. Use case diagrams capture actors' goals; domain class diagrams capture concepts and relationships. The detailed class diagrams below additionally show illustrative operations, making them closer to preliminary design class diagrams.</p></div>
+<section class="case-section" id="method"><div class="kicker">A repeatable modeling workflow</div><h2>From Requirements to UML</h2><div class="step-grid"><div class="step-card"><strong>01 · Read the scenario</strong><p>Highlight nouns, verbs, constraints, and external parties.</p></div><div class="step-card"><strong>02 · Identify actors</strong><p>Find external roles interacting with the system boundary.</p></div><div class="step-card"><strong>03 · Identify use cases</strong><p>Express externally valuable goals using verb–noun names.</p></div><div class="step-card"><strong>04 · Discover classes</strong><p>Evaluate identity, responsibilities, state, and relationships.</p></div><div class="step-card"><strong>05 · Validate models</strong><p>Check multiplicities, constraints, and consistency with the scenario.</p></div></div><div class="case-note"><strong>Do not confuse a use case with a program function.</strong> “Place Order” is a user goal; “calculate tax” may be an internal step. Likewise, a domain class is not necessarily an implementation class.</div></section>
+<div class="case-banner" id="hunger"><div class="kicker" style="color:#b9e9ff">CASE STUDY 01</div><h2>HungerStation — Food Delivery &amp; Order Management</h2><p>Primary challenge: connect customer ordering, restaurant processing, payment, and courier delivery.</p></div>
+<section class="case-section" id="h-scenario"><div class="kicker">Step 1 · Requirements</div><h2>System scenario</h2><div class="scenario"><h3>HungerStation Food Ordering and Delivery System</h3><p>HungerStation is a food delivery platform connecting customers, restaurants, delivery couriers, and payment services through a mobile application. Customers can create accounts, sign in, manage delivery addresses, and browse restaurants. They can search for meals, view menus, select products, customize available options, and add items to a shopping cart.</p><p>Before ordering, customers review selected items, adjust quantities, choose a delivery address, and view the estimated total including applicable delivery fees and discounts. To place an order, the customer selects an available payment method and confirms the purchase. The system processes electronic payments through an external payment service when required and records the order.</p><p>The restaurant receives the order, reviews its details, and accepts or rejects it. After accepting, restaurant staff prepare the items and update the preparation status. A courier is assigned to collect the order, travels to the delivery address, and marks the delivery complete. Customers can track order progress and receive status notifications.</p><p>After delivery, customers may rate their experience and contact support if a problem occurs. Restaurant staff manage menu availability, while platform administrators oversee participating accounts and operational issues.</p></div></section>
+<section class="case-section" id="h-actors"><div class="kicker">Step 2 · Use Case Analysis</div><h2>Identify external actors</h2><div class="table-scroll"><table class="decision-table"><thead><tr><th>Actor</th><th>Goals / responsibilities</th></tr></thead><tbody><tr><td>Customer</td><td>Browse, manage cart, order, pay, track, rate</td></tr><tr><td>Restaurant Staff</td><td>Manage menu, review and process orders</td></tr><tr><td>Delivery Courier</td><td>View assignments, confirm pickup, complete delivery</td></tr><tr><td>Payment Gateway</td><td>Authorize or process electronic payment</td></tr><tr><td>Platform Administrator</td><td>Manage accounts and support issues</td></tr></tbody></table></div><div class="case-note"><strong>Boundary test:</strong> A shopping cart and an order database are not external actors. An external payment provider can be.</div></section>
+<section class="case-section" id="h-usecases"><div class="kicker">Step 3 · Functional Requirements</div><h2>Extract use cases and relationships</h2><div class="table-scroll"><table class="decision-table"><thead><tr><th>Actor</th><th>Use cases</th></tr></thead><tbody><tr><td>Customer</td><td>Browse Restaurants; Manage Cart; Place Order; Track Order; Rate Experience</td></tr><tr><td>Restaurant Staff</td><td>Manage Menu; Process Restaurant Order; Update Preparation Status</td></tr><tr><td>Courier</td><td>View Assignment; Confirm Pickup; Complete Delivery</td></tr><tr><td>Payment Gateway</td><td>Process Online Payment</td></tr><tr><td>Administrator</td><td>Manage Accounts; Handle Support Case</td></tr></tbody></table></div><h3>Relationship decisions</h3><ul><li><strong>«include»:</strong> Place Order includes Review Cart and Select Address in this instructional checkout scope.</li><li><strong>«extend»:</strong> Apply Discount extends Place Order when a valid promotion is available.</li><li><strong>«extend»:</strong> Process Online Payment is modeled as a conditional extension of Place Order for online payment. In a stricter design, a dedicated Pay for Order use case with a payment-provider association may be clearer.</li><li><strong>Association:</strong> Connect each actor to its externally visible goals.</li></ul><figure class="case-diagram"><div class="diagram-top"><strong>HungerStation — Use Case Diagram</strong><button type="button" class="diagram-expand" data-target="h-uc">Expand diagram</button></div><div class="diagram-stage" id="h-uc"><pre class="mermaid">flowchart LR
+C["Customer"]:::actor
+R["Restaurant Staff"]:::actor
+D["Courier"]:::actor
+P["Payment Gateway"]:::actor
+A["Administrator"]:::actor
+subgraph H["HungerStation System Boundary"]
+B(["Browse Restaurants"])
+M(["Manage Cart"])
+O(["Place Order"])
+RC(["Review Cart"])
+SA(["Select Address"])
+PM(["Process Online Payment"])
+AD(["Apply Discount"])
+T(["Track Order"])
+RT(["Rate Experience"])
+MM(["Manage Menu"])
+PO(["Process Restaurant Order"])
+UP(["Update Preparation Status"])
+VA(["View Assignment"])
+CP(["Confirm Pickup"])
+CD(["Complete Delivery"])
+MA(["Manage Accounts"])
+SC(["Handle Support Case"])
+end
+C --- B
+C --- M
+C --- O
+C --- T
+C --- RT
+R --- MM
+R --- PO
+R --- UP
+D --- VA
+D --- CP
+D --- CD
+P --- PM
+A --- MA
+A --- SC
+O -. "«include»" .-&gt; RC
+O -. "«include»" .-&gt; SA
+AD -. "«extend»" .-&gt; O
+PM -. "«extend»" .-&gt; O
+classDef actor fill:#eff6ff,stroke:#2563eb,color:#12243b</pre></div><figcaption>Conceptual use-case view. Dashed arrows approximate UML «include» and «extend»; use a UML-specific drawing tool for notation-perfect final diagrams.</figcaption><details><summary>View editable Mermaid diagram source</summary><pre class="source-code">flowchart LR
+C["Customer"]:::actor
+R["Restaurant Staff"]:::actor
+D["Courier"]:::actor
+P["Payment Gateway"]:::actor
+A["Administrator"]:::actor
+subgraph H["HungerStation System Boundary"]
+B(["Browse Restaurants"])
+M(["Manage Cart"])
+O(["Place Order"])
+RC(["Review Cart"])
+SA(["Select Address"])
+PM(["Process Online Payment"])
+AD(["Apply Discount"])
+T(["Track Order"])
+RT(["Rate Experience"])
+MM(["Manage Menu"])
+PO(["Process Restaurant Order"])
+UP(["Update Preparation Status"])
+VA(["View Assignment"])
+CP(["Confirm Pickup"])
+CD(["Complete Delivery"])
+MA(["Manage Accounts"])
+SC(["Handle Support Case"])
+end
+C --- B
+C --- M
+C --- O
+C --- T
+C --- RT
+R --- MM
+R --- PO
+R --- UP
+D --- VA
+D --- CP
+D --- CD
+P --- PM
+A --- MA
+A --- SC
+O -. "«include»" .-&gt; RC
+O -. "«include»" .-&gt; SA
+AD -. "«extend»" .-&gt; O
+PM -. "«extend»" .-&gt; O
+classDef actor fill:#eff6ff,stroke:#2563eb,color:#12243b</pre></details></figure></section>
+<section class="case-section" id="h-walkthrough"><div class="kicker">Step 4 · Traceability</div><h2>Walk through Ahmed's order</h2><ol class="steps"><li>Ahmed browses restaurants and selects two burgers.</li><li>He reviews his cart and chooses a delivery address.</li><li>He optionally applies a discount and confirms payment.</li><li>The restaurant accepts and prepares the order.</li><li>A courier picks up the order and completes delivery.</li><li>Ahmed tracks progress and rates his experience.</li></ol><div class="case-note warn"><strong>Discussion:</strong> “Track Order” and “Prepare Food” concern the same Order but represent different actor goals. They should not be merged.</div></section>
+<section class="case-section" id="h-discover"><div class="kicker">Step 5 · Domain Modeling</div><h2>Discover candidate classes</h2><div class="table-scroll"><table class="decision-table"><thead><tr><th>Candidate</th><th>Decision</th><th>Why</th></tr></thead><tbody><tr><td>Customer</td><td>Class</td><td>Independent identity and order history</td></tr><tr><td>Restaurant</td><td>Class</td><td>Own identity, menu, and order responsibilities</td></tr><tr><td>MenuItem</td><td>Class</td><td>Catalog item with price and availability</td></tr><tr><td>Order</td><td>Class</td><td>Own lifecycle and status</td></tr><tr><td>OrderItem</td><td>Class</td><td>Quantity and purchased unit price belong to an order line</td></tr><tr><td>Payment</td><td>Class</td><td>Transaction state and amount</td></tr><tr><td>Address</td><td>Class / value object</td><td>Structured destination details</td></tr><tr><td>Price</td><td>Attribute / value</td><td>A monetary amount, not necessarily an entity</td></tr><tr><td>OrderStatus</td><td>Enumeration</td><td>Constrained set of statuses</td></tr></tbody></table></div><h3>Why not store quantity on MenuItem?</h3><p>One burger product can appear in thousands of orders with different quantities. <strong>OrderItem.quantity</strong> belongs to a particular order line. Similarly, <strong>OrderItem.unitPrice</strong> records the price at purchase time, while <strong>MenuItem.price</strong> may later change.</p></section>
+<section class="case-section" id="h-class"><div class="kicker">Step 6 · Structural Modeling</div><h2>HungerStation class diagram</h2><figure class="case-diagram"><div class="diagram-top"><strong>HungerStation — Class Diagram</strong><button type="button" class="diagram-expand" data-target="h-cd">Expand diagram</button></div><div class="diagram-stage" id="h-cd"><pre class="mermaid">classDiagram
+direction LR
+class Customer {
+ +String customerId
+ +String name
+ +String phone
+ +placeOrder()
+ +trackOrder()
+}
+class Address {
+ +String city
+ +String district
+ +String street
+}
+class Restaurant {
+ +String restaurantId
+ +String name
+ +Boolean isOpen
+ +acceptOrder()
+}
+class MenuItem {
+ +String itemId
+ +String name
+ +Decimal price
+ +Boolean available
+}
+class Order {
+ +String orderId
+ +DateTime createdAt
+ +OrderStatus status
+ +Decimal total
+ +calculateTotal()
+ +updateStatus()
+}
+class OrderItem {
+ +int quantity
+ +Decimal unitPrice
+ +subtotal()
+}
+class Payment {
+ +String paymentId
+ +Decimal amount
+ +String status
+ +process()
+}
+class Courier {
+ +String courierId
+ +String name
+ +confirmPickup()
+}
+class Delivery {
+ +String deliveryId
+ +DateTime deliveredAt
+ +String status
+ +complete()
+}
+Customer "1" --&gt; "0..*" Order : places
+Customer "1" *-- "0..*" Address : saves
+Restaurant "1" *-- "0..*" MenuItem : offers
+Restaurant "1" --&gt; "0..*" Order : receives
+Order "1" *-- "1..*" OrderItem : contains
+OrderItem "0..*" --&gt; "1" MenuItem : references
+Order "1" --&gt; "1" Address : destination
+Order "1" --&gt; "0..1" Payment : payment
+Order "1" --&gt; "0..1" Delivery : delivery
+Courier "1" --&gt; "0..*" Delivery : completes</pre></div><figcaption>Illustrative preliminary design model. Operations are included for teaching; omit operations when constructing a pure conceptual domain model.</figcaption><details><summary>View editable Mermaid diagram source</summary><pre class="source-code">classDiagram
+direction LR
+class Customer {
+ +String customerId
+ +String name
+ +String phone
+ +placeOrder()
+ +trackOrder()
+}
+class Address {
+ +String city
+ +String district
+ +String street
+}
+class Restaurant {
+ +String restaurantId
+ +String name
+ +Boolean isOpen
+ +acceptOrder()
+}
+class MenuItem {
+ +String itemId
+ +String name
+ +Decimal price
+ +Boolean available
+}
+class Order {
+ +String orderId
+ +DateTime createdAt
+ +OrderStatus status
+ +Decimal total
+ +calculateTotal()
+ +updateStatus()
+}
+class OrderItem {
+ +int quantity
+ +Decimal unitPrice
+ +subtotal()
+}
+class Payment {
+ +String paymentId
+ +Decimal amount
+ +String status
+ +process()
+}
+class Courier {
+ +String courierId
+ +String name
+ +confirmPickup()
+}
+class Delivery {
+ +String deliveryId
+ +DateTime deliveredAt
+ +String status
+ +complete()
+}
+Customer "1" --&gt; "0..*" Order : places
+Customer "1" *-- "0..*" Address : saves
+Restaurant "1" *-- "0..*" MenuItem : offers
+Restaurant "1" --&gt; "0..*" Order : receives
+Order "1" *-- "1..*" OrderItem : contains
+OrderItem "0..*" --&gt; "1" MenuItem : references
+Order "1" --&gt; "1" Address : destination
+Order "1" --&gt; "0..1" Payment : payment
+Order "1" --&gt; "0..1" Delivery : delivery
+Courier "1" --&gt; "0..*" Delivery : completes</pre></details></figure><div class="case-split"><div class="case-card"><h3>Important multiplicities</h3><p>One Customer may place many Orders. An Order contains one or more OrderItems. Each OrderItem references one MenuItem. An Order may have an associated Delivery and Payment depending on lifecycle and payment method.</p></div><div class="case-card"><h3>Modeling choice: Delivery</h3><p>Separating Delivery from Order makes room for courier assignment, pickup, delivery status, and timestamps. A simpler system could initially model delivery information as order attributes.</p></div></div></section>
+<hr class="case-divider">
+<div class="case-banner" id="snap" style="background:linear-gradient(110deg,#51410d,#b68a17)"><div class="kicker" style="color:#fff4c2">CASE STUDY 02</div><h2>Snapchat — Social Communication &amp; Media Sharing</h2><p>Primary challenge: model shared content, multiple recipients, conversations, friendships, and privacy.</p></div>
+<section class="case-section" id="s-scenario"><div class="kicker">Step 1 · Requirements</div><h2>System scenario</h2><div class="scenario"><h3>Snapchat Social Communication System</h3><p>Snapchat is a multimedia communication platform that allows users to exchange photos, videos, and messages, interact with friends, and publish temporary Stories. A user can create an account, sign in, manage a profile, search for other users, send friend requests, and manage friendships. Depending on relationships and privacy settings, users can communicate through private conversations.</p><p>Users capture photos or short videos using their device cameras and may edit the content with text, drawings, stickers, or visual effects. A user can send a Snap to one or more permitted recipients. The system delivers the content and records relevant delivery and viewing information. Content visibility and retention depend on the type of content and applicable settings.</p><p>Users can create Stories containing photos or videos and share them with an allowed audience. Authorized viewers can access available Stories, and owners can manage or delete their own content. The platform also supports chat, group communication, notifications, privacy settings, blocking, and reporting inappropriate content. Access controls restrict content to authorized audiences.</p></div></section>
+<section class="case-section" id="s-actors"><div class="kicker">Step 2 · Use Case Analysis</div><h2>Identify external actors</h2><div class="table-scroll"><table class="decision-table"><thead><tr><th>Actor / role</th><th>Goals</th></tr></thead><tbody><tr><td>Snapchat User</td><td>Manage profile, friends, Snaps, Stories, chats, privacy</td></tr><tr><td>Content Recipient</td><td>Receive and view authorized Snaps</td></tr><tr><td>Story Viewer</td><td>View Stories allowed by audience rules</td></tr><tr><td>Moderator</td><td>Review reports in the teaching model</td></tr></tbody></table></div><div class="case-note"><strong>Actor generalization:</strong> Content Recipient and Story Viewer can be specialized roles of Snapchat User. Only introduce separate actors when their distinct goals make the diagram clearer.</div></section>
+<section class="case-section" id="s-usecases"><div class="kicker">Step 3 · Functional Requirements</div><h2>Extract use cases and relationships</h2><div class="table-scroll"><table class="decision-table"><thead><tr><th>Category</th><th>Use cases</th></tr></thead><tbody><tr><td>Account</td><td>Manage Profile; Add Friend</td></tr><tr><td>Camera</td><td>Capture Snap; Edit Snap</td></tr><tr><td>Messaging</td><td>Send Snap; Select Recipients; View Snap; Send Chat Message</td></tr><tr><td>Stories</td><td>Publish Story; Select Audience; View Story</td></tr><tr><td>Privacy & safety</td><td>Manage Privacy; Report Content; Review Report</td></tr></tbody></table></div><h3>Relationship decisions</h3><ul><li><strong>«include»:</strong> Send Snap includes Select Recipients.</li><li><strong>«include»:</strong> Publish Story includes Select Audience in this simplified workflow.</li><li><strong>«extend»:</strong> Edit Snap extends Capture Snap when the user chooses to edit captured media.</li><li><strong>Independent goal:</strong> Report Content is not automatically an extension of View Story.</li></ul><figure class="case-diagram"><div class="diagram-top"><strong>Snapchat — Use Case Diagram</strong><button type="button" class="diagram-expand" data-target="s-uc">Expand diagram</button></div><div class="diagram-stage" id="s-uc"><pre class="mermaid">flowchart LR
+U["Snapchat User"]:::actor
+V["Content Recipient"]:::actor
+MOD["Moderator"]:::actor
+subgraph S["Snapchat System Boundary"]
+MP(["Manage Profile"])
+AF(["Add Friend"])
+CS(["Capture Snap"])
+ES(["Edit Snap"])
+SS(["Send Snap"])
+SR(["Select Recipients"])
+VS(["View Snap"])
+CM(["Send Chat Message"])
+PS(["Publish Story"])
+AU(["Select Audience"])
+ST(["View Story"])
+PR(["Manage Privacy"])
+RE(["Report Content"])
+RR(["Review Report"])
+end
+U --- MP
+U --- AF
+U --- CS
+U --- SS
+U --- CM
+U --- PS
+U --- ST
+U --- PR
+U --- RE
+V --- VS
+V --- CM
+V --- ST
+MOD --- RR
+ES -. "«extend»" .-&gt; CS
+SS -. "«include»" .-&gt; SR
+PS -. "«include»" .-&gt; AU
+classDef actor fill:#fff7ed,stroke:#c66a21,color:#2b2633</pre></div><figcaption>Educational use-case view. Specialized user roles are displayed separately for readability; they may be consolidated in another valid model.</figcaption><details><summary>View editable Mermaid diagram source</summary><pre class="source-code">flowchart LR
+U["Snapchat User"]:::actor
+V["Content Recipient"]:::actor
+MOD["Moderator"]:::actor
+subgraph S["Snapchat System Boundary"]
+MP(["Manage Profile"])
+AF(["Add Friend"])
+CS(["Capture Snap"])
+ES(["Edit Snap"])
+SS(["Send Snap"])
+SR(["Select Recipients"])
+VS(["View Snap"])
+CM(["Send Chat Message"])
+PS(["Publish Story"])
+AU(["Select Audience"])
+ST(["View Story"])
+PR(["Manage Privacy"])
+RE(["Report Content"])
+RR(["Review Report"])
+end
+U --- MP
+U --- AF
+U --- CS
+U --- SS
+U --- CM
+U --- PS
+U --- ST
+U --- PR
+U --- RE
+V --- VS
+V --- CM
+V --- ST
+MOD --- RR
+ES -. "«extend»" .-&gt; CS
+SS -. "«include»" .-&gt; SR
+PS -. "«include»" .-&gt; AU
+classDef actor fill:#fff7ed,stroke:#c66a21,color:#2b2633</pre></details></figure></section>
+<section class="case-section" id="s-walkthrough"><div class="kicker">Step 4 · Traceability</div><h2>Walk through Sara's Snap</h2><ol class="steps"><li>Sara opens the camera and captures a photo.</li><li>She optionally adds a sticker and a short caption.</li><li>She selects Ahmed and sends the Snap.</li><li>Ahmed receives and opens the Snap.</li><li>The system records Ahmed's viewing state.</li><li>Sara publishes another Snap to a Story.</li><li>Only users permitted by the Story's audience settings can view it.</li></ol><div class="case-note warn"><strong>Discussion:</strong> Updating viewing status may be an internal action within View Snap rather than a standalone use case.</div></section>
+<section class="case-section" id="s-discover"><div class="kicker">Step 5 · Domain Modeling</div><h2>Discover candidate classes</h2><div class="table-scroll"><table class="decision-table"><thead><tr><th>Candidate</th><th>Decision</th><th>Why</th></tr></thead><tbody><tr><td>User</td><td>Class</td><td>Identity, profile, relationships, shared content</td></tr><tr><td>Snap</td><td>Class</td><td>Media content and lifecycle</td></tr><tr><td>Story</td><td>Class</td><td>Shared collection with visibility constraints</td></tr><tr><td>ChatMessage</td><td>Class</td><td>Message content and timestamp</td></tr><tr><td>Conversation</td><td>Class</td><td>Participants and message history</td></tr><tr><td>Friendship</td><td>Association class / entity</td><td>Relationship state and acceptance date</td></tr><tr><td>SnapDelivery</td><td>Association class / entity</td><td>Per-recipient delivery and viewing state</td></tr><tr><td>PrivacySettings</td><td>Class / value object</td><td>Grouped access-control preferences</td></tr><tr><td>username</td><td>Attribute</td><td>A property of User</td></tr><tr><td>MediaType</td><td>Enumeration</td><td>IMAGE or VIDEO</td></tr></tbody></table></div><h3>Why is SnapDelivery needed?</h3><p>A single Snap can be sent to several recipients. Each recipient may view it at a different time. A single <code>Snap.viewedAt</code> attribute cannot represent those independent states. <strong>SnapDelivery</strong> records status and viewedAt per recipient.</p><h3>Why is Friendship modeled separately?</h3><p>When the relationship has its own data—request status, acceptance date, or settings—it can justify a Friendship class. A simple friend list may be enough for a much smaller scope.</p></section>
+<section class="case-section" id="s-class"><div class="kicker">Step 6 · Structural Modeling</div><h2>Snapchat class diagram</h2><figure class="case-diagram"><div class="diagram-top"><strong>Snapchat — Class Diagram</strong><button type="button" class="diagram-expand" data-target="s-cd">Expand diagram</button></div><div class="diagram-stage" id="s-cd"><pre class="mermaid">classDiagram
+direction LR
+class User {
+ +String userId
+ +String username
+ +String displayName
+ +addFriend()
+ +sendSnap()
+ +publishStory()
+}
+class Friendship {
+ +DateTime createdAt
+ +String status
+ +accept()
+ +remove()
+}
+class Snap {
+ +String snapId
+ +String mediaUrl
+ +MediaType mediaType
+ +DateTime createdAt
+ +send()
+}
+class SnapDelivery {
+ +DateTime deliveredAt
+ +DateTime viewedAt
+ +String status
+ +markViewed()
+}
+class Story {
+ +String storyId
+ +DateTime expiresAt
+ +String audience
+ +addSnap()
+ +delete()
+}
+class Conversation {
+ +String conversationId
+ +DateTime createdAt
+ +addParticipant()
+}
+class ChatMessage {
+ +String messageId
+ +String text
+ +DateTime sentAt
+ +send()
+}
+class PrivacySettings {
+ +Boolean locationSharing
+ +String contactPermission
+ +String storyAudience
+ +update()
+}
+User "1" --&gt; "0..*" Snap : creates
+User "1" --&gt; "0..*" Story : publishes
+User "1" *-- "1" PrivacySettings : owns
+User "1" --&gt; "0..*" Friendship : participates
+Friendship "0..*" --&gt; "2" User : connects
+Snap "1" --&gt; "0..*" SnapDelivery : deliveries
+SnapDelivery "0..*" --&gt; "1" User : recipient
+Story "0..*" o-- "0..*" Snap : contains
+Conversation "0..*" -- "2..*" User : participants
+Conversation "1" *-- "0..*" ChatMessage : contains
+User "1" --&gt; "0..*" ChatMessage : sends</pre></div><figcaption>Illustrative preliminary design model, not Snapchat's proprietary architecture. Some association classes and lifecycle rules are deliberately simplified.</figcaption><details><summary>View editable Mermaid diagram source</summary><pre class="source-code">classDiagram
+direction LR
+class User {
+ +String userId
+ +String username
+ +String displayName
+ +addFriend()
+ +sendSnap()
+ +publishStory()
+}
+class Friendship {
+ +DateTime createdAt
+ +String status
+ +accept()
+ +remove()
+}
+class Snap {
+ +String snapId
+ +String mediaUrl
+ +MediaType mediaType
+ +DateTime createdAt
+ +send()
+}
+class SnapDelivery {
+ +DateTime deliveredAt
+ +DateTime viewedAt
+ +String status
+ +markViewed()
+}
+class Story {
+ +String storyId
+ +DateTime expiresAt
+ +String audience
+ +addSnap()
+ +delete()
+}
+class Conversation {
+ +String conversationId
+ +DateTime createdAt
+ +addParticipant()
+}
+class ChatMessage {
+ +String messageId
+ +String text
+ +DateTime sentAt
+ +send()
+}
+class PrivacySettings {
+ +Boolean locationSharing
+ +String contactPermission
+ +String storyAudience
+ +update()
+}
+User "1" --&gt; "0..*" Snap : creates
+User "1" --&gt; "0..*" Story : publishes
+User "1" *-- "1" PrivacySettings : owns
+User "1" --&gt; "0..*" Friendship : participates
+Friendship "0..*" --&gt; "2" User : connects
+Snap "1" --&gt; "0..*" SnapDelivery : deliveries
+SnapDelivery "0..*" --&gt; "1" User : recipient
+Story "0..*" o-- "0..*" Snap : contains
+Conversation "0..*" -- "2..*" User : participants
+Conversation "1" *-- "0..*" ChatMessage : contains
+User "1" --&gt; "0..*" ChatMessage : sends</pre></details></figure><div class="case-split"><div class="case-card"><h3>Important multiplicities</h3><p>One Snap can have multiple delivery records. Each delivery record identifies one recipient. A Conversation has two or more participants in this teaching model; a real messaging platform may support additional conversation forms.</p></div><div class="case-card"><h3>Privacy is a requirement</h3><p>Content access must respect audience permissions. Modeling a Story–Snap relationship does not by itself implement authorization; access rules must be specified separately.</p></div></div></section>
+<section class="case-section" id="comparison"><div class="kicker">Synthesis</div><h2>Compare the two models</h2><div class="table-scroll"><table class="decision-table"><thead><tr><th>Modeling aspect</th><th>HungerStation</th><th>Snapchat</th></tr></thead><tbody><tr><td>Primary user goal</td><td>Order and receive food</td><td>Communicate and share media</td></tr><tr><td>Central entity</td><td>Order</td><td>Snap</td></tr><tr><td>Relationship-oriented class</td><td>OrderItem</td><td>SnapDelivery</td></tr><tr><td>Typical lifecycle</td><td>Placed → Prepared → Delivered</td><td>Created → Sent → Viewed</td></tr><tr><td>Main modeling challenge</td><td>Order, payment, and delivery</td><td>Recipients, visibility, and privacy</td></tr><tr><td>Key class discovery lesson</td><td>Purchase quantity belongs to an order line</td><td>Viewing state belongs to a recipient-specific delivery</td></tr></tbody></table></div><div class="case-compare"><div><h3>Use Case Diagram</h3><p><strong>Question:</strong> What must actors accomplish using the system?</p><p><strong>Focus:</strong> System boundary, actors, goals, and behavioral relationships.</p></div><div><h3>Class Diagram</h3><p><strong>Question:</strong> Which concepts, attributes, responsibilities, and relationships support the requirements?</p><p><strong>Focus:</strong> Structure, associations, multiplicities, and ownership.</p></div></div><div class="case-note"><strong>Domain vs. design:</strong> A conceptual domain class diagram usually omits operations and technical details. A software design class diagram may introduce methods, interfaces, and implementation-oriented types.</div></section>
+<section class="case-section" id="exercises"><div class="kicker">Classroom assessment</div><h2>Test your modeling decisions</h2><p>Ask students to answer each question before expanding the explanation.</p>
+<details class="case-question"><summary>1. Is Restaurant a class or a property?</summary><p><strong>Class.</strong> It has independent identity, data, and responsibilities in this domain.</p></details>
+<details class="case-question"><summary>2. Where should the quantity of purchased burgers be stored?</summary><p><strong>OrderItem.</strong> Quantity varies by order, not by the catalog product.</p></details>
+<details class="case-question"><summary>3. Where should each Snap recipient's viewedAt value be stored?</summary><p><strong>SnapDelivery.</strong> Each recipient has an independent viewing timestamp.</p></details>
+<details class="case-question"><summary>4. Does every verb in a requirements paragraph become a use case?</summary><p><strong>No.</strong> A use case expresses an actor's meaningful goal. Internal implementation steps do not necessarily qualify.</p></details>
+<details class="case-question"><summary>5. Can Address be a class and also the type of a property?</summary><p><strong>Yes.</strong> A property of Customer or Order can reference an Address object.</p></details>
+<details class="case-question"><summary>6. Should every domain class have methods in the diagram?</summary><p><strong>No.</strong> A conceptual domain model commonly includes classes, attributes, and relationships without operations.</p></details>
+<details class="case-question"><summary>7. Is Payment Gateway an actor or a class?</summary><p><strong>External actor</strong> in a use case model when the gateway is outside the system boundary. An internal Payment class may still exist in the class diagram.</p></details>
+<details class="case-question"><summary>8. Can two different class diagrams model the same requirements correctly?</summary><p><strong>Yes.</strong> Multiple defensible models may exist, provided they satisfy the requirements and make their assumptions explicit.</p></details></section>
+<section class="case-section" id="teaching"><div class="kicker">Instructor guidance</div><h2>Suggested 80-minute classroom flow</h2><div class="table-scroll"><table class="decision-table"><thead><tr><th>Minutes</th><th>Activity</th></tr></thead><tbody><tr><td>0–10</td><td>Read HungerStation scenario and identify nouns / verbs</td></tr><tr><td>10–25</td><td>Identify actors and construct use cases</td></tr><tr><td>25–40</td><td>Derive classes, attributes, relationships, and multiplicities</td></tr><tr><td>40–50</td><td>Read Snapchat scenario</td></tr><tr><td>50–65</td><td>Construct Snapchat use cases</td></tr><tr><td>65–75</td><td>Derive Snapchat classes and explain SnapDelivery</td></tr><tr><td>75–80</td><td>Compare models and discuss answers</td></tr></tbody></table></div><div class="case-note"><strong>Recommended teaching sequence:</strong> Hide the diagram while students propose their own models. Reveal it afterward and ask them to defend differences rather than memorize one supposedly perfect answer.</div></section>
+<section class="section"><div class="kicker">Further reading</div><h2>Official application references</h2><p>Use these resources to distinguish observed application behavior from teaching assumptions: <a href="https://hungerstation.com/sa-en" target="_blank" rel="noopener">HungerStation official website</a>, <a href="https://help.snapchat.com/" target="_blank" rel="noopener">Snapchat Support</a>, and <a href="https://www.omg.org/spec/UML/" target="_blank" rel="noopener">OMG UML specification</a>.</p></section><div class="remember"><strong>Remember</strong><p><strong>Use cases explain what the system enables. Classes explain what the domain and design contain.</strong> Start from requirements, justify each modeling decision, and state assumptions explicitly.</p></div><nav class="lesson-nav"><a id="prev-link" hidden>← Previous</a><a href="../../index.html" class="course-home">Course home</a><a id="next-link" hidden class="next">Next →</a></nav></article></main></div><script src="../../study.js"></script><script src="topic07.js"></script><script type="module">
+import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'neutral',flowchart:{htmlLabels:false,curve:'basis',nodeSpacing:30,rankSpacing:45},class:{hideEmptyMembersBox:true}});
+try{await mermaid.run({querySelector:'.mermaid'});}catch(error){console.warn('Diagram renderer unavailable; editable diagram source remains visible.',error);}
+</script><script>
+document.querySelectorAll('.diagram-expand').forEach(button=>button.addEventListener('click',()=>{const stage=document.getElementById(button.dataset.target);if(!stage)return;const overlay=document.createElement('div');overlay.className='diagram-overlay';overlay.setAttribute('role','dialog');overlay.setAttribute('aria-label','Expanded UML diagram');const close=document.createElement('button');close.className='diagram-expand';close.textContent='Close expanded diagram ×';const clone=stage.cloneNode(true);clone.removeAttribute('id');const dismiss=()=>overlay.remove();close.addEventListener('click',dismiss);overlay.addEventListener('click',e=>{if(e.target===overlay)dismiss()});overlay.append(close,clone);document.body.append(overlay);close.focus();const key=e=>{if(e.key==='Escape'){dismiss();document.removeEventListener('keydown',key)}};document.addEventListener('keydown',key)}));
+</script></body></html>
