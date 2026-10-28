@@ -6,12 +6,8 @@
     ['state-revision.html','Sequence View — Who Interacts, and When?','04 · INTERACTION LENS'],
     ['activity-revision.html','State View — What Changes Over Time?','05 · LIFECYCLE LENS'],
     ['atm-example.html','Activity View — How Does Work Flow?','06 · WORKFLOW LENS'],
-    ['same-scenario.html','Same Scenario, Five Complementary Models','07 · CONNECT THE VIEWS'],
-    ['consistency.html','Consistency Across Models','08 · CROSS-MODEL REASONING'],
-    ['integrated-case.html','Integrated Case Study','09 · TRANSFER THE METHOD'],
-    ['model-selection.html','Model Selection Challenges','10 · CHOOSE THE VIEW'],
-    ['studio.html','Integrated Modeling Studio','11 · PRACTICE STUDIO'],
-    ['revision-check.html','Integrated Review & Exam Readiness','12 · MASTERY CHECK']
+    ['consistency.html','Cross-Model Consistency & Traceability','07 · VERIFY THE MODELS'],
+    ['studio.html','Integrated Modeling Studio & Final Check','08 · APPLY AND VERIFY']
   ];
   const file=location.pathname.split('/').pop()||'index.html';
   const current=Math.max(0,pages.findIndex(p=>p[0]===file));
@@ -28,7 +24,7 @@
   if(prev&&current>0){prev.hidden=false;prev.href=pages[current-1][0]}
   if(next&&current<pages.length-1){next.hidden=false;next.href=pages[current+1][0]}
   const progress=document.querySelector('.hero-progress');
-  if(progress){const n=progress.querySelector('span'),s=progress.querySelector('small');if(n)n.textContent=String(current+1);if(s)s.textContent='of 12 pages';}
+  if(progress){const n=progress.querySelector('span'),s=progress.querySelector('small');if(n)n.textContent=String(current+1);if(s)s.textContent='of 8 pages';}
 
   const article=document.querySelector('article.content');
   if(!article)return;
