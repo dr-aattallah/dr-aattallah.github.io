@@ -1994,26 +1994,99 @@ main section:nth-of-type(3n)::after{
   font-size:14px;
 }
 
-.visitor-counter{
-  width:max-content;
-  margin:12px auto 0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  color:var(--muted);
-  font-size:13px;
-  font-weight:700;
+.visitor-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 18px auto 0;
+  color: var(--muted);
+  font-size: .82rem;
+  font-weight: 700;
 }
-.visitor-counter::before{
-  content:"";
-  width:7px;
-  height:7px;
-  border-radius:50%;
-  background:var(--gold);
-  box-shadow:0 0 0 4px rgba(176,138,53,.13);
+.visitor-counter > [data-counter-label] {
+  order: 1;
+  text-align: center;
 }
-.visitor-count{color:var(--navy);font-variant-numeric:tabular-nums}
+.visitor-counter .visitor-count {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  min-inline-size: 106px;
+  max-inline-size: 100%;
+  min-block-size: 78px;
+  padding: 4px 16px 19px;
+  border: 1px solid rgba(247, 233, 201, .68);
+  border-radius: 48% / 55%;
+  background:
+    radial-gradient(ellipse at 43% 100%, rgba(188, 171, 241, .56), transparent 53%),
+    radial-gradient(ellipse at 86% 80%, rgba(185, 148, 90, .5), transparent 49%),
+    linear-gradient(175deg, rgba(11,18,36,.99) 6%, rgba(22,35,59,.96) 49%, rgba(63,81,103,.84) 83%, rgba(135,149,170,.74));
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
+  backdrop-filter: blur(12px) saturate(125%);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, .42),
+    inset 0 -2px 5px rgba(251, 234, 205, .65),
+    0 8px 15px -5px rgba(12, 28, 51, .48),
+    0 15px 25px -13px rgba(123, 107, 163, .45);
+  color: #fff;
+  font-size: 1.65rem;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+  text-shadow: 0 1px 5px #050b18, 0 0 12px rgba(229, 237, 255, .23);
+  animation: portfolio-orb-float 5.8s ease-in-out infinite;
+}
+.visitor-counter .visitor-count:empty { display: none; }
+.visitor-counter .visitor-count::before,
+.visitor-counter .visitor-count::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+}
+.visitor-counter .visitor-count::before {
+  inset: 55% -24% auto;
+  height: 32%;
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at 54% 44%, rgba(255,255,255,.98), transparent 26%),
+    radial-gradient(ellipse at 68% 43%, #ffe7ac, transparent 45%),
+    radial-gradient(ellipse at 34% 53%, #b3ddff, transparent 45%),
+    radial-gradient(ellipse at 63% 64%, #c1a6ed, transparent 57%),
+    radial-gradient(ellipse at 45% 62%, #db9eac, transparent 67%);
+  filter: blur(2px);
+  animation: portfolio-orb-spectrum 8s ease-in-out infinite alternate;
+}
+.visitor-counter .visitor-count::after {
+  inset: 1px;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse at 48% 2%, rgba(255,255,255,.52), transparent 55%),
+    radial-gradient(ellipse at 74% 105%, rgba(255,246,219,.88), transparent 39%);
+  opacity: .56;
+  animation: portfolio-orb-reflection 7s ease-in-out infinite alternate;
+}
+@keyframes portfolio-orb-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes portfolio-orb-spectrum {
+  from { transform: translateX(-8%) rotate(-9deg) scaleY(.8); }
+  to { transform: translateX(8%) rotate(7deg) scaleY(1.22); }
+}
+@keyframes portfolio-orb-reflection {
+  from { opacity: .4; transform: translateX(-4%); }
+  to { opacity: .8; transform: translateX(4%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .visitor-counter .visitor-count,
+  .visitor-counter .visitor-count::before,
+  .visitor-counter .visitor-count::after { animation: none; }
+}
 
 .back-to-top{
   position:fixed;
@@ -2453,7 +2526,6 @@ html[lang="en"] .teaching-evidence p[lang="ar"]{display:none}
   #leadership .grid.compact > .mini{min-height:unset;padding:20px}
 }
 
-[data-portfolio-visit-count] .visitor-count:not(:empty){display:inline-block;min-inline-size:2ch;padding:.2em .46em;border:1px solid #e3d6bb;border-radius:.48em;background:linear-gradient(180deg,#fffdf8,#f2e9d7);box-shadow:inset 0 1px 0 rgba(255,255,255,.96),0 2px 0 #e3d6bb,0 4px 7px rgba(115,82,28,.18);color:#142b4b;font-size:clamp(1rem,2vw,1.3rem);font-weight:850;line-height:1.15;text-align:center;white-space:nowrap;font-variant-numeric:tabular-nums;}
 </style>
 </head>
 
