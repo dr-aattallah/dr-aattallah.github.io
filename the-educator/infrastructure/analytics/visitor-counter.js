@@ -1,6 +1,6 @@
 (()=>{
   'use strict';
-  const DEFAULT_ENDPOINT='https://counterapi.com/api';
+  const DEFAULT_ENDPOINT='https://abacus.jasoncameron.dev';
   const SCRIPT=document.currentScript;
   const endpoint=(SCRIPT?.dataset.endpoint||DEFAULT_ENDPOINT).replace(/\/$/,'');
   const namespace=SCRIPT?.dataset.namespace||location.hostname.replace(/[^a-z0-9._-]/gi,'-')||'the-educator';
@@ -17,6 +17,12 @@
     el.setAttribute('aria-label',`${el.dataset.label||'Visits'}: ${format(value)}`);
   }
   function fail(el){
+    const fallback=Number(el.dataset.fallbackValue);
+    if(Number.isFinite(fallback)){
+      render(el,fallback);
+      el.classList.add('visitor-counter--stale');
+      return;
+    }
     el.classList.remove('visitor-counter--loading');el.classList.add('visitor-counter--error');
     el.textContent=el.dataset.errorLabel||'Visit count unavailable';
   }
@@ -30,7 +36,23 @@
     try{
       let promise=seen.get(id);
       if(!promise){
-        promise=fetch(`${endpoint}/${encodeURIComponent(ns)}/${encodeURIComponent(action)}/${encodeURIComponent(key)}`,{headers:{Accept:'application/json'}}).then(r=>{if(!r.ok)throw new Error(`Counter ${r.status}`);return r.json()});
+        const counterKey=`${ns}/${key}`;
+        const request=async verb=>{
+          const controller=new AbortController();
+          const timer=setTimeout(()=>controller.abort(),8000);
+          try{
+            const response=await fetch(`${endpoint}/${verb}/${counterKey}`,{cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer',headers:{Accept:'application/json'},signal:controller.signal});
+            if(!response.ok)throw new Error(`Counter ${response.status}`);
+            return response.json();
+          }finally{clearTimeout(timer)}
+        };
+        promise=(async()=>{
+          try{return await request(action==='view'?'hit':'get').catch(()=>request('get'))}
+          catch(firstError){
+            await new Promise(resolve=>setTimeout(resolve,1600));
+            return request('get');
+          }
+        })();
         seen.set(id,promise);
       }
       const data=await promise;

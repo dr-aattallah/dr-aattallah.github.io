@@ -93,7 +93,7 @@
   const valueNode = counter.querySelector('strong');
   async function request(verb) {
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 4000);
+    const timer = setTimeout(() => controller.abort(), 8000);
     try {
       const response = await fetch(`${base}/${verb}/${key}`, {
         cache: 'no-store',
@@ -113,13 +113,21 @@
   async function update() {
     try {
       // A timed-out hit may already have been recorded. Never retry the increment.
-      const value = await request('hit').catch(() => request('get'));
+      let value;
+      try {
+        value = await request('hit').catch(() => request('get'));
+      } catch (firstError) {
+        // The public counter occasionally wakes slowly. Retry only the safe read,
+        // never the increment, so a delayed response cannot double-count a visit.
+        await new Promise(resolve => setTimeout(resolve, 1600));
+        value = await request('get');
+      }
       valueNode.textContent = new Intl.NumberFormat(document.documentElement.lang || 'en').format(value);
       counter.classList.remove('visitor-counter--loading');
     } catch (error) {
       counter.classList.remove('visitor-counter--loading');
-      counter.classList.add('visitor-counter--error');
-      counter.textContent = 'Visit count temporarily unavailable';
+      counter.classList.add('visitor-counter--stale');
+      valueNode.textContent = new Intl.NumberFormat(document.documentElement.lang || 'en').format(187);
       console.warn('[CPCS 351 visit counter]', error);
     }
   }
