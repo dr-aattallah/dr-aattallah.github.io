@@ -7,7 +7,7 @@
   const archive = document.getElementById('publication-archive');
   const backTop = document.querySelector('.back-top');
   const queryLanguage = new URLSearchParams(location.search).get('lang');
-  let language = queryLanguage === 'ar' || queryLanguage === 'en' ? queryLanguage : 'en';
+  let language = queryLanguage === 'ar' || queryLanguage === 'en' ? queryLanguage : 'ar';
 
   function applyLanguage(nextLanguage) {
     language = nextLanguage;
