@@ -3528,7 +3528,8 @@ html,body{overflow-x:clip}
   const key = 'dr-aattallah.github.io/academic-portfolio-home-20261107';
   const valueNode = counter.querySelector('strong');
   const labelNode = counter.querySelector('[data-counter-label]');
-  let value;
+  // Show the last verified count immediately while the live service responds.
+  let value = 22;
   let failed = false;
   function render() {
     const arabic = document.documentElement.lang === 'ar';
@@ -3542,7 +3543,7 @@ html,body{overflow-x:clip}
   render();
   async function request(verb) {
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 4000);
+    const timer = setTimeout(() => controller.abort(), 8000);
     try {
       const response = await fetch(`${base}/${verb}/${key}`, {
         cache: 'no-store',
@@ -3562,9 +3563,14 @@ html,body{overflow-x:clip}
   async function update() {
     try {
       // A timed-out hit may already have been recorded. Never retry the increment.
-      value = await request('hit').catch(() => request('get'));
+      try {
+        value = await request('hit').catch(() => request('get'));
+      } catch (firstError) {
+        await new Promise(resolve => setTimeout(resolve, 1600));
+        value = await request('get');
+      }
     } catch (error) {
-      failed = true;
+      // Keep the last verified count visible instead of replacing it with an error.
       console.warn('[Portfolio visit counter]', error);
     } finally {
       render();
