@@ -387,6 +387,7 @@
     const navigation=article.querySelector('.lesson-nav');
     if(navigation)navigation.before(section);else article.append(section);
   }
-  if(document.readyState==='complete')setTimeout(mount,0);
-  else window.addEventListener('load',()=>setTimeout(mount,0),{once:true});
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(mount,0),{once:true});
+  else setTimeout(mount,0);
+  window.addEventListener('load',()=>setTimeout(mount,0),{once:true});
 })();
